@@ -595,13 +595,16 @@ body {
 
 .preview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 2.5rem;
+    align-items: stretch;
 }
 
 .preview-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-decoration: none;
     border-radius: 1rem;
     overflow: hidden;
@@ -617,14 +620,19 @@ body {
 
 .preview-img {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16 / 10;
+    height: auto;
     background-size: cover;
     background-position: center top;
     background-color: #1a1a1a;
+    flex-shrink: 0;
 }
 
 .preview-info {
     padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .preview-type {
@@ -798,19 +806,106 @@ body {
 /* Portfolio Detail Styles (websites & apps pages) */
 .portfolio-grid-wide {
     grid-template-columns: 1fr;
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
+    gap: 3rem;
 }
 
 .portfolio-item-featured {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 500px;
+    align-items: start;
 }
 
 .portfolio-item-featured .portfolio-image {
     height: 100%;
-    min-height: 400px;
+    min-height: 360px;
+}
+
+/* Website portfolio: stacked layout with consistent screenshot framing */
+.portfolio-item-website {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.portfolio-item-website .portfolio-image {
+    height: auto;
+    min-height: unset;
+    aspect-ratio: 16 / 9;
+    max-height: 440px;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.portfolio-item-website .screenshot-slide img {
+    object-fit: cover;
+    object-position: top center;
+}
+
+.website-image {
+    background: #0f172a;
+}
+
+/* App portfolio: phone screenshot column */
+.portfolio-item-app {
+    align-items: stretch;
+}
+
+.portfolio-item-app .portfolio-image {
+    min-height: 480px;
+    max-height: 560px;
+}
+
+.portfolio-item-app .screenshot-slide img {
+    object-fit: contain;
+    padding: 1rem;
+}
+
+/* Software product showcase (no screenshots) */
+.product-showcase-image {
+    background: linear-gradient(145deg, #0f172a 0%, #1B2A4A 50%, #0d2818 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+}
+
+.product-showcase-panel {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 320px;
+}
+
+.product-showcase-panel .showcase-name {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.product-showcase-panel p {
+    font-size: 1rem;
+    opacity: 0.85;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.showcase-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.showcase-stat {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
 .portfolio-meta {
@@ -1153,15 +1248,34 @@ body {
     }
 }
 
+@media (max-width: 1024px) {
+    .preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* Responsive: portfolio featured items */
 @media (max-width: 900px) {
+    .preview-grid {
+        grid-template-columns: 1fr;
+    }
+
     .portfolio-item-featured {
         grid-template-columns: 1fr;
     }
 
     .portfolio-item-featured .portfolio-image {
-        height: 300px;
-        min-height: 300px;
+        height: auto;
+        min-height: unset;
+    }
+
+    .portfolio-item-app .portfolio-image {
+        min-height: 320px;
+        max-height: 400px;
+    }
+
+    .portfolio-item-website .portfolio-image {
+        max-height: 280px;
     }
 
     .portfolio-features ul {
@@ -1176,10 +1290,6 @@ body {
     }
 
     .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .preview-grid {
         grid-template-columns: 1fr;
     }
 

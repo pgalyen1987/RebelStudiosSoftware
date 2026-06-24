@@ -33,7 +33,6 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="websites.html">Websites</a></li>
                 <li><a href="apps.html" class="active">Mobile Apps</a></li>
-                <li><a href="vigilo.html">Vigilo</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
@@ -48,8 +47,8 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Mobile App Portfolio</h1>
-            <p>Native Android apps live on Google Play — built with Kotlin and Jetpack Compose</p>
+            <h1>Apps &amp; Software Portfolio</h1>
+            <p>Android apps on Google Play and open-source security software</p>
         </div>
     </section>
 
@@ -58,7 +57,7 @@
             <div class="portfolio-grid portfolio-grid-wide">
 
                 <!-- Phuzzles -->
-                <div class="portfolio-item portfolio-item-featured">
+                <div class="portfolio-item portfolio-item-featured portfolio-item-app">
                     <div class="portfolio-image app-image">
                         <div class="screenshot-carousel" id="phuzzles-carousel">
                             <div class="screenshot-slide active">
@@ -156,7 +155,7 @@
                 </div>
 
                 <!-- MemorySwipe -->
-                <div class="portfolio-item portfolio-item-featured">
+                <div class="portfolio-item portfolio-item-featured portfolio-item-app">
                     <div class="portfolio-image app-image">
                         <div class="screenshot-carousel" id="memoryswipe-carousel">
                             <div class="screenshot-slide active">
@@ -220,7 +219,7 @@
                 </div>
 
                 <!-- ToiletTeller -->
-                <div class="portfolio-item portfolio-item-featured">
+                <div class="portfolio-item portfolio-item-featured portfolio-item-app">
                     <div class="portfolio-image app-image">
                         <div class="screenshot-carousel" id="toiletteller-carousel">
                             <div class="screenshot-slide active">
@@ -292,14 +291,76 @@
                     </div>
                 </div>
 
+                <!-- Vigilo -->
+                <div class="portfolio-item portfolio-item-featured portfolio-item-app">
+                    <div class="portfolio-image product-showcase-image">
+                        <div class="product-showcase-panel">
+                            <span class="showcase-name">Vigilo</span>
+                            <p>On-device IoT network anomaly detection. Mamba-2 forecaster, Zeek conn.log, no cloud.</p>
+                            <div class="showcase-stats">
+                                <span class="showcase-stat">75% @ 1% FPR</span>
+                                <span class="showcase-stat">~1.3M params</span>
+                                <span class="showcase-stat">CPU-only</span>
+                                <span class="showcase-stat">Open source</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">Security Software</span>
+                            <a href="https://github.com/pgalyen1987/Vigilo" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">GitHub ↗</a>
+                        </div>
+                        <h3>Vigilo</h3>
+                        <p>An open-source research prototype that learns normal device behavior from Zeek connection logs and flags anomalies as forecast error. Detects port scans, DDoS, and noisy botnet traffic on consumer CPU hardware with no cloud dependency.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Core</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Python</span>
+                                        <span class="tag">Mamba-2 SSM</span>
+                                        <span class="tag">PyTorch</span>
+                                        <span class="tag">Zeek conn.log</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Detection</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Behavioral Forecasting</span>
+                                        <span class="tag">Beaconing Ensemble</span>
+                                        <span class="tag">Benign-only Training</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>5-minute behavioral windows per device (15 features)</li>
+                                <li>75% detection at 1% FPR on IoT-23 (20 malware families)</li>
+                                <li>Runs entirely on CPU — no GPU or cloud required</li>
+                                <li>SPAN/mirror, gateway Zeek, or lab capture workflows</li>
+                            </ul>
+                        </div>
+
+                        <div class="app-store-links">
+                            <a href="vigilo.html" class="portfolio-link">Product Details →</a>
+                            <a href="research.html" class="portfolio-link">Research Paper →</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <section class="cta">
         <div class="container">
-            <h2>Want an App on Google Play?</h2>
-            <p>We handle everything from design to submission — all in native Kotlin.</p>
+            <h2>Want an App or Software Product?</h2>
+            <p>We handle everything from Android apps to security tooling — design through deployment.</p>
             <a href="index.html#contact" class="btn btn-primary">Get a Free Quote</a>
         </div>
     </section>
@@ -314,7 +375,6 @@
                 <div class="footer-links">
                     <a href="websites.html">Websites</a>
                     <a href="apps.html">Mobile Apps</a>
-                    <a href="vigilo.html">Vigilo</a>
                     <a href="blog.html">Blog</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="index.html#contact">Contact</a>
