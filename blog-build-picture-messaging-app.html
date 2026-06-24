@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html">
+    <meta property="og:title" content="How to Build a Picture Messaging App: Kotlin, Compose, and Firebase">
+    <meta property="og:description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-06-18">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Build a Picture Messaging App: Kotlin, Compose, and Firebase">
+    <meta name="twitter:description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build a Picture Messaging App: Kotlin, Compose, and Firebase","description":"Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX \u2014 from Android Studio to Google Play.","datePublished":"2026-06-18","author":{"@type":"Person","name":"Patrick Galyen"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Build a Picture Messaging App: Kotlin, Compose, and Firebase - Rebel Studios Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="vigilo.html">Vigilo</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Build a Picture Messaging App</h1>
+            <p>End-to-end guide: Android Studio to Google Play with Kotlin, Jetpack Compose, and Firebase</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">June 18, 2026</span>
+                    <span class="article-author">Patrick Galyen</span>
+                </div>
+
+                <div class="article-content">
+                    <p>This guide walks through building a picture messaging app from scratch: users capture or select photos, send them to friends, and recipients interact with the image before viewing it. The stack works for any social photo app built on Kotlin, Jetpack Compose, MVVM with Hilt, Firebase Auth and Firestore for real-time sync, Cloud Storage for images, and FCM for push notifications.</p>
+
+                    <p>Follow these steps and commands to ship your own app on Google Play.</p>
+
+                    <h2>What You&rsquo;ll Need</h2>
+                    <ul class="article-list">
+                        <li><strong>Android Studio</strong> (Ladybug or newer)</li>
+                        <li><strong>JDK 17</strong></li>
+                        <li>A <strong>Google account</strong> for Firebase and Google Play Console</li>
+                        <li>An Android device or emulator (API 26+)</li>
+                    </ul>
+
+                    <h2>Step 1: Create the Android Project</h2>
+                    <p>Open Android Studio and create a new project with the Empty Activity (Compose) template. Set minimum SDK to API 26, language to Kotlin, and build configuration to Kotlin DSL (<code>build.gradle.kts</code>).</p>
+
+                    <p>Or scaffold from the command line if you have the Android SDK installed:</p>
+                    <pre>sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+# Then use Android Studio's New Project wizard for Compose + Kotlin</pre>
+
+                    <p>Verify the project builds:</p>
+                    <pre>./gradlew assembleDebug
+adb install app/build/outputs/apk/debug/app-debug.apk</pre>
+
+                    <h2>Step 2: Set Up the Architecture (MVVM + Hilt)</h2>
+                    <p>Use MVVM with a repository layer and Hilt for dependency injection. Add these to your version catalog or root <code>build.gradle.kts</code>:</p>
+
+                    <pre>// gradle/libs.versions.toml (key versions)
+[versions]
+hilt = "2.51"
+navigation = "2.8.0"
+coil = "2.6.0"
+camerax = "1.4.0"
+
+// app/build.gradle.kts plugins
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    kotlin("kapt")
+}</pre>
+
+                    <p>Apply Hilt in your Application class and main Activity:</p>
+                    <pre>@HiltAndroidApp
+class MyApp : Application()
+
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent { AppTheme { AppNavHost() } }
+    }
+}</pre>
+
+                    <p>Organize packages by feature:</p>
+                    <ul class="article-list">
+                        <li><strong>data/</strong> &mdash; Firestore repositories, DTOs</li>
+                        <li><strong>domain/</strong> &mdash; models and use cases</li>
+                        <li><strong>ui/</strong> &mdash; Compose screens and ViewModels</li>
+                        <li><strong>di/</strong> &mdash; Hilt modules for Firebase, repositories</li>
+                    </ul>
+
+                    <h2>Step 3: Connect Firebase</h2>
+                    <p>Create a project in the <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer">Firebase Console</a>, add an Android app with your package name (e.g. <code>com.example.picturemessages</code>), and download <code>google-services.json</code> into <code>app/</code>.</p>
+
+                    <pre># Install Firebase CLI (optional, for rules deployment)
+curl -sL https://firebase.tools | bash
+firebase login
+firebase init firestore storage</pre>
+
+                    <p>Add Firebase dependencies:</p>
+                    <pre>implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+implementation("com.google.firebase:firebase-auth-ktx")
+implementation("com.google.firebase:firebase-firestore-ktx")
+implementation("com.google.firebase:firebase-storage-ktx")
+implementation("com.google.firebase:firebase-messaging-ktx")
+implementation("com.google.firebase:firebase-crashlytics-ktx")
+implementation("com.google.firebase:firebase-appcheck-playintegrity")</pre>
+
+                    <p>Enable <strong>Email/Password</strong> (or phone) auth, create a Firestore database in production mode, and enable Cloud Storage. Deploy security rules that scope reads/writes to authenticated users.</p>
+
+                    <h2>Step 4: Build the Message Content Layer</h2>
+                    <p>Define how photos are transformed before delivery. For a puzzle-style app, split the image into an N&times;N grid, shuffle tile indices (keeping the puzzle solvable), and track swap moves. In Compose, render each tile as a clipped <code>Image</code> offset within a grid. For a simpler app, you might apply filters, captions, or expiry timers instead.</p>
+
+                    <div class="article-highlight">
+                        <h3>Message data model</h3>
+                        <p>Store messages in Firestore with fields like <code>senderId</code>, <code>recipientId</code>, <code>imageUrl</code>, <code>gridSize</code>, <code>tileOrder</code> (array of indices), <code>status</code> (pending/viewed), <code>moveCount</code>, and <code>viewTimeMs</code>. Use a Firestore snapshot listener so both users see live updates.</p>
+                    </div>
+
+                    <pre>// Repository pattern — listen for incoming messages
+fun observeInbox(userId: String): Flow&lt;List&lt;Message&gt;&gt; = callbackFlow {
+    val reg = firestore.collection("messages")
+        .whereEqualTo("recipientId", userId)
+        .addSnapshotListener { snap, err -&gt;
+            if (err != null) { close(err); return@addSnapshotListener }
+            trySend(snap?.documents?.map { it.toMessage() } ?: emptyList())
+        }
+    awaitClose { reg.remove() }
+}</pre>
+
+                    <h2>Step 5: Camera and Image Upload</h2>
+                    <p>Add CameraX for capture and Coil for loading images from Firebase Storage URLs:</p>
+
+                    <pre>implementation("androidx.camera:camera-camera2:1.4.0")
+implementation("androidx.camera:camera-lifecycle:1.4.0")
+implementation("androidx.camera:camera-view:1.4.0")
+implementation("io.coil-kt:coil-compose:2.6.0")</pre>
+
+                    <p>Upload flow: compress the bitmap, upload to <code>messages/{uuid}.jpg</code> in Storage, get the download URL, then write the Firestore document.</p>
+
+                    <pre>suspend fun uploadMessageImage(bytes: ByteArray, id: String): String {
+    val ref = storage.reference.child("messages/$id.jpg")
+    ref.putBytes(bytes).await()
+    return ref.downloadUrl.await().toString()
+}</pre>
+
+                    <h2>Step 6: Contacts and Usernames</h2>
+                    <p>Most messaging apps need a way to find friends. On registration, reserve a unique username in a <code>usernames/{name}</code> collection (document ID = username, field <code>uid</code>). Contacts are stored as subcollections or an array of user IDs on each user document.</p>
+
+                    <h2>Step 7: Push Notifications (FCM)</h2>
+                    <p>Create a <code>FirebaseMessagingService</code> subclass to handle incoming message notifications. Save each device&rsquo;s FCM token to the user document on login.</p>
+
+                    <pre>class MessageMessagingService : FirebaseMessagingService() {
+    override fun onMessageReceived(msg: RemoteMessage) {
+        val title = msg.notification?.title ?: "New message!"
+        showNotification(title, msg.notification?.body)
+    }
+}</pre>
+
+                    <p>When a message is sent, use a Cloud Function or your backend to push to the recipient&rsquo;s token:</p>
+
+                    <pre>firebase functions:config:set app.url="https://yourdomain.com"
+# Cloud Function on message create → admin.messaging().send(...)</pre>
+
+                    <h2>Step 8: Navigation and Material 3 UI</h2>
+                    <p>Use Navigation Compose for screens: Login, Home/Inbox, Compose Message, View Message, Contacts, Profile. Apply Material 3 theming with dynamic color optional.</p>
+
+                    <pre>implementation("androidx.navigation:navigation-compose:2.8.0")
+implementation("androidx.compose.material3:material3")</pre>
+
+                    <h2>Step 9: Security with App Check</h2>
+                    <p>Enable Firebase App Check with Play Integrity to reduce API abuse:</p>
+
+                    <pre>FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
+    PlayIntegrityAppCheckProviderFactory.getInstance()
+)</pre>
+
+                    <h2>Step 10: Test and Ship to Google Play</h2>
+                    <p>Run instrumented tests, enable Crashlytics, then build a signed release:</p>
+
+                    <pre># Generate a keystore (once)
+keytool -genkey -v -keystore app-release.jks \
+  -keyalg RSA -keysize 2048 -validity 10000 -alias myapp
+
+# Configure signing in app/build.gradle.kts, then:
+./gradlew bundleRelease</pre>
+
+                    <p>Upload the AAB to <a href="https://play.google.com/console" target="_blank" rel="noopener noreferrer">Google Play Console</a>. You&rsquo;ll need a privacy policy URL on your website, a content rating questionnaire, and store listing assets.</p>
+
+                    <div class="article-callout">
+                        <h3>Tech Stack Summary</h3>
+                        <p>Kotlin &bull; Jetpack Compose &bull; Material 3 &bull; MVVM &bull; Hilt &bull; Coroutines &bull; Firebase Auth &bull; Firestore &bull; Storage &bull; FCM &bull; Crashlytics &bull; App Check &bull; CameraX &bull; Coil &bull; Navigation Compose</p>
+                    </div>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="vigilo.html">Vigilo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mobile app portfolio from Rebel Studios Software. Native Android apps built with Kotlin and Jetpack Compose, live on Google Play.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/apps.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/apps.html">
+    <meta property="og:title" content="Mobile App Portfolio">
+    <meta property="og:description" content="Mobile app portfolio from Rebel Studios Software. Native Android apps built with Kotlin and Jetpack Compose, live on Google Play.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mobile App Portfolio">
+    <meta name="twitter:description" content="Mobile app portfolio from Rebel Studios Software. Native Android apps built with Kotlin and Jetpack Compose, live on Google Play.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Mobile App Portfolio - Rebel Studios Software</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html" class="active">Mobile Apps</a></li>
+                <li><a href="vigilo.html">Vigilo</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Mobile App Portfolio</h1>
+            <p>Native Android apps live on Google Play — built with Kotlin and Jetpack Compose</p>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio-grid portfolio-grid-wide">
+
+                <!-- Phuzzles -->
+                <div class="portfolio-item portfolio-item-featured">
+                    <div class="portfolio-image app-image">
+                        <div class="screenshot-carousel" id="phuzzles-carousel">
+                            <div class="screenshot-slide active">
+                                <img src="images/phuzzles/image1.png" alt="Phuzzles screenshot 1">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/phuzzles/image2.jpeg" alt="Phuzzles screenshot 2">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/phuzzles/image3.png" alt="Phuzzles screenshot 3">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/phuzzles/image4.png" alt="Phuzzles screenshot 4">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('phuzzles-carousel', -1)">&#8249;</button>
+                            <button class="carousel-next" onclick="changeSlide('phuzzles-carousel', 1)">&#8250;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide('phuzzles-carousel', 0)"></span>
+                                <span class="dot" onclick="currentSlide('phuzzles-carousel', 1)"></span>
+                                <span class="dot" onclick="currentSlide('phuzzles-carousel', 2)"></span>
+                                <span class="dot" onclick="currentSlide('phuzzles-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">Social / Puzzle App</span>
+                            <a href="https://play.google.com/store/apps/details?id=rebelstudios.phuzzles.app" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">Google Play ↗</a>
+                        </div>
+                        <h3>Phuzzles</h3>
+                        <p>A picture messaging app where photos are sent as scrambled puzzles. Take or choose a photo, select a difficulty (3x3 up to 6x6 grid), send it to a friend, and they must tap-to-swap the pieces to reveal and unlock the image. Full contacts system, push notifications, and solve-time stats.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Language &amp; UI</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Kotlin</span>
+                                        <span class="tag">Jetpack Compose</span>
+                                        <span class="tag">Material 3</span>
+                                        <span class="tag">Navigation Compose</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Architecture</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">MVVM</span>
+                                        <span class="tag">Repository Pattern</span>
+                                        <span class="tag">Hilt DI</span>
+                                        <span class="tag">Kotlin Coroutines</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Firebase Backend</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Firebase Auth</span>
+                                        <span class="tag">Cloud Firestore</span>
+                                        <span class="tag">Firebase Storage</span>
+                                        <span class="tag">Cloud Messaging (FCM)</span>
+                                        <span class="tag">Crashlytics</span>
+                                        <span class="tag">App Check</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Media &amp; Camera</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">CameraX</span>
+                                        <span class="tag">Coil Image Loading</span>
+                                        <span class="tag">Firebase Storage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Camera capture or gallery photo selection</li>
+                                <li>4 difficulty levels: Easy (3x3) to Expert (6x6)</li>
+                                <li>Real-time puzzle status via Firestore listeners</li>
+                                <li>Push notifications when a puzzle arrives (FCM)</li>
+                                <li>Username-based contacts system</li>
+                                <li>Solve time and move count tracking</li>
+                                <li>Save solved images to device gallery</li>
+                                <li>Firebase App Check for API security</li>
+                            </ul>
+                        </div>
+
+                        <div class="app-store-links">
+                            <a href="https://play.google.com/store/apps/details?id=rebelstudios.phuzzles.app" target="_blank" rel="noopener noreferrer" class="portfolio-link">View on Google Play →</a>
+                            <a href="https://phuzzles.app" target="_blank" rel="noopener noreferrer" class="portfolio-link">App Website →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MemorySwipe -->
+                <div class="portfolio-item portfolio-item-featured">
+                    <div class="portfolio-image app-image">
+                        <div class="screenshot-carousel" id="memoryswipe-carousel">
+                            <div class="screenshot-slide active">
+                                <img src="images/memoryswipe/main_menu.png" alt="MemorySwipe main menu">
+                            </div>
+                            <button class="carousel-prev" style="display:none"></button>
+                            <button class="carousel-next" style="display:none"></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">Casual / Memory Game</span>
+                            <a href="https://play.google.com/store/apps/details?id=com.memoryswipe.app" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">Google Play ↗</a>
+                        </div>
+                        <h3>MemorySwipe</h3>
+                        <p>A memory and concentration game where you watch a pattern of swipes and then repeat it in order. Each round the sequence gets longer. Compete for the highest score, track your personal bests, and improve focus and working memory all while having fun. Features AdMob integration for monetization.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Language &amp; UI</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Kotlin</span>
+                                        <span class="tag">Jetpack Compose</span>
+                                        <span class="tag">Material Design</span>
+                                        <span class="tag">Compose BOM 2024</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Storage &amp; State</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">DataStore Preferences</span>
+                                        <span class="tag">Compose State</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Monetization</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Google AdMob</span>
+                                        <span class="tag">Banner Ads</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Swipe pattern generation and playback animation</li>
+                                <li>Increasing difficulty as sequence length grows</li>
+                                <li>High score persistence with DataStore</li>
+                                <li>Visual and haptic feedback on input</li>
+                                <li>AdMob integration for revenue</li>
+                                <li>Smooth Compose animations throughout</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=com.memoryswipe.app" target="_blank" rel="noopener noreferrer" class="portfolio-link">View on Google Play →</a>
+                    </div>
+                </div>
+
+                <!-- ToiletTeller -->
+                <div class="portfolio-item portfolio-item-featured">
+                    <div class="portfolio-image app-image">
+                        <div class="screenshot-carousel" id="toiletteller-carousel">
+                            <div class="screenshot-slide active">
+                                <img src="images/toiletteller/splash_screen.png" alt="ToiletTeller splash screen">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/toiletteller/happy_boi.png" alt="ToiletTeller happy character">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('toiletteller-carousel', -1)">&#8249;</button>
+                            <button class="carousel-next" onclick="changeSlide('toiletteller-carousel', 1)">&#8250;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide('toiletteller-carousel', 0)"></span>
+                                <span class="dot" onclick="currentSlide('toiletteller-carousel', 1)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">Casual / Entertainment App</span>
+                            <a href="https://play.google.com/store/apps/details?id=rebelstudios.toiletteller.app" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">Google Play ↗</a>
+                        </div>
+                        <h3>ToiletTeller</h3>
+                        <p>A lighthearted stress-relief app where you type whatever's on your mind — frustrations, worries, or random thoughts — and flush them away with a satisfying animated swirl. A custom toilet character reacts to what you type. Sometimes the best thing you can do is just flush it and move on. Features a flush counter and interstitial ads.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Language &amp; UI</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Kotlin</span>
+                                        <span class="tag">Android Views (XML)</span>
+                                        <span class="tag">ConstraintLayout</span>
+                                        <span class="tag">Material Components</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Animations</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">RotateAnimation</span>
+                                        <span class="tag">Custom Droplet Physics</span>
+                                        <span class="tag">Handler-based Timing</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Monetization &amp; UX</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">AdMob Interstitials</span>
+                                        <span class="tag">Shared Preferences</span>
+                                        <span class="tag">Splash Screen API</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Animated flush sequence with swirl effect</li>
+                                <li>Droplet particle animation on flush</li>
+                                <li>Reactive toilet character with multiple expressions</li>
+                                <li>Flush counter persisted across sessions</li>
+                                <li>Interstitial ad integration via AdMob</li>
+                                <li>Immersive full-screen mode</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=rebelstudios.toiletteller.app" target="_blank" rel="noopener noreferrer" class="portfolio-link">View on Google Play →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Want an App on Google Play?</h2>
+            <p>We handle everything from design to submission — all in native Kotlin.</p>
+            <a href="index.html#contact" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="vigilo.html">Vigilo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

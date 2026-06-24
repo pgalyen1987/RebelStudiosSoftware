@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website and SaaS portfolio from Rebel Studios Software. Full-stack web apps, marketing sites, and production deployments.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/websites.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/websites.html">
+    <meta property="og:title" content="Website Portfolio">
+    <meta property="og:description" content="Website and SaaS portfolio from Rebel Studios Software. Full-stack web apps, marketing sites, and production deployments.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Website Portfolio">
+    <meta name="twitter:description" content="Website and SaaS portfolio from Rebel Studios Software. Full-stack web apps, marketing sites, and production deployments.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Website Portfolio - Rebel Studios Software</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html" class="active">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="vigilo.html">Vigilo</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Website Portfolio</h1>
+            <p>Full-stack web apps and marketing sites built for real users</p>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio-grid portfolio-grid-wide">
+
+                <!-- TradeGuard Pro -->
+                <div class="portfolio-item portfolio-item-featured">
+                    <div class="portfolio-image">
+                        <div class="screenshot-carousel" id="tradeguard-carousel">
+                            <div class="screenshot-slide active">
+                                <img src="images/tradeguard/dashboard.png" alt="TradeGuard dashboard">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/tradeguard/landing-image1.png" alt="TradeGuard landing page">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/tradeguard/sub-portal.png" alt="TradeGuard subcontractor portal">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/tradeguard/dashboard2.png" alt="TradeGuard analytics">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('tradeguard-carousel', -1)">&#8249;</button>
+                            <button class="carousel-next" onclick="changeSlide('tradeguard-carousel', 1)">&#8250;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide('tradeguard-carousel', 0)"></span>
+                                <span class="dot" onclick="currentSlide('tradeguard-carousel', 1)"></span>
+                                <span class="dot" onclick="currentSlide('tradeguard-carousel', 2)"></span>
+                                <span class="dot" onclick="currentSlide('tradeguard-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">SaaS Web Application</span>
+                            <a href="https://trade-guard.pro" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">trade-guard.pro ↗</a>
+                        </div>
+                        <h3>TradeGuard Pro</h3>
+                        <p>A full-stack SaaS platform for construction professionals to manage subcontractor compliance, track Certificates of Insurance (COIs), and automate jurisdiction-specific requirements. Features a self-serve subcontractor portal where subs can upload their own documents, reducing admin overhead for general contractors.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Frontend</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Next.js 16</span>
+                                        <span class="tag">React 19</span>
+                                        <span class="tag">TypeScript</span>
+                                        <span class="tag">Tailwind CSS v4</span>
+                                        <span class="tag">Radix UI</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Backend &amp; Database</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Prisma ORM</span>
+                                        <span class="tag">libSQL / Turso</span>
+                                        <span class="tag">Next-Auth v4</span>
+                                        <span class="tag">bcryptjs</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Payments &amp; Integrations</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Stripe</span>
+                                        <span class="tag">Resend Email</span>
+                                        <span class="tag">Nodemailer</span>
+                                        <span class="tag">SignalWire API</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">AI &amp; Documents</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Claude AI (Anthropic)</span>
+                                        <span class="tag">PDFKit</span>
+                                        <span class="tag">pdf-parse</span>
+                                        <span class="tag">XLSX export</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Infrastructure</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Docker</span>
+                                        <span class="tag">Railway</span>
+                                        <span class="tag">Litestream</span>
+                                        <span class="tag">Nixpacks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Automated COI expiry tracking with email alerts</li>
+                                <li>Subcontractor self-service portal for document uploads</li>
+                                <li>AI-powered document review and compliance analysis</li>
+                                <li>Jurisdiction-specific compliance rule engine</li>
+                                <li>Stripe subscription billing with tiered plans</li>
+                                <li>PDF generation for compliance reports</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://trade-guard.pro" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit trade-guard.pro →</a>
+                    </div>
+                </div>
+
+                <!-- Elliot Blackstone -->
+                <div class="portfolio-item portfolio-item-featured">
+                    <div class="portfolio-image">
+                        <div class="screenshot-carousel" id="elliot-carousel">
+                            <div class="screenshot-slide active">
+                                <img src="images/elliotblackstone/dark_forest.jpg" alt="Elliot Blackstone website hero">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/elliotblackstone/2HitsPreview.png" alt="Two Hits story preview">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/elliotblackstone/ElliotBlackstone2.jpg" alt="Elliot Blackstone author portrait">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('elliot-carousel', -1)">&#8249;</button>
+                            <button class="carousel-next" onclick="changeSlide('elliot-carousel', 1)">&#8250;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide('elliot-carousel', 0)"></span>
+                                <span class="dot" onclick="currentSlide('elliot-carousel', 1)"></span>
+                                <span class="dot" onclick="currentSlide('elliot-carousel', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">Author Portfolio &amp; Fiction Platform</span>
+                            <a href="https://elliotblackstone.com" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">elliotblackstone.com ↗</a>
+                        </div>
+                        <h3>Elliot Blackstone</h3>
+                        <p>A dark, atmospheric website for horror and dark fiction writer Elliot Blackstone. Built to match the author's unsettling aesthetic — glitch effects on the title, a fogged forest background, and a custom story reader that serves full fiction pieces. The site showcases featured stories with artwork and an expanding library of dark fiction.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Frontend</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">HTML5</span>
+                                        <span class="tag">CSS3</span>
+                                        <span class="tag">Vanilla JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Design &amp; UX</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">CSS Glitch Effects</span>
+                                        <span class="tag">Fog / Parallax Layers</span>
+                                        <span class="tag">Custom Typography</span>
+                                        <span class="tag">Responsive Design</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Content</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Story Reader</span>
+                                        <span class="tag">Featured Artwork</span>
+                                        <span class="tag">SEO Optimized</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Glitch-text animation effect on author name</li>
+                                <li>Layered fog overlay on hero background</li>
+                                <li>Full story reader with custom formatting</li>
+                                <li>Responsive story grid with artwork cards</li>
+                                <li>Dark atmospheric design throughout</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://elliotblackstone.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit elliotblackstone.com →</a>
+                    </div>
+                </div>
+
+                <!-- Phuzzles App Website -->
+                <div class="portfolio-item portfolio-item-featured">
+                    <div class="portfolio-image">
+                        <div class="screenshot-carousel" id="phuzzlesweb-carousel">
+                            <div class="screenshot-slide active">
+                                <img src="images/phuzzles/image1.png" alt="Phuzzles website screenshot 1">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/phuzzles/image2.jpeg" alt="Phuzzles website screenshot 2">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/phuzzles/image3.png" alt="Phuzzles website screenshot 3">
+                            </div>
+                            <div class="screenshot-slide">
+                                <img src="images/phuzzles/image4.png" alt="Phuzzles website screenshot 4">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('phuzzlesweb-carousel', -1)">&#8249;</button>
+                            <button class="carousel-next" onclick="changeSlide('phuzzlesweb-carousel', 1)">&#8250;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide('phuzzlesweb-carousel', 0)"></span>
+                                <span class="dot" onclick="currentSlide('phuzzlesweb-carousel', 1)"></span>
+                                <span class="dot" onclick="currentSlide('phuzzlesweb-carousel', 2)"></span>
+                                <span class="dot" onclick="currentSlide('phuzzlesweb-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-category">App Marketing Website</span>
+                            <a href="https://phuzzles.app" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">phuzzles.app ↗</a>
+                        </div>
+                        <h3>Phuzzles App Website</h3>
+                        <p>The marketing and support site for the Phuzzles Android app. Features a dark, ambient design with coral and teal accent glows, animated backgrounds, and all required Google Play compliance pages — privacy policy, terms of service, account deletion, and data request pages.</p>
+
+                        <div class="tech-breakdown">
+                            <h4>Technical Implementation</h4>
+                            <div class="tech-layers">
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Frontend</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">HTML5</span>
+                                        <span class="tag">CSS3</span>
+                                        <span class="tag">Vanilla JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Design</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">CSS Variables</span>
+                                        <span class="tag">SVG Noise Texture</span>
+                                        <span class="tag">Radial Gradient Glows</span>
+                                        <span class="tag">DM Sans Typography</span>
+                                    </div>
+                                </div>
+                                <div class="tech-layer">
+                                    <span class="tech-layer-label">Compliance Pages</span>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Privacy Policy</span>
+                                        <span class="tag">Terms of Service</span>
+                                        <span class="tag">Account Deletion</span>
+                                        <span class="tag">Data Request</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Ambient glow background with noise texture overlay</li>
+                                <li>Google Play badge and app store deep links</li>
+                                <li>All Play Store policy compliance pages</li>
+                                <li>app-ads.txt for AdMob integration</li>
+                                <li>Mobile-first responsive layout</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://phuzzles.app" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit phuzzles.app →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Need a Website Like These?</h2>
+            <p>We build marketing sites, SaaS platforms, and everything in between.</p>
+            <a href="index.html#contact" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="vigilo.html">Vigilo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

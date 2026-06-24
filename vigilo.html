@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vigilo is an open-source, on-device IoT anomaly detection system. Mamba-2 powered, 75% detection at 1% false positive rate, no cloud required.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/vigilo.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/vigilo.html">
+    <meta property="og:title" content="Vigilo - On-Device IoT Anomaly Detection">
+    <meta property="og:description" content="Vigilo is an open-source, on-device IoT anomaly detection system. Mamba-2 powered, 75% detection at 1% false positive rate, no cloud required.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Vigilo - On-Device IoT Anomaly Detection">
+    <meta name="twitter:description" content="Vigilo is an open-source, on-device IoT anomaly detection system. Mamba-2 powered, 75% detection at 1% false positive rate, no cloud required.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Vigilo - On-Device IoT Anomaly Detection - Rebel Studios Software</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="vigilo.html" class="active">Vigilo</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Vigilo</h1>
+            <p>On-device network anomaly detection for IoT &mdash; no data leaves your network</p>
+        </div>
+    </section>
+
+    <section class="product-intro">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-text">
+                    <h2>Detect Compromised Devices Before They Become Breaches</h2>
+                    <p>Vigilo learns what "normal" looks like for every device on your network. When a device starts scanning ports, beaconing to a C2 server, or participating in a DDoS flood, Vigilo flags it &mdash; without signatures, without cloud dependencies, and without sending a single packet off your network.</p>
+                    <div class="product-stats-row">
+                        <div class="product-stat">
+                            <span class="stat-number">75%</span>
+                            <span class="stat-label">Detection rate @ 1% FPR</span>
+                        </div>
+                        <div class="product-stat">
+                            <span class="stat-number">~1.3M</span>
+                            <span class="stat-label">Parameters (runs on CPU)</span>
+                        </div>
+                        <div class="product-stat">
+                            <span class="stat-number">20</span>
+                            <span class="stat-label">Malware families tested</span>
+                        </div>
+                        <div class="product-stat">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Data sent to cloud</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-features">
+        <div class="container">
+            <h2 class="section-title">How Vigilo Works</h2>
+            <div class="product-pipeline">
+                <div class="pipeline-step">
+                    <div class="pipeline-number">1</div>
+                    <h3>Ingest</h3>
+                    <p>Vigilo reads Zeek conn.log files or converts pcap captures via tshark. It works with your existing network monitoring infrastructure &mdash; no custom hardware required.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="pipeline-number">2</div>
+                    <h3>Featurize</h3>
+                    <p>Traffic is grouped into 5-minute behavioral windows per device. Each window captures 15 features: connection counts, byte volumes, port distributions, protocol ratios, and timing patterns.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="pipeline-number">3</div>
+                    <h3>Forecast</h3>
+                    <p>A ~1.3M parameter Mamba-2 state-space model predicts the next behavioral window based on the device's history. The model is trained only on benign traffic &mdash; it learns "normal."</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="pipeline-number">4</div>
+                    <h3>Score</h3>
+                    <p>Anomaly is measured as forecast error. If the device's actual behavior is far from what the model predicted, the surprise score is high &mdash; indicating abnormal behavior.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="pipeline-number">5</div>
+                    <h3>Ensemble</h3>
+                    <p>A dedicated beaconing detector identifies stealthy periodic C2 channels that volume-based detection might miss. Results from both detectors are combined for the final verdict.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-results">
+        <div class="container">
+            <h2 class="section-title">Benchmark Results &mdash; IoT-23 Dataset</h2>
+            <p class="results-subtitle">Trained on benign honeypot captures (29 benign devices). Evaluated on every malware family in IoT-23 including Mirai, Okiru, Torii, Gagfyt, Hajime, and Kenjiro.</p>
+
+            <div class="results-grid">
+                <div class="result-card result-card-primary">
+                    <h3>Detection Performance</h3>
+                    <table class="results-table">
+                        <thead>
+                            <tr><th>Metric</th><th>Value</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Detection @ ~1% FPR</td><td><strong>75% (15/20 infected devices)</strong></td></tr>
+                            <tr><td>Benign baseline (device peak)</td><td>p95 = 1.93, max = 1.97</td></tr>
+                            <tr><td>Training data</td><td>Benign traffic only, 29 devices</td></tr>
+                            <tr><td>Model size</td><td>~1.3M params, CPU, fully local</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="result-card">
+                    <h3>What It Catches</h3>
+                    <p>All loud attacks &mdash; port scans, DDoS/flooding, noisy botnet C&amp;C. These score far above the benign ceiling:</p>
+                    <ul class="result-list">
+                        <li>Anomaly scores of <strong>1444</strong>, <strong>65</strong>, <strong>5.3</strong> (vs. benign max 1.97)</li>
+                        <li>Mirai variants, Okiru, Gagfyt flooding detected immediately</li>
+                        <li>Port scanning activity flagged with high confidence</li>
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h3>Honest Limitations</h3>
+                    <p>5 of 20 infected devices were missed &mdash; all stealthy, low-volume C&amp;C:</p>
+                    <ul class="result-list">
+                        <li>One capture: only 16 malicious flows among 3,193 benign</li>
+                        <li>These sit right at the benign ceiling threshold</li>
+                        <li>Per-device baselining and flow-level inspection are on the roadmap</li>
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h3>Data Experiment Findings</h3>
+                    <ul class="result-list">
+                        <li><strong>Run-to-run variance:</strong> Same setup gave 75% @ 1% FPR one run, 40% @ 1% / 75% @ 5% another. Loud attacks always caught, stealthy always missed &mdash; threshold calibration is the variable.</li>
+                        <li><strong>PC traffic hurts:</strong> Adding general-host captures dropped detection 75% &rarr; 20%. PCs are too noisy; train on IoT-like traffic only.</li>
+                        <li><strong>Implication:</strong> Per-asset baselining is the path to "works with any device" and stable thresholds.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-tech">
+        <div class="container">
+            <h2 class="section-title">Technical Architecture</h2>
+            <div class="tech-grid-product">
+                <div class="tech-card-product">
+                    <h4>Mamba-2 SSM Core</h4>
+                    <p>The forecaster uses a Mamba-2 Structured State Space model &mdash; O(1) memory per step, hardware-optimized scan, ideal for streaming time-series data on resource-constrained devices.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>Zeek / pcap Ingestion</h4>
+                    <p>Native Zeek conn.log parsing with automatic pcap-to-conn.log conversion via tshark. Works with existing network taps and monitoring infrastructure.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>15-Feature Behavioral Windows</h4>
+                    <p>Each 5-minute window captures connection counts, byte volumes, port entropy, protocol distribution, and timing patterns per device.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>Beaconing Detector</h4>
+                    <p>Dedicated frequency-domain analysis to detect periodic C2 beaconing &mdash; the stealthy callback patterns that volume-based detection misses.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>Flask Dashboard</h4>
+                    <p>Built-in web UI for real-time anomaly visualization, device status, and alert management. API endpoints for integration with existing SIEM systems.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>Docker Deployment</h4>
+                    <p>One-command deployment via Docker Compose. Configurable via environment variables for log paths, checkpoints, worker counts, and bind addresses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-deployment">
+        <div class="container">
+            <h2 class="section-title">Deployment</h2>
+            <div class="deployment-grid">
+                <div class="deployment-card">
+                    <h3>Quick Start</h3>
+                    <div class="code-block">
+                        <code>pip install -e .</code><br>
+                        <code>vigilo train --logs data/benign.conn.log</code><br>
+                        <code>vigilo detect --log suspect.conn.log --ckpt vigilo.pt</code><br>
+                        <code>vigilo serve</code>
+                    </div>
+                </div>
+                <div class="deployment-card">
+                    <h3>Docker</h3>
+                    <div class="code-block">
+                        <code>cp .env.example .env</code><br>
+                        <code>make build</code><br>
+                        <code>make up</code><br>
+                        <code># Dashboard at http://127.0.0.1:8088</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="env-table-wrapper">
+                <h3>Configuration</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>VIGILO_LOG</code></td><td>(none)</td><td>Path to the conn.log to analyze</td></tr>
+                        <tr><td><code>VIGILO_CKPT</code></td><td><code>checkpoints/vigilo/vigilo.pt</code></td><td>Trained model checkpoint</td></tr>
+                        <tr><td><code>VIGILO_HOST</code></td><td><code>0.0.0.0</code></td><td>Dashboard bind address</td></tr>
+                        <tr><td><code>VIGILO_PORT</code></td><td><code>8088</code></td><td>Dashboard port</td></tr>
+                        <tr><td><code>VIGILO_WORKERS</code></td><td><code>2</code></td><td>Gunicorn worker count</td></tr>
+                        <tr><td><code>VIGILO_TIMEOUT</code></td><td><code>120</code></td><td>Request timeout (seconds)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-deployment" id="get-vigilo">
+        <div class="container">
+            <h2 class="section-title">Open Source</h2>
+            <div class="product-hero-grid">
+                <div class="product-hero-text">
+                    <p>Vigilo is free and open source under MIT/Apache licensing. Clone the repository, run it locally, and audit the code — nothing leaves your network.</p>
+                    <div class="hero-buttons">
+                        <a href="https://github.com/pgalyen1987/Vigilo" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:1.5rem;opacity:.75;font-size:.95rem;">
+                100% on-device &middot; no cloud, ever &middot; your traffic never leaves your network
+            </p>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Interested in IoT Security?</h2>
+            <p>Read our research on the Mamba-2 architecture powering Vigilo, or learn more about IoT threats on our blog.</p>
+            <div class="hero-buttons">
+                <a href="research.html" class="btn btn-primary">Read the Research Paper</a>
+                <a href="blog-iot-security.html" class="btn btn-secondary">IoT Security Article</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="vigilo.html">Vigilo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

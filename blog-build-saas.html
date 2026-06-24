@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a SaaS platform with Next.js, Prisma, Turso, NextAuth, Stripe subscriptions, Claude AI, and Railway deployment.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-build-saas.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-build-saas.html">
+    <meta property="og:title" content="How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI">
+    <meta property="og:description" content="Build a SaaS platform with Next.js, Prisma, Turso, NextAuth, Stripe subscriptions, Claude AI, and Railway deployment.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-06-15">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI">
+    <meta name="twitter:description" content="Build a SaaS platform with Next.js, Prisma, Turso, NextAuth, Stripe subscriptions, Claude AI, and Railway deployment.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI","description":"Build a SaaS platform with Next.js, Prisma, Turso, NextAuth, Stripe subscriptions, Claude AI, and Railway deployment.","datePublished":"2026-06-15","author":{"@type":"Person","name":"Patrick Galyen"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-build-saas.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI - Rebel Studios Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="vigilo.html">Vigilo</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Build a SaaS Platform</h1>
+            <p>End-to-end guide: Next.js, auth, payments, database, AI, and cloud deployment</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">June 15, 2026</span>
+                    <span class="article-author">Patrick Galyen</span>
+                </div>
+
+                <div class="article-content">
+                    <p>This guide covers building a production SaaS from scratch: user accounts, a dashboard, file uploads, optional AI-powered document processing, and subscription billing. The stack works for any B2B or B2C SaaS: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Prisma with libSQL/Turso, NextAuth, Stripe, Claude AI, and deployment on Railway with Docker.</p>
+
+                    <p>Follow these steps and commands to launch your own SaaS.</p>
+
+                    <h2>Prerequisites</h2>
+                    <ul class="article-list">
+                        <li><strong>Node.js 20+</strong> and npm</li>
+                        <li>Accounts: <a href="https://turso.tech" target="_blank" rel="noopener noreferrer">Turso</a>, <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a>, <a href="https://railway.app" target="_blank" rel="noopener noreferrer">Railway</a>, <a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic</a></li>
+                        <li>Basic familiarity with React and SQL</li>
+                    </ul>
+
+                    <h2>Step 1: Scaffold the Next.js App</h2>
+                    <pre>npx create-next-app@latest my-saas-app \
+  --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+
+cd my-saas-app
+npm run dev
+# Open http://localhost:3000</pre>
+
+                    <h2>Step 2: Install Core Dependencies</h2>
+                    <pre>npm install @prisma/client @auth/prisma-adapter next-auth bcryptjs
+npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-select
+npm install stripe @stripe/stripe-js resend nodemailer
+npm install @anthropic-ai/sdk pdfkit pdf-parse xlsx
+npm install -D prisma @types/bcryptjs @types/pdfkit</pre>
+
+                    <h2>Step 3: Database with Prisma and Turso</h2>
+                    <p>Initialize Prisma with the libSQL provider for Turso (edge-compatible SQLite):</p>
+
+                    <pre>npx prisma init --datasource-provider sqlite
+
+# schema.prisma — use libsql adapter
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+# Create a Turso database:
+turso db create my-saas-app
+turso db show my-saas-app --url
+turso db tokens create my-saas-app
+
+# .env
+DATABASE_URL="libsql://my-saas-app-&lt;org&gt;.turso.io?authToken=&lt;token&gt;"</pre>
+
+                    <p>Define your models (users, organizations, documents, subscriptions, and whatever domain entities your product needs):</p>
+
+                    <pre>npx prisma migrate dev --name init
+npx prisma generate</pre>
+
+                    <h2>Step 4: Authentication with NextAuth v4</h2>
+                    <pre>// src/app/api/auth/[...nextauth]/route.ts
+import NextAuth from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { prisma } from "@/lib/prisma"
+import bcrypt from "bcryptjs"
+
+export const authOptions = {
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    CredentialsProvider({
+      name: "credentials",
+      credentials: { email: {}, password: {} },
+      async authorize(credentials) {
+        const user = await prisma.user.findUnique({
+          where: { email: credentials!.email! }
+        })
+        if (!user || !await bcrypt.compare(credentials!.password!, user.passwordHash))
+          return null
+        return user
+      }
+    })
+  ],
+  session: { strategy: "jwt" },
+  pages: { signIn: "/login" }
+}
+
+const handler = NextAuth(authOptions)
+export { handler as GET, handler as POST }</pre>
+
+                    <p>Hash passwords on registration:</p>
+                    <pre>const hash = await bcrypt.hash(password, 12)
+await prisma.user.create({ data: { email, passwordHash: hash, name } })</pre>
+
+                    <h2>Step 5: Stripe Subscription Billing</h2>
+                    <p>Create products and prices in the Stripe Dashboard, then wire checkout:</p>
+
+                    <pre>// src/app/api/stripe/checkout/route.ts
+import Stripe from "stripe"
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+
+export async function POST(req: Request) {
+  const { priceId, userId } = await req.json()
+  const session = await stripe.checkout.sessions.create({
+    mode: "subscription",
+    line_items: [{ price: priceId, quantity: 1 }],
+    success_url: `${process.env.NEXT_PUBLIC_URL}/dashboard?success=1`,
+    cancel_url: `${process.env.NEXT_PUBLIC_URL}/pricing`,
+    metadata: { userId }
+  })
+  return Response.json({ url: session.url })
+}</pre>
+
+                    <p>Add a webhook handler for <code>checkout.session.completed</code> and <code>customer.subscription.updated</code> to sync subscription status to your database.</p>
+
+                    <pre>stripe listen --forward-to localhost:3000/api/stripe/webhook</pre>
+
+                    <h2>Step 6: Customer Portal and Document Upload</h2>
+                    <p>Build API routes for file upload, store files on disk or S3-compatible storage, and save metadata in Prisma. A customer or guest portal can live at a separate route group (<code>/portal/[token]</code>) with magic-link access &mdash; no full account required.</p>
+
+                    <pre>// Upload handler — save file, create Document record
+export async function POST(req: Request) {
+  const formData = await req.formData()
+  const file = formData.get("file") as File
+  const buffer = Buffer.from(await file.arrayBuffer())
+  const path = `uploads/${crypto.randomUUID()}-${file.name}`
+  await fs.writeFile(path, buffer)
+  await prisma.document.create({ data: { path, type: "upload", userId } })
+  return Response.json({ ok: true })
+}</pre>
+
+                    <h2>Step 7: AI Document Processing with Claude</h2>
+                    <pre>import Anthropic from "@anthropic-ai/sdk"
+
+const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
+
+async function analyzeDocument(pdfText: string) {
+  const msg = await client.messages.create({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 1024,
+    messages: [{
+      role: "user",
+      content: `Analyze this document and summarize key fields:\n\n${pdfText}`
+    }]
+  })
+  return msg.content[0].type === "text" ? msg.content[0].text : ""
+}</pre>
+
+                    <p>Extract PDF text with <code>pdf-parse</code>, then store AI analysis results alongside the document record.</p>
+
+                    <h2>Step 8: PDF Reports and Email Alerts</h2>
+                    <pre>npm install pdfkit resend
+
+// Generate a PDF report with PDFKit
+const doc = new PDFDocument()
+doc.text("Monthly Report", 50, 50)
+// pipe to buffer, attach to email via Resend
+
+await resend.emails.send({
+  from: "alerts@yourdomain.com",
+  to: user.email,
+  subject: "Your subscription renews soon",
+  html: "&lt;p&gt;Your plan renews in 7 days.&lt;/p&gt;"
+})</pre>
+
+                    <h2>Step 9: UI with Tailwind v4 and Radix</h2>
+                    <p>Build dashboard pages with Tailwind utility classes and accessible Radix primitives for dialogs, dropdowns, and data tables. Use server components for data fetching where possible:</p>
+
+                    <pre>// src/app/dashboard/page.tsx
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
+
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions)
+  if (!session) redirect("/login")
+  const docs = await prisma.document.findMany({ where: { orgId: session.user.orgId } })
+  return &lt;DocumentTable documents={docs} /&gt;
+}</pre>
+
+                    <h2>Step 10: Docker and Railway Deployment</h2>
+                    <pre># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npx prisma generate
+RUN npm run build
+
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
+EXPOSE 3000
+CMD ["npm", "start"]</pre>
+
+                    <pre># Deploy to Railway
+npm install -g @railway/cli
+railway login
+railway init
+railway add --plugin turso
+railway variables set DATABASE_URL="..." STRIPE_SECRET_KEY="..." NEXTAUTH_SECRET="..."
+railway up</pre>
+
+                    <p>Configure Litestream for continuous SQLite replication to S3 as a backup layer if self-hosting the database file.</p>
+
+                    <h2>Step 11: Environment Variables Checklist</h2>
+                    <ul class="article-list">
+                        <li><strong>DATABASE_URL</strong> &mdash; Turso libSQL connection string</li>
+                        <li><strong>NEXTAUTH_SECRET</strong> &mdash; random 32+ byte secret</li>
+                        <li><strong>STRIPE_SECRET_KEY</strong> / <strong>STRIPE_WEBHOOK_SECRET</strong></li>
+                        <li><strong>ANTHROPIC_API_KEY</strong></li>
+                        <li><strong>RESEND_API_KEY</strong></li>
+                        <li><strong>NEXT_PUBLIC_URL</strong> &mdash; production domain</li>
+                    </ul>
+
+                    <div class="article-callout">
+                        <h3>Tech Stack Summary</h3>
+                        <p>Next.js 16 &bull; React 19 &bull; TypeScript &bull; Tailwind CSS v4 &bull; Radix UI &bull; Prisma &bull; libSQL/Turso &bull; NextAuth v4 &bull; bcryptjs &bull; Stripe &bull; Resend &bull; Claude AI &bull; PDFKit &bull; Docker &bull; Railway &bull; Litestream</p>
+                    </div>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="vigilo.html">Vigilo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

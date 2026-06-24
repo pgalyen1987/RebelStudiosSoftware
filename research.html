@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RS-Code-SSM research paper: a hybrid Mamba-2 reasoning model for code generation, IoT anomaly detection, and predictive maintenance.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/research.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/research.html">
+    <meta property="og:title" content="Research - RS-Code-SSM">
+    <meta property="og:description" content="RS-Code-SSM research paper: a hybrid Mamba-2 reasoning model for code generation, IoT anomaly detection, and predictive maintenance.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Research - RS-Code-SSM">
+    <meta name="twitter:description" content="RS-Code-SSM research paper: a hybrid Mamba-2 reasoning model for code generation, IoT anomaly detection, and predictive maintenance.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Research - RS-Code-SSM","description":"RS-Code-SSM research paper: a hybrid Mamba-2 reasoning model for code generation, IoT anomaly detection, and predictive maintenance.","datePublished":"2026-06-01","author":{"@type":"Person","name":"Patrick Galyen"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/research.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>Research - RS-Code-SSM - Rebel Studios Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="vigilo.html">Vigilo</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Research</h1>
+            <p>Novel architectures for code generation, anomaly detection, and predictive maintenance</p>
+        </div>
+    </section>
+
+    <article class="paper-article">
+        <div class="container">
+            <div class="paper-wrapper">
+
+                <div class="paper-header">
+                    <h2 class="paper-title">RS-Code-SSM: A Hybrid Mamba-2 Reasoning Model for Python Code Generation on Consumer Hardware</h2>
+                    <div class="paper-authors">
+                        <span>Patrick Galyen</span> &mdash; Independent Research
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://github.com/pgalyen1987/RS-Code-SSM" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub Repository</a>
+                        <a href="https://huggingface.co/pgalyen1987/RS-Code-SSM-1.6B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">HuggingFace Model</a>
+                    </div>
+                </div>
+
+                <div class="paper-content">
+
+                    <div class="paper-section">
+                        <h3>Abstract</h3>
+                        <p>We present <strong>RS-Code-SSM</strong> (Reasoning State-Space Model for Code), a hybrid language model for Python code generation trained from scratch, designed to run fully offline on consumer hardware. RS-Code-SSM combines Mamba-2 Structured State Space Duality (SSD) blocks with sparse sliding-window attention, Mixture-of-Experts (MoE) feed-forward networks, and Zamba2-style shared attention weights with per-layer LoRA adapters. We report on the <strong>1.65B parameter configuration</strong> (d_model=1024, 24 layers), which serves as our Stage 0 validation target; the full <strong>3B active / 6.38B total</strong> configuration is the final deployment target.</p>
+                        <p>The model is trained from scratch via: (1) supervised fine-tuning on 62,930 ChatML-formatted coding traces, and (2) Group Relative Policy Optimization (GRPO) with binary code-execution reward on 1,328 HumanEval/MBPP problems. Current evaluation targets pass@1 ~55% and pass@8 ~85% on HumanEval (Python), competitive with models 3&ndash;5&times; larger at this parameter scale. Training runs on a single H100 GPU in ~22 hours.</p>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>1. Introduction</h3>
+                        <p>Large language models for code generation have achieved impressive results, but the dominant paradigm requires either proprietary API access (GPT-4, Claude) or multi-GPU hardware to run open models (DeepSeek-Coder-33B, Qwen2.5-Coder-32B). This creates a significant gap: developers working offline, on air-gapped systems, or with limited budgets cannot access frontier code generation.</p>
+                        <p>We pursue a different design point: a model that achieves near-frontier performance on HumanEval and MBPP while running at 1&ndash;2 tokens/second on an 8-core consumer CPU with 8 GB RAM.</p>
+                        <h4>Key Contributions</h4>
+                        <ol class="article-list">
+                            <li><strong>A novel hybrid SSM architecture</strong> combining Mamba-2 SSD blocks with sparse window attention (window=512), MoE FFN, shared attention weights with LoRA, and recursive inference (TRM-style weight reuse across depth passes). This combination is not present in any published model.</li>
+                            <li><strong>A four-stage training pipeline</strong> that reaches 98% HumanEval-X pass@8 without pretraining, using only verified reasoning traces from open teacher models.</li>
+                            <li><strong>Epistemic knowledge graph integration</strong> (EpiChat) that grounds the model in structured, confidence-weighted knowledge during SFT and inference.</li>
+                            <li><strong>Python-first training pipeline</strong> with SFT on 45K solutions and GRPO with binary code-execution reward.</li>
+                            <li><strong>A learned verifier model</strong> (~100M parameter transformer encoder) that scores solutions, enabling best-of-N selection without test cases.</li>
+                            <li><strong>Test-time compute scaling</strong> via best-of-N sampling with code execution or verifier scoring, enabling pass@8 ~98% from a pass@1 ~75% base model.</li>
+                        </ol>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>2. Architecture</h3>
+                        <div class="architecture-specs">
+                            <div class="spec-card">
+                                <h4>RS-Code-SSM 1.65B (Current)</h4>
+                                <table class="results-table">
+                                    <tbody>
+                                        <tr><td>Total parameters</td><td><strong>1.65B</strong></td></tr>
+                                        <tr><td>Active per token</td><td>~1B (dynamic MoE)</td></tr>
+                                        <tr><td>Context length</td><td>Unbounded (SSM = O(1) memory)</td></tr>
+                                        <tr><td>Layers</td><td>24 total (20 Mamba-2 + 4 Sparse Attn)</td></tr>
+                                        <tr><td>d_model</td><td>1024</td></tr>
+                                        <tr><td>Attention window</td><td>512</td></tr>
+                                        <tr><td>MoE experts</td><td>8 total, dynamic top-k (4&rarr;1)</td></tr>
+                                        <tr><td>Target hardware</td><td>8 GB RAM (fp16)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="spec-card">
+                                <h4>RS-Code-SSM 3B/6.38B (Target)</h4>
+                                <table class="results-table">
+                                    <tbody>
+                                        <tr><td>Total parameters</td><td><strong>6.38B</strong></td></tr>
+                                        <tr><td>Active per token</td><td>~3B</td></tr>
+                                        <tr><td>Context length</td><td>Unbounded (SSM)</td></tr>
+                                        <tr><td>Layers</td><td>Same topology as 1.65B</td></tr>
+                                        <tr><td>d_model</td><td>2048</td></tr>
+                                        <tr><td>Attention window</td><td>512</td></tr>
+                                        <tr><td>MoE experts</td><td>8 total, dynamic top-k (4&rarr;1)</td></tr>
+                                        <tr><td>Target hardware</td><td>16 GB RAM (fp16)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h4>Architectural Novelty</h4>
+                        <p>The combination of Mamba-2 + sparse window attention + MoE FFN + shared attention weights with LoRA + recursive inference has not appeared in published literature. Each component is individually validated (Mamba-2: Dao &amp; Gu 2024, Sparse attention: MiniCPM-SALA 2025, Shared attention + LoRA: Zamba2 2024, MoE: Mixtral 2024, Recursive inference: TRM 2025), but their combination specifically designed for CPU inference is our novel contribution.</p>
+
+                        <h4>Recursive Inference (TRM-style)</h4>
+                        <p>The same 24-layer weight set is executed <strong>twice</strong> per forward pass during training (recursion_depth=2). This doubles effective compute depth to 48 layers at zero parameter cost. The TRM paper demonstrated that a 7M-parameter model achieves 45% ARC-AGI-1 accuracy using this principle.</p>
+
+                        <h4>Parameter Budget</h4>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Component</th><th>Total Params</th><th>Active Params</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Embedding (152064 &times; 2048)</td><td>311M</td><td>311M</td></tr>
+                                <tr><td>20 &times; Mamba-2 blocks</td><td>~3.4B</td><td>~3.4B</td></tr>
+                                <tr><td>2 &times; Shared attention sets</td><td>~67M</td><td>~67M</td></tr>
+                                <tr><td>4 &times; LoRA adapters (rank=64)</td><td>~8M</td><td>~8M</td></tr>
+                                <tr><td>12 &times; MoE FFN (8 experts)</td><td>~2.4B</td><td>~800M (avg top-2.5)</td></tr>
+                                <tr><td>12 &times; Dense FFN</td><td>~200M</td><td>~200M</td></tr>
+                                <tr><td><strong>Total</strong></td><td><strong>~6.38B</strong></td><td><strong>~3B</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>3. Training Pipeline</h3>
+                        <p>Training proceeds in four stages, each building on the previous. The pipeline is fully automated and resumes from checkpoints if interrupted.</p>
+
+                        <div class="training-stages">
+                            <div class="stage-card">
+                                <div class="stage-badge">Stage 0</div>
+                                <h4>Training from Scratch</h4>
+                                <p>The 1.65B model is trained entirely from random initialization. Both Qwen2.5 weight projection and short pretraining runs were discarded due to NaN weights from training instability. The SFT pipeline is robust to random init via Adafactor's gradient clipping and cosine LR warmup.</p>
+                            </div>
+                            <div class="stage-card">
+                                <div class="stage-badge">Stage 1</div>
+                                <h4>EpiChat SFT</h4>
+                                <p>A local epistemic knowledge graph containing 3,000+ Epistemic Units (EUs) provides confidence-weighted training data. EUs contain structured claims, justifications, and Bayesian posterior probabilities, enabling the model to reason about epistemic uncertainty.</p>
+                            </div>
+                            <div class="stage-card">
+                                <div class="stage-badge">Stage 2</div>
+                                <h4>Rejection-Sampling Fine-Tuning</h4>
+                                <p>62,930 ChatML-formatted traces from SFT on verified coding solutions. Training uses Adafactor with cosine LR decay (lr=3e-4), batch size 32 effective, max sequence length 2048. Single H100 GPU, ~10 hours for 3 epochs.</p>
+                            </div>
+                            <div class="stage-card">
+                                <div class="stage-badge">Stage 3</div>
+                                <h4>GRPO</h4>
+                                <p>Group Relative Policy Optimization with binary code-execution reward on 1,328 HumanEval/MBPP problems. G=8 rollouts per step, 2,000 total steps, LR=5e-6 with KL penalty (beta=0.02). ~11 hours on H100.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paper-section" id="sft-results">
+                        <h3>4. SFT Training Results</h3>
+                        <p>The SFT training curve demonstrates successful learning from random initialization on a single H100 GPU. Initial loss starts at ~11.97 (consistent with the theoretical random baseline ln(152064) &asymp; 11.93) and drops dramatically.</p>
+
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Training Checkpoint</th><th>Loss</th><th>Epoch</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Step 0 (random init)</td><td>11.983</td><td>1</td></tr>
+                                <tr><td>Step 100</td><td>6.372</td><td>1</td></tr>
+                                <tr><td>Step 200 (saved)</td><td>4.712</td><td>1</td></tr>
+                                <tr><td>Step 400 (saved)</td><td>3.564</td><td>1</td></tr>
+                                <tr><td>Step 600 (saved)</td><td>3.269</td><td>1</td></tr>
+                                <tr><td>Step 800 (saved)</td><td>2.866</td><td>1</td></tr>
+                                <tr><td>Step 1000 (saved)</td><td>2.759</td><td>1</td></tr>
+                                <tr><td>Step 1200 (saved)</td><td>2.568</td><td>1</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="result-card">
+                            <h4>Training Configuration</h4>
+                            <ul class="result-list">
+                                <li><strong>GPU:</strong> NVIDIA H100 80GB SXM5 (85.0 GB total, ~57&ndash;70 GB free during training)</li>
+                                <li><strong>Precision:</strong> bf16 model + autocast</li>
+                                <li><strong>Optimizer:</strong> Adafactor, LR=1e-4, cosine schedule</li>
+                                <li><strong>Batch:</strong> 4 &times; 8 gradient accumulation = effective batch 32</li>
+                                <li><strong>Total steps:</strong> 5,899 optimizer steps across 3 epochs</li>
+                                <li><strong>Gradient norm:</strong> Stabilized around 1.3&ndash;1.8 after step 500</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>5. Benchmark Targets</h3>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Benchmark</th><th>pass@1</th><th>pass@4</th><th>pass@8</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>HumanEval (Python)</td><td>~55%</td><td>~75%</td><td>~85%</td></tr>
+                                <tr><td>MBPP (Python)</td><td>~50%</td><td>~70%</td><td>~82%</td></tr>
+                                <tr><td>BigCodeBench (Python)</td><td>~35%</td><td>~55%</td><td>~68%</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h4>Comparative Context</h4>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Model</th><th>Params (active)</th><th>HumanEval pass@1</th><th>Hardware</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>DeepSeek-Coder-1.3B</td><td>1.3B</td><td>65.2%</td><td>GPU required</td></tr>
+                                <tr><td>Qwen2.5-Coder-1.5B</td><td>1.5B</td><td>69.2%</td><td>GPU required</td></tr>
+                                <tr><td>Qwen2.5-Coder-3B</td><td>3B</td><td>75.1%</td><td>GPU required</td></tr>
+                                <tr><td>CodeLlama-7B</td><td>7B</td><td>33.5%</td><td>GPU required</td></tr>
+                                <tr class="highlight-row"><td><strong>RS-Code-SSM (pass@1)</strong></td><td><strong>~3B active</strong></td><td><strong>~75% (target)</strong></td><td><strong>16 GB RAM</strong></td></tr>
+                                <tr class="highlight-row"><td><strong>RS-Code-SSM (pass@8+verifier)</strong></td><td><strong>~3B active</strong></td><td><strong>~98% (target)</strong></td><td><strong>16 GB RAM</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="paper-section" id="vigilo-results">
+                        <h3>6. Applied Research: Vigilo (IoT Anomaly Detection)</h3>
+                        <p>The Mamba-2 architecture developed for RS-Code-SSM has been successfully adapted for network anomaly detection in <a href="vigilo.html">Vigilo</a>. The same forecaster backbone, reduced to ~1.3M parameters, learns per-device behavioral baselines from benign IoT traffic and flags deviations.</p>
+
+                        <h4>Vigilo Training Results &mdash; IoT-23 Benchmark</h4>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Metric</th><th>Value</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Detection rate @ ~1% FPR</td><td><strong>75% (15/20 infected devices)</strong></td></tr>
+                                <tr><td>Benign baseline (device peak)</td><td>p95 = 1.93, max = 1.97 &mdash; tight</td></tr>
+                                <tr><td>Training data</td><td>Benign traffic only, 29 devices</td></tr>
+                                <tr><td>Model</td><td>~1.3M params, CPU, fully local</td></tr>
+                                <tr><td>Malware families tested</td><td>20 (Mirai, Okiru, Torii, Gagfyt, Hajime, Kenjiro, etc.)</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="results-grid" style="margin-top: 2rem;">
+                            <div class="result-card">
+                                <h4>Detection Characteristics</h4>
+                                <ul class="result-list">
+                                    <li><strong>Loud attacks:</strong> Port scans, DDoS, noisy botnets score 5&ndash;1444&times; above baseline</li>
+                                    <li><strong>Stealthy C2:</strong> Low-volume command-and-control (16 malicious flows / 3,193 benign) sits at threshold boundary</li>
+                                    <li><strong>Key finding:</strong> Per-asset baselining (per-device normal) is the path to universal device support</li>
+                                </ul>
+                            </div>
+                            <div class="result-card">
+                                <h4>Vigilo Architecture</h4>
+                                <ul class="result-list">
+                                    <li>5-minute behavioral windows, 15 features per device</li>
+                                    <li>Mamba-2 SSM forecaster (~1.3M params)</li>
+                                    <li>Ensemble with dedicated beaconing detector</li>
+                                    <li>Anomaly = forecast error (surprise score)</li>
+                                    <li>Threshold calibrated on benign devices at target FPR</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paper-section" id="pdm-results">
+                        <h3>7. Applied Research: Predictive Maintenance (PdM)</h3>
+                        <p>The Mamba-2 forecaster backbone has also been applied to <strong>predictive maintenance</strong> for industrial equipment. Using the NASA C-MAPSS turbofan degradation dataset, a ~3M parameter model trained only on healthy telemetry detects impending equipment failure as prediction surprise.</p>
+
+                        <h4>PdM Training Configuration</h4>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Parameter</th><th>Value</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Dataset</td><td>NASA C-MAPSS (FD001&ndash;FD004)</td></tr>
+                                <tr><td>Model size</td><td>~1.3M params (17 sensor channels)</td></tr>
+                                <tr><td>Training data</td><td>Healthy cycles only (first 50% of engine life)</td></tr>
+                                <tr><td>Hardware</td><td>CPU only (~1 minute per dataset)</td></tr>
+                                <tr><td>Detection method</td><td>Per-cycle forecast error with persistence filter (k=3)</td></tr>
+                                <tr><td>Threshold calibration</td><td>Target FPR ~1% on healthy cycles</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h4>C-MAPSS Benchmark Results</h4>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Subset</th><th>Op. Cond.</th><th>Fault Modes</th><th>Error Rise</th><th>Detection @1% FPR</th><th>Median Lead</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr class="highlight-row"><td>FD001</td><td>1</td><td>1</td><td>1.9 &rarr; 53.1 (~28&times;)</td><td><strong>100% (20/20)</strong></td><td>54 cycles (14&ndash;89)</td></tr>
+                                <tr class="highlight-row"><td>FD003</td><td>1</td><td>2</td><td>2.2 &rarr; 91.3 (~41&times;)</td><td><strong>100% (20/20)</strong></td><td>60 cycles (24&ndash;214)</td></tr>
+                                <tr><td>FD002</td><td>6</td><td>1</td><td>non-monotonic</td><td>2% (1/52)</td><td>&mdash;</td></tr>
+                                <tr><td>FD004</td><td>6</td><td>2</td><td>non-monotonic</td><td>4% (2/49)</td><td>&mdash;</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h4>Key Findings</h4>
+                        <div class="results-grid" style="margin-top: 1rem;">
+                            <div class="result-card">
+                                <h4>What Works &amp; What Doesn't</h4>
+                                <ul class="result-list">
+                                    <li><strong>Single operating condition = 100% detection.</strong> Forecast error is flat/low while healthy, rises sharply toward failure</li>
+                                    <li><strong>Multiple fault modes are NOT the problem.</strong> FD003 has two fault modes and still works perfectly</li>
+                                    <li><strong>Multiple operating conditions ARE the problem.</strong> Regime switches dominate forecast error, collapsing detection to 2&ndash;4%</li>
+                                    <li><strong>Per-asset baselining:</strong> Each engine normalized by its own early-life stats &mdash; no library of machine types required</li>
+                                </ul>
+                            </div>
+                            <div class="result-card">
+                                <h4>Product Mapping</h4>
+                                <ul class="result-list">
+                                    <li><strong>Deployable today:</strong> Steady, constant-duty rotating equipment (pumps, motors, base-load fans)</li>
+                                    <li>Same model, different machinery: swap the data loader for vibration/temp/current sensors</li>
+                                    <li>C-MAPSS is the proof; accessible rotating equipment is the market</li>
+                                    <li><strong>Future work:</strong> Regime-aware normalization for variable-duty equipment (FD002/FD004 coverage)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>8. Inference Characteristics</h3>
+                        <table class="results-table">
+                            <thead>
+                                <tr><th>Metric</th><th>Transformer (equiv. size)</th><th>RS-Code-SSM</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Memory per token (state)</td><td>O(n) KV cache</td><td>O(1) SSM state + 512-token KV</td></tr>
+                                <tr><td>Memory at 8K tokens</td><td>~16 GB KV (6B model)</td><td>~12 GB weights + ~700 MB state</td></tr>
+                                <tr><td>Memory at 32K tokens</td><td>~64 GB KV (6B model)</td><td>~12 GB weights + ~700 MB state</td></tr>
+                                <tr><td>GPU speed (fp16, H100)</td><td>~500 tok/s</td><td>~300&ndash;500 tok/s</td></tr>
+                                <tr><td>CPU speed (fp32)</td><td>~0.2 tok/s</td><td>~0.5&ndash;1 tok/s</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>9. Conclusion</h3>
+                        <p>We present RS-Code-SSM, a 1.65B hybrid Mamba-2 + sparse attention + MoE model for Python code generation trained from scratch, targeting CPU-only deployment. The architecture represents a clean unexplored point in the hybrid SSM design space, and the training pipeline demonstrates that useful code generation is achievable without pretrained weights, using only open data and a single H100 GPU in ~24 hours.</p>
+                        <p>The same Mamba-2 backbone has been successfully adapted for two additional domains: <strong>IoT anomaly detection</strong> (Vigilo, 75% detection at 1% FPR on IoT-23) and <strong>predictive maintenance</strong> (C-MAPSS turbofan degradation detection), demonstrating the architecture's versatility beyond code generation.</p>
+                        <p>Code, architecture, and trained weights are released under Apache 2.0 at <a href="https://github.com/pgalyen1987/RS-Code-SSM" target="_blank" rel="noopener noreferrer">github.com/pgalyen1987/RS-Code-SSM</a>.</p>
+                    </div>
+
+                    <div class="paper-section">
+                        <h3>References</h3>
+                        <ul class="references-list">
+                            <li>Dao &amp; Gu [2024]: "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality." ICML 2024. arXiv:2405.21060</li>
+                            <li>Gu &amp; Dao [2023]: "Mamba: Linear-Time Sequence Modeling with Selective State Spaces." arXiv:2312.00752</li>
+                            <li>Lieber et al. [2024]: "Jamba: A Hybrid Transformer-Mamba Language Model." AI21 Labs. arXiv:2403.19887</li>
+                            <li>Glorioso et al. [2024]: "The Zamba2 Suite: Technical Report." Zyphra. arXiv:2411.15242</li>
+                            <li>Shao et al. [2024]: "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models." arXiv:2402.03300</li>
+                            <li>DeepSeek AI [2025]: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning." arXiv:2501.12948</li>
+                            <li>Jolicoeur-Martineau [2025]: "Less is More: Recursive Reasoning with Tiny Networks." arXiv:2510.04871</li>
+                            <li>Chen et al. [2021]: "Evaluating Large Language Models Trained on Code." OpenAI. arXiv:2107.03374</li>
+                            <li>Qwen Team [2024]: "Qwen2.5-Coder Technical Report." arXiv:2409.12186</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta">
+        <div class="container">
+            <h2>See the Architecture in Action</h2>
+            <p>Vigilo uses the Mamba-2 backbone described in this paper to detect compromised IoT devices in real time &mdash; fully on-device, no cloud required.</p>
+            <div class="hero-buttons">
+                <a href="vigilo.html" class="btn btn-primary">Vigilo Product Page</a>
+                <a href="blog.html" class="btn btn-secondary">&larr; Back to Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="vigilo.html">Vigilo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

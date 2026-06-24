@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rebel Studios Software Blog</title>
+    <link>https://rebelstudiossoftware.com/blog.html</link>
+    <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Jun 2026 00:00:00 -0000</lastBuildDate>
+    <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://rebelstudiossoftware.com/images/og-image.png</url>
+      <title>Rebel Studios Software</title>
+      <link>https://rebelstudiossoftware.com/</link>
+    </image>
+    <item>
+      <title>The Google Ecosystem Splinter: Why Developers Are Drowning in Separate Consoles</title>
+      <link>https://rebelstudiossoftware.com/blog-google-ecosystem-splinter.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-google-ecosystem-splinter.html</guid>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 -0000</pubDate>
+      <description>Why Google splits Cloud, Firebase, Play Console, AdMob, and AdSense into separate consoles — and what developers can do about it.</description>
+    </item>
+    <item>
+      <title>The Serious Business of Having Fun: Why Play is Your Best Performance Hack</title>
+      <link>https://rebelstudiossoftware.com/blog-serious-business-of-fun.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-serious-business-of-fun.html</guid>
+      <pubDate>Sun, 21 Jun 2026 00:00:00 -0000</pubDate>
+      <description>Why play is a biological necessity and the best performance hack for software engineers and creative professionals.</description>
+    </item>
+    <item>
+      <title>The Perfectionism Trap: Why Software Engineers Must Shift Their Metric of Success</title>
+      <link>https://rebelstudiossoftware.com/blog-perfectionism-trap.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-perfectionism-trap.html</guid>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 -0000</pubDate>
+      <description>Software engineers must shift from perfection to progress. Why unshipped code is the ultimate failure and how to measure success differently.</description>
+    </item>
+    <item>
+      <title>The Scamdemic: How Modern Fraud is Eroding Trust and Killing Innovation</title>
+      <link>https://rebelstudiossoftware.com/blog-scamdemic.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-scamdemic.html</guid>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 -0000</pubDate>
+      <description>How modern fraud — pig butchering, AI voice clones, and crypto scams — erodes trust and kills innovation.</description>
+    </item>
+    <item>
+      <title>How to Build a Picture Messaging App: Kotlin, Compose, and Firebase</title>
+      <link>https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html</guid>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 -0000</pubDate>
+      <description>Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.</description>
+    </item>
+    <item>
+      <title>How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI</title>
+      <link>https://rebelstudiossoftware.com/blog-build-saas.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-saas.html</guid>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 -0000</pubDate>
+      <description>Build a SaaS platform with Next.js, Prisma, Turso, NextAuth, Stripe subscriptions, Claude AI, and Railway deployment.</description>
+    </item>
+    <item>
+      <title>The Ghost in the Machine: True Randomness and the Case for Free Will</title>
+      <link>https://rebelstudiossoftware.com/blog-free-will.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-free-will.html</guid>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 -0000</pubDate>
+      <description>True randomness, quantum indeterminism, and the philosophical case for free will in an age of deterministic AI.</description>
+    </item>
+    <item>
+      <title>The Automation Trap: What the Great Depression Teaches Us About the AI Revolution</title>
+      <link>https://rebelstudiossoftware.com/blog-automation-trap.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-automation-trap.html</guid>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 -0000</pubDate>
+      <description>What the Great Depression teaches us about the AI revolution, job displacement, and building a future that works for everyone.</description>
+    </item>
+    <item>
+      <title>Beyond the Code: The Hidden Developer Superpowers Driving the AI Era</title>
+      <link>https://rebelstudiossoftware.com/blog-developer-superpowers.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-developer-superpowers.html</guid>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 -0000</pubDate>
+      <description>The hidden developer superpowers driving the AI era: communication, systems thinking, and collaborating with imperfect tools.</description>
+    </item>
+    <item>
+      <title>The Critical Importance of IoT Security</title>
+      <link>https://rebelstudiossoftware.com/blog-iot-security.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-iot-security.html</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 -0000</pubDate>
+      <description>Why IoT security matters: default credentials, invisible network behavior, real-world breaches, and behavioral anomaly detection.</description>
+    </item>
+  </channel>
+</rss>
