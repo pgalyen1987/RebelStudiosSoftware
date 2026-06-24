@@ -127,7 +127,7 @@
 
                     <div class="article-callout">
                         <h3>This is exactly the approach behind Vigilo</h3>
-                        <p>Our <a href="vigilo.html">Vigilo</a> anomaly detection system uses a ~1.3M parameter Mamba-2 state-space model to learn per-device behavioral baselines from benign traffic only. When tested against 20 malware families from the IoT-23 dataset, Vigilo detected 75% of infected devices at just 1% false positive rate &mdash; catching all loud attacks (port scans, DDoS, noisy botnets) while running entirely on-device on CPU.</p>
+                        <p>Our <a href="vigilo.html">Vigilo</a> anomaly detection prototype uses a ~1.3M parameter Mamba-2 state-space model to learn per-device behavioral baselines from benign Zeek connection logs only. On the IoT-23 lab dataset (20 malware families), it detected 75% of infected devices at 1% false positive rate &mdash; catching loud attacks (port scans, DDoS, noisy botnets) while running entirely on CPU. Field validation on real home/enterprise networks is ongoing.</p>
                     </div>
 
                     <h2>Best Practices for IoT Security</h2>
@@ -163,7 +163,7 @@
 
                     <p>The IoT security landscape is evolving in several important directions:</p>
 
-                    <p><strong>On-device AI:</strong> Lightweight machine learning models that run directly on network appliances or edge devices can detect anomalies in real-time without sending sensitive traffic data to the cloud. This is the approach we are pursuing with Vigilo &mdash; a ~1.3M parameter model that runs on CPU and keeps all data local.</p>
+                    <p><strong>On-device AI:</strong> Lightweight machine learning models that run on network appliances or edge hosts can detect anomalies from connection metadata without sending sensitive traffic to the cloud. This is the approach behind <a href="vigilo.html">Vigilo</a> &mdash; a ~1.3M parameter model that runs on CPU and keeps analysis local (currently a v0.1.0 open-source prototype).</p>
 
                     <p><strong>Per-device baselining:</strong> Rather than training a single "normal" model for all devices, the future is per-asset learning where each device's own early-life behavior becomes its baseline. This eliminates the need for a library of device-type signatures and works with any manufacturer's equipment.</p>
 

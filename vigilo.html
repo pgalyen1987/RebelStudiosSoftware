@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vigilo is an open-source, on-device IoT anomaly detection system. Mamba-2 powered, 75% detection at 1% false positive rate, no cloud required.">
+    <meta name="description" content="Vigilo is an open-source research prototype for on-device network anomaly detection. Mamba-2 powered, 75% detection at 1% FPR on IoT-23 (lab benchmark), no cloud required.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/vigilo.html">
     <link rel="icon" href="images/RS-logo.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rebelstudiossoftware.com/vigilo.html">
     <meta property="og:title" content="Vigilo - On-Device IoT Anomaly Detection">
-    <meta property="og:description" content="Vigilo is an open-source, on-device IoT anomaly detection system. Mamba-2 powered, 75% detection at 1% false positive rate, no cloud required.">
+    <meta property="og:description" content="Vigilo is an open-source research prototype for on-device network anomaly detection. Mamba-2 powered, 75% detection at 1% FPR on IoT-23 (lab benchmark), no cloud required.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
     <meta property="og:site_name" content="Rebel Studios Software">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Vigilo - On-Device IoT Anomaly Detection">
-    <meta name="twitter:description" content="Vigilo is an open-source, on-device IoT anomaly detection system. Mamba-2 powered, 75% detection at 1% false positive rate, no cloud required.">
+    <meta name="twitter:description" content="Vigilo is an open-source research prototype for on-device network anomaly detection. Mamba-2 powered, 75% detection at 1% FPR on IoT-23 (lab benchmark), no cloud required.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
     <title>Vigilo - On-Device IoT Anomaly Detection - Rebel Studios Software</title>
     <link rel="stylesheet" href="styles.css">
@@ -49,7 +49,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Vigilo</h1>
-            <p>On-device network anomaly detection for IoT &mdash; no data leaves your network</p>
+            <p>Open-source research prototype &mdash; on-device network anomaly detection (v0.1.0)</p>
         </div>
     </section>
 
@@ -58,7 +58,8 @@
             <div class="product-hero-grid">
                 <div class="product-hero-text">
                     <h2>Detect Compromised Devices Before They Become Breaches</h2>
-                    <p>Vigilo learns what "normal" looks like for every device on your network. When a device starts scanning ports, beaconing to a C2 server, or participating in a DDoS flood, Vigilo flags it &mdash; without signatures, without cloud dependencies, and without sending a single packet off your network.</p>
+                    <p>Vigilo learns what "normal" looks like for every device on your network from <strong>Zeek connection metadata</strong> (<code>conn.log</code>) &mdash; who talked to whom, when, and how much. When a device starts scanning ports, beaconing to a C2 server, or participating in a flood, Vigilo flags it without signatures, without cloud dependencies, and without sending traffic off your network. Payload contents (e.g. HTTPS bodies) are not inspected.</p>
+                    <p class="results-subtitle" style="margin-top:1rem;">Status: <strong>v0.1.0 research prototype</strong> &mdash; IoT-23 lab benchmarks are documented; field validation on home/enterprise networks is ongoing.</p>
                     <div class="product-stats-row">
                         <div class="product-stat">
                             <span class="stat-number">75%</span>
@@ -89,7 +90,7 @@
                 <div class="pipeline-step">
                     <div class="pipeline-number">1</div>
                     <h3>Ingest</h3>
-                    <p>Vigilo reads Zeek conn.log files or converts pcap captures via tshark. It works with your existing network monitoring infrastructure &mdash; no custom hardware required.</p>
+                    <p>Vigilo reads Zeek <code>conn.log</code> files or converts pcap captures via tshark/Zeek. Works with passive taps (switch SPAN/mirror), gateway Zeek (pfSense/OPNsense), or lab MITM capture scripts.</p>
                 </div>
                 <div class="pipeline-step">
                     <div class="pipeline-number">2</div>
@@ -118,7 +119,7 @@
     <section class="product-results">
         <div class="container">
             <h2 class="section-title">Benchmark Results &mdash; IoT-23 Dataset</h2>
-            <p class="results-subtitle">Trained on benign honeypot captures (29 benign devices). Evaluated on every malware family in IoT-23 including Mirai, Okiru, Torii, Gagfyt, Hajime, and Kenjiro.</p>
+            <p class="results-subtitle">Trained on benign honeypot captures (29 benign devices). Evaluated on every malware family in IoT-23 including Mirai, Okiru, Torii, Gagfyt, Hajime, and Kenjiro. <strong>IoT-23 is lab data</strong> &mdash; not yet validated on live home or enterprise networks.</p>
 
             <div class="results-grid">
                 <div class="result-card result-card-primary">
@@ -186,11 +187,11 @@
                 </div>
                 <div class="tech-card-product">
                     <h4>Beaconing Detector</h4>
-                    <p>Dedicated frequency-domain analysis to detect periodic C2 beaconing &mdash; the stealthy callback patterns that volume-based detection misses.</p>
+                    <p>Measures inter-connection interval regularity (coefficient of variation) to detect periodic C2 beaconing &mdash; stealthy callback patterns that volume-based detection may miss.</p>
                 </div>
                 <div class="tech-card-product">
                     <h4>Flask Dashboard</h4>
-                    <p>Built-in web UI for real-time anomaly visualization, device status, and alert management. API endpoints for integration with existing SIEM systems.</p>
+                    <p>Local web UI with per-device verdicts and scores. JSON API at <code>/api/results</code> for integration; refresh re-analyzes the configured log file.</p>
                 </div>
                 <div class="tech-card-product">
                     <h4>Docker Deployment</h4>
@@ -203,23 +204,41 @@
     <section class="product-deployment">
         <div class="container">
             <h2 class="section-title">Deployment</h2>
+            <p class="results-subtitle">Recommended production path: <strong>passive capture</strong> via switch SPAN/mirror or gateway Zeek. Optional Bettercap MITM scripts exist for lab testing on networks you own (disruptive; not recommended for production). Full wiring guide: <a href="https://github.com/pgalyen1987/Vigilo/blob/main/docs/DEPLOY-SPAN-GATEWAY.md" target="_blank" rel="noopener noreferrer">SPAN / gateway deployment docs on GitHub</a>.</p>
             <div class="deployment-grid">
                 <div class="deployment-card">
-                    <h3>Quick Start</h3>
+                    <h3>Demo (no hardware)</h3>
                     <div class="code-block">
                         <code>pip install -e .</code><br>
-                        <code>vigilo train --logs data/benign.conn.log</code><br>
-                        <code>vigilo detect --log suspect.conn.log --ckpt vigilo.pt</code><br>
-                        <code>vigilo serve</code>
+                        <code>python scripts/generate_demo_data.py</code><br>
+                        <code>vigilo serve</code><br>
+                        <code># http://127.0.0.1:8088</code>
                     </div>
                 </div>
                 <div class="deployment-card">
-                    <h3>Docker</h3>
+                    <h3>Passive SPAN / mirror</h3>
+                    <div class="code-block">
+                        <code>cp .env.span.example .env</code><br>
+                        <code># CAPTURE_IFACE=eth1  (mirror NIC)</code><br>
+                        <code>docker compose --profile span up -d</code>
+                    </div>
+                    <p style="margin-top:1rem;font-size:.9rem;"><a href="https://github.com/pgalyen1987/Vigilo/blob/main/docs/DEPLOY-SPAN-GATEWAY.md" target="_blank" rel="noopener noreferrer">Step-by-step SPAN guide &rarr;</a></p>
+                </div>
+                <div class="deployment-card">
+                    <h3>Docker (analyze existing logs)</h3>
                     <div class="code-block">
                         <code>cp .env.example .env</code><br>
-                        <code>make build</code><br>
-                        <code>make up</code><br>
+                        <code>make build &amp;&amp; make up</code><br>
                         <code># Dashboard at http://127.0.0.1:8088</code>
+                    </div>
+                </div>
+                <div class="deployment-card">
+                    <h3>Train on your network</h3>
+                    <div class="code-block">
+                        <code>vigilo train --logs data/benign.conn.log \</code><br>
+                        <code>  --output-dir checkpoints/vigilo</code><br>
+                        <code>vigilo detect --log suspect.conn.log \</code><br>
+                        <code>  --ckpt checkpoints/vigilo/vigilo.pt</code>
                     </div>
                 </div>
             </div>
@@ -231,8 +250,8 @@
                         <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>VIGILO_LOG</code></td><td>(none)</td><td>Path to the conn.log to analyze</td></tr>
-                        <tr><td><code>VIGILO_CKPT</code></td><td><code>checkpoints/vigilo/vigilo.pt</code></td><td>Trained model checkpoint</td></tr>
+                        <tr><td><code>VIGILO_LOG</code></td><td><code>data/demo/sample.conn.log</code></td><td>Path to the conn.log to analyze</td></tr>
+                        <tr><td><code>VIGILO_CKPT</code></td><td><code>checkpoints/demo/vigilo.pt</code></td><td>Trained model checkpoint</td></tr>
                         <tr><td><code>VIGILO_HOST</code></td><td><code>0.0.0.0</code></td><td>Dashboard bind address</td></tr>
                         <tr><td><code>VIGILO_PORT</code></td><td><code>8088</code></td><td>Dashboard port</td></tr>
                         <tr><td><code>VIGILO_WORKERS</code></td><td><code>2</code></td><td>Gunicorn worker count</td></tr>
@@ -248,7 +267,7 @@
             <h2 class="section-title">Open Source</h2>
             <div class="product-hero-grid">
                 <div class="product-hero-text">
-                    <p>Vigilo is free and open source under MIT/Apache licensing. Clone the repository, run it locally, and audit the code — nothing leaves your network.</p>
+                    <p>Vigilo is free and open source under the <strong>Apache 2.0</strong> license. Clone the repository, run the demo locally, and audit the code &mdash; connection metadata stays on your network.</p>
                     <div class="hero-buttons">
                         <a href="https://github.com/pgalyen1987/Vigilo" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
                     </div>

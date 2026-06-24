@@ -1,0 +1,32 @@
+Content License — Rebel Studios Software
+=========================================
+
+Copyright (c) 2026 Patrick Galyen / Rebel Studios Software
+All rights reserved.
+
+This license applies to written content in this repository, including but not
+limited to:
+
+  - Blog articles (blog-*.html article body text)
+  - Research paper content (PAPER.md, research.html)
+  - Marketing copy and prose on portfolio pages
+
+You may NOT, without prior written permission:
+
+  - Republish, redistribute, or sublicense this content
+  - Use article or research text in commercial publications or training datasets
+  - Present this content as your own work
+
+You MAY:
+
+  - Link to pages on https://rebelstudiossoftware.com
+  - Quote brief excerpts with attribution and a link to the original
+  - Read and share URLs to the live site
+
+Site source code (HTML/CSS/JS structure, styles, scripts) is licensed
+separately under the MIT License. See LICENSE.
+
+Open-source projects referenced or linked from this site (e.g. Vigilo,
+RS-Code-SSM) are licensed under their own repositories.
+
+Contact: contact@rebelstudiossoftware.com

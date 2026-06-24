@@ -11,14 +11,14 @@ BASE = "https://rebelstudiossoftware.com"
 ROOT = Path(__file__).parent
 
 STATIC_PAGES = [
-    ("", "2026-06-23", "monthly", "1.0"),
+    ("", "2026-06-24", "monthly", "1.0"),
     ("apps.html", "2026-06-23", "monthly", "0.8"),
     ("websites.html", "2026-06-23", "monthly", "0.8"),
-    ("vigilo.html", "2026-06-23", "monthly", "0.8"),
-    ("about.html", "2026-06-23", "monthly", "0.8"),
-    ("blog.html", "2026-06-23", "weekly", "0.9"),
+    ("vigilo.html", "2026-06-24", "monthly", "0.8"),
+    ("about.html", "2026-06-24", "monthly", "0.8"),
+    ("blog.html", "2026-06-24", "weekly", "0.9"),
     ("privacy.html", "2026-06-23", "yearly", "0.3"),
-    ("research.html", "2026-06-15", "monthly", "0.7"),
+    ("research.html", "2026-06-24", "monthly", "0.7"),
 ]
 
 
