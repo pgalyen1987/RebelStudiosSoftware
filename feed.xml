@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jun 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>When Your AI Starts Spending Your Money: x402 and the Agentic Economy</title>
+      <link>https://rebelstudiossoftware.com/blog-agentic-economy.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-agentic-economy.html</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 -0000</pubDate>
+      <description>HTTP 402 was reserved for a future that's finally arriving: AI agents paying for things on their own. Here's what the x402 agentic economy actually means for consumers — the convenience, and the catch.</description>
+    </item>
     <item>
       <title>The Google Ecosystem Splinter: Why Developers Are Drowning in Separate Consoles</title>
       <link>https://rebelstudiossoftware.com/blog-google-ecosystem-splinter.html</link>
