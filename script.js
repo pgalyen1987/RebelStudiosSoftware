@@ -4,19 +4,39 @@ const BLOG_AD_CLIENT = 'ca-pub-4668633509273232';
 const BLOG_SIDEBAR_AD_SLOT = '8015849679';
 const BLOG_BOTTOM_AD_SLOT = '7377555423';
 
-// Mobile Navigation Toggle
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', function() {
     initAnalytics();
     initBlogAds();
+    initNavbar();
+    initSmoothScroll();
+    initReveal();
+    initCounters();
+    initTerminal();
+    initCarousels();
+});
 
+/* ---------------------------------------------------------
+   Navbar: mobile menu + scrolled state
+   --------------------------------------------------------- */
+function initNavbar() {
+    const navbar = document.querySelector('.navbar');
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+
+    if (navbar) {
+        const onScroll = function() {
+            navbar.classList.toggle('scrolled', window.scrollY > 24);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    }
 
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            
-            // Animate hamburger
+
             const spans = hamburger.querySelectorAll('span');
             if (navMenu.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -41,8 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+}
 
-    // Smooth scroll for anchor links
+/* ---------------------------------------------------------
+   Smooth scroll for anchor links
+   --------------------------------------------------------- */
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -51,63 +75,198 @@ document.addEventListener('DOMContentLoaded', function() {
                 const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth',
+                        behavior: REDUCED_MOTION ? 'auto' : 'smooth',
                         block: 'start'
                     });
                 }
             }
         });
     });
+}
 
-    // Add scroll animation to portfolio items
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+/* ---------------------------------------------------------
+   Scroll reveal — [data-reveal] plus auto-tagged cards
+   --------------------------------------------------------- */
+function initReveal() {
+    // Auto-tag common cards on pages whose markup doesn't carry data-reveal
+    const autoSelectors = [
+        '.portfolio-item', '.blog-card', '.feature-card', '.service-item',
+        '.result-card', '.pipeline-step', '.tech-card-product', '.practice-card',
+        '.about-stat', '.spec-card', '.product-stat'
+    ];
+    autoSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+            if (!el.hasAttribute('data-reveal')) {
+                el.setAttribute('data-reveal', '');
+            }
+        });
+    });
+
+    const targets = document.querySelectorAll('[data-reveal]');
+    if (!targets.length) {
+        return;
+    }
+
+    if (REDUCED_MOTION || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('revealed'));
+        return;
+    }
+
+    // Stagger siblings that share a parent
+    const parentCounts = new Map();
+    targets.forEach(el => {
+        const parent = el.parentElement;
+        const idx = parentCounts.get(parent) || 0;
+        el.style.setProperty('--reveal-delay', (Math.min(idx, 5) * 0.09) + 's');
+        parentCounts.set(parent, idx + 1);
+    });
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
+}
+
+/* ---------------------------------------------------------
+   Count-up stats — [data-count]
+   --------------------------------------------------------- */
+function initCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    if (!counters.length || REDUCED_MOTION || !('IntersectionObserver' in window)) {
+        return;
+    }
+
+    const animate = function(el) {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        if (isNaN(target)) {
+            return;
+        }
+        const duration = 1300;
+        const start = performance.now();
+        const tick = function(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(eased * target);
+            if (p < 1) {
+                requestAnimationFrame(tick);
+            }
+        };
+        requestAnimationFrame(tick);
     };
 
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                animate(entry.target);
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.4 });
 
-    // Observe portfolio items
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(item);
-    });
+    counters.forEach(el => observer.observe(el));
+}
 
-    // Observe feature cards
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
+/* ---------------------------------------------------------
+   Hero terminal typing animation
+   --------------------------------------------------------- */
+function initTerminal() {
+    const body = document.getElementById('terminal-body');
+    if (!body) {
+        return;
+    }
 
-    // Auto-rotate carousel
-    const carousels = document.querySelectorAll('.screenshot-carousel');
-    carousels.forEach(carousel => {
-        let currentIndex = 0;
-        const slides = carousel.querySelectorAll('.screenshot-slide');
-        const dots = carousel.querySelectorAll('.dot');
-        
-        if (slides.length > 1) {
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                showSlide(carousel.id, currentIndex);
-            }, 4000);
+    const lines = [
+        { type: 'cmd', text: 'rebel new --client you' },
+        { type: 'out', html: '<span class="t-dim">scaffolding project…</span>' },
+        { type: 'out', html: '<span class="t-ok">✓</span> ui         <span class="t-dim">designed &amp; responsive</span>' },
+        { type: 'out', html: '<span class="t-ok">✓</span> backend    <span class="t-dim">wired &amp; tested</span>' },
+        { type: 'out', html: '<span class="t-ok">✓</span> payments   <span class="t-dim">stripe · live mode</span>' },
+        { type: 'cmd', text: 'rebel deploy --prod' },
+        { type: 'out', html: '<span class="t-accent">→</span> build <span class="t-dim">passed in 1.2s</span>' },
+        { type: 'out', html: '<span class="t-ok">✓</span> deployed — <span class="t-ok">0 errors, 0 excuses</span>' },
+        { type: 'cmd', text: 'status' },
+        { type: 'out', html: '<span class="t-ok">●</span> live <span class="t-dim">· monitored · maintained</span>' }
+    ];
+
+    const renderStatic = function() {
+        body.innerHTML = lines.map(function(line) {
+            return line.type === 'cmd'
+                ? '<div class="t-line"><span class="t-prompt">$ </span><span class="t-cmd">' + line.text + '</span></div>'
+                : '<div class="t-line">' + line.html + '</div>';
+        }).join('') + '<div class="t-line"><span class="t-prompt">$ </span><span class="t-caret"></span></div>';
+    };
+
+    if (REDUCED_MOTION || !('IntersectionObserver' in window)) {
+        renderStatic();
+        return;
+    }
+
+    let started = false;
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !started) {
+                started = true;
+                observer.disconnect();
+                playTerminal(body, lines);
+            }
+        });
+    }, { threshold: 0.3 });
+    observer.observe(body);
+}
+
+function playTerminal(body, lines) {
+    let i = 0;
+
+    const caretLine = function() {
+        const div = document.createElement('div');
+        div.className = 't-line';
+        div.innerHTML = '<span class="t-prompt">$ </span><span class="t-caret"></span>';
+        return div;
+    };
+
+    const next = function() {
+        if (i >= lines.length) {
+            body.appendChild(caretLine());
+            return;
         }
-    });
-});
+        const line = lines[i++];
+        const div = document.createElement('div');
+        div.className = 't-line';
+        body.appendChild(div);
 
+        if (line.type === 'cmd') {
+            div.innerHTML = '<span class="t-prompt">$ </span><span class="t-cmd"></span><span class="t-caret"></span>';
+            const cmdEl = div.querySelector('.t-cmd');
+            const caret = div.querySelector('.t-caret');
+            let c = 0;
+            const typeChar = function() {
+                if (c < line.text.length) {
+                    cmdEl.textContent += line.text.charAt(c++);
+                    setTimeout(typeChar, 34 + Math.random() * 40);
+                } else {
+                    caret.remove();
+                    setTimeout(next, 300);
+                }
+            };
+            setTimeout(typeChar, 250);
+        } else {
+            div.innerHTML = line.html;
+            setTimeout(next, 190);
+        }
+    };
+
+    next();
+}
+
+/* ---------------------------------------------------------
+   Analytics
+   --------------------------------------------------------- */
 function initAnalytics() {
     if (!GA_MEASUREMENT_ID) {
         return;
@@ -126,6 +285,9 @@ function initAnalytics() {
     window.gtag('config', GA_MEASUREMENT_ID);
 }
 
+/* ---------------------------------------------------------
+   Blog ads (AdSense)
+   --------------------------------------------------------- */
 function initBlogAds() {
     if (!document.querySelector('script[src*="adsbygoogle"]')) {
         return;
@@ -162,7 +324,12 @@ function initBlogAds() {
         mainEl.appendChild(bottomAd);
     }
 
-    document.querySelectorAll('.adsbygoogle').forEach(function() {
+    document.querySelectorAll('.adsbygoogle').forEach(function(ins) {
+        // Skip slots hidden at this viewport (e.g. sidebars < 1200px) —
+        // pushing them throws "No slot size for availableWidth=0"
+        if (ins.offsetWidth === 0) {
+            return;
+        }
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (error) {
@@ -211,26 +378,42 @@ function createBottomAdUnit() {
     return wrapper;
 }
 
-// Carousel functions
+/* ---------------------------------------------------------
+   Screenshot carousels
+   --------------------------------------------------------- */
+function initCarousels() {
+    const carousels = document.querySelectorAll('.screenshot-carousel');
+    carousels.forEach(carousel => {
+        let currentIndex = 0;
+        const slides = carousel.querySelectorAll('.screenshot-slide');
+
+        if (slides.length > 1 && !REDUCED_MOTION) {
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(carousel.id, currentIndex);
+            }, 4000);
+        }
+    });
+}
+
 function changeSlide(carouselId, direction) {
     const carousel = document.getElementById(carouselId);
     const slides = carousel.querySelectorAll('.screenshot-slide');
-    const dots = carousel.querySelectorAll('.dot');
     let currentIndex = 0;
-    
+
     slides.forEach((slide, index) => {
         if (slide.classList.contains('active')) {
             currentIndex = index;
         }
     });
-    
+
     let newIndex = currentIndex + direction;
     if (newIndex < 0) {
         newIndex = slides.length - 1;
     } else if (newIndex >= slides.length) {
         newIndex = 0;
     }
-    
+
     showSlide(carouselId, newIndex);
 }
 
@@ -242,10 +425,10 @@ function showSlide(carouselId, index) {
     const carousel = document.getElementById(carouselId);
     const slides = carousel.querySelectorAll('.screenshot-slide');
     const dots = carousel.querySelectorAll('.dot');
-    
+
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
-    
+
     if (slides[index]) {
         slides[index].classList.add('active');
     }
