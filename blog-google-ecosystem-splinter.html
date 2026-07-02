@@ -102,7 +102,9 @@
 
   [ Google Internal ] ---&gt; Google Cloud / AdSense / Play Console
                                   |
-  [ Acquired 2008 ]   ---&gt; DoubleClick ---&gt; (Evolved into AdMob)
+  [ Acquired 2008 ]   ---&gt; DoubleClick ---&gt; (Became Google Ad Manager)
+                                  |
+  [ Acquired 2009 ]   ---&gt; AdMob       ---&gt; (Kept separate dashboard)
                                   |
   [ Acquired 2014 ]   ---&gt; Firebase    ---&gt; (Kept separate dashboard)
 
@@ -110,7 +112,7 @@
 
                     <h3>1. Corporate Acquisitions and Legacy Code</h3>
 
-                    <p>Google didn&rsquo;t build all of these services from scratch. They bought them. AdMob was acquired in 2009 for $750 million. Firebase was bought in 2014. DoubleClick (which powers much of their ad tech) was bought in 2007.</p>
+                    <p>Google didn&rsquo;t build all of these services from scratch. They bought them. AdMob was acquired in 2009 for $750 million. Firebase was bought in 2014. DoubleClick &mdash; the acquisition that seeded much of Google&rsquo;s ad tech, later folded into Google Ad Manager &mdash; closed in 2008.</p>
 
                     <p>When a giant tech company buys a successful platform, fully migrating its underlying code and database infrastructure into a single unified dashboard is incredibly risky and expensive. It is far easier to leave the existing dashboard intact, slap a &ldquo;Sign in with Google&rdquo; button on it, and build an API bridge behind the scenes.</p>
 
@@ -126,7 +128,7 @@
 
                     <h2>Real Developer Horror Stories: The Hidden Friction Points</h2>
 
-                    <p>This ecosystem disconnect manifests in infuriating technical loops that cost builders days of lost momentum. Here are the most notorious roadblocks developers face when trying to stitch these platforms together:</p>
+                    <p>This ecosystem disconnect manifests in infuriating technical loops that cost builders days of lost momentum. None of what follows is hypothetical &mdash; we hit every one of these shipping <a href="apps.html">Phuzzles</a>, which touches Cloud, Firebase, the Play Console, and AdMob in a single app. Here are the most notorious roadblocks developers face when trying to stitch these platforms together:</p>
 
                     <h3>The SHA-1 Fingerprint Mismatch Loop</h3>
 

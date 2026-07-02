@@ -112,7 +112,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")  // KSP — Hilt's current annotation processor (faster than kapt)
 }</pre>
 
                     <p>Apply Hilt in your Application class and main Activity:</p>
@@ -236,6 +236,8 @@ keytool -genkey -v -keystore app-release.jks \
                         <h3>Tech Stack Summary</h3>
                         <p>Kotlin &bull; Jetpack Compose &bull; Material 3 &bull; MVVM &bull; Hilt &bull; Coroutines &bull; Firebase Auth &bull; Firestore &bull; Storage &bull; FCM &bull; Crashlytics &bull; App Check &bull; CameraX &bull; Coil &bull; Navigation Compose</p>
                     </div>
+
+                    <p>This is the architecture behind <a href="apps.html">Phuzzles</a>, our photo-puzzle messenger on Google Play. If you want an app like this shipped without building it yourself, <a href="index.html#contact">talk to us</a>.</p>
                 </div>
 
                 <div class="article-footer-nav">

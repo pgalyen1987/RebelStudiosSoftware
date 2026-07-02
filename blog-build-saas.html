@@ -124,6 +124,7 @@ DATABASE_URL="libsql://my-saas-app-&lt;org&gt;.turso.io?authToken=&lt;token&gt;"
 npx prisma generate</pre>
 
                     <h2>Step 4: Authentication with NextAuth v4</h2>
+                    <p>We use NextAuth v4 here because it is what we run in production on TradeGuard and it is battle-tested. If you are starting a brand-new project, evaluate <a href="https://authjs.dev" target="_blank" rel="noopener noreferrer">Auth.js v5</a> first &mdash; it is the current successor with first-class App Router support; the concepts below carry over directly.</p>
                     <pre>// src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -202,7 +203,7 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
 
 async function analyzeDocument(pdfText: string) {
   const msg = await client.messages.create({
-    model: "claude-sonnet-4-20250514",
+    model: "claude-sonnet-5",
     max_tokens: 1024,
     messages: [{
       role: "user",
@@ -285,6 +286,8 @@ railway up</pre>
                         <h3>Tech Stack Summary</h3>
                         <p>Next.js 16 &bull; React 19 &bull; TypeScript &bull; Tailwind CSS v4 &bull; Radix UI &bull; Prisma &bull; libSQL/Turso &bull; NextAuth v4 &bull; bcryptjs &bull; Stripe &bull; Resend &bull; Claude AI &bull; PDFKit &bull; Docker &bull; Railway &bull; Litestream</p>
                     </div>
+
+                    <p>This is the exact stack behind <a href="websites.html">TradeGuard Pro</a>, our production compliance SaaS. If you would rather have it built than build it, <a href="index.html#contact">that is what we do</a>.</p>
                 </div>
 
                 <div class="article-footer-nav">
