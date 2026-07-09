@@ -5,13 +5,27 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Jun 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>The Architecture of Apology: Why Groups Take Decades to Admit What Individuals See in Minutes</title>
+      <link>https://rebelstudiossoftware.com/blog-architecture-of-apology.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-architecture-of-apology.html</guid>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 -0000</pubDate>
+      <description>Why corporations and societies take decades to reverse mistakes that individuals admit in minutes — cognitive dissonance, institutional inertia, and the architecture of apology.</description>
+    </item>
+    <item>
+      <title>The &amp;quot;Noble Lie&amp;quot;: Can Disinformation Ever Be Used for Good?</title>
+      <link>https://rebelstudiossoftware.com/blog-noble-lie.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-noble-lie.html</guid>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 -0000</pubDate>
+      <description>From pool-dye myths to acne-toothbrush hoaxes — can disinformation ever be used for good, and what is the hidden cost of the noble lie?</description>
+    </item>
     <item>
       <title>When Your AI Starts Spending Your Money: x402 and the Agentic Economy</title>
       <link>https://rebelstudiossoftware.com/blog-agentic-economy.html</link>
