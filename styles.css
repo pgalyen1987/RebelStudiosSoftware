@@ -1916,12 +1916,18 @@ h1, h2, h3, h4 {
     align-items: center;
 }
 
-.article-meta span {
+.article-meta span,
+.article-meta a.article-author {
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--ink-3);
     font-weight: 500;
     letter-spacing: 0.04em;
+    text-decoration: none;
+}
+
+.article-meta a.article-author:hover {
+    color: var(--green-bright);
 }
 
 .article-meta .article-date {
@@ -2214,6 +2220,93 @@ h1, h2, h3, h4 {
     flex-wrap: wrap;
 }
 
+.article-share {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.article-share-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+.article-share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.article-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--ink-2);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.article-share-btn svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.article-share-btn:hover,
+.article-share-btn:focus-visible {
+    color: var(--green-bright);
+    border-color: rgba(74, 222, 128, 0.35);
+    background: rgba(74, 222, 128, 0.06);
+    outline: none;
+}
+
+.article-share-btn-copy.is-copied {
+    color: var(--green-bright);
+    border-color: rgba(74, 222, 128, 0.45);
+    background: rgba(74, 222, 128, 0.1);
+}
+
+@media (max-width: 640px) {
+    .article-share {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .article-share-actions {
+        width: 100%;
+    }
+
+    .article-share-btn {
+        flex: 1 1 calc(50% - 0.65rem);
+        justify-content: center;
+    }
+}
+
+.article-share + .article-footer-nav {
+    border-top: none;
+    margin-top: 1.5rem;
+    padding-top: 0;
+}
+
 .legal-page .article-wrapper {
     max-width: 780px;
 }
@@ -2254,6 +2347,15 @@ h1, h2, h3, h4 {
 .about-intro strong,
 .about-founder strong {
     color: var(--ink-1);
+}
+
+.about-founder h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.about-founder h2 a:hover {
+    color: var(--green-bright);
 }
 
 .about-intro a,
@@ -2711,6 +2813,15 @@ h1, h2, h3, h4 {
     font-size: 0.9rem;
     color: var(--ink-3);
     margin-bottom: 1.6rem;
+}
+
+.paper-authors a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.paper-authors a:hover {
+    color: var(--green-bright);
 }
 
 .paper-links {
