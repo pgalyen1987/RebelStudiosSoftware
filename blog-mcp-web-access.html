@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Claude and Cursor can't read the live web out of the box. Here's how to add pay-per-call web scraping and market data to any MCP client in one line — no API contract, no monthly seat, no signup.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-mcp-web-access.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-mcp-web-access.html">
+    <meta property="og:title" content="Give Claude and Cursor Live Web Access in One Line (Pay-Per-Call MCP)">
+    <meta property="og:description" content="An MCP server that lets your AI fetch any page as clean Markdown for a fraction of a cent — billed per call over x402, with no account and no subscription.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-07-15">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Give Claude and Cursor Live Web Access in One Line (Pay-Per-Call MCP)">
+    <meta name="twitter:description" content="An MCP server that lets your AI fetch any page as clean Markdown for a fraction of a cent — billed per call over x402, with no account and no subscription.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Give Claude and Cursor Live Web Access in One Line (Pay-Per-Call MCP)","description":"An MCP server that lets your AI fetch any page as clean Markdown for a fraction of a cent — billed per call over x402, with no account and no subscription.","datePublished":"2026-07-15","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-mcp-web-access.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>Give Claude and Cursor Live Web Access in One Line (Pay-Per-Call MCP) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Give Claude and Cursor Live Web Access in One Line</h1>
+            <p>Your AI can reason brilliantly and read nothing on the live web &mdash; here is the one-line fix, and what it costs</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">July 15, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+                    <p>Ask Claude or Cursor to &ldquo;read this page and summarize it&rdquo; and you will often hit the same wall: the model cannot actually open the link. Out of the box, most AI assistants are sealed off from the live internet. They are extraordinary at reasoning over text you paste in, and blind to everything you do not.</p>
+
+                    <p>The fix is a small, boring-sounding piece of infrastructure called an <strong>MCP server</strong>&mdash;and once you understand it, giving your AI real web access takes about sixty seconds. This is a practical walkthrough of how it works, what it should cost, and where the honest trade-offs are. I built one of these, so I will show you mine, but the pattern applies to any of them.</p>
+
+                    <h2>What MCP Is, Without The Jargon</h2>
+
+                    <p>MCP&mdash;the Model Context Protocol&mdash;is simply a standard way to hand an AI assistant new <em>tools</em>. Think of it as a USB port for your model. Plug in a &ldquo;fetch a web page&rdquo; tool and Claude can suddenly read pages. Plug in a &ldquo;look up a stock filing&rdquo; tool and it can pull SEC data. The model decides when to use each tool; the tool does the actual work and hands back the result.</p>
+
+                    <p>Claude Desktop, Claude Code, Cursor, and Cline all speak MCP. That means one small server can teach all of them the same new skills at once.</p>
+
+                    <h2>The Problem With Most Web-Access Tools</h2>
+
+                    <p>Plenty of scraping and search APIs exist. The friction is almost never the technology&mdash;it is the <em>onboarding</em>. To wire most of them into your assistant you have to: create an account, put a credit card on file, commit to a monthly plan, generate an API key, and paste it into a config file. For a tool you might call ten times a week, that is a lot of ceremony, and a recurring bill for capacity you will not use.</p>
+
+                    <p>This is the exact problem the <strong>x402</strong> payment protocol was built to erase. Instead of a subscription, the tool charges a fraction of a cent <em>per call</em>, settled automatically in digital dollars. No account, no card form, no monthly minimum. Your agent pays for the one page it actually reads.</p>
+
+                    <h2>The One-Line Setup</h2>
+
+                    <p>Here is the whole thing. Drop this into your MCP client&rsquo;s config (for Claude Desktop that is <code>claude_desktop_config.json</code>):</p>
+
+                    <pre class="article-code"><code>{
+  "mcpServers": {
+    "gate402": {
+      "command": "npx",
+      "args": ["-y", "gate402-mcp"]
+    }
+  }
+}</code></pre>
+
+                    <p>Restart the client and your assistant now has a set of new tools. There is no API key in that config because it does not need one: on first run it quietly claims a small free-credit allowance so you can try every tool before a single cent moves. When you are ready to go beyond the free credit, you either fund a tiny crypto wallet the server pays from, or drop in a key&mdash;your choice.</p>
+
+                    <h2>What Your AI Can Now Do</h2>
+
+                    <p>The server I built, <a href="https://gate402.app" target="_blank" rel="noopener">gate402</a>, exposes a handful of tools that cover the things assistants most often need and cannot do alone:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Read any page as clean Markdown</strong> &mdash; the scrape tool fetches a URL, strips the ads, nav bars, and script noise, and returns tidy text a model can actually use. Roughly a fifth of a cent per page.</li>
+                        <li><strong>Get through protected pages</strong> &mdash; a stealth variant routes through residential proxies with automatic CAPTCHA solving for sites behind Cloudflare and similar walls. It costs more because it genuinely costs more to do.</li>
+                        <li><strong>Pull live market and on-chain data</strong> &mdash; DEX prices, token risk checks, crypto news, and SEC EDGAR filings, all as structured tool calls instead of hallucinated numbers.</li>
+                        <li><strong>Shrink context</strong> &mdash; a minify tool compresses verbose text so you burn fewer tokens feeding a long document back into the model.</li>
+                    </ul>
+
+                    <p>The point is not any single tool. It is that your assistant stops guessing about the present and starts <em>checking</em>.</p>
+
+                    <h2>The Honest Trade-offs</h2>
+
+                    <p>I would rather you hear the caveats from me than discover them later.</p>
+
+                    <p><strong>Pay-per-call is a young model.</strong> The x402 ecosystem is real and backed by serious players&mdash;Coinbase built the protocol, Amazon and Google are shipping agent-payment rails&mdash;but it is early. You are an early adopter here, with all the rough edges that implies. For low-volume, occasional use that is a feature; for a mission-critical pipeline running millions of calls, a traditional contract may still fit better today.</p>
+
+                    <p><strong>Scraping is never 100%.</strong> Anyone who promises to read <em>every</em> protected page every time is selling you something. The stealth path gets through the large majority of bot walls, but the hardest targets still fail sometimes. Honest tools charge for success and tell you when they could not get in.</p>
+
+                    <p><strong>Watch the meter on the expensive calls.</strong> A plain page read is a rounding error. The heavy anti-bot fetches cost real fractions of a cent each, and an agent left to loop can add up. Set limits; read the receipts.</p>
+
+                    <h2>Why This Matters</h2>
+
+                    <p>The gap between &ldquo;an AI that talks about the world&rdquo; and &ldquo;an AI that acts in it&rdquo; is almost entirely a tooling gap. MCP is how you close it, and pay-per-call is how you close it without signing up for six subscriptions you will forget to cancel. Sixty seconds of config buys your assistant a genuine window onto the live web.</p>
+
+                    <p><em>Want a custom MCP server, an agent integration, or a pay-per-call API of your own&mdash;built by someone who has shipped one to production? <a href="index.html#contact">That is what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
