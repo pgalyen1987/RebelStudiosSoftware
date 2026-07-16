@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Indemnity (INDN) is an ERC-20 token with escrow-by-default anti-scam protection. Payments sit in on-chain escrow for 7 days — if something's wrong, a Kleros jury decides.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/indemnity.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/indemnity.html">
+    <meta property="og:title" content="Indemnity (INDN) — The Anti-Scam Token">
+    <meta property="og:description" content="An ERC-20 with escrow-by-default protection. Payments sit in on-chain escrow for 7 days — if something's wrong, a decentralized Kleros jury decides who keeps them.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Indemnity (INDN) — The Anti-Scam Token">
+    <meta name="twitter:description" content="An ERC-20 with escrow-by-default protection. Payments sit in on-chain escrow for 7 days — if something's wrong, a decentralized Kleros jury decides.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Indemnity (INDN) — Anti-Scam Token - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .indn-shield { display: inline-block; width: 48px; height: 48px; vertical-align: middle; margin-right: 10px; }
+        .indn-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 2rem; }
+        @media (max-width: 860px) { .indn-flow { grid-template-columns: 1fr; } }
+        .indn-flow-card { background: var(--surface-strong); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; position: relative; padding-top: 44px; counter-increment: indn-step; }
+        .indn-flow-card::before { content: counter(indn-step); position: absolute; top: -16px; left: 24px; width: 34px; height: 34px; border-radius: var(--radius-sm); display: grid; place-items: center; font-weight: 700; font-family: var(--font-display); background: var(--grad-accent); color: var(--bg); }
+        .indn-flow-card h4 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: .5rem; color: var(--ink-1); }
+        .indn-flow-card p { font-size: .95rem; color: var(--ink-2); }
+        .indn-kleros-steps { display: grid; gap: 16px; margin-top: 2rem; }
+        .indn-kstep { display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; background: var(--surface-strong); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+        .indn-knum { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 1.2rem; font-family: var(--font-display); background: rgba(108,190,69,.14); border: 1px solid rgba(108,190,69,.3); color: var(--green-bright); }
+        .indn-kstep h4 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: .25rem; color: var(--ink-1); }
+        .indn-kstep p { font-size: .95rem; color: var(--ink-2); }
+        .indn-honest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 2rem; }
+        @media (max-width: 860px) { .indn-honest-grid { grid-template-columns: 1fr; } }
+        .indn-honest-card { background: var(--surface-strong); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+        .indn-honest-card h4 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 1rem; color: var(--ink-1); }
+        .indn-honest-card ul { list-style: none; display: grid; gap: 12px; }
+        .indn-honest-card li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; font-size: .95rem; color: var(--ink-2); }
+        .indn-honest-card li svg { width: 20px; height: 20px; margin-top: 3px; }
+        .indn-check { stroke: var(--green); }
+        .indn-cross { stroke: #f87171; }
+        .indn-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 2rem; }
+        @media (max-width: 620px) { .indn-facts { grid-template-columns: 1fr; } }
+        .indn-fact { background: var(--surface-strong); padding: 20px 24px; }
+        .indn-fact .k { font-size: .8rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: .4px; font-family: var(--font-mono); }
+        .indn-fact .v { font-size: 1.1rem; font-weight: 600; margin-top: 4px; word-break: break-all; color: var(--ink-1); }
+        .indn-problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 2rem; }
+        @media (max-width: 860px) { .indn-problem-grid { grid-template-columns: 1fr; } }
+        .indn-disclaimer { background: rgba(248,113,113,.06); border: 1px solid rgba(248,113,113,.25); border-radius: var(--radius-sm); padding: 16px 20px; font-size: .9rem; color: #f6c9c9; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html" class="active">Mobile Apps</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>
+                <svg class="indn-shield" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Indemnity (INDN)
+            </h1>
+            <p>An ERC-20 anti-scam token with escrow-by-default transfers and Kleros dispute resolution</p>
+        </div>
+    </section>
+
+    <section class="product-intro">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-text">
+                    <h2>Payments You Can Dispute. Scams You Can Reverse.</h2>
+                    <p>Indemnity (INDN) is an ERC-20 with a built-in safety net. Payments between wallets sit in on-chain escrow for <strong>7 days</strong> &mdash; if something&rsquo;s wrong, the payer opens a dispute and a decentralized <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">Kleros</a> jury, not us, decides who keeps them. Swaps and transfers involving allowlisted exchange addresses settle instantly, so trading is unaffected.</p>
+                    <p class="results-subtitle" style="margin-top:1rem;">Status: <strong>testnet</strong> &mdash; deployed on Arbitrum Sepolia for live Kleros dispute testing. Mainnet launch pending security audit and Kleros whitelist approval.</p>
+                    <div class="product-stats-row">
+                        <div class="product-stat">
+                            <span class="stat-number">7 days</span>
+                            <span class="stat-label">Escrow window</span>
+                        </div>
+                        <div class="product-stat">
+                            <span class="stat-number">0.25%</span>
+                            <span class="stat-label">Protocol fee (1% hard cap)</span>
+                        </div>
+                        <div class="product-stat">
+                            <span class="stat-number">Kleros</span>
+                            <span class="stat-label">Decentralized arbitration</span>
+                        </div>
+                        <div class="product-stat">
+                            <span class="stat-number">ERC-20</span>
+                            <span class="stat-label">Fully tradeable standard</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://github.com/pgalyen1987/INDN" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Source on GitHub &rarr;</a>
+                        <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-features" id="problem">
+        <div class="container">
+            <h2 class="section-title">The Problem</h2>
+            <p class="results-subtitle">Crypto payments are final. Scammers know it. A single mistake or con is permanent &mdash; no chargeback, no recourse. Indemnity adds the safety net that ordinary tokens lack, without a central company holding your money.</p>
+            <div class="indn-problem-grid">
+                <div class="tech-card-product">
+                    <h4>Irreversible by Default</h4>
+                    <p>Once a normal ERC-20 transfer confirms, there is no undo. A single mistake or con is permanent.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>A Window to React</h4>
+                    <p>Indemnity holds each payment for 7 days. That&rsquo;s your window to catch a scam before the funds are claimable.</p>
+                </div>
+                <div class="tech-card-product">
+                    <h4>Neutral Judgment</h4>
+                    <p>Disputes go to Kleros, a decentralized court of staked, randomly-selected jurors. No company decides &mdash; a jury does.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-deployment" id="how-it-works" style="counter-reset: indn-step;">
+        <div class="container">
+            <h2 class="section-title">How Indemnity Protects a Payment</h2>
+            <p class="results-subtitle">Protection is the default: a transfer to another wallet routes funds through a smart-contract escrow with a built-in 7-day dispute window. DEX swaps and transfers to allowlisted exchange addresses stay instant.</p>
+            <div class="indn-flow">
+                <div class="indn-flow-card">
+                    <h4>Pay Protected</h4>
+                    <p>You send a protected payment. The contract locks the tokens in escrow for that exact recipient for a 7-day dispute window.</p>
+                </div>
+                <div class="indn-flow-card">
+                    <h4>Watch or Dispute</h4>
+                    <p>If all is well, do nothing. If you&rsquo;ve been scammed, open a dispute before the window closes and submit your evidence to Kleros.</p>
+                </div>
+                <div class="indn-flow-card">
+                    <h4>Claim or Resolve</h4>
+                    <p>No dispute? The recipient claims after 7 days. Disputed? A Kleros jury rules, and the contract releases or refunds automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-features" id="kleros">
+        <div class="container">
+            <h2 class="section-title">How Kleros Decides</h2>
+            <p class="results-subtitle">When you hit &ldquo;dispute,&rdquo; Kleros takes over. There&rsquo;s no support desk and no company vote &mdash; a randomly-drawn jury of token-staking peers reviews the evidence and rules.</p>
+            <div class="indn-kleros-steps">
+                <div class="indn-kstep">
+                    <div class="indn-knum">1</div>
+                    <div>
+                        <h4>Staking to Become a Juror</h4>
+                        <p>Anyone can be a Kleros juror. Stake PNK (Pinakion) into a relevant sub-court. The more you stake, the higher your chance of being drawn for a case.</p>
+                    </div>
+                </div>
+                <div class="indn-kstep">
+                    <div class="indn-knum">2</div>
+                    <div>
+                        <h4>Random Selection of the Jury</h4>
+                        <p>Jurors are drawn pseudo-randomly from the relevant sub-court, weighted by PNK stake. Selected jurors receive the case file to review.</p>
+                    </div>
+                </div>
+                <div class="indn-kstep">
+                    <div class="indn-knum">3</div>
+                    <div>
+                        <h4>Reviewing Evidence and Voting</h4>
+                        <p>Each juror independently reviews the evidence and casts a secret vote. Jurors are rewarded for voting coherently &mdash; with the eventual majority &mdash; so they&rsquo;re incentivized to judge honestly.</p>
+                    </div>
+                </div>
+                <div class="indn-kstep">
+                    <div class="indn-knum">4</div>
+                    <div>
+                        <h4>Incentives, Appeal, and the Ruling</h4>
+                        <p>Majority jurors earn fees and PNK from minority jurors whose stake is partially slashed. Either party can appeal to a larger jury. Once final, the contract releases or refunds automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-deployment" id="transparency">
+        <div class="container">
+            <h2 class="section-title">Radical Transparency</h2>
+            <p class="results-subtitle">An anti-scam token that isn&rsquo;t the scam. Here is exactly what the contract does &mdash; and what it will never do.</p>
+            <div class="indn-honest-grid">
+                <div class="indn-honest-card">
+                    <h4>What Indemnity Does</h4>
+                    <ul>
+                        <li><svg class="indn-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Sends tokens to the <strong>exact address you specify</strong> &mdash; held in escrow for that recipient, never silently redirected.</span></li>
+                        <li><svg class="indn-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Reports its <strong>real total supply</strong>. What you see on-chain is what exists.</span></li>
+                        <li><svg class="indn-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Locks the arbitrator address <strong>at deployment</strong> &mdash; no admin can point disputes at a wallet they control later.</span></li>
+                        <li><svg class="indn-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Releases escrow only two ways: the recipient claims after the window, or a <strong>Kleros ruling</strong> decides.</span></li>
+                        <li><svg class="indn-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Takes a <strong>small, capped protocol fee (max 1%)</strong> only on delivered protected payments &mdash; disclosed on-chain, never on exempt transfers, swaps, or refunds.</span></li>
+                        <li><svg class="indn-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Has exactly <strong>one owner power</strong>: allowlisting DEX/exchange addresses for instant settlement. Every change emits a public <code>ExemptionSet</code> event.</span></li>
+                    </ul>
+                </div>
+                <div class="indn-honest-card">
+                    <h4>What It Will Never Do</h4>
+                    <ul>
+                        <li><svg class="indn-cross" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span>Impersonate ETH or any other asset by faking its name or symbol.</span></li>
+                        <li><svg class="indn-cross" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span>Reroute your transfers, approvals, or permits to a hidden hard-coded address.</span></li>
+                        <li><svg class="indn-cross" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span>Give any owner a backdoor to drain, freeze, or seize escrowed funds.</span></li>
+                        <li><svg class="indn-cross" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span>Lie about supply or balances to inflate its apparent value.</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top:1.5rem; font-size:.9rem; color: var(--ink-3);">The source is open. Read <code>contracts/Indemnity.sol</code> and verify every claim above yourself &mdash; that&rsquo;s the point.</p>
+        </div>
+    </section>
+
+    <section class="product-features" id="token">
+        <div class="container">
+            <h2 class="section-title">INDN at a Glance</h2>
+            <p class="results-subtitle">Currently deployed for testing on the Arbitrum Sepolia testnet. Mainnet addresses will be published after audit and Kleros whitelist approval.</p>
+            <div class="indn-facts">
+                <div class="indn-fact"><div class="k">Name</div><div class="v">Indemnity</div></div>
+                <div class="indn-fact"><div class="k">Symbol</div><div class="v">INDN</div></div>
+                <div class="indn-fact"><div class="k">Decimals</div><div class="v">18</div></div>
+                <div class="indn-fact"><div class="k">Dispute Window</div><div class="v">7 days (default for wallet-to-wallet transfers)</div></div>
+                <div class="indn-fact"><div class="k">Protocol Fee</div><div class="v">0.25% on delivered protected payments &middot; 1% hard cap</div></div>
+                <div class="indn-fact"><div class="k">Standard</div><div class="v">ERC-20 &middot; ERC-792 &middot; ERC-1497</div></div>
+                <div class="indn-fact"><div class="k">Arbitrator</div><div class="v">Kleros (production) &mdash; fixed at deploy</div></div>
+                <div class="indn-fact"><div class="k">Network</div><div class="v">Arbitrum Sepolia testnet (pre-launch)</div></div>
+            </div>
+            <div class="indn-disclaimer">
+                <strong>Testnet software &mdash; not financial advice.</strong> Indemnity is an experimental project currently deployed on a test network with no monetary value. The dispute model is an MVP: the payer initiates a dispute by paying the Kleros arbitration fee in ETH (non-refundable, deterring frivolous disputes). A tie or refuse-to-arbitrate ruling refunds the payer in full; a ruling for the receiver releases the payment, net of the protocol fee. If the arbitrator never rules, anyone can return the funds to the payer after a long timeout. The contract is immutable and unpausable. Always read the contract and understand the arbitration terms before relying on it.
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Explore the Code</h2>
+            <p>Indemnity is open source. Read the contract, run the tests, and verify every claim yourself.</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/pgalyen1987/INDN" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                <a href="https://kleros.io" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Learn About Kleros</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
