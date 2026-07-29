@@ -5,13 +5,27 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Jul 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Monetize Your API for AI Agents with x402</title>
+      <link>https://rebelstudiossoftware.com/blog-monetize-api-x402.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-monetize-api-x402.html</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 -0000</pubDate>
+      <description>A practical developer's guide to charging AI agents for your API with x402 — how the 402 handshake works, what a paid endpoint returns, and the fastest way to monetize an API for machine buyers without building billing.</description>
+    </item>
+    <item>
+      <title>Additional Insured &amp;amp; Waiver of Subrogation Explained</title>
+      <link>https://rebelstudiossoftware.com/blog-coi-endorsements.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-coi-endorsements.html</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 -0000</pubDate>
+      <description>A Certificate of Insurance can look perfect and still leave a general contractor exposed. Here's what 'additional insured' and 'waiver of subrogation' actually mean, and why they're the endorsements that decide who pays when a claim hits.</description>
+    </item>
     <item>
       <title>HTTP 402 Payment Required: The Code Powering AI Agent Payments</title>
       <link>https://rebelstudiossoftware.com/blog-http-402.html</link>

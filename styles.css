@@ -2371,6 +2371,19 @@ h1, h2, h3, h4 {
     text-underline-offset: 4px;
 }
 
+.about-expertise a,
+.about-section .service-item a {
+    color: var(--green-bright);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.about-expertise a:hover,
+.about-section .service-item a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 .about-highlights {
     display: flex;
     flex-direction: column;

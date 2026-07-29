@@ -18,6 +18,7 @@ STATIC_PAGES = [
     ("about.html", "2026-06-24", "monthly", "0.8"),
     ("blog.html", "2026-06-24", "weekly", "0.9"),
     ("privacy.html", "2026-06-23", "yearly", "0.3"),
+    ("terms.html", "2026-07-20", "yearly", "0.3"),
     ("research.html", "2026-06-24", "monthly", "0.7"),
 ]
 
