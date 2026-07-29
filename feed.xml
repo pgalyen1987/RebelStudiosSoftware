@@ -5,13 +5,34 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Jul 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>What Does It Cost to Build an App in 2026? An Honest Breakdown</title>
+      <link>https://rebelstudiossoftware.com/blog-app-cost.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-app-cost.html</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 -0000</pubDate>
+      <description>What does it really cost to build a mobile app in 2026? An honest breakdown of the factors that move the price, realistic ranges, the ongoing costs nobody mentions, and how to spend less without building junk.</description>
+    </item>
+    <item>
+      <title>The Subcontractor Onboarding Checklist Every GC Should Steal</title>
+      <link>https://rebelstudiossoftware.com/blog-subcontractor-onboarding.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-subcontractor-onboarding.html</guid>
+      <pubDate>Sat, 25 Jul 2026 00:00:00 -0000</pubDate>
+      <description>A practical subcontractor onboarding checklist for general contractors: the documents to collect, the insurance and compliance to verify, and how to stop the paperwork from bottlenecking your start date.</description>
+    </item>
+    <item>
+      <title>Can Everybody Be Rich? The Barista Problem &amp;amp; the Automation Answer</title>
+      <link>https://rebelstudiossoftware.com/blog-can-everybody-be-rich.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-can-everybody-be-rich.html</guid>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 -0000</pubDate>
+      <description>If everyone woke up with $10 million, who would make the coffee? The barista problem, hyperinflation, and why the only real path to universal wealth runs through automation and a post-scarcity economy.</description>
+    </item>
     <item>
       <title>How to Monetize Your API for AI Agents with x402</title>
       <link>https://rebelstudiossoftware.com/blog-monetize-api-x402.html</link>
