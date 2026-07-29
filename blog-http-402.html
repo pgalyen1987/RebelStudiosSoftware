@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="HTTP 402 Payment Required sat unused in the web's rulebook for 30 years. Now it's the status code letting AI agents pay for APIs per call, with no accounts or keys. Here's how 402 and x402 actually work.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-http-402.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-http-402.html">
+    <meta property="og:title" content="HTTP 402 Payment Required: The Status Code Powering AI Agent Payments">
+    <meta property="og:description" content="The dormant HTTP status code that now lets software pay software per call. How 402 and the x402 protocol turn any API into something an AI agent can pay for — no signup, no keys.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-07-19">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HTTP 402 Payment Required: The Status Code Powering AI Agent Payments">
+    <meta name="twitter:description" content="The dormant status code that now lets software pay software per call. How 402 and x402 turn any API into something an AI agent can pay for.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"HTTP 402 Payment Required: The Status Code Powering AI Agent Payments","description":"The dormant HTTP status code that now lets software pay software per call. How 402 and the x402 protocol turn any API into something an AI agent can pay for.","datePublished":"2026-07-19","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-http-402.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>HTTP 402 Payment Required: The Code Powering AI Agent Payments - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>HTTP 402: Payment Required</h1>
+            <p>The status code that sat unused for 30 years is now how AI agents pay for the web</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">July 19, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/gate402/landing.png" alt="Gate402, an x402 pay-per-call gateway for AI agents" width="1280" height="720" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>Open the official list of HTTP status codes and you&rsquo;ll find the familiar ones: 200 OK, 404 Not Found, 403 Forbidden, 500 for when the server falls over. Tucked among them is a code almost no developer has ever returned on purpose: <strong>402 Payment Required</strong>. For three decades its spec has carried the same quiet note &mdash; <em>&ldquo;reserved for future use.&rdquo;</em></p>
+
+                    <p>That future finally arrived, and it has nothing to do with humans paying for websites. It is about <strong>software paying software</strong>. I spent the last stretch building a payment gateway on top of 402, so here is the plain-English explanation of what it is, why it was dormant for so long, and why AI agents are the reason it woke up.</p>
+
+                    <h2>What 402 Was Supposed to Be</h2>
+
+                    <p>When the web was designed in the early 1990s, its authors anticipated that some resources would cost money. So they reserved a status code for it: a server could answer a request with <code>402 Payment Required</code>, signaling &ldquo;you need to pay before I hand this over.&rdquo; The idea was a native, built-in way to charge for content.</p>
+
+                    <p>It never happened. There was no standard for <em>how</em> the payment attached to the request, no universal digital cash, and no way to move a fraction of a cent without a credit-card network taking a fixed fee that dwarfed the amount. So the web routed around it. Payment became a human ritual &mdash; sign up, save a card, click a button, get a receipt &mdash; and 402 stayed a reserved placeholder for thirty years.</p>
+
+                    <h2>Why It&rsquo;s Waking Up Now</h2>
+
+                    <p>Two things changed at once.</p>
+
+                    <ul class="article-list">
+                        <li><strong>AI agents got good enough to actually do things.</strong> Not just chat &mdash; book, research, compare, fetch, buy. An agent running an errand on your behalf constantly hits resources that cost money: a premium data feed, a paid API, a page behind a paywall.</li>
+                        <li><strong>Stablecoins made micropayments real.</strong> Digital dollars like USDC can move a tenth of a cent across the internet, instantly, without a card network skimming thirty cents off the top. Suddenly the &ldquo;how do you attach payment to a request&rdquo; problem had an answer.</li>
+                    </ul>
+
+                    <p>Put those together and 402 stops being a historical curiosity. An agent requests something that costs money, the server replies <code>402 Payment Required</code> with a small machine-readable invoice, the agent pays automatically in stablecoin, and gets its answer in the same breath. No account, no card form, no human. Milliseconds, not minutes.</p>
+
+                    <h2>How x402 Actually Works</h2>
+
+                    <p>The protocol that fills in the &ldquo;how&rdquo; is called <strong>x402</strong>. The flow is refreshingly simple &mdash; it&rsquo;s just the request/response cycle you already know, with one extra round trip:</p>
+
+                    <div class="article-diagram">1. Agent  ──── GET /v1/premium-data ───▶  Server
+2. Server ──── 402 Payment Required ───▶  Agent
+              (here's the price + where to pay)
+3. Agent  ──── GET /v1/premium-data ───▶  Server
+              (＋ signed payment for the exact amount)
+4. Server ──── 200 OK ＋ the data ─────▶  Agent
+              (payment settles on-chain)</div>
+
+                    <p>The important part: <strong>the agent needs no account and no API key</strong>. It doesn&rsquo;t sign up, doesn&rsquo;t save a card, doesn&rsquo;t get provisioned. It just pays for the exact call it&rsquo;s making, the way you&rsquo;d drop a coin in a machine. For a service provider, that means you can charge per request without running a billing department, a signup flow, or a key-management system.</p>
+
+                    <div class="article-callout">
+                        <h3>Per-sip, not per-subscription</h3>
+                        <p>The old web charges by the month &mdash; you rent access whether you use it once or a thousand times. 402 charges by the sip: a fraction of a cent for the one call you actually make. For an AI agent that needs a paid resource now and then rather than in a constant stream, that&rsquo;s the difference between a sensible bill and a pile of unused subscriptions.</p>
+                    </div>
+
+                    <h2>What You Can Build With It</h2>
+
+                    <p>Once payment is a native part of the request, a few things get much easier:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Monetize an API for machines.</strong> Expose a paid endpoint that any agent can call and pay for instantly &mdash; no developer onboarding, no free-tier abuse, no key rotation.</li>
+                        <li><strong>Charge AI crawlers instead of blocking them.</strong> Rather than fighting bots scraping your content for free, hand them a 402 and let them pay per page.</li>
+                        <li><strong>Give your own agent a budget.</strong> Hand an assistant a small funded wallet and a goal, and let it pay its own way across dozens of services to get the job done.</li>
+                    </ul>
+
+                    <h2>The Honest Caveats</h2>
+
+                    <p>It&rsquo;s real, but it&rsquo;s early. The total volume flowing over 402 today is small &mdash; the rails work, the traffic is a trickle. And an agent that can spend money is a new attack surface: anything that can be tricked into making requests can be tricked into making <em>paid</em> requests, so spending limits and receipts matter from day one. This is &ldquo;the technology works and settles real money&rdquo; territory, not &ldquo;everyone shops this way&rdquo; territory &mdash; yet.</p>
+
+                    <h2>The Takeaway</h2>
+
+                    <p>402 Payment Required waited thirty years for the two things it needed: software smart enough to spend on its own, and money light enough to move a fraction of a cent. Both finally exist. The status code that was &ldquo;reserved for future use&rdquo; turns out to have been reserved for <em>this</em> &mdash; an internet where the buyer is a machine.</p>
+
+                    <p><em>I built <a href="https://gate402.app" target="_blank" rel="noopener noreferrer">gate402</a>, a pay-per-call gateway that fronts paid APIs and settles real x402 micropayments on-chain in under two seconds &mdash; no signup, no keys. If you want to monetize an API for AI agents, or build an agent that can pay its own way, <a href="index.html#contact">that&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="https://gate402.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit gate402 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

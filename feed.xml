@@ -5,13 +5,34 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jul 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>HTTP 402 Payment Required: The Code Powering AI Agent Payments</title>
+      <link>https://rebelstudiossoftware.com/blog-http-402.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-http-402.html</guid>
+      <pubDate>Sun, 19 Jul 2026 00:00:00 -0000</pubDate>
+      <description>HTTP 402 Payment Required sat unused in the web's rulebook for 30 years. Now it's the status code letting AI agents pay for APIs per call, with no accounts or keys. Here's how 402 and x402 actually work.</description>
+    </item>
+    <item>
+      <title>COI Tracking for Contractors: Why the Spreadsheet Fails</title>
+      <link>https://rebelstudiossoftware.com/blog-coi-tracking.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-coi-tracking.html</guid>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 -0000</pubDate>
+      <description>Tracking subcontractor Certificates of Insurance in a spreadsheet quietly exposes general contractors to six-figure liability. Here's what a COI really protects, why manual tracking fails, and what to automate.</description>
+    </item>
+    <item>
+      <title>The Digital Lingua Franca: AI, English Dominance &amp;amp; Model Bias</title>
+      <link>https://rebelstudiossoftware.com/blog-lingua-franca.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-lingua-franca.html</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 -0000</pubDate>
+      <description>AI promises to dissolve language barriers, yet it quietly deepens English's grip on the internet. A look at data hegemony, the token tax, and cultural bias baked into every large language model.</description>
+    </item>
     <item>
       <title>Getting AI Agents Past Cloudflare (Honestly)</title>
       <link>https://rebelstudiossoftware.com/blog-cloudflare-ai-agents.html</link>
