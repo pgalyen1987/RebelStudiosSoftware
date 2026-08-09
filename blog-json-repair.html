@@ -71,40 +71,68 @@
 
                 <div class="article-content">
 
-                    <p>Valid JSON is strict. Humans and language models are not. You end up with a blob that is <em>almost</em> JSON: a trailing comma after the last property, single quotes instead of double, a comment someone swore was fine, an object cut off mid-stream.</p>
+                    <p>Valid JSON is strict. Humans and language models are not. You end up with a blob that is <em>almost</em> JSON: a trailing comma after the last property, single quotes instead of double, a comment someone swore was fine, an object cut off mid-stream. <code>JSON.parse</code> throws, your pipeline stops, and you are staring at a bracket-counting exercise on a deadline.</p>
 
-                    <p><code>JSON.parse</code> throws. Your pipeline stops. The fix is usually mechanical &mdash; if you can stand to stare at brackets long enough.</p>
+                    <p>This guide walks through the errors you actually hit, how to fix each one by hand, the libraries that automate it, and why LLM output breaks in its own special ways. At the end there&rsquo;s a one-call option for when you&rsquo;d rather not maintain a repair function forever.</p>
 
-                    <h2>The Usual Breakage</h2>
+                    <h2>The Six Ways JSON Breaks (and the Fix for Each)</h2>
 
+                    <h3>1. Trailing commas</h3>
+                    <p>The single most common one. JSON &mdash; unlike JavaScript &mdash; forbids a comma after the last element.</p>
+                    <pre class="article-code"><code>{ "a": 1, "b": 2, }      // ✗ invalid
+{ "a": 1, "b": 2 }       // ✓ fixed</code></pre>
+                    <p><strong>Fix:</strong> delete the comma before every <code>}</code> and <code>]</code>. A regex like <code>/,(\s*[}\]])/g</code> → <code>$1</code> handles it in bulk.</p>
+
+                    <h3>2. Single quotes and smart quotes</h3>
+                    <p>JSON strings must use straight double quotes. Copy from Word, Slack, or Notion and you often get curly &ldquo;smart&rdquo; quotes; write it like JavaScript and you get single quotes.</p>
+                    <pre class="article-code"><code>{ 'name': 'Ada' }        // ✗ single quotes
+{ &ldquo;name&rdquo;: &ldquo;Ada&rdquo; }        // ✗ smart quotes
+{ "name": "Ada" }        // ✓ straight double quotes</code></pre>
+                    <p><strong>Fix:</strong> replace <code>&lsquo; &rsquo; &ldquo; &rdquo;</code> with <code>"</code>, but be careful not to clobber apostrophes <em>inside</em> string values &mdash; which is exactly why a real parser beats a blind find-and-replace.</p>
+
+                    <h3>3. Unquoted keys</h3>
+                    <pre class="article-code"><code>{ name: "Ada" }          // ✗ key not quoted
+{ "name": "Ada" }        // ✓</code></pre>
+                    <p><strong>Fix:</strong> quote every key. This is valid JavaScript and valid <a href="https://json5.org" target="_blank" rel="noopener noreferrer">JSON5</a>, but not valid JSON.</p>
+
+                    <h3>4. Comments</h3>
+                    <p>JSON has no comments. A <code>// like this</code> or <code>/* like this */</code> anywhere in the payload is a hard error. <strong>Fix:</strong> strip them &mdash; but not if the <code>//</code> lives inside a URL string, another parser-vs-regex trap.</p>
+
+                    <h3>5. Truncated / cut-off output</h3>
+                    <p>The classic LLM failure: the model hit its token limit mid-object and the string just&hellip; stops. <strong>Fix:</strong> close the open brackets, or (better) re-request with a higher <code>max_tokens</code>. Repair can only guess at data that was never generated.</p>
+
+                    <h3>6. Prose wrapped around the JSON</h3>
+                    <p>&ldquo;Sure! Here is your JSON:&rdquo; followed by a fenced code block. <strong>Fix:</strong> extract the substring between the first <code>{</code> (or <code>[</code>) and its matching close, and discard the rest.</p>
+
+                    <h2>Don&rsquo;t Hand-Roll It: The Tools That Do This</h2>
+                    <p>For anything beyond a one-off, use a library built for lenient parsing instead of a stack of regexes:</p>
                     <ul class="article-list">
-                        <li>Trailing commas in objects/arrays</li>
-                        <li>Smart quotes from Word or Slack (<code>&ldquo;&rdquo;</code> instead of <code>&quot;&quot;</code>)</li>
-                        <li>Unquoted keys</li>
-                        <li>Ellipsis leftovers (<code>...</code>) from truncated model output</li>
-                        <li>Concatenated JSON values with junk text before/after</li>
+                        <li><strong>JavaScript / TypeScript:</strong> the <code>jsonrepair</code> npm package, or parse as <a href="https://json5.org" target="_blank" rel="noopener noreferrer">JSON5</a> which natively allows comments, trailing commas, and unquoted keys.</li>
+                        <li><strong>Python:</strong> the <code>json-repair</code> package, or <code>demjson3</code> for forgiving parsing.</li>
+                        <li><strong>Command line:</strong> <code>jq</code> won&rsquo;t fix malformed input, but it&rsquo;s the fastest way to validate and pretty-print once the syntax is clean.</li>
                     </ul>
 
-                    <h2>Manual Triage</h2>
-
-                    <p>Paste into a formatter. Read the error line number. Fix the first syntax error; re-parse; repeat. For small payloads that works. For agent loops that emit broken JSON every third call, you want a function, not a ritual.</p>
+                    <h2>Why LLM JSON Breaks Differently</h2>
+                    <p>Language models generate JSON token by token with no guarantee the result parses. They over-run their token budget, wrap output in explanation, escape strings inconsistently, and occasionally invent a trailing comment. The durable fix is upstream: use your model&rsquo;s <strong>structured-output or JSON mode</strong> (constrained decoding), which forces syntactically valid output at generation time. Repair is the safety net for when you can&rsquo;t control the generator &mdash; a third-party API, an older model, a tool you don&rsquo;t own.</p>
 
                     <div class="article-callout">
-                        <h3>JSON repair as a $1 / x402 utility</h3>
-                        <p><a href="tools/json-repair.html">JSON repairer</a> takes the broken string and returns valid JSON when repair is possible. Humans can pay $1 per call in the browser. Agents should call <code>POST https://gate402.app/v1/json-repair</code>, handle the <code>402</code>, pay, and retry &mdash; the same pattern as the rest of the <a href="tools/index.html">Gate402 utility set</a>.</p>
+                        <h3>Repair JSON as a $1 / x402 call</h3>
+                        <p>When you&rsquo;d rather call an endpoint than maintain a repair function, <a href="tools/json-repair.html">JSON repairer</a> takes the broken string and returns valid JSON when repair is possible. Humans pay $1 per call in the browser; agents call <code>POST https://gate402.app/v1/json-repair</code>, handle the <code>402 Payment Required</code>, pay, and retry &mdash; the same pattern across the whole <a href="tools/index.html">Gate402 utility set</a>. Handy inside an agent loop that emits broken JSON every few calls and needs to self-heal without a human.</p>
                     </div>
 
                     <h2>When Repair Is the Wrong Tool</h2>
+                    <p>If the model omitted half the schema, &ldquo;repair&rdquo; may invent structure you should not trust. Prefer repair for <em>syntax</em> damage, then always <strong>validate against your schema</strong> (JSON Schema, Zod, Pydantic) afterward. Garbage semantics &mdash; missing required fields, wrong types &mdash; need a better prompt or structured output, not a syntax patch.</p>
 
-                    <p>If the model omitted half the schema, &ldquo;repair&rdquo; may invent structure you should not trust. Prefer repair for <em>syntax</em> damage, then validate against your schema. Garbage semantics still need a better prompt or a structured-output mode.</p>
-
-                    <h2>Pair It With CSV Cleanup</h2>
-
-                    <p>Data wrangling often arrives as CSV that needs to become JSON (or the reverse). That is a separate $1 tool: <a href="tools/csv-json.html">CSV ↔ JSON</a>.</p>
+                    <h2>FAQ</h2>
+                    <h3>Is repaired JSON safe to trust?</h3>
+                    <p>For syntax fixes (commas, quotes, brackets), yes. For truncated or semantically incomplete data, no &mdash; validate against a schema before you rely on it.</p>
+                    <h3>How do I stop the LLM producing broken JSON in the first place?</h3>
+                    <p>Use the provider&rsquo;s structured-output / JSON mode, give it a schema, and set a <code>max_tokens</code> high enough that it doesn&rsquo;t truncate.</p>
+                    <h3>What about CSV that needs to become JSON?</h3>
+                    <p>Different job &mdash; that&rsquo;s the <a href="tools/csv-json.html">CSV ↔ JSON</a> tool.</p>
 
                     <h2>The Takeaway</h2>
-
-                    <p>Do not hand-edit trailing commas in a production agent path. Automate the syntax salvage, validate the result, move on. <a href="tools/json-repair.html">Repair JSON for $1</a> when you want that as a product instead of a gist you maintain forever.</p>
+                    <p>Don&rsquo;t hand-edit trailing commas in a production agent path. Fix the generator where you can (structured output), use a real lenient parser where you can&rsquo;t, and validate the result against a schema before trusting it. When you want that as an endpoint instead of a gist you maintain forever, <a href="tools/json-repair.html">repair JSON for $1</a> &mdash; or over x402 for agents.</p>
 
                 </div>
 

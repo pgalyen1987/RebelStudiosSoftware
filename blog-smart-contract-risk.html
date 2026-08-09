@@ -71,42 +71,54 @@
 
                 <div class="article-content">
 
-                    <p>Someone drops a contract address in a group chat. The chart looks alive. The site looks polished. Your wallet is one <code>approve</code> away from finding out whether you can sell.</p>
+                    <p>Someone drops a contract address in a group chat. The chart looks alive. The site looks polished. Your wallet is one <code>approve</code> away from finding out whether you can actually sell.</p>
 
-                    <p>&ldquo;Is this safe?&rdquo; is the wrong question if you expect a guarantee. The useful question is: <strong>what does a cheap, automated pass/fail look like before I size a position?</strong></p>
+                    <p><em>Nothing here is financial advice &mdash; it&rsquo;s a risk-triage checklist.</em> &ldquo;Is this safe?&rdquo; is the wrong question if you expect a guarantee. The useful question is: <strong>what does a cheap, automated pass/fail look like before I size a position or sign an approval?</strong> Here&rsquo;s what to check, what each check actually catches, and where automated scans fall short.</p>
 
-                    <h2>What a Risk Scorecard Should Include</h2>
+                    <h2>The Checks That Matter (and What Each Catches)</h2>
 
-                    <ul class="article-list">
-                        <li><strong>Honeypot / sell simulation</strong> &mdash; can a buy be sold in a simulator, and at what tax?</li>
-                        <li><strong>Liquidity depth</strong> &mdash; can you exit without nuking the pool?</li>
-                        <li><strong>Holder concentration</strong> &mdash; can one wallet dump the float?</li>
-                        <li><strong>Pool age &amp; venue diversity</strong> &mdash; brand-new single-DEX pools are a different animal than multi-venue majors</li>
-                        <li><strong>Basic ERC-20 sanity</strong> &mdash; is it even a token contract?</li>
-                    </ul>
+                    <h3>Honeypot / sell simulation</h3>
+                    <p>The nastiest scam: you can <em>buy</em> the token but the contract blocks <em>selling</em> for everyone except the deployer. A simulation runs a buy-then-sell in a fork and reports whether the sell succeeds, and at what tax. If a buy goes through but the simulated sell reverts, that&rsquo;s a honeypot &mdash; walk away.</p>
 
-                    <p>None of that replaces reading the source, understanding the team, or refusing meme coins entirely. It does replace &ldquo;I glanced at the chart.&rdquo;</p>
+                    <h3>Buy/sell tax</h3>
+                    <p>Some tokens skim a percentage on every trade. A 5% tax is a design choice; a 40% sell tax (or one the owner can raise to 100% after you buy) is a slow-motion rug. Check both the current tax and whether the owner can <em>change</em> it.</p>
+
+                    <h3>Liquidity depth and lock</h3>
+                    <p>Can you exit without collapsing the pool? Thin liquidity means your own sell tanks the price. Worse is unlocked liquidity: if the LP tokens aren&rsquo;t locked or burned, the deployer can pull the entire pool &mdash; the classic &ldquo;rug pull&rdquo; &mdash; and leave you holding a token with nothing to sell it against.</p>
+
+                    <h3>Holder concentration</h3>
+                    <p>If one or two wallets (that aren&rsquo;t the locked LP or a known bridge) hold most of the supply, they can dump the float on you at any moment. Widely distributed supply is safer than a chart that looks great because nobody has sold yet.</p>
+
+                    <h3>Contract permissions</h3>
+                    <p>Read what the owner <em>can</em> do: mint new supply, pause transfers, blacklist addresses, or modify tax. A renounced owner can&rsquo;t rug via these; an owner who kept mint rights can dilute you to zero.</p>
+
+                    <h3>Basic ERC-20 sanity</h3>
+                    <p>Is it even a standard token contract, or a look-alike with a modified transfer function? A verified source on the block explorer is table stakes &mdash; unverified contracts hide their logic for a reason.</p>
 
                     <div class="article-callout">
                         <h3>$1 contract scan (Base)</h3>
-                        <p><a href="tools/contract-scan.html">Contract risk scanner</a> returns a 0&ndash;100 risk score, a SAFE / CAUTION / AVOID-style verdict, and a check table (honeypot, taxes, liquidity, holders). Humans pay $1 with a card; agents call the same <code>/v1/contract-scan</code> endpoint over x402 when they encounter an unknown token mid-flow.</p>
+                        <p><a href="tools/contract-scan.html">Contract risk scanner</a> runs those checks and returns a 0&ndash;100 risk score, a SAFE / CAUTION / AVOID-style verdict, and a table (honeypot, taxes, liquidity, holders, permissions). Humans pay $1 with a card; agents call the same <code>POST /v1/contract-scan</code> endpoint over x402 when they hit an unknown token mid-flow and need a structured verdict, not a browser tab.</p>
                     </div>
 
-                    <h2>How Agents Change the Workflow</h2>
+                    <h2>The <code>approve</code> Trap Nobody Warns You About</h2>
+                    <p>Even a legitimate token can drain you through approvals. When you approve a dapp to spend your tokens, many request an <strong>unlimited</strong> allowance. If that dapp (or a contract it trusts) is later compromised, the attacker can move your full balance &mdash; no further signature needed. Two habits: approve only the amount you&rsquo;re actually transacting, and periodically <strong>revoke</strong> stale allowances with a tool like Revoke.cash or your wallet&rsquo;s built-in allowance manager.</p>
 
-                    <p>A trading agent cannot open ten browser tabs. It can, however, hit a paid endpoint, get a structured JSON risk object, and decide whether to proceed. That is why this utility is dual-rail: card for people, <a href="blog-http-402.html">HTTP 402</a> for machines.</p>
+                    <h2>How Agents Change the Workflow</h2>
+                    <p>A trading or research agent can&rsquo;t open ten browser tabs and eyeball a chart. It can hit a paid endpoint, get a structured JSON risk object, and branch on it &mdash; proceed, flag, or refuse. That&rsquo;s why this utility is dual-rail: card for people, <a href="blog-http-402.html">HTTP 402 / x402</a> for machines, so an agent can pay a cent-scale fee to vet a token before it ever signs a transaction.</p>
 
                     <h2>Limits You Should Expect</h2>
+                    <p>Automated scans are a filter, not insurance. Simulators can be fooled by contracts that behave differently under real conditions. Indexers lag, so a brand-new pool may be under-reported. LP and treasury wallets can look like whales. A green check removes the <em>obvious</em> garbage so you can spend real attention on what survives &mdash; it does not replace reading the source, knowing the team, or simply refusing tokens you can&rsquo;t evaluate.</p>
 
-                    <p>Simulators lie sometimes. Indexers lag. LP wallets look like whales. A green check is not insurance. Treat automated scans as a filter that removes the obvious garbage so you can spend attention on what remains.</p>
-
-                    <h2>Related Developer Utility</h2>
-
-                    <p>If you already have calldata and need to know what function it calls, use the <a href="tools/abi-decode.html">ABI decoder</a> &mdash; also $1 per call.</p>
+                    <h2>FAQ</h2>
+                    <h3>Does a good score mean it&rsquo;s safe to buy?</h3>
+                    <p>No. It means it passed automated checks for known scam patterns. Rug mechanics evolve; treat the score as one input, not a verdict.</p>
+                    <h3>What&rsquo;s the difference between a honeypot and a rug pull?</h3>
+                    <p>A honeypot blocks you from selling from the start. A rug pull lets you buy and sell normally until the team removes liquidity or dumps supply. Different mechanisms, same outcome for you.</p>
+                    <h3>I have raw calldata, not a token &mdash; what does it do?</h3>
+                    <p>Decode it first with the <a href="tools/abi-decode.html">ABI decoder</a> ($1) to see the function and arguments before you sign.</p>
 
                     <h2>The Takeaway</h2>
-
-                    <p>Safety is a stack of imperfect signals. Automate the cheap ones. Start with a <a href="tools/contract-scan.html">$1 scan</a>, and keep the rest of the <a href="tools/index.html">crypto utilities</a> handy for agents and humans alike.</p>
+                    <p>Safety on-chain is a stack of imperfect signals: sellability, tax, liquidity lock, holder spread, owner permissions, and the approvals you&rsquo;ve already signed. Automate the cheap ones so your attention goes to the judgment calls. Start with a <a href="tools/contract-scan.html">$1 scan</a>, and keep the rest of the <a href="tools/index.html">crypto utilities</a> handy &mdash; for agents and humans alike.</p>
 
                 </div>
 

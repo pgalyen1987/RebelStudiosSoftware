@@ -71,43 +71,58 @@
 
                 <div class="article-content">
 
-                    <p>&ldquo;Upload failed.&rdquo; &ldquo;Invalid file.&rdquo; &ldquo;Please try again.&rdquo; The message almost never tells you what rule you broke. You are left reverse-engineering a black box while a deadline ticks.</p>
+                    <p>&ldquo;Upload failed.&rdquo; &ldquo;Invalid file.&rdquo; &ldquo;Please try again.&rdquo; The message almost never tells you which rule you broke. You&rsquo;re left reverse-engineering a black box while a deadline ticks &mdash; a job portal, a passport renewal, a DMV form, a benefits application that only accepts one mystery combination of format, size, and dimensions.</p>
 
-                    <p>After enough of these, the pattern is boringly consistent. Portals reject files for three reasons.</p>
+                    <p>After enough of these, the pattern is boringly consistent. Portals reject files for three reasons, sometimes all at once. Here&rsquo;s how to diagnose which one you hit, fix it, and stop it happening next time.</p>
 
                     <h2>1. Wrong Format</h2>
-
-                    <p>Allow-lists are short: JPG, PNG, sometimes PDF. Your iPhone sent <strong>HEIC</strong>. Your screenshot is a TIFF. Your scan is a WebP the validator has never heard of. Fix: convert to the allowed type. Start with <a href="tools/heic-to-jpg.html">HEIC → JPG</a> if the source is an iPhone photo.</p>
+                    <p>Allow-lists are short: JPG, PNG, sometimes PDF. Your iPhone sent <strong>HEIC</strong>. Your screenshot saved as TIFF. Your scan is a WebP the validator has never heard of. The file looks fine on your screen because your OS renders it &mdash; the portal just refuses the extension.</p>
+                    <p><strong>Fix:</strong> convert to an allowed type. If the source is an iPhone photo, start with <a href="tools/heic-to-jpg.html">HEIC → JPG</a>. For anything else, re-save as JPG (photos) or PNG (screenshots, graphics with text).</p>
 
                     <h2>2. Too Large</h2>
-
-                    <p>The cap might be 500 KB, 2 MB, or 5 MB. Your camera roll does not care. Fix: recompress under the number &mdash; see <a href="blog-file-too-large.html">how to get under 5 MB</a> or run <a href="tools/under-mb.html">Under-X MB</a>.</p>
+                    <p>The cap might be 500 KB, 2 MB, or 5 MB. A modern phone photo is 3&ndash;12 MB before you&rsquo;ve done anything. Government and banking portals in particular love a tiny cap they never surface clearly.</p>
+                    <p><strong>Fix:</strong> recompress under the number without dropping to unreadable quality &mdash; see <a href="blog-file-too-large.html">how to get a file under 5 MB</a>, or run <a href="tools/under-mb.html">Under-X MB</a> and give it the exact ceiling.</p>
 
                     <h2>3. Wrong Dimensions</h2>
+                    <p>Identity and profile uploads often demand exact pixels: 600&times;600, 2&times;2 inches at 300 DPI, &ldquo;square only,&rdquo; &ldquo;head fills 50&ndash;70% of frame.&rdquo; A correct format <em>and</em> size can still fail if width and height are wrong &mdash; this is the one that produces the most baffled retries, because the file &ldquo;looks right.&rdquo;</p>
+                    <p><strong>Fix:</strong> resize to the exact required dimensions with <a href="tools/image-fit.html">exact image fit</a>.</p>
 
-                    <p>Passport and profile uploads often want exact pixels: 600&times;600, 2&times;2 inches at 300 DPI, &ldquo;square only.&rdquo; A correct format and size still fails if width/height are wrong. Fix: <a href="tools/image-fit.html">exact image fit</a>.</p>
-
-                    <div class="article-callout">
-                        <h3>UploadFix = all three gates</h3>
-                        <p><a href="tools/uploadfix.html">UploadFix</a> is the umbrella tool: tell it the target (DMV, passport, LinkedIn, or custom max MB / width / height), pay $1, get a file that matches. Built for the moment you do not want three separate converters.</p>
-                    </div>
-
-                    <h2>How to Diagnose Faster Next Time</h2>
-
+                    <h2>Decoding the Common Rejection Messages</h2>
+                    <p>The error text is vague on purpose (or by neglect). Here&rsquo;s what each usually means:</p>
                     <ul class="article-list">
-                        <li>Read the help text under the upload box &mdash; the rules are often there in gray 11px font</li>
-                        <li>Check the file extension and size on disk before you retry</li>
-                        <li>If the site mentions &ldquo;photo,&rdquo; assume JPG under a few MB until proven otherwise</li>
-                        <li>For identity docs, expect both size <em>and</em> aspect-ratio rules</li>
+                        <li><strong>&ldquo;Invalid file type&rdquo;</strong> &rarr; format problem (#1). Check the extension, not how it looks.</li>
+                        <li><strong>&ldquo;File exceeds maximum size&rdquo; / &ldquo;too large&rdquo;</strong> &rarr; size problem (#2). Recompress.</li>
+                        <li><strong>&ldquo;Image does not meet requirements&rdquo; / &ldquo;photo not accepted&rdquo;</strong> &rarr; almost always dimensions or aspect ratio (#3).</li>
+                        <li><strong>&ldquo;Upload failed, try again&rdquo;</strong> with no detail &rarr; could be any of the three, or a flaky connection. Check size and format first; they&rsquo;re the cheapest to rule out.</li>
                     </ul>
 
-                    <h2>Privacy Aside</h2>
+                    <h2>Known Requirements for Common Portals</h2>
+                    <ul class="article-list">
+                        <li><strong>US passport photo:</strong> 2&times;2 inches, 600&times;600 to 1200&times;1200 px, JPG, under ~10 MB, white background.</li>
+                        <li><strong>Most DMV / license portals:</strong> JPG or PNG, a few MB max, often a specific aspect ratio.</li>
+                        <li><strong>LinkedIn profile photo:</strong> JPG/PNG/GIF, up to 8 MB, square, at least 400&times;400.</li>
+                        <li><strong>Job-application / ATS resume uploads:</strong> usually PDF or DOCX, a few MB &mdash; and the parser cares about the <em>text</em>, not just the file (see the <a href="tools/ats-resume.html">ATS resume fixer</a>).</li>
+                    </ul>
+                    <p>Always confirm against the site&rsquo;s own instructions &mdash; requirements change &mdash; but these cover the majority of &ldquo;why won&rsquo;t it accept my photo&rdquo; cases.</p>
 
-                    <p>Phone photos carry GPS and device metadata. Before you send an ID selfie to a stranger&rsquo;s portal, consider stripping EXIF with the <a href="tools/metadata-strip.html">privacy cleaner</a>.</p>
+                    <div class="article-callout">
+                        <h3>UploadFix handles all three gates at once</h3>
+                        <p><a href="tools/uploadfix.html">UploadFix</a> is the umbrella tool: pick the target (DMV, passport, LinkedIn, or a custom max MB / width / height), pay $1, and get back a file that satisfies format, size, and dimensions together &mdash; instead of running three separate converters and re-checking. Agents can hit the same operation over x402; humans just upload and pay.</p>
+                    </div>
+
+                    <h2>Diagnose Faster Next Time</h2>
+                    <ul class="article-list">
+                        <li>Read the fine print under the upload box &mdash; the rules are usually there in gray 11px type.</li>
+                        <li>Check the extension and size on disk <em>before</em> you retry, not after.</li>
+                        <li>If the site says &ldquo;photo,&rdquo; assume JPG under a few MB until proven otherwise.</li>
+                        <li>For any identity document, expect both a size cap <em>and</em> an aspect-ratio rule.</li>
+                    </ul>
+
+                    <h2>One Privacy Note Before You Upload an ID</h2>
+                    <p>Phone photos carry GPS coordinates and device metadata in their EXIF headers. Before you send an ID selfie or a document photo to a stranger&rsquo;s portal, strip that metadata with the <a href="tools/metadata-strip.html">privacy cleaner</a> &mdash; the portal doesn&rsquo;t need to know where you were standing.</p>
 
                     <h2>The Takeaway</h2>
-
-                    <p>Rejection is usually not mysterious &mdash; it is a checklist the UI forgot to print. Run the checklist once with <a href="tools/uploadfix.html">UploadFix</a>, or pick a specific tool from the <a href="tools/index.html">$1 catalog</a>.</p>
+                    <p>Rejection is rarely mysterious &mdash; it&rsquo;s a checklist the UI forgot to print: right format, under the size cap, correct dimensions. Rule the three out in that order. Run the whole checklist at once with <a href="tools/uploadfix.html">UploadFix</a>, or grab the single tool you need from the <a href="tools/index.html">$1 catalog</a>.</p>
 
                 </div>
 

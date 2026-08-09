@@ -71,37 +71,39 @@
 
                 <div class="article-content">
 
-                    <p>Most &ldquo;free tools&rdquo; are not free. They are lead magnets: email gates, watermarked downloads, usage meters that flip to a $12/month plan the moment you need a second file.</p>
+                    <p>Most &ldquo;free tools&rdquo; are not free. They&rsquo;re lead magnets: email gates, watermarked downloads, a &ldquo;3 free conversions&rdquo; meter that flips to $12/month the moment you need a fourth file, and a homepage buried under ad units and cookie walls. You came to shrink one photo; you leave having created an account.</p>
 
-                    <p>We took the opposite bet with the Rebel Studios <a href="tools/index.html">$1 tools</a> catalog: <strong>show the price, charge once, deliver the file or the JSON, stop talking.</strong></p>
+                    <p>We took the opposite bet with the Rebel Studios <a href="tools/index.html">$1 tools</a> catalog: <strong>show the price, charge once, deliver the file or the JSON, stop talking.</strong> No account, no subscription, no upsell ladder. Here&rsquo;s the reasoning, because the price is the product decision.</p>
 
-                    <h2>Why $1</h2>
-
-                    <p>One dollar clears the psychological bar for &ldquo;this is worth not fighting with free junk&rdquo; while staying above the ~$0.50 floor of card networks. It is also large enough that we can afford real compute (HEIC decode, image recompress, on-chain risk checks) without needing a subscription to amortize costs.</p>
-
-                    <h2>Two Buyers, One Endpoint</h2>
-
-                    <p>Humans want a button and a card form. AI agents want an HTTP status code and a machine-readable invoice. Those are not two products &mdash; they are two payment rails on the same utility:</p>
-
+                    <h2>Why Exactly $1?</h2>
+                    <p>The number isn&rsquo;t arbitrary. It sits in a specific sweet spot:</p>
                     <ul class="article-list">
-                        <li><strong>Humans</strong> &mdash; open the tool page, pay $1, download the result (via <a href="https://gate402.app/tools" target="_blank" rel="noopener noreferrer">gate402.app/tools</a>)</li>
-                        <li><strong>Agents</strong> &mdash; <code>POST</code> the API, receive <code>402 Payment Required</code>, pay in USDC via x402, retry, get JSON</li>
+                        <li><strong>Above the card-network floor.</strong> Card processors take a fixed fee plus a percentage on every transaction &mdash; on a 10&cent; charge, fees eat most of it. A dollar is small enough to be impulse-cheap and large enough that the transaction actually clears a margin.</li>
+                        <li><strong>Below the &ldquo;do I need approval&rdquo; line.</strong> A dollar is a decision you make alone in five seconds. It never becomes a budget conversation, which is exactly what a subscription becomes.</li>
+                        <li><strong>Enough to fund real compute.</strong> HEIC decoding, image recompression, OCR, on-chain risk checks &mdash; these cost real CPU and API calls. A dollar per use pays for the work without needing a subscription to amortize it across files you&rsquo;ll never convert.</li>
                     </ul>
 
-                    <p>If you want the protocol deep-dive, read <a href="blog-http-402.html">HTTP 402 Payment Required</a> and the <a href="blog-monetize-api-x402.html">practical x402 monetization guide</a>.</p>
+                    <h2>When Free Is Fine &mdash; and When $1 Isn&rsquo;t</h2>
+                    <p>We&rsquo;ll say the quiet part out loud: if you convert one HEIC a year, a free site is fine, ads and all. The $1 model is for the other moments &mdash; a deadline, a portal rejecting your file for the fourth time, a document with private metadata you don&rsquo;t want to hand a random ad-funded server, or a batch where the free tool&rsquo;s daily limit just kicked in. You&rsquo;re not paying for the conversion; you&rsquo;re paying to be done in one step with no account and no catch.</p>
 
-                    <h2>What Is Live vs Coming Soon</h2>
+                    <h2>Two Buyers, One Endpoint</h2>
+                    <p>Humans want a button and a card form. AI agents want an HTTP status code and a machine-readable invoice. Those aren&rsquo;t two products &mdash; they&rsquo;re two payment rails on the same utility:</p>
+                    <ul class="article-list">
+                        <li><strong>Humans</strong> &mdash; open the tool page, pay $1 by card, download the result (via <a href="https://gate402.app/tools" target="_blank" rel="noopener noreferrer">gate402.app/tools</a>).</li>
+                        <li><strong>Agents</strong> &mdash; <code>POST</code> the endpoint, receive <code>402 Payment Required</code>, pay in USDC via x402, retry, get JSON &mdash; no signup, no API key.</li>
+                    </ul>
+                    <p>This is the part that makes it more than a converter site. The same engine serves the human web (people searching &ldquo;heic to jpg&rdquo;) and the emerging agent web (autonomous programs that need a capability mid-task and can pay for it per call). For the protocol details, see <a href="blog-http-402.html">HTTP 402 Payment Required</a> and the <a href="blog-monetize-api-x402.html">practical x402 monetization guide</a>.</p>
 
-                    <p>Live today: upload fixing, HEIC→JPG, under-X MB, exact image fit, metadata strip, JSON repair, CSV↔JSON, Base contract scan, ABI decode. The heavier document/AI tools (ATS resume, fillable PDF, OCR, etc.) are listed at the same $1 price so the catalog is honest about directionality &mdash; we do not fake a checkout on vaporware.</p>
+                    <h2>Honest About What&rsquo;s Live</h2>
+                    <p>Live and processing today: <a href="tools/uploadfix.html">upload fixing</a>, <a href="tools/heic-to-jpg.html">HEIC→JPG</a>, <a href="tools/under-mb.html">under-X MB</a>, <a href="tools/image-fit.html">exact image fit</a>, <a href="tools/metadata-strip.html">metadata strip</a>, <a href="tools/json-repair.html">JSON repair</a>, <a href="tools/csv-json.html">CSV↔JSON</a>, <a href="tools/contract-scan.html">Base contract scan</a>, and <a href="tools/abi-decode.html">ABI decode</a>. The heavier document and AI tools (ATS resume, fillable PDF, OCR) sit at the same $1 price as we bring each online &mdash; you&rsquo;ll always see the price before you pay, and you&rsquo;re never charged for something that isn&rsquo;t ready.</p>
 
                     <div class="article-callout">
-                        <h3>SEO is the acquisition layer</h3>
-                        <p>People search &ldquo;heic to jpg&rdquo; and &ldquo;file too large 5 MB.&rdquo; Agents search catalogs and <code>x402.json</code>. The human web and the agent web can share one utility engine. That is the point of wiring Rebel Studios pages to Gate402 endpoints.</p>
+                        <h3>No subscription, no account, no watermark</h3>
+                        <p>Every tool is one price, one use, one download. If a tool can&rsquo;t do your specific file, you&rsquo;ll know before you pay. That&rsquo;s the whole contract &mdash; the opposite of the free-tool bait-and-switch.</p>
                     </div>
 
                     <h2>The Takeaway</h2>
-
-                    <p>If a problem is worth five minutes of rage, it is worth a dollar. Browse the <a href="tools/index.html">tools hub</a>, pick the pain you have, pay once. If you are building an agent that needs the same capability, hit the endpoint on the tool page and bring a wallet that speaks 402.</p>
+                    <p>If a problem is worth five minutes of rage, it&rsquo;s worth a dollar to make it disappear cleanly. Browse the <a href="tools/index.html">tools hub</a>, pick the pain you actually have, and pay once. And if you&rsquo;re building an agent that needs the same capability, the endpoint is right there on each tool page &mdash; bring a wallet that speaks 402.</p>
 
                 </div>
 
