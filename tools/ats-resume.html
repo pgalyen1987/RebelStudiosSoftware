@@ -50,11 +50,12 @@
     <section class="page-header tool-page-header">
         <div class="container">
             <span class="tool-price-chip">$1 / use</span>
-            <span class="tool-soon-badge">Soon</span>
+            <span class="tool-live-badge">Live</span>
             <h1>ATS resume fixer</h1>
             <p>Your resume scores poorly for ATS. Fix the keywords and layout.</p>
             <div class="tool-cta-row">
-                        <span class="btn btn-secondary" style="opacity:.6;cursor:not-allowed" aria-disabled="true">Coming soon &mdash; not yet purchasable</span>
+                        <a class="btn btn-primary" href="https://gate402.app/tools/ats-resume">Pay $1 with card →</a>
+                        <a class="btn btn-secondary" href="#agent-endpoint">Agent x402 endpoint</a>
                     </div>
         </div>
     </section>
@@ -69,7 +70,7 @@
 
 <section class="tool-agent" id="agent-endpoint">
             <div class="container">
-                <h2>Agent endpoint <span style="font-size:0.7em;opacity:0.7">(coming soon)</span></h2>
+                <h2>Agent endpoint</h2>
                 <p>Same utility over HTTP 402 / x402. Unpaid calls return <code>402 Payment Required</code>.</p>
                 <pre class="tool-endpoint">POST https://gate402.app/v1/ats-resume</pre>
                 <p class="tool-agent-note">Pay with <code>PAYMENT-SIGNATURE</code> / <code>X-PAYMENT</code>, Stripe MPP (<code>Authorization: Payment</code>), or <code>X-API-Key</code>.</p>
