@@ -10,16 +10,44 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 BASE = "https://rebelstudiossoftware.com"
 ROOT = Path(__file__).parent
 
+TOOL_SLUGS = [
+    "uploadfix",
+    "heic-to-jpg",
+    "under-mb",
+    "image-fit",
+    "contract-scan",
+    "abi-decode",
+    "json-repair",
+    "csv-json",
+    "metadata-strip",
+    "ats-resume",
+    "invoice-pro",
+    "pdf-fillable",
+    "photo-to-pdf",
+    "pdf-a11y",
+    "crypto-tax-csv",
+    "bg-remove",
+    "video-under-mb",
+    "ocr-structured",
+    "site-screenshot",
+    "doc-checker",
+]
+
 STATIC_PAGES = [
     ("", "2026-06-24", "monthly", "1.0"),
     ("apps.html", "2026-06-23", "monthly", "0.8"),
     ("websites.html", "2026-06-23", "monthly", "0.8"),
+    ("tools/", "2026-08-09", "weekly", "0.9"),
     ("vigilo.html", "2026-06-24", "monthly", "0.8"),
     ("about.html", "2026-06-24", "monthly", "0.8"),
     ("blog.html", "2026-06-24", "weekly", "0.9"),
     ("privacy.html", "2026-06-23", "yearly", "0.3"),
     ("terms.html", "2026-07-20", "yearly", "0.3"),
     ("research.html", "2026-06-24", "monthly", "0.7"),
+    *[
+        (f"tools/{slug}.html", "2026-08-09", "monthly", "0.8")
+        for slug in TOOL_SLUGS
+    ],
 ]
 
 

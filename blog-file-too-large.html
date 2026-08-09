@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush — and a $1 tool that does it for you.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-file-too-large.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-file-too-large.html">
+    <meta property="og:title" content="Your File Is Too Large: How to Get Under 5 MB Without Ruining It">
+    <meta property="og:description" content="Make a file fit under 1–25 MB for upload limits. Practical compression tips plus a $1 Under-X MB tool.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-08-08">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your File Is Too Large: How to Get Under 5 MB Without Ruining It">
+    <meta name="twitter:description" content="Make a file fit under 1–25 MB for upload limits. Practical compression tips plus a $1 Under-X MB tool.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Your File Is Too Large: How to Get Under 5 MB Without Ruining It","description":"Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush \u2014 and a $1 tool that does it for you.","datePublished":"2026-08-08","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-file-too-large.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>Your File Is Too Large: How to Get Under 5 MB Without Ruining It - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Your File Is Too Large</h1>
+            <p>How to hit the upload limit without destroying quality</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">August 8, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+
+                    <p>The form is clear: <strong>Maximum file size: 5 MB</strong>. Your export is 17.4 MB. You are not building a media company. You are trying to submit one document before a deadline.</p>
+
+                    <p>This is one of the most common upload failures on the modern web &mdash; and one of the least well-served by &ldquo;free compressors&rdquo; that bury the download behind signup walls.</p>
+
+                    <h2>Why Limits Exist</h2>
+
+                    <p>Portals cap uploads to control storage costs, email attachment pipelines, malware scanning time, and ancient server configs. The number is arbitrary from your point of view. From theirs, 5 MB (or 2 MB, or 500 KB) is a hard gate.</p>
+
+                    <h2>What Actually Shrinks a File</h2>
+
+                    <p>For <strong>photos and screenshots</strong>, size comes from resolution &times; quality:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Lower JPEG quality</strong> (e.g. 90 → 75) often cuts size dramatically with little visible change on a form photo</li>
+                        <li><strong>Resize dimensions</strong> if the image is 4000 px wide and the form only displays 800 px</li>
+                        <li><strong>Convert HEIC/PNG to JPEG</strong> when the portal allows JPG &mdash; PNG screenshots are often huge for no benefit</li>
+                    </ul>
+
+                    <p>For <strong>PDFs and video</strong>, the levers are different (re-encode, downsample, strip embeds). Image recompression is still the pain that shows up most often in everyday uploads.</p>
+
+                    <div class="article-callout">
+                        <h3>Name the constraint, not the algorithm</h3>
+                        <p>People do not want &ldquo;compression.&rdquo; They want: <em>make this under 5 MB.</em> That is why we ship <a href="tools/under-mb.html">Under-X MB</a> as a $1 utility &mdash; you set the max, it iterates quality/scale until it fits.</p>
+                    </div>
+
+                    <h2>A Sensible Manual Approach</h2>
+
+                    <ol class="article-list">
+                        <li>Note the exact limit (2 MB? 5 MB? 10 MB?)</li>
+                        <li>If it&rsquo;s HEIC, convert to JPG first</li>
+                        <li>Resize to the largest dimension the form plausibly needs</li>
+                        <li>Export JPEG and check file size; reduce quality in steps until under the cap</li>
+                        <li>If they also demand exact pixels (e.g. 600&times;600), use an <a href="tools/image-fit.html">exact image fit</a> instead of guessing</li>
+                    </ol>
+
+                    <h2>When You Should Not Crush Quality</h2>
+
+                    <p>Passport photos, medical scans, and legal exhibits have readability requirements. Stay above ~70 JPEG quality when text or faces must remain sharp. If you cannot hit the limit without destroying the content, split pages or ask the recipient for an alternate channel &mdash; but try a smart recompress first. Most &ldquo;too large&rdquo; phone photos have headroom.</p>
+
+                    <h2>The Takeaway</h2>
+
+                    <p>The limit is the product. Optimize to the number. Use <a href="tools/under-mb.html">Under-X MB for $1</a> when you do not want to run the quality loop by hand, or start from the <a href="tools/index.html">tools hub</a> if you also need HEIC conversion or dimension fixes.</p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="tools/under-mb.html" class="btn btn-secondary">Make it fit for $1 →</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software — designed &amp; built in-house, like everything else we ship.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

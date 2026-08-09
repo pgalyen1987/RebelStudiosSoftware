@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Trailing commas, smart quotes, half-finished objects — how to repair malformed JSON for scripts and agents, including a $1 JSON repair API.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-json-repair.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-json-repair.html">
+    <meta property="og:title" content="How to Fix Broken JSON (Especially the Kind LLMs Produce)">
+    <meta property="og:description" content="Repair malformed JSON from LLMs and copy-paste errors. Practical fixes plus a $1 / x402 endpoint.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-08-05">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Fix Broken JSON (Especially the Kind LLMs Produce)">
+    <meta name="twitter:description" content="Repair malformed JSON from LLMs and copy-paste errors. Practical fixes plus a $1 / x402 endpoint.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Fix Broken JSON (Especially the Kind LLMs Produce)","description":"Trailing commas, smart quotes, half-finished objects \u2014 how to repair malformed JSON for scripts and agents, including a $1 JSON repair API.","datePublished":"2026-08-05","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-json-repair.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Fix Broken JSON (Especially the Kind LLMs Produce) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Fix Broken JSON</h1>
+            <p>Trailing commas, LLM mush, and a one-call repair</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">August 5, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+
+                    <p>Valid JSON is strict. Humans and language models are not. You end up with a blob that is <em>almost</em> JSON: a trailing comma after the last property, single quotes instead of double, a comment someone swore was fine, an object cut off mid-stream.</p>
+
+                    <p><code>JSON.parse</code> throws. Your pipeline stops. The fix is usually mechanical &mdash; if you can stand to stare at brackets long enough.</p>
+
+                    <h2>The Usual Breakage</h2>
+
+                    <ul class="article-list">
+                        <li>Trailing commas in objects/arrays</li>
+                        <li>Smart quotes from Word or Slack (<code>&ldquo;&rdquo;</code> instead of <code>&quot;&quot;</code>)</li>
+                        <li>Unquoted keys</li>
+                        <li>Ellipsis leftovers (<code>...</code>) from truncated model output</li>
+                        <li>Concatenated JSON values with junk text before/after</li>
+                    </ul>
+
+                    <h2>Manual Triage</h2>
+
+                    <p>Paste into a formatter. Read the error line number. Fix the first syntax error; re-parse; repeat. For small payloads that works. For agent loops that emit broken JSON every third call, you want a function, not a ritual.</p>
+
+                    <div class="article-callout">
+                        <h3>JSON repair as a $1 / x402 utility</h3>
+                        <p><a href="tools/json-repair.html">JSON repairer</a> takes the broken string and returns valid JSON when repair is possible. Humans can pay $1 per call in the browser. Agents should call <code>POST https://gate402.app/v1/json-repair</code>, handle the <code>402</code>, pay, and retry &mdash; the same pattern as the rest of the <a href="tools/index.html">Gate402 utility set</a>.</p>
+                    </div>
+
+                    <h2>When Repair Is the Wrong Tool</h2>
+
+                    <p>If the model omitted half the schema, &ldquo;repair&rdquo; may invent structure you should not trust. Prefer repair for <em>syntax</em> damage, then validate against your schema. Garbage semantics still need a better prompt or a structured-output mode.</p>
+
+                    <h2>Pair It With CSV Cleanup</h2>
+
+                    <p>Data wrangling often arrives as CSV that needs to become JSON (or the reverse). That is a separate $1 tool: <a href="tools/csv-json.html">CSV ↔ JSON</a>.</p>
+
+                    <h2>The Takeaway</h2>
+
+                    <p>Do not hand-edit trailing commas in a production agent path. Automate the syntax salvage, validate the result, move on. <a href="tools/json-repair.html">Repair JSON for $1</a> when you want that as a product instead of a gist you maintain forever.</p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="tools/json-repair.html" class="btn btn-secondary">Repair JSON for $1 →</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software — designed &amp; built in-house, like everything else we ship.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

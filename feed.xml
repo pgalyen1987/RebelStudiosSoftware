@@ -5,13 +5,55 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jul 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Convert HEIC to JPG When a Website Rejects Your iPhone Photo</title>
+      <link>https://rebelstudiossoftware.com/blog-heic-to-jpg.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-heic-to-jpg.html</guid>
+      <pubDate>Sun, 09 Aug 2026 00:00:00 -0000</pubDate>
+      <description>iPhone photos save as HEIC — and half the web still will not accept them. Why uploads fail, what JPG actually fixes, and the fastest $1 way to convert HEIC to JPG.</description>
+    </item>
+    <item>
+      <title>Your File Is Too Large: How to Get Under 5 MB Without Ruining It</title>
+      <link>https://rebelstudiossoftware.com/blog-file-too-large.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-file-too-large.html</guid>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush — and a $1 tool that does it for you.</description>
+    </item>
+    <item>
+      <title>Why Was My File Upload Rejected? Format, Size, and Dimension Fixes</title>
+      <link>https://rebelstudiossoftware.com/blog-upload-rejected.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-upload-rejected.html</guid>
+      <pubDate>Fri, 07 Aug 2026 00:00:00 -0000</pubDate>
+      <description>File upload rejected with a useless error? The usual causes are HEIC, size limits, and wrong dimensions — and how to fix all three for $1.</description>
+    </item>
+    <item>
+      <title>How to Check If a Smart Contract Is Safe Before You Interact</title>
+      <link>https://rebelstudiossoftware.com/blog-smart-contract-risk.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-smart-contract-risk.html</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Paste a contract address and get a risk scorecard: honeypot, taxes, liquidity, holders. Why DIY checks fail and how a $1 Base contract scan works.</description>
+    </item>
+    <item>
+      <title>How to Fix Broken JSON (Especially the Kind LLMs Produce)</title>
+      <link>https://rebelstudiossoftware.com/blog-json-repair.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-json-repair.html</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Trailing commas, smart quotes, half-finished objects — how to repair malformed JSON for scripts and agents, including a $1 JSON repair API.</description>
+    </item>
+    <item>
+      <title>Why We Sell Micro-Utilities for $1 (and Speak HTTP 402 to Agents)</title>
+      <link>https://rebelstudiossoftware.com/blog-dollar-micro-utilities.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-dollar-micro-utilities.html</guid>
+      <pubDate>Tue, 04 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Rebel Studios $1 tools: price upfront for humans, x402 micropayments for AI agents, same Gate402 endpoints. The product logic behind pay-per-use utilities.</description>
+    </item>
     <item>
       <title>What Does It Cost to Build an App in 2026? An Honest Breakdown</title>
       <link>https://rebelstudiossoftware.com/blog-app-cost.html</link>
