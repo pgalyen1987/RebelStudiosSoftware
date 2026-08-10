@@ -594,3 +594,17 @@ function showSlide(carouselId, index) {
         dots[index].classList.add('active');
     }
 }
+
+
+/* GA4 funnel tracking: fire an event when a visitor clicks toward a paid tool. */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a || typeof gtag !== 'function') return;
+  var href = a.href || '';
+  var txt = (a.textContent || '').trim().slice(0, 80);
+  if (/gate402\.app/i.test(href)) {
+    gtag('event', 'tool_click', { link_url: href, link_text: txt, from_page: location.pathname, destination: 'gate402' });
+  } else if (/\/tools\//i.test(href)) {
+    gtag('event', 'tool_page_click', { link_url: href, link_text: txt, from_page: location.pathname, destination: 'internal_tool_page' });
+  }
+}, true);
