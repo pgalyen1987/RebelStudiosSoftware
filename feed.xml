@@ -5,13 +5,41 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>ATS Resume Keywords: Why Your Resume Gets Auto-Rejected (and How to Fix It)</title>
+      <link>https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Why your resume gets auto-rejected before a human sees it — how applicant tracking systems read resumes, the formatting and keyword fixes that matter, and a $1 ATS checker.</description>
+    </item>
+    <item>
+      <title>How to Convert CSV to JSON (and Back) Without Fighting a Spreadsheet</title>
+      <link>https://rebelstudiossoftware.com/blog-csv-to-json.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-csv-to-json.html</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Convert CSV to JSON (and JSON back to CSV) without fighting a spreadsheet — the free script, the gotchas that break naive converters, and a clean $1 tool for both directions.</description>
+    </item>
+    <item>
+      <title>Passport Photo Size &amp; Requirements: Why Yours Keeps Getting Rejected</title>
+      <link>https://rebelstudiossoftware.com/blog-passport-photo-size.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-passport-photo-size.html</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Passport and ID photos get rejected for size, dimensions, background, and file format. The real requirements, the free ways to fix each one, and a $1 tool that hits the exact spec.</description>
+    </item>
+    <item>
+      <title>How to Remove a Photo Background Without a Design Suite</title>
+      <link>https://rebelstudiossoftware.com/blog-remove-background.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-remove-background.html</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Cut out a photo background for a clean transparent PNG — the free phone and desktop methods, when they fall short, and the fastest $1 one-click background remover.</description>
+    </item>
     <item>
       <title>How to Convert HEIC to JPG When a Website Rejects Your iPhone Photo</title>
       <link>https://rebelstudiossoftware.com/blog-heic-to-jpg.html</link>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Convert CSV to JSON (and JSON back to CSV) without fighting a spreadsheet — the free script, the gotchas that break naive converters, and a clean $1 tool for both directions.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-csv-to-json.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-csv-to-json.html">
+    <meta property="og:title" content="How to Convert CSV to JSON (and Back) Without Fighting a Spreadsheet">
+    <meta property="og:description" content="The free script, the gotchas that break naive converters, and a clean $1 tool for CSV↔JSON in both directions.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-08-10">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Convert CSV to JSON (and Back) Without Fighting a Spreadsheet">
+    <meta name="twitter:description" content="The free script, the gotchas that break naive converters, and a clean $1 tool for CSV↔JSON in both directions.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Convert CSV to JSON (and Back) Without Fighting a Spreadsheet","description":"Convert CSV to JSON (and JSON back to CSV) without fighting a spreadsheet — the free script, the gotchas that break naive converters, and a clean $1 tool for both directions.","datePublished":"2026-08-10","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-csv-to-json.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Convert CSV to JSON (and Back) Without Fighting a Spreadsheet - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Convert CSV to JSON (and Back)</h1>
+            <p>Without fighting a spreadsheet &mdash; and without the gotchas that break naive converters</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">August 10, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+
+                    <p>You&rsquo;ve got a CSV and something wants JSON &mdash; an API, a config file, a data import. Or the reverse: a JSON export and you need it as CSV so you can open it in a spreadsheet. It sounds trivial, and for clean data it is. For real-world data, a naive converter mangles it.</p>
+
+                    <h2>The Simple Case</h2>
+                    <p>A CSV with a header row maps directly to an array of objects. This:</p>
+                    <ul class="article-list">
+                        <li><code>name,role,active</code></li>
+                        <li><code>Ada,Engineer,true</code></li>
+                        <li><code>Grace,Admiral,true</code></li>
+                    </ul>
+                    <p>becomes:</p>
+                    <ul class="article-list">
+                        <li><code>[{"name":"Ada","role":"Engineer","active":true},</code></li>
+                        <li><code>&nbsp;{"name":"Grace","role":"Admiral","active":true}]</code></li>
+                    </ul>
+                    <p>If your data is that tidy, a five-line script does it. In Python: <code>import csv, json; json.dump(list(csv.DictReader(open('data.csv'))), open('out.json','w'))</code>. Most spreadsheet apps and code editors can do it too.</p>
+
+                    <h2>The Gotchas That Break Naive Converters</h2>
+                    <ul class="article-list">
+                        <li><strong>Commas inside fields.</strong> <code>"Smith, Jr."</code> is one field, not two &mdash; a naive split on commas destroys the row. Proper CSV parsing respects quotes.</li>
+                        <li><strong>Newlines inside fields.</strong> A quoted field can contain line breaks (addresses, notes). Splitting on line breaks shreds it.</li>
+                        <li><strong>Types.</strong> Should <code>active</code> be the boolean <code>true</code> or the string <code>"true"</code>? Is <code>007</code> the number 7 or the string <code>"007"</code>? Getting this wrong silently corrupts data downstream.</li>
+                        <li><strong>Inconsistent columns</strong> and stray blank lines, which break row alignment.</li>
+                        <li><strong>Encoding &amp; BOM</strong> &mdash; a UTF-8 byte-order mark can turn your first header into <code>&#65279;name</code> and break the key.</li>
+                    </ul>
+
+                    <div class="article-callout">
+                        <h3>The $1 version</h3>
+                        <p>When you don&rsquo;t want to write and debug a parser &mdash; or you&rsquo;re round-tripping messy data with quoted commas and mixed types &mdash; <a href="tools/csv-json.html">CSV &harr; JSON</a> converts cleanly in both directions for $1: proper quote handling, sensible typing, header-to-key mapping. Agents can call the same endpoint over x402.</p>
+                    </div>
+
+                    <h2>Going the Other Way (JSON &rarr; CSV)</h2>
+                    <p>JSON to CSV has its own trap: <strong>nesting</strong>. A flat array of flat objects maps cleanly to rows and columns. But if your objects contain nested objects or arrays (<code>"address": {"city": "..."}</code>), there&rsquo;s no single obvious CSV shape &mdash; you have to flatten (e.g. <code>address.city</code> as a column) or serialize the nested part. Decide that on purpose rather than letting a converter guess.</p>
+
+                    <h2>FAQ</h2>
+                    <h3>What&rsquo;s the fastest free way for a clean file?</h3>
+                    <p>A short script (Python&rsquo;s <code>csv</code> + <code>json</code> modules), or your code editor&rsquo;s built-in conversion. Clean data with a header row converts in seconds.</p>
+                    <h3>Why did my converter split a name into two columns?</h3>
+                    <p>It split on every comma instead of respecting quoted fields. <code>"Smith, Jr."</code> needs a real CSV parser that honors the quotes.</p>
+                    <h3>Can it handle nested JSON?</h3>
+                    <p>Going to CSV, nested structures have to be flattened or serialized &mdash; there&rsquo;s no lossless single-table form. Going from CSV, you get a flat array of objects.</p>
+
+                    <h2>The Takeaway</h2>
+                    <p>For clean data, a few lines of code convert CSV&harr;JSON for free &mdash; use them. When the data has quoted commas, embedded newlines, mixed types, or you just want it done right in one step, use <a href="tools/csv-json.html">the $1 CSV&harr;JSON converter</a>, or see the full <a href="tools/index.html">$1 tools catalog</a>.</p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="tools/csv-json.html" class="btn btn-secondary">Convert CSV &harr; JSON for $1 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software — designed &amp; built in-house, like everything else we ship.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
