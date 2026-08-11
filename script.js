@@ -608,3 +608,32 @@ document.addEventListener('click', function (e) {
     gtag('event', 'tool_page_click', { link_url: href, link_text: txt, from_page: location.pathname, destination: 'internal_tool_page' });
   }
 }, true);
+
+
+/* Newsletter signup -> gate402 capture endpoint (fires a GA4 conversion on success). */
+(function () {
+  var f = document.getElementById('nl-form');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var st = document.getElementById('nl-status');
+    var emailEl = f.querySelector('[name=email]');
+    var email = (emailEl && emailEl.value || '').trim();
+    if (st) { st.textContent = 'Subscribing\u2026'; st.className = 'nl-status'; }
+    fetch('https://gate402.app/subscribe', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        website: (f.querySelector('[name=website]') || {}).value || '',
+        source: location.pathname
+      })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      var ok = d && d.ok;
+      if (st) { st.textContent = ok ? "Thanks \u2014 you're on the list." : (d && d.error) || 'Something went wrong.'; st.className = 'nl-status ' + (ok ? 'ok' : 'err'); }
+      if (ok) { f.reset(); if (typeof gtag === 'function') gtag('event', 'newsletter_signup', { from_page: location.pathname }); }
+    }).catch(function () {
+      if (st) { st.textContent = 'Could not subscribe right now \u2014 try again later.'; st.className = 'nl-status err'; }
+    });
+  });
+})();

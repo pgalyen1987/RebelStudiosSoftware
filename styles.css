@@ -3348,3 +3348,22 @@ a.tool-card:hover {
         transform: none;
     }
 }
+
+
+/* --- Newsletter signup --- */
+.newsletter-wrap{padding:1rem 0 3rem}
+.newsletter{background:linear-gradient(180deg,#0d1220,#0a0e16);border:1px solid #1c2432;border-radius:16px;padding:2.6rem 2rem;text-align:center;max-width:720px;margin:0 auto}
+.newsletter h3{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;margin:0 0 .5rem;color:#eef1f7}
+.newsletter>p{color:#98a2b3;margin:0 0 1.5rem}
+.nl-fields{display:flex;gap:.6rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.nl-fields input[type=email]{flex:1;min-width:220px;padding:.85rem 1rem;border-radius:10px;border:1px solid #2a3140;background:#070a11;color:#eef1f7;font-size:1rem}
+.nl-fields button{padding:.85rem 1.5rem;border-radius:10px;border:0;background:#4ade80;color:#07110a;font-weight:700;cursor:pointer;font-size:1rem;transition:background .15s}
+.nl-fields button:hover{background:#3fcf70}
+.nl-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.nl-status{margin-top:.9rem;font-size:.95rem;min-height:1.2em}
+.nl-status.ok{color:#4ade80}.nl-status.err{color:#f87171}
+/* --- Credibility strip --- */
+.cred-strip{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:0 auto 2.5rem;max-width:1000px}
+.cred-item{flex:1;min-width:150px;background:#0d1220;border:1px solid #1c2432;border-radius:12px;padding:1.1rem 1rem;text-align:center}
+.cred-item strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;color:#4ade80;line-height:1.1}
+.cred-item span{display:block;color:#98a2b3;font-size:.9rem;margin-top:.35rem}
