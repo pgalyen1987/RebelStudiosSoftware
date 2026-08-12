@@ -5,13 +5,41 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>AI Agents Should Have Their Own Money</title>
+      <link>https://rebelstudiossoftware.com/blog-ai-agents-money.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ai-agents-money.html</guid>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Giving an AI agent a task but not a wallet is like sending an employee to shop with no card. Why autonomous agents need to pay for things themselves - and what breaks when they can't.</description>
+    </item>
+    <item>
+      <title>Dark Mode Is Objectively Correct</title>
+      <link>https://rebelstudiossoftware.com/blog-dark-mode-is-correct.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-dark-mode-is-correct.html</guid>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Yes, objectively. A mostly-tongue-in-cheek defense of dark mode - and what the fight over it reveals about actually building software for humans.</description>
+    </item>
+    <item>
+      <title>Stop Using AI as an Excuse Not to Hire Juniors</title>
+      <link>https://rebelstudiossoftware.com/blog-hire-junior-developers.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-hire-junior-developers.html</guid>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 -0000</pubDate>
+      <description>'Why hire a junior when AI writes the code?' is the most expensive short-term thinking in tech. Where senior engineers actually come from - and what happens to teams that stop growing their own.</description>
+    </item>
+    <item>
+      <title>Ship the Code You Don't Fully Understand</title>
+      <link>https://rebelstudiossoftware.com/blog-ship-code-you-dont-understand.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ship-code-you-dont-understand.html</guid>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 -0000</pubDate>
+      <description>The old rule was: never ship code you can't explain line by line. AI broke it. When shipping code you don't fully understand is fine - and the exact line where it absolutely isn't.</description>
+    </item>
     <item>
       <title>ATS Resume Keywords: Why Your Resume Gets Auto-Rejected (and How to Fix It)</title>
       <link>https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</link>
