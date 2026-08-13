@@ -31,6 +31,13 @@ Match genre to intent. A meditation on "how to convert HEIC" would kill a how-to
 
 Read two existing articles first to calibrate: an opinion piece (`blog-can-everybody-be-rich.html`, `blog-ai-agents-money.html`) and a how-to (`blog-json-repair.html`).
 
+**Register — philosophy × news × technology.** This is the heart of the Rebel essay voice. Every thought-leadership piece braids three strands:
+- **News** — open on something happening *now*: a shift, a release, a live tension in the industry. Timeliness and stakes, the way a good reporter leads with the development and why it matters this week.
+- **Philosophy** — don't stop at the surface. Find the first-principles or human question underneath: what are we actually deciding, what does this *mean*, who does it change. Use thought experiments; follow the idea somewhere uncomfortable.
+- **Technology** — stay technically honest and specific. Real mechanisms, real systems, a builder's understanding — never hand-wavy futurism.
+
+The synthesis: *a current technology development, examined for the deeper idea underneath, written with a reporter's clarity.* Reach for Stratechery or a sharp Atlantic tech essay, not a vendor blog. Avoid the two failure modes — dry news with no ideas, and floaty philosophy with no technical ground or news hook. (How-to funnel articles stay practical, but even they can open with a one-line "why this matters now" framing.)
+
 Voice rules:
 - **Earn the read in the first two sentences.** A concrete hook, a surprising claim, or a sharp question — never "In today's fast-paced world…".
 - Direct, confident, second person. Short punchy sentences mixed with longer ones. Em-dashes. Concrete over abstract.
