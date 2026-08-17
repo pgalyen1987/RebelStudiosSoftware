@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>Proof Is the New Scarcity</title>
+      <link>https://rebelstudiossoftware.com/blog-proof-is-the-new-scarcity.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-proof-is-the-new-scarcity.html</guid>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 -0000</pubDate>
+      <description>AI made content infinite and nearly free. That flips what's valuable: not generation, but proof - that a human made it, that a source is real, that a transaction happened. Why verification is becoming the product.</description>
+    </item>
     <item>
       <title>AI Agents Should Have Their Own Money</title>
       <link>https://rebelstudiossoftware.com/blog-ai-agents-money.html</link>
