@@ -5,13 +5,27 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>Recursive Prompting: When a Prompt Works on Its Own Output</title>
+      <link>https://rebelstudiossoftware.com/blog-recursive-prompting.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-recursive-prompting.html</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
+      <description>Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.</description>
+    </item>
+    <item>
+      <title>Who Pays for the Internet&amp;rsquo;s Plumbing?</title>
+      <link>https://rebelstudiossoftware.com/blog-who-pays-for-open-source.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-who-pays-for-open-source.html</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
+      <description>The internet runs on open-source software maintained by a handful of unpaid volunteers. AI trained on it and agents lean on it harder than ever, while nothing flows back. The free-rider problem at the root of modern software - and one way the math could change.</description>
+    </item>
     <item>
       <title>Proof Is the New Scarcity</title>
       <link>https://rebelstudiossoftware.com/blog-proof-is-the-new-scarcity.html</link>

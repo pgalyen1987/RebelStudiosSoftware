@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-recursive-prompting.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-recursive-prompting.html">
+    <meta property="og:title" content="Recursive Prompting: When a Prompt Works on Its Own Output">
+    <meta property="og:description" content="Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/recursive-prompting.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-08-25">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Recursive Prompting: When a Prompt Works on Its Own Output">
+    <meta name="twitter:description" content="Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/recursive-prompting.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Recursive Prompting: When a Prompt Works on Its Own Output","description":"Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.","datePublished":"2026-08-25","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-recursive-prompting.html"},"image":"https://rebelstudiossoftware.com/images/blog/recursive-prompting.png"}</script>
+    <title>Recursive Prompting: When a Prompt Works on Its Own Output - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Recursive Prompting: When a Prompt Works on Its Own Output</h1>
+            <p>A loop repeats a prompt. Recursion feeds a prompt its own output &mdash; and that small difference is where the interesting behavior lives</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">August 25, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+                    <p>Everyone building with AI right now is talking about loops. Run the prompt, feed it a task, run it again, run it on a schedule. Loops are useful &mdash; and they&rsquo;re also the tame version of a stranger idea sitting right next to them: recursion, a prompt that works on its <em>own</em> output.</p>
+
+                    <p>The difference sounds academic. It isn&rsquo;t. It&rsquo;s the difference between a machine that repeats and a machine that <em>climbs.</em></p>
+
+                    <h2>Loop vs. recursion, in one line</h2>
+
+                    <p>A <strong>loop</strong> runs the same prompt over and over on fresh input: &ldquo;summarize this article,&rdquo; a hundred times, on a hundred articles. Each run is independent and forgets the last.</p>
+
+                    <p>A <strong>recursion</strong> feeds a prompt&rsquo;s output back in as its next input: &ldquo;summarize this &mdash; now summarize <em>that</em> &mdash; now summarize <em>that.</em>&rdquo; Each pass stands on the one before it. You don&rsquo;t get a pile of answers; you get a single answer that keeps getting refined, distilled, or deepened until something makes it stop.</p>
+
+                    <p>That last clause is the whole game. Hold onto it.</p>
+
+                    <h2>Why it works</h2>
+
+                    <p>Language models are unusually good at operating on text that looks like their own. Hand a model its previous answer and ask it to improve, critique, distill, or expand it, and it will &mdash; because &ldquo;here is a draft, make it better&rdquo; is a task it has seen a million times. Recursion turns one shot into a staircase: each step is a small, easy transformation, but the steps compound.</p>
+
+                    <p>Three shapes show up again and again:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Refine.</strong> Produce something, then critique and rewrite it, then critique the rewrite. Quality climbs each pass. (Researchers call the formal version &ldquo;self-refine&rdquo; or &ldquo;reflexion&rdquo;; by hand, you&rsquo;re doing the same thing.)</li>
+                        <li><strong>Decompose.</strong> Break a problem into parts, then break each part into parts, until every leaf is trivial &mdash; then solve bottom-up. Recursion is how one hard problem becomes a stack of easy ones.</li>
+                        <li><strong>Converge.</strong> Apply the same operation until the output stops changing. Summarize a summary of a summary and you spiral down to the irreducible core of a thing.</li>
+                    </ul>
+
+                    <h2>How to actually do it in Claude</h2>
+
+                    <p>You don&rsquo;t need an SDK to start &mdash; you need a base case. There are three levels of how far you take it.</p>
+
+                    <div class="article-highlight">
+                        <h3>Try these in a Claude chat</h3>
+                        <p><strong>Refine:</strong> &ldquo;Write two sentences pitching a $1 developer tool. Now critique your own pitch and rewrite it. Do that three times, show each version, and stop when another pass would make it worse.&rdquo;</p>
+                        <p><strong>Converge:</strong> &ldquo;Summarize this in one sentence. Now summarize that sentence. Keep summarizing until you reach a single word. Show every step.&rdquo;</p>
+                        <p><strong>Decompose:</strong> &ldquo;Explain how HTTPS works. Then take the most confusing term in your explanation and explain <em>that.</em> Recurse four levels deep, until it&rsquo;s something a curious 12-year-old could follow.&rdquo;</p>
+                    </div>
+
+                    <p>That&rsquo;s recursion by hand: Claude runs the passes inside a single response. The next level up is to run the loop <em>outside</em> the model &mdash; in Claude Code or the API, take each response, feed it back as the next input, and keep going. Now the recursion is real code, and it can run as long as you let it. Which is exactly the problem.</p>
+
+                    <h2>The base case is the whole engineering job</h2>
+
+                    <p>Every recursion needs a reason to stop. In a chat, <em>you</em> are the base case &mdash; you read the output and quit. The moment you hand that job to an agent, you&rsquo;ve built something that will happily recurse forever: refining a refinement of a refinement, spending tokens on diminishing returns, or spiraling into a loop that never converges. Unbounded recursion isn&rsquo;t clever. It&rsquo;s a runaway bill and a hung process.</p>
+
+                    <p>This is the second-order habit we bring to every agentic system at Rebel Studios: before you let a prompt call itself, decide <em>what makes it stop</em> &mdash; a max depth, a &ldquo;good enough&rdquo; test, a token budget. The interesting power of recursion and the way it quietly drains your account are the same mechanism. You don&rsquo;t get one without deciding about the other.</p>
+
+                    <h2>The bigger idea</h2>
+
+                    <p>Recursion is one of the oldest ideas in computing: something defined in terms of itself, a process that folds back on its own results. What&rsquo;s new is that the thing doing the folding now works in plain language and has judgment. A prompt that improves its own output, then improves that, is a small taste of a system reasoning about its own reasoning &mdash; either the most useful pattern you&rsquo;ll add to your toolkit this year, or the one that runs up a four-figure bill while you sleep.</p>
+
+                    <p>Start it by hand, in a chat, where you&rsquo;re the base case. Then, when you&rsquo;re ready to let it run on its own, bring a stopping rule. What would <em>your</em> best prompt produce if you fed it its own answer &mdash; three times?</p>
+
+                    <p><em>We build agentic systems that know when to stop &mdash; recursion, loops, and all &mdash; so the power doesn&rsquo;t arrive with a runaway bill. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-ai-agents-money.html" class="btn btn-secondary">Read: AI Agents Should Have Their Own Money &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
