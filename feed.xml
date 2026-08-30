@@ -5,13 +5,27 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>Legacy Hardware</title>
+      <link>https://rebelstudiossoftware.com/blog-legacy-hardware.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-legacy-hardware.html</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 -0000</pubDate>
+      <description>A thirty-year veteran watches AI execute in four seconds what took a career to master, and feels like legacy hardware being phased out. Why that machine metaphor is seductive - and exactly where it breaks.</description>
+    </item>
+    <item>
+      <title>The Remote Economy Is Just Alone With Wi-Fi</title>
+      <link>https://rebelstudiossoftware.com/blog-remote-economy-alone.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-remote-economy-alone.html</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 -0000</pubDate>
+      <description>The digital nomad life looks like beaches and co-working spaces. Behind the screen it's a solitary survival game: your funnel is a fish basket, marketing is casting into empty water, and a safe corporate job is always one call away. An honest look at the remote economy.</description>
+    </item>
     <item>
       <title>Recursive Prompting: When a Prompt Works on Its Own Output</title>
       <link>https://rebelstudiossoftware.com/blog-recursive-prompting.html</link>
