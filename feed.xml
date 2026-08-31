@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Decode a JWT (and Why You Shouldn&amp;rsquo;t Paste It Into Just Any Site)</title>
+      <link>https://rebelstudiossoftware.com/blog-decode-a-jwt.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-decode-a-jwt.html</guid>
+      <pubDate>Mon, 31 Aug 2026 00:00:00 -0000</pubDate>
+      <description>How to decode a JWT to read its header and payload, what the claims (sub, exp, iss) actually mean, why decoding is not the same as verifying, and the security reason not to paste a live token into a random online decoder.</description>
+    </item>
     <item>
       <title>Legacy Hardware</title>
       <link>https://rebelstudiossoftware.com/blog-legacy-hardware.html</link>

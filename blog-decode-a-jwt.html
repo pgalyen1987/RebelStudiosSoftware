@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to decode a JWT to read its header and payload, what the claims (sub, exp, iss) actually mean, why decoding is not the same as verifying, and the security reason not to paste a live token into a random online decoder.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-decode-a-jwt.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-decode-a-jwt.html">
+    <meta property="og:title" content="How to Decode a JWT (and Why You Shouldn&rsquo;t Paste It Into Just Any Site)">
+    <meta property="og:description" content="How to decode a JWT to read its header and payload, what the claims (sub, exp, iss) actually mean, why decoding is not the same as verifying, and the security reason not to paste a live token into a random online decoder.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/decode-a-jwt.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-08-31">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Decode a JWT (and Why You Shouldn&rsquo;t Paste It Into Just Any Site)">
+    <meta name="twitter:description" content="How to decode a JWT to read its header and payload, what the claims (sub, exp, iss) actually mean, why decoding is not the same as verifying, and the security reason not to paste a live token into a random online decoder.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/decode-a-jwt.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Decode a JWT (and Why You Shouldn&rsquo;t Paste It Into Just Any Site)","description":"How to decode a JWT to read its header and payload, what the claims (sub, exp, iss) actually mean, why decoding is not the same as verifying, and the security reason not to paste a live token into a random online decoder.","datePublished":"2026-08-31","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-decode-a-jwt.html"},"image":"https://rebelstudiossoftware.com/images/blog/decode-a-jwt.png"}</script>
+    <title>How to Decode a JWT (and Why You Shouldn&rsquo;t Paste It Into Just Any Site) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Decode a JWT (and Why You Shouldn&rsquo;t Paste It Into Just Any Site)</h1>
+            <p>The token is a postcard, not a sealed envelope &mdash; how to read one, what&rsquo;s inside, and the security habit most decoders skip</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">August 31, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+                    <p>If you build anything with authentication, you decode JWTs constantly &mdash; to see why a login failed, what a token claims, when it expires. And almost everyone does it the same way: paste the token into the first &ldquo;JWT decoder&rdquo; that comes up in search. That habit is faster than it is safe, and it&rsquo;s worth knowing why before your next copy-paste.</p>
+
+                    <p>A JWT (JSON Web Token) is the little string that proves who you are on most modern apps &mdash; three chunks separated by dots: <code>header.payload.signature</code>. Here is the part that surprises people: the first two chunks aren&rsquo;t encrypted. They are just Base64url-encoded JSON. Anyone holding your token can read everything in it in about two seconds.</p>
+
+                    <h2>What&rsquo;s actually inside</h2>
+
+                    <p>Decode the payload and you get a plain JSON object of &ldquo;claims&rdquo; &mdash; the token&rsquo;s contents:</p>
+
+                    <ul class="article-list">
+                        <li><strong>sub</strong> &mdash; the subject, usually the user ID.</li>
+                        <li><strong>exp / iat / nbf</strong> &mdash; expiry, issued-at, and not-before, as Unix timestamps. <code>exp</code> is the one you check when a token &ldquo;randomly&rdquo; stops working.</li>
+                        <li><strong>iss / aud</strong> &mdash; who issued the token and who it&rsquo;s meant for.</li>
+                        <li>Whatever the app bolted on &mdash; roles, email, plan tier, and sometimes a lot more than the developer realized they were exposing.</li>
+                    </ul>
+
+                    <h2>How to decode one by hand</h2>
+
+                    <p>You don&rsquo;t strictly need a tool. The payload is just Base64url, so you can read it in a browser console in one line:</p>
+
+                    <p><code>JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')))</code></p>
+
+                    <p>That splits the token on dots, takes the middle segment, converts Base64url to standard Base64 (JWT uses the URL-safe <code>-</code> and <code>_</code> characters), and parses the JSON. You&rsquo;ll see the claims printed straight out.</p>
+
+                    <div class="article-highlight">
+                        <h3>Decoding is not verifying</h3>
+                        <p>The single most important thing to understand: reading a JWT tells you what it <em>says</em>, not whether it&rsquo;s <em>true</em>. The signature &mdash; that third chunk &mdash; is what proves the token wasn&rsquo;t forged, and checking it requires the issuer&rsquo;s key. A decoder shows you the claims; it does not tell you the token is valid. Never treat a decoded payload as proof of anything on the server side.</p>
+                    </div>
+
+                    <h2>The part the listicles skip: don&rsquo;t paste live tokens into random sites</h2>
+
+                    <p>Here is the security angle the &ldquo;top 10 JWT decoders&rdquo; posts never mention. A production JWT is often a <em>live session</em>. Paste it into an unknown web decoder and you have just handed a stranger&rsquo;s server a working credential &mdash; with no idea whether it&rsquo;s logged, stored, or quietly replayed against your account. Most decoders are probably fine. &ldquo;Probably&rdquo; is a strange bet to make with the token that <em>is</em> your login.</p>
+
+                    <p>That&rsquo;s the unglamorous reason we built our own <a href="tools/jwt-decode.html">$1 JWT decoder</a>: it splits out the header and payload, turns the <code>exp</code>/<code>iat</code> timestamps into real dates, flags an expired token &mdash; and doesn&rsquo;t keep your token afterward. No account, no signup, nothing stored on someone&rsquo;s server. A dollar for not gambling with a credential is a fair trade. The browser-console method above is free if you&rsquo;d rather.</p>
+
+                    <h2>The quick checklist</h2>
+
+                    <ul class="article-list">
+                        <li>Split on dots; the payload is the middle segment.</li>
+                        <li>Base64url-decode it to read the claims.</li>
+                        <li>Check <code>exp</code> first when a token suddenly stops working.</li>
+                        <li>Remember that decoding is not verifying &mdash; the signature is where the trust lives.</li>
+                        <li>Never paste a live token into a site you don&rsquo;t trust.</li>
+                    </ul>
+
+                    <p>A JWT is a postcard, not a sealed envelope: readable by anyone who holds it, trustworthy only if you check the signature. Decode them freely to debug &mdash; just remember what you&rsquo;re actually holding when you copy one out of a request.</p>
+
+                    <p><em>We build software that treats your credentials like credentials. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-json-repair.html" class="btn btn-secondary">Read: How to Fix Broken JSON &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
