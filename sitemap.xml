@@ -462,4 +462,10 @@
 <changefreq>yearly</changefreq>
 <priority>0.6</priority>
 </url>
+  <url>
+    <loc>https://rebelstudiossoftware.com/checkout-brasil.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

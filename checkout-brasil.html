@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">Usamos cookies para analytics. Veja nossa <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Política de Privacidade</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Aceitar','#4ade80','#0b0f17'),n=mk('Recusar','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Checkout Brasil: campos brasileiros no WooCommerce com validação real de CPF e CNPJ, busca automática por CEP e CNPJ, e os dados no pedido, nos e-mails e na nota fiscal. Cada campo é opcional.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/checkout-brasil.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/checkout-brasil.html">
+    <meta property="og:title" content="Checkout Brasil — CPF, CNPJ e CEP no WooCommerce">
+    <meta property="og:description" content="Campos brasileiros no checkout do WooCommerce. Validação real, busca por CEP e CNPJ, e os dados chegam na nota fiscal. Compatível com HPOS e checkout em blocos.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Checkout Brasil — CPF, CNPJ e CEP no WooCommerce">
+    <meta name="twitter:description" content="Campos brasileiros no checkout do WooCommerce, com validação de verdade e busca automática por CEP e CNPJ.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Checkout Brasil — CPF, CNPJ e CEP no WooCommerce - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 2rem; }
+        @media (max-width: 860px) { .cb-grid { grid-template-columns: 1fr; } }
+        .cb-card { background: var(--surface-strong); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+        .cb-card h4 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: .6rem; color: var(--ink-1); }
+        .cb-card p { font-size: .95rem; color: var(--ink-2); }
+        .cb-quote { border-left: 3px solid rgba(248,113,113,.55); padding: 4px 0 4px 16px; margin: 14px 0; color: var(--ink-2); font-size: .93rem; font-style: italic; }
+        .cb-fix { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 2rem; }
+        @media (max-width: 760px) { .cb-fix { grid-template-columns: 1fr; } }
+        .cb-fix > div { background: var(--surface-strong); padding: 22px 24px; }
+        .cb-fix h5 { font-family: var(--font-display); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+        .cb-fix .cb-old h5 { color: #f87171; }
+        .cb-fix .cb-new h5 { color: var(--green-bright, #4ade80); }
+        .cb-fix ul { list-style: none; display: grid; gap: 10px; }
+        .cb-fix li { font-size: .93rem; color: var(--ink-2); padding-left: 20px; position: relative; }
+        .cb-old li::before { content: "✕"; position: absolute; left: 0; color: #f87171; }
+        .cb-new li::before { content: "✓"; position: absolute; left: 0; color: #4ade80; }
+        .cb-status { display: inline-flex; align-items: center; gap: 8px; background: rgba(108,190,69,.12); border: 1px solid rgba(108,190,69,.3); color: #4ade80; border-radius: 999px; padding: 6px 14px; font-size: .85rem; font-weight: 600; margin-bottom: 1.2rem; }
+        .cb-cta { background: var(--surface-strong); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; margin-top: 2.5rem; text-align: center; }
+        .cb-cta h3 { font-family: var(--font-display); margin-bottom: .6rem; color: var(--ink-1); }
+        .cb-cta p { color: var(--ink-2); max-width: 560px; margin: 0 auto 1.4rem; }
+        .cb-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .cb-form input { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-sm, 10px); padding: 12px 16px; color: var(--ink-1); font: inherit; min-width: 280px; }
+        .cb-form button { background: var(--grad-accent, #4ade80); color: var(--bg, #07090f); border: 0; border-radius: var(--radius-sm, 10px); padding: 12px 24px; font-weight: 700; cursor: pointer; font: inherit; }
+        .cb-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 2rem; }
+        @media (max-width: 700px) { .cb-specs { grid-template-columns: 1fr; } }
+        .cb-spec { background: var(--surface-strong); padding: 22px; text-align: center; }
+        .cb-spec .n { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink-1); display: block; }
+        .cb-spec .l { font-size: .85rem; color: var(--ink-2); margin-top: 4px; display: block; }
+        code { font-family: var(--font-mono, 'JetBrains Mono', monospace); font-size: .9em; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="cb-status">● Em revisão no WordPress.org</span>
+            <h1>Checkout Brasil</h1>
+            <p class="hero-sub">Os campos que uma loja brasileira precisa no WooCommerce — CPF, CNPJ, Razão Social, RG, Inscrição Estadual, número e bairro — com <strong>validação de verdade</strong>, busca automática por CEP e CNPJ, e os dados chegando no pedido, nos e-mails e na nota fiscal.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>O problema</h2>
+            <p>O plugin que 60.000 lojas brasileiras usam para isso não recebe uma atualização desde fevereiro de 2024. Ele foi testado até o WordPress 6.4; o WordPress atual é o 7.1. Ele não conhece o HPOS nem o checkout em blocos — que hoje é o padrão do WooCommerce.</p>
+            <p>Isso não é um detalhe técnico. Num checkout em blocos, um plugin que só usa o filtro clássico <code>woocommerce_checkout_fields</code> simplesmente <strong>não adiciona campo nenhum</strong>. A loja migra, para de coletar CPF sem perceber, e só descobre quando uma nota fiscal é recusada.</p>
+
+            <h3 style="margin-top:2.5rem">O que os usuários escreveram</h3>
+            <div class="cb-quote">"O plugin torna o campo CPF 100% obrigatório, mesmo usando outro plugin para desativar não adianta, inclusive usando via código PHP também não é possível remover."</div>
+            <div class="cb-quote">"Plugin não envia para email ou nota fiscal os dados de CPF, RG ou CNPJ, só adianta na hora da compra, depois os dados são inúteis."</div>
+            <div class="cb-quote">"Os campos aparecem corretamente porém ele não faz as validações que diz fazer. Como exemplo validar CPF, TELEFONE."</div>
+            <div class="cb-quote">"Não tem suporte, ninguém me responde, e o plugin está desatualizado!"</div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>O que muda</h2>
+            <div class="cb-fix">
+                <div class="cb-old">
+                    <h5>Como é hoje</h5>
+                    <ul>
+                        <li>CPF obrigatório, sem como desligar</li>
+                        <li>Sem campo Razão Social</li>
+                        <li>Sem busca de endereço por CEP</li>
+                        <li>Sem busca de empresa por CNPJ</li>
+                        <li>Documentos não chegam na nota fiscal</li>
+                        <li>Validação que não valida</li>
+                        <li>Sem HPOS, sem checkout em blocos</li>
+                    </ul>
+                </div>
+                <div class="cb-new">
+                    <h5>Checkout Brasil</h5>
+                    <ul>
+                        <li>Cada campo: desativado, opcional ou obrigatório</li>
+                        <li>Razão Social incluída</li>
+                        <li>CEP preenche rua, bairro, cidade e estado</li>
+                        <li>CNPJ preenche Razão Social e endereço</li>
+                        <li>Documentos no pedido, e-mails e API</li>
+                        <li>Dígito verificador oficial, no servidor e no navegador</li>
+                        <li>Compatível com HPOS e checkout em blocos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cb-specs">
+                <div class="cb-spec"><span class="n">WP 7.1</span><span class="l">testado na versão atual</span></div>
+                <div class="cb-spec"><span class="n">WooCommerce 11</span><span class="l">HPOS declarado compatível</span></div>
+                <div class="cb-spec"><span class="n">61</span><span class="l">testes automatizados passando</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Detalhes que importam</h2>
+            <div class="cb-grid">
+                <div class="cb-card">
+                    <h4>Nada é forçado</h4>
+                    <p>Todo campo tem três estados: desativado, opcional ou obrigatório. Loja de produto digital não precisa pedir CPF; loja que fatura para empresa precisa de CNPJ e Razão Social e mais nada. Você decide, sem tocar em código.</p>
+                </div>
+                <div class="cb-card">
+                    <h4>A consulta nunca bloqueia a venda</h4>
+                    <p>As buscas de CEP e CNPJ saem do seu servidor, não do navegador do cliente, e ficam em cache. Se o serviço de consulta cair, o cliente digita o endereço normalmente. Uma API de terceiro fora do ar não pode custar uma venda.</p>
+                </div>
+                <div class="cb-card">
+                    <h4>Validação que valida</h4>
+                    <p>CPF e CNPJ conferidos pelos dígitos verificadores oficiais — no navegador para o cliente ver na hora, e de novo no servidor, que é onde a decisão realmente acontece. Documento inválido não entra no pedido.</p>
+                </div>
+                <div class="cb-card">
+                    <h4>Os dados chegam onde você precisa</h4>
+                    <p>CPF, CNPJ e Razão Social aparecem no pedido, no painel, nos e-mails e na API — prontos para a integração de NF-e. Coletar o documento e não conseguir usá-lo depois é o problema que este plugin existe para resolver.</p>
+                </div>
+                <div class="cb-card">
+                    <h4>Não briga com os outros plugins</h4>
+                    <p>Todos os campos usam nomes próprios (<code>billing_cb_*</code>). O plugin anterior usava <code>billing_cpf</code>, o mesmo nome que outros três plugins reivindicam — e é daí que vem boa parte dos conflitos com gateways.</p>
+                </div>
+                <div class="cb-card">
+                    <h4>Privacidade</h4>
+                    <p>As consultas usam ViaCEP e BrasilAPI, ambos públicos e gratuitos. Nenhum dado do seu cliente é enviado para nós — não temos servidor no meio e não queremos ter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="cb-cta">
+                <h3>Avise-me quando estiver no ar</h3>
+                <p>O plugin está em revisão no repositório do WordPress.org. A revisão costuma levar de 2 a 6 semanas. Deixe seu e-mail e eu aviso no dia em que sair — sem newsletter, sem spam, só esse aviso.</p>
+                <form class="cb-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+                    <input type="email" name="email" placeholder="seu@email.com.br" required>
+                    <input type="hidden" name="_subject" value="Checkout Brasil — lista de espera">
+                    <button type="submit">Me avise</button>
+                </form>
+                <p style="margin-top:1.2rem;font-size:.88rem">Prefere falar direto? <a href="index.html#contact">Entre em contato</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
