@@ -46,7 +46,7 @@ Voice rules:
 - No corporate filler, no "5 ways AI will revolutionize", no fake statistics, no invented case studies. If a real first-hand example would help, add an HTML comment placeholder `<!-- PATRICK: real example here -->` rather than fabricating one.
 - Structure: hook → `<h2>` sections → one `<div class="article-highlight">` or `<div class="article-callout">` box for the key point → strong close → the italic CTA linking `index.html#contact`.
 - Internal-link to 1–2 related articles and any relevant tool (`tools/<slug>.html`) — good for SEO and reader depth.
-- Length: how-tos ~700–1100 words; opinion ~500–800. Tight beats long.
+- Length: substantial, never padded. How-tos ~1000–1500 words; opinion/essays ~1100–1600. Reach the length by adding real depth — concrete examples, a second-order angle, an honest counterpoint, a "here's what it looks like in practice" section — not filler. A short piece reads as thin to both readers and Google; a padded one reads as worse. Earn every paragraph.
 
 Write the article body as the inner HTML of `<div class="article-content">` (use `&mdash; &rsquo; &ldquo; &rdquo;` entities, `<h2>`, `<p>`, `<ul class="article-list">`, highlight/callout boxes — mirror the existing articles exactly).
 
