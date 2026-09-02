@@ -99,6 +99,30 @@
                         <p>This is not a license for recklessness. The moment code touches money, authentication, data you can&rsquo;t recover, or anything with legal or physical consequences, understanding snaps back to mandatory &mdash; not because you wrote it, but because the blast radius just went unbounded. The rule isn&rsquo;t &ldquo;understand everything&rdquo; or &ldquo;understand nothing.&rdquo; It&rsquo;s &ldquo;understand in proportion to what it can destroy.&rdquo;</p>
                     </div>
 
+                    <h2>A worked example</h2>
+
+                    <p>Say the model hands you a caching layer. Reading every line teaches you surprisingly little; understanding the <em>contract</em> teaches you everything: what it promises to return, when it invalidates, what it does on a cache miss, and what happens the moment two requests race for the same cold key. If you can answer those, you can ship it without having traced the locking logic by hand &mdash; the same way you ship on top of Redis without having read its source. But if the answer to &ldquo;what happens when two requests race&rdquo; is a shrug, no amount of line-by-line reading will save you, because the bug you&rsquo;re about to ship lives in the interaction, not the syntax. The contract is the unit of understanding. The lines are just how it&rsquo;s spelled.</p>
+
+                    <h2>The real danger isn&rsquo;t the code &mdash; it&rsquo;s the confidence</h2>
+
+                    <p>Here is the trap that makes all of this genuinely risky: a language model produces <em>fluent</em> output whether or not it is <em>correct</em>, and fluency reads as competence to the human brain. Handwritten wrong code usually looks wrong &mdash; messy, hesitant, visibly unsure. Generated wrong code looks exactly like generated right code: clean, confident, well-named, plausibly commented. That polish is precisely what disarms your judgment at the moment you most need it. The skill isn&rsquo;t reading faster; it&rsquo;s refusing to let a well-formatted answer buy your trust for free. Treat every generated block as a confident stranger&rsquo;s claim, not a proven fact &mdash; because that is exactly what it is.</p>
+
+                    <h2>So how do you actually decide?</h2>
+
+                    <p>In practice it collapses to three questions you ask of any block before it ships:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Do I understand the contract?</strong> What goes in, what must come out, what it must never do. If you can&rsquo;t state it, you can&rsquo;t ship it &mdash; and that isn&rsquo;t about AI, it&rsquo;s about not knowing what you&rsquo;re deploying.</li>
+                        <li><strong>Is the blast radius contained?</strong> When it&rsquo;s wrong &mdash; not if &mdash; what is the worst case? A retried job is survivable. Silent data loss, a leaked credential, or a wrong charge is not.</li>
+                        <li><strong>Can I reverse it?</strong> A one-command rollback turns a mistake into a shrug. No rollback turns the same mistake into an incident.</li>
+                    </ul>
+
+                    <p>Green on all three: ship it, and read it later if it ever breaks. Red on any one: slow down and understand it fully, whether a human or a machine wrote it. The rule was never &ldquo;understand everything&rdquo; or &ldquo;understand nothing&rdquo; &mdash; it&rsquo;s &ldquo;understand in proportion to what it can destroy,&rdquo; and that proportion is now the most valuable calculation on your team.</p>
+
+                    <h2>&ldquo;This is just permission to be sloppy&rdquo;</h2>
+
+                    <p>The obvious objection, and a fair one: doesn&rsquo;t &ldquo;ship what you don&rsquo;t fully understand&rdquo; just license every corner-cutter to push garbage and blame the robot? No &mdash; because the standard got <em>harder</em>, not softer. &ldquo;I read every line&rdquo; was always a weak guarantee; plenty of thoroughly-read code still failed in production because the author understood the syntax and not the system. The bar that replaces it &mdash; know the contract, bound the blast radius, keep it reversible &mdash; is more demanding and more honest. It asks you to understand the thing that actually decides whether software survives contact with the real world, and to stop performing diligence by scrolling slowly past lines you stopped reading three screens ago.</p>
+
                     <h2>The skill that replaces it</h2>
 
                     <p>If &ldquo;understand every line&rdquo; is retiring, something has to take its place, and it&rsquo;s a harder skill: designing systems where <em>not</em> understanding a piece is survivable. Strong types, so wrong code won&rsquo;t compile. Tests that encode the behavior you actually care about. Boundaries, so a bad component can&rsquo;t reach the parts that matter. Reversibility, so a mistake is a rollback and not an incident.</p>
