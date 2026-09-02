@@ -44,10 +44,7 @@ STATIC_PAGES = [
     ("privacy.html", "2026-06-23", "yearly", "0.3"),
     ("terms.html", "2026-07-20", "yearly", "0.3"),
     ("research.html", "2026-06-24", "monthly", "0.7"),
-    *[
-        (f"tools/{slug}.html", "2026-08-09", "monthly", "0.8")
-        for slug in TOOL_SLUGS
-    ],
+    # Individual $1-tool pages are noindex (conversion funnels, not content) — kept out of the sitemap.
 ]
 
 
