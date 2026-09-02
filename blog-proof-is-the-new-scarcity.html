@@ -103,11 +103,23 @@
                         <p>The old internet ran on &ldquo;trust me&rdquo; &mdash; a byline, a blue check, a brand. That layer only held while forgery was expensive. Now that a convincing fake costs cents, &ldquo;trust me&rdquo; is collapsing &mdash; and the replacement isn&rsquo;t more trust. It&rsquo;s verification: signatures, receipts, and provenance you can check without taking anyone&rsquo;s word for it.</p>
                     </div>
 
+                    <h2>The liar&rsquo;s dividend</h2>
+
+                    <p>Here is the darker half of the same coin, and it&rsquo;s the part people miss when they cheer that fakes are getting easier to make. When anything <em>can</em> be fabricated, everything real becomes deniable. The genuine recording, the true document, the actual photograph &mdash; each now arrives under a cloud of &ldquo;but how do I know?&rdquo;, and anyone caught doing something real can simply wave it off as a deepfake and watch a good share of people believe them. Scholars gave it a name: the <em>liar&rsquo;s dividend</em> &mdash; the profit a bad actor collects not from a convincing fake, but from the mere <em>existence</em> of convincing fakes, which lets them dismiss the true thing as one more forgery.</p>
+
+                    <p>That is why provenance isn&rsquo;t a nice-to-have bolted onto a world of abundant content &mdash; it&rsquo;s the load-bearing wall. Without a way to prove what&rsquo;s real, we don&rsquo;t just get buried in lies; we lose the ability to defend the truth, because the truth and the lie now look identical on the screen. Scarcity of proof isn&rsquo;t only where the money goes. It&rsquo;s where trust itself either survives or quietly stops working.</p>
+
                     <h2>Where this gets technical &mdash; and where we live</h2>
 
                     <p>This isn&rsquo;t a vibe; it&rsquo;s an engineering shift, and it&rsquo;s the ground we build on. When an AI agent pays for an API call, the thing that makes the exchange trustworthy isn&rsquo;t a promise &mdash; it&rsquo;s a cryptographic <a href="blog-http-402.html">receipt</a>: verifiable evidence that a specific payment happened, that no human has to vouch for. That&rsquo;s the same primitive as a signed photo or a reviewed pull request, aimed at money. The future we&rsquo;re wiring up is one where machines transact billions of times with no human in the loop &mdash; and the only reason that isn&rsquo;t chaos is that every step leaves proof behind.</p>
 
                     <p>It&rsquo;s also why we won&rsquo;t auto-publish an AI-written article to this very blog without a human reading it first. Not for nostalgia &mdash; because in a world drowning in generated text, a piece someone actually stands behind is the scarce version. The proof <em>is</em> the product.</p>
+
+                    <h2>What proof actually looks like</h2>
+
+                    <p>&ldquo;Verify it&rdquo; sounds abstract until you notice the machinery already exists and is quietly being wired into everything. A camera can sign an image at the instant of capture, stamping it with a tamper-evident record of the device, the time, and every edit made since &mdash; the emerging <em>content credentials</em> standard, so a photo carries its own history the way a shipping container carries a manifest. A newsroom can cryptographically sign what it publishes, so a scraped-and-altered copy fails the check. A software release can be signed and its build attested, so you can prove the binary you&rsquo;re running is the one the source actually produced. A payment can settle with a receipt anyone can verify without trusting the payer.</p>
+
+                    <p>Notice the shape they share. None of them tries to <em>detect</em> fakes after the fact &mdash; a losing race, since the fakes only get better. Instead they attach proof to the real thing at the moment it&rsquo;s created, and let everything unsigned fall under suspicion by default. That inversion is the whole strategy of the next decade: stop trying to catch the counterfeit, and start making the genuine article carry papers.</p>
 
                     <h2>The second-order bet</h2>
 
