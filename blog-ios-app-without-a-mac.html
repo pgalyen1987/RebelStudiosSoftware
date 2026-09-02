@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="I built cross-platform mobile apps the hard way - native Kotlin and C#/.NET MAUI - before switching to React Native and Expo. Here's why, and how to build, sign, and ship an iOS app to the App Store without owning a Mac, using Expo's cloud build (EAS).">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-ios-app-without-a-mac.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-ios-app-without-a-mac.html">
+    <meta property="og:title" content="How to Build an iOS App Without a Mac">
+    <meta property="og:description" content="I built cross-platform mobile apps the hard way - native Kotlin and C#/.NET MAUI - before switching to React Native and Expo. Here's why, and how to build, sign, and ship an iOS app to the App Store without owning a Mac, using Expo's cloud build (EAS).">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/ios-app-without-a-mac.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-02">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Build an iOS App Without a Mac">
+    <meta name="twitter:description" content="I built cross-platform mobile apps the hard way - native Kotlin and C#/.NET MAUI - before switching to React Native and Expo. Here's why, and how to build, sign, and ship an iOS app to the App Store without owning a Mac, using Expo's cloud build (EAS).">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/ios-app-without-a-mac.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build an iOS App Without a Mac","description":"I built cross-platform mobile apps the hard way - native Kotlin and C#/.NET MAUI - before switching to React Native and Expo. Here's why, and how to build, sign, and ship an iOS app to the App Store without owning a Mac, using Expo's cloud build (EAS).","datePublished":"2026-09-02","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-ios-app-without-a-mac.html"},"image":"https://rebelstudiossoftware.com/images/blog/ios-app-without-a-mac.png"}</script>
+    <title>How to Build an iOS App Without a Mac - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Build an iOS App Without a Mac</h1>
+            <p>The long way round &mdash; Kotlin, then C#, then finally React Native and Expo &mdash; and how you ship to the App Store when you don&rsquo;t own a single Apple device</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 2, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+                    <p>The pitch for cross-platform mobile development is irresistible: write your app once, ship it to both iPhone and Android, never build the same screen twice. I believed it. Then I spent a couple of years learning, the hard way, that &ldquo;cross-platform&rdquo; is a spectrum &mdash; and that most of the popular ways onto it quietly hand you two problems in a trench coat pretending to be one.</p>
+
+                    <p>This is the honest version of that road: what went wrong with the native-first approaches I tried, the wall that has nothing to do with code at all, and why I eventually threw it all out for React Native and Expo.</p>
+
+                    <h2>The two-headed native approach</h2>
+
+                    <p>I started where a lot of people start: as close to native as possible, on both sides. Android in Kotlin, the Apple side in C# through the .NET and MAUI world. On paper it&rsquo;s the &ldquo;serious&rdquo; choice &mdash; real native performance, full access to the platform, none of that flimsy webview stuff. In practice it meant living in two toolchains, two languages, and two mental models at once, and paying a tax on every single feature.</p>
+
+                    <p>Every screen got built twice. Every piece of business logic either got duplicated or wedged into some shared layer that fought both platforms equally. A change that should have taken an afternoon took two &mdash; because it took two, once in Kotlin and once in C#, plus the time lost swapping my brain between them. And the tooling was never quite there: MAUI in particular felt like it was maturing underneath me while I was trying to ship on it, the kind of experience where half your bugs are yours and the other half are the framework&rsquo;s and you can&rsquo;t always tell which. I wasn&rsquo;t building an app. I was maintaining two apps that happened to share a name.</p>
+
+                    <!-- PATRICK: one specific war-story here — a single feature or bug that cost you days across the two codebases — would make this section unforgettable. -->
+
+                    <h2>Then the wall: iOS needs a Mac</h2>
+
+                    <p>Here is the part nobody warns you about loudly enough, and it has nothing to do with which language you picked. To compile, sign, and submit an iOS app, Apple requires macOS and Xcode. Full stop. Not &ldquo;it&rsquo;s easier on a Mac&rdquo; &mdash; the final iOS build, and the code-signing that App Store submission depends on, run on Apple&rsquo;s toolchain, on Apple&rsquo;s operating system, on Apple&rsquo;s hardware. If you don&rsquo;t own a Mac, you&rsquo;ve hit a wall no amount of clever coding gets you through.</p>
+
+                    <p>And I didn&rsquo;t own a Mac. So there I was with an app that ran fine on Android and an iOS half I could write but not actually <em>ship</em> &mdash; couldn&rsquo;t do a real device build, couldn&rsquo;t sign it, couldn&rsquo;t put it in front of a TestFlight tester, couldn&rsquo;t submit it. The most expensive part of &ldquo;cross-platform&rdquo; turned out not to be the code. It was a hardware requirement gatekeeping the entire second platform.</p>
+
+                    <h2>Switching to React Native and Expo</h2>
+
+                    <p>I moved to React Native almost out of exhaustion, and the first thing that changed was the obvious one: <em>one</em> codebase, in TypeScript, for both platforms. The endless duplication just&hellip; stopped. One component rendered on both. Logic lived in one place. The ecosystem was enormous, so most problems already had a library and an answer instead of a framework bug I&rsquo;d file and wait on.</p>
+
+                    <p>But the thing that actually solved my problem was Expo &mdash; specifically its cloud build service. Because Expo lets you build your iOS app <em>on their Mac infrastructure</em>, in the cloud, without ever opening Xcode or owning a single Apple device.</p>
+
+                    <div class="article-highlight">
+                        <h3>How you ship iOS with no Apple hardware</h3>
+                        <p>The workflow is almost anticlimactic. You develop and test on Android and in Expo&rsquo;s dev client on a real iPhone over Wi-Fi. When it&rsquo;s time for a real build, you run <code>eas build --platform ios</code> and Expo&rsquo;s cloud &mdash; their Macs &mdash; compiles and signs it for you. Then <code>eas submit</code> pushes it to App Store Connect and TestFlight. The Mac requirement never went away; Apple still demands one. Expo just rents you theirs, per build, so you never have to buy one.</p>
+                    </div>
+
+                    <p>That single capability &mdash; EAS Build handling the iOS compile-and-sign on cloud Macs &mdash; is the whole difference between &ldquo;I have an Android app and an aspiration&rdquo; and &ldquo;I have an app on both stores.&rdquo; It removed the exact wall the native approach had built and couldn&rsquo;t get me over.</p>
+
+                    <h2>The honest tradeoffs</h2>
+
+                    <p>None of this is free, and I&rsquo;d be lying to call Expo a pure win. You&rsquo;re a layer up from the metal, so a genuinely exotic native need can mean writing a config plugin or dropping to a bare workflow, which claws back some of the simplicity. Certain platform-specific debugging is still easier if you <em>do</em> have a Mac and Xcode within reach. And you&rsquo;re now leaning on a build service &mdash; a real dependency, with its own queue times and pricing, that you should choose with open eyes.</p>
+
+                    <p>But weigh that against the alternative I&rsquo;d actually lived: two codebases, two languages, a framework maturing underneath me, and a hard hardware wall between me and half my users. The tradeoff wasn&rsquo;t close. For a solo developer or a small team &mdash; especially one without a room full of Apple hardware &mdash; Expo trades a little ceiling for an enormous amount of floor.</p>
+
+                    <h2>The lesson underneath the tooling</h2>
+
+                    <p>The real takeaway isn&rsquo;t &ldquo;Kotlin and C# are bad&rdquo; &mdash; they aren&rsquo;t; in the right context they&rsquo;re exactly right. It&rsquo;s that the best tool is usually the one that removes the most friction between you and a shipped product &mdash; and that friction is often not where you expect. I spent ages optimizing the wrong variable, language and performance, while the thing actually stopping me was a build-and-signing requirement a cloud service could absorb completely. Choose for the wall you&rsquo;re actually stuck at, not the one the &ldquo;serious&rdquo; advice tells you to worry about.</p>
+
+                    <p><em>We build cross-platform mobile apps end to end &mdash; you can see a couple on our <a href="apps.html">apps page</a> &mdash; including shipping to the App Store without a rack of Apple hardware. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-build-picture-messaging-app.html" class="btn btn-secondary">Read: How to Build a Picture Messaging App &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

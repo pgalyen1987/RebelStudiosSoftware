@@ -55,6 +55,8 @@ TEMPLATE = r'''<!DOCTYPE html>
     <meta property="og:title" content="%%TITLE%%">
     <meta property="og:description" content="%%DESC%%">
     <meta property="og:image" content="https://rebelstudiossoftware.com/%%OGCARD%%">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Rebel Studios Software">
     <meta property="article:published_time" content="%%DATE_ISO%%">
     <meta property="article:author" content="Patrick Galyen">

@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Aug 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Build an iOS App Without a Mac</title>
+      <link>https://rebelstudiossoftware.com/blog-ios-app-without-a-mac.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ios-app-without-a-mac.html</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 -0000</pubDate>
+      <description>I built cross-platform mobile apps the hard way - native Kotlin and C#/.NET MAUI - before switching to React Native and Expo. Here's why, and how to build, sign, and ship an iOS app to the App Store without owning a Mac, using Expo's cloud build (EAS).</description>
+    </item>
     <item>
       <title>How to Decode a JWT (and Why You Shouldn&amp;rsquo;t Paste It Into Just Any Site)</title>
       <link>https://rebelstudiossoftware.com/blog-decode-a-jwt.html</link>
