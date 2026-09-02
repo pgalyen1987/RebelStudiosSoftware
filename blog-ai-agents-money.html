@@ -103,11 +103,27 @@
                         <p>This is exactly why HTTP&rsquo;s long-dormant <a href="blog-http-402.html">402 Payment Required</a> status code and protocols like x402 suddenly matter: they let an agent pay for a single API call &mdash; no account, no signup, no human &mdash; and walk away with a receipt. We build on that at Rebel Studios because we think it&rsquo;s the missing primitive, not a novelty.</p>
                     </div>
 
+                    <h2>&ldquo;A wallet with rails&rdquo; is not hand-waving</h2>
+
+                    <p>When people picture an agent with money, they picture a bot draining an account at 4 a.m. That fear is doing all the work in the argument, so replace it with the actual mechanics &mdash; because the rails already exist and they are not exotic. A well-built agent wallet is bounded on three axes at once: a <strong>per-call cap</strong> (this request may spend at most X), a <strong>scoped budget</strong> (this task, this hour, this vendor, at most Y in total), and a <strong>hard stop</strong> the instant either is exceeded &mdash; no override, no &ldquo;just this once.&rdquo; Every transaction leaves a <em>cryptographic receipt</em>: verifiable proof of who paid whom, for what and when, that no human has to vouch for and no one can forge after the fact.</p>
+
+                    <p>Compare that to how you hand a human employee a corporate card. You don&rsquo;t give them unlimited spend and hope; you give them a limit, a category, and a statement you can audit. An agent wallet is that same arrangement with tighter limits and better receipts &mdash; software is <em>easier</em> to bound than a person, not harder. The danger was never that an agent <em>can</em> pay. It is an agent that pays with no boundaries, and boundaries are a solved engineering problem the moment you stop treating money as a special case and start treating it as one more capability you scope like any other.</p>
+
                     <h2>What changes when agents can pay</h2>
 
                     <p>Give agents wallets and the internet gets a new kind of customer: one that reads the docs, never rage-quits, doesn&rsquo;t need a marketing funnel, and pays instantly, per use. That customer doesn&rsquo;t care about your pricing page or your free tier. It cares whether your endpoint returns a price and takes the money.</p>
 
                     <p>Which quietly reshapes who you&rsquo;re building for. The second-order effect of agent wallets isn&rsquo;t &ldquo;faster checkout.&rdquo; It&rsquo;s that a large share of future API traffic won&rsquo;t come from a human clicking at all &mdash; and the services that let machines pay them will eat the ones that make machines wait.</p>
+
+                    <h2>Every pricing page assumes a human</h2>
+
+                    <p>Look closely at how software is sold today and you find a stack of assumptions that all quietly depend on a person being on the other end. The free tier exists to convert a human&rsquo;s attention into eventual willingness to pay. The pricing page is a persuasion surface, tuned with social proof and anchoring, aimed at a hesitating buyer. The signup funnel, the abandoned-cart email, the annual-plan discount &mdash; every one is a lever built for a mind that can be nudged. An agent has no mind to nudge. It does not read your testimonials, it does not fear missing out, and it will not be talked into the higher tier. It arrives with a task and a budget, reads the machine-readable price, and either transacts in one round trip or leaves and never thinks about you again.</p>
+
+                    <p>That is not a small UX change; it is a different economy riding on the same wires. The businesses that win it will publish a price a machine can read and take a payment a machine can send, with no human step in the middle. The ones that lose it will keep optimizing a funnel for a customer who was never going to click &mdash; pouring conversion effort into a doorway the fastest-growing segment of demand walks straight past.</p>
+
+                    <h2>&ldquo;An agent will just get scammed&rdquo;</h2>
+
+                    <p>Maybe the sharpest objection: give software a wallet and every phishing endpoint on the internet lines up to drain it. It is a real risk &mdash; and it is the strongest argument <em>for</em> building the payment layer properly rather than bolting it on. A human gets scammed because a human can be emotionally manipulated; an agent gets scammed only if its rails are lazy. Scoped budgets cap the blast radius of any single bad decision. Cryptographic receipts make fraud auditable instead of invisible. Allowlists and reputation can gate who an agent is even permitted to pay. The failure mode isn&rsquo;t &ldquo;agents have money,&rdquo; it&rsquo;s &ldquo;someone shipped an agent with a wallet and none of the controls&rdquo; &mdash; exactly the mistake that gets designed out when payment is a first-class part of the system instead of an afterthought.</p>
 
                     <p>So the real question isn&rsquo;t whether AI agents will have their own money. They will; the plumbing already exists. It&rsquo;s whether the thing <em>you&rsquo;re</em> building this year takes an agent&rsquo;s money the second it&rsquo;s offered &mdash; or sends it to a login screen and loses it. Which side are you building on?</p>
 
