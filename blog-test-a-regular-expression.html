@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to test a regular expression properly: the free browser-console method, the edge cases that actually break patterns (anchors, greedy vs lazy, near-misses), and catastrophic backtracking (ReDoS) - the failure mode normal testing never reveals.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-test-a-regular-expression.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-test-a-regular-expression.html">
+    <meta property="og:title" content="How to Test a Regular Expression (Without Hanging Your Server)">
+    <meta property="og:description" content="How to test a regular expression properly: the free browser-console method, the edge cases that actually break patterns (anchors, greedy vs lazy, near-misses), and catastrophic backtracking (ReDoS) - the failure mode normal testing never reveals.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/test-a-regular-expression.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-04">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Test a Regular Expression (Without Hanging Your Server)">
+    <meta name="twitter:description" content="How to test a regular expression properly: the free browser-console method, the edge cases that actually break patterns (anchors, greedy vs lazy, near-misses), and catastrophic backtracking (ReDoS) - the failure mode normal testing never reveals.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/test-a-regular-expression.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Test a Regular Expression (Without Hanging Your Server)","description":"How to test a regular expression properly: the free browser-console method, the edge cases that actually break patterns (anchors, greedy vs lazy, near-misses), and catastrophic backtracking (ReDoS) - the failure mode normal testing never reveals.","datePublished":"2026-09-04","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-test-a-regular-expression.html"},"image":"https://rebelstudiossoftware.com/images/blog/test-a-regular-expression.png"}</script>
+    <title>How to Test a Regular Expression (Without Hanging Your Server) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Test a Regular Expression (Without Hanging Your Server)</h1>
+            <p>The free ways to test a regex, what to check beyond &ldquo;does it match,&rdquo; and the failure mode that turns a one-line pattern into an outage</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 4, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+                    <p>Every developer tests a regular expression the same way: paste in one string that should match, one that shouldn&rsquo;t, watch both go green, ship it. That workflow is fine right up until the afternoon a regex that passed every test you wrote pins a CPU at 100% and stops answering requests. The pattern wasn&rsquo;t wrong. It was <em>slow</em> in a way no amount of &ldquo;does it match?&rdquo; testing will ever reveal.</p>
+
+                    <p>So here&rsquo;s how to actually test a regular expression &mdash; the free ways, what to check beyond matching, and the one failure mode that turns a harmless-looking pattern into an outage.</p>
+
+                    <h2>The free way to test one</h2>
+
+                    <p>You don&rsquo;t need anything installed. Open your browser console and you have a full regex engine:</p>
+
+                    <p><code>/(\w+)@(\w+)\.(\w+)/g.exec("contact a@b.com")</code></p>
+
+                    <p>That returns the full match plus each capture group. For a quick pass over every match instead of just the first, <code>[...str.matchAll(re)]</code> gives you the lot, each with its index. In Python it&rsquo;s <code>re.findall</code> and <code>re.finditer</code>; in most languages the REPL is thirty seconds away. Interactive sites that highlight matches as you type are genuinely useful for building a pattern up, and you should use them for that. Just know what they don&rsquo;t tell you, which is most of this article.</p>
+
+                    <h2>What to actually test for</h2>
+
+                    <p>&ldquo;It matched my example&rdquo; is the weakest possible assertion. The cases that break patterns in production are the ones nobody pastes in:</p>
+
+                    <ul class="article-list">
+                        <li><strong>The near-miss.</strong> Not just a string that matches, but one that <em>almost</em> does. Most regex bugs are over-matching, and you only see them with input that should have been rejected.</li>
+                        <li><strong>Empty and whitespace.</strong> An empty string, a string of spaces, a trailing newline. Patterns that look airtight often happily match nothing at all.</li>
+                        <li><strong>Anchors.</strong> Without <code>^</code> and <code>$</code>, your &ldquo;valid ID&rdquo; pattern will cheerfully match a valid ID buried inside a paragraph of garbage.</li>
+                        <li><strong>Greedy vs. lazy.</strong> <code>&lt;.*&gt;</code> on <code>&lt;a&gt;&lt;b&gt;</code> swallows the whole line; <code>&lt;.*?&gt;</code> takes one tag. Nearly every &ldquo;why did it grab too much?&rdquo; bug is this.</li>
+                        <li><strong>Multiline and Unicode.</strong> <code>.</code> doesn&rsquo;t cross newlines without the right flag, and <code>\w</code> may not mean what you assume once real names and accents show up.</li>
+                    </ul>
+
+                    <h2>The failure mode nobody tests: catastrophic backtracking</h2>
+
+                    <p>This is the one that matters, and it&rsquo;s invisible to normal testing. Most regex engines backtrack: when a match fails, they back up and try another combination. Certain pattern shapes make the number of combinations grow <em>exponentially</em> with input length. The classic is nested quantifiers &mdash; something like <code>(a+)+$</code>. Hand it twenty <code>a</code> characters followed by a <code>!</code> and the engine has to explore an astronomical number of ways to split those characters before it can conclude there&rsquo;s no match.</p>
+
+                    <p>On your test string of ten characters, it returns instantly. On a forty-character input from a user, it runs for longer than the heat death of your request timeout. Because regex matching is synchronous and CPU-bound, that single request pins a core and stops serving anyone else. If the pattern touches user input &mdash; a search box, a validation field, a log parser &mdash; you have just shipped a denial-of-service vulnerability with a one-line diff. It has a name: <strong>ReDoS</strong>.</p>
+
+                    <div class="article-highlight">
+                        <h3>The shapes to be suspicious of</h3>
+                        <p>A quantifier applied to a group that itself contains a quantifier &mdash; <code>(a+)+</code>, <code>(a*)*</code>, <code>(\d+)*</code>. Alternation where the branches can match the same text, like <code>(a|a)+</code>. And any of those followed by something that can <em>fail</em>, which is what forces the engine to explore every combination before giving up. If your pattern has nested quantifiers and runs against untrusted input, assume it&rsquo;s dangerous until proven otherwise.</p>
+                    </div>
+
+                    <p>The fix is usually simpler than the diagnosis: make the inner quantifier unnecessary (<code>a+</code> instead of <code>(a+)+</code>), anchor the pattern so failure is detected early, replace a greedy wildcard with a specific character class, or use an engine that doesn&rsquo;t backtrack at all &mdash; RE2 and its ports guarantee linear time by refusing to support the features that cause the blowup.</p>
+
+                    <p>This is also why our <a href="tools/regex-test.html">$1 regex tester</a> refuses to run a pattern it detects as catastrophic instead of hanging on it &mdash; it returns matches, capture groups, named groups and positions for safe patterns, and tells you plainly when a pattern is the dangerous shape. The browser-console method above is free and works fine; the difference is that the console will happily execute the pattern that takes your server down, and tell you nothing.</p>
+
+                    <h2>When the answer isn&rsquo;t a regex</h2>
+
+                    <p>The last test is whether you should be using one at all. Regex matches <em>patterns</em>, not <em>structures</em> &mdash; so parsing HTML, JSON, or nested anything with it is a well-known road to misery, because those formats can nest arbitrarily and a regular expression fundamentally cannot count. Use a parser. The same goes for email validation: the genuinely correct email regex is thousands of characters long and still wrong, so check for an <code>@</code>, then send a confirmation link, which is the only validation that ever actually proved anything.</p>
+
+                    <h2>The short version</h2>
+
+                    <ul class="article-list">
+                        <li>Test the near-miss, not just the match.</li>
+                        <li>Anchor it, or it&rsquo;ll match inside garbage.</li>
+                        <li>Check greedy vs. lazy the moment it grabs too much.</li>
+                        <li>Hunt nested quantifiers before untrusted input finds them for you.</li>
+                        <li>If it needs to count or nest, use a parser instead.</li>
+                    </ul>
+
+                    <p>A regex that matches your example is not a tested regex. It&rsquo;s a regex that hasn&rsquo;t met production yet.</p>
+
+                    <p><em>We build software that assumes user input is hostile, because it eventually is. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-decode-a-jwt.html" class="btn btn-secondary">Read: How to Decode a JWT &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

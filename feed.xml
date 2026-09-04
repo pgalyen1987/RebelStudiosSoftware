@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Test a Regular Expression (Without Hanging Your Server)</title>
+      <link>https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to test a regular expression properly: the free browser-console method, the edge cases that actually break patterns (anchors, greedy vs lazy, near-misses), and catastrophic backtracking (ReDoS) - the failure mode normal testing never reveals.</description>
+    </item>
     <item>
       <title>How to Build an iOS App Without a Mac</title>
       <link>https://rebelstudiossoftware.com/blog-ios-app-without-a-mac.html</link>
