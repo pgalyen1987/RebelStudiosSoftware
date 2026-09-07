@@ -34,6 +34,20 @@
       <description>WooCommerce invoice PDF showing empty boxes for Arabic, Hebrew, Persian or accented text? Here's why invoice plugins break on non-Latin and right-to-left scripts, and the real fix.</description>
     </item>
     <item>
+      <title>How to Show VAT, GST or Sales Tax on WooCommerce Invoices</title>
+      <link>https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total tax breakdown, your tax ID, and what different countries require on an invoice.</description>
+    </item>
+    <item>
+      <title>WooCommerce Sequential Invoice Numbers (and Why Order Numbers Aren't Enough)</title>
+      <link>https://rebelstudiossoftware.com/blog-woocommerce-sequential-invoice-numbers.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-woocommerce-sequential-invoice-numbers.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Why WooCommerce order numbers aren't valid invoice numbers in many countries, how sequential gap-free invoice numbering works, and how to add a compliant numbering scheme with a prefix.</description>
+    </item>
+    <item>
       <title>How to Test a Regular Expression (Without Hanging Your Server)</title>
       <link>https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</guid>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total tax breakdown, your tax ID, and what different countries require on an invoice.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html">
+    <meta property="og:title" content="How to Show VAT, GST or Sales Tax on WooCommerce Invoices">
+    <meta property="og:description" content="How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total tax breakdown, your tax ID, and what different countries require on an invoice.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-07">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Show VAT, GST or Sales Tax on WooCommerce Invoices">
+    <meta name="twitter:description" content="How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total tax breakdown, your tax ID, and what different countries require on an invoice.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":'How to Show VAT, GST or Sales Tax on WooCommerce Invoices',"description":'How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total tax breakdown, your tax ID, and what different countries require on an invoice.',"datePublished":"2026-09-07","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Show VAT, GST or Sales Tax on WooCommerce Invoices - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>.boiler-cta{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin:2rem 0}.boiler-cta h3{font-family:var(--font-display);margin-bottom:.5rem;color:var(--ink-1)}.boiler-cta p{color:var(--ink-2)}</style>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+        <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo"><span class="brand-name">Rebel Studios</span></a></div>
+        <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="apps.html">Mobile Apps</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html" class="active">Blog</a></li><li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li></ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+
+    <section class="page-header"><div class="container">
+        <h1>How to Show VAT, GST or Sales Tax on WooCommerce Invoices</h1>
+        <p>Getting the right tax breakdown onto the invoice PDF — VAT for the EU/UK, GST for Australia/India/Canada, sales tax for the US</p>
+    </div></section>
+
+    <article class="blog-article"><div class="container"><div class="article-wrapper">
+        <div class="article-meta">
+            <span class="article-date">September 7, 2026</span>
+            <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+        </div>
+        <div class="article-content">
+            <p>An invoice is a tax document, and different parts of the world expect different things on it. Get the tax presentation wrong and your customers&rsquo; accountants bounce it back &mdash; or worse, your own filing doesn&rsquo;t reconcile. Here is what WooCommerce needs to put on the invoice PDF for the three big tax systems, and the fields that matter wherever you sell.</p>
+
+            <h2>VAT, GST and sales tax are not the same document</h2>
+            <ul class="article-list">
+                <li><strong>VAT</strong> (EU, UK, and much of the world): the invoice must show your VAT registration number, the net amount, the VAT rate and amount, and the gross total. For B2B sales across EU borders, it usually must also show the <em>customer&rsquo;s</em> VAT number and a reverse-charge note.</li>
+                <li><strong>GST</strong> (Australia, India, Canada, New Zealand, Singapore): many of these require the document to be labelled a &ldquo;Tax Invoice&rdquo;, show your GST/ABN/GSTIN number, and break out the GST amount. India&rsquo;s GST in particular is strict about the seller and buyer identifiers.</li>
+                <li><strong>US sales tax</strong>: simpler on the invoice itself &mdash; typically the tax line and total &mdash; but which rate applies depends on nexus and the ship-to location.</li>
+            </ul>
+
+            <h2>What has to be on the PDF wherever you are</h2>
+            <p>Regardless of system, a defensible invoice shows: your business name, address and tax number; the customer&rsquo;s details; a unique sequential invoice number (see <a href="blog-woocommerce-sequential-invoice-numbers.html">why order numbers aren&rsquo;t enough</a>); the invoice date; a per-line breakdown; and the tax shown as its own line with the rate, not baked silently into the price.</p>
+
+            <h2>Getting it out of WooCommerce</h2>
+            <p>WooCommerce already calculates the tax per line and per order and stores it. The job of the invoice plugin is to render that breakdown faithfully on the PDF &mdash; the net, the rate, the tax amount and the gross &mdash; and to place your tax registration number and (for B2B) a field for the customer&rsquo;s. Watch for two things: the currency symbol must render correctly for international buyers (a surprising number of plugins mangle non-dollar symbols), and the tax breakdown must survive multiple tax rates on one order.</p>
+            <p>Tax rules change and vary by jurisdiction &mdash; confirm your local requirements with an accountant. The plugin&rsquo;s job is to make WooCommerce&rsquo;s numbers show up correctly and completely on a document you can hand to one.</p>
+            <div class="boiler-cta">
+                <h3>An invoice plugin that gets the details right</h3>
+                <p>Invoices, Packing Slips &amp; Delivery Notes for WooCommerce puts your tax breakdown, tax ID and totals on a clean PDF, assigns stable sequential invoice numbers stored on the order, renders every language, and attaches to your order emails automatically. Free, with bulk printing and custom templates in Pro.</p>
+                <p><a href="wc-invoices.html" class="btn btn-primary">See the WooCommerce invoice plugin &rarr;</a></p>
+            </div>
+            <p>Related reading: <a href="blog-woocommerce-sequential-invoice-numbers.html">sequential invoice numbering for tax compliance</a> and <a href="blog-attach-pdf-invoice-woocommerce-order-emails.html">attaching the invoice to order emails</a>.</p>
+        </div>
+        <div class="article-footer-nav"><a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a></div>
+    </div></div></article>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Mobile Apps</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+</body>
+</html>
