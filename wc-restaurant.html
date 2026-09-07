@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="A beautiful restaurant menu, table reservations with email confirmation, and a printable QR code that opens your menu. Free WordPress plugin; online ordering in Pro.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/wc-restaurant.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/wc-restaurant.html">
+    <meta property="og:title" content="Restaurant Menu &amp; Reservations for WordPress">
+    <meta property="og:description" content="A beautiful restaurant menu, table reservations with email confirmation, and a printable QR code that opens your menu. Free WordPress plugin; online ordering in Pro.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Restaurant Menu &amp; Reservations for WordPress">
+    <meta name="twitter:description" content="A beautiful restaurant menu, table reservations with email confirmation, and a printable QR code that opens your menu. Free WordPress plugin; online ordering in Pro.">
+    <title>Restaurant Menu, Reservations & QR Menu Plugin for WordPress - Rebel Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cb-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:2rem; }
+        @media (max-width:860px){ .cb-grid{ grid-template-columns:1fr; } }
+        .cb-card { background:var(--surface-strong); border:1px solid var(--line); border-radius:var(--radius); padding:28px; }
+        .cb-card h4 { font-family:var(--font-display); font-size:1.1rem; margin-bottom:.6rem; color:var(--ink-1); }
+        .cb-card p { font-size:.95rem; color:var(--ink-2); }
+        .cb-quote { border-left:3px solid rgba(248,113,113,.55); padding:4px 0 4px 16px; margin:14px 0; color:var(--ink-2); font-size:.93rem; font-style:italic; }
+        .cb-fix { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:2rem; }
+        @media (max-width:760px){ .cb-fix{ grid-template-columns:1fr; } }
+        .cb-fix > div { background:var(--surface-strong); padding:22px 24px; }
+        .cb-fix h5 { font-family:var(--font-display); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:12px; }
+        .cb-fix .cb-old h5 { color:#f87171; }
+        .cb-fix .cb-new h5 { color:#4ade80; }
+        .cb-fix ul { list-style:none; display:grid; gap:10px; }
+        .cb-fix li { font-size:.93rem; color:var(--ink-2); padding-left:20px; position:relative; }
+        .cb-old li::before { content:"\2715"; position:absolute; left:0; color:#f87171; }
+        .cb-new li::before { content:"\2713"; position:absolute; left:0; color:#4ade80; }
+        .cb-status { display:inline-flex; align-items:center; gap:8px; background:rgba(108,190,69,.12); border:1px solid rgba(108,190,69,.3); color:#4ade80; border-radius:999px; padding:6px 14px; font-size:.85rem; font-weight:600; margin-bottom:1.2rem; }
+        .cb-specs { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:2rem; }
+        @media (max-width:700px){ .cb-specs{ grid-template-columns:1fr; } }
+        .cb-spec { background:var(--surface-strong); padding:22px; text-align:center; }
+        .cb-spec .n { font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:var(--ink-1); display:block; }
+        .cb-spec .l { font-size:.85rem; color:var(--ink-2); margin-top:4px; display:block; }
+        .price-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:2rem; }
+        @media (max-width:760px){ .price-grid{ grid-template-columns:1fr; } }
+        .price-col { background:var(--surface-strong); padding:30px 28px; }
+        .price-col.pro { background:linear-gradient(180deg, rgba(124,58,237,.08), var(--surface-strong)); }
+        .price-tier { font-family:var(--font-display); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2); }
+        .price-amt { font-family:var(--font-display); font-size:2.4rem; font-weight:700; color:var(--ink-1); margin:.2rem 0 1rem; }
+        .price-amt small { font-size:.9rem; color:var(--ink-2); font-weight:500; }
+        .price-col ul { list-style:none; display:grid; gap:10px; }
+        .price-col li { font-size:.93rem; color:var(--ink-2); padding-left:22px; position:relative; }
+        .price-col li::before { content:"\2713"; position:absolute; left:0; color:#4ade80; }
+        .cb-cta { background:var(--surface-strong); border:1px solid var(--line); border-radius:var(--radius); padding:32px; margin-top:2.5rem; text-align:center; }
+        .cb-cta h3 { font-family:var(--font-display); margin-bottom:.6rem; color:var(--ink-1); }
+        .cb-cta p { color:var(--ink-2); max-width:560px; margin:0 auto 1.4rem; }
+        .cb-form { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+        .cb-form input { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px 16px; color:var(--ink-1); font:inherit; min-width:280px; }
+        .cb-form button { background:#4ade80; color:var(--bg,#07090f); border:0; border-radius:10px; padding:12px 24px; font-weight:700; cursor:pointer; font:inherit; }
+        code { font-family:var(--font-mono,'JetBrains Mono',monospace); font-size:.9em; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="cb-status">● Free on WordPress.org — launching soon</span>
+            <h1>Restaurant Menu, Reservations &amp; QR Menu</h1>
+            <p class="hero-sub">Everything a restaurant needs on its site: a <strong>polished menu</strong>, <strong>table reservations</strong> with email confirmation, and a <strong>printable QR code</strong> that opens your menu — without a monthly SaaS bill.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>The problem</h2>
+            <p>Restaurants get pushed into $50–200/month platforms for things WordPress can do natively: show a menu, take a reservation, and put a QR code on the table. The existing free plugins are mostly abandoned — the popular restaurant-ordering plugin hasn’t shipped an update in over a year — so owners either pay a SaaS or run a menu that’s a PDF from 2019.</p>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>What changes</h2>
+            <div class="cb-fix">
+                <div class="cb-old"><h5>The old plugins</h5><ul>
+                        <li>$50–200/month SaaS for the basics</li>
+                        <li>Free plugins abandoned for 1–2 years</li>
+                        <li>Menu is a stale PDF link</li>
+                        <li>Reservations by phone tag</li>
+                        <li>No QR menu without another tool</li>
+                </ul></div>
+                <div class="cb-new"><h5>Restaurant Menu &amp; Reservations</h5><ul>
+                        <li>A menu, reservations &amp; QR — free</li>
+                        <li>Actively maintained</li>
+                        <li>A real, styled menu on your site</li>
+                        <li>Reservation requests with email confirm</li>
+                        <li>Printable QR menu built in</li>
+                </ul></div>
+            </div>
+            <div class="cb-specs">
+                <div class="cb-spec"><span class="n">$0/mo</span><span class="l">no SaaS subscription</span></div>
+                <div class="cb-spec"><span class="n">QR menu</span><span class="l">printable, opens your menu</span></div>
+                <div class="cb-spec"><span class="n">Email</span><span class="l">guest + restaurant notified</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What it does</h2>
+            <div class="cb-grid">
+                <div class="cb-card"><h4>A menu that looks good</h4><p>Dishes with price, description, photo and dietary tags, grouped into sections. Drop it anywhere with <code>[rs_menu]</code>.</p></div>
+                <div class="cb-card"><h4>Table reservations</h4><p>A clean booking form. The guest gets a confirmation email; you get a notification and confirm or cancel from the admin — which emails the guest.</p></div>
+                <div class="cb-card"><h4>Printable QR menu</h4><p>A QR code that opens your menu page, ready to print for your tables. Generated on your server.</p></div>
+                <div class="cb-card"><h4>No monthly fee</h4><p>This replaces the part of a restaurant SaaS most owners actually use — without the subscription.</p></div>
+                <div class="cb-card"><h4>Yours to own</h4><p>Your menu and reservations live in your WordPress, not a third-party platform that can raise prices.</p></div>
+                <div class="cb-card"><h4>Ready for ordering</h4><p>When you’re ready, Pro adds online ordering for pickup and delivery on the same menu.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Pricing</h2>
+            <p style="color:var(--ink-2);max-width:640px">The plugin is free on WordPress.org. Pro adds the power features for teams and busy stores — one licence, a year of updates and support.</p>
+            <div class="price-grid">
+                <div class="price-col">
+                    <div class="price-tier">Free</div>
+                    <div class="price-amt">$0</div>
+                    <ul>
+                    <li>Full menu with sections &amp; photos</li>
+                    <li>Table reservations + email confirmation</li>
+                    <li>Admin confirm / cancel</li>
+                    <li>Printable QR menu</li>
+                    <li>Dietary tags &amp; featured items</li>
+                    </ul>
+                </div>
+                <div class="price-col pro">
+                    <div class="price-tier">Pro</div>
+                    <div class="price-amt">$69<small> / year, 1 site</small></div>
+                    <ul>
+                    <li>Everything in Free</li>
+                    <li>Online ordering (pickup &amp; delivery)</li>
+                    <li>Stripe / WooCommerce checkout</li>
+                    <li>Order-ahead &amp; table management</li>
+                    <li>Deposits &amp; WhatsApp routing</li>
+                    <li>Priority support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cb-cta">
+                <h3>Get notified when it launches</h3>
+                <p>The free plugin is heading to the WordPress.org directory. Leave your email and I’ll tell you the day it’s live.</p>
+                <!-- LAUNCH DAY: swap href for the live listing: https://wordpress.org/plugins/wc-restaurant/ (or your assigned slug) -->
+                <a class="btn btn-primary" href="index.html#contact">Get notified at launch →</a>
+                <p style="margin-top:1.2rem;font-size:.88rem">Prefer to talk? <a href="index.html#contact">Get in touch</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
