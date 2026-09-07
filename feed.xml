@@ -62,6 +62,13 @@
       <description>Why WooCommerce order numbers aren't valid invoice numbers in many countries, how sequential gap-free invoice numbering works, and how to add a compliant numbering scheme with a prefix.</description>
     </item>
     <item>
+      <title>How to Add a Pro License to a WordPress Plugin (the wp.org-Compliant Way)</title>
+      <link>https://rebelstudiossoftware.com/blog-wordpress-plugin-pro-license.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-wordpress-plugin-pro-license.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to add a paid Pro license to a WordPress plugin without breaking WordPress.org rules: the compliant free-plus-add-on architecture and how to verify license keys.</description>
+    </item>
+    <item>
       <title>How to Test a Regular Expression (Without Hanging Your Server)</title>
       <link>https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</guid>
