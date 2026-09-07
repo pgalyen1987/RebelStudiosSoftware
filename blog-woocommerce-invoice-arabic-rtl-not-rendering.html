@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="WooCommerce invoice PDF showing empty boxes for Arabic, Hebrew, Persian or accented text? Here's why invoice plugins break on non-Latin and right-to-left scripts, and the real fix.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-woocommerce-invoice-arabic-rtl-not-rendering.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-woocommerce-invoice-arabic-rtl-not-rendering.html">
+    <meta property="og:title" content="WooCommerce PDF Invoice Not Rendering Arabic / RTL Text? Here's the Fix">
+    <meta property="og:description" content="WooCommerce invoice PDF showing empty boxes for Arabic, Hebrew, Persian or accented text? Here's why invoice plugins break on non-Latin and right-to-left scripts, and the real fix.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-07">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WooCommerce PDF Invoice Not Rendering Arabic / RTL Text? Here's the Fix">
+    <meta name="twitter:description" content="WooCommerce invoice PDF showing empty boxes for Arabic, Hebrew, Persian or accented text? Here's why invoice plugins break on non-Latin and right-to-left scripts, and the real fix.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":'WooCommerce PDF Invoice Not Rendering Arabic / RTL Text',"description":"WooCommerce invoice PDF showing empty boxes for Arabic, Hebrew, Persian or accented text? Here's why invoice plugins break on non-Latin and right-to-left scripts, and the real fix.","datePublished":"2026-09-07","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-woocommerce-invoice-arabic-rtl-not-rendering.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>WooCommerce PDF Invoice Not Rendering Arabic or RTL Text? Here's the Fix - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>.boiler-cta{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin:2rem 0}.boiler-cta h3{font-family:var(--font-display);margin-bottom:.5rem;color:var(--ink-1)}.boiler-cta p{color:var(--ink-2)}</style>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+        <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo"><span class="brand-name">Rebel Studios</span></a></div>
+        <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="apps.html">Mobile Apps</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html" class="active">Blog</a></li><li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li></ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+
+    <section class="page-header"><div class="container">
+        <h1>WooCommerce PDF Invoice Not Rendering Arabic / RTL Text</h1>
+        <p>Why non-Latin and right-to-left fonts come out as boxes in invoice PDFs — and how to actually fix it</p>
+    </div></section>
+
+    <article class="blog-article"><div class="container"><div class="article-wrapper">
+        <div class="article-meta">
+            <span class="article-date">September 7, 2026</span>
+            <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+        </div>
+        <div class="article-content">
+            <p>You set up a WooCommerce invoice plugin, generate a PDF, and the customer name in Arabic &mdash; or the address in Hebrew, or a product title with Chinese characters &mdash; comes out as empty boxes, question marks, or blank space. The Latin text is fine; everything else is broken. This is one of the most common complaints about invoice plugins, and it is not your fault or your data&rsquo;s fault. It is how most of these plugins handle fonts.</p>
+
+            <h2>Why it happens</h2>
+            <p>Almost every WooCommerce invoice plugin renders its PDF with a bundled HTML-to-PDF engine (usually dompdf). To keep the download small, plugins ship only a Latin font and <em>subset</em> it &mdash; they include the glyphs for A&ndash;Z, digits and common European accents, and nothing else. When your invoice contains a character outside that subset &mdash; any Arabic letter, any CJK character, Cyrillic, Hebrew, Greek &mdash; the font simply has no glyph for it, so the PDF draws a blank box (the infamous &ldquo;tofu&rdquo;) or nothing at all.</p>
+            <p>Right-to-left scripts add a second failure on top of the first. Even with the right glyphs present, Arabic and Hebrew need <strong>text shaping</strong> and <strong>bidirectional layout</strong>: Arabic letters change form depending on their position in a word, and the whole run has to flow right-to-left. A PDF engine that only lays out left-to-right Latin text will print the letters disconnected, in the wrong order, or reversed.</p>
+
+            <h2>How to confirm this is the cause</h2>
+            <ul class="article-list">
+                <li>Latin text (English, numbers, prices) renders perfectly, but one specific script is broken. That points to a missing font subset, not a corrupted order.</li>
+                <li>Copy the customer&rsquo;s name out of the WooCommerce order screen &mdash; it displays fine in the browser. The data is intact; only the PDF can&rsquo;t draw it. This rules out a database or encoding problem.</li>
+                <li>The broken characters appear as identical boxes or blanks rather than <em>wrong</em> characters. Boxes mean &ldquo;no glyph.&rdquo;</li>
+            </ul>
+
+            <h2>The fixes, from worst to best</h2>
+            <p><strong>1. Manually swap the font (fragile).</strong> Some plugins let you drop a full Unicode TTF (like Noto Sans or DejaVu Sans) into a directory and register it. This can restore missing glyphs, but it does nothing for right-to-left shaping, it breaks on the next plugin update, and most store owners should not be editing plugin internals.</p>
+            <p><strong>2. Switch off PDF and print from the browser (a downgrade).</strong> The browser has all the system fonts, so an HTML invoice prints correctly &mdash; but you lose the automatic PDF attached to the order email, which is usually the whole point.</p>
+            <p><strong>3. Use an invoice plugin that ships a full Unicode font and does RTL shaping (the real fix).</strong> The clean solution is a plugin that includes a complete Unicode font and performs proper bidirectional layout, so Arabic, Hebrew, Persian, CJK and accented Latin all render correctly with no configuration. This is a design decision the plugin author makes up front; you cannot bolt it on reliably from the outside.</p>
+
+            <h2>Why &ldquo;renders every language&rdquo; should be a free feature</h2>
+            <p>Correct text rendering is not a premium add-on &mdash; it is the baseline of a document that represents your business. A plugin that paywalls &ldquo;multilingual support&rdquo; is charging you to fix its own font handling. Look for one where every language renders in the free tier, and the paid tier is reserved for genuine extras like bulk printing and custom templates.</p>
+            <div class="boiler-cta">
+                <h3>The plugin built for this exact problem</h3>
+                <p>Invoices, Packing Slips &amp; Delivery Notes for WooCommerce renders every language &mdash; Arabic, Hebrew and Persian right-to-left, plus every accented and non-Latin script &mdash; because it ships a full Unicode font and proper text shaping instead of subsetting Latin-only glyphs. The invoice, packing slip and delivery note are free, it attaches the PDF to your order emails automatically, and it works with the block checkout and HPOS.</p>
+                <p><a href="wc-invoices.html" class="btn btn-primary">See the WooCommerce invoice plugin &rarr;</a></p>
+            </div>
+            <p>Related reading: <a href="blog-build-freemium-wordpress-plugin.html">how freemium WordPress plugins work</a>.</p>
+        </div>
+        <div class="article-footer-nav"><a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a></div>
+    </div></div></article>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Mobile Apps</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+</body>
+</html>

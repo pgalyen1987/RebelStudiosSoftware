@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to automatically attach a PDF invoice to WooCommerce order emails for free: which email to use, how to set it up without code, and the numbering and reliability gotchas.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html">
+    <meta property="og:title" content="How to Attach a PDF Invoice to WooCommerce Order Emails (Free)">
+    <meta property="og:description" content="How to automatically attach a PDF invoice to WooCommerce order emails for free: which email to use, how to set it up without code, and the numbering and reliability gotchas.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-07">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Attach a PDF Invoice to WooCommerce Order Emails (Free)">
+    <meta name="twitter:description" content="How to automatically attach a PDF invoice to WooCommerce order emails for free: which email to use, how to set it up without code, and the numbering and reliability gotchas.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":'How to Attach a PDF Invoice to WooCommerce Order Emails',"description":'How to automatically attach a PDF invoice to WooCommerce order emails for free: which email to use, how to set it up without code, and the numbering and reliability gotchas.',"datePublished":"2026-09-07","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Attach a PDF Invoice to WooCommerce Order Emails (Free) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>.boiler-cta{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin:2rem 0}.boiler-cta h3{font-family:var(--font-display);margin-bottom:.5rem;color:var(--ink-1)}.boiler-cta p{color:var(--ink-2)}</style>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+        <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo"><span class="brand-name">Rebel Studios</span></a></div>
+        <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="apps.html">Mobile Apps</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html" class="active">Blog</a></li><li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li></ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+
+    <section class="page-header"><div class="container">
+        <h1>How to Attach a PDF Invoice to WooCommerce Order Emails</h1>
+        <p>Send the invoice automatically with the order email — no plugin code, no manual step</p>
+    </div></section>
+
+    <article class="blog-article"><div class="container"><div class="article-wrapper">
+        <div class="article-meta">
+            <span class="article-date">September 7, 2026</span>
+            <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+        </div>
+        <div class="article-content">
+            <p>Sending the invoice as a separate step &mdash; or asking customers to log in and download it &mdash; is friction nobody wants. The right behavior is simple: when an order reaches Processing or Completed, WooCommerce sends its email and the PDF invoice is already attached. Here is how that works, and how to set it up without code.</p>
+
+            <h2>Which email should carry the invoice?</h2>
+            <p>WooCommerce sends different emails at different order statuses. For most stores the invoice belongs on the <strong>Processing order</strong> email (payment received) or the <strong>Completed order</strong> email (fulfilled). Pick one so the customer isn&rsquo;t sent two copies. B2B and invoice-terms stores often prefer Processing; physical-goods stores often prefer Completed.</p>
+
+            <h2>Setting it up (no code)</h2>
+            <ul class="article-list">
+                <li>Install an invoice plugin that supports email attachment, and set your business details, logo and tax info once in its settings.</li>
+                <li>Choose the trigger email (Processing or Completed). The plugin hooks WooCommerce&rsquo;s <code>woocommerce_email_attachments</code> filter and adds the generated PDF to that message.</li>
+                <li>Place a test order and move it to that status. The email arrives with <code>invoice-1234.pdf</code> attached &mdash; no manual step.</li>
+            </ul>
+
+            <h2>The details that trip people up</h2>
+            <p><strong>Invoice numbers must be stable.</strong> The number assigned when the invoice is first generated has to be stored on the order, so that a reprint or a resend never produces a different number. Accountants and tax authorities require sequential, non-changing invoice numbers. A plugin that regenerates the number on every render is a compliance problem.</p>
+            <p><strong>The PDF engine must not break the email.</strong> If the invoice can&rsquo;t generate (a host missing a PHP extension, say), the order email must still send. Good plugins degrade gracefully to a printable HTML document instead of throwing a fatal error that stops the email entirely.</p>
+            <p><strong>Language and currency have to render.</strong> The attached PDF should show the customer&rsquo;s name, address and your currency symbol correctly in any language &mdash; see our guide on <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">fixing invoices that don&rsquo;t render Arabic or RTL text</a>.</p>
+
+            <h2>What should be free vs. paid</h2>
+            <p>Automatic email attachment, the invoice itself, packing slips, delivery notes, taxes, totals and sequential numbering are table stakes &mdash; they should be in the free plugin. Reserve payment for genuine power features: bulk-printing invoices for many orders at once, custom document templates, and credit notes.</p>
+            <div class="boiler-cta">
+                <h3>The plugin built for this exact problem</h3>
+                <p>Invoices, Packing Slips &amp; Delivery Notes for WooCommerce renders every language &mdash; Arabic, Hebrew and Persian right-to-left, plus every accented and non-Latin script &mdash; because it ships a full Unicode font and proper text shaping instead of subsetting Latin-only glyphs. The invoice, packing slip and delivery note are free, it attaches the PDF to your order emails automatically, and it works with the block checkout and HPOS.</p>
+                <p><a href="wc-invoices.html" class="btn btn-primary">See the WooCommerce invoice plugin &rarr;</a></p>
+            </div>
+            <p>Related reading: <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">why invoice PDFs don&rsquo;t render Arabic / RTL text</a> and <a href="blog-build-freemium-wordpress-plugin.html">how freemium WordPress plugins work</a>.</p>
+        </div>
+        <div class="article-footer-nav"><a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a></div>
+    </div></div></article>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Mobile Apps</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+</body>
+</html>

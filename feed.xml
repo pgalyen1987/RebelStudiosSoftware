@@ -13,11 +13,25 @@
       <link>https://rebelstudiossoftware.com/</link>
     </image>
     <item>
+      <title>How to Attach a PDF Invoice to WooCommerce Order Emails (Free)</title>
+      <link>https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to automatically attach a PDF invoice to WooCommerce order emails for free: which email to use, how to set it up without code, and the numbering and reliability gotchas.</description>
+    </item>
+    <item>
       <title>How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)</title>
       <link>https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</guid>
       <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
       <description>How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling — and how to actually sell the Pro version.</description>
+    </item>
+    <item>
+      <title>WooCommerce PDF Invoice Not Rendering Arabic or RTL Text? Here's the Fix</title>
+      <link>https://rebelstudiossoftware.com/blog-woocommerce-invoice-arabic-rtl-not-rendering.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-woocommerce-invoice-arabic-rtl-not-rendering.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>WooCommerce invoice PDF showing empty boxes for Arabic, Hebrew, Persian or accented text? Here's why invoice plugins break on non-Latin and right-to-left scripts, and the real fix.</description>
     </item>
     <item>
       <title>How to Test a Regular Expression (Without Hanging Your Server)</title>
