@@ -44,6 +44,14 @@ STATIC_PAGES = [
     ("privacy.html", "2026-06-23", "yearly", "0.3"),
     ("terms.html", "2026-07-20", "yearly", "0.3"),
     ("research.html", "2026-06-24", "monthly", "0.7"),
+    ("plugins.html", "2026-09-07", "weekly", "0.9"),
+    ("checkout-brasil.html", "2026-09-06", "monthly", "0.7"),
+    ("wc-invoices.html", "2026-09-07", "weekly", "0.8"),
+    ("wc-events.html", "2026-09-07", "weekly", "0.8"),
+    ("wc-restaurant.html", "2026-09-07", "weekly", "0.8"),
+    ("resume-matcher.html", "2026-09-07", "weekly", "0.8"),
+    ("wp-plugin-boilerplate.html", "2026-09-07", "weekly", "0.8"),
+    ("dev-toolbox.html", "2026-09-07", "weekly", "0.8"),
     # Individual $1-tool pages are noindex (conversion funnels, not content) — kept out of the sitemap.
 ]
 

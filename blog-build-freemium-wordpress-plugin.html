@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling — and how to actually sell the Pro version.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html">
+    <meta property="og:title" content="How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)">
+    <meta property="og:description" content="The wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling — plus how to sell the Pro version.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-07">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)">
+    <meta name="twitter:description" content="The wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)","description":"The wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling, plus how to sell the Pro version.","datePublished":"2026-09-07","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
+    <title>How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>.boiler-cta{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin:2rem 0}.boiler-cta h3{font-family:var(--font-display);margin-bottom:.5rem;color:var(--ink-1)}.boiler-cta p{color:var(--ink-2)}</style>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+        <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo"><span class="brand-name">Rebel Studios</span></a></div>
+        <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="apps.html">Mobile Apps</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html" class="active">Blog</a></li><li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li></ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+
+    <section class="page-header"><div class="container">
+        <h1>How to Build a Freemium WordPress Plugin</h1>
+        <p>The wp.org-compliant free/Pro architecture — and how to actually sell the Pro version</p>
+    </div></section>
+
+    <article class="blog-article"><div class="container"><div class="article-wrapper">
+        <div class="article-meta">
+            <span class="article-date">September 7, 2026</span>
+            <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+        </div>
+        <div class="article-content">
+            <p>The freemium WordPress plugin is one of the best small software businesses a solo developer can run: a free plugin on WordPress.org brings you free, search-driven installs, and a paid Pro upgrade turns a slice of those installs into recurring revenue. The catch is that most of the work isn't your plugin's actual feature — it's the plumbing every freemium plugin needs, and the WordPress.org rules you have to get right or your submission bounces.</p>
+            <p>This is the architecture that works, the compliance gotcha that trips people up, and the reusable pieces you should never write more than once.</p>
+
+            <h2>The model: free on wp.org, Pro sold off-site</h2>
+            <p>WordPress.org is the discovery engine. Millions of people search the plugin directory (and Google surfaces its pages), so a free plugin that solves a real problem gets installs you didn't pay for. That's the top of your funnel. The paid tier is where the money is — but here's the rule that catches everyone:</p>
+            <p><strong>Your free plugin on WordPress.org may not contain paid code, and may not lock features behind a payment.</strong> The directory is GPL and forbids "trialware." So you cannot ship a paid feature disabled in the free download.</p>
+            <p>The compliant pattern is two plugins:</p>
+            <ul class="article-list">
+                <li><strong>The free plugin</strong> ships on wp.org. It contains the free features and a <em>gate</em> — an "if Pro, do more" check — plus "Get Pro" links. No paid code.</li>
+                <li><strong>A separate Pro add-on</strong> is sold on your own store (Gumroad, Freemius, Lemon Squeezy). When the buyer installs and licenses it, it answers a filter — say <code>myplugin_is_pro</code> — with <code>true</code>, and registers the paid features on the hooks the free plugin already exposes.</li>
+            </ul>
+
+            <h2>The gate: one function you'll reuse forever</h2>
+            <p>The whole freemium mechanism comes down to a single, dependency-free class. The free plugin defines it; the Pro add-on flips it on:</p>
+            <pre><code>class Freemium {
+    const IS_PRO_FILTER = 'myplugin_is_pro';
+
+    // Features the free tier includes. Everything else is Pro-only.
+    private static function free_features() {
+        return array( 'core' );
+    }
+
+    public static function is_pro() {
+        return (bool) apply_filters( self::IS_PRO_FILTER, false );
+    }
+
+    public static function allows( $feature ) {
+        return self::is_pro() || in_array( $feature, self::free_features(), true );
+    }
+}</code></pre>
+            <p>Now you gate any feature with one call, and it always degrades cleanly to the free behaviour instead of erroring:</p>
+            <pre><code>if ( Freemium::allows( 'bulk_export' ) ) {
+    // Pro path
+} else {
+    // free path, or a "Get Pro" nudge at the moment of need
+}</code></pre>
+            <p>The Pro add-on, once licensed, is a two-line file: <code>add_filter( 'myplugin_is_pro', '__return_true' );</code> after its license check. That's it. The gate does the rest.</p>
+
+            <h2>The boring 80% you keep rewriting</h2>
+            <p>Every freemium plugin needs the same scaffolding before you write a single line of your actual feature:</p>
+            <ul class="article-list">
+                <li><strong>A settings framework</strong> — one serialized option row, typed defaults, sanitized writes, and an allow-list so a crafted POST can't smuggle values in.</li>
+                <li><strong>The license gate</strong> above, plus an admin "Get Pro" call-to-action that shows the upsell at the moment a user hits a locked feature (the highest-converting spot in the whole funnel).</li>
+                <li><strong>A wp.org-format readme.txt</strong> — with the exact headers, tags, and "Stable tag" the directory requires.</li>
+                <li><strong>A build script</strong> that produces a clean distributable zip, excluding your dev files (tests, <code>.git</code>, build tooling) via a dist-ignore list.</li>
+                <li><strong>An uninstall routine</strong> that removes your options — but keeps anything that's a real record.</li>
+            </ul>
+            <p>None of that is your product. It's the same every time, and it's a day or two of fiddly work before you even start. It's also where wp.org rejections come from — a missing readme header, a permission not nonce-checked, a fatal on a missing dependency.</p>
+
+            <h2>Don't fatal the site</h2>
+            <p>One rule that saves you a one-star review: never let a missing dependency crash a site. If your plugin needs WooCommerce and it isn't active, show an admin notice and return — don't call a class that doesn't exist. The same goes for any optional library: check, degrade, continue.</p>
+            <pre><code>if ( ! class_exists( 'WooCommerce' ) ) {
+    add_action( 'admin_notices', function () {
+        echo '&lt;div class="notice notice-error"&gt;&lt;p&gt;My Plugin needs WooCommerce active.&lt;/p&gt;&lt;/div&gt;';
+    } );
+    return;
+}</code></pre>
+
+            <h2>How the money actually reaches you</h2>
+            <p>WordPress.org never touches money — it only distributes the free plugin. The payment happens on the external store, which acts as merchant of record: it charges the card, handles global sales tax/VAT, and pays out to your bank. Your free plugin's "Get Pro" button sends the buyer there; they get the Pro add-on plus a license key; the key flips the gate. Keep <em>one</em> store as the license authority so you're not reconciling two key formats.</p>
+
+            <div class="boiler-cta">
+                <h3>Or skip the boring 80%</h3>
+                <p>I got tired of rebuilding the same license gate, settings framework, readme and build script for every plugin, so I packaged them into a boilerplate with a one-command scaffolder: run it, and you get a complete, activation-ready freemium plugin — namespace, constants, settings screen and license gate already wired. You add your feature and ship. It's GPL, so you can use it in unlimited commercial plugins.</p>
+                <p><a href="wp-plugin-boilerplate.html" class="btn btn-primary">See the Freemium Plugin Boilerplate &rarr;</a></p>
+            </div>
+
+            <h2>The part nobody automates for you</h2>
+            <p>Building the plugin is the easy half. The hard half is distribution: getting installs (wp.org search rankings, which reviews and active installs compound), and converting a few of them to Pro. Ship the free plugin, earn the installs, <em>then</em> build the Pro tier for the users who ask for more — not before. A paywall for zero users is wasted work.</p>
+
+            <p>Related reading: <a href="blog-build-saas.html">How to build a SaaS platform</a> and <a href="blog-who-pays-for-open-source.html">who pays for open source</a>.</p>
+        </div>
+        <div class="article-footer-nav"><a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a></div>
+    </div></div></article>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Mobile Apps</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>

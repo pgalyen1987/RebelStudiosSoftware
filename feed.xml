@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)</title>
+      <link>https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling — and how to actually sell the Pro version.</description>
+    </item>
     <item>
       <title>How to Test a Regular Expression (Without Hanging Your Server)</title>
       <link>https://rebelstudiossoftware.com/blog-test-a-regular-expression.html</link>
