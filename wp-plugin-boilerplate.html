@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});gtag('config','G-00TNDVMQNM');</script>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A starter kit for freemium WordPress.org plugins: Pro license gate, settings framework, build-to-zip script, and a one-command scaffolder. Add your feature and ship.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/wp-plugin-boilerplate.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <meta property="og:title" content="Freemium WordPress Plugin Boilerplate"><meta property="og:description" content="A starter kit for freemium WordPress.org plugins: Pro license gate, settings framework, build-to-zip script, and a one-command scaffolder. Add your feature and ship."><meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Freemium WordPress Plugin Boilerplate — Ship a Pro plugin fast - Rebel Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f"><link rel="stylesheet" href="styles.css">
+    <style>
+      .cb-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:2rem}
+      @media(max-width:860px){.cb-grid{grid-template-columns:1fr}}
+      .cb-card{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+      .cb-card h4{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.5rem;color:var(--ink-1)}
+      .cb-card p{font-size:.95rem;color:var(--ink-2)}
+      .cb-status{display:inline-flex;align-items:center;gap:8px;background:rgba(108,190,69,.12);border:1px solid rgba(108,190,69,.3);color:#4ade80;border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:600;margin-bottom:1.2rem}
+      .cb-cta{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:32px;margin-top:2.5rem;text-align:center}
+      .cb-cta h3{font-family:var(--font-display);margin-bottom:.6rem;color:var(--ink-1)}
+      .cb-cta p{color:var(--ink-2);max-width:560px;margin:0 auto 1.4rem}
+      .price-big{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--ink-1);margin:.4rem 0}
+      code{font-family:var(--font-mono,monospace);font-size:.9em}
+    </style>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+      <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo"><span class="brand-name">Rebel Studios</span></a></div>
+      <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="apps.html">Mobile Apps</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li></ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+    <section class="hero"><div class="container">
+      <span class="cb-status">&#9679; Available now · Gumroad</span>
+      <h1>Freemium WordPress Plugin Boilerplate</h1>
+      <p class="hero-sub">Ship a freemium plugin to WordPress.org without rebuilding the boring 80% every time. Get the license gate, settings framework, wp.org readme and build tooling — plus a one-command scaffolder. <strong>Add your feature and ship.</strong></p>
+    </div></section>
+    <section class="section"><div class="container">
+      <h2>What it does</h2>
+      <div class="cb-grid">
+                <div class="cb-card"><h4>One-command scaffolder</h4><p><code>./new-plugin.sh "My Plugin" myprefix my-slug</code> stamps out a complete, activation-ready plugin — namespace, constants, settings screen and license gate already wired.</p></div>
+                <div class="cb-card"><h4>The freemium engine</h4><p>Reusable Settings, Pro license-gate and Admin classes. Gate any feature with one call; it always degrades cleanly to free — wp.org-compliant.</p></div>
+                <div class="cb-card"><h4>Build &amp; ship tooling</h4><p>A wp.org-format readme and a build-to-zip script, so you go from code to a submittable plugin in one command.</p></div>
+                <div class="cb-card"><h4>Proven, not theoretical</h4><p>The same engine behind multiple shipped plugins. GPL — use it in unlimited commercial plugins.</p></div>
+      </div>
+    </div></section>
+    <section class="section section-alt"><div class="container">
+      <div class="cb-cta">
+        <div class="price-big">$39</div>
+        <h3>Get the boilerplate</h3>
+        <p>Instant download: the scaffolder, the engine, a sample feature, and a full guide. GPL — unlimited use.</p>
+        <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/xywjzg" target="_blank" rel="noopener">Buy on Gumroad &mdash; $39 &rarr;</a>
+      </div>
+    </div></section>
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Mobile Apps</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>
