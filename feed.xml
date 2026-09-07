@@ -13,6 +13,13 @@
       <link>https://rebelstudiossoftware.com/</link>
     </image>
     <item>
+      <title>ATS-Friendly Resume Format: What Actually Parses</title>
+      <link>https://rebelstudiossoftware.com/blog-ats-friendly-resume-format.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ats-friendly-resume-format.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>The ATS-friendly resume format that actually parses: why .docx beats a design PDF, why single-column matters, and the headings, fonts and fixes that keep your resume readable.</description>
+    </item>
+    <item>
       <title>How to Attach a PDF Invoice to WooCommerce Order Emails (Free)</title>
       <link>https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html</guid>
@@ -25,6 +32,13 @@
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</guid>
       <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
       <description>How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling — and how to actually sell the Pro version.</description>
+    </item>
+    <item>
+      <title>How to Get Your Resume Past an ATS in 2026</title>
+      <link>https://rebelstudiossoftware.com/blog-get-resume-past-ats.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-get-resume-past-ats.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to get your resume past an ATS in 2026: what Applicant Tracking Systems really do, the two real reasons resumes get filtered out, and the step-by-step fixes.</description>
     </item>
     <item>
       <title>WooCommerce PDF Invoice Not Rendering Arabic or RTL Text? Here's the Fix</title>
