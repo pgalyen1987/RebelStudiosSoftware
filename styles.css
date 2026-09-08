@@ -3701,3 +3701,71 @@ a.tool-card:hover {
 .article-bottom-ad:has(ins[data-ad-status="unfilled"]) {
     display: none;
 }
+
+/* ============================================================
+   TOOL CATALOGUE — per-tool identity
+   Twenty-two cards each carrying an identical "$1" chip and "Live" badge
+   read as one object repeated twenty-two times: the badges were universal,
+   so they carried no information and supplied all of the sameness. Category
+   colour plus a per-tool glyph gives every card something to be recognised
+   by, and the heading still states the price once.
+   ============================================================ */
+
+.tool-group { margin-bottom: var(--space-lg); }
+
+.tool-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: var(--space-sm);
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--line);
+}
+.tool-group-head::before {
+    content: '';
+    align-self: center;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 2px;
+    background: hsl(var(--cat) 68% 58%);
+    box-shadow: 0 0 0 3px hsl(var(--cat) 68% 58% / 0.16);
+}
+.tool-group-head h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    margin: 0;
+    color: var(--ink-1);
+}
+.tool-group-count {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-3);
+    margin-left: auto;
+}
+
+.tool-ico {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 0.7rem;
+    color: hsl(var(--cat) 70% 64%);
+    background: hsl(var(--cat) 70% 55% / 0.11);
+    border: 1px solid hsl(var(--cat) 70% 55% / 0.24);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+.tool-ico svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+a.tool-card:hover { border-color: hsl(var(--cat) 70% 55% / 0.5); }
+a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
+
+/* The first card of each group carries the group's weight */
+.tool-group .tools-grid > a.tool-card:first-child { background: hsl(var(--cat) 60% 40% / 0.06); }
