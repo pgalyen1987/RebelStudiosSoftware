@@ -114,7 +114,7 @@
                     </ul>
 
                     <div class="article-callout">
-                        <h3>The $1 version</h3>
+                        <h3>When you just need the file converted</h3>
                         <p>When you don&rsquo;t want to write and debug a parser &mdash; or you&rsquo;re round-tripping messy data with quoted commas and mixed types &mdash; <a href="tools/csv-json.html">CSV &harr; JSON</a> converts cleanly in both directions for $1: proper quote handling, sensible typing, header-to-key mapping. Agents can call the same endpoint over x402.</p>
                     </div>
 
@@ -142,15 +142,10 @@
 
                     <p>Going the other direction has one genuinely hard problem: CSV is flat and JSON nests. The workable convention is <strong>dot notation</strong> &mdash; <code>{"user":{"name":"Ada"}}</code> becomes a column called <code>user.name</code>. Arrays are the messy case, with three honest options: join them into one cell (<code>"red|blue"</code>), explode them into numbered columns (<code>tags.0</code>, <code>tags.1</code>), or emit one row per array item and repeat the parent fields. Each loses something. Pick deliberately based on what reads the file next, because there is no lossless answer here.</p>
 
-                    <h2>FAQ</h2>
-                    <h3>What&rsquo;s the fastest free way for a clean file?</h3>
-                    <p>A short script (Python&rsquo;s <code>csv</code> + <code>json</code> modules), or your code editor&rsquo;s built-in conversion. Clean data with a header row converts in seconds.</p>
-                    <h3>Why did my converter split a name into two columns?</h3>
-                    <p>It split on every comma instead of respecting quoted fields. <code>"Smith, Jr."</code> needs a real CSV parser that honors the quotes.</p>
-                    <h3>Can it handle nested JSON?</h3>
-                    <p>Going to CSV, nested structures have to be flattened or serialized &mdash; there&rsquo;s no lossless single-table form. Going from CSV, you get a flat array of objects.</p>
-
-                    <h2>The Takeaway</h2>
+                    <h2>Where converters go wrong</h2>
+                    <p>The classic symptom is a name arriving split across two columns. That is a converter splitting on every comma instead of respecting quoted fields &mdash; <code>"Smith, Jr."</code> is one value, and only a real CSV parser knows it. Any tool that fails this test will fail on addresses, on currency, and on free-text notes, which is to say on most real data.</p>
+                    <p>For a clean file with a header row, a short script using Python&rsquo;s <code>csv</code> and <code>json</code> modules converts in seconds, and most editors have the conversion built in. Nesting is the one thing that does not round-trip: going from CSV you get a flat array of objects, and going the other way nested structures have to be flattened or serialised, because there is no lossless single-table form for them.</p>
+                    <h2>The short version</h2>
                     <p>For clean data, a few lines of code convert CSV&harr;JSON for free &mdash; use them. When the data has quoted commas, embedded newlines, mixed types, or you just want it done right in one step, use <a href="tools/csv-json.html">the $1 CSV&harr;JSON converter</a>, or see the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>

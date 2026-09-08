@@ -110,7 +110,7 @@
                     <p>You can eyeball most of this in your file&rsquo;s Properties/Get Info: size and dimensions are right there. The extension is on the filename. The rest is reading the portal&rsquo;s fine print.</p>
 
                     <div class="article-callout">
-                        <h3>The $1 version</h3>
+                        <h3>Checking it before you submit</h3>
                         <p>When you&rsquo;d rather just <em>know</em>, <a href="tools/doc-checker.html">Document Requirement Checker</a> takes your file and the portal&rsquo;s rules and tells you whether it will pass &mdash; and exactly what to fix if it won&rsquo;t &mdash; for $1, before you waste a submission. If it needs fixing, <a href="tools/uploadfix.html">UploadFix</a> gets it to spec in one pass.</p>
                     </div>
 
@@ -132,15 +132,10 @@
                     <p>You can usually tell which one stopped you by how it failed. A clean, styled error naming your file is the application talking, and the limit on the page is real. A raw server error page, or a request that dies partway through with no message at all, means you hit a lower ceiling further out &mdash; and no amount of arguing with the documented limit will help. Shrink the file below the number that actually bit you.</p>
                     <p>One more wrinkle worth knowing: files sent as part of an email or some JSON APIs get base64-encoded in transit, which inflates them by roughly a third. A 4.8 MB attachment can genuinely exceed a 5 MB ceiling for reasons that have nothing to do with your file.</p>
 
-                    <h2>FAQ</h2>
-                    <h3>Why doesn&rsquo;t the portal just tell me what&rsquo;s wrong?</h3>
-                    <p>Many validators return a generic &ldquo;invalid file&rdquo; for security or simplicity. The check is mechanical even when the message isn&rsquo;t helpful &mdash; so you have to test against the rules yourself.</p>
-                    <h3>Can I just rename my HEIC to .jpg?</h3>
-                    <p>No &mdash; validators that check the real content type will still reject it, and the server can&rsquo;t decode it. You have to actually <a href="blog-heic-to-jpg.html">convert</a> it.</p>
-                    <h3>What&rsquo;s the most common reason uploads fail?</h3>
-                    <p>Wrong format (HEIC) and over the size cap are the top two, followed by exact-dimension requirements on ID photos.</p>
-
-                    <h2>The Takeaway</h2>
+                    <h2>Why the error message is never useful</h2>
+                    <p>It is worth understanding that the unhelpfulness is deliberate. Many validators return a flat &ldquo;invalid file&rdquo; regardless of what actually failed, partly for simplicity and partly because detailed rejection messages tell an attacker exactly what the parser accepts. The check is mechanical and precise; the message is vague on purpose.</p>
+                    <p>Which means the diagnosis is yours to do. Two failures account for most of it &mdash; a HEIC that the portal will not decode, and a file over the size cap &mdash; followed by exact pixel dimensions on ID photos. And renaming a HEIC to <code>.jpg</code> does not work: any validator reading the actual bytes still rejects it, and the server cannot decode it regardless. You have to genuinely <a href="blog-heic-to-jpg.html">convert</a> it.</p>
+                    <h2>Before you hit submit</h2>
                     <p>Don&rsquo;t submit and pray. Check format, size, and dimensions against the requirements first &mdash; a 30-second pre-flight beats a rejection loop. When you&rsquo;d rather have it confirmed, <a href="tools/doc-checker.html">the $1 requirement checker</a> tells you before you upload, and <a href="tools/uploadfix.html">UploadFix</a> fixes whatever&rsquo;s off. Browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>

@@ -120,22 +120,17 @@
                     <p><strong>HandBrake</strong> (free, desktop) is the powerful option &mdash; it can re-encode to H.264/H.265 at a chosen resolution and quality. The catch: hitting an <em>exact</em> target size means guessing a bitrate, exporting, checking, and adjusting. QuickTime (Mac) can export at lower resolutions, and phone editors can trim and downscale. All of these work; they just take trial and error to land under a specific cap.</p>
 
                     <div class="article-callout">
-                        <h3>The $1 version</h3>
+                        <h3>If you would rather not install anything</h3>
                         <p>If you just want it under the limit without running the encode loop by hand, <a href="tools/video-under-mb.html">Video Under Size</a> takes your clip and a target (say, 25 MB) and encodes an MP4/H.264 to fit &mdash; $1, no desktop software, no bitrate math. Agents can call the same operation over x402.</p>
                     </div>
 
                     <h2>When You Shouldn&rsquo;t Crush It</h2>
                     <p>If the video is evidence, a demo where detail matters, or something a client will scrutinize, don&rsquo;t nuke the quality to hit a tiny cap &mdash; trim length first, drop to 1080p, and only then lower bitrate. If you genuinely can&rsquo;t hit the limit without ruining it, upload it to a link-sharing service and send the link instead.</p>
 
-                    <h2>FAQ</h2>
-                    <h3>Will compressing ruin the quality?</h3>
-                    <p>Not if you&rsquo;re sensible. Going 4K&rarr;1080p and trimming dead time often gets you under the cap before quality suffers at all. It&rsquo;s only aggressive bitrate cuts that get blocky.</p>
-                    <h3>What format should I use?</h3>
-                    <p>MP4 with H.264 is the safe, universally accepted choice. Use H.265 only if you know the destination supports it.</p>
-                    <h3>My video is barely over the limit &mdash; what&rsquo;s fastest?</h3>
-                    <p>Trim a few unneeded seconds or drop one resolution step; that&rsquo;s usually enough for a small overage.</p>
-
-                    <h2>The Takeaway</h2>
+                    <h2>When you are barely over the limit</h2>
+                    <p>A small overage does not need the full treatment. Trim a few seconds of dead air at the start or end &mdash; size scales linearly with duration, so this is the fastest win available &mdash; or drop a single resolution step. Either one usually closes a gap of a few megabytes without touching your bitrate settings at all.</p>
+                    <p>On format, MP4 with H.264 is the answer unless you have a specific reason otherwise. It is universally accepted, which is worth more than the efficiency you give up. And the fear that compression will ruin the video is mostly misplaced: going 4K to 1080p and cutting dead time often gets you under a cap before quality degrades at all. Blocking and smearing come from aggressive bitrate cuts, not from sensible ones.</p>
+                    <h2>Start here</h2>
                     <p>Video size is bitrate and duration &mdash; lower the resolution, trim the length, then encode to the number. Free tools like HandBrake can do it with some trial and error; when you just want it under a specific cap in one step, use <a href="tools/video-under-mb.html">the $1 video compressor</a>, or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>

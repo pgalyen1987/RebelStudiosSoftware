@@ -123,7 +123,7 @@
                     <p>It does <em>not</em> need to be a full desktop app, a free trial that emails you forever, or a site that makes you watch ads for sixty seconds. For a one-off upload, you want a transaction: file in, JPG out, done.</p>
 
                     <div class="article-callout">
-                        <h3>The $1 version</h3>
+                        <h3>The one-dollar shortcut</h3>
                         <p>We built <a href="tools/heic-to-jpg.html">HEIC → JPG</a> as a pay-per-use tool: upload the photo, pay $1 with a card, download a JPG websites accept. Same endpoint is also available to AI agents over HTTP 402 / x402 if a bot is doing the conversion for you.</p>
                     </div>
 
@@ -139,14 +139,10 @@
                         <li>Strip location metadata with the <a href="tools/metadata-strip.html">privacy cleaner</a> if it&rsquo;s an ID going to a stranger&rsquo;s portal.</li>
                     </ul>
 
-                    <h2>FAQ</h2>
-                    <h3>Will converting to JPG lower my photo quality?</h3>
-                    <p>Slightly &mdash; JPEG is lossy &mdash; but at a sensible quality setting the difference is invisible for a form or ID photo. A good converter keeps quality high enough that faces and text stay sharp.</p>
-                    <h3>Why can I see the HEIC on my phone but the website can&rsquo;t?</h3>
-                    <p>Your phone has an Apple decoder built in. The website only checks the file extension against an allow-list that predates HEIC &mdash; it never opens the image.</p>
-                    <h3>Can I stop my iPhone making HEICs entirely?</h3>
-                    <p>Yes &mdash; Settings → Camera → Formats → Most Compatible. New photos save as JPG; existing ones still need converting.</p>
-
+                    <h2>Quality, decoders, and switching HEIC off for good</h2>
+                    <p>The quality question answers itself once you know the numbers above: JPEG is lossy, so a conversion costs you something, but at a sensible quality setting the loss is invisible on a form or an ID photo. Faces and text stay sharp. It is only repeated conversions and aggressive size-cutting that show.</p>
+                    <p>The reason your phone displays the file happily while the website refuses it is less about capability than about effort. Your phone has an Apple decoder built in. The website, in most cases, never opens the image at all &mdash; it compares your file extension against an allow-list written before HEIC existed and stops there.</p>
+                    <p>If you would rather not do this again: Settings &rarr; Camera &rarr; Formats &rarr; Most Compatible switches the camera to JPEG permanently. New photos are fine from then on; the ones already in your library still need converting.</p>
                     <h2>What you give up in the conversion</h2>
                     <p>Converting is the right call when a site refuses HEIC, but it is not lossless and it is worth knowing what leaves the file.</p>
                     <p><strong>Colour depth.</strong> HEIC stores 10 bits per channel; baseline JPEG stores 8. In most photographs you will never see the difference. Where it shows is smooth gradients &mdash; a clear sky, a studio backdrop &mdash; which can develop faint banding where the original held a continuous gradation.</p>
@@ -154,7 +150,7 @@
                     <p><strong>A generation of quality.</strong> HEIC is already lossy, so converting re-compresses data that has been compressed once. One conversion at high quality is visually harmless. Converting repeatedly, or at aggressive settings to satisfy a size limit, accumulates artefacts around edges and fine detail.</p>
                     <p>The practical advice that follows: convert a copy and keep the original. Once you have flattened a portrait shot to JPEG, the depth information is not recoverable from the result &mdash; and the situation where you want it back is exactly the situation where you no longer have it.</p>
 
-                    <h2>The Takeaway</h2>
+                    <h2>The practical upshot</h2>
                     <p>HEIC isn&rsquo;t broken &mdash; the upload form is outdated. If you&rsquo;re at a computer with the right software, the free export routes above work. If you&rsquo;re on a phone, mid-form, or converting a batch and just want it done, use <a href="tools/heic-to-jpg.html">our $1 HEIC to JPG tool</a> &mdash; or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>

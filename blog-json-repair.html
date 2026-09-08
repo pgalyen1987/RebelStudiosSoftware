@@ -140,7 +140,7 @@
                     <h2>When Repair Is the Wrong Tool</h2>
                     <p>If the model omitted half the schema, &ldquo;repair&rdquo; may invent structure you should not trust. Prefer repair for <em>syntax</em> damage, then always <strong>validate against your schema</strong> (JSON Schema, Zod, Pydantic) afterward. Garbage semantics &mdash; missing required fields, wrong types &mdash; need a better prompt or structured output, not a syntax patch.</p>
 
-                    <h2>FAQ</h2>
+                    <h2>Quick answers</h2>
                     <h3>Is repaired JSON safe to trust?</h3>
                     <p>For syntax fixes (commas, quotes, brackets), yes. For truncated or semantically incomplete data, no &mdash; validate against a schema before you rely on it.</p>
                     <h3>How do I stop the LLM producing broken JSON in the first place?</h3>
@@ -148,7 +148,7 @@
                     <h3>What about CSV that needs to become JSON?</h3>
                     <p>Different job &mdash; that&rsquo;s the <a href="tools/csv-json.html">CSV ↔ JSON</a> tool.</p>
 
-                    <h2>The Takeaway</h2>
+                    <h2>What to do next time</h2>
                     <p>Don&rsquo;t hand-edit trailing commas in a production agent path. Fix the generator where you can (structured output), use a real lenient parser where you can&rsquo;t, and validate the result against a schema before trusting it. When you want that as an endpoint instead of a gist you maintain forever, <a href="tools/json-repair.html">repair JSON for $1</a> &mdash; or over x402 for agents.</p>
 
                 </div>

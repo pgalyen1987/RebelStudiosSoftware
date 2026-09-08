@@ -88,7 +88,7 @@
 
                 <div class="article-content">
 
-                    <p>Every photo your phone takes carries a hidden file called <strong>EXIF metadata</strong>: the exact GPS coordinates where it was shot, the device model, the date and time, and camera settings. It travels with the image. When you post that photo to a marketplace, a forum, a dating profile, or email it to a stranger, you may be handing over <em>where you live</em>.</p>
+                    <p>Every photo your phone takes carries a hidden block of data called <strong>EXIF metadata</strong>, embedded inside the image file itself: the exact GPS coordinates where it was shot, the device model, the date and time, and camera settings. It travels with the image. When you post that photo to a marketplace, a forum, a dating profile, or email it to a stranger, you may be handing over <em>where you live</em>.</p>
 
                     <p>It&rsquo;s one of the most common accidental privacy leaks online &mdash; and it&rsquo;s easy to prevent.</p>
 
@@ -106,7 +106,7 @@
                     <p>These work well for a single image when you remember to do them. The failure mode is forgetting, or having a batch to clean.</p>
 
                     <div class="article-callout">
-                        <h3>The $1 version</h3>
+                        <h3>Cleaning a whole batch</h3>
                         <p>When you want <em>all</em> metadata gone &mdash; GPS, camera, timestamps &mdash; in one predictable step, <a href="tools/metadata-strip.html">Privacy Cleaner</a> takes your photo and hands back a clean copy with the metadata stripped, for $1. No account, nothing retained. The image itself is unchanged; only the hidden data is removed.</p>
                     </div>
 
@@ -127,15 +127,9 @@
                     <p>The same trick applies to redaction. Painting a black box over a name changes the pixels; it does not necessarily change the embedded preview that was written before you painted it. If you have cropped or redacted anything sensitive, strip metadata afterwards rather than before &mdash; and if it truly matters, re-encode the image so only the visible pixels survive.</p>
                     <p>A screenshot sidesteps all of this for exactly that reason: it is a fresh capture of what is on screen, with no inherited history at all.</p>
 
-                    <h2>FAQ</h2>
-                    <h3>Does stripping metadata change the image?</h3>
-                    <p>No &mdash; the pixels are untouched. Only the hidden EXIF data (GPS, camera info, timestamps) is removed.</p>
-                    <h3>What exactly gets removed?</h3>
-                    <p>GPS coordinates, device make/model, capture date/time, and camera settings &mdash; the fields that identify where and how the photo was taken.</p>
-                    <h3>Don&rsquo;t social networks already do this?</h3>
-                    <p>Some do on upload, but many marketplaces, forums, email attachments, and direct file links preserve it. When in doubt, strip it before you share.</p>
-
-                    <h2>The Takeaway</h2>
+                    <h2>What stripping does, and what it doesn&rsquo;t</h2>
+                    <p>Two worries come up every time, and both deserve a straight answer. Stripping metadata does not touch your pixels &mdash; the image is bit-for-bit the photograph it was, and only the hidden fields go. And no, you cannot rely on the platform to do it for you: some social networks strip on upload, but marketplaces, forums, email attachments and direct file links frequently preserve everything. The asymmetry is the point. Stripping a file that was already clean costs you nothing; trusting a platform that turns out not to strip costs you your address.</p>
+                    <h2>The habit worth building</h2>
                     <p>Your photos quietly carry your location. For a single image, your phone or OS can remove it free &mdash; use it. When you want everything stripped in one clean step, or you&rsquo;re cleaning a batch, use <a href="tools/metadata-strip.html">the $1 privacy cleaner</a>, or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>
