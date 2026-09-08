@@ -2,6 +2,7 @@
 """Generate sitemap.xml and feed.xml from blog HTML files."""
 
 import re
+import subprocess
 from datetime import datetime
 from email.utils import format_datetime
 from pathlib import Path
@@ -56,6 +57,23 @@ STATIC_PAGES = [
 ]
 
 
+def last_modified(path: Path, fallback: str) -> str:
+    """Sitemap lastmod must reflect when the page actually changed, not when it
+    was published. Git's last commit date for the file is the honest answer;
+    using the published date tells crawlers nothing changed after an edit."""
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", str(path)],
+            capture_output=True, text=True, timeout=10,
+        )
+        stamp = out.stdout.strip()
+        if stamp:
+            return stamp
+    except Exception:
+        pass
+    return fallback
+
+
 def parse_blog_post(path: Path) -> dict | None:
     html = path.read_text(encoding="utf-8")
     title = re.search(r"<title>(.*?)</title>", html)
@@ -68,6 +86,7 @@ def parse_blog_post(path: Path) -> dict | None:
         "title": title.group(1).replace(" - Rebel Studios Software", ""),
         "description": desc.group(1),
         "date": date.group(1) if date else "2026-06-01",
+        "lastmod": last_modified(path, date.group(1) if date else "2026-06-01"),
     }
 
 
@@ -82,7 +101,7 @@ def build_sitemap(posts: list[dict]) -> str:
     for post in sorted(posts, key=lambda p: p["date"], reverse=True):
         url = SubElement(urlset, "url")
         SubElement(url, "loc").text = f"{BASE}/{post['file']}"
-        SubElement(url, "lastmod").text = post["date"]
+        SubElement(url, "lastmod").text = post["lastmod"]
         SubElement(url, "changefreq").text = "yearly"
         SubElement(url, "priority").text = "0.6"
     xml = tostring(urlset, encoding="unicode")
