@@ -117,6 +117,21 @@
                     <h2>Why This Saves More Than Time</h2>
                     <p>Some portals rate-limit attempts, lock you out after a few failures, or route rejected submissions to a slow manual-review queue. A rejected upload isn&rsquo;t always a free retry &mdash; sometimes it costs you days. Getting the first one right is worth the 30-second check.</p>
 
+                    <h2>Why the same file passes one site and fails another</h2>
+                    <p>The frustrating part of upload validation is that there is no single standard. Two portals asking for &ldquo;a JPEG under 5 MB&rdquo; can disagree about whether your file qualifies, because they are checking different things in a different order.</p>
+                    <p>Most upload paths run three checks, and any one of them can reject you:</p>
+                    <ul class="article-list">
+                        <li><strong>The extension.</strong> The cheapest check, and the least reliable. It reads the characters after the last dot and nothing else. Rename a PNG to <code>.jpg</code> and this check is satisfied &mdash; which is exactly why the better portals do not stop here.</li>
+                        <li><strong>The magic bytes.</strong> A stricter server reads the first few bytes of the file to identify the real format. A JPEG starts <code>FF D8 FF</code>; a PNG starts with a byte followed by <code>PNG</code>. If the extension says one thing and the bytes say another, a strict validator rejects the file, and often with a maddeningly generic message.</li>
+                        <li><strong>The decoded image.</strong> The strictest portals actually open the file to read its true dimensions and colour profile. This is where a CMYK JPEG from a print workflow fails a portal expecting RGB, even though it is unquestionably a valid JPEG.</li>
+                    </ul>
+                    <p>So the honest answer to &ldquo;why did this fail here and not there?&rdquo; is usually that the second site checked one layer deeper than the first.</p>
+
+                    <h2>Size limits are a chain, and you hit the shortest link</h2>
+                    <p>A stated limit is frequently not the operative one. A request passes through several components before the application sees it, and each has its own ceiling: the web server caps the request body, the language runtime caps the upload, and only then does the application enforce the number printed on the page.</p>
+                    <p>You can usually tell which one stopped you by how it failed. A clean, styled error naming your file is the application talking, and the limit on the page is real. A raw server error page, or a request that dies partway through with no message at all, means you hit a lower ceiling further out &mdash; and no amount of arguing with the documented limit will help. Shrink the file below the number that actually bit you.</p>
+                    <p>One more wrinkle worth knowing: files sent as part of an email or some JSON APIs get base64-encoded in transit, which inflates them by roughly a third. A 4.8 MB attachment can genuinely exceed a 5 MB ceiling for reasons that have nothing to do with your file.</p>
+
                     <h2>FAQ</h2>
                     <h3>Why doesn&rsquo;t the portal just tell me what&rsquo;s wrong?</h3>
                     <p>Many validators return a generic &ldquo;invalid file&rdquo; for security or simplicity. The check is mechanical even when the message isn&rsquo;t helpful &mdash; so you have to test against the rules yourself.</p>

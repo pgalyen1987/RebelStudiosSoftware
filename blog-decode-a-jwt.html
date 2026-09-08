@@ -121,6 +121,26 @@
 
                     <p>That&rsquo;s the unglamorous reason we built our own <a href="tools/jwt-decode.html">$1 JWT decoder</a>: it splits out the header and payload, turns the <code>exp</code>/<code>iat</code> timestamps into real dates, flags an expired token &mdash; and doesn&rsquo;t keep your token afterward. No account, no signup, nothing stored on someone&rsquo;s server. A dollar for not gambling with a credential is a fair trade. The browser-console method above is free if you&rsquo;d rather.</p>
 
+                    <h2>Decoding is not verifying</h2>
+                    <p>This is the distinction that matters most, and the one that decoder websites quietly blur. Decoding a JWT is just base64url &mdash; it is reversible by anyone, requires no key, and proves nothing. Verifying it means recomputing the signature over the header and payload with a secret or public key and confirming it matches.</p>
+                    <p>A decoded token tells you what it <em>claims</em>. Only a verified token tells you those claims are true. If you are debugging and the payload looks right, you have learned that someone wrote those values &mdash; not that your issuer did.</p>
+                    <p>Two classic attacks live in exactly this gap, and both are worth recognising:</p>
+                    <ul class="article-list">
+                        <li><strong>The <code>none</code> algorithm.</strong> The spec defines an unsecured JWT with <code>alg</code> set to <code>none</code> and an empty signature. A library that honours the token's own header instead of the algorithm you configured will happily accept a forged payload with no signature at all.</li>
+                        <li><strong>Algorithm confusion.</strong> If a service verifies with RS256 (public/private key) but can be talked into treating the token as HS256 (shared secret), an attacker can sign a token using the <em>public</em> key as the HMAC secret &mdash; and the public key is, by definition, public.</li>
+                    </ul>
+                    <p>The defence in both cases is the same: your verifier decides the algorithm, never the token. Pin the expected algorithm and key explicitly rather than letting the header choose.</p>
+
+                    <h2>What to actually look at in a token you are debugging</h2>
+                    <p>When a token is being rejected and you want to know why, these are the claims that explain most failures:</p>
+                    <ul class="article-list">
+                        <li><code>exp</code> &mdash; expiry. Overwhelmingly the most common cause of a token that &ldquo;worked a minute ago.&rdquo; It is Unix time in <em>seconds</em>; a value that looks a thousand times too large is milliseconds, and something in your stack is producing the wrong unit.</li>
+                        <li><code>nbf</code> and <code>iat</code> &mdash; not-before and issued-at. These produce the confusing failure where a freshly minted token is refused: if the issuing and verifying machines disagree on the time by more than the allowed skew, a token can be legitimately &ldquo;not yet valid.&rdquo;</li>
+                        <li><code>aud</code> &mdash; audience. A token meant for one service being presented to another. Common in setups where several APIs share an identity provider.</li>
+                        <li><code>iss</code> &mdash; issuer. Should match your provider exactly, tenant and environment included. Staging tokens reaching production fail here.</li>
+                    </ul>
+                    <p>If all of those look correct and verification still fails, suspect key rotation before you suspect your code &mdash; particularly with providers that publish a key set and rotate on their own schedule.</p>
+
                     <h2>The quick checklist</h2>
 
                     <ul class="article-list">

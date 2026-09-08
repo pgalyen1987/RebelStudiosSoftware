@@ -101,6 +101,21 @@
                         <li><strong>Trim the length.</strong> The cheapest megabytes are the seconds you don&rsquo;t need &mdash; cut dead air at the start and end.</li>
                     </ul>
 
+                    <h2>Bitrate is the lever &mdash; and the arithmetic is simple</h2>
+                    <p>Almost everyone reaches for resolution first, but the number that actually determines file size is bitrate: how many bits the encoder spends per second of video. The relationship is close to exact:</p>
+                    <p><code>file size (MB) &asymp; bitrate (Mbps) &times; duration (seconds) &divide; 8</code></p>
+                    <p>Run it backwards and you get the setting you actually need. For a 90-second clip that must land under 25 MB: 25 &times; 8 &divide; 90 &asymp; 2.2 Mbps total. Leave a little headroom for audio and container overhead &mdash; call it 2.0 Mbps for video and 128 kbps for audio &mdash; and you will hit the target on the first try instead of exporting four times and guessing.</p>
+                    <p>This is why trimming is the most underrated compression tool available. Size scales linearly with duration, so cutting a 90-second clip to 60 seconds removes a third of the file without touching quality anywhere.</p>
+
+                    <h2>Resolution and bitrate have to move together</h2>
+                    <p>Dropping 1080p to 720p removes about 55&nbsp;percent of the pixels, which sounds decisive but changes nothing on its own &mdash; if the bitrate stays where it was, the file stays roughly the same size. What lower resolution actually buys you is the ability to lower the bitrate without the picture falling apart, because each remaining pixel gets a larger share of the budget.</p>
+                    <p>The practical rule: if your target bitrate is forcing visible blocking and smearing at 1080p, step down to 720p and the same bitrate will look noticeably cleaner. Fewer pixels described well beat more pixels described badly. Frame rate works the same way &mdash; 60fps footage cut to 30fps halves the frames competing for the budget, which suits talking heads and screen recordings far better than it suits fast motion.</p>
+
+                    <h2>Codec choice is a compatibility bet</h2>
+                    <p>H.264 is the safe default. It is the least efficient of the modern options and it plays essentially everywhere, which is usually the trade you want when a portal is going to ingest the file.</p>
+                    <p>H.265 (HEVC) reaches similar quality at roughly 25 to 50&nbsp;percent lower bitrate, and AV1 does better still. The catch is support: some upload portals reject them outright, and some accept the file and then fail to transcode it, which is worse because you find out later. Unless you know the destination handles it, hitting your size target with H.264 and a lower bitrate is more reliable than hitting it with a newer codec.</p>
+                    <p>If your encoder offers two-pass, use it when you have a hard ceiling. A single pass has to guess how to spend the budget as it goes; two passes analyse the footage first and then distribute bits toward the complex scenes, which is precisely the situation a fixed upload limit creates.</p>
+
                     <h2>Free Tools</h2>
                     <p><strong>HandBrake</strong> (free, desktop) is the powerful option &mdash; it can re-encode to H.264/H.265 at a chosen resolution and quality. The catch: hitting an <em>exact</em> target size means guessing a bitrate, exporting, checking, and adjusting. QuickTime (Mac) can export at lower resolutions, and phone editors can trim and downscale. All of these work; they just take trial and error to land under a specific cap.</p>
 

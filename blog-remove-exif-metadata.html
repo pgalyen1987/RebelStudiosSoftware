@@ -113,6 +113,20 @@
                     <h2>Before You Send an ID or a Listing Photo</h2>
                     <p>Two habits worth building: strip location from any photo going to someone you don&rsquo;t know, and strip metadata from ID documents before uploading them to a portal. If that ID also needs to meet size or format rules, pair this with <a href="tools/uploadfix.html">UploadFix</a> so the file is both clean and to-spec.</p>
 
+                    <h2>GPS is the headline, not the whole story</h2>
+                    <p>Location is the field people worry about, and rightly so. But a modern camera writes a great deal more into the file, and several of those fields identify you just as reliably once someone bothers to look.</p>
+                    <ul class="article-list">
+                        <li><strong>Camera serial number.</strong> Many DSLRs and mirrorless bodies stamp a unique body and lens serial into every frame. That is a durable identifier: it links a photo posted anonymously today to one posted under your real name two years ago.</li>
+                        <li><strong>Capture timestamp.</strong> Usually stored in local time with no zone, occasionally alongside a UTC offset. It reveals when you were somewhere, which is often as sensitive as where.</li>
+                        <li><strong>Software history.</strong> The editor and version that last wrote the file, and sometimes the original filename &mdash; which on a phone encodes the capture date, and on a computer may include your account name.</li>
+                        <li><strong>Orientation.</strong> Harmless, but worth knowing about: strip EXIF carelessly and a photo that looked upright can come back rotated, because the rotation lived in the metadata rather than the pixels.</li>
+                    </ul>
+
+                    <h2>The embedded thumbnail trap</h2>
+                    <p>This is the one that catches careful people. EXIF can carry a small preview image of its own, and some editors update the pixels without regenerating that preview. Crop your address off the corner of a photo, save it, and the <em>original uncropped scene</em> can still be sitting in the metadata as a postage-stamp thumbnail.</p>
+                    <p>The same trick applies to redaction. Painting a black box over a name changes the pixels; it does not necessarily change the embedded preview that was written before you painted it. If you have cropped or redacted anything sensitive, strip metadata afterwards rather than before &mdash; and if it truly matters, re-encode the image so only the visible pixels survive.</p>
+                    <p>A screenshot sidesteps all of this for exactly that reason: it is a fresh capture of what is on screen, with no inherited history at all.</p>
+
                     <h2>FAQ</h2>
                     <h3>Does stripping metadata change the image?</h3>
                     <p>No &mdash; the pixels are untouched. Only the hidden EXIF data (GPS, camera info, timestamps) is removed.</p>

@@ -119,6 +119,21 @@
                     <p>Whatever tool you use, the input matters. You get sharper edges when the subject stands out from the background: decent lighting, a bit of contrast between subject and backdrop, and a subject that&rsquo;s reasonably in focus. A gray shirt against a gray wall is hard for <em>any</em> remover; the same shirt against a plain contrasting wall cuts out cleanly.</p>
                     <p>And remember the format: transparency only survives in <strong>PNG</strong> (or WebP), never JPG. If you export a cutout as JPEG, the transparent area comes back as solid white. If the destination needs a specific size after the cutout, resize it with <a href="tools/image-fit.html">exact image fit</a>.</p>
 
+                    <h2>Why hair, fur and glass break every automatic tool</h2>
+                    <p>Automatic background removal is close to solved for a solid object against a contrasting backdrop. It is not close to solved for hair, and understanding why tells you when to stop fighting the tool.</p>
+                    <p>Most fast cutout tools produce a <em>binary</em> mask: each pixel is either subject or background. That works when the boundary really is a line. But a single pixel at the edge of a wisp of hair is genuinely part subject and part background &mdash; its true value is a blend. Forcing that pixel to one side or the other is what produces the two failure modes you have already seen: chewed-looking hair where strands were dropped, and a dirty fringe where background pixels were kept.</p>
+                    <p>Doing it properly requires an <em>alpha matte</em>, where edge pixels carry partial transparency instead of a yes-or-no verdict. That is a harder problem, and it is why the tools that handle hair convincingly tend to be slower, paid, or both. Glass, smoke, and motion blur fail for the identical reason: they are semi-transparent everywhere, not just at the boundary.</p>
+
+                    <h2>Fixing the halo you will almost certainly get</h2>
+                    <p>The giveaway of a machine cutout is a thin bright or dark rim tracing the subject &mdash; leftover background pixels that came along for the ride. It is most obvious when you drop a subject cut from a light background onto a dark one.</p>
+                    <p>Two fixes, in order of how often they work. First, contract the mask by a pixel or two before compositing; most editors expose this as shrinking, contracting, or eroding the selection, and it simply discards the contaminated boundary. Second, if your editor offers it, use a <em>defringe</em> or <em>decontaminate colours</em> option, which re-estimates edge pixels from the subject's own colours instead of the old background's.</p>
+                    <p>You can also avoid the problem at capture time. The cleanest cutout comes from a subject well separated from the background with a clear tonal difference between them &mdash; which is the entire reason studios shoot on seamless backdrops rather than fixing it later.</p>
+
+                    <h2>A cutout only looks real if the light agrees</h2>
+                    <p>The technical edge can be flawless and the result still read as fake, because the eye is judging something the mask never touched: whether the lighting on the subject matches the new scene.</p>
+                    <p>Check three things before you call it done. Direction &mdash; if the subject is lit from the left and the new background's shadows fall to the left, the composite fights itself. Colour temperature &mdash; a subject shot under warm indoor light dropped onto a cool daylight scene will look pasted on no matter how good the edge is. And contact shadow &mdash; a subject with no shadow appears to hover; even a soft ellipse beneath it does a surprising amount of work.</p>
+                    <p>For a product on plain white, none of this matters and an automatic tool is entirely sufficient. For a person placed into a real scene, matching the light is most of the job and the cutout is the easy part.</p>
+
                     <h2>FAQ</h2>
                     <h3>Will it keep the transparency?</h3>
                     <p>Yes &mdash; as long as you save as PNG. The removed area becomes fully transparent, so you can drop the subject onto any background.</p>
