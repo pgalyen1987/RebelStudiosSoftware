@@ -47,6 +47,33 @@
                 <div class="cb-card"><h4>Local &amp; private</h4><p>Everything runs in the editor. No network, no telemetry, no accounts.</p></div>
       </div>
     </div></section>
+    <section class="section"><div class="container">
+      <h2>All fifteen transforms</h2>
+      <p>Every one of these operates on your current selection and replaces it in place. Nothing leaves the editor.</p>
+      <ul class="article-list">
+        <li><strong>JSON:</strong> format, minify, and repair &mdash; the repair pass fixes smart quotes, trailing commas, unquoted keys and single-quoted strings, which is most of what breaks a config file or a model&rsquo;s output.</li>
+        <li><strong>CSV &rarr; JSON</strong> and <strong>JSON &rarr; CSV</strong>, honouring quoted fields so a value like <code>"Smith, Jr."</code> survives the round trip instead of splitting into two columns.</li>
+        <li><strong>JWT decode</strong> &mdash; header and payload, expanded in place.</li>
+        <li><strong>Base64</strong> encode and decode.</li>
+        <li><strong>URL</strong> encode and decode.</li>
+        <li><strong>Lines:</strong> sort, and remove duplicates.</li>
+        <li><strong>Case:</strong> camelCase, snake_case, kebab-case.</li>
+      </ul>
+
+      <h2>Why this belongs in the editor</h2>
+      <p>Every one of these transforms already exists as a website, and that is precisely the problem. The web version costs you a context switch, a paste out, a paste back, and a moment of not thinking about the thing you were actually doing.</p>
+      <p>The more serious cost is what you paste. A JWT from your staging environment is a live credential. A config blob is often full of internal hostnames, bucket names and account identifiers. A CSV pulled from production may be customer data. Pasting any of that into a free web utility means handing it to a server you know nothing about, run by someone with no obligation to you &mdash; and the habit is hard to break once it is a habit, because the tool that is one tab away is the tool you use at 5pm on a Friday.</p>
+      <p>Running the transform locally removes the decision entirely. There is no network call to audit, no retention policy to read, and no difference in behaviour between the token you were allowed to paste and the one you were not.</p>
+
+      <h2>How you use it</h2>
+      <p>Select the text. Open the Command Palette &mdash; <code>Ctrl+Shift+P</code>, or <code>Cmd+Shift+P</code> on a Mac &mdash; and type <strong>Dev Toolbox</strong>. Pick the transform. The selection is replaced.</p>
+      <p>Because the commands live in the palette, the ones you reach for most surface first as VS Code learns your habits, and you can bind any of them to a keystroke through the normal keyboard shortcuts editor if a particular transform becomes muscle memory.</p>
+
+      <h2>What it deliberately does not do</h2>
+      <p>It does not lint, validate against a schema, or tell you whether your JSON is <em>correct</em> &mdash; only whether it parses, and how to make it parse. It does not verify a JWT&rsquo;s signature; decoding is not verification, and any tool implying otherwise is teaching a dangerous habit. It has no accounts, no settings to sync, no telemetry, and no network permission at all.</p>
+      <p>That last constraint is deliberate. An extension with no network access cannot leak your selection even if it wanted to, and that is a much stronger promise than a privacy policy.</p>
+    </div></section>
+
     <section class="section section-alt"><div class="container">
       <div class="cb-cta">
         

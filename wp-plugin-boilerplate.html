@@ -47,6 +47,30 @@
                 <div class="cb-card"><h4>Proven, not theoretical</h4><p>The same engine behind multiple shipped plugins. GPL — use it in unlimited commercial plugins.</p></div>
       </div>
     </div></section>
+    <section class="section"><div class="container">
+      <h2>What you are actually buying</h2>
+      <p>Not a framework you have to learn, and not a starter theme with your problem left as an exercise. It is the part of a freemium plugin that is identical every time, already built and already shipped: the scaffolder that stamps out a new plugin, the settings and admin layer, the licence gate, and the tooling that turns the result into a zip you can submit.</p>
+      <p>The scaffolder takes a name, a function prefix and a slug, and produces a plugin that activates cleanly on a fresh WordPress install before you have written a line of your own code. Constants, namespacing, text domain, settings screen and gate are wired at that point &mdash; you add your feature to a working plugin rather than assembling one.</p>
+
+      <h2>How the licence gate is built &mdash; and why that shape</h2>
+      <p>WordPress.org does not permit a plugin hosted in its directory to lock its own features behind a payment, so the architecture is not a preference; it is the rule. The boilerplate follows the compliant pattern: a genuinely complete free plugin in the directory, and a separate Pro add-on distributed by you that unlocks the paid surface.</p>
+      <p>Gating a feature is a single call, and the important property is what happens when the answer is no. The gate degrades to the free behaviour rather than erroring, disabling the screen, or destroying data the user has already created. That is the failure mode that generates refunds and one-star reviews, and it is designed out rather than left to whoever writes the feature.</p>
+      <p>The same discipline applies when your licence server is unreachable. A check that fails closed will disable a paying customer&rsquo;s site during your outage, so verification is built to fail open within a grace window &mdash; the customer keeps working, and the check retries later.</p>
+
+      <h2>What it does not include</h2>
+      <p>Being clear about this is more useful than a longer feature list:</p>
+      <ul class="article-list">
+        <li><strong>No licence server.</strong> The plugin side of verification is here; the service that issues and validates keys is yours to run or to buy. The gate is written against a simple contract, so pointing it at an existing service is configuration rather than surgery.</li>
+        <li><strong>No payment processing.</strong> Sell through Gumroad, Lemon Squeezy, WooCommerce or anything else.</li>
+        <li><strong>No feature.</strong> The idea is still your job. This is the eighty percent that is the same for every plugin, not the twenty percent that makes yours worth buying.</li>
+      </ul>
+
+      <h2>Who this is for</h2>
+      <p>It is for a developer who has decided to ship a commercial plugin and does not want to spend the first fortnight rebuilding a settings page and a licence check for the third time. If you are shipping one plugin, it saves you that fortnight. If you are shipping several, it is the difference between each one starting from zero and each one starting from a known-good base.</p>
+      <p>It is not for you if you want a page builder, a plugin generator that writes your feature, or a hosted platform. And if you have already built and shipped a freemium plugin you were happy with, you have essentially built this &mdash; there is nothing here you could not write yourself, which is precisely why it is priced where it is rather than sold as a subscription.</p>
+      <p>Licensed GPL, so you can use it in unlimited commercial plugins without royalties or per-plugin fees.</p>
+    </div></section>
+
     <section class="section section-alt"><div class="container">
       <div class="cb-cta">
         <div class="price-big">$39</div>
