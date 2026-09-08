@@ -3518,7 +3518,10 @@ a.tool-card:hover {
 .blog-card--featured {
     grid-column: span 2;
     flex-direction: row;
-    align-items: stretch;
+    /* Not `stretch`: stretching the image cell to the (taller) text column is
+       what forced the poster to either crop or letterbox. Centring lets the
+       poster keep its own 1200:630 box and sit level with the copy. */
+    align-items: center;
 }
 .blog-card--featured .blog-card-img {
     width: 61.8%;              /* φ split */
@@ -3572,10 +3575,129 @@ a.tool-card:hover {
     .hero--page .container { grid-template-columns: 1fr; gap: var(--space-sm); }
 }
 
-/* Featured image is an OG "poster" with baked-in text — never crop it. */
-.blog-card--featured .blog-card-img { aspect-ratio: auto; }
-.blog-card--featured .blog-card-img img {
-    object-fit: contain;
-    background: var(--bg-raise);
-    padding: var(--space-sm);
+/* The featured image is an OG "poster" with baked-in text, so its cell holds
+   the poster's exact ratio — at which point `cover` neither crops nor bars. */
+.blog-card--featured .blog-card-img {
+    aspect-ratio: 1200 / 630;
+    align-self: center;
+}
+.blog-card--featured .blog-card-img img { object-fit: cover; }
+.blog-card--featured .blog-card-content { padding: var(--space-md); }
+
+/* ============================================================
+   DECORATION LAYER — ornament + rhythm applied to existing markup
+   ============================================================ */
+
+/* Gradient accent tick above every section heading: gives long articles
+   a repeating visual beat instead of an undifferentiated wall of text. */
+.article-content h2 {
+    position: relative;
+    padding-top: var(--space-sm);
+}
+.article-content h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.618rem;              /* φ² */
+    height: 3px;
+    border-radius: 99px;
+    background: var(--grad-accent);
+}
+
+/* Lead paragraph reads as a deck */
+.article-content > p:first-of-type {
+    font-size: var(--text-md);
+    line-height: 1.618;
+    color: var(--ink-1);
+}
+
+/* Accent bullets instead of browser discs */
+.article-content .article-list {
+    list-style: none;
+    padding-left: 0;
+}
+.article-content .article-list li {
+    position: relative;
+    padding-left: var(--space-md);
+}
+.article-content .article-list li::before {
+    content: '';
+    position: absolute;
+    left: 0.3rem;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 3px var(--green-dim);
+}
+
+/* Pull-quote treatment */
+.article-content blockquote {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--green);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--ink-1);
+    font-style: italic;
+}
+
+/* Ambient ornament behind page headers */
+.page-header {
+    position: relative;
+    overflow: hidden;
+}
+.page-header::after {
+    content: '';
+    position: absolute;
+    top: -38.2%;
+    right: -6%;
+    width: 26rem;
+    height: 26rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108, 190, 69, 0.13), transparent 62%);
+    pointer-events: none;
+}
+
+/* Decorative header art on articles that carry one */
+.article-figure {
+    margin: 0 0 var(--space-lg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    line-height: 0;
+}
+.article-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================================
+   AD SLOT GRACEFUL DEGRADATION
+   An unsold slot must never read as a broken empty box. While the
+   AdSense account is pending, every slot comes back "unfilled" — the
+   frame was all a visitor (or a policy reviewer) actually saw.
+   ============================================================ */
+
+/* Let the ad bring its own surface; an empty slot is then just space. */
+.sidebar-ad-unit {
+    background: none;
+    border: 0;
+    border-radius: 0;
+}
+.article-bottom-ad { border-top: 0; }
+
+/* Once AdSense answers "unfilled", reclaim the space entirely and let the
+   article fall back to its natural centred measure. */
+.blog-layout:has(ins[data-ad-status="unfilled"]) {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 780px;
+}
+.blog-layout:has(ins[data-ad-status="unfilled"]) .blog-sidebar { display: none; }
+
+.article-bottom-ad:has(ins[data-ad-status="unfilled"]) {
+    display: none;
 }
