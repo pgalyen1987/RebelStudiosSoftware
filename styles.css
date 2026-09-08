@@ -3834,3 +3834,43 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
 .blog-card[style*="--cat"] .blog-card-date { color: hsl(var(--cat) 70% 66%); }
 .blog-card[style*="--cat"]:hover { border-color: hsl(var(--cat) 70% 55% / 0.45); }
 .blog-card[style*="--cat"] .blog-card-read { color: hsl(var(--cat) 70% 66%); }
+
+/* ---------- Product screenshots ----------
+   Product pages had no imagery at all beyond the nav logo. These are the
+   real store assets, so they show the actual thing being sold. */
+.shot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+.shot {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-raise);
+}
+.shot img {
+    display: block;
+    width: 100%;
+    /* Store screenshots range from 820x448 to 1100x2330. Left to their own
+       heights they made a ragged row with captions floating at different
+       depths, so every tile holds one ratio and crops from the top, where
+       the meaningful part of a UI screenshot lives. */
+    aspect-ratio: 4 / 3;
+    height: auto;
+    object-fit: cover;
+    object-position: top center;
+}
+.shot figcaption {
+    margin-top: auto;
+    padding: 0.7rem 0.9rem;
+    font-size: var(--text-sm);
+    color: var(--ink-3);
+    border-top: 1px solid var(--line);
+}
+.shot--solo { max-width: 46rem; margin-inline: auto; }
+.shot--solo img { aspect-ratio: auto; }
