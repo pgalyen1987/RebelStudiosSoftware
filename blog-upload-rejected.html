@@ -138,6 +138,16 @@
                     <h2>One Privacy Note Before You Upload an ID</h2>
                     <p>Phone photos carry GPS coordinates and device metadata in their EXIF headers. Before you send an ID selfie or a document photo to a stranger&rsquo;s portal, strip that metadata with the <a href="tools/metadata-strip.html">privacy cleaner</a> &mdash; the portal doesn&rsquo;t need to know where you were standing.</p>
 
+                    <h2>When the error is not from the site at all</h2>
+                    <p>One category of rejection confuses people because the message does not match anything on the requirements page: the upload never reached the application. Your request passes through several layers before the site's own rules are consulted, and each layer has an independent size ceiling.</p>
+                    <p>You can usually identify what stopped you by the character of the failure rather than the text:</p>
+                    <ul class="article-list">
+                        <li><strong>A styled error naming your file</strong> &mdash; the application received it and applied its own rules. The published limits are the real ones, and the message can be trusted.</li>
+                        <li><strong>A plain, unstyled error page</strong> &mdash; typically the web server refusing the request body before the application saw it. The effective limit is lower than the one advertised, and no amount of retrying will change it.</li>
+                        <li><strong>The progress bar reaches the end, then nothing happens</strong> &mdash; the file transferred but was rejected during processing, or the request exceeded a time limit. Very common with large files on slow connections, and it is why a file that fails from a phone can succeed from a desktop.</li>
+                    </ul>
+                    <p>In all three cases the workaround is identical and slightly unsatisfying: get well under the limit rather than just under it. Aim for roughly 80&nbsp;percent of the stated ceiling and most of these ambiguities disappear.</p>
+
                     <h2>The Takeaway</h2>
                     <p>Rejection is rarely mysterious &mdash; it&rsquo;s a checklist the UI forgot to print: right format, under the size cap, correct dimensions. Rule the three out in that order. Run the whole checklist at once with <a href="tools/uploadfix.html">UploadFix</a>, or grab the single tool you need from the <a href="tools/index.html">$1 catalog</a>.</p>
 

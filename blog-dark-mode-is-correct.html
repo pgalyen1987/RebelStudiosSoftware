@@ -109,6 +109,12 @@
 
                     <p>So the honest scoreboard: light mode reads slightly better in daylight, dark mode is kinder at night, one of them is actively hostile to people with a common eye condition, and the battery argument depends on hardware most people can&rsquo;t name. Which is a remarkably weak foundation for how confidently we all argue about this.</p>
 
+                    <h2>Dark mode changes how type has to be drawn</h2>
+                    <p>There is a design consequence that most dark-mode implementations get wrong, and it explains why some dark interfaces feel harsh even to people who prefer them.</p>
+                    <p>Light text on a dark background optically <em>gains</em> weight. The bright glyph bleeds slightly into the dark field around it &mdash; an effect called irradiation &mdash; so the same font at the same size reads heavier in dark mode than in light. A typeface that looks crisp as dark-on-light can look bloated and slightly smeared when the polarity flips.</p>
+                    <p>Interfaces that handle this well compensate: they drop a weight step in dark mode, or use a font with an optical size axis, or nudge letter spacing open by a hair. Interfaces that simply invert the palette and ship it produce text that is technically legible and quietly tiring.</p>
+                    <p>The same logic applies to pure white on pure black, which is the single most common mistake. Maximum contrast is not maximum readability; it maximises halation for anyone whose eyes scatter light. Backing off to a soft off-white on a dark grey costs nothing and removes most of the glare complaints that get filed against dark themes.</p>
+
                     <h2>The real thing hiding under a silly fight</h2>
 
                     <p>The dark-versus-light war is fun precisely because there is no universal right answer &mdash; and that&rsquo;s the lesson that actually matters when you build software. The correct default is not dark. It is not light. It is <strong>respect the human&rsquo;s choice</strong>: honor their system setting, offer a toggle, and remember it. The best interface doesn&rsquo;t win the aesthetic argument. It disappears and adapts to the person in front of it.</p>

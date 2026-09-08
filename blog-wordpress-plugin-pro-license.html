@@ -88,7 +88,12 @@
 
                     <p>Two more details that decide whether renewals are painless: <strong>make deactivation easy</strong> so a customer can move a license between a staging site and production without opening a ticket, and <strong>store the key where it belongs</strong> &mdash; an option, not hardcoded, and never logged in plain text in a debug file that ends up in a support thread.</p>
 
-                    <h2>Don&rsquo;t build the gate twice</h2>
+                    <h2>Support burden is a design decision</h2>
+            <p>Licensing decisions look like revenue decisions and behave like support decisions. Every rule you add is a message someone will eventually open a ticket about, and the ticket volume is roughly proportional to how surprising the rule is.</p>
+            <p>Site limits are the clearest example. A licence valid on one site sounds simple until you meet the way people actually work: a staging copy, a local development install, and a production site are three activations of what the customer correctly regards as one website. If your activation logic counts hostnames naively, you will spend real time manually resetting licences for honest customers &mdash; and the customers who are genuinely sharing keys will not be inconvenienced in the slightest, because they were prepared to be.</p>
+            <p>The pragmatic pattern is to detect obvious non-production hosts and exempt them, allow a modest number of activations rather than exactly one, and make deactivation something the customer can do themselves from their account. All three reduce tickets more than they reduce piracy, which is the correct trade for a small plugin business.</p>
+
+            <h2>Don&rsquo;t build the gate twice</h2>
             <p>The license gate, the settings framework, the readme format, and the build-to-zip script are the same for every freemium plugin you ship. The feature is the only part that changes. Build the plumbing once (or start from a kit that already has it), and each new plugin becomes "add the feature, ship it" instead of a week of boilerplate.</p>
             <div class="boiler-cta">
                 <h3>Skip building the license plumbing</h3>

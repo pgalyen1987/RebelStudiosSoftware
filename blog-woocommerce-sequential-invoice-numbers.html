@@ -92,7 +92,12 @@
 
                     <p>The detail that catches most stores: a refund is not a negative invoice. In most VAT and GST regimes it&rsquo;s a <strong>credit note</strong> &mdash; its own document, with its own gapless sequence (<code>CN-2026-0001</code>), referencing the original invoice number it corrects. Dropping a refund into your invoice series, or reusing the original number, produces exactly the kind of inconsistency that turns a routine review into a longer one.</p>
 
-                    <h2>Setting it up in WooCommerce</h2>
+                    <h2>Resetting the series, and when not to</h2>
+            <p>Most jurisdictions permit a per-year series &mdash; restarting at 1 each January with the year in the number, so <code>2026-0001</code> follows <code>2025-0417</code>. Some require it. What none of them permit is restarting a series retroactively, or renumbering invoices that have already been issued.</p>
+            <p>That distinction matters more than it sounds, because a plugin change is the most common way it gets violated by accident. Switching invoicing plugins, or changing the number format mid-year, can silently renumber historical invoices when documents are regenerated on demand &mdash; and a customer who now holds a PDF whose number no longer matches your records is a genuine audit problem.</p>
+            <p>Two safeguards make this survivable. Store the assigned number against the order the moment it is issued, so it is a recorded fact rather than something recomputed later. And if you must change format, start the new scheme at a clean boundary and leave everything before it exactly as issued.</p>
+
+            <h2>Setting it up in WooCommerce</h2>
             <p>A good invoice plugin gives you a starting number, an optional prefix, and stores the assigned number on the order. You should be able to reprint an old invoice years later and get the exact same number. If a plugin regenerates the number each time it renders the PDF, treat that as a compliance bug, not a feature.</p>
             <p>Rules vary by country &mdash; confirm yours with an accountant. But sequential, stable, gap-managed numbering is the safe default almost everywhere, and it should be built in, not an afterthought.</p>
             <div class="boiler-cta">

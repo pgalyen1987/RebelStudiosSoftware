@@ -89,6 +89,11 @@
             <p><strong>The PDF engine must not break the email.</strong> If the invoice can&rsquo;t generate (a host missing a PHP extension, say), the order email must still send. Good plugins degrade gracefully to a printable HTML document instead of throwing a fatal error that stops the email entirely.</p>
             <p><strong>Language and currency have to render.</strong> The attached PDF should show the customer&rsquo;s name, address and your currency symbol correctly in any language &mdash; see our guide on <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">fixing invoices that don&rsquo;t render Arabic or RTL text</a>.</p>
 
+            <h2>Test with a real inbox, not the order preview</h2>
+            <p>The preview in your admin renders the document; it does not exercise the path that actually breaks. Almost every failure in this feature happens between the site and the recipient's mail server, which the preview never touches.</p>
+            <p>Three checks catch nearly all of it. Place a genuine test order and confirm the attachment arrives at an address on a major provider rather than your own domain &mdash; self-hosted mail to itself will succeed in situations where anything external fails. Check the spam folder rather than assuming non-delivery. And open the PDF on a phone, since that is where a majority of order emails are read and a document that assumes a desktop viewer is worth knowing about early.</p>
+            <p>It is also worth testing an order that exercises the awkward cases: a long product name, a customer address with non-Latin characters, and a tax line, all of which surface layout problems that a one-item test order will never reveal.</p>
+
             <h2>What should be free vs. paid</h2>
             <p>Automatic email attachment, the invoice itself, packing slips, delivery notes, taxes, totals and sequential numbering are table stakes &mdash; they should be in the free plugin. Reserve payment for genuine power features: bulk-printing invoices for many orders at once, custom document templates, and credit notes.</p>
             <div class="boiler-cta">

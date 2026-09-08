@@ -114,6 +114,21 @@
 
                     <p>Here&rsquo;s the part that might actually help, and it&rsquo;s closer than it looks. The same <a href="blog-http-402.html">machine-payment rails</a> that let an AI agent pay a few cents for an API call could, in principle, let it pay the maintainers of the libraries it&rsquo;s built on &mdash; value flowing back down the dependency tree automatically, per use, with no foundation and no fundraising drive. We spend our days building for a web where software pays software. The maintainers holding that web up are the most obvious people who should get paid first.</p>
 
+                    <h2>The funding models, and what each one actually costs</h2>
+                    <p>Several answers to this problem already exist. None has won, and it is worth being clear about what each one trades away.</p>
+                    <ul class="article-list">
+                        <li><strong>Foundations.</strong> A neutral body holds the trademark and takes donations from the companies that depend on the project. This works well for infrastructure large enough to have corporate dependents who notice, and does nothing at all for the single-maintainer library that half the internet imports without knowing it.</li>
+                        <li><strong>Open core.</strong> The base is free; the features enterprises need are not. It funds real salaries, and it puts the maintainer in permanent tension with their own users, because every genuinely useful improvement invites the question of which side of the line it belongs on.</li>
+                        <li><strong>Dual licensing.</strong> Free under terms most companies will not accept, with a commercial licence available. Effective, and it works by making the free version deliberately inconvenient &mdash; which is a strange thing to build a commons on.</li>
+                        <li><strong>Corporate employment.</strong> The most common outcome in practice: a company hires the maintainer to keep working on the thing it depends on. It pays properly and it quietly transfers the project's priorities to one company's roadmap.</li>
+                        <li><strong>Donations.</strong> The model everyone reaches for first, and the one with the worst returns. Sponsorship revenue for the overwhelming majority of projects does not approach a part-time wage.</li>
+                    </ul>
+
+                    <h2>Burnout is a security problem</h2>
+                    <p>The strongest argument for solving this is not fairness. It is that an exhausted, unpaid, unsupported maintainer is a security liability, and the industry has learned this the hard way more than once.</p>
+                    <p>The pattern is consistent: a critical component is maintained by one person, the workload outgrows what a volunteer can absorb, and a helpful stranger appears and offers to share the burden. Sometimes that stranger is exactly what they seem. Sometimes the pressure to hand over the keys is manufactured, and the person applying it has been patiently building trust for the purpose.</p>
+                    <p>That is what makes this more than an ethics discussion. Every unpaid maintainer of a widely-depended-upon package is a single point of failure &mdash; not because they are careless, but because a person doing critical work alone and for free is a person who can be worn down or replaced. The money question and the supply-chain question turn out to be the same question.</p>
+
                     <h2>The question underneath</h2>
 
                     <p>The internet&rsquo;s most critical software is, functionally, a charity most of us quietly stopped donating to &mdash; and then asked to work twice as hard. That isn&rsquo;t sustainable, everyone building on it knows it, and almost no one is fixing it.</p>

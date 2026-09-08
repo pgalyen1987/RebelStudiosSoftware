@@ -146,6 +146,16 @@
                     <h3>What if the portal also has a dimension rule?</h3>
                     <p>Size and dimensions are separate gates. Handle both at once with <a href="tools/uploadfix.html">UploadFix</a>.</p>
 
+                    <h2>Sometimes 5 MB is not really 5 MB</h2>
+                    <p>A detail that explains a lot of otherwise baffling rejections: files do not always travel as raw bytes. Email attachments, and a good many JSON APIs, encode binary data as base64 in transit, which inflates it by roughly 33&nbsp;percent.</p>
+                    <p>The practical consequence is that a 4.8 MB file can genuinely exceed a 5 MB limit, because the thing being measured is the encoded payload rather than the file on your disk. If you are hovering just beneath a ceiling and being told you are over it, this is very often why. Target around 70 to 75&nbsp;percent of the stated limit and the problem stops occurring.</p>
+
+                    <h2>PDFs shrink differently from everything else</h2>
+                    <p>General-purpose compression does comparatively little to a large PDF, because a PDF is a container and its size is almost always dominated by one of two things.</p>
+                    <p><strong>Embedded images</strong> are the usual culprit, particularly in anything produced by scanning. A scanner set to 600 dpi stores roughly four times the data of 300 dpi, and for a document that will be read on screen or printed normally, that extra resolution is invisible. Downsampling images to 150&ndash;200 dpi routinely cuts a scanned PDF by most of its size with no perceptible difference.</p>
+                    <p><strong>Embedded fonts</strong> are the quieter one. A PDF can carry complete font files, and a document using several families with bold and italic variants can spend a surprising amount on typefaces alone. Subsetting &mdash; keeping only the characters actually used &mdash; is usually a checkbox in the export dialog, and it is close to free.</p>
+                    <p>Worth knowing before you reach for a compressor: if the PDF is a scan, converting the pages to greyscale often beats compressing them at full colour, and a scan of black text on white paper loses essentially nothing in the process.</p>
+
                     <h2>The Takeaway</h2>
                     <p>The limit is the spec &mdash; optimize to the number, resizing before you sacrifice quality. Use <a href="tools/under-mb.html">Under-X MB for $1</a> when you don&rsquo;t want to run the quality loop by hand, or start from the <a href="tools/index.html">tools hub</a> if you also need HEIC conversion or dimension fixes.</p>
 
