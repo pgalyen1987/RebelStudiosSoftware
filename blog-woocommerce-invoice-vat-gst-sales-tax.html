@@ -70,7 +70,19 @@
             <h2>What has to be on the PDF wherever you are</h2>
             <p>Regardless of system, a defensible invoice shows: your business name, address and tax number; the customer&rsquo;s details; a unique sequential invoice number (see <a href="blog-woocommerce-sequential-invoice-numbers.html">why order numbers aren&rsquo;t enough</a>); the invoice date; a per-line breakdown; and the tax shown as its own line with the rate, not baked silently into the price.</p>
 
-            <h2>Getting it out of WooCommerce</h2>
+            <h2>Cross-border B2B: the reverse charge</h2>
+
+                    <p>The single most common way a compliant-looking invoice becomes a problem is a B2B sale across a border. When you sell to a VAT-registered business in another EU member state, you generally do <em>not</em> charge VAT &mdash; the buyer accounts for it themselves under the <strong>reverse charge</strong>. But that only holds if the paperwork proves it, which means the invoice has to carry three things: <strong>your VAT number</strong>, <strong>the customer&rsquo;s valid VAT number</strong>, and an explicit statement such as &ldquo;Reverse charge &mdash; VAT to be accounted for by the recipient.&rdquo;</p>
+
+                    <p>&ldquo;Valid&rdquo; is doing real work in that sentence. A VAT number the customer typed into a checkout field is a claim, not a fact. If it turns out to be invalid or belongs to someone else, the unpaid VAT is generally <em>your</em> liability, not theirs. That&rsquo;s why validating against the official registry at checkout &mdash; and storing the result with the order &mdash; matters far more than it looks: you&rsquo;re preserving the evidence that you were entitled to zero-rate the sale.</p>
+
+                    <h2>Digital goods move where the tax is owed</h2>
+
+                    <p>Sell a physical product and tax usually follows the shipping address. Sell a download, a subscription or a service and the rules change under <em>place of supply</em>: for EU consumers, VAT is generally due at the <strong>customer&rsquo;s</strong> rate in their country, not yours. That&rsquo;s the entire reason the OSS scheme exists &mdash; so you can report all of it through one return instead of registering in each state you sell into.</p>
+
+                    <p>The United States runs on completely different logic. There&rsquo;s no VAT; there&rsquo;s sales tax set by thousands of overlapping state and local jurisdictions, and your obligation depends on <em>economic nexus</em> &mdash; typically crossing a revenue or transaction threshold in a state, at which point you must register and collect there. Practical upshot: the same order data has to produce a VAT invoice for one buyer and a sales-tax receipt for another, and hardcoding one country&rsquo;s assumptions into your template is how stores end up reissuing a year of documents.</p>
+
+                    <h2>Getting it out of WooCommerce</h2>
             <p>WooCommerce already calculates the tax per line and per order and stores it. The job of the invoice plugin is to render that breakdown faithfully on the PDF &mdash; the net, the rate, the tax amount and the gross &mdash; and to place your tax registration number and (for B2B) a field for the customer&rsquo;s. Watch for two things: the currency symbol must render correctly for international buyers (a surprising number of plugins mangle non-dollar symbols), and the tax breakdown must survive multiple tax rates on one order.</p>
             <p>Tax rules change and vary by jurisdiction &mdash; confirm your local requirements with an accountant. The plugin&rsquo;s job is to make WooCommerce&rsquo;s numbers show up correctly and completely on a document you can hand to one.</p>
             <div class="boiler-cta">

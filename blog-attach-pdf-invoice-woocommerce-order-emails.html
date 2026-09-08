@@ -70,7 +70,19 @@
                 <li>Place a test order and move it to that status. The email arrives with <code>invoice-1234.pdf</code> attached &mdash; no manual step.</li>
             </ul>
 
-            <h2>The details that trip people up</h2>
+            <h2>Why deliverability gets worse when you attach</h2>
+
+                    <p>Attaching a PDF quietly changes your email from a small text message into a payload, and that has consequences most stores discover through customer complaints rather than logs. A WooCommerce install sending mail through plain PHP <code>mail()</code> is already fragile; add a few hundred kilobytes of attachment and you push against per-message size limits, slower SMTP handoffs, and spam filters that score attachments from unauthenticated senders more harshly.</p>
+
+                    <p>Two fixes carry nearly all the weight. First, send through <strong>authenticated SMTP or a transactional provider</strong> rather than <code>mail()</code>, so your messages carry SPF and DKIM alignment and stop looking like spoofed mail. Second, <strong>keep the PDF small</strong> &mdash; a logo exported at 2000px wide and embedded at 200px is the single most common reason a two-page invoice weighs 3 MB. Resize the asset, don&rsquo;t just scale it in the template.</p>
+
+                    <h2>Generate at send time, not on demand</h2>
+
+                    <p>There&rsquo;s a subtle architectural decision hiding here. If the PDF is generated fresh every time someone opens a link, the document can silently <em>change</em> after the fact &mdash; a corrected address, a new tax rate, an updated logo &mdash; and an invoice that changes retroactively is precisely what accounting rules forbid. Generate the document when the invoice is issued, store it, and serve that stored file afterward. The version the customer received and the version in your records should be byte-identical a year later.</p>
+
+                    <p>The same logic applies to <strong>attachment order and naming</strong>. A file called <code>invoice.pdf</code> is worthless in a customer&rsquo;s downloads folder next to eleven other <code>invoice.pdf</code> files. Name it with the invoice number and your store &mdash; <code>ACME-2026-0042.pdf</code> &mdash; and you cut a meaningful share of &ldquo;can you resend my invoice?&rdquo; support requests.</p>
+
+                    <h2>The details that trip people up</h2>
             <p><strong>Invoice numbers must be stable.</strong> The number assigned when the invoice is first generated has to be stored on the order, so that a reprint or a resend never produces a different number. Accountants and tax authorities require sequential, non-changing invoice numbers. A plugin that regenerates the number on every render is a compliance problem.</p>
             <p><strong>The PDF engine must not break the email.</strong> If the invoice can&rsquo;t generate (a host missing a PHP extension, say), the order email must still send. Good plugins degrade gracefully to a printable HTML document instead of throwing a fatal error that stops the email entirely.</p>
             <p><strong>Language and currency have to render.</strong> The attached PDF should show the customer&rsquo;s name, address and your currency symbol correctly in any language &mdash; see our guide on <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">fixing invoices that don&rsquo;t render Arabic or RTL text</a>.</p>

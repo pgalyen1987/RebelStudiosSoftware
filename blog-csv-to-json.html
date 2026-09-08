@@ -119,6 +119,27 @@
                     <h2>Going the Other Way (JSON &rarr; CSV)</h2>
                     <p>JSON to CSV has its own trap: <strong>nesting</strong>. A flat array of flat objects maps cleanly to rows and columns. But if your objects contain nested objects or arrays (<code>"address": {"city": "..."}</code>), there&rsquo;s no single obvious CSV shape &mdash; you have to flatten (e.g. <code>address.city</code> as a column) or serialize the nested part. Decide that on purpose rather than letting a converter guess.</p>
 
+                    <h2>Everything in a CSV is a string</h2>
+
+                    <p>This is the source of most conversion bugs. CSV has no type system whatsoever &mdash; every field is text, and the converter has to <em>guess</em> what you meant. Those guesses go wrong in predictable, damaging ways:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Leading zeros vanish.</strong> ZIP code <code>02134</code> and part number <code>0071</code> become <code>2134</code> and <code>71</code> the moment something decides they&rsquo;re numbers. For identifiers, you want them to stay strings.</li>
+                        <li><strong>Long digit strings lose precision.</strong> A 19-digit order ID parsed as a float silently rounds. It still looks like a number; it&rsquo;s just the wrong one.</li>
+                        <li><strong>Empty versus null.</strong> An empty CSV cell could mean <code>""</code>, <code>null</code>, or &ldquo;unknown&rdquo; &mdash; and the choice changes how downstream code behaves.</li>
+                        <li><strong>Booleans and dates.</strong> <code>TRUE</code>, <code>yes</code> and <code>1</code> may or may not become <code>true</code>; <code>03/04/2026</code> is March 4th or April 3rd depending on where the file was made.</li>
+                    </ul>
+
+                    <h2>Encoding and delimiters, the quiet killers</h2>
+
+                    <p>Two file-level details break more conversions than any parsing logic. First, <strong>encoding</strong>: a CSV saved from Excel may carry a UTF-8 <em>byte-order mark</em>, so your first column name silently becomes <code>\ufeffid</code> instead of <code>id</code> &mdash; and every lookup against it fails while the file looks perfect. Non-UTF-8 exports mangle accented names outright.</p>
+
+                    <p>Second, <strong>the delimiter isn&rsquo;t always a comma.</strong> In locales where the decimal separator is a comma, Excel writes semicolon-separated files &mdash; still called .csv. Hand that to a comma-splitting parser and you get one giant column. And a comma inside a quoted field (<code>"Smith, Jane"</code>) is why you should never split on commas yourself; use a real parser that understands quoting and escaped quotes.</p>
+
+                    <h2>Flattening nested JSON back to CSV</h2>
+
+                    <p>Going the other direction has one genuinely hard problem: CSV is flat and JSON nests. The workable convention is <strong>dot notation</strong> &mdash; <code>{"user":{"name":"Ada"}}</code> becomes a column called <code>user.name</code>. Arrays are the messy case, with three honest options: join them into one cell (<code>"red|blue"</code>), explode them into numbered columns (<code>tags.0</code>, <code>tags.1</code>), or emit one row per array item and repeat the parent fields. Each loses something. Pick deliberately based on what reads the file next, because there is no lossless answer here.</p>
+
                     <h2>FAQ</h2>
                     <h3>What&rsquo;s the fastest free way for a clean file?</h3>
                     <p>A short script (Python&rsquo;s <code>csv</code> + <code>json</code> modules), or your code editor&rsquo;s built-in conversion. Clean data with a header row converts in seconds.</p>

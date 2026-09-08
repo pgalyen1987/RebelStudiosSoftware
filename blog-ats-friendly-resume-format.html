@@ -75,7 +75,29 @@
                 <li><strong>Consistent dates:</strong> one format, e.g. <code>Jan 2023 &ndash; Mar 2025</code>, everywhere.</li>
             </ul>
 
-            <h2>Test it before you trust it</h2>
+            <h2>What actually happens to your file</h2>
+
+                    <p>It helps to know what you&rsquo;re formatting <em>for</em>. When your resume lands, the system runs three steps in order, and each one can quietly fail. First it <strong>extracts raw text</strong> from the file &mdash; a .docx exposes a clean text layer, while a PDF exported from a design tool may store text as positioned glyphs or outlines, which extract as gibberish or nothing. Second it <strong>segments the text into sections</strong>, looking for conventional headings to decide where Experience ends and Education begins. Third it <strong>pulls structured entities</strong> out of those sections: employer, title, dates, school, skills.</p>
+
+                    <p>Nearly every &ldquo;the ATS ate my resume&rdquo; story is step two or three going wrong. Your creative section heading &mdash; &ldquo;Where I&rsquo;ve Made an Impact&rdquo; &mdash; isn&rsquo;t recognized, so the parser never identifies an Experience section, and a recruiter filtering by years of experience never sees you. The content was perfect. The label wasn&rsquo;t.</p>
+
+                    <h2>The traps that silently break parsing</h2>
+
+                    <p>These are the specific constructs that survive a visual check and fail a machine read:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Tables.</strong> Parsers commonly read a table row-first, so a two-column layout interleaves unrelated text: your job title merges with a date from the other column.</li>
+                        <li><strong>Text boxes and headers/footers.</strong> Content placed in these often sits outside the main document flow and is skipped entirely. Never put your phone number or email in a header.</li>
+                        <li><strong>Graphics for meaning.</strong> Skill bars, rating dots and icon-only contact details carry zero text. &ldquo;Python ●●●●○&rdquo; extracts as &ldquo;Python&rdquo; at best.</li>
+                        <li><strong>Exotic bullets and ligatures.</strong> Decorative glyphs can extract as replacement characters, splitting sentences mid-word.</li>
+                        <li><strong>Ambiguous dates.</strong> &ldquo;&rsquo;21&ndash;&rsquo;23&rdquo; is far more likely to be misread than &ldquo;January 2021 &ndash; March 2023&rdquo;. Spell out the month and use a full year.</li>
+                    </ul>
+
+                    <h2>The 60-second self-test</h2>
+
+                    <p>You don&rsquo;t need special software to check any of this. Open your resume, select all, copy, and paste it into a plain text editor. What you see is approximately what the parser sees. If the reading order scrambles, if columns interleave, if whole blocks vanish &mdash; that is the failure, and it will happen the same way on their end. Fix it until the plain-text version reads top to bottom in the order you intended.</p>
+
+                    <h2>Test it before you trust it</h2>
             <p>The fastest sanity check: copy all the text out of your resume and paste it into a plain notepad. If the order is scrambled or fields are missing, the ATS sees that same mess. Then check the actual content against each posting &mdash; the right format gets you parsed; the right <a href="blog-ats-resume-keywords.html">keywords</a> get you ranked.</p>
             <div class="boiler-cta">
                 <h3>See your match before you apply</h3>

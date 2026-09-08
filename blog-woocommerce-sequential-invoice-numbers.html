@@ -70,7 +70,27 @@
                 <li><strong>A prefix and reset policy.</strong> Many businesses use a prefix and reset the sequence yearly (e.g. <code>2026-0001</code>). Pick a scheme and keep it consistent.</li>
             </ul>
 
-            <h2>Setting it up in WooCommerce</h2>
+            <h2>What &ldquo;sequential&rdquo; means to an auditor</h2>
+
+                    <p>The word carries more weight than it looks. Most tax authorities want invoice numbers that are <em>sequential</em> and <em>gapless</em> within a series &mdash; meaning an auditor can walk 1, 2, 3 through your records with nothing unexplained in between. A gap isn&rsquo;t a formatting nit; it&rsquo;s the shape of a deleted or hidden sale, which is exactly what the rule is designed to surface.</p>
+
+                    <p>That has a practical consequence people miss: <strong>you cannot simply skip a number.</strong> If an invoice is issued and then cancelled, the number stays used and you account for the reversal &mdash; you don&rsquo;t quietly reissue it. Many jurisdictions also expect the series to reset annually with the year encoded in the number (<code>2026-0001</code>), so each year is its own auditable run.</p>
+
+                    <h2>Where WooCommerce actually breaks this</h2>
+
+                    <p>Out of the box, WooCommerce gives you an <em>order number</em>, and it is not a lawful invoice number for three concrete reasons:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Order IDs aren&rsquo;t consecutive.</strong> Classic WooCommerce stores orders as posts, sharing one ID counter with every post, page, revision and draft on the site. Order 1041 is often followed by order 1067 because the gap went to autosaves.</li>
+                        <li><strong>Failed and abandoned orders consume numbers.</strong> A customer who bounces at payment still burns an ID, leaving a hole no auditor will accept as an explanation.</li>
+                        <li><strong>Nothing distinguishes an order from an invoice.</strong> An invoice number should be assigned when the invoice is <em>issued</em> &mdash; typically at payment or completion &mdash; not when a cart is created. Numbering on order creation means unpaid carts take numbers out of your legal sequence.</li>
+                    </ul>
+
+                    <h2>Refunds need their own series</h2>
+
+                    <p>The detail that catches most stores: a refund is not a negative invoice. In most VAT and GST regimes it&rsquo;s a <strong>credit note</strong> &mdash; its own document, with its own gapless sequence (<code>CN-2026-0001</code>), referencing the original invoice number it corrects. Dropping a refund into your invoice series, or reusing the original number, produces exactly the kind of inconsistency that turns a routine review into a longer one.</p>
+
+                    <h2>Setting it up in WooCommerce</h2>
             <p>A good invoice plugin gives you a starting number, an optional prefix, and stores the assigned number on the order. You should be able to reprint an old invoice years later and get the exact same number. If a plugin regenerates the number each time it renders the PDF, treat that as a compliance bug, not a feature.</p>
             <p>Rules vary by country &mdash; confirm yours with an accountant. But sequential, stable, gap-managed numbering is the safe default almost everywhere, and it should be built in, not an afterthought.</p>
             <div class="boiler-cta">

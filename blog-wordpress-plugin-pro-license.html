@@ -74,7 +74,19 @@
             <p>The Pro add-on needs to confirm the buyer actually paid. The lightest approach: your store issues a license key per sale, and the add-on verifies it against the store&rsquo;s API. Gumroad, for example, exposes a license-verification endpoint &mdash; the add-on POSTs the product ID and the key, gets back whether it&rsquo;s valid (and not refunded), and stores the result. Cache the check so you are not calling the API on every page load, and re-check periodically.</p>
             <p>Whatever store you pick, keep <em>one</em> store as the license authority so you are not reconciling two key formats. The buyer pastes their key once; the add-on flips <code>myplugin_is_pro</code> to true; every gated feature lights up.</p>
 
-            <h2>Don&rsquo;t build the gate twice</h2>
+            <h2>Failing safe when the license server is down</h2>
+
+                    <p>The question that separates a licensing system people tolerate from one they resent: what happens when your check can&rsquo;t complete? A remote verification will fail eventually &mdash; your server has an outage, their host blocks outbound requests, a DNS hiccup times out the call. If a failed check instantly disables paid features, you have built a product that punishes paying customers for <em>your</em> downtime, on their production store, without warning.</p>
+
+                    <p>Fail open, within limits. Cache the last successful verification with a generous grace period &mdash; a week or two is common &mdash; and keep Pro working throughout it. Re-check quietly in the background rather than during a page load, and never block <code>admin_init</code> on a network request, which is how a slow license endpoint turns into a hung dashboard for every user. Only after the grace window expires with repeated failures should you degrade, and then with a clear, non-destructive message.</p>
+
+                    <h2>Degrade without destroying data</h2>
+
+                    <p>When a license genuinely lapses, disable <em>functionality</em>, never data. If a customer&rsquo;s Pro tier built 300 records, an expired license must not delete them or make them unreachable &mdash; it should stop new Pro actions while leaving everything already created intact and exportable. Anything else is holding a customer&rsquo;s own data hostage, and it generates the refund requests and one-star reviews that cost more than the renewal was worth.</p>
+
+                    <p>Two more details that decide whether renewals are painless: <strong>make deactivation easy</strong> so a customer can move a license between a staging site and production without opening a ticket, and <strong>store the key where it belongs</strong> &mdash; an option, not hardcoded, and never logged in plain text in a debug file that ends up in a support thread.</p>
+
+                    <h2>Don&rsquo;t build the gate twice</h2>
             <p>The license gate, the settings framework, the readme format, and the build-to-zip script are the same for every freemium plugin you ship. The feature is the only part that changes. Build the plumbing once (or start from a kit that already has it), and each new plugin becomes "add the feature, ship it" instead of a week of boilerplate.</p>
             <div class="boiler-cta">
                 <h3>Skip building the license plumbing</h3>
