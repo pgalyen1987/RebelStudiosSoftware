@@ -3818,9 +3818,13 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
 .plug-card::before { background: linear-gradient(90deg, hsl(var(--cat) 70% 55%), transparent); }
 .plug-card:hover { border-color: hsl(var(--cat) 70% 55% / 0.45); }
 .plug-card .plug-tag {
+    /* .plug-tag is a bare inline-block; giving it a background without padding
+       painted a full-width band rather than a pill. */
+    padding: 0.24rem 0.6rem;
+    border-radius: 999px;
     color: hsl(var(--cat) 70% 68%);
     background: hsl(var(--cat) 70% 55% / 0.1);
-    border-color: hsl(var(--cat) 70% 55% / 0.24);
+    border: 1px solid hsl(var(--cat) 70% 55% / 0.24);
 }
 
 /* ---------- Blog index: category identity ----------
