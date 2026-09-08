@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to build, sign and ship an Objective-C iOS app without owning a Mac, using Codemagic or GitHub Actions macOS runners. Includes generating the certificate signing request with OpenSSL on Linux.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-ios-objective-c-without-a-mac.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-ios-objective-c-without-a-mac.html">
+    <meta property="og:title" content="Build and Ship an Objective-C iOS App Without a Mac">
+    <meta property="og:description" content="How to build, sign and ship an Objective-C iOS app without owning a Mac, using Codemagic or GitHub Actions macOS runners. Includes generating the certificate signing request with OpenSSL on Linux.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/ios-objective-c-without-a-mac.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-08">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Build and Ship an Objective-C iOS App Without a Mac">
+    <meta name="twitter:description" content="How to build, sign and ship an Objective-C iOS app without owning a Mac, using Codemagic or GitHub Actions macOS runners. Includes generating the certificate signing request with OpenSSL on Linux.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/ios-objective-c-without-a-mac.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Build and Ship an Objective-C iOS App Without a Mac","description":"How to build, sign and ship an Objective-C iOS app without owning a Mac, using Codemagic or GitHub Actions macOS runners. Includes generating the certificate signing request with OpenSSL on Linux.","datePublished":"2026-09-08","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-ios-objective-c-without-a-mac.html"},"image":"https://rebelstudiossoftware.com/images/blog/ios-objective-c-without-a-mac.png"}</script>
+    <title>Build and Ship an Objective-C iOS App Without a Mac - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Build and Ship an Objective-C iOS App Without a Mac</h1>
+            <p>Codemagic or a git-hosted macOS runner — and the code-signing step every guide skips</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 8, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/art/ios-objective-c-without-a-mac.png" alt="" width="1200" height="380" loading="lazy"></figure>
+
+                <div class="article-content">
+
+                    <p>The constraint is real and it is not negotiable: Xcode, <code>xcodebuild</code>, and the iOS SDK run on macOS and nowhere else. There is no Linux port, no official Windows toolchain, and the Apple licence permits macOS only on Apple hardware &mdash; which is why the virtual-machine workarounds you will find on forums are both fragile and a licence violation.</p>
+
+                    <p>But &ldquo;you need a Mac&rdquo; and &ldquo;you need to <em>own</em> a Mac&rdquo; are different claims, and only the first one is true. You need macOS compute for a few minutes per build, and you can rent that by the minute. If your codebase is Objective-C, this works better than most people expect, because a mature Objective-C project is exactly the kind of thing that builds cleanly from the command line.</p>
+
+                    <p>This guide covers the two practical routes &mdash; Codemagic and a git-hosted macOS runner &mdash; and the code-signing problem that stops people long before the build does.</p>
+
+                    <h2>The build is easy. Signing is the hard part.</h2>
+
+                    <p>Compiling an Objective-C app on a cloud macOS machine is close to trivial. One <code>xcodebuild</code> invocation and you have an archive. The part that consumes an afternoon is convincing Apple the archive came from you, and it involves three artefacts that all have to exist before your first successful build:</p>
+
+                    <ul class="article-list">
+                        <li>A <strong>distribution certificate</strong>, proving your identity as a developer.</li>
+                        <li>A <strong>provisioning profile</strong>, tying that certificate to a specific app ID and entitlements.</li>
+                        <li>An <strong>App Store Connect API key</strong>, so the upload step can authenticate without a human typing a two-factor code.</li>
+                    </ul>
+
+                    <p>The chicken-and-egg problem is the certificate. Every tutorial tells you to generate a certificate signing request in Keychain Access &mdash; which is a Mac application, which is the thing you do not have. This is where most people conclude it is impossible and go buy a Mac Mini.</p>
+
+                    <h3>Generating the CSR without a Mac</h3>
+
+                    <p>A certificate signing request is not a proprietary Apple format. It is standard PKCS#10, and OpenSSL has produced them for decades. On Linux, or WSL, or anything with <code>openssl</code> installed:</p>
+
+                    <pre class="article-code"><code># 1. Private key — guard this file, it is your identity
+openssl genrsa -out ios_distribution.key 2048
+
+# 2. The CSR you upload to developer.apple.com
+openssl req -new -key ios_distribution.key \
+  -out CertificateSigningRequest.certSigningRequest \
+  -subj "/emailAddress=you@example.com, CN=Your Name, C=US"</code></pre>
+
+                    <p>Upload that CSR in the Certificates section of your Apple developer account, choose <em>Apple Distribution</em>, and download the resulting <code>.cer</code>. Apple hands back a DER-encoded certificate; the build machine needs a PKCS#12 bundle containing both the certificate and the private key you just generated:</p>
+
+                    <pre class="article-code"><code># 3. DER to PEM
+openssl x509 -inform DER -in distribution.cer -out distribution.pem
+
+# 4. Combine certificate + key into the .p12 the runner imports
+openssl pkcs12 -export \
+  -inkey ios_distribution.key \
+  -in distribution.pem \
+  -out ios_distribution.p12
+
+# 5. Base64 so it can live in a CI secret
+base64 -w0 ios_distribution.p12 &gt; p12.b64</code></pre>
+
+                    <p>That is the whole trick, and it is the step every &ldquo;no Mac required&rdquo; article skips. Create the provisioning profile in the same web console, download the <code>.mobileprovision</code>, and base64 it the same way.</p>
+
+                    <p>For the upload step, generate an <strong>App Store Connect API key</strong> under Users and Access rather than using your Apple ID. You get a <code>.p8</code> file, an issuer ID, and a key ID. Password authentication with two-factor enabled does not work unattended, and app-specific passwords are a worse version of the same idea.</p>
+
+                    <div class="article-callout">
+                        <h3>Before you build the pipeline</h3>
+                        <p>If you are starting a genuinely new app rather than maintaining an existing Objective-C codebase, read <a href="blog-ios-app-without-a-mac.html">the cross-platform route</a> first. Expo&rsquo;s cloud build solves this problem by never making it your problem. The pipeline below is worth building when you already have Objective-C worth keeping &mdash; not as a way to avoid choosing a stack.</p>
+                    </div>
+
+                    <h2>Option 1: Codemagic</h2>
+
+                    <p>Codemagic is CI built specifically for mobile, and its main advantage is that it treats code signing as a first-class feature rather than something you script. You upload the <code>.p12</code> and profile once, reference them by name, and its CLI tools wire them into the build.</p>
+
+                    <p>A <code>codemagic.yaml</code> for an Objective-C project using CocoaPods:</p>
+
+                    <pre class="article-code"><code>workflows:
+  ios-release:
+    name: iOS Release
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 15.4
+      cocoapods: default
+      groups:
+        - appstore_credentials
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.yourcompany.yourapp
+    scripts:
+      - name: Install pods
+        script: pod install
+      - name: Set up signing
+        script: xcode-project use-profiles
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace MyApp.xcworkspace \
+            --scheme MyApp
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true</code></pre>
+
+                    <p><code>xcode-project use-profiles</code> is doing the work that would otherwise be twenty lines of <code>security</code> commands: it reads the profiles attached to the build, patches the project&rsquo;s signing settings to match, and leaves <code>xcodebuild</code> with everything it needs.</p>
+
+                    <p>The trade is the usual one for managed platforms. You move faster on day one and you are inside someone else&rsquo;s abstraction on day one hundred &mdash; when a build breaks in a way the UI does not explain, you are debugging a system you did not build.</p>
+
+                    <h2>Option 2: A git-hosted macOS runner</h2>
+
+                    <p>GitHub Actions provides macOS runners with Xcode preinstalled, and GitLab offers the equivalent. Nothing here is mobile-specific, which means you do the signing plumbing yourself &mdash; roughly thirty lines, written once.</p>
+
+                    <pre class="article-code"><code>name: iOS Release
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pin the Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+
+      - name: Cache CocoaPods
+        uses: actions/cache@v4
+        with:
+          path: Pods
+          key: pods-${{ hashFiles('Podfile.lock') }}
+
+      - name: Install pods
+        run: pod install --repo-update
+
+      - name: Import signing certificate
+        env:
+          P12_BASE64: ${{ secrets.IOS_P12_BASE64 }}
+          P12_PASSWORD: ${{ secrets.IOS_P12_PASSWORD }}
+          KC_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          echo "$P12_BASE64" | base64 --decode &gt; cert.p12
+          security create-keychain -p "$KC_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$KC_PASSWORD" build.keychain
+          security import cert.p12 -k build.keychain \
+            -P "$P12_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple:,codesign: \
+            -s -k "$KC_PASSWORD" build.keychain
+
+      - name: Install provisioning profile
+        env:
+          PROFILE_BASE64: ${{ secrets.IOS_PROFILE_BASE64 }}
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "$PROFILE_BASE64" | base64 --decode \
+            &gt; ~/Library/MobileDevice/Provisioning\ Profiles/app.mobileprovision
+
+      - name: Archive
+        run: |
+          xcodebuild -workspace MyApp.xcworkspace \
+            -scheme MyApp -configuration Release \
+            -archivePath build/MyApp.xcarchive \
+            CODE_SIGN_STYLE=Manual archive
+
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/MyApp.xcarchive \
+            -exportOptionsPlist ExportOptions.plist \
+            -exportPath build</code></pre>
+
+                    <p>Two lines in there are the ones people lose hours to. <code>set-key-partition-list</code> is required on modern macOS or <code>codesign</code> will block waiting for a keychain prompt that no one is there to answer &mdash; the build simply hangs until it times out. And <code>CODE_SIGN_STYLE=Manual</code> overrides the automatic signing that an Xcode project will otherwise try to perform, which fails on a machine that has never seen your Apple ID.</p>
+
+                    <p>Watch the cost model on private repositories: macOS runner minutes bill at a significant multiple of Linux minutes on most hosted plans. For a project that tags a release weekly this is negligible. For one that builds on every push to every branch, it is a real line item, and restricting the workflow to tags is worth doing on day one.</p>
+
+                    <h2>The Objective-C specifics that bite</h2>
+
+                    <p>Most CI guidance assumes a recent Swift project. An older Objective-C codebase differs in ways that produce confusing failures:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Build the workspace, not the project.</strong> If you use CocoaPods, <code>-workspace MyApp.xcworkspace</code> is mandatory. Passing <code>-project MyApp.xcodeproj</code> produces a wall of missing-header errors, because the Pods targets are not in the project file.</li>
+                        <li><strong>Pin the Xcode version explicitly.</strong> Runner images update, and a newer Xcode can turn warnings your codebase has carried for years into errors. <code>xcode-select</code> against a specific version, and change it deliberately.</li>
+                        <li><strong>Check the deployment target before it checks you.</strong> Apple periodically raises the minimum SDK it will accept for submissions, and an old <code>IPHONEOS_DEPLOYMENT_TARGET</code> is a rejection at upload time &mdash; after a green build.</li>
+                        <li><strong>Expect dropped architectures.</strong> Modern Xcode has no 32-bit iOS support and bitcode is gone. A project carrying <code>armv7</code> in its architecture list or bitcode settings needs those removed, not worked around.</li>
+                        <li><strong>Commit <code>Podfile.lock</code>.</strong> Without it, <code>pod install --repo-update</code> resolves fresh versions on the runner and you get a build that differs from every local one &mdash; the worst class of CI bug, because it is invisible in the diff.</li>
+                    </ul>
+
+                    <h2>What you actually give up</h2>
+
+                    <p>Being honest about this matters more than the YAML, because the cost is not in the build &mdash; it is in the loop.</p>
+
+                    <p>You lose the interactive iOS Simulator. You can run unit and UI tests headlessly on the runner, and you should, but you cannot poke at a layout, resize a view, and watch what happens. For an Objective-C app with hand-built UIKit layouts, that is the single biggest loss, because UIKit constraint problems are precisely the kind of bug you find by looking rather than by reasoning.</p>
+
+                    <p>Your device testing loop becomes TestFlight. Push a tag, wait for the build, wait for processing, install on a phone. That is minutes per iteration instead of seconds, and it changes how you work: you batch changes, you write more tests, and you think harder before shipping because the feedback is expensive. That is not entirely a bad discipline, but pretending it is free would be dishonest.</p>
+
+                    <p>And you cannot debug interactively against a device from your Linux machine. When something crashes only on real hardware, you are reading crash logs and adding logging, not setting breakpoints.</p>
+
+                    <h2>Which one to pick</h2>
+
+                    <p>Choose <strong>Codemagic</strong> if shipping is the goal and CI is not the interesting part of your work. Managed signing genuinely removes the worst afternoon in this process, and the free tier covers a low release cadence.</p>
+
+                    <p>Choose <strong>a git-hosted runner</strong> if your CI already lives there, you want one system rather than two, or you need the build to do things a mobile-specific platform does not anticipate. You will spend an extra afternoon on keychain commands and then never think about it again.</p>
+
+                    <p>Either way, the honest summary is this: the Mac requirement is a hardware-rental problem, not a wall. What you are really trading is iteration speed for capital expenditure &mdash; and for a mature Objective-C app in maintenance mode, shipping a handful of releases a year, that is often the right trade. For a UI-heavy app under active development, a used Mac Mini pays for itself in recovered afternoons faster than most people admit.</p>
+
+                    <p><em>Building something and hitting a wall like this one? <a href="index.html#contact">Tell us about it</a> &mdash; we do this for a living, on stacks nobody chose on purpose.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-ios-app-without-a-mac.html" class="btn btn-secondary">Read: The cross-platform route: shipping iOS with Expo &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

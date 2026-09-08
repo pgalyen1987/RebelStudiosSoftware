@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>Build and Ship an Objective-C iOS App Without a Mac</title>
+      <link>https://rebelstudiossoftware.com/blog-ios-objective-c-without-a-mac.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ios-objective-c-without-a-mac.html</guid>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to build, sign and ship an Objective-C iOS app without owning a Mac, using Codemagic or GitHub Actions macOS runners. Includes generating the certificate signing request with OpenSSL on Linux.</description>
+    </item>
     <item>
       <title>ATS-Friendly Resume Format: What Actually Parses</title>
       <link>https://rebelstudiossoftware.com/blog-ats-friendly-resume-format.html</link>
