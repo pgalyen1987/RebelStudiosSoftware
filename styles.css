@@ -3819,7 +3819,9 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
 .plug-card:hover { border-color: hsl(var(--cat) 70% 55% / 0.45); }
 .plug-card .plug-tag {
     /* .plug-tag is a bare inline-block; giving it a background without padding
-       painted a full-width band rather than a pill. */
+       painted a full-width band rather than a pill. .plug-card is a flex
+       column, so it also needs to opt out of cross-axis stretch. */
+    align-self: flex-start;
     padding: 0.24rem 0.6rem;
     border-radius: 999px;
     color: hsl(var(--cat) 70% 68%);
