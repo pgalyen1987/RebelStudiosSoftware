@@ -18,7 +18,11 @@ const REPO = path.resolve(HERE, '../../..'); // <repo>/.claude/skills/write-blog
 const OUT = path.join(REPO, 'images', 'blog');
 const CHROME = process.env.CHROME || 'chromium';
 
-const [slug, title, kicker = ''] = process.argv.slice(2);
+const [slug, title, kicker = '', hueArg] = process.argv.slice(2);
+// Every card sharing one green made 57 index thumbnails read as a single
+// texture. A per-category hue is what lets the eye tell them apart.
+const hue = Number.isFinite(+hueArg) && hueArg !== undefined ? +hueArg : 145;
+const H = (s, l, a) => `hsl(${hue} ${s}% ${l}%${a === undefined ? '' : ` / ${a}`})`;
 if (!slug || !title) {
   console.error('usage: node make_card.mjs "<slug>" "<Title>" "<KICKER>"');
   process.exit(1);
@@ -31,19 +35,19 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:1200px;height:630px}
   body{font-family:'DejaVu Sans','Liberation Sans',sans-serif;color:#eef1f7;
-    background:radial-gradient(1200px 700px at 80% -12%, #113524 0%, #0a0e17 52%, #070a12 100%);
+    background:radial-gradient(1200px 700px at 80% -12%, ${H(48,14)} 0%, #0a0e17 52%, #070a12 100%);
     padding:74px 80px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
   .glow{position:absolute;right:-150px;top:-150px;width:460px;height:460px;border-radius:50%;
-    background:radial-gradient(circle,rgba(74,222,128,.20),transparent 68%)}
+    background:radial-gradient(circle,${H(70,55,'.22')},transparent 68%)}
   .top{display:flex;align-items:center;gap:18px;z-index:1}
-  .badge{width:56px;height:56px;border-radius:14px;background:#4ade80;color:#08120a;font-weight:800;font-size:36px;
+  .badge{width:56px;height:56px;border-radius:14px;background:${H(70,60)};color:#08120a;font-weight:800;font-size:36px;
     display:flex;align-items:center;justify-content:center}
   .brand{font-size:22px;font-weight:700;letter-spacing:3px;color:#cdd5e3;text-transform:uppercase}
   .mid{z-index:1}
-  .kicker{color:#4ade80;font-weight:700;font-size:23px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+  .kicker{color:${H(70,66)};font-weight:700;font-size:23px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
   h1{font-size:${fontFor(title)}px;line-height:1.12;font-weight:800;max-width:1040px;letter-spacing:-1px}
   .foot{display:flex;align-items:center;gap:20px;font-size:24px;color:#98a2b3;z-index:1}
-  .bar{height:8px;width:130px;background:linear-gradient(90deg,#4ade80,#2dd4bf);border-radius:99px}
+  .bar{height:8px;width:130px;background:linear-gradient(90deg,${H(70,60)},${H(70,60)} 40%,hsl(${(0)} 0% 0% / 0));border-radius:99px}
 </style></head><body>
   <div class="glow"></div>
   <div class="top"><div class="badge">R</div><div class="brand">Rebel Studios Software</div></div>

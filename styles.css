@@ -3769,3 +3769,64 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
 
 /* The first card of each group carries the group's weight */
 .tool-group .tools-grid > a.tool-card:first-child { background: hsl(var(--cat) 60% 40% / 0.06); }
+
+/* ---------- Plugin catalogue: platform identity ----------
+   Same failure as the tool grid: seven cards distinguished only by their
+   text. A platform glyph and hue, plus splitting shipped from in-progress,
+   lets the eye sort them before reading a word. */
+.plug-group { margin-bottom: var(--space-lg); }
+.plug-group-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: var(--space-sm);
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--line);
+}
+.plug-group-head h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    margin: 0;
+    color: var(--ink-1);
+}
+.plug-group-note {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-3);
+    margin-left: auto;
+}
+.plug-ico {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 0.8rem;
+    color: hsl(var(--cat) 70% 64%);
+    background: hsl(var(--cat) 70% 55% / 0.11);
+    border: 1px solid hsl(var(--cat) 70% 55% / 0.24);
+}
+.plug-ico svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.plug-card::before { background: linear-gradient(90deg, hsl(var(--cat) 70% 55%), transparent); }
+.plug-card:hover { border-color: hsl(var(--cat) 70% 55% / 0.45); }
+.plug-card .plug-tag {
+    color: hsl(var(--cat) 70% 68%);
+    background: hsl(var(--cat) 70% 55% / 0.1);
+    border-color: hsl(var(--cat) 70% 55% / 0.24);
+}
+
+/* ---------- Blog index: category identity ----------
+   Fifty-eight cards sharing one green poster read as a single texture at
+   scroll speed. Each article now carries its category hue, on the card's
+   own chrome as well as in the generated poster art. */
+.blog-card[style*="--cat"] .blog-card-date { color: hsl(var(--cat) 70% 66%); }
+.blog-card[style*="--cat"]:hover { border-color: hsl(var(--cat) 70% 55% / 0.45); }
+.blog-card[style*="--cat"] .blog-card-read { color: hsl(var(--cat) 70% 66%); }
