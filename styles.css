@@ -39,6 +39,33 @@
     --shadow-card: 0 14px 40px -18px rgba(0, 0, 0, 0.7);
     --shadow-glow: 0 0 0 1px rgba(108, 190, 69, 0.35), 0 18px 50px -18px rgba(108, 190, 69, 0.25);
 
+
+    /* Golden ratio (φ = 1.618) — modular scale used across the site */
+    --phi: 1.618;
+    --phi-inv: 0.618;
+
+    /* Type scale: majors step by φ, minors by √φ (1.272) */
+    --text-xs: 0.786rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.272rem;
+    --text-lg: 1.618rem;
+    --text-xl: 2.058rem;
+    --text-2xl: 2.618rem;
+    --text-3xl: 4.236rem;
+
+    /* Spacing scale on φ */
+    --space-2xs: 0.382rem;
+    --space-xs: 0.618rem;
+    --space-sm: 1rem;
+    --space-md: 1.618rem;
+    --space-lg: 2.618rem;
+    --space-xl: 4.236rem;
+    --space-2xl: 6.854rem;
+
+    /* Golden reading measure (~65 chars) */
+    --measure: 38.2rem;
+
     /* Legacy aliases (older markup) */
     --primary-color: #6cbe45;
     --primary-dark: #5aa638;
@@ -57,7 +84,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    line-height: 1.6;
+    line-height: 1.618;
     color: var(--ink-2);
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
@@ -3367,3 +3394,188 @@ a.tool-card:hover {
 .cred-item{flex:1;min-width:150px;background:#0d1220;border:1px solid #1c2432;border-radius:12px;padding:1.1rem 1rem;text-align:center}
 .cred-item strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;color:#4ade80;line-height:1.1}
 .cred-item span{display:block;color:#98a2b3;font-size:.9rem;margin-top:.35rem}
+
+/* ============================================================
+   φ LAYOUT LAYER — golden-ratio rhythm, shared components
+   ============================================================ */
+
+/* Generic content section. Previously undefined, so every page using
+   <section class="section"> rendered with no vertical rhythm at all. */
+.section {
+    padding: var(--space-xl) 0;
+}
+.section + .section {
+    padding-top: 0;
+}
+
+/* Constrain prose to a golden reading measure */
+.measure,
+.section .container > p {
+    max-width: var(--measure);
+}
+
+/* Golden split: 61.8% / 38.2% */
+.golden-split {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+@media (max-width: 820px) {
+    .golden-split { grid-template-columns: 1fr; gap: var(--space-md); }
+}
+
+/* Hairline divider to break up long pages */
+.rule {
+    height: 1px;
+    border: 0;
+    margin: var(--space-xl) 0;
+    background: linear-gradient(90deg, transparent, var(--line-strong) 38.2%, var(--line-strong) 61.8%, transparent);
+}
+
+/* ---------- Plugin catalog ---------- */
+.plug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20.6rem, 1fr));
+    gap: var(--space-md);
+}
+
+.plug-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-strong);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-lg) var(--space-md);
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.plug-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--grad-accent);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.plug-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-card);
+}
+.plug-card:hover::before { opacity: 1; }
+
+.plug-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    margin-bottom: var(--space-xs);
+}
+
+.plug-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    line-height: 1.3;
+    color: var(--ink-1);
+    margin-bottom: var(--space-xs);
+}
+
+.plug-card p {
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    line-height: 1.618;
+    flex: 1;
+}
+
+.plug-card .btn {
+    margin-top: var(--space-md);
+    align-self: flex-start;
+}
+
+/* Flagship plugin spans the full row */
+.plug-card--featured {
+    grid-column: 1 / -1;
+    background:
+        radial-gradient(120% 160% at 88% -20%, rgba(108, 190, 69, 0.10), transparent 62%),
+        var(--surface-strong);
+    border-color: var(--line-strong);
+}
+.plug-card--featured::before { opacity: 1; }
+.plug-card--featured h3 { font-size: var(--text-lg); }
+.plug-card--featured p { max-width: var(--measure); }
+
+/* ---------- Featured lead article (breaks the uniform blog grid) ---------- */
+.blog-grid { gap: var(--space-md); }
+
+.blog-card--featured {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: stretch;
+}
+.blog-card--featured .blog-card-img {
+    width: 61.8%;              /* φ split */
+    aspect-ratio: 1200 / 630;  /* match the OG card so baked-in text isn't cropped */
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+}
+.blog-card--featured .blog-card-content {
+    width: 38.2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-lg) var(--space-md);
+}
+.blog-card--featured h3 {
+    font-size: var(--text-lg);
+    line-height: 1.25;
+}
+@media (max-width: 900px) {
+    .blog-card--featured { grid-column: span 1; flex-direction: column; }
+    .blog-card--featured .blog-card-img {
+        width: 100%; aspect-ratio: 16 / 9;
+        border-right: 0; border-bottom: 1px solid var(--line);
+    }
+    .blog-card--featured .blog-card-content { width: 100%; padding: var(--space-md); }
+    .blog-card--featured h3 { font-size: var(--text-md); }
+}
+
+/* ---------- Compact hero for interior pages ----------
+   The full-height .hero (92vh) is designed for the homepage. On catalog and
+   product pages it left a near-empty viewport and pushed content below the
+   fold. This variant keeps the styling, drops the dead space.            */
+.hero--page {
+    min-height: 0;
+    padding: var(--space-xl) 0 var(--space-lg);
+}
+.hero--page .container {
+    /* The homepage hero is a 2-column grid built for exactly two children.
+       Interior pages have a badge, h1, sub and CTA, which zig-zagged across
+       the columns — so interior heroes stack in normal flow instead. */
+    display: block;
+}
+.hero--page h1 { margin-bottom: var(--space-xs); }
+.hero--page .cb-status { display: inline-block; margin-bottom: var(--space-sm); }
+.hero--page .hero-sub {
+    max-width: var(--measure);
+    margin-bottom: 0;
+}
+@media (max-width: 820px) {
+    .hero--page { padding: var(--space-lg) 0 var(--space-md); }
+    .hero--page .container { grid-template-columns: 1fr; gap: var(--space-sm); }
+}
+
+/* Featured image is an OG "poster" with baked-in text — never crop it. */
+.blog-card--featured .blog-card-img { aspect-ratio: auto; }
+.blog-card--featured .blog-card-img img {
+    object-fit: contain;
+    background: var(--bg-raise);
+    padding: var(--space-sm);
+}
