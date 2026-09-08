@@ -263,11 +263,40 @@ jobs:
 
                     <p>Being honest about this matters more than the YAML, because the cost is not in the build &mdash; it is in the loop.</p>
 
-                    <p>You lose the interactive iOS Simulator. You can run unit and UI tests headlessly on the runner, and you should, but you cannot poke at a layout, resize a view, and watch what happens. For an Objective-C app with hand-built UIKit layouts, that is the single biggest loss, because UIKit constraint problems are precisely the kind of bug you find by looking rather than by reasoning.</p>
+                    <p>You lose the interactive iOS Simulator <em>on your own machine</em>. You can run unit and UI tests headlessly on the runner, and you should, but you cannot casually poke at a layout, resize a view, and watch what happens. For an Objective-C app with hand-built UIKit layouts, that is the single biggest loss, because UIKit constraint problems are precisely the kind of bug you find by looking rather than by reasoning.</p>
 
                     <p>Your device testing loop becomes TestFlight. Push a tag, wait for the build, wait for processing, install on a phone. That is minutes per iteration instead of seconds, and it changes how you work: you batch changes, you write more tests, and you think harder before shipping because the feedback is expensive. That is not entirely a bad discipline, but pretending it is free would be dishonest.</p>
 
                     <p>And you cannot debug interactively against a device from your Linux machine. When something crashes only on real hardware, you are reading crash logs and adding logging, not setting breakpoints.</p>
+
+                    <h2>You can get a simulator anyway</h2>
+
+                    <p>That last section is the standard list of losses, and it is worth qualifying, because &ldquo;no Mac means no Simulator&rdquo; is repeated far more often than it is true. The Simulator is part of Xcode, and Xcode is already sitting on the machine you are renting. What you lack is a screen attached to it &mdash; and that is a solvable problem, in three different ways depending on what you actually need.</p>
+
+                    <h3>Screenshots from CI, free</h3>
+
+                    <p>The cheapest option uses build minutes you are already spending. <code>simctl</code> drives the Simulator from the command line, so a job can boot a device, install the app, and capture what it looks like:</p>
+
+                    <pre class="article-code"><code>xcrun simctl boot "iPhone 15 Pro"
+xcrun simctl install booted build/MyApp.app
+xcrun simctl launch booted com.yourcompany.yourapp
+xcrun simctl io booted screenshot iphone15pro.png</code></pre>
+
+                    <p>Loop that over several device names and you get a contact sheet of every screen size on every build, published as an artifact. It is not interactive, but it catches the class of bug you were most worried about &mdash; a constraint that only breaks on the small phone or the big one &mdash; and it catches it automatically rather than when a user reports it. <code>fastlane snapshot</code> automates the same idea across devices and languages if you would rather not write it yourself.</p>
+
+                    <p>One detail makes this much easier than the rest of the pipeline: a Simulator build needs <strong>no code signing at all</strong>. Building for the simulator destination produces an unsigned <code>.app</code>, so you can stand this up before you have sorted out a single certificate.</p>
+
+                    <h3>A real Simulator in your browser</h3>
+
+                    <p>For genuinely interactive work, services such as Appetize.io stream a running iOS Simulator into a browser tab. You upload the unsigned <code>.app</code> your CI just built, open a link, and tap around the actual app from Linux or Windows. Device-farm services like BrowserStack and LambdaTest do the same thing against real hardware rather than a simulator, which costs more and tells you more.</p>
+
+                    <p>This is the piece that changes the calculus most, because it restores the loop the previous section said you had lost. Push, wait for the build, click the link, use the app. Slower than a local Simulator, dramatically faster than a TestFlight round trip.</p>
+
+                    <h3>Renting the whole Mac</h3>
+
+                    <p>If you need Xcode itself &mdash; Interface Builder, the view hierarchy debugger, breakpoints in a running app &mdash; then rent a Mac rather than just a build. MacStadium, MacinCloud, Scaleway and AWS all rent macOS by the hour or month, and you connect over screen sharing.</p>
+
+                    <p>Be clear-eyed about the arithmetic here. A few hours a month is trivially cheaper than buying hardware. Daily use for a year is not: at that point a monthly rental has quietly cost more than the Mac Mini it was avoiding, and it is slower to use. Rent for the occasional debugging session that genuinely needs a debugger; buy if that session is happening every week.</p>
 
                     <h2>Which one to pick</h2>
 
