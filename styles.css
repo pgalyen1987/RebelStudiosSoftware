@@ -3902,6 +3902,9 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
     border-radius: var(--radius);
     padding: 26px;
 }
+/* h3 not h4: these sit under a section h2, and jumping a level breaks
+   screen-reader navigation. The per-page inline blocks still style h4. */
+.cb-card h3,
 .cb-card h4 {
     font-family: var(--font-display);
     font-size: 1.1rem;

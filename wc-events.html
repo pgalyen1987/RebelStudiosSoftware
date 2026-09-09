@@ -43,9 +43,9 @@
         .cb-fix { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:2rem; }
         @media (max-width:760px){ .cb-fix{ grid-template-columns:1fr; } }
         .cb-fix > div { background:var(--surface-strong); padding:22px 24px; }
-        .cb-fix h5 { font-family:var(--font-display); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:12px; }
-        .cb-fix .cb-old h5 { color:#f87171; }
-        .cb-fix .cb-new h5 { color:#4ade80; }
+        .cb-fix h3 { font-family:var(--font-display); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:12px; }
+        .cb-fix .cb-old h3 { color:#f87171; }
+        .cb-fix .cb-new h3 { color:#4ade80; }
         .cb-fix ul { list-style:none; display:grid; gap:10px; }
         .cb-fix li { font-size:.93rem; color:var(--ink-2); padding-left:20px; position:relative; }
         .cb-old li::before { content:"\2715"; position:absolute; left:0; color:#f87171; }
@@ -80,7 +80,7 @@
         <div class="container">
             <div class="nav-brand">
                 <a href="index.html" class="brand-link">
-                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo" width="1024" height="1024">
                     <span class="brand-name">Rebel Studios</span>
                 </a>
             </div>
@@ -117,14 +117,14 @@
         <div class="container">
             <h2>What changes</h2>
             <div class="cb-fix">
-                <div class="cb-old"><h5>The old plugins</h5><ul>
+                <div class="cb-old"><h3>The old plugins</h3><ul>
                         <li>Basic ticketing gated behind paid add-ons</li>
                         <li>Check-in needs a separate paid app</li>
                         <li>Heavy calendar you didn’t ask for</li>
                         <li>Tickets are plain text, easy to fake</li>
                         <li>Clunky setup for a simple RSVP</li>
                 </ul></div>
-                <div class="cb-new"><h5>Event Tickets</h5><ul>
+                <div class="cb-new"><h3>Event Tickets</h3><ul>
                         <li>Unlimited free RSVP events</li>
                         <li>QR check-in from any logged-in phone</li>
                         <li>Just events — no calendar bloat</li>
@@ -144,12 +144,12 @@
         <div class="container">
             <h2>What it does</h2>
             <div class="cb-grid">
-                <div class="cb-card"><h4>QR PDF tickets</h4><p>Each attendee gets a PDF ticket with a unique QR code, emailed automatically on registration.</p></div>
-                <div class="cb-card"><h4>Scan to check in</h4><p>A logged-in staff member scans the QR with a phone to mark the attendee present. The public only ever sees “valid ticket”.</p></div>
-                <div class="cb-card"><h4>Capacity handling</h4><p>Set a capacity and the form shows seats-left and closes automatically when full.</p></div>
-                <div class="cb-card"><h4>Attendee list + CSV</h4><p>See who’s registered and who’s checked in, and export the whole list to CSV.</p></div>
-                <div class="cb-card"><h4>Shortcodes</h4><p>Drop <code>[rs_events]</code> for an upcoming list, or the registration form onto any event page.</p></div>
-                <div class="cb-card"><h4>Yours, private</h4><p>Tickets and QR codes are generated on your server. Nothing phones home.</p></div>
+                <div class="cb-card"><h3>QR PDF tickets</h3><p>Each attendee gets a PDF ticket with a unique QR code, emailed automatically on registration.</p></div>
+                <div class="cb-card"><h3>Scan to check in</h3><p>A logged-in staff member scans the QR with a phone to mark the attendee present. The public only ever sees “valid ticket”.</p></div>
+                <div class="cb-card"><h3>Capacity handling</h3><p>Set a capacity and the form shows seats-left and closes automatically when full.</p></div>
+                <div class="cb-card"><h3>Attendee list + CSV</h3><p>See who’s registered and who’s checked in, and export the whole list to CSV.</p></div>
+                <div class="cb-card"><h3>Shortcodes</h3><p>Drop <code>[rs_events]</code> for an upcoming list, or the registration form onto any event page.</p></div>
+                <div class="cb-card"><h3>Yours, private</h3><p>Tickets and QR codes are generated on your server. Nothing phones home.</p></div>
             </div>
         </div>
     </section>
@@ -207,7 +207,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo" width="1024" height="1024">
                     <span>Rebel Studios Software</span>
                 </div>
                 <div class="footer-links">

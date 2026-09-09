@@ -45,9 +45,9 @@
         .cb-fix { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 2rem; }
         @media (max-width: 760px) { .cb-fix { grid-template-columns: 1fr; } }
         .cb-fix > div { background: var(--surface-strong); padding: 22px 24px; }
-        .cb-fix h5 { font-family: var(--font-display); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
-        .cb-fix .cb-old h5 { color: #f87171; }
-        .cb-fix .cb-new h5 { color: var(--green-bright, #4ade80); }
+        .cb-fix h3 { font-family: var(--font-display); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+        .cb-fix .cb-old h3 { color: #f87171; }
+        .cb-fix .cb-new h3 { color: var(--green-bright, #4ade80); }
         .cb-fix ul { list-style: none; display: grid; gap: 10px; }
         .cb-fix li { font-size: .93rem; color: var(--ink-2); padding-left: 20px; position: relative; }
         .cb-old li::before { content: "✕"; position: absolute; left: 0; color: #f87171; }
@@ -72,7 +72,7 @@
         <div class="container">
             <div class="nav-brand">
                 <a href="index.html" class="brand-link">
-                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo" width="1024" height="1024">
                     <span class="brand-name">Rebel Studios</span>
                 </a>
             </div>
@@ -118,7 +118,7 @@
             <h2>O que muda</h2>
             <div class="cb-fix">
                 <div class="cb-old">
-                    <h5>Como é hoje</h5>
+                    <h3>Como é hoje</h3>
                     <ul>
                         <li>CPF obrigatório, sem como desligar</li>
                         <li>Sem campo Razão Social</li>
@@ -130,7 +130,7 @@
                     </ul>
                 </div>
                 <div class="cb-new">
-                    <h5>Checkout Brasil</h5>
+                    <h3>Checkout Brasil</h3>
                     <ul>
                         <li>Cada campo: desativado, opcional ou obrigatório</li>
                         <li>Razão Social incluída</li>
@@ -165,27 +165,27 @@
             <h2>Detalhes que importam</h2>
             <div class="cb-grid">
                 <div class="cb-card">
-                    <h4>Nada é forçado</h4>
+                    <h3>Nada é forçado</h3>
                     <p>Todo campo tem três estados: desativado, opcional ou obrigatório. Loja de produto digital não precisa pedir CPF; loja que fatura para empresa precisa de CNPJ e Razão Social e mais nada. Você decide, sem tocar em código.</p>
                 </div>
                 <div class="cb-card">
-                    <h4>A consulta nunca bloqueia a venda</h4>
+                    <h3>A consulta nunca bloqueia a venda</h3>
                     <p>As buscas de CEP e CNPJ são feitas pelo seu servidor, não pelo navegador do cliente, e ficam em cache. Se o serviço de consulta cair, o cliente digita o endereço normalmente. Uma API de terceiro fora do ar não pode custar uma venda.</p>
                 </div>
                 <div class="cb-card">
-                    <h4>Validação que valida</h4>
+                    <h3>Validação que valida</h3>
                     <p>CPF e CNPJ conferidos pelos dígitos verificadores oficiais — no navegador para o cliente ver na hora, e de novo no servidor, que é onde a decisão realmente acontece. Documento inválido não entra no pedido.</p>
                 </div>
                 <div class="cb-card">
-                    <h4>Os dados chegam onde você precisa</h4>
+                    <h3>Os dados chegam onde você precisa</h3>
                     <p>CPF, CNPJ e Razão Social aparecem no pedido, no painel, nos e-mails e na API — prontos para a integração de NF-e. Coletar o documento e não conseguir usá-lo depois é o problema que este plugin existe para resolver.</p>
                 </div>
                 <div class="cb-card">
-                    <h4>Não briga com os outros plugins</h4>
+                    <h3>Não briga com os outros plugins</h3>
                     <p>Todos os campos usam nomes próprios (<code>billing_cb_*</code>). O plugin anterior usava <code>billing_cpf</code>, o mesmo nome que outros três plugins reivindicam — e é daí que vem boa parte dos conflitos com gateways.</p>
                 </div>
                 <div class="cb-card">
-                    <h4>Privacidade</h4>
+                    <h3>Privacidade</h3>
                     <p>As consultas usam ViaCEP e BrasilAPI, ambos públicos e gratuitos. Nenhum dado do seu cliente é enviado para nós — não temos servidor no meio e não queremos ter.</p>
                 </div>
             </div>
@@ -211,7 +211,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo" width="1024" height="1024">
                     <span>Rebel Studios Software</span>
                 </div>
                 <div class="footer-links">
