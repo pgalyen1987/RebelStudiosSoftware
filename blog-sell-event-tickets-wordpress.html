@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Sell paid event tickets from your own WordPress site using WooCommerce: QR-coded PDF tickets, phone-based door check-in, and why tickets must be issued on payment rather than registration.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-sell-event-tickets-wordpress.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-sell-event-tickets-wordpress.html">
+    <meta property="og:title" content="How to Sell Event Tickets on WordPress Without a Ticketing Platform">
+    <meta property="og:description" content="Sell paid event tickets from your own WordPress site using WooCommerce: QR-coded PDF tickets, phone-based door check-in, and why tickets must be issued on payment rather than registration.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/sell-event-tickets-wordpress.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-13">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Sell Event Tickets on WordPress Without a Ticketing Platform">
+    <meta name="twitter:description" content="Sell paid event tickets from your own WordPress site using WooCommerce: QR-coded PDF tickets, phone-based door check-in, and why tickets must be issued on payment rather than registration.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/sell-event-tickets-wordpress.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Sell Event Tickets on WordPress Without a Ticketing Platform","description":"Sell paid event tickets from your own WordPress site using WooCommerce: QR-coded PDF tickets, phone-based door check-in, and why tickets must be issued on payment rather than registration.","datePublished":"2026-09-13","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-sell-event-tickets-wordpress.html"},"image":"https://rebelstudiossoftware.com/images/blog/sell-event-tickets-wordpress.png"}</script>
+    <title>How to Sell Event Tickets on WordPress Without a Ticketing Platform - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Sell Event Tickets on WordPress Without a Ticketing Platform</h1>
+            <p>QR tickets, door check-in, and the ordering mistake that quietly breaks homemade ticketing</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 13, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/art/sell-event-tickets-wordpress.png" alt="" width="1200" height="380" loading="lazy"></figure>
+
+                <div class="article-content">
+
+                    <p>Selling a ticket is not a hard technical problem. Taking money, emailing a PDF and scanning a code at the door is a weekend of work. The reason most organisations end up paying a platform 3&ndash;10&nbsp;percent of every ticket is that the alternative is usually presented as all-or-nothing: either hand the whole thing to Eventbrite, or build a ticketing system.</p>
+
+                    <p>If you already run WordPress with WooCommerce, there is a third option that most guides skip, and it takes an afternoon. This walks through what selling tickets actually requires, where the free route genuinely stops, and the one design decision that determines whether your ticketing is reliable or quietly broken.</p>
+
+                    <h2>What a ticket actually has to do</h2>
+
+                    <p>Strip the marketing away and a ticketing system needs four things. Worth listing because most people over-estimate three of them and under-estimate the fourth:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Take the money.</strong> Genuinely solved if you have WooCommerce. Your gateway, tax rules, refund process and currency are already configured and already working.</li>
+                        <li><strong>Produce something the attendee can show.</strong> A PDF with a QR code. The QR only needs to encode an identifier unique to that attendee &mdash; it does not need to contain their details, and it is better if it does not.</li>
+                        <li><strong>Let someone verify it at the door.</strong> A page that reads the code, checks it against the database, and marks it used. A phone browser is sufficient; nobody needs a scanner gun.</li>
+                        <li><strong>Not issue a ticket for money you did not receive.</strong> This is the one that gets underestimated, and it is the whole ballgame. More below.</li>
+                    </ul>
+
+                    <h2>The ordering problem that breaks homemade ticketing</h2>
+
+                    <p>Here is the mistake, and it is easy to make because the wrong version looks correct in testing: issuing the ticket when someone <em>registers</em> rather than when the order is <em>paid</em>.</p>
+
+                    <p>In a naive build, the registration form submits, you create the attendee record, generate the ticket and email it, then send the visitor onward to checkout. On your own machine, paying with a test card, that flow works perfectly every time. In production it produces two failures within the first week.</p>
+
+                    <p>The first is that abandoned checkouts email valid tickets. Someone fills in the form, reaches the payment page, changes their mind &mdash; and already has a ticket in their inbox. If your door staff scan it, it scans green.</p>
+
+                    <p>The second is quieter and worse for a sold-out event: those abandoned registrations consume capacity. An event with eighty seats can show as full while forty of those seats belong to people who never paid and will not attend. You find out on the night.</p>
+
+                    <p>The fix is a one-line description and a genuine architectural commitment: <strong>the ticket is a consequence of payment, not of registration.</strong> Registration creates a pending record attached to an order. When &mdash; and only when &mdash; WooCommerce reports that order paid, the tickets are generated and emailed.</p>
+
+                    <p>Concretely, that means hanging your ticket generation off the payment transition rather than the form submission:</p>
+
+                    <pre class="article-code"><code>// Wrong: the visitor has a ticket before the payment succeeded
+add_action( 'my_event_registration_submitted', 'issue_tickets' );
+
+// Right: the order reached a paid state, whatever route it took
+add_action( 'woocommerce_order_status_processing', 'issue_tickets' );
+add_action( 'woocommerce_order_status_completed',  'issue_tickets' );</code></pre>
+
+                    <p>Hook both statuses, and make the function idempotent &mdash; check whether tickets already exist for the order before creating them. An order can move <code>processing</code> &rarr; <code>completed</code>, and a gateway can fire a status transition more than once. Neither should produce two tickets for one seat.</p>
+
+                    <h2>Why the QR code should be boring</h2>
+
+                    <p>There is a temptation to encode the attendee's name, email and event details into the QR so the door scan works offline. Resist it, for two reasons.</p>
+
+                    <p>The first is privacy: a ticket is a document people photograph, forward and post. Anything inside the QR is readable by anyone who scans it, including someone standing behind them in the queue.</p>
+
+                    <p>The second is that self-contained codes cannot be revoked. If the code <em>is</em> the ticket, then a screenshot of it is also the ticket, and you have no way to tell the tenth scan from the first. A code that is merely an opaque identifier &mdash; a random token, not a sequential ID &mdash; can be checked against the database, marked used, refunded, or cancelled.</p>
+
+                    <p>Use a random token rather than the attendee's post ID. Sequential identifiers are guessable, and a guessable ticket identifier means someone can fabricate a valid-looking code for an event they did not pay for.</p>
+
+                    <h2>Check-in is a database write, not a scanner</h2>
+
+                    <p>People imagine door check-in requires hardware. It requires a logged-in phone and a page that does three things: read the token, find the attendee, and mark them arrived &mdash; rejecting the scan if they are already marked.</p>
+
+                    <p>That last part is the entire anti-fraud story for a small event, and it is enough. Duplicate tickets do not fail because the code is clever; they fail because the second scan says the first one already happened. Show the door staff the attendee's name and the result, in large text, and you are done.</p>
+
+                    <p>The practical failure mode is not fraud, it is connectivity &mdash; a venue basement with no signal. If that is a risk for you, fetch the attendee list to the device before doors open and reconcile after. That is a genuine edge case worth handling; it is not a reason to buy a platform.</p>
+
+                    <h2>Where free actually stops</h2>
+
+                    <p>Free RSVPs with QR tickets and check-in are entirely achievable with free tooling, and for a large number of events that is the whole requirement. Community meetups, workshops, classes, club nights &mdash; if you are not charging, you do not need any of the above.</p>
+
+                    <p>The moment you charge, you need payment integration, and that is the honest line where free ends. Not because taking payment is difficult, but because doing it safely means handling refunds, partial payments, failed captures and the ordering problem above &mdash; and the cost of getting that wrong is somebody standing at a door arguing about a ticket they believe they paid for.</p>
+
+                    <div class="article-callout">
+                        <h3>If you would rather not build the paid half</h3>
+                        <p><a href="wc-events-pro.html">Event Tickets Pro</a> does the paid half: price an event, send registrants through the WooCommerce checkout you already run, and issue QR tickets only once the order is paid. The download includes the free Event Tickets &amp; Registration plugin it builds on, so unlimited free RSVP events, ticket emails and door check-in come with it. Your gateway, your money &mdash; <strong>no per-ticket cut</strong>.</p>
+                    </div>
+
+                    <h2>What this approach costs you</h2>
+
+                    <p>Being fair to the platforms: they sell discovery. Eventbrite has an audience browsing for things to do, and if you need strangers to find your event, that is a real service you are paying for. Self-hosted ticketing sells to people who already know you exist.</p>
+
+                    <p>You also take on the support. When someone cannot find their ticket, that is your inbox. When a payment fails at 9pm the night before, that is you. The counter-argument is that these are failures you already understand &mdash; a failed ticket payment is a failed WooCommerce order, and a refund is a WooCommerce refund. Nothing new to learn at the exact moment you least want to learn something new.</p>
+
+                    <p>The arithmetic is simple enough to do on the back of an envelope. At 5&nbsp;percent, a single 200-seat event at &pound;25 a ticket hands over &pound;250. Two events a year pays for any self-hosted approach several times over, and the third year is free. Below that volume, the platform is probably the better deal and there is no shame in saying so.</p>
+
+                    <p><em>Running events and tired of the cut? <a href="index.html#contact">Tell us what you are running</a> &mdash; we build this sort of thing for a living.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="wc-events-pro.html" class="btn btn-secondary">Read: Event Tickets Pro — paid ticketing for WordPress &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="How to restrict WordPress pages and posts to members: the four access levels, why WordPress roles are the wrong mechanism, how membership expiry should behave, and what to do when a membership lapses.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-restrict-wordpress-content-to-members.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-restrict-wordpress-content-to-members.html">
+    <meta property="og:title" content="How to Restrict WordPress Content to Members (Properly)">
+    <meta property="og:description" content="How to restrict WordPress pages and posts to members: the four access levels, why WordPress roles are the wrong mechanism, how membership expiry should behave, and what to do when a membership lapses.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/restrict-wordpress-content-to-members.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-13">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Restrict WordPress Content to Members (Properly)">
+    <meta name="twitter:description" content="How to restrict WordPress pages and posts to members: the four access levels, why WordPress roles are the wrong mechanism, how membership expiry should behave, and what to do when a membership lapses.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/restrict-wordpress-content-to-members.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Restrict WordPress Content to Members (Properly)","description":"How to restrict WordPress pages and posts to members: the four access levels, why WordPress roles are the wrong mechanism, how membership expiry should behave, and what to do when a membership lapses.","datePublished":"2026-09-13","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-restrict-wordpress-content-to-members.html"},"image":"https://rebelstudiossoftware.com/images/blog/restrict-wordpress-content-to-members.png"}</script>
+    <title>How to Restrict WordPress Content to Members (Properly) - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>How to Restrict WordPress Content to Members (Properly)</h1>
+            <p>Four levels of access, why roles are the wrong tool, and what should happen when a membership lapses</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 13, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/art/restrict-wordpress-content-to-members.png" alt="" width="1200" height="380" loading="lazy"></figure>
+
+                <div class="article-content">
+
+                    <p>&ldquo;Members only&rdquo; means at least four different things, and most membership plugins pick one, hide the others behind a paywall, and never tell you which one you are buying. Getting this wrong is why so many membership sites end up either leaking content or locking out the people who paid.</p>
+
+                    <p>So before any plugin: what are you actually restricting, and from whom?</p>
+
+                    <h2>Four levels, and they are not interchangeable</h2>
+
+                    <p>Every restriction decision on a WordPress site is one of these. Naming them properly makes the plugin choice almost automatic.</p>
+
+                    <ul class="article-list">
+                        <li><strong>Public.</strong> Anyone, including search engines. The default, and the right answer for more of your content than you think &mdash; a members area with nothing public has no way to attract members.</li>
+                        <li><strong>Logged in.</strong> Any registered account. Useful for community features and almost never the right fence for paid content, because registration is free.</li>
+                        <li><strong>Member.</strong> A registered account you have flagged as a member. This is the distinction most sites actually need, and the one WordPress has no native concept of.</li>
+                        <li><strong>A specific tier.</strong> Gold sees this, silver does not. Only worth reaching for once you genuinely sell more than one thing.</li>
+                    </ul>
+
+                    <p>The common mistake is conflating the middle two. If &ldquo;members only&rdquo; is implemented as &ldquo;logged in&rdquo;, then anyone who registers &mdash; free, in ten seconds &mdash; reads everything. Sites ship this and do not notice for months, because it looks correct while you are testing as an administrator.</p>
+
+                    <h2>Why WordPress roles are the wrong tool</h2>
+
+                    <p>The instinct is to use roles: make a Member role, restrict by capability, done. It works, and it becomes a problem about six months later.</p>
+
+                    <p>Roles in WordPress describe <em>what someone can do in the admin</em> &mdash; edit posts, moderate comments, install plugins. Membership describes <em>what someone can read on the front end</em>, and that is a different axis. The moment you have a member who is also a contributor, you need someone to be two things at once, and a role-based scheme forces you to invent combinations: member-contributor, expired-member-contributor. It multiplies badly.</p>
+
+                    <p>Keeping membership as a flag on the user, separate from their role, means a contributor can be a member, an administrator can have an expired membership for testing, and none of it interferes with what anyone can do in wp-admin.</p>
+
+                    <h2>Expiry is what turns a sale into a business</h2>
+
+                    <p>This is the part people leave until last and should design first. A membership that never expires is a one-off sale. A membership that expires is recurring revenue &mdash; and the difference is a single date field.</p>
+
+                    <p>Two details decide whether that field behaves sanely.</p>
+
+                    <p><strong>Renewing early must add to the remaining time, not replace it.</strong> If someone with forty days left renews for a year, they should have four hundred and five days, not three hundred and sixty-five. Systems that overwrite the expiry date punish exactly the customers who pay early, and they generate support tickets that are painful to answer because the customer is right.</p>
+
+                    <p><strong>Expiry has to be evaluated on read, not on a schedule.</strong> If you rely on a nightly job to sweep expired members, then access is wrong for up to a day every time, and it is wrong in the direction that gives away content. Checking &ldquo;is this person's expiry in the future?&rdquo; at the moment they request the page is both simpler and always correct.</p>
+
+                    <pre class="article-code"><code>function user_is_member( $user_id ) {
+    if ( ! get_user_meta( $user_id, '_is_member', true ) ) {
+        return false;
+    }
+    $expires = (int) get_user_meta( $user_id, '_member_expires', true );
+
+    // 0 means lifetime — deliberately not "expired in 1970"
+    return 0 === $expires || $expires > time();
+}</code></pre>
+
+                    <p>Note the zero case. Representing lifetime access as an empty or zero timestamp is fine, but only if you handle it explicitly &mdash; otherwise every lifetime member silently expires on the first of January 1970.</p>
+
+                    <h2>What should happen when a membership lapses</h2>
+
+                    <p>This is the design question that separates plugins that feel considered from plugins that feel hostile, and almost nobody asks it before launching.</p>
+
+                    <p>When someone's membership runs out, their content should become unavailable &mdash; that is the point. What should <em>not</em> happen is anything destructive. Do not delete their account, strip their role, remove their comments, or discard the profile they filled in. They are not gone; they are lapsed, and a lapsed member is the single easiest person to sell to.</p>
+
+                    <p>The same restraint applies to your own licence checks. If the paid component that manages expiry is disabled or its licence lapses, the sane behaviour is for existing members to keep their access rather than for the whole site to lock out everyone who paid you. Fail towards letting people in, and let the failure be visible to you in the admin rather than to them on the front end.</p>
+
+                    <h2>Do not restrict everything</h2>
+
+                    <p>A practical note that is worth more than any implementation detail: a members area where nothing is public cannot grow. Search engines index nothing, nobody can evaluate whether it is worth paying for, and your only acquisition channel is people who already trust you.</p>
+
+                    <p>The pattern that works is a genuinely useful public layer &mdash; enough that someone can judge the quality &mdash; with the depth behind the fence. Restricted content should also degrade into a real page with a real explanation and a join link, not a redirect to a login screen. A redirect tells a visitor they did something wrong. A message tells them what exists and how to get it.</p>
+
+                    <div class="article-callout">
+                        <h3>A plugin that keeps the essentials free</h3>
+                        <p><a href="membership-content-restriction.html">Membership &amp; Content Restriction</a> does the four levels above from a box in the post editor, with front-end registration, login and a members directory, and no cap on free members. <a href="membership-content-restriction.html">Membership Pro</a> adds paid plans through your own WooCommerce, expiry that behaves the way described here &mdash; early renewal adds time &mdash; and tiers. The download includes both.</p>
+                    </div>
+
+                    <h2>The order to build it in</h2>
+
+                    <p>If you are starting now: get the public and member split right first, with no payment involved at all. Invite a handful of people, flag them as members by hand, and check that the fence holds when you view the site logged out and logged in as a plain subscriber.</p>
+
+                    <p>Only then add money. Payment is the easy part &mdash; it is a WooCommerce product and a hook &mdash; and adding it to a restriction model you have already proven is far less painful than debugging both at once. Tiers come last, if ever. Plenty of profitable membership sites sell exactly one thing.</p>
+
+                    <p><em>Building a members area and want the architecture sane from the start? <a href="index.html#contact">Get in touch</a>.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="membership-content-restriction.html" class="btn btn-secondary">Read: Membership & Content Restriction for WordPress &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

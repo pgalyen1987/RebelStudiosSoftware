@@ -5,13 +5,27 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>How to Restrict WordPress Content to Members (Properly)</title>
+      <link>https://rebelstudiossoftware.com/blog-restrict-wordpress-content-to-members.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-restrict-wordpress-content-to-members.html</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 -0000</pubDate>
+      <description>How to restrict WordPress pages and posts to members: the four access levels, why WordPress roles are the wrong mechanism, how membership expiry should behave, and what to do when a membership lapses.</description>
+    </item>
+    <item>
+      <title>How to Sell Event Tickets on WordPress Without a Ticketing Platform</title>
+      <link>https://rebelstudiossoftware.com/blog-sell-event-tickets-wordpress.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-sell-event-tickets-wordpress.html</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Sell paid event tickets from your own WordPress site using WooCommerce: QR-coded PDF tickets, phone-based door check-in, and why tickets must be issued on payment rather than registration.</description>
+    </item>
     <item>
       <title>Build and Ship an Objective-C iOS App Without a Mac</title>
       <link>https://rebelstudiossoftware.com/blog-ios-objective-c-without-a-mac.html</link>
