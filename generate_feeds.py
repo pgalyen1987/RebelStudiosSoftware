@@ -56,6 +56,7 @@ STATIC_PAGES = [
     ("job-hunt-tracker.html", "2026-09-08", "weekly", "0.8"),
     ("wc-events-pro.html", "2026-09-08", "weekly", "0.8"),
     ("wc-invoices-pro.html", "2026-09-13", "weekly", "0.8"),
+    ("wc-restaurant-pro.html", "2026-09-13", "weekly", "0.8"),
     ("membership-content-restriction.html", "2026-09-08", "weekly", "0.8"),
     # Individual $1-tool pages are noindex (conversion funnels, not content) — kept out of the sitemap.
 ]
