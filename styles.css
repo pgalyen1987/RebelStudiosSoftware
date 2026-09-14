@@ -58,10 +58,22 @@
     --text-3xl: 3.330rem;  /* φ^2.5   */
     --text-4xl: 4.236rem;  /* φ^3     */
 
+    /* Long-form ramps. One continuous clamp per level instead of a breakpoint
+       override, so the levels cannot cross over at any width — a fixed size
+       among ramped ones re-creates exactly the inversion the ramps prevent.
+       Floors are the φ rungs reached at ≤390px, ceilings the rung above,
+       reached at ≥800px. --text-deck is the quarter step (φ^¼) above body,
+       giving the lede and h4 a level between body and h3. */
+    --text-body: clamp(1rem,     0.741rem + 1.06vw, 1.272rem);
+    --text-deck: clamp(1.128rem, 0.835rem + 1.20vw, 1.435rem);
+    --text-h3:   clamp(1.272rem, 0.943rem + 1.35vw, 1.618rem);
+    --text-h2:   clamp(1.618rem, 1.199rem + 1.72vw, 2.058rem);
+
     /* Leading. Body sits at φ; display type must not — a 33px heading with
        1.618 leading breaks into disconnected bands. Headings use √φ⁻¹ ≈ 1.272,
        the largest display sizes tighter still. */
     --leading-body: 1.618;
+    --leading-deck: 1.382;  /* 2 − φ⁻¹ */
     --leading-head: 1.272;
     --leading-display: 1.1;
 
@@ -814,14 +826,14 @@ h1, h2, h3, h4 {
 
 /* Links here had no rule at all, so they fell back to browser-default blue
    on the dark header. */
-.page-header p a {
+.page-header p:not(.blog-rss-link) a {
     color: var(--green-bright);
     font-weight: 600;
     text-decoration: none;
     border-bottom: 1px solid var(--green-dim);
 }
 
-.page-header p a:hover {
+.page-header p:not(.blog-rss-link) a:hover {
     border-bottom-color: var(--green-bright);
 }
 
@@ -2007,59 +2019,71 @@ h1, h2, h3, h4 {
     object-fit: cover;
 }
 
-/* Prose sits on the golden measure (38.2rem ≈ 60 characters at this size).
-   The wrapper stays 780px so the lead figure, code and diagrams can break
-   back out to full width below. */
-.article-meta,
+/* Body type on the container so lists and callouts inherit one size. */
 .article-content {
-    max-width: var(--measure-prose);
-    margin-inline: auto;
-}
-
-/* Body type on the container so lists, tables and callouts inherit it —
-   previously <li> sat at the 1rem default while <p> was 1.05rem. */
-.article-content {
-    font-size: var(--text-md);
+    font-size: var(--text-body);
     line-height: var(--leading-body);
     color: var(--ink-2);
 }
 
-.article-content > pre,
-.article-content > .article-code,
-.article-content > .article-diagram,
-.article-content > table {
-    width: min(780px, 100vw - var(--space-lg));
-    max-width: none;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+/* The measure goes on the text-level children, not the container, so code,
+   diagrams, charts and table wrappers keep the full column width without
+   needing a breakout — no fixed 780px to fall out of sync with the middle
+   track of the three-column layout at ≥1200px. */
+.article-meta,
+.article-content > p,
+.article-content > h2,
+.article-content > h3,
+.article-content > h4,
+.article-content > ul,
+.article-content > ol,
+.article-content > blockquote,
+.article-content > .article-callout,
+.article-content > .article-highlight,
+.article-content > .boiler-cta {
+    max-width: var(--measure-prose);
+    margin-inline: auto;
 }
 
+/* Sizes are clamped rather than overridden at a breakpoint. The old
+   @media (max-width:768px) step set h2 alone, so raising h3 here inverted the
+   two on phones; tying every level to one continuous ramp makes that class of
+   defect impossible. Mobile floors keep the φ order: 1 / 1.272 / 1.618 / 2.058. */
 .article-content h2 {
-    font-size: var(--text-xl);
+    font-size: var(--text-h2);
     line-height: var(--leading-head);
     font-weight: 700;
     color: var(--ink-1);
-    margin: var(--space-lg) 0 var(--space-sm);
+    margin-block: var(--space-lg) var(--space-sm);
     letter-spacing: -0.02em;
 }
 
 .article-content h2:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
 }
 
 /* h3 was 1.25rem against 1.05rem body — a 19% step, under the threshold where
    a heading reads as a heading. A full √φ step above body restores the level. */
 .article-content h3 {
-    font-size: var(--text-lg);
+    font-size: var(--text-h3);
     line-height: var(--leading-head);
     font-weight: 700;
     color: var(--ink-1);
-    margin: var(--space-md) 0 var(--space-xs);
+    margin-block: var(--space-md) var(--space-xs);
+}
+
+/* h4 had no rule at all, so it inherited the container size and rendered
+   identical to body copy. A quarter step (φ^¾) sits it below h3, above body. */
+.article-content h4 {
+    font-size: var(--text-deck);
+    line-height: var(--leading-head);
+    font-weight: 700;
+    color: var(--ink-1);
+    margin-block: var(--space-md) var(--space-xs);
 }
 
 .article-content p {
-    margin-bottom: var(--space-md);
+    margin-block-end: var(--space-md);
 }
 
 .article-content strong {
@@ -2118,11 +2142,12 @@ h1, h2, h3, h4 {
     margin: 1rem 0 1.5rem;
 }
 
+/* No font-size here: a matching selector always beats inheritance, so pinning
+   1rem left <li> at 16px while <p> ran at the container size. */
 .article-list li {
-    font-size: 1rem;
-    line-height: 1.8;
+    line-height: var(--leading-body);
     color: var(--ink-2);
-    margin-bottom: 0.5rem;
+    margin-block-end: var(--space-xs);
 }
 
 .article-list li::marker {
@@ -3170,10 +3195,6 @@ h1, h2, h3, h4 {
         grid-template-columns: 1fr;
     }
 
-    .article-content h2 {
-        font-size: 1.4rem;
-    }
-
     .results-table {
         font-size: 0.8rem;
     }
@@ -3660,12 +3681,11 @@ a.tool-card:hover {
     background: var(--grad-accent);
 }
 
-/* Lead paragraph reads as a deck */
-/* Lede. Now that body is --text-md, the lede takes the next rung up so it
-   still reads as a lede. */
+/* Lede. --text-lg would put it at exactly h3's size, so the deck rung (φ^¾)
+   gives it a level of its own between body and h3. */
 .article-content > p:first-of-type {
-    font-size: var(--text-lg);
-    line-height: 1.382;  /* 2 − φ⁻¹: between body and heading leading */
+    font-size: var(--text-deck);
+    line-height: var(--leading-deck);
     color: var(--ink-1);
 }
 
