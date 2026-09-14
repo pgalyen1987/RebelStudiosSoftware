@@ -44,15 +44,26 @@
     --phi: 1.618;
     --phi-inv: 0.618;
 
-    /* Type scale: majors step by φ, minors by √φ (1.272) */
-    --text-xs: 0.786rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
-    --text-md: 1.272rem;
-    --text-lg: 1.618rem;
-    --text-xl: 2.058rem;
-    --text-2xl: 2.618rem;
-    --text-3xl: 4.236rem;
+    /* Type scale: majors step by φ, minors by √φ (1.272).
+       √φ is too coarse at the small end — 0.786rem to 1rem is a 27% jump with
+       nothing at the ~14px every UI needs — so the two smallest rungs are a
+       quarter step, φ^¼ (1.1276), apart. Everything from 1rem up is √φ. */
+    --text-xs: 0.786rem;   /* φ^-0.5 */
+    --text-sm: 0.886rem;   /* φ^-0.25 */
+    --text-base: 1rem;     /* φ^0     */
+    --text-md: 1.272rem;   /* φ^0.5   */
+    --text-lg: 1.618rem;   /* φ^1     */
+    --text-xl: 2.058rem;   /* φ^1.5   */
+    --text-2xl: 2.618rem;  /* φ^2     */
+    --text-3xl: 3.330rem;  /* φ^2.5   */
+    --text-4xl: 4.236rem;  /* φ^3     */
+
+    /* Leading. Body sits at φ; display type must not — a 33px heading with
+       1.618 leading breaks into disconnected bands. Headings use √φ⁻¹ ≈ 1.272,
+       the largest display sizes tighter still. */
+    --leading-body: 1.618;
+    --leading-head: 1.272;
+    --leading-display: 1.1;
 
     /* Spacing scale on φ */
     --space-2xs: 0.382rem;
@@ -63,8 +74,12 @@
     --space-xl: 4.236rem;
     --space-2xl: 6.854rem;
 
-    /* Golden reading measure (~65 chars) */
-    --measure: 38.2rem;
+    /* Golden reading measures. A measure only means anything relative to the
+       size set in it: 38.2rem is ~76 characters at 1rem, but only ~57 at the
+       1.272rem long-form body — under the 60–75 band. So long-form gets its
+       own, one φ step wider (φ³ rem), which lands at ~63 characters. */
+    --measure: 38.2rem;        /* UI prose at ~1rem */
+    --measure-prose: 42.36rem; /* long-form body at --text-md */
 
     /* Legacy aliases (older markup) */
     --primary-color: #6cbe45;
@@ -433,11 +448,11 @@ h1, h2, h3, h4 {
 }
 
 .hero-title {
-    font-size: clamp(2.6rem, 5.6vw, 4.3rem);
+    font-size: clamp(2.618rem, 5.6vw, var(--text-4xl));
     font-weight: 700;
     color: var(--ink-1);
-    margin-bottom: 1.4rem;
-    line-height: 1.06;
+    margin-bottom: var(--space-md);
+    line-height: var(--leading-display);
     letter-spacing: -0.03em;
 }
 
@@ -777,11 +792,11 @@ h1, h2, h3, h4 {
 }
 
 .page-header h1 {
-    font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+    font-size: clamp(2.058rem, 4.6vw, var(--text-3xl));
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: var(--leading-display);
 }
 
 .page-header h1::before {
@@ -795,6 +810,19 @@ h1, h2, h3, h4 {
     font-size: 1.1rem;
     color: var(--ink-2);
     max-width: 44rem;
+}
+
+/* Links here had no rule at all, so they fell back to browser-default blue
+   on the dark header. */
+.page-header p a {
+    color: var(--green-bright);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--green-dim);
+}
+
+.page-header p a:hover {
+    border-bottom-color: var(--green-bright);
 }
 
 /* ============================================================
@@ -1141,11 +1169,13 @@ h1, h2, h3, h4 {
     padding: 6.5rem 0;
 }
 
+/* Four cards in three columns left one orphan on a mostly empty second row.
+   Two columns divides the four evenly and gives the 16:10 art room to read. */
 .preview-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.4rem;
-    margin-bottom: 2.8rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
     align-items: stretch;
 }
 
@@ -1977,11 +2007,40 @@ h1, h2, h3, h4 {
     object-fit: cover;
 }
 
+/* Prose sits on the golden measure (38.2rem ≈ 60 characters at this size).
+   The wrapper stays 780px so the lead figure, code and diagrams can break
+   back out to full width below. */
+.article-meta,
+.article-content {
+    max-width: var(--measure-prose);
+    margin-inline: auto;
+}
+
+/* Body type on the container so lists, tables and callouts inherit it —
+   previously <li> sat at the 1rem default while <p> was 1.05rem. */
+.article-content {
+    font-size: var(--text-md);
+    line-height: var(--leading-body);
+    color: var(--ink-2);
+}
+
+.article-content > pre,
+.article-content > .article-code,
+.article-content > .article-diagram,
+.article-content > table {
+    width: min(780px, 100vw - var(--space-lg));
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .article-content h2 {
-    font-size: 1.7rem;
+    font-size: var(--text-xl);
+    line-height: var(--leading-head);
     font-weight: 700;
     color: var(--ink-1);
-    margin: 2.6rem 0 1rem;
+    margin: var(--space-lg) 0 var(--space-sm);
     letter-spacing: -0.02em;
 }
 
@@ -1989,18 +2048,18 @@ h1, h2, h3, h4 {
     margin-top: 0;
 }
 
+/* h3 was 1.25rem against 1.05rem body — a 19% step, under the threshold where
+   a heading reads as a heading. A full √φ step above body restores the level. */
 .article-content h3 {
-    font-size: 1.25rem;
+    font-size: var(--text-lg);
+    line-height: var(--leading-head);
     font-weight: 700;
     color: var(--ink-1);
-    margin: 1.6rem 0 0.75rem;
+    margin: var(--space-md) 0 var(--space-xs);
 }
 
 .article-content p {
-    font-size: 1.05rem;
-    line-height: 1.85;
-    color: var(--ink-2);
-    margin-bottom: 1.3rem;
+    margin-bottom: var(--space-md);
 }
 
 .article-content strong {
@@ -2968,10 +3027,6 @@ h1, h2, h3, h4 {
    Responsive
    ============================================================ */
 @media (max-width: 1024px) {
-    .preview-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .hero .container {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -3384,16 +3439,16 @@ a.tool-card:hover {
 .newsletter>p{color:#98a2b3;margin:0 0 1.5rem}
 .nl-fields{display:flex;gap:.6rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
 .nl-fields input[type=email]{flex:1;min-width:220px;padding:.85rem 1rem;border-radius:10px;border:1px solid #2a3140;background:#070a11;color:#eef1f7;font-size:1rem}
-.nl-fields button{padding:.85rem 1.5rem;border-radius:10px;border:0;background:#4ade80;color:#07110a;font-weight:700;cursor:pointer;font-size:1rem;transition:background .15s}
-.nl-fields button:hover{background:#3fcf70}
+.nl-fields button{padding:.85rem 1.5rem;border-radius:10px;border:0;background:var(--green);color:#08120a;font-weight:700;cursor:pointer;font-size:1rem;transition:background .15s}
+.nl-fields button:hover{background:var(--green-bright)}
 .nl-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .nl-status{margin-top:.9rem;font-size:.95rem;min-height:1.2em}
-.nl-status.ok{color:#4ade80}.nl-status.err{color:#f87171}
+.nl-status.ok{color:var(--green-bright)}.nl-status.err{color:#f87171}
 /* --- Credibility strip --- */
 .cred-strip{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:0 auto 2.5rem;max-width:1000px}
 .cred-item{flex:1;min-width:150px;background:#0d1220;border:1px solid #1c2432;border-radius:12px;padding:1.1rem 1rem;text-align:center}
-.cred-item strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;color:#4ade80;line-height:1.1}
-.cred-item span{display:block;color:#98a2b3;font-size:.9rem;margin-top:.35rem}
+.cred-item strong{display:block;font-family:var(--font-display);font-size:var(--text-lg);color:var(--green-bright);line-height:var(--leading-display)}
+.cred-item span{display:block;color:var(--ink-2);font-size:.9rem;margin-top:.35rem}
 
 /* ============================================================
    φ LAYOUT LAYER — golden-ratio rhythm, shared components
@@ -3606,9 +3661,11 @@ a.tool-card:hover {
 }
 
 /* Lead paragraph reads as a deck */
+/* Lede. Now that body is --text-md, the lede takes the next rung up so it
+   still reads as a lede. */
 .article-content > p:first-of-type {
-    font-size: var(--text-md);
-    line-height: 1.618;
+    font-size: var(--text-lg);
+    line-height: 1.382;  /* 2 − φ⁻¹: between body and heading leading */
     color: var(--ink-1);
 }
 

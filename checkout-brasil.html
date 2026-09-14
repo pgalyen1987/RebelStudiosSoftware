@@ -8,7 +8,7 @@
       var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
       gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
       gtag('config','G-00TNDVMQNM');
-      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">Usamos cookies para analytics. Veja nossa <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Política de Privacidade</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Aceitar','#4ade80','#0b0f17'),n=mk('Recusar','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">Usamos cookies para analytics. Veja nossa <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Política de Privacidade</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Aceitar','#8fe05a','#0b0f17'),n=mk('Recusar','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,18 +47,18 @@
         .cb-fix > div { background: var(--surface-strong); padding: 22px 24px; }
         .cb-fix h3 { font-family: var(--font-display); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
         .cb-fix .cb-old h3 { color: #f87171; }
-        .cb-fix .cb-new h3 { color: var(--green-bright, #4ade80); }
+        .cb-fix .cb-new h3 { color: var(--green-bright, #8fe05a); }
         .cb-fix ul { list-style: none; display: grid; gap: 10px; }
         .cb-fix li { font-size: .93rem; color: var(--ink-2); padding-left: 20px; position: relative; }
         .cb-old li::before { content: "✕"; position: absolute; left: 0; color: #f87171; }
-        .cb-new li::before { content: "✓"; position: absolute; left: 0; color: #4ade80; }
-        .cb-status { display: inline-flex; align-items: center; gap: 8px; background: rgba(108,190,69,.12); border: 1px solid rgba(108,190,69,.3); color: #4ade80; border-radius: 999px; padding: 6px 14px; font-size: .85rem; font-weight: 600; margin-bottom: 1.2rem; }
+        .cb-new li::before { content: "✓"; position: absolute; left: 0; color: #8fe05a; }
+        .cb-status { display: inline-flex; align-items: center; gap: 8px; background: rgba(108,190,69,.12); border: 1px solid rgba(108,190,69,.3); color: #8fe05a; border-radius: 999px; padding: 6px 14px; font-size: .85rem; font-weight: 600; margin-bottom: 1.2rem; }
         .cb-cta { background: var(--surface-strong); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; margin-top: 2.5rem; text-align: center; }
         .cb-cta h3 { font-family: var(--font-display); margin-bottom: .6rem; color: var(--ink-1); }
         .cb-cta p { color: var(--ink-2); max-width: 560px; margin: 0 auto 1.4rem; }
         .cb-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         .cb-form input { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-sm, 10px); padding: 12px 16px; color: var(--ink-1); font: inherit; min-width: 280px; }
-        .cb-form button { background: var(--grad-accent, #4ade80); color: var(--bg, #07090f); border: 0; border-radius: var(--radius-sm, 10px); padding: 12px 24px; font-weight: 700; cursor: pointer; font: inherit; }
+        .cb-form button { background: var(--grad-accent, #8fe05a); color: var(--bg, #07090f); border: 0; border-radius: var(--radius-sm, 10px); padding: 12px 24px; font-weight: 700; cursor: pointer; font: inherit; }
         .cb-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 2rem; }
         @media (max-width: 700px) { .cb-specs { grid-template-columns: 1fr; } }
         .cb-spec { background: var(--surface-strong); padding: 22px; text-align: center; }
