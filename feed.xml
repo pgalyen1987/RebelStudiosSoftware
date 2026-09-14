@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>An Eventbrite Alternative on Your Own Site: When It Makes Sense</title>
+      <link>https://rebelstudiossoftware.com/blog-eventbrite-alternative-wordpress.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-eventbrite-alternative-wordpress.html</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 -0000</pubDate>
+      <description>When self-hosted ticketing beats Eventbrite and when it does not: what the organiser fee buys in discovery and trust, why per-ticket fees hit cheap community events hardest, and how to test the switch on one recurring event.</description>
+    </item>
     <item>
       <title>Commission-Free Online Ordering: Taking Orders on Your Own Site</title>
       <link>https://rebelstudiossoftware.com/blog-commission-free-online-ordering-restaurants.html</link>
