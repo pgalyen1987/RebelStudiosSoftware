@@ -46,6 +46,7 @@ STATIC_PAGES = [
     ("terms.html", "2026-07-20", "yearly", "0.3"),
     ("research.html", "2026-06-24", "monthly", "0.7"),
     ("plugins.html", "2026-09-07", "weekly", "0.9"),
+    ("security.html", "2026-09-14", "weekly", "0.9"),
     ("checkout-brasil.html", "2026-09-06", "monthly", "0.7"),
     ("wc-invoices.html", "2026-09-07", "weekly", "0.8"),
     ("wc-events.html", "2026-09-07", "weekly", "0.8"),

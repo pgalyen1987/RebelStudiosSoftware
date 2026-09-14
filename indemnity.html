@@ -14,21 +14,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
-    <meta name="description" content="Indemnity (INDN) is an ERC-20 token with escrow-by-default anti-scam protection. Payments sit in on-chain escrow for 7 days — if something's wrong, a Kleros jury decides.">
+    <meta name="description" content="Indemnity (INDN) is an unlaunched ERC-20 prototype with escrow-by-default transfers. The Kleros arbitration it was designed around was never activated, so it never shipped.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/indemnity.html">
     <link rel="icon" href="images/RS-logo.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rebelstudiossoftware.com/indemnity.html">
-    <meta property="og:title" content="Indemnity (INDN) — The Anti-Scam Token">
-    <meta property="og:description" content="An ERC-20 with escrow-by-default protection. Payments sit in on-chain escrow for 7 days — if something's wrong, a decentralized Kleros jury decides who keeps them.">
+    <meta property="og:title" content="Indemnity (INDN) — An Unlaunched Anti-Scam Token">
+    <meta property="og:description" content="An ERC-20 prototype with escrow-by-default transfers, designed around Kleros arbitration that was never activated. Never launched; the code is public.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
     <meta property="og:site_name" content="Rebel Studios Software">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Indemnity (INDN) — The Anti-Scam Token">
-    <meta name="twitter:description" content="An ERC-20 with escrow-by-default protection. Payments sit in on-chain escrow for 7 days — if something's wrong, a decentralized Kleros jury decides.">
+    <meta name="twitter:title" content="Indemnity (INDN) — An Unlaunched Anti-Scam Token">
+    <meta name="twitter:description" content="An ERC-20 prototype with escrow-by-default transfers, designed around Kleros arbitration that was never activated. Never launched.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
-    <title>Indemnity (INDN) — Anti-Scam Token - Rebel Studios Software</title>
+    <title>Indemnity (INDN) — Unlaunched Anti-Scam Token - Rebel Studios Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,7 +78,8 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="websites.html">Websites</a></li>
-                <li><a href="apps.html" class="active">Mobile Apps</a></li>
+                <li><a href="apps.html" class="active">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
                 <li><a href="tools/index.html">Tools</a></li>
                 <li><a href="plugins.html">Plugins</a></li>
                 <li><a href="about.html">About</a></li>
@@ -99,15 +100,25 @@
                 <svg class="indn-shield" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Indemnity (INDN)
             </h1>
-            <p>An ERC-20 anti-scam token with escrow-by-default transfers and Kleros dispute resolution</p>
+            <p>An ERC-20 anti-scam prototype built around escrow-by-default transfers &mdash; designed, written, never launched</p>
         </div>
     </section>
+    <section class="section" style="padding-bottom:0">
+        <div class="container">
+            <div class="article-callout" style="max-width:var(--measure-prose);margin-inline:auto">
+                <h3>Status: never launched</h3>
+                <p>Indemnity was designed and written, and the contract is public, but it was never released and no INDN is in circulation. The escrow half works: transfers are held for seven days and a timeout releases them. The half that gives the token its reason to exist &mdash; a Kleros jury adjudicating a dispute &mdash; does not, because an arbitrable contract has to be whitelisted by a Kleros court first and that whitelisting was never granted.</p>
+                <p>It is kept here as engineering evidence, not as a product. If you want to read the contract, it is on <a href="https://github.com/pgalyen1987/INDN" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+            </div>
+        </div>
+    </section>
+
 
     <section class="product-intro">
         <div class="container">
             <div class="product-hero-grid">
                 <div class="product-hero-text">
-                    <h2>Payments You Can Dispute. Scams You Can Reverse.</h2>
+                    <h2>Payments You Could Dispute. Scams You Could Reverse.</h2>
                     <p>Indemnity (INDN) is an ERC-20 with a built-in safety net. Payments between wallets sit in on-chain escrow for <strong>7 days</strong> &mdash; if something&rsquo;s wrong, the payer opens a dispute and a decentralized <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">Kleros</a> jury, not us, decides who keeps them. Swaps and transfers involving allowlisted exchange addresses settle instantly, so trading is unaffected.</p>
                     <p class="results-subtitle" style="margin-top:1rem;">Status: <strong>testnet</strong> &mdash; deployed on Arbitrum Sepolia for live Kleros dispute testing. Mainnet launch pending security audit and Kleros whitelist approval.</p>
                     <div class="product-stats-row">
@@ -286,7 +297,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="websites.html">Websites</a>
-                    <a href="apps.html">Mobile Apps</a>
+                    <a href="apps.html">Apps</a>
                     <a href="tools/index.html">Tools</a>
                     <a href="blog.html">Blog</a>
                     <a href="privacy.html">Privacy</a>

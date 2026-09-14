@@ -3484,6 +3484,18 @@ a.tool-card:hover {
     padding-top: 0;
 }
 
+/* Alternating band. The older pages get this from component classes
+   (.services, .features); this is the reusable version for .section. */
+.section--alt {
+    background: rgba(255, 255, 255, 0.015);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+.section + .section--alt,
+.section--alt + .section {
+    padding-top: var(--space-xl);
+}
+
 /* Constrain prose to a golden reading measure */
 .measure,
 .section .container > p {

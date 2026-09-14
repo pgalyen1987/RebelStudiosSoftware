@@ -14,22 +14,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
-    <meta name="description" content="Mobile app portfolio from Rebel Studios Software. Native Android apps built with Kotlin and Jetpack Compose, live on Google Play.">
+    <meta name="description" content="Apps and software from Rebel Studios Software: native Android apps on Google Play, plus open-source security and blockchain work.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/apps.html">
     <link rel="icon" href="images/RS-logo.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rebelstudiossoftware.com/apps.html">
-    <meta property="og:title" content="Mobile App Portfolio">
+    <meta property="og:title" content="Apps &amp; Software Portfolio">
     <meta property="og:description" content="Mobile app portfolio from Rebel Studios Software. Native Android apps built with Kotlin and Jetpack Compose, live on Google Play.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
     <meta property="og:site_name" content="Rebel Studios Software">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Mobile App Portfolio">
+    <meta name="twitter:title" content="Apps &amp; Software Portfolio">
     <meta name="twitter:description" content="Mobile app portfolio from Rebel Studios Software. Native Android apps built with Kotlin and Jetpack Compose, live on Google Play.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Mobile App Portfolio","description":"Native Android apps and open-source software from Rebel Studios Software.","url":"https://rebelstudiossoftware.com/apps.html","isPartOf":{"@type":"WebSite","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"}}</script>
-    <title>Mobile App Portfolio - Rebel Studios Software</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Apps &amp; Software Portfolio","description":"Native Android apps and open-source software from Rebel Studios Software.","url":"https://rebelstudiossoftware.com/apps.html","isPartOf":{"@type":"WebSite","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"}}</script>
+    <title>Apps &amp; Software Portfolio - Rebel Studios Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,7 +48,8 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="websites.html">Websites</a></li>
-                <li><a href="apps.html" class="active">Mobile Apps</a></li>
+                <li><a href="apps.html" class="active">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
                 <li><a href="tools/index.html">Tools</a></li>
                 <li><a href="plugins.html">Plugins</a></li>
                 <li><a href="about.html">About</a></li>
@@ -314,10 +315,10 @@
                     <div class="portfolio-image product-showcase-image">
                         <div class="product-showcase-panel">
                             <span class="showcase-name">Indemnity (INDN)</span>
-                            <p>Anti-scam ERC-20 with escrow-by-default transfers and Kleros dispute resolution.</p>
+                            <p>An anti-scam ERC-20 built around escrow-by-default transfers. Never launched.</p>
                             <div class="showcase-stats">
+                                <span class="showcase-stat">Unlaunched</span>
                                 <span class="showcase-stat">7-day escrow</span>
-                                <span class="showcase-stat">Kleros arbitration</span>
                                 <span class="showcase-stat">0.25% fee</span>
                                 <span class="showcase-stat">Open source</span>
                             </div>
@@ -329,7 +330,8 @@
                             <a href="https://github.com/pgalyen1987/INDN" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">GitHub ↗</a>
                         </div>
                         <h3>Indemnity (INDN)</h3>
-                        <p>An ERC-20 token where ordinary transfers are held in on-chain escrow for 7 days instead of settling instantly. During that window the payer can open a dispute and a decentralized Kleros jury decides who receives the funds. DEX swaps settle instantly via an owner-managed exemption allowlist.</p>
+                        <p>An ERC-20 token where ordinary transfers are held in on-chain escrow for 7 days instead of settling instantly, so a payer who has been defrauded can dispute before the money is gone. DEX swaps settle instantly via an owner-managed exemption allowlist.</p>
+                        <p><strong>It was never launched.</strong> The dispute mechanism is written against the Kleros arbitration interfaces (ERC-792 / ERC-1497), but an arbitrable contract has to be whitelisted by a Kleros court before a jury can actually hear a case, and that whitelisting never came through. Without it the escrow holds funds and the timeout releases them, but no dispute can be adjudicated &mdash; which is the whole point of the token. The code is public and the design is sound on paper; treat it as an unshipped prototype, not a product.</p>
 
                         <div class="tech-breakdown">
                             <h4>Technical Implementation</h4>
@@ -356,10 +358,10 @@
                         </div>
 
                         <div class="portfolio-features">
-                            <h4>Key Features</h4>
+                            <h4>What the contract implements</h4>
                             <ul>
-                                <li>Escrow-by-default transfers with 7-day dispute window</li>
-                                <li>Kleros decentralized jury for dispute resolution</li>
+                                <li>Escrow-by-default transfers with a 7-day dispute window</li>
+                                <li>Arbitration hooks written against ERC-792 / ERC-1497 &mdash; never activated, as no court whitelisted the contract</li>
                                 <li>DEX exemption allowlist for instant swaps</li>
                                 <li>Stuck-dispute escape hatch (180-day timeout)</li>
                             </ul>
@@ -367,40 +369,6 @@
 
                         <div class="app-store-links">
                             <a href="indemnity.html" class="portfolio-link">Product Details →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Checkout Brasil -->
-                <div class="portfolio-item portfolio-item-featured portfolio-item-app">
-                    <div class="portfolio-image product-showcase-image">
-                        <div class="product-showcase-panel">
-                            <span class="showcase-name">Checkout Brasil</span>
-                            <p>Brazilian checkout fields for WooCommerce — CPF, CNPJ, Razão Social — with real check-digit validation and automatic CEP/CNPJ lookup.</p>
-                            <div class="showcase-stats">
-                                <span class="showcase-stat">WordPress 7.1</span>
-                                <span class="showcase-stat">WooCommerce 11</span>
-                                <span class="showcase-stat">HPOS + Blocks</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Checkout Brasil</h3>
-                        <p class="portfolio-tagline">The Brazilian WooCommerce checkout stack, maintained.</p>
-                        <p>The plugin 60,000 Brazilian stores rely on has not shipped since February 2024 and predates both HPOS and the block checkout. On a block checkout it adds no fields at all — stores silently stop collecting CPF and find out when an invoice is rejected. This replaces it.</p>
-                        <div class="portfolio-features">
-                            <h4>Built from the incumbent's own one-star reviews</h4>
-                            <ul>
-                                <li>Every field independently off / optional / required — CPF included</li>
-                                <li>Razão Social field the incumbent never had</li>
-                                <li>CEP fills the address; CNPJ fills the company, server-side and cached</li>
-                                <li>Documents reach the order, admin, emails and API — ready for NF-e</li>
-                                <li>Official mod-11 check digits, validated in the browser and again on the server</li>
-                                <li>A lookup outage never blocks a sale</li>
-                            </ul>
-                        </div>
-                        <div class="app-store-links">
-                            <a href="checkout-brasil.html" class="portfolio-link">Product Details →</a>
                         </div>
                     </div>
                 </div>
@@ -505,7 +473,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="websites.html">Websites</a>
-                    <a href="apps.html">Mobile Apps</a>
+                    <a href="apps.html">Apps</a>
                     <a href="tools/index.html">Tools</a>
                     <a href="blog.html">Blog</a>
                     <a href="privacy.html">Privacy</a>

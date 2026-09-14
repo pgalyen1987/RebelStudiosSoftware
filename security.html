@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Smart-contract security review and DeFi protocol engineering: Foundry proofs of concept, fork testing, and contract-level integration across lending and AMM venues.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/security.html">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Smart-Contract Security Review","serviceType":"Smart contract security audit and DeFi protocol engineering","description":"Smart-contract security review and DeFi protocol engineering: Foundry proofs of concept, fork testing, and contract-level integration across lending and AMM venues.","url":"https://rebelstudiossoftware.com/security.html","areaServed":"Worldwide","provider":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com/"}}</script>
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/security.html">
+    <meta property="og:title" content="Smart-Contract Security &amp; Protocol Review">
+    <meta property="og:description" content="Protocol review with runnable proofs. Foundry PoCs, fork testing, and contract-level DeFi integration across lending and AMM venues.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart-Contract Security &amp; Protocol Review">
+    <meta name="twitter:description" content="Protocol review with runnable proofs. Foundry PoCs, fork testing, and contract-level DeFi integration.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Smart-Contract Security &amp; Protocol Review - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page-scoped, built on the shared φ tokens. */
+        .sec-thesis p {
+            font-family: var(--font-display);
+            font-size: var(--text-h2);
+            line-height: var(--leading-head);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ink-1);
+            max-width: 26ch;
+            margin: var(--space-sm) 0 0;
+        }
+        .sec-thesis p em { color: var(--green-bright); font-style: normal; }
+
+        .sec-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+        .sec-fig {
+            background: var(--surface-strong);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+        }
+        .sec-fig b {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: var(--text-h3);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--green-bright);
+            font-variant-numeric: tabular-nums;
+        }
+        .sec-fig span {
+            display: block;
+            margin-top: var(--space-2xs);
+            font-size: var(--text-sm);
+            color: var(--ink-2);
+            line-height: var(--leading-head);
+        }
+
+        .sec-entry {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-sm);
+            padding: var(--space-lg) 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .sec-entry:last-child { border-bottom: 0; }
+        @media (min-width: 820px) {
+            .sec-entry { grid-template-columns: 16rem minmax(0, 1fr); gap: var(--space-lg); }
+        }
+        .sec-entry-key h3 {
+            font-size: var(--text-deck);
+            line-height: var(--leading-head);
+            color: var(--ink-1);
+        }
+        .sec-entry-key .sec-meta {
+            margin-top: var(--space-xs);
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--ink-3);
+            line-height: 1.8;
+        }
+        .sec-entry-body p {
+            margin: 0 0 var(--space-sm);
+            max-width: var(--measure-prose);
+            color: var(--ink-2);
+        }
+        .sec-entry-body p:last-child { margin-bottom: 0; }
+        .sec-entry-body strong { color: var(--ink-1); }
+
+        .sec-chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-sm); }
+        .sec-chip {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            color: var(--ink-2);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+        }
+        .sec-chip--ok { background: var(--green-dim); border-color: rgba(108,190,69,.35); color: var(--green-bright); font-weight: 600; }
+
+        .sec-measure {
+            background: var(--surface-strong);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--green);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: var(--space-lg);
+        }
+        .sec-measure p { max-width: var(--measure-prose); color: var(--ink-2); margin: 0 0 var(--space-sm); }
+        .sec-measure p:last-of-type { margin-bottom: 0; }
+        .sec-measure strong { color: var(--ink-1); }
+
+        .sec-table-wrap { overflow-x: auto; margin: var(--space-md) 0; }
+        .sec-table { border-collapse: collapse; width: 100%; min-width: 22rem; font-size: var(--text-sm); }
+        .sec-table th, .sec-table td { text-align: left; padding: 0.6rem 0.9rem 0.6rem 0; border-bottom: 1px solid var(--line); }
+        .sec-table th {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-3);
+            font-weight: 600;
+        }
+        .sec-table td { color: var(--ink-2); }
+        .sec-table td:last-child {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+            padding-right: 0;
+            color: var(--green-bright);
+            font-weight: 600;
+        }
+
+        .sec-note { font-size: var(--text-sm); color: var(--ink-3); max-width: var(--measure-prose); }
+
+        /* At phone width the two columns cannot both fit, and side-scrolling
+           hides the number — which is the whole point of the table. Stack
+           each row into a label with its figure beneath. */
+        @media (max-width: 30rem) {
+            .sec-table { min-width: 0; }
+            .sec-table thead { display: none; }
+            .sec-table tbody, .sec-table tr, .sec-table td { display: block; width: 100%; }
+            .sec-table tr { padding: var(--space-xs) 0; border-bottom: 1px solid var(--line); }
+            .sec-table tr:last-child { border-bottom: 0; }
+            .sec-table td { border: 0; padding: 0; }
+            .sec-table td:last-child {
+                text-align: left;
+                margin-top: var(--space-2xs);
+                font-size: var(--text-deck);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo" width="1024" height="1024"><span class="brand-name">Rebel Studios</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html" class="active">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Smart-Contract Security</h1>
+            <p>Protocol review and DeFi engineering, with findings you can run rather than take on trust.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="sec-thesis" data-reveal>
+                <span class="section-kicker">01 &mdash; Position</span>
+                <p>I read protocol code for a living &mdash; and I can <em>prove what I found</em>, in runnable tests.</p>
+            </div>
+
+            <div class="sec-figures" data-reveal>
+                <div class="sec-fig"><b>2,837</b><span>Lines of production Solidity authored</span></div>
+                <div class="sec-fig"><b>9</b><span>DeFi protocols integrated at contract level</span></div>
+                <div class="sec-fig"><b>16</b><span>Protocols put through structured security review</span></div>
+                <div class="sec-fig"><b>12</b><span>Audit methodology modules written</span></div>
+            </div>
+            <p class="sec-note" style="margin-top:var(--space-sm)">Counts come from my own repositories and can be verified directly on request.</p>
+        </div>
+    </section>
+
+    <section class="section section--alt">
+        <div class="container">
+            <div class="section-head" data-reveal>
+                <span class="section-kicker">02 &mdash; Evidence</span>
+                <h2 class="section-title">Selected work</h2>
+            </div>
+
+            <article class="sec-entry" data-reveal>
+                <div class="sec-entry-key">
+                    <h3>Protocol security review</h3>
+                    <p class="sec-meta">Foundry PoCs &middot; fork tests<br>16 protocols tracked to a verdict</p>
+                </div>
+                <div class="sec-entry-body">
+                    <p>Structured review across sixteen protocols &mdash; among them Hydration, Alchemix v3, Origin, Maple, Fluid and Hashflow &mdash; each one tracked to a written verdict rather than left open. Where the review produced a critical-class finding, it produced a <strong>runnable Foundry proof of concept</strong> alongside it: a test that reproduces the defect against forked state, not a paragraph asserting one exists.</p>
+                    <p>The discipline that matters here is the one that closes files. Most of those sixteen ended in <strong>no submission-ready finding</strong>, documented with the areas checked and the reasoning that dismissed each, so the work is auditable and nobody repeats it by accident six months later.</p>
+                    <div class="sec-chips">
+                        <span class="sec-chip sec-chip--ok">PoC reproduces</span>
+                        <span class="sec-chip">Fork testing</span>
+                        <span class="sec-chip">Invariant review</span>
+                        <span class="sec-chip">Written verdicts</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="sec-entry" data-reveal>
+                <div class="sec-entry-key">
+                    <h3>Flash-loan execution contracts</h3>
+                    <p class="sec-meta">Solidity &middot; Foundry<br>arbitrage &middot; liquidation &middot; refinance</p>
+                </div>
+                <div class="sec-entry-body">
+                    <p>Executors that borrow, route and repay inside a single transaction across lending and AMM venues &mdash; arbitrage, liquidation and collateral refinancing &mdash; with profit floors enforced on-chain, so an unprofitable attempt reverts rather than settling at a loss.</p>
+                    <p>Integrated at contract level against <strong>Morpho, Aave, Compound/Comet and Euler</strong> on the lending side, and <strong>Uniswap, Curve, Aerodrome and Slipstream</strong> for routing, with Chainlink price feeds.</p>
+                    <div class="sec-chips">
+                        <span class="sec-chip">Morpho</span><span class="sec-chip">Aave</span><span class="sec-chip">Comet</span>
+                        <span class="sec-chip">Euler</span><span class="sec-chip">Uniswap</span><span class="sec-chip">Curve</span>
+                        <span class="sec-chip">Aerodrome</span><span class="sec-chip">Chainlink</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="sec-entry" data-reveal>
+                <div class="sec-entry-key">
+                    <h3>MPC dark pool</h3>
+                    <p class="sec-meta">Python 3.11+<br>32 tests &middot; zero runtime deps</p>
+                </div>
+                <div class="sec-entry-body">
+                    <p>A midpoint dark pool for tokenised equities where resting orders exist <strong>only as secret shares</strong> split across independent nodes. Matching opens one bit per attempt; execution happens at the oracle midpoint, so limit prices are never revealed to anyone &mdash; the venue included.</p>
+                    <p>Verified against a plaintext reference implementation with <strong>400 randomised MPC-versus-plaintext equivalence checks</strong>, holding the cryptography to the same result as the naive version on every input.</p>
+                    <div class="sec-chips">
+                        <span class="sec-chip">Secure multi-party computation</span>
+                        <span class="sec-chip">Additive secret sharing</span>
+                        <span class="sec-chip">Order matching</span>
+                        <span class="sec-chip sec-chip--ok">Working MVP</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="sec-entry" data-reveal>
+                <div class="sec-entry-key">
+                    <h3>Audit methodology toolkit</h3>
+                    <p class="sec-meta">12 modules &middot; documented, licensed</p>
+                </div>
+                <div class="sec-entry-body">
+                    <p>A written system rather than a habit: bug-class taxonomies, a static-analysis grep arsenal, Foundry PoC construction patterns, triage and report standards, chain-specific hunting guides, and an MCP integration for Solidity review.</p>
+                    <p>It exists because reproducibility is the job. Anyone on a team can follow it and reach the same verdict on the same code.</p>
+                    <div class="sec-chips">
+                        <span class="sec-chip">Bug classes</span><span class="sec-chip">Static analysis</span>
+                        <span class="sec-chip">PoC construction</span><span class="sec-chip">Triage &amp; reporting</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-head" data-reveal>
+                <span class="section-kicker">03 &mdash; Method</span>
+                <h2 class="section-title">Measuring what others assume</h2>
+            </div>
+
+            <div class="sec-measure" data-reveal>
+                <h3>Finding the hole in my own instrument</h3>
+                <p>A scanner I built reported that competitors were bidding roughly <strong>0.000 gwei</strong> for the opportunities it tracked &mdash; which would mean nobody was competing. I treated that as suspect rather than as good news, because searchers commonly pay block builders through a direct value transfer the standard metric cannot see.</p>
+                <p>Confirming it normally needs a trace-enabled node, which I did not have. So I measured the same money a different way: the fee recipient's <strong>balance delta across the block</strong>, minus the priority fees actually charged, corrected for ordinary transfers. Whatever remains arrived through a channel the usual measurement is blind to.</p>
+
+                <div class="sec-table-wrap">
+                    <table class="sec-table">
+                        <thead><tr><th>Measure, 39 consecutive mainnet blocks</th><th>Result</th></tr></thead>
+                        <tbody>
+                            <tr><td>Blocks carrying a hidden builder payment</td><td>14 / 39</td></tr>
+                            <tr><td>Median payment invisible to the standard metric</td><td>0.000497 ETH</td></tr>
+                            <tr><td>Peak share of builder revenue unseen in one block</td><td>72%</td></tr>
+                            <tr><td>Builder revenue the metric missed overall</td><td>18.5%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The conclusion went against my own project: the promising signal was an artifact of a blind instrument, and the opportunity was not real. I wrote that up, closed the finding, and shut the system down. <strong>I would rather kill my own thesis than ship a number I cannot defend</strong> &mdash; which is the same instinct a protocol is hiring when it hires a reviewer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--alt">
+        <div class="container">
+            <div class="section-head" data-reveal>
+                <span class="section-kicker">04 &mdash; Engagement</span>
+                <h2 class="section-title">Available for contract and audit work</h2>
+            </div>
+            <p class="measure">Best fit: DeFi protocol review, Solidity implementation, fork-test and PoC construction, and security work on lending, liquidation and cross-chain surfaces. Comfortable owning a scope end to end and reporting in writing.</p>
+            <p class="measure">There are also ten years of production full-stack and mobile engineering behind the security work &mdash; this is a specialisation, not a pivot away from shipping.</p>
+            <div style="display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-top:var(--space-md)">
+                <a href="index.html#contact" class="btn btn-primary">Start a Conversation</a>
+                <a href="mailto:contact@rebelstudiossoftware.com?subject=Contract%20engagement" class="btn btn-secondary">contact@rebelstudiossoftware.com</a>
+            </div>
+            <p class="sec-note" style="margin-top:var(--space-md)">Code samples, written reviews and proof-of-concept tests available on request.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo" width="1024" height="1024"><span>Rebel Studios Software</span></div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a><a href="apps.html">Apps</a><a href="security.html" class="active">Security</a><a href="tools/index.html">Tools</a>
+                    <a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
