@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="We sampled Jupiter quotes every 15 minutes for a week across eight tokenized US equities. A $500,000 buy costs 2.21% in AAPLx and 0.01% in SPYx. The direction you trade matters more than the size, and US market hours barely matter at all. The data, the method, and what it means if you are moving size.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html">
+    <meta property="og:title" content="What It Actually Costs to Trade Tokenized Stocks on Solana">
+    <meta property="og:description" content="We sampled Jupiter quotes every 15 minutes for a week across eight tokenized US equities. A $500,000 buy costs 2.21% in AAPLx and 0.01% in SPYx. The direction you trade matters more than the size, and US market hours barely matter at all. The data, the method, and what it means if you are moving size.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/tokenized-stock-slippage.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-08-25">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What It Actually Costs to Trade Tokenized Stocks on Solana">
+    <meta name="twitter:description" content="We sampled Jupiter quotes every 15 minutes for a week across eight tokenized US equities. A $500,000 buy costs 2.21% in AAPLx and 0.01% in SPYx. The direction you trade matters more than the size, and US market hours barely matter at all. The data, the method, and what it means if you are moving size.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/tokenized-stock-slippage.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What It Actually Costs to Trade Tokenized Stocks on Solana","description":"The internet runs on open-source software maintained by a handful of unpaid volunteers. AI trained on it and agents lean on it harder than ever, while nothing flows back. The free-rider problem at the root of modern software - and one way the math could change.","datePublished":"2026-08-25","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html"},"image":"https://rebelstudiossoftware.com/images/blog/tokenized-stock-slippage.png"}</script>
+    <title>What It Actually Costs to Trade Tokenized Stocks on Solana | Rebel Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo" width="1024" height="1024">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+        <section class="page-header">
+        <div class="container">
+            <h1>What It Actually Costs to Trade Tokenized Stocks on Solana</h1>
+            <p>Seven days of quotes across eight xStocks &mdash; and the depth has almost nothing to do with the real stock</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 17, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+
+            <p>Tokenized US equities are a strange product. An xStock is a token on Solana that tracks a real share &mdash; AAPLx for Apple, SPYx for the S&amp;P 500 ETF &mdash; issued by Backed and redeemable against the underlying. The pitch is that you get a stock that settles in seconds, trades on weekends, and lives in the same wallet as everything else you own.</p>
+
+            <p>What nobody publishes is the part that decides whether any of that is usable: <strong>what it costs to actually trade one in size.</strong></p>
+
+            <p>So we measured it. Every fifteen minutes for a week, we asked Jupiter what it would cost to buy and sell four different order sizes across eight tokenized stocks, and compared each quote to the midpoint taken at the same moment. The numbers below are that data. They are not what we expected, and if you are planning to move real size, two of them should change what you do.</p>
+
+            <h2>Finding one: the on-chain depth has nothing to do with the real stock</h2>
+
+            <p>Here is the cost of a $500,000 buy, averaged across a week:</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>Token</th><th>Underlying</th><th>$100k buy</th><th>$500k buy</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>AAPLx</td><td>Apple</td><td>0.16%</td><td><strong>2.21%</strong></td></tr>
+                    <tr><td>COINx</td><td>Coinbase</td><td>0.26%</td><td>0.16%</td></tr>
+                    <tr><td>HOODx</td><td>Robinhood</td><td>0.19%</td><td>0.16%</td></tr>
+                    <tr><td>MSTRx</td><td>MicroStrategy</td><td>0.09%</td><td>0.17%</td></tr>
+                    <tr><td>TSLAx</td><td>Tesla</td><td>0.02%</td><td>0.08%</td></tr>
+                    <tr><td>QQQx</td><td>Nasdaq 100 ETF</td><td>0.03%</td><td>0.06%</td></tr>
+                    <tr><td>NVDAx</td><td>Nvidia</td><td>0.02%</td><td>0.06%</td></tr>
+                    <tr><td>SPYx</td><td>S&amp;P 500 ETF</td><td>0.01%</td><td><strong>0.01%</strong></td></tr>
+                </tbody>
+            </table>
+
+            <p>Apple trades roughly $10 billion a day on US exchanges. It is about as liquid as a security gets. On Solana, <strong>AAPLx is the worst name on the board</strong> &mdash; a $500k buy gives up 2.21%, or about $11,000, before you own a single share. SPYx, tracking an ETF, costs one two-hundredth of that for the same order.</p>
+
+            <p>This is the thing to internalise: <strong>you are not trading Apple's liquidity, you are trading whatever liquidity someone chose to park in one Solana pool.</strong> The ticker on the token tells you what it tracks. It tells you nothing about what it costs to trade.</p>
+
+            <h2>Finding two: the direction matters more than the size</h2>
+
+            <p>Every venue has a spread, and you expect to pay a little more to buy than to sell, or the reverse, depending on where inventory sits. What we found is not a little more.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>Token</th><th>$500k buy</th><th>$500k sell</th><th>Ratio</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>AAPLx</td><td>2.21%</td><td>0.18%</td><td>12&times; cheaper to sell</td></tr>
+                    <tr><td>COINx</td><td>0.16%</td><td>1.12%</td><td>7&times; cheaper to buy</td></tr>
+                    <tr><td>HOODx</td><td>0.16%</td><td>0.09%</td><td>2&times; cheaper to sell</td></tr>
+                    <tr><td>SPYx</td><td>0.01%</td><td>0.01%</td><td>balanced</td></tr>
+                </tbody>
+            </table>
+
+            <p>In AAPLx, selling half a million dollars costs 0.18% while buying the same amount costs 2.21%. In COINx it is the other way around. These pools are lopsided, and the lopsidedness is large enough to dominate every other decision you make about the trade.</p>
+
+            <p>The practical consequence: <strong>check the side you need before you check the size.</strong> A trader who sizes carefully but ignores direction can pay ten times more than one who does the reverse. And in the live snapshot as we wrote this, a $500,000 sell in AAPLx returned no route at all &mdash; not an expensive quote, no quote.</p>
+
+            <h2>Finding three: market hours barely matter</h2>
+
+            <p>We split the week into regular US market hours, extended hours and overnight, expecting costs to blow out when the equity market is shut. They mostly do not.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>Token</th><th>Regular</th><th>Extended</th><th>Overnight</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>AAPLx</td><td>2.19%</td><td>2.21%</td><td>2.25%</td></tr>
+                    <tr><td>COINx</td><td>0.18%</td><td>0.16%</td><td>0.17%</td></tr>
+                    <tr><td>NVDAx</td><td>0.06%</td><td>0.06%</td><td>0.06%</td></tr>
+                    <tr><td>SPYx</td><td>0.01%</td><td>0.01%</td><td>0.01%</td></tr>
+                </tbody>
+            </table>
+
+            <p>That flatness is itself the finding. In traditional markets, spreads widen after the close because the humans and firms quoting them step away. An automated market maker does not step away: the capital sits in the pool whether New York is open or not. <strong>The cost of trading a tokenized stock is a property of the pool, not of the market it tracks.</strong></p>
+
+            <p>Which cuts both ways. You can trade at 3am on a Sunday at the same cost as Tuesday lunchtime &mdash; genuinely useful, and one of the few real advantages of the wrapper. But you also lose the thing that makes a real market cheap at 10am: competing market makers who show up when there is flow to capture.</p>
+
+            <h2>How we measured it</h2>
+
+            <p>Honesty about method matters more than the headline, so here is exactly what the numbers are.</p>
+
+            <ul>
+                <li>Every 15 minutes, we request Jupiter <code>ExactIn</code> quotes for $10k, $100k, $500k and $1M, in both directions, for each token.</li>
+                <li>The midpoint comes from a $1,000 buy and a $1,000 sell quote taken at the same moment, so the reference price is the market's own, not an oracle that might disagree with it.</li>
+                <li>Reported cost is the difference between the large order's effective price and that midpoint. It therefore includes half the spread, the price impact of the order, and pool fees &mdash; everything you actually pay.</li>
+                <li>The tables above average a rolling seven-day window, split by US market session.</li>
+                <li>Where a quote returns no route, we record it as unavailable rather than substituting a worse price. "n/a" means the trade could not be done at all at that size.</li>
+            </ul>
+
+            <p>Two limits worth stating. This measures Jupiter's aggregated routes, so a desk with direct relationships might do better. And a quote is not a fill &mdash; the price you get is the price when your transaction lands, not when you asked.</p>
+
+            <h2>What this means if you are moving size</h2>
+
+            <p>If you are trading $10,000, none of this matters much: every token on the list costs between 0.01% and 0.26%, which is comparable to a retail brokerage's spread and considerably faster to settle.</p>
+
+            <p>If you are trading $500,000, it matters enormously. The same nominal trade costs $50 in SPYx and $11,000 in AAPLx. Three things follow:</p>
+
+            <ol>
+                <li><strong>Price the token, not the company.</strong> Your execution cost has no relationship to how liquid the underlying stock is.</li>
+                <li><strong>Check your direction first.</strong> A pool that is cheap to buy may be brutal to sell, and the gap can be 10&times;.</li>
+                <li><strong>Size in pieces, or find another venue.</strong> Impact grows faster than linearly: in AAPLx, $100k costs 0.16% and $500k costs 2.21% &mdash; fourteen times the rate for five times the size.</li>
+            </ol>
+
+            <p>That last point is the one we found most interesting, and it is why we built <a href="https://darkpool-production-9d19.up.railway.app" target="_blank" rel="noopener">a private block venue</a> for exactly this problem: orders that rest encrypted, cross at the midpoint against another private order, and never touch a public pool where the impact lives. The live slippage tracker behind this article runs there, and it updates every fifteen minutes &mdash; the numbers in this piece will be stale by the time you read them, and the current ones are a click away.</p>
+
+            <p>Whether you use our venue or not, measure before you trade. The market for tokenized equities is young enough that the cost of a trade varies by two orders of magnitude between two tokens that both promise the same thing: a share, on-chain, settled in seconds.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo" width="1024" height="1024">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

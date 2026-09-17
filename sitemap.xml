@@ -516,4 +516,10 @@
 <changefreq>yearly</changefreq>
 <priority>0.6</priority>
 </url>
+<url>
+<loc>https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</loc>
+<lastmod>2026-09-17</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
 </urlset>

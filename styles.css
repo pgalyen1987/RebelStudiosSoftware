@@ -4054,3 +4054,40 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
     color: var(--ink-1);
     margin: 0.4rem 0;
 }
+
+
+/* Data tables in articles: measurements, not decoration. Scrolls rather than squashing on phones. */
+.article-content .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.article-content .data-table th,
+.article-content .data-table td {
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.article-content .data-table th {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #6b7280);
+}
+
+.article-content .data-table td:not(:first-child),
+.article-content .data-table th:not(:first-child) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 640px) {
+    .article-content .data-table { display: table; white-space: normal; }
+}
