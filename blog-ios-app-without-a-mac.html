@@ -73,7 +73,7 @@
     <section class="page-header">
         <div class="container">
             <h1>How to Build an iOS App Without a Mac</h1>
-            <p>The long way round &mdash; Kotlin, then C#, then finally React Native and Expo &mdash; and how you ship to the App Store when you don&rsquo;t own a single Apple device</p>
+            <p>The long way round: Kotlin, then C#, then finally React Native and Expo, and how you ship to the App Store when you don&rsquo;t own a single Apple device</p>
         </div>
     </section>
 
@@ -88,48 +88,48 @@
                 <figure class="article-figure"><img src="images/blog/art/ios-app-without-a-mac.png" alt="" width="1200" height="380" loading="lazy"></figure>
 
                 <div class="article-content">
-                    <p>The pitch for cross-platform mobile development is irresistible: write your app once, ship it to both iPhone and Android, never build the same screen twice. I believed it. Then I spent a couple of years learning, the hard way, that &ldquo;cross-platform&rdquo; is a spectrum &mdash; and that most of the popular ways onto it quietly hand you two problems in a trench coat pretending to be one.</p>
+                    <p>The pitch for cross-platform mobile development is irresistible: write your app once, ship it to both iPhone and Android, never build the same screen twice. I believed it. Then I spent a couple of years learning, the hard way, that &ldquo;cross-platform&rdquo; is a spectrum, and that most of the popular ways onto it quietly hand you two problems in a trench coat pretending to be one.</p>
 
                     <p>This is the honest version of that road: what went wrong with the native-first approaches I tried, the wall that has nothing to do with code at all, and why I eventually threw it all out for React Native and Expo.</p>
 
                     <h2>The two-headed native approach</h2>
 
-                    <p>I started where a lot of people start: as close to native as possible, on both sides. Android in Kotlin, the Apple side in C# through the .NET and MAUI world. On paper it&rsquo;s the &ldquo;serious&rdquo; choice &mdash; real native performance, full access to the platform, none of that flimsy webview stuff. In practice it meant living in two toolchains, two languages, and two mental models at once, and paying a tax on every single feature.</p>
+                    <p>I started where a lot of people start: as close to native as possible, on both sides. Android in Kotlin, the Apple side in C# through the .NET and MAUI world. On paper it&rsquo;s the &ldquo;serious&rdquo; choice: real native performance, full access to the platform, none of that flimsy webview stuff. In practice it meant living in two toolchains, two languages, and two mental models at once, and paying a tax on every single feature.</p>
 
-                    <p>Every screen got built twice. Every piece of business logic either got duplicated or wedged into some shared layer that fought both platforms equally. A change that should have taken an afternoon took two &mdash; because it took two, once in Kotlin and once in C#, plus the time lost swapping my brain between them. And the tooling was never quite there: MAUI in particular felt like it was maturing underneath me while I was trying to ship on it, the kind of experience where half your bugs are yours and the other half are the framework&rsquo;s and you can&rsquo;t always tell which. I wasn&rsquo;t building an app. I was maintaining two apps that happened to share a name.</p>
+                    <p>Every screen got built twice. Every piece of business logic either got duplicated or wedged into some shared layer that fought both platforms equally. A change that should have taken an afternoon took two, because it took two, once in Kotlin and once in C#, plus the time lost swapping my brain between them. And the tooling was never quite there: MAUI in particular felt like it was maturing underneath me while I was trying to ship on it, the kind of experience where half your bugs are yours and the other half are the framework&rsquo;s and you can&rsquo;t always tell which. I wasn&rsquo;t building an app. I was maintaining two apps that happened to share a name.</p>
 
                     <!-- PATRICK: one specific war-story here — a single feature or bug that cost you days across the two codebases — would make this section unforgettable. -->
 
                     <h2>Then the wall: iOS needs a Mac</h2>
 
-                    <p>Here is the part nobody warns you about loudly enough, and it has nothing to do with which language you picked. To compile, sign, and submit an iOS app, Apple requires macOS and Xcode. Full stop. Not &ldquo;it&rsquo;s easier on a Mac&rdquo; &mdash; the final iOS build, and the code-signing that App Store submission depends on, run on Apple&rsquo;s toolchain, on Apple&rsquo;s operating system, on Apple&rsquo;s hardware. If you don&rsquo;t own a Mac, you&rsquo;ve hit a wall no amount of clever coding gets you through.</p>
+                    <p>Here is the part nobody warns you about loudly enough, and it has nothing to do with which language you picked. To compile, sign, and submit an iOS app, Apple requires macOS and Xcode. Full stop. Not &ldquo;it&rsquo;s easier on a Mac&rdquo;. The final iOS build, and the code-signing that App Store submission depends on, run on Apple&rsquo;s toolchain, on Apple&rsquo;s operating system, on Apple&rsquo;s hardware. If you don&rsquo;t own a Mac, you&rsquo;ve hit a wall no amount of clever coding gets you through.</p>
 
-                    <p>And I didn&rsquo;t own a Mac. So there I was with an app that ran fine on Android and an iOS half I could write but not actually <em>ship</em> &mdash; couldn&rsquo;t do a real device build, couldn&rsquo;t sign it, couldn&rsquo;t put it in front of a TestFlight tester, couldn&rsquo;t submit it. The most expensive part of &ldquo;cross-platform&rdquo; turned out not to be the code. It was a hardware requirement gatekeeping the entire second platform.</p>
+                    <p>And I didn&rsquo;t own a Mac. So there I was with an app that ran fine on Android and an iOS half I could write but not actually <em>ship</em>: couldn&rsquo;t do a real device build, couldn&rsquo;t sign it, couldn&rsquo;t put it in front of a TestFlight tester, couldn&rsquo;t submit it. The most expensive part of &ldquo;cross-platform&rdquo; turned out not to be the code. It was a hardware requirement gatekeeping the entire second platform.</p>
 
                     <h2>Switching to React Native and Expo</h2>
 
                     <p>I moved to React Native almost out of exhaustion, and the first thing that changed was the obvious one: <em>one</em> codebase, in TypeScript, for both platforms. The endless duplication just&hellip; stopped. One component rendered on both. Logic lived in one place. The ecosystem was enormous, so most problems already had a library and an answer instead of a framework bug I&rsquo;d file and wait on.</p>
 
-                    <p>But the thing that actually solved my problem was Expo &mdash; specifically its cloud build service. Because Expo lets you build your iOS app <em>on their Mac infrastructure</em>, in the cloud, without ever opening Xcode or owning a single Apple device.</p>
+                    <p>But the thing that actually solved my problem was Expo, specifically its cloud build service. Because Expo lets you build your iOS app <em>on their Mac infrastructure</em>, in the cloud, without ever opening Xcode or owning a single Apple device.</p>
 
                     <div class="article-highlight">
                         <h3>How you ship iOS with no Apple hardware</h3>
-                        <p>The workflow is almost anticlimactic. You develop and test on Android and in Expo&rsquo;s dev client on a real iPhone over Wi-Fi. When it&rsquo;s time for a real build, you run <code>eas build --platform ios</code> and Expo&rsquo;s cloud &mdash; their Macs &mdash; compiles and signs it for you. Then <code>eas submit</code> pushes it to App Store Connect and TestFlight. The Mac requirement never went away; Apple still demands one. Expo just rents you theirs, per build, so you never have to buy one.</p>
+                        <p>The workflow is almost anticlimactic. You develop and test on Android and in Expo&rsquo;s dev client on a real iPhone over Wi-Fi. When it&rsquo;s time for a real build, you run <code>eas build --platform ios</code> and Expo&rsquo;s cloud (their Macs) compiles and signs it for you. Then <code>eas submit</code> pushes it to App Store Connect and TestFlight. The Mac requirement never went away; Apple still demands one. Expo just rents you theirs, per build, so you never have to buy one.</p>
                     </div>
 
-                    <p>That single capability &mdash; EAS Build handling the iOS compile-and-sign on cloud Macs &mdash; is the whole difference between &ldquo;I have an Android app and an aspiration&rdquo; and &ldquo;I have an app on both stores.&rdquo; It removed the exact wall the native approach had built and couldn&rsquo;t get me over.</p>
+                    <p>That single capability (EAS Build handling the iOS compile-and-sign on cloud Macs) is the whole difference between &ldquo;I have an Android app and an aspiration&rdquo; and &ldquo;I have an app on both stores.&rdquo; It removed the exact wall the native approach had built and couldn&rsquo;t get me over.</p>
 
                     <h2>The honest tradeoffs</h2>
 
-                    <p>None of this is free, and I&rsquo;d be lying to call Expo a pure win. You&rsquo;re a layer up from the metal, so a genuinely exotic native need can mean writing a config plugin or dropping to a bare workflow, which claws back some of the simplicity. Certain platform-specific debugging is still easier if you <em>do</em> have a Mac and Xcode within reach. And you&rsquo;re now leaning on a build service &mdash; a real dependency, with its own queue times and pricing, that you should choose with open eyes.</p>
+                    <p>None of this is free, and I&rsquo;d be lying to call Expo a pure win. You&rsquo;re a layer up from the metal, so a genuinely exotic native need can mean writing a config plugin or dropping to a bare workflow, which claws back some of the simplicity. Certain platform-specific debugging is still easier if you <em>do</em> have a Mac and Xcode within reach. And you&rsquo;re now leaning on a build service: a real dependency, with its own queue times and pricing, that you should choose with open eyes.</p>
 
-                    <p>But weigh that against the alternative I&rsquo;d actually lived: two codebases, two languages, a framework maturing underneath me, and a hard hardware wall between me and half my users. The tradeoff wasn&rsquo;t close. For a solo developer or a small team &mdash; especially one without a room full of Apple hardware &mdash; Expo trades a little ceiling for an enormous amount of floor.</p>
+                    <p>But weigh that against the alternative I&rsquo;d actually lived: two codebases, two languages, a framework maturing underneath me, and a hard hardware wall between me and half my users. The tradeoff wasn&rsquo;t close. For a solo developer or a small team, especially one without a room full of Apple hardware, Expo trades a little ceiling for an enormous amount of floor.</p>
 
                     <h2>The lesson underneath the tooling</h2>
 
-                    <p>The real takeaway isn&rsquo;t &ldquo;Kotlin and C# are bad&rdquo; &mdash; they aren&rsquo;t; in the right context they&rsquo;re exactly right. It&rsquo;s that the best tool is usually the one that removes the most friction between you and a shipped product &mdash; and that friction is often not where you expect. I spent ages optimizing the wrong variable, language and performance, while the thing actually stopping me was a build-and-signing requirement a cloud service could absorb completely. Choose for the wall you&rsquo;re actually stuck at, not the one the &ldquo;serious&rdquo; advice tells you to worry about.</p>
+                    <p>The real takeaway isn&rsquo;t &ldquo;Kotlin and C# are bad&rdquo;. They aren&rsquo;t; in the right context they&rsquo;re exactly right. It&rsquo;s that the best tool is usually the one that removes the most friction between you and a shipped product, and that friction is often not where you expect. I spent ages optimizing the wrong variable, language and performance, while the thing actually stopping me was a build-and-signing requirement a cloud service could absorb completely. Choose for the wall you&rsquo;re actually stuck at, not the one the &ldquo;serious&rdquo; advice tells you to worry about.</p>
 
-                    <p><em>We build cross-platform mobile apps end to end &mdash; you can see a couple on our <a href="apps.html">apps page</a> &mdash; including shipping to the App Store without a rack of Apple hardware. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                    <p><em>We build cross-platform mobile apps end to end (you can see a couple on our <a href="apps.html">apps page</a>), including shipping to the App Store without a rack of Apple hardware. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
                 </div>
 
                 <div class="article-footer-nav">

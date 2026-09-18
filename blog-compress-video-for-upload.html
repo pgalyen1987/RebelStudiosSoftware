@@ -89,28 +89,28 @@
 
                 <div class="article-content">
 
-                    <p>The portal says <strong>maximum 25 MB</strong>. Your phone clip is 180 MB. Email caps out around 25 MB too, and a lot of forms are stricter. Video is a different animal from photos &mdash; the tricks that shrink an image barely touch a video &mdash; so it&rsquo;s worth knowing what actually moves the number.</p>
+                    <p>The portal says <strong>maximum 25 MB</strong>. Your phone clip is 180 MB. Email caps out around 25 MB too, and a lot of forms are stricter. Video is a different animal from photos (the tricks that shrink an image barely touch a video), so it&rsquo;s worth knowing what actually moves the number.</p>
 
                     <h2>Why Videos Are So Big</h2>
-                    <p>A video&rsquo;s size is roughly <strong>bitrate &times; duration</strong>. Bitrate is how much data each second of video uses, and it&rsquo;s driven by resolution (4K vs 1080p), frame rate (60fps vs 30fps), and the codec doing the compressing. A 4K/60 clip from a modern phone burns through data fast &mdash; which is why a one-minute video can be well over 100 MB.</p>
+                    <p>A video&rsquo;s size is roughly <strong>bitrate &times; duration</strong>. Bitrate is how much data each second of video uses, and it&rsquo;s driven by resolution (4K vs 1080p), frame rate (60fps vs 30fps), and the codec doing the compressing. A 4K/60 clip from a modern phone burns through data fast, which is why a one-minute video can be well over 100 MB.</p>
 
                     <h2>What Actually Shrinks It</h2>
                     <ul class="article-list">
-                        <li><strong>Lower the resolution.</strong> Dropping 4K to 1080p (or 1080p to 720p) is the biggest single lever &mdash; and for most uploads, 1080p is plenty.</li>
+                        <li><strong>Lower the resolution.</strong> Dropping 4K to 1080p (or 1080p to 720p) is the biggest single lever, and for most uploads, 1080p is plenty.</li>
                         <li><strong>Lower the bitrate.</strong> Re-encoding at a lower target bitrate directly cuts size; too low and it gets blocky, so there&rsquo;s a floor.</li>
                         <li><strong>Use an efficient codec.</strong> H.264 is universal; H.265 (HEVC) squeezes the same quality smaller, if the destination accepts it.</li>
-                        <li><strong>Trim the length.</strong> The cheapest megabytes are the seconds you don&rsquo;t need &mdash; cut dead air at the start and end.</li>
+                        <li><strong>Trim the length.</strong> The cheapest megabytes are the seconds you don&rsquo;t need: cut dead air at the start and end.</li>
                     </ul>
 
-                    <h2>Bitrate is the lever &mdash; and the arithmetic is simple</h2>
+                    <h2>Bitrate is the lever, and the arithmetic is simple</h2>
                     <p>Almost everyone reaches for resolution first, but the number that actually determines file size is bitrate: how many bits the encoder spends per second of video. The relationship is close to exact:</p>
                     <p><code>file size (MB) &asymp; bitrate (Mbps) &times; duration (seconds) &divide; 8</code></p>
-                    <p>Run it backwards and you get the setting you actually need. For a 90-second clip that must land under 25 MB: 25 &times; 8 &divide; 90 &asymp; 2.2 Mbps total. Leave a little headroom for audio and container overhead &mdash; call it 2.0 Mbps for video and 128 kbps for audio &mdash; and you will hit the target on the first try instead of exporting four times and guessing.</p>
+                    <p>Run it backwards and you get the setting you actually need. For a 90-second clip that must land under 25 MB: 25 &times; 8 &divide; 90 &asymp; 2.2 Mbps total. Leave a little headroom for audio and container overhead (call it 2.0 Mbps for video and 128 kbps for audio), and you will hit the target on the first try instead of exporting four times and guessing.</p>
                     <p>This is why trimming is the most underrated compression tool available. Size scales linearly with duration, so cutting a 90-second clip to 60 seconds removes a third of the file without touching quality anywhere.</p>
 
                     <h2>Resolution and bitrate have to move together</h2>
-                    <p>Dropping 1080p to 720p removes about 55&nbsp;percent of the pixels, which sounds decisive but changes nothing on its own &mdash; if the bitrate stays where it was, the file stays roughly the same size. What lower resolution actually buys you is the ability to lower the bitrate without the picture falling apart, because each remaining pixel gets a larger share of the budget.</p>
-                    <p>The practical rule: if your target bitrate is forcing visible blocking and smearing at 1080p, step down to 720p and the same bitrate will look noticeably cleaner. Fewer pixels described well beat more pixels described badly. Frame rate works the same way &mdash; 60fps footage cut to 30fps halves the frames competing for the budget, which suits talking heads and screen recordings far better than it suits fast motion.</p>
+                    <p>Dropping 1080p to 720p removes about 55&nbsp;percent of the pixels, which sounds decisive but changes nothing on its own: if the bitrate stays where it was, the file stays roughly the same size. What lower resolution actually buys you is the ability to lower the bitrate without the picture falling apart, because each remaining pixel gets a larger share of the budget.</p>
+                    <p>The practical rule: if your target bitrate is forcing visible blocking and smearing at 1080p, step down to 720p and the same bitrate will look noticeably cleaner. Fewer pixels described well beat more pixels described badly. Frame rate works the same way: 60fps footage cut to 30fps halves the frames competing for the budget, which suits talking heads and screen recordings far better than it suits fast motion.</p>
 
                     <h2>Codec choice is a compatibility bet</h2>
                     <p>H.264 is the safe default. It is the least efficient of the modern options and it plays essentially everywhere, which is usually the trade you want when a portal is going to ingest the file.</p>
@@ -118,21 +118,21 @@
                     <p>If your encoder offers two-pass, use it when you have a hard ceiling. A single pass has to guess how to spend the budget as it goes; two passes analyse the footage first and then distribute bits toward the complex scenes, which is precisely the situation a fixed upload limit creates.</p>
 
                     <h2>Free Tools</h2>
-                    <p><strong>HandBrake</strong> (free, desktop) is the powerful option &mdash; it can re-encode to H.264/H.265 at a chosen resolution and quality. The catch: hitting an <em>exact</em> target size means guessing a bitrate, exporting, checking, and adjusting. QuickTime (Mac) can export at lower resolutions, and phone editors can trim and downscale. All of these work; they just take trial and error to land under a specific cap.</p>
+                    <p><strong>HandBrake</strong> (free, desktop) is the powerful option: it can re-encode to H.264/H.265 at a chosen resolution and quality. The catch: hitting an <em>exact</em> target size means guessing a bitrate, exporting, checking, and adjusting. QuickTime (Mac) can export at lower resolutions, and phone editors can trim and downscale. All of these work; they just take trial and error to land under a specific cap.</p>
 
                     <div class="article-callout">
                         <h3>If you would rather not install anything</h3>
-                        <p>If you just want it under the limit without running the encode loop by hand, <a href="tools/video-under-mb.html">Video Under Size</a> takes your clip and a target (say, 25 MB) and encodes an MP4/H.264 to fit &mdash; $1, no desktop software, no bitrate math. Agents can call the same operation over x402.</p>
+                        <p>If you just want it under the limit without running the encode loop by hand, <a href="tools/video-under-mb.html">Video Under Size</a> takes your clip and a target (say, 25 MB) and encodes an MP4/H.264 to fit. $1, no desktop software, no bitrate math. Agents can call the same operation over x402.</p>
                     </div>
 
                     <h2>When You Shouldn&rsquo;t Crush It</h2>
-                    <p>If the video is evidence, a demo where detail matters, or something a client will scrutinize, don&rsquo;t nuke the quality to hit a tiny cap &mdash; trim length first, drop to 1080p, and only then lower bitrate. If you genuinely can&rsquo;t hit the limit without ruining it, upload it to a link-sharing service and send the link instead.</p>
+                    <p>If the video is evidence, a demo where detail matters, or something a client will scrutinize, don&rsquo;t nuke the quality to hit a tiny cap; trim length first, drop to 1080p, and only then lower bitrate. If you genuinely can&rsquo;t hit the limit without ruining it, upload it to a link-sharing service and send the link instead.</p>
 
                     <h2>When you are barely over the limit</h2>
-                    <p>A small overage does not need the full treatment. Trim a few seconds of dead air at the start or end &mdash; size scales linearly with duration, so this is the fastest win available &mdash; or drop a single resolution step. Either one usually closes a gap of a few megabytes without touching your bitrate settings at all.</p>
+                    <p>A small overage does not need the full treatment. Trim a few seconds of dead air at the start or end (size scales linearly with duration, so this is the fastest win available), or drop a single resolution step. Either one usually closes a gap of a few megabytes without touching your bitrate settings at all.</p>
                     <p>On format, MP4 with H.264 is the answer unless you have a specific reason otherwise. It is universally accepted, which is worth more than the efficiency you give up. And the fear that compression will ruin the video is mostly misplaced: going 4K to 1080p and cutting dead time often gets you under a cap before quality degrades at all. Blocking and smearing come from aggressive bitrate cuts, not from sensible ones.</p>
                     <h2>Start here</h2>
-                    <p>Video size is bitrate and duration &mdash; lower the resolution, trim the length, then encode to the number. Free tools like HandBrake can do it with some trial and error; when you just want it under a specific cap in one step, use <a href="tools/video-under-mb.html">the $1 video compressor</a>, or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
+                    <p>Video size is bitrate and duration: lower the resolution, trim the length, then encode to the number. Free tools like HandBrake can do it with some trial and error; when you just want it under a specific cap in one step, use <a href="tools/video-under-mb.html">the $1 video compressor</a>, or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>
 
@@ -173,7 +173,7 @@
                 <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
             </nav>
             <!-- social:end -->
-            <p class="footer-copy">&copy; 2026 Rebel Studios Software — designed &amp; built in-house, like everything else we ship.</p>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. Designed &amp; built in-house, like everything else we ship.</p>
         </div>
     </footer>
     <script src="script.js"></script>

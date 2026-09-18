@@ -156,7 +156,7 @@
         .sec-note { font-size: var(--text-sm); color: var(--ink-3); max-width: var(--measure-prose); }
 
         /* At phone width the two columns cannot both fit, and side-scrolling
-           hides the number — which is the whole point of the table. Stack
+           hides the number: which is the whole point of the table. Stack
            each row into a label with its figure beneath. */
         @media (max-width: 30rem) {
             .sec-table { min-width: 0; }
@@ -202,8 +202,8 @@
     <section class="section">
         <div class="container">
             <div class="sec-thesis" data-reveal>
-                <span class="section-kicker">01 &mdash; Position</span>
-                <p>I read protocol code for a living &mdash; and I can <em>prove what I found</em>, in runnable tests.</p>
+                <span class="section-kicker">Position</span>
+                <p>I read protocol code for a living, and I can <em>prove what I found</em>, in runnable tests.</p>
             </div>
 
             <div class="sec-figures" data-reveal>
@@ -219,7 +219,7 @@
     <section class="section section--alt">
         <div class="container">
             <div class="section-head" data-reveal>
-                <span class="section-kicker">02 &mdash; Evidence</span>
+                <span class="section-kicker">Evidence</span>
                 <h2 class="section-title">Selected work</h2>
             </div>
 
@@ -229,7 +229,7 @@
                     <p class="sec-meta">Foundry PoCs &middot; fork tests<br>16 protocols tracked to a verdict</p>
                 </div>
                 <div class="sec-entry-body">
-                    <p>Structured review across sixteen protocols &mdash; among them Hydration, Alchemix v3, Origin, Maple, Fluid and Hashflow &mdash; each one tracked to a written verdict rather than left open. Where the review produced a critical-class finding, it produced a <strong>runnable Foundry proof of concept</strong> alongside it: a test that reproduces the defect against forked state, not a paragraph asserting one exists.</p>
+                    <p>Structured review across sixteen protocols (among them Hydration, Alchemix v3, Origin, Maple, Fluid and Hashflow), each one tracked to a written verdict rather than left open. Where the review produced a critical-class finding, it produced a <strong>runnable Foundry proof of concept</strong> alongside it: a test that reproduces the defect against forked state, not a paragraph asserting one exists.</p>
                     <p>The discipline that matters here is the one that closes files. Most of those sixteen ended in <strong>no submission-ready finding</strong>, documented with the areas checked and the reasoning that dismissed each, so the work is auditable and nobody repeats it by accident six months later.</p>
                     <div class="sec-chips">
                         <span class="sec-chip sec-chip--ok">PoC reproduces</span>
@@ -246,7 +246,7 @@
                     <p class="sec-meta">Solidity &middot; Foundry<br>arbitrage &middot; liquidation &middot; refinance</p>
                 </div>
                 <div class="sec-entry-body">
-                    <p>Executors that borrow, route and repay inside a single transaction across lending and AMM venues &mdash; arbitrage, liquidation and collateral refinancing &mdash; with profit floors enforced on-chain, so an unprofitable attempt reverts rather than settling at a loss.</p>
+                    <p>Executors that borrow, route and repay inside a single transaction across lending and AMM venues (arbitrage, liquidation and collateral refinancing) with profit floors enforced on-chain, so an unprofitable attempt reverts rather than settling at a loss.</p>
                     <p>Integrated at contract level against <strong>Morpho, Aave, Compound/Comet and Euler</strong> on the lending side, and <strong>Uniswap, Curve, Aerodrome and Slipstream</strong> for routing, with Chainlink price feeds.</p>
                     <div class="sec-chips">
                         <span class="sec-chip">Morpho</span><span class="sec-chip">Aave</span><span class="sec-chip">Comet</span>
@@ -262,7 +262,7 @@
                     <p class="sec-meta">Python 3.11+<br>32 tests &middot; zero runtime deps</p>
                 </div>
                 <div class="sec-entry-body">
-                    <p>A midpoint dark pool for tokenised equities where resting orders exist <strong>only as secret shares</strong> split across independent nodes. Matching opens one bit per attempt; execution happens at the oracle midpoint, so limit prices are never revealed to anyone &mdash; the venue included.</p>
+                    <p>A midpoint dark pool for tokenised equities where resting orders exist <strong>only as secret shares</strong> split across independent nodes. Matching opens one bit per attempt; execution happens at the oracle midpoint, so limit prices are never revealed to anyone, the venue included.</p>
                     <p>Verified against a plaintext reference implementation with <strong>400 randomised MPC-versus-plaintext equivalence checks</strong>, holding the cryptography to the same result as the naive version on every input.</p>
                     <div class="sec-chips">
                         <span class="sec-chip">Secure multi-party computation</span>
@@ -293,13 +293,13 @@
     <section class="section">
         <div class="container">
             <div class="section-head" data-reveal>
-                <span class="section-kicker">03 &mdash; Method</span>
+                <span class="section-kicker">Method</span>
                 <h2 class="section-title">Measuring what others assume</h2>
             </div>
 
             <div class="sec-measure" data-reveal>
                 <h3>Finding the hole in my own instrument</h3>
-                <p>A scanner I built reported that competitors were bidding roughly <strong>0.000 gwei</strong> for the opportunities it tracked &mdash; which would mean nobody was competing. I treated that as suspect rather than as good news, because searchers commonly pay block builders through a direct value transfer the standard metric cannot see.</p>
+                <p>A scanner I built reported that competitors were bidding roughly <strong>0.000 gwei</strong> for the opportunities it tracked, which would mean nobody was competing. I treated that as suspect rather than as good news, because searchers commonly pay block builders through a direct value transfer the standard metric cannot see.</p>
                 <p>Confirming it normally needs a trace-enabled node, which I did not have. So I measured the same money a different way: the fee recipient's <strong>balance delta across the block</strong>, minus the priority fees actually charged, corrected for ordinary transfers. Whatever remains arrived through a channel the usual measurement is blind to.</p>
 
                 <div class="sec-table-wrap">
@@ -314,7 +314,7 @@
                     </table>
                 </div>
 
-                <p>The conclusion went against my own project: the promising signal was an artifact of a blind instrument, and the opportunity was not real. I wrote that up, closed the finding, and shut the system down. <strong>I would rather kill my own thesis than ship a number I cannot defend</strong> &mdash; which is the same instinct a protocol is hiring when it hires a reviewer.</p>
+                <p>The conclusion went against my own project: the promising signal was an artifact of a blind instrument, and the opportunity was not real. I wrote that up, closed the finding, and shut the system down. <strong>I would rather kill my own thesis than ship a number I cannot defend</strong>. That is the instinct a protocol is hiring when it hires a reviewer.</p>
             </div>
         </div>
     </section>
@@ -322,11 +322,11 @@
     <section class="section section--alt">
         <div class="container">
             <div class="section-head" data-reveal>
-                <span class="section-kicker">04 &mdash; Engagement</span>
+                <span class="section-kicker">Engagement</span>
                 <h2 class="section-title">Available for contract and audit work</h2>
             </div>
             <p class="measure">Best fit: DeFi protocol review, Solidity implementation, fork-test and PoC construction, and security work on lending, liquidation and cross-chain surfaces. Comfortable owning a scope end to end and reporting in writing.</p>
-            <p class="measure">There are also ten years of production full-stack and mobile engineering behind the security work &mdash; this is a specialisation, not a pivot away from shipping.</p>
+            <p class="measure">There are also ten years of production full-stack and mobile engineering behind the security work; this is a specialisation, not a pivot away from shipping.</p>
             <div style="display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-top:var(--space-md)">
                 <a href="index.html#contact" class="btn btn-primary">Start a Conversation</a>
                 <a href="mailto:contact@rebelstudiossoftware.com?subject=Contract%20engagement" class="btn btn-secondary">contact@rebelstudiossoftware.com</a>

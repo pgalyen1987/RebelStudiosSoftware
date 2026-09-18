@@ -73,7 +73,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Remove EXIF Metadata From a Photo</h1>
-            <p>The hidden GPS and camera data your photos carry &mdash; and how to strip it</p>
+            <p>The hidden GPS and camera data your photos carry, and how to strip it</p>
         </div>
     </section>
 
@@ -91,24 +91,24 @@
 
                     <p>Every photo your phone takes carries a hidden block of data called <strong>EXIF metadata</strong>, embedded inside the image file itself: the exact GPS coordinates where it was shot, the device model, the date and time, and camera settings. It travels with the image. When you post that photo to a marketplace, a forum, a dating profile, or email it to a stranger, you may be handing over <em>where you live</em>.</p>
 
-                    <p>It&rsquo;s one of the most common accidental privacy leaks online &mdash; and it&rsquo;s easy to prevent.</p>
+                    <p>It&rsquo;s one of the most common accidental privacy leaks online, and it&rsquo;s easy to prevent.</p>
 
                     <h2>Why It Matters</h2>
                     <p>The GPS tag is the dangerous one. A photo of an item for sale, taken in your living room, can pin your home address to within a few meters. Selling something to a stranger, posting where you live, or sending an ID photo to an unknown portal are all moments where you don&rsquo;t want your coordinates riding along.</p>
-                    <p>Many big social networks strip metadata on upload &mdash; but many marketplaces, forums, email attachments, and file-sharing links do <em>not</em>. Don&rsquo;t assume; strip it yourself.</p>
+                    <p>Many big social networks strip metadata on upload, but many marketplaces, forums, email attachments, and file-sharing links do <em>not</em>. Don&rsquo;t assume; strip it yourself.</p>
 
                     <h2>Free Ways to Strip It</h2>
                     <ul class="article-list">
                         <li><strong>iPhone:</strong> in the share sheet, tap <em>Options</em> at the top and turn <em>Location</em> off before you share. That removes GPS from the shared copy.</li>
                         <li><strong>Windows:</strong> right-click the file → <em>Properties</em> → <em>Details</em> tab → <em>Remove Properties and Personal Information</em> → create a copy with the data removed.</li>
                         <li><strong>Mac:</strong> in Photos, select the image → <em>Image</em> menu → <em>Location</em> → <em>Hide/Remove Location</em>; or open in Preview and use the Inspector to strip GPS.</li>
-                        <li><strong>Quick and dirty:</strong> screenshot the photo. A screenshot has none of the original EXIF &mdash; though you lose a little quality and the true resolution.</li>
+                        <li><strong>Quick and dirty:</strong> screenshot the photo. A screenshot has none of the original EXIF, though you lose a little quality and the true resolution.</li>
                     </ul>
                     <p>These work well for a single image when you remember to do them. The failure mode is forgetting, or having a batch to clean.</p>
 
                     <div class="article-callout">
                         <h3>Cleaning a whole batch</h3>
-                        <p>When you want <em>all</em> metadata gone &mdash; GPS, camera, timestamps &mdash; in one predictable step, <a href="tools/metadata-strip.html">Privacy Cleaner</a> takes your photo and hands back a clean copy with the metadata stripped, for $1. No account, nothing retained. The image itself is unchanged; only the hidden data is removed.</p>
+                        <p>When you want <em>all</em> metadata gone (GPS, camera, timestamps) in one predictable step, <a href="tools/metadata-strip.html">Privacy Cleaner</a> takes your photo and hands back a clean copy with the metadata stripped, for $1. No account, nothing retained. The image itself is unchanged; only the hidden data is removed.</p>
                     </div>
 
                     <h2>Before You Send an ID or a Listing Photo</h2>
@@ -119,19 +119,19 @@
                     <ul class="article-list">
                         <li><strong>Camera serial number.</strong> Many DSLRs and mirrorless bodies stamp a unique body and lens serial into every frame. That is a durable identifier: it links a photo posted anonymously today to one posted under your real name two years ago.</li>
                         <li><strong>Capture timestamp.</strong> Usually stored in local time with no zone, occasionally alongside a UTC offset. It reveals when you were somewhere, which is often as sensitive as where.</li>
-                        <li><strong>Software history.</strong> The editor and version that last wrote the file, and sometimes the original filename &mdash; which on a phone encodes the capture date, and on a computer may include your account name.</li>
+                        <li><strong>Software history.</strong> The editor and version that last wrote the file, and sometimes the original filename, which on a phone encodes the capture date, and on a computer may include your account name.</li>
                         <li><strong>Orientation.</strong> Harmless, but worth knowing about: strip EXIF carelessly and a photo that looked upright can come back rotated, because the rotation lived in the metadata rather than the pixels.</li>
                     </ul>
 
                     <h2>The embedded thumbnail trap</h2>
                     <p>This is the one that catches careful people. EXIF can carry a small preview image of its own, and some editors update the pixels without regenerating that preview. Crop your address off the corner of a photo, save it, and the <em>original uncropped scene</em> can still be sitting in the metadata as a postage-stamp thumbnail.</p>
-                    <p>The same trick applies to redaction. Painting a black box over a name changes the pixels; it does not necessarily change the embedded preview that was written before you painted it. If you have cropped or redacted anything sensitive, strip metadata afterwards rather than before &mdash; and if it truly matters, re-encode the image so only the visible pixels survive.</p>
+                    <p>The same trick applies to redaction. Painting a black box over a name changes the pixels; it does not necessarily change the embedded preview that was written before you painted it. If you have cropped or redacted anything sensitive, strip metadata afterwards rather than before, and if it truly matters, re-encode the image so only the visible pixels survive.</p>
                     <p>A screenshot sidesteps all of this for exactly that reason: it is a fresh capture of what is on screen, with no inherited history at all.</p>
 
                     <h2>What stripping does, and what it doesn&rsquo;t</h2>
-                    <p>Two worries come up every time, and both deserve a straight answer. Stripping metadata does not touch your pixels &mdash; the image is bit-for-bit the photograph it was, and only the hidden fields go. And no, you cannot rely on the platform to do it for you: some social networks strip on upload, but marketplaces, forums, email attachments and direct file links frequently preserve everything. The asymmetry is the point. Stripping a file that was already clean costs you nothing; trusting a platform that turns out not to strip costs you your address.</p>
+                    <p>Two worries come up every time, and both deserve a straight answer. Stripping metadata does not touch your pixels; the image is bit-for-bit the photograph it was, and only the hidden fields go. And no, you cannot rely on the platform to do it for you: some social networks strip on upload, but marketplaces, forums, email attachments and direct file links frequently preserve everything. The asymmetry is the point. Stripping a file that was already clean costs you nothing; trusting a platform that turns out not to strip costs you your address.</p>
                     <h2>The habit worth building</h2>
-                    <p>Your photos quietly carry your location. For a single image, your phone or OS can remove it free &mdash; use it. When you want everything stripped in one clean step, or you&rsquo;re cleaning a batch, use <a href="tools/metadata-strip.html">the $1 privacy cleaner</a>, or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
+                    <p>Your photos quietly carry your location. For a single image, your phone or OS can remove it free; use it. When you want everything stripped in one clean step, or you&rsquo;re cleaning a batch, use <a href="tools/metadata-strip.html">the $1 privacy cleaner</a>, or browse the full <a href="tools/index.html">$1 tools catalog</a>.</p>
 
                 </div>
 
@@ -172,7 +172,7 @@
                 <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
             </nav>
             <!-- social:end -->
-            <p class="footer-copy">&copy; 2026 Rebel Studios Software — designed &amp; built in-house, like everything else we ship.</p>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. Designed &amp; built in-house, like everything else we ship.</p>
         </div>
     </footer>
     <script src="script.js"></script>

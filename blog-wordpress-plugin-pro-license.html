@@ -52,7 +52,7 @@
 
     <section class="page-header"><div class="container">
         <h1>How to Add a Pro License to a WordPress Plugin</h1>
-        <p>Sell a Pro tier without getting pulled from WordPress.org — the two-part architecture and license verification</p>
+        <p>Sell a Pro tier without getting pulled from WordPress.org: the two-part architecture and license verification</p>
     </div></section>
 
     <article class="blog-article"><div class="container"><div class="article-wrapper">
@@ -63,44 +63,44 @@
         <figure class="article-figure"><img src="images/blog/art/wordpress-plugin-pro-license.png" alt="" width="1200" height="380" loading="lazy"></figure>
 
         <div class="article-content">
-            <p>You want to charge for a WordPress plugin. The catch: if you distribute the free version on WordPress.org, you cannot ship paid code in it or lock features behind a payment &mdash; the directory forbids "trialware." So how do you sell a Pro tier without getting your plugin pulled? The answer is a clean two-part architecture, and it is simpler than it sounds.</p>
+            <p>You want to charge for a WordPress plugin. The catch: if you distribute the free version on WordPress.org, you cannot ship paid code in it or lock features behind a payment: the directory forbids "trialware." So how do you sell a Pro tier without getting your plugin pulled? The answer is a clean two-part architecture, and it is simpler than it sounds.</p>
 
             <h2>The rule you must not break</h2>
             <p><strong>The plugin hosted on WordPress.org may contain only free, fully-functional code.</strong> No disabled paid features, no "upgrade to unlock" gates on code that ships in the free download. Violate this and your plugin gets rejected or removed. Everyone selling a Pro tier works around it the same way.</p>
 
             <h2>The compliant pattern: free plugin + separate Pro add-on</h2>
             <ul class="article-list">
-                <li><strong>The free plugin</strong> (on wp.org) contains the free features plus a <em>gate</em> and "Get Pro" links &mdash; but no paid code. The gate is just a filter: <code>if ( apply_filters( 'myplugin_is_pro', false ) ) { /* register paid hooks */ }</code>.</li>
+                <li><strong>The free plugin</strong> (on wp.org) contains the free features plus a <em>gate</em> and "Get Pro" links, but no paid code. The gate is just a filter: <code>if ( apply_filters( 'myplugin_is_pro', false ) ) { /* register paid hooks */ }</code>.</li>
                 <li><strong>The Pro add-on</strong> is a <em>separate</em> plugin you sell on your own store (Gumroad, Freemius, Lemon Squeezy). It is never uploaded to wp.org. When installed and licensed, it answers that filter with <code>true</code> and registers the paid features on hooks the free plugin already exposes.</li>
             </ul>
             <p>Because the paid code lives only in the add-on the buyer downloads from you, the wp.org copy stays 100% free and compliant. See <a href="blog-build-freemium-wordpress-plugin.html">the full freemium architecture</a> for how the two pieces fit together.</p>
 
             <h2>Verifying the license key</h2>
-            <p>The Pro add-on needs to confirm the buyer actually paid. The lightest approach: your store issues a license key per sale, and the add-on verifies it against the store&rsquo;s API. Gumroad, for example, exposes a license-verification endpoint &mdash; the add-on POSTs the product ID and the key, gets back whether it&rsquo;s valid (and not refunded), and stores the result. Cache the check so you are not calling the API on every page load, and re-check periodically.</p>
+            <p>The Pro add-on needs to confirm the buyer actually paid. The lightest approach: your store issues a license key per sale, and the add-on verifies it against the store&rsquo;s API. Gumroad, for example, exposes a license-verification endpoint: the add-on POSTs the product ID and the key, gets back whether it&rsquo;s valid (and not refunded), and stores the result. Cache the check so you are not calling the API on every page load, and re-check periodically.</p>
             <p>Whatever store you pick, keep <em>one</em> store as the license authority so you are not reconciling two key formats. The buyer pastes their key once; the add-on flips <code>myplugin_is_pro</code> to true; every gated feature lights up.</p>
 
             <h2>Failing safe when the license server is down</h2>
 
-                    <p>The question that separates a licensing system people tolerate from one they resent: what happens when your check can&rsquo;t complete? A remote verification will fail eventually &mdash; your server has an outage, their host blocks outbound requests, a DNS hiccup times out the call. If a failed check instantly disables paid features, you have built a product that punishes paying customers for <em>your</em> downtime, on their production store, without warning.</p>
+                    <p>The question that separates a licensing system people tolerate from one they resent: what happens when your check can&rsquo;t complete? A remote verification will fail eventually: your server has an outage, their host blocks outbound requests, a DNS hiccup times out the call. If a failed check instantly disables paid features, you have built a product that punishes paying customers for <em>your</em> downtime, on their production store, without warning.</p>
 
-                    <p>Fail open, within limits. Cache the last successful verification with a generous grace period &mdash; a week or two is common &mdash; and keep Pro working throughout it. Re-check quietly in the background rather than during a page load, and never block <code>admin_init</code> on a network request, which is how a slow license endpoint turns into a hung dashboard for every user. Only after the grace window expires with repeated failures should you degrade, and then with a clear, non-destructive message.</p>
+                    <p>Fail open, within limits. Cache the last successful verification with a generous grace period (a week or two is common) and keep Pro working throughout it. Re-check quietly in the background rather than during a page load, and never block <code>admin_init</code> on a network request, which is how a slow license endpoint turns into a hung dashboard for every user. Only after the grace window expires with repeated failures should you degrade, and then with a clear, non-destructive message.</p>
 
                     <h2>Degrade without destroying data</h2>
 
-                    <p>When a license genuinely lapses, disable <em>functionality</em>, never data. If a customer&rsquo;s Pro tier built 300 records, an expired license must not delete them or make them unreachable &mdash; it should stop new Pro actions while leaving everything already created intact and exportable. Anything else is holding a customer&rsquo;s own data hostage, and it generates the refund requests and one-star reviews that cost more than the renewal was worth.</p>
+                    <p>When a license genuinely lapses, disable <em>functionality</em>, never data. If a customer&rsquo;s Pro tier built 300 records, an expired license must not delete them or make them unreachable; it should stop new Pro actions while leaving everything already created intact and exportable. Anything else is holding a customer&rsquo;s own data hostage, and it generates the refund requests and one-star reviews that cost more than the renewal was worth.</p>
 
-                    <p>Two more details that decide whether renewals are painless: <strong>make deactivation easy</strong> so a customer can move a license between a staging site and production without opening a ticket, and <strong>store the key where it belongs</strong> &mdash; an option, not hardcoded, and never logged in plain text in a debug file that ends up in a support thread.</p>
+                    <p>Two more details that decide whether renewals are painless: <strong>make deactivation easy</strong> so a customer can move a license between a staging site and production without opening a ticket, and <strong>store the key where it belongs</strong>: an option, not hardcoded, and never logged in plain text in a debug file that ends up in a support thread.</p>
 
                     <h2>Support burden is a design decision</h2>
             <p>Licensing decisions look like revenue decisions and behave like support decisions. Every rule you add is a message someone will eventually open a ticket about, and the ticket volume is roughly proportional to how surprising the rule is.</p>
-            <p>Site limits are the clearest example. A licence valid on one site sounds simple until you meet the way people actually work: a staging copy, a local development install, and a production site are three activations of what the customer correctly regards as one website. If your activation logic counts hostnames naively, you will spend real time manually resetting licences for honest customers &mdash; and the customers who are genuinely sharing keys will not be inconvenienced in the slightest, because they were prepared to be.</p>
+            <p>Site limits are the clearest example. A licence valid on one site sounds simple until you meet the way people actually work: a staging copy, a local development install, and a production site are three activations of what the customer correctly regards as one website. If your activation logic counts hostnames naively, you will spend real time manually resetting licences for honest customers, and the customers who are genuinely sharing keys will not be inconvenienced in the slightest, because they were prepared to be.</p>
             <p>The pragmatic pattern is to detect obvious non-production hosts and exempt them, allow a modest number of activations rather than exactly one, and make deactivation something the customer can do themselves from their account. All three reduce tickets more than they reduce piracy, which is the correct trade for a small plugin business.</p>
 
             <h2>Don&rsquo;t build the gate twice</h2>
             <p>The license gate, the settings framework, the readme format, and the build-to-zip script are the same for every freemium plugin you ship. The feature is the only part that changes. Build the plumbing once (or start from a kit that already has it), and each new plugin becomes "add the feature, ship it" instead of a week of boilerplate.</p>
             <div class="boiler-cta">
                 <h3>Skip building the license plumbing</h3>
-                <p>The Freemium WordPress Plugin Boilerplate ships this exact license gate already wired &mdash; a Pro filter, a settings framework, a wp.org-ready readme, and a one-command scaffolder. Add your feature and ship, instead of rebuilding the gate for every plugin.</p>
+                <p>The Freemium WordPress Plugin Boilerplate ships this exact license gate already wired: a Pro filter, a settings framework, a wp.org-ready readme, and a one-command scaffolder. Add your feature and ship, instead of rebuilding the gate for every plugin.</p>
                 <p><a href="wp-plugin-boilerplate.html" class="btn btn-primary">See the boilerplate &rarr;</a></p>
             </div>
             <p>Related reading: <a href="blog-build-freemium-wordpress-plugin.html">how to build a freemium WordPress plugin (and actually sell the Pro version)</a>.</p>

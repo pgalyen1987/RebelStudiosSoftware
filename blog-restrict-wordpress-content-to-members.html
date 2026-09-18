@@ -97,25 +97,25 @@
                     <p>Every restriction decision on a WordPress site is one of these. Naming them properly makes the plugin choice almost automatic.</p>
 
                     <ul class="article-list">
-                        <li><strong>Public.</strong> Anyone, including search engines. The default, and the right answer for more of your content than you think &mdash; a members area with nothing public has no way to attract members.</li>
+                        <li><strong>Public.</strong> Anyone, including search engines. The default, and the right answer for more of your content than you think: a members area with nothing public has no way to attract members.</li>
                         <li><strong>Logged in.</strong> Any registered account. Useful for community features and almost never the right fence for paid content, because registration is free.</li>
                         <li><strong>Member.</strong> A registered account you have flagged as a member. This is the distinction most sites actually need, and the one WordPress has no native concept of.</li>
                         <li><strong>A specific tier.</strong> Gold sees this, silver does not. Only worth reaching for once you genuinely sell more than one thing.</li>
                     </ul>
 
-                    <p>The common mistake is conflating the middle two. If &ldquo;members only&rdquo; is implemented as &ldquo;logged in&rdquo;, then anyone who registers &mdash; free, in ten seconds &mdash; reads everything. Sites ship this and do not notice for months, because it looks correct while you are testing as an administrator.</p>
+                    <p>The common mistake is conflating the middle two. If &ldquo;members only&rdquo; is implemented as &ldquo;logged in&rdquo;, then anyone who registers (free, in ten seconds) reads everything. Sites ship this and do not notice for months, because it looks correct while you are testing as an administrator.</p>
 
                     <h2>Why WordPress roles are the wrong tool</h2>
 
                     <p>The instinct is to use roles: make a Member role, restrict by capability, done. It works, and it becomes a problem about six months later.</p>
 
-                    <p>Roles in WordPress describe <em>what someone can do in the admin</em> &mdash; edit posts, moderate comments, install plugins. Membership describes <em>what someone can read on the front end</em>, and that is a different axis. The moment you have a member who is also a contributor, you need someone to be two things at once, and a role-based scheme forces you to invent combinations: member-contributor, expired-member-contributor. It multiplies badly.</p>
+                    <p>Roles in WordPress describe <em>what someone can do in the admin</em>: edit posts, moderate comments, install plugins. Membership describes <em>what someone can read on the front end</em>, and that is a different axis. The moment you have a member who is also a contributor, you need someone to be two things at once, and a role-based scheme forces you to invent combinations: member-contributor, expired-member-contributor. It multiplies badly.</p>
 
                     <p>Keeping membership as a flag on the user, separate from their role, means a contributor can be a member, an administrator can have an expired membership for testing, and none of it interferes with what anyone can do in wp-admin.</p>
 
                     <h2>Expiry is what turns a sale into a business</h2>
 
-                    <p>This is the part people leave until last and should design first. A membership that never expires is a one-off sale. A membership that expires is recurring revenue &mdash; and the difference is a single date field.</p>
+                    <p>This is the part people leave until last and should design first. A membership that never expires is a one-off sale. A membership that expires is recurring revenue, and the difference is a single date field.</p>
 
                     <p>Two details decide whether that field behaves sanely.</p>
 
@@ -129,17 +129,17 @@
     }
     $expires = (int) get_user_meta( $user_id, '_member_expires', true );
 
-    // 0 means lifetime — deliberately not "expired in 1970"
+    // 0 means lifetime, deliberately not "expired in 1970"
     return 0 === $expires || $expires > time();
 }</code></pre>
 
-                    <p>Note the zero case. Representing lifetime access as an empty or zero timestamp is fine, but only if you handle it explicitly &mdash; otherwise every lifetime member silently expires on the first of January 1970.</p>
+                    <p>Note the zero case. Representing lifetime access as an empty or zero timestamp is fine, but only if you handle it explicitly; otherwise every lifetime member silently expires on the first of January 1970.</p>
 
                     <h2>What should happen when a membership lapses</h2>
 
                     <p>This is the design question that separates plugins that feel considered from plugins that feel hostile, and almost nobody asks it before launching.</p>
 
-                    <p>When someone's membership runs out, their content should become unavailable &mdash; that is the point. What should <em>not</em> happen is anything destructive. Do not delete their account, strip their role, remove their comments, or discard the profile they filled in. They are not gone; they are lapsed, and a lapsed member is the single easiest person to sell to.</p>
+                    <p>When someone's membership runs out, their content should become unavailable; that is the point. What should <em>not</em> happen is anything destructive. Do not delete their account, strip their role, remove their comments, or discard the profile they filled in. They are not gone; they are lapsed, and a lapsed member is the single easiest person to sell to.</p>
 
                     <p>The same restraint applies to your own licence checks. If the paid component that manages expiry is disabled or its licence lapses, the sane behaviour is for existing members to keep their access rather than for the whole site to lock out everyone who paid you. Fail towards letting people in, and let the failure be visible to you in the admin rather than to them on the front end.</p>
 
@@ -147,18 +147,18 @@
 
                     <p>A practical note that is worth more than any implementation detail: a members area where nothing is public cannot grow. Search engines index nothing, nobody can evaluate whether it is worth paying for, and your only acquisition channel is people who already trust you.</p>
 
-                    <p>The pattern that works is a genuinely useful public layer &mdash; enough that someone can judge the quality &mdash; with the depth behind the fence. Restricted content should also degrade into a real page with a real explanation and a join link, not a redirect to a login screen. A redirect tells a visitor they did something wrong. A message tells them what exists and how to get it.</p>
+                    <p>The pattern that works is a genuinely useful public layer (enough that someone can judge the quality) with the depth behind the fence. Restricted content should also degrade into a real page with a real explanation and a join link, not a redirect to a login screen. A redirect tells a visitor they did something wrong. A message tells them what exists and how to get it.</p>
 
                     <div class="article-callout">
                         <h3>A plugin that keeps the essentials free</h3>
-                        <p><a href="membership-content-restriction.html">Membership &amp; Content Restriction</a> does the four levels above from a box in the post editor, with front-end registration, login and a members directory, and no cap on free members. <a href="membership-content-restriction.html">Membership Pro</a> adds paid plans through your own WooCommerce, expiry that behaves the way described here &mdash; early renewal adds time &mdash; and tiers. The download includes both.</p>
+                        <p><a href="membership-content-restriction.html">Membership &amp; Content Restriction</a> does the four levels above from a box in the post editor, with front-end registration, login and a members directory, and no cap on free members. <a href="membership-content-restriction.html">Membership Pro</a> adds paid plans through your own WooCommerce, expiry that behaves the way described here (early renewal adds time), and tiers. The download includes both.</p>
                     </div>
 
                     <h2>The order to build it in</h2>
 
                     <p>If you are starting now: get the public and member split right first, with no payment involved at all. Invite a handful of people, flag them as members by hand, and check that the fence holds when you view the site logged out and logged in as a plain subscriber.</p>
 
-                    <p>Only then add money. Payment is the easy part &mdash; it is a WooCommerce product and a hook &mdash; and adding it to a restriction model you have already proven is far less painful than debugging both at once. Tiers come last, if ever. Plenty of profitable membership sites sell exactly one thing.</p>
+                    <p>Only then add money. Payment is the easy part: it is a WooCommerce product and a hook, and adding it to a restriction model you have already proven is far less painful than debugging both at once. Tiers come last, if ever. Plenty of profitable membership sites sell exactly one thing.</p>
 
                     <p><em>Building a members area and want the architecture sane from the start? <a href="index.html#contact">Get in touch</a>.</em></p>
 

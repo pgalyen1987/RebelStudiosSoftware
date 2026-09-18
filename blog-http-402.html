@@ -21,7 +21,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rebelstudiossoftware.com/blog-http-402.html">
     <meta property="og:title" content="HTTP 402 Payment Required: The Status Code Powering AI Agent Payments">
-    <meta property="og:description" content="The dormant HTTP status code that now lets software pay software per call. How 402 and the x402 protocol turn any API into something an AI agent can pay for — no signup, no keys.">
+    <meta property="og:description" content="The dormant HTTP status code that now lets software pay software per call. How 402 and the x402 protocol turn any API into something an AI agent can pay for, with no signup and no keys.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/http-402.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -88,7 +88,7 @@
                 <figure class="article-hero"><img src="images/gate402/landing.png" alt="Gate402, an x402 pay-per-call gateway for AI agents" width="1280" height="720" loading="lazy"></figure>
 
                 <div class="article-content">
-                    <p>Open the official list of HTTP status codes and you&rsquo;ll find the familiar ones: 200 OK, 404 Not Found, 403 Forbidden, 500 for when the server falls over. Tucked among them is a code almost no developer has ever returned on purpose: <strong>402 Payment Required</strong>. For three decades its spec has carried the same quiet note &mdash; <em>&ldquo;reserved for future use.&rdquo;</em></p>
+                    <p>Open the official list of HTTP status codes and you&rsquo;ll find the familiar ones: 200 OK, 404 Not Found, 403 Forbidden, 500 for when the server falls over. Tucked among them is a code almost no developer has ever returned on purpose: <strong>402 Payment Required</strong>. For three decades its spec has carried the same quiet note: <em>&ldquo;reserved for future use.&rdquo;</em></p>
 
                     <p>That future finally arrived, and it has nothing to do with humans paying for websites. It is about <strong>software paying software</strong>. I spent the last stretch building a payment gateway on top of 402, so here is the plain-English explanation of what it is, why it was dormant for so long, and why AI agents are the reason it woke up.</p>
 
@@ -96,14 +96,14 @@
 
                     <p>When the web was designed in the early 1990s, its authors anticipated that some resources would cost money. So they reserved a status code for it: a server could answer a request with <code>402 Payment Required</code>, signaling &ldquo;you need to pay before I hand this over.&rdquo; The idea was a native, built-in way to charge for content.</p>
 
-                    <p>It never happened. There was no standard for <em>how</em> the payment attached to the request, no universal digital cash, and no way to move a fraction of a cent without a credit-card network taking a fixed fee that dwarfed the amount. So the web routed around it. Payment became a human ritual &mdash; sign up, save a card, click a button, get a receipt &mdash; and 402 stayed a reserved placeholder for thirty years.</p>
+                    <p>It never happened. There was no standard for <em>how</em> the payment attached to the request, no universal digital cash, and no way to move a fraction of a cent without a credit-card network taking a fixed fee that dwarfed the amount. So the web routed around it. Payment became a human ritual: sign up, save a card, click a button, get a receipt. And 402 stayed a reserved placeholder for thirty years.</p>
 
                     <h2>Why It&rsquo;s Waking Up Now</h2>
 
                     <p>Two things changed at once.</p>
 
                     <ul class="article-list">
-                        <li><strong>AI agents got good enough to actually do things.</strong> Not just chat &mdash; book, research, compare, fetch, buy. An agent running an errand on your behalf constantly hits resources that cost money: a premium data feed, a paid API, a page behind a paywall.</li>
+                        <li><strong>AI agents got good enough to actually do things.</strong> Not just chat: book, research, compare, fetch, buy. An agent running an errand on your behalf constantly hits resources that cost money: a premium data feed, a paid API, a page behind a paywall.</li>
                         <li><strong>Stablecoins made micropayments real.</strong> Digital dollars like USDC can move a tenth of a cent across the internet, instantly, without a card network skimming thirty cents off the top. Suddenly the &ldquo;how do you attach payment to a request&rdquo; problem had an answer.</li>
                     </ul>
 
@@ -111,7 +111,7 @@
 
                     <h2>How x402 Actually Works</h2>
 
-                    <p>The protocol that fills in the &ldquo;how&rdquo; is called <strong>x402</strong>. The flow is refreshingly simple &mdash; it&rsquo;s just the request/response cycle you already know, with one extra round trip:</p>
+                    <p>The protocol that fills in the &ldquo;how&rdquo; is called <strong>x402</strong>. The flow is refreshingly simple: it&rsquo;s just the request/response cycle you already know, with one extra round trip:</p>
 
                     <div class="article-diagram">1. Agent  ──── GET /v1/premium-data ───▶  Server
 2. Server ──── 402 Payment Required ───▶  Agent
@@ -125,7 +125,7 @@
 
                     <div class="article-callout">
                         <h3>Per-sip, not per-subscription</h3>
-                        <p>The old web charges by the month &mdash; you rent access whether you use it once or a thousand times. 402 charges by the sip: a fraction of a cent for the one call you actually make. For an AI agent that needs a paid resource now and then rather than in a constant stream, that&rsquo;s the difference between a sensible bill and a pile of unused subscriptions.</p>
+                        <p>The old web charges by the month: you rent access whether you use it once or a thousand times. 402 charges by the sip: a fraction of a cent for the one call you actually make. For an AI agent that needs a paid resource now and then rather than in a constant stream, that&rsquo;s the difference between a sensible bill and a pile of unused subscriptions.</p>
                     </div>
 
                     <h2>What You Can Build With It</h2>
@@ -133,20 +133,20 @@
                     <p>Once payment is a native part of the request, a few things get much easier:</p>
 
                     <ul class="article-list">
-                        <li><strong>Monetize an API for machines.</strong> Expose a paid endpoint that any agent can call and pay for instantly &mdash; no developer onboarding, no free-tier abuse, no key rotation.</li>
+                        <li><strong>Monetize an API for machines.</strong> Expose a paid endpoint that any agent can call and pay for instantly, with no developer onboarding, no free-tier abuse, no key rotation.</li>
                         <li><strong>Charge AI crawlers instead of blocking them.</strong> Rather than fighting bots scraping your content for free, hand them a 402 and let them pay per page.</li>
                         <li><strong>Give your own agent a budget.</strong> Hand an assistant a small funded wallet and a goal, and let it pay its own way across dozens of services to get the job done.</li>
                     </ul>
 
                     <h2>The Honest Caveats</h2>
 
-                    <p>It&rsquo;s real, but it&rsquo;s early. The total volume flowing over 402 today is small &mdash; the rails work, the traffic is a trickle. And an agent that can spend money is a new attack surface: anything that can be tricked into making requests can be tricked into making <em>paid</em> requests, so spending limits and receipts matter from day one. This is &ldquo;the technology works and settles real money&rdquo; territory, not &ldquo;everyone shops this way&rdquo; territory &mdash; yet.</p>
+                    <p>It&rsquo;s real, but it&rsquo;s early. The total volume flowing over 402 today is small: the rails work, the traffic is a trickle. And an agent that can spend money is a new attack surface: anything that can be tricked into making requests can be tricked into making <em>paid</em> requests, so spending limits and receipts matter from day one. This is &ldquo;the technology works and settles real money&rdquo; territory, not &ldquo;everyone shops this way&rdquo; territory yet.</p>
 
                     <h2>The status code finally has a job</h2>
 
-                    <p>402 Payment Required waited thirty years for the two things it needed: software smart enough to spend on its own, and money light enough to move a fraction of a cent. Both finally exist. The status code that was &ldquo;reserved for future use&rdquo; turns out to have been reserved for <em>this</em> &mdash; an internet where the buyer is a machine.</p>
+                    <p>402 Payment Required waited thirty years for the two things it needed: software smart enough to spend on its own, and money light enough to move a fraction of a cent. Both finally exist. The status code that was &ldquo;reserved for future use&rdquo; turns out to have been reserved for <em>this</em>: an internet where the buyer is a machine.</p>
 
-                    <p><em>I built <a href="https://gate402.app" target="_blank" rel="noopener noreferrer">gate402</a>, a pay-per-call gateway that fronts paid APIs and settles real x402 micropayments on-chain in under two seconds &mdash; no signup, no keys. If you want to monetize an API for AI agents, or build an agent that can pay its own way, <a href="index.html#contact">that&rsquo;s what we do at Rebel Studios.</a></em></p>
+                    <p><em>I built <a href="https://gate402.app" target="_blank" rel="noopener noreferrer">gate402</a>, a pay-per-call gateway that fronts paid APIs and settles real x402 micropayments on-chain in under two seconds, with no signup, no keys. If you want to monetize an API for AI agents, or build an agent that can pay its own way, <a href="index.html#contact">that&rsquo;s what we do at Rebel Studios.</a></em></p>
                 </div>
 
                 <div class="article-footer-nav">

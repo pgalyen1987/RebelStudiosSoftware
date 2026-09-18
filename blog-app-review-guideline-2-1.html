@@ -73,7 +73,7 @@
         <section class="page-header">
         <div class="container">
             <h1>Guideline 2.1: What Apple Actually Wants From a New Developer</h1>
-            <p>The &ldquo;Information Needed&rdquo; rejection is a questionnaire, not a bug report &mdash; and there is a trap underneath it</p>
+            <p>The &ldquo;Information Needed&rdquo; rejection is a questionnaire, not a bug report, and there is a trap underneath it</p>
         </div>
     </section>
 
@@ -87,11 +87,11 @@
 
                 <div class="article-content">
 
-            <p>If you are submitting your first or second app from a new developer account, there is a rejection waiting for you that has nothing to do with your code. It arrives as <strong>Guideline 2.1 &mdash; Information Needed</strong>, and it opens with a sentence that confuses everyone who gets it:</p>
+            <p>If you are submitting your first or second app from a new developer account, there is a rejection waiting for you that has nothing to do with your code. It arrives as <strong>Guideline 2.1 - Information Needed</strong>, and it opens with a sentence that confuses everyone who gets it:</p>
 
             <blockquote><p>&ldquo;This app has been submitted by a developer account that has a limited App Review history. We need additional information to better understand the app and complete the review.&rdquo;</p></blockquote>
 
-            <p>Nothing is broken. Apple has not found a bug. You have been handed a questionnaire because they do not know you yet, and the review will not move until you answer it. We got this one last night on a music game, and the useful part was not the questionnaire &mdash; it was what we found underneath it while writing the reply.</p>
+            <p>Nothing is broken. Apple has not found a bug. You have been handed a questionnaire because they do not know you yet, and the review will not move until you answer it. We got this one last night on a music game, and the useful part was not the questionnaire; it was what we found underneath it while writing the reply.</p>
 
             <h2>What the six items are actually asking</h2>
 
@@ -101,7 +101,7 @@
 
             <p>This is the item people get stuck on, and the requirements are stricter than they look. It must start at launch, show the typical user flow, and include account registration, login and deletion, any user-generated content with its reporting and blocking controls, and <strong>accessing paid content or features</strong>. A simulator capture will be rejected.</p>
 
-            <p>The point is not the video. The point is that Apple wants evidence the app runs on real hardware, because the most common failure from a new account is an app that only ever ran in a simulator. If a section does not apply &mdash; no accounts, no user content &mdash; say so explicitly in the reply. An unanswered item reads as an evasion.</p>
+            <p>The point is not the video. The point is that Apple wants evidence the app runs on real hardware, because the most common failure from a new account is an app that only ever ran in a simulator. If a section does not apply (no accounts, no user content), say so explicitly in the reply. An unanswered item reads as an evasion.</p>
 
             <h3>2. Purpose and target audience</h3>
 
@@ -109,7 +109,7 @@
 
             <h3>3. Setup and access instructions</h3>
 
-            <p>How to reach the main features, plus credentials for a demo account if there is one. If nothing is gated behind a sign-in, say that in the first line &mdash; it removes an entire class of follow-up. Number the steps. A reviewer has minutes, not patience.</p>
+            <p>How to reach the main features, plus credentials for a demo account if there is one. If nothing is gated behind a sign-in, say that in the first line; it removes an entire class of follow-up. Number the steps. A reviewer has minutes, not patience.</p>
 
             <h3>4. External services and platforms</h3>
 
@@ -117,7 +117,7 @@
 
             <h3>5. Regional differences</h3>
 
-            <p>Either describe them or state that the app behaves identically everywhere. Incidental variation still counts &mdash; if your content comes from an API that returns different results per storefront, that is worth one sentence, because the alternative is a reviewer in another country seeing something you did not describe.</p>
+            <p>Either describe them or state that the app behaves identically everywhere. Incidental variation still counts: if your content comes from an API that returns different results per storefront, that is worth one sentence, because the alternative is a reviewer in another country seeing something you did not describe.</p>
 
             <h3>6. Regulated industries and third-party material</h3>
 
@@ -129,15 +129,15 @@
 
             <blockquote><p>&ldquo;In-App Purchase products should be configured and submitted alongside the app.&rdquo;</p></blockquote>
 
-            <p>When we checked our own app against that, the in-app purchase list in App Store Connect was <strong>empty</strong> &mdash; while the build shipped a $4.99 unlock screen with Buy and Restore buttons. A reviewer tapping Buy would have hit nothing at all. That is not a 2.1 problem, it is <strong>Guideline 3.1.1</strong>, and it would have burned the next review cycle on its own.</p>
+            <p>When we checked our own app against that, the in-app purchase list in App Store Connect was <strong>empty</strong>, while the build shipped a $4.99 unlock screen with Buy and Restore buttons. A reviewer tapping Buy would have hit nothing at all. That is not a 2.1 problem, it is <strong>Guideline 3.1.1</strong>, and it would have burned the next review cycle on its own.</p>
 
             <p>This is easy to check and easy to miss, because the app builds and runs perfectly without it. The purchase code is written against a product ID; whether that ID exists on Apple's side is a separate piece of state in a separate system. You can query it directly:</p>
 
             <pre><code>GET /v1/apps/{APP_ID}/inAppPurchasesV2</code></pre>
 
-            <p>If that comes back empty and your app has a paywall, stop and fix it before you reply to anything. A first non-consumable also has to be <em>submitted with a new app version</em> &mdash; it will not clear on its own, so it must be attached to the submission rather than created and forgotten.</p>
+            <p>If that comes back empty and your app has a paywall, stop and fix it before you reply to anything. A first non-consumable also has to be <em>submitted with a new app version</em>; it will not clear on its own, so it must be attached to the submission rather than created and forgotten.</p>
 
-            <p>While you are there, check for product IDs your app no longer sells. Ours still referenced legacy subscription IDs for restore compatibility, for an app that had never shipped &mdash; so no legacy purchase could exist. A subscription ID in a build with no configured subscription is another 3.1.1 conversation you do not need.</p>
+            <p>While you are there, check for product IDs your app no longer sells. Ours still referenced legacy subscription IDs for restore compatibility, for an app that had never shipped, so no legacy purchase could exist. A subscription ID in a build with no configured subscription is another 3.1.1 conversation you do not need.</p>
 
             <h2>What the physical-device recording actually takes</h2>
 
@@ -147,7 +147,7 @@
                 <li><strong>Firebase Test Lab does not record video on iOS.</strong> Android only. We paid three hours to learn that.</li>
                 <li><strong>AWS Device Farm is not on the free plan.</strong> It needs a paid support plan, and it is region-locked to us-west-2. Runs cost around a dollar and take twelve to twenty minutes each, which sets the pace of your debugging loop.</li>
                 <li><strong>The built-in fuzzer will wreck the take.</strong> Device Farm's simplest mode keeps the session alive by tapping randomly, and those taps land on your UI. We have watched it un-tick a EULA checkbox between two steps and then wander into a password reset. If you go that route, the app needs a demo mode that swallows touches and drives itself.</li>
-                <li><strong>The alternative is a scripted walkthrough.</strong> An Appium test gives you a deliberate recording of the exact binary you submitted, which is better evidence than a demo build. It costs you packaging instead: Device Farm needs custom environment mode with a test spec, and the dependency bundle must be wheels &mdash; ship a source tarball and the offline installer tries to build it, fails to find setuptools, and the whole run dies before the app launches.</li>
+                <li><strong>The alternative is a scripted walkthrough.</strong> An Appium test gives you a deliberate recording of the exact binary you submitted, which is better evidence than a demo build. It costs you packaging instead: Device Farm needs custom environment mode with a test spec, and the dependency bundle must be wheels: ship a source tarball and the offline installer tries to build it, fails to find setuptools, and the whole run dies before the app launches.</li>
             </ul>
 
             <p>Whichever way you go, pace the recording. Two seconds of stillness after each tap is the difference between a video a reviewer can follow and a blur they will ask you to redo.</p>

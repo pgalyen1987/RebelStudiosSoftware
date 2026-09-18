@@ -52,7 +52,7 @@
 
     <section class="page-header"><div class="container">
         <h1>How to Attach a PDF Invoice to WooCommerce Order Emails</h1>
-        <p>Send the invoice automatically with the order email — no plugin code, no manual step</p>
+        <p>Send the invoice automatically with the order email, no plugin code, no manual step</p>
     </div></section>
 
     <article class="blog-article"><div class="container"><div class="article-wrapper">
@@ -63,7 +63,7 @@
         <figure class="article-figure"><img src="images/blog/art/attach-pdf-invoice-woocommerce-order-emails.png" alt="" width="1200" height="380" loading="lazy"></figure>
 
         <div class="article-content">
-            <p>Sending the invoice as a separate step &mdash; or asking customers to log in and download it &mdash; is friction nobody wants. The right behavior is simple: when an order reaches Processing or Completed, WooCommerce sends its email and the PDF invoice is already attached. Here is how that works, and how to set it up without code.</p>
+            <p>Sending the invoice as a separate step (or asking customers to log in and download it) is friction nobody wants. The right behavior is simple: when an order reaches Processing or Completed, WooCommerce sends its email and the PDF invoice is already attached. Here is how that works, and how to set it up without code.</p>
 
             <h2>Which email should carry the invoice?</h2>
             <p>WooCommerce sends different emails at different order statuses. For most stores the invoice belongs on the <strong>Processing order</strong> email (payment received) or the <strong>Completed order</strong> email (fulfilled). Pick one so the customer isn&rsquo;t sent two copies. B2B and invoice-terms stores often prefer Processing; physical-goods stores often prefer Completed.</p>
@@ -72,36 +72,36 @@
             <ul class="article-list">
                 <li>Install an invoice plugin that supports email attachment, and set your business details, logo and tax info once in its settings.</li>
                 <li>Choose the trigger email (Processing or Completed). The plugin hooks WooCommerce&rsquo;s <code>woocommerce_email_attachments</code> filter and adds the generated PDF to that message.</li>
-                <li>Place a test order and move it to that status. The email arrives with <code>invoice-1234.pdf</code> attached &mdash; no manual step.</li>
+                <li>Place a test order and move it to that status. The email arrives with <code>invoice-1234.pdf</code> attached, no manual step.</li>
             </ul>
 
             <h2>Why deliverability gets worse when you attach</h2>
 
                     <p>Attaching a PDF quietly changes your email from a small text message into a payload, and that has consequences most stores discover through customer complaints rather than logs. A WooCommerce install sending mail through plain PHP <code>mail()</code> is already fragile; add a few hundred kilobytes of attachment and you push against per-message size limits, slower SMTP handoffs, and spam filters that score attachments from unauthenticated senders more harshly.</p>
 
-                    <p>Two fixes carry nearly all the weight. First, send through <strong>authenticated SMTP or a transactional provider</strong> rather than <code>mail()</code>, so your messages carry SPF and DKIM alignment and stop looking like spoofed mail. Second, <strong>keep the PDF small</strong> &mdash; a logo exported at 2000px wide and embedded at 200px is the single most common reason a two-page invoice weighs 3 MB. Resize the asset, don&rsquo;t just scale it in the template.</p>
+                    <p>Two fixes carry nearly all the weight. First, send through <strong>authenticated SMTP or a transactional provider</strong> rather than <code>mail()</code>, so your messages carry SPF and DKIM alignment and stop looking like spoofed mail. Second, <strong>keep the PDF small</strong>: a logo exported at 2000px wide and embedded at 200px is the single most common reason a two-page invoice weighs 3 MB. Resize the asset, don&rsquo;t just scale it in the template.</p>
 
                     <h2>Generate at send time, not on demand</h2>
 
-                    <p>There&rsquo;s a subtle architectural decision hiding here. If the PDF is generated fresh every time someone opens a link, the document can silently <em>change</em> after the fact &mdash; a corrected address, a new tax rate, an updated logo &mdash; and an invoice that changes retroactively is precisely what accounting rules forbid. Generate the document when the invoice is issued, store it, and serve that stored file afterward. The version the customer received and the version in your records should be byte-identical a year later.</p>
+                    <p>There&rsquo;s a subtle architectural decision hiding here. If the PDF is generated fresh every time someone opens a link, the document can silently <em>change</em> after the fact (a corrected address, a new tax rate, an updated logo), and an invoice that changes retroactively is precisely what accounting rules forbid. Generate the document when the invoice is issued, store it, and serve that stored file afterward. The version the customer received and the version in your records should be byte-identical a year later.</p>
 
-                    <p>The same logic applies to <strong>attachment order and naming</strong>. A file called <code>invoice.pdf</code> is worthless in a customer&rsquo;s downloads folder next to eleven other <code>invoice.pdf</code> files. Name it with the invoice number and your store &mdash; <code>ACME-2026-0042.pdf</code> &mdash; and you cut a meaningful share of &ldquo;can you resend my invoice?&rdquo; support requests.</p>
+                    <p>The same logic applies to <strong>attachment order and naming</strong>. A file called <code>invoice.pdf</code> is worthless in a customer&rsquo;s downloads folder next to eleven other <code>invoice.pdf</code> files. Name it with the invoice number and your store (<code>ACME-2026-0042.pdf</code>), and you cut a meaningful share of &ldquo;can you resend my invoice?&rdquo; support requests.</p>
 
                     <h2>The details that trip people up</h2>
             <p><strong>Invoice numbers must be stable.</strong> The number assigned when the invoice is first generated has to be stored on the order, so that a reprint or a resend never produces a different number. Accountants and tax authorities require sequential, non-changing invoice numbers. A plugin that regenerates the number on every render is a compliance problem.</p>
             <p><strong>The PDF engine must not break the email.</strong> If the invoice can&rsquo;t generate (a host missing a PHP extension, say), the order email must still send. Good plugins degrade gracefully to a printable HTML document instead of throwing a fatal error that stops the email entirely.</p>
-            <p><strong>Language and currency have to render.</strong> The attached PDF should show the customer&rsquo;s name, address and your currency symbol correctly in any language &mdash; see our guide on <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">fixing invoices that don&rsquo;t render Arabic or RTL text</a>.</p>
+            <p><strong>Language and currency have to render.</strong> The attached PDF should show the customer&rsquo;s name, address and your currency symbol correctly in any language; see our guide on <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">fixing invoices that don&rsquo;t render Arabic or RTL text</a>.</p>
 
             <h2>Test with a real inbox, not the order preview</h2>
             <p>The preview in your admin renders the document; it does not exercise the path that actually breaks. Almost every failure in this feature happens between the site and the recipient's mail server, which the preview never touches.</p>
-            <p>Three checks catch nearly all of it. Place a genuine test order and confirm the attachment arrives at an address on a major provider rather than your own domain &mdash; self-hosted mail to itself will succeed in situations where anything external fails. Check the spam folder rather than assuming non-delivery. And open the PDF on a phone, since that is where a majority of order emails are read and a document that assumes a desktop viewer is worth knowing about early.</p>
+            <p>Three checks catch nearly all of it. Place a genuine test order and confirm the attachment arrives at an address on a major provider rather than your own domain: self-hosted mail to itself will succeed in situations where anything external fails. Check the spam folder rather than assuming non-delivery. And open the PDF on a phone, since that is where a majority of order emails are read and a document that assumes a desktop viewer is worth knowing about early.</p>
             <p>It is also worth testing an order that exercises the awkward cases: a long product name, a customer address with non-Latin characters, and a tax line, all of which surface layout problems that a one-item test order will never reveal.</p>
 
             <h2>What should be free vs. paid</h2>
-            <p>Automatic email attachment, the invoice itself, packing slips, delivery notes, taxes, totals and sequential numbering are table stakes &mdash; they should be in the free plugin. Reserve payment for genuine power features: bulk-printing invoices for many orders at once, custom document templates, and credit notes.</p>
+            <p>Automatic email attachment, the invoice itself, packing slips, delivery notes, taxes, totals and sequential numbering are table stakes; they should be in the free plugin. Reserve payment for genuine power features: bulk-printing invoices for many orders at once, custom document templates, and credit notes.</p>
             <div class="boiler-cta">
                 <h3>The plugin built for this exact problem</h3>
-                <p>Rebel Studios Invoice Documents for WooCommerce renders every language &mdash; Arabic, Hebrew and Persian right-to-left, plus every accented and non-Latin script &mdash; because it ships a full Unicode font and proper text shaping instead of subsetting Latin-only glyphs. The invoice, packing slip and delivery note are free, it attaches the PDF to your order emails automatically, and it works with the block checkout and HPOS.</p>
+                <p>Rebel Studios Invoice Documents for WooCommerce renders every language (Arabic, Hebrew and Persian right-to-left, plus every accented and non-Latin script), because it ships a full Unicode font and proper text shaping instead of subsetting Latin-only glyphs. The invoice, packing slip and delivery note are free, it attaches the PDF to your order emails automatically, and it works with the block checkout and HPOS.</p>
                 <p><a href="wc-invoices.html" class="btn btn-primary">See the WooCommerce invoice plugin &rarr;</a></p>
             </div>
             <p>Related reading: <a href="blog-woocommerce-invoice-arabic-rtl-not-rendering.html">why invoice PDFs don&rsquo;t render Arabic / RTL text</a> , <a href="blog-woocommerce-sequential-invoice-numbers.html">sequential invoice numbering</a>, and <a href="blog-build-freemium-wordpress-plugin.html">how freemium WordPress plugins work</a>.</p>

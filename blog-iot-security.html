@@ -89,30 +89,30 @@
 
                 <div class="article-content">
                     <h2>The Expanding Attack Surface</h2>
-                    <p>By 2026, an estimated 18.8 billion IoT devices are connected worldwide. Smart cameras, thermostats, medical monitors, industrial sensors, and connected vehicles have woven themselves into the fabric of daily life and critical infrastructure. But each new device added to a network is a potential entry point for attackers &mdash; and the vast majority ship with security as an afterthought.</p>
+                    <p>By 2026, an estimated 18.8 billion IoT devices are connected worldwide. Smart cameras, thermostats, medical monitors, industrial sensors, and connected vehicles have woven themselves into the fabric of daily life and critical infrastructure. But each new device added to a network is a potential entry point for attackers, and the vast majority ship with security as an afterthought.</p>
 
-                    <p>Unlike traditional IT assets &mdash; servers, laptops, and phones that receive regular patches and run endpoint protection &mdash; IoT devices typically run stripped-down firmware, lack update mechanisms, use default credentials, and communicate over protocols with little or no encryption. This asymmetry creates a perfect storm: the number of targets is exploding while the per-device security posture is declining.</p>
+                    <p>Unlike traditional IT assets (servers, laptops, and phones that receive regular patches and run endpoint protection), IoT devices typically run stripped-down firmware, lack update mechanisms, use default credentials, and communicate over protocols with little or no encryption. This asymmetry creates a perfect storm: the number of targets is exploding while the per-device security posture is declining.</p>
 
                     <h2>Why IoT Devices Are Uniquely Vulnerable</h2>
 
                     <div class="article-highlight">
                         <h3>1. Default and Hardcoded Credentials</h3>
-                        <p>Many IoT devices ship with factory-default usernames and passwords that are publicly documented. The Mirai botnet &mdash; one of the most destructive DDoS attacks in history &mdash; was built entirely by scanning the internet for devices using a list of just 62 default credential pairs. Mirai&rsquo;s descendants and rivals &mdash; variants like Okiru, the older Gafgyt (BASHLITE) family, and the vigilante botnet Hajime &mdash; continue to infect hundreds of thousands of devices annually.</p>
+                        <p>Many IoT devices ship with factory-default usernames and passwords that are publicly documented. The Mirai botnet, one of the most destructive DDoS attacks in history, was built entirely by scanning the internet for devices using a list of just 62 default credential pairs. Mirai&rsquo;s descendants and rivals, variants like Okiru, the older Gafgyt (BASHLITE) family, and the vigilante botnet Hajime, continue to infect hundreds of thousands of devices annually.</p>
                     </div>
 
                     <div class="article-highlight">
                         <h3>2. Infrequent or Impossible Updates</h3>
-                        <p>A vulnerability in your laptop's browser gets patched within days. A vulnerability in a smart lightbulb may never be patched. Many IoT manufacturers have no OTA (over-the-air) update mechanism, and even those that do often rely on users to manually initiate updates &mdash; something that almost never happens. This means that known, published vulnerabilities remain exploitable for the entire lifetime of the device.</p>
+                        <p>A vulnerability in your laptop's browser gets patched within days. A vulnerability in a smart lightbulb may never be patched. Many IoT manufacturers have no OTA (over-the-air) update mechanism, and even those that do often rely on users to manually initiate updates, something that almost never happens. This means that known, published vulnerabilities remain exploitable for the entire lifetime of the device.</p>
                     </div>
 
                     <div class="article-highlight">
                         <h3>3. Invisible Network Behavior</h3>
-                        <p>Most network monitoring tools are designed around IT endpoints &mdash; computers and servers running standard operating systems. IoT devices communicate in patterns that are alien to these tools: periodic telemetry beacons, MQTT pub/sub messaging, CoAP requests, and UPnP discovery. Without IoT-specific monitoring, compromised devices can exfiltrate data or participate in botnets completely unnoticed.</p>
+                        <p>Most network monitoring tools are designed around IT endpoints: computers and servers running standard operating systems. IoT devices communicate in patterns that are alien to these tools: periodic telemetry beacons, MQTT pub/sub messaging, CoAP requests, and UPnP discovery. Without IoT-specific monitoring, compromised devices can exfiltrate data or participate in botnets completely unnoticed.</p>
                     </div>
 
                     <div class="article-highlight">
                         <h3>4. Lateral Movement Gateway</h3>
-                        <p>Attackers rarely target IoT devices for their own sake. A compromised smart camera or thermostat serves as a beachhead &mdash; a foothold inside the network from which to pivot to higher-value targets like file servers, databases, and domain controllers. Because IoT devices sit on the same flat network as critical assets in most deployments, a single compromised sensor can lead to a full enterprise breach.</p>
+                        <p>Attackers rarely target IoT devices for their own sake. A compromised smart camera or thermostat serves as a beachhead: a foothold inside the network from which to pivot to higher-value targets like file servers, databases, and domain controllers. Because IoT devices sit on the same flat network as critical assets in most deployments, a single compromised sensor can lead to a full enterprise breach.</p>
                     </div>
 
                     <h2>Real-World Impact</h2>
@@ -124,14 +124,14 @@
                         <li><strong>VPNFilter (2018):</strong> A nation-state malware campaign infected over 500,000 routers and NAS devices across 54 countries, capable of intercepting traffic, stealing credentials, and bricking devices on command.</li>
                         <li><strong>Verkada Camera Breach (2021):</strong> Attackers gained access to 150,000+ security cameras across hospitals, prisons, schools, and Tesla factories through a single exposed administrative credential.</li>
                         <li><strong>Water Treatment Attack (2021):</strong> An attacker remotely accessed a water treatment plant in Oldsmar, Florida and attempted to increase sodium hydroxide (lye) levels to potentially poisonous concentrations.</li>
-                        <li><strong>Hospital IoT Attacks (2020&ndash;2024):</strong> Connected medical devices &mdash; infusion pumps, patient monitors, and imaging systems &mdash; have been repeatedly exploited to gain access to hospital networks, with ransomware incidents directly impacting patient care.</li>
+                        <li><strong>Hospital IoT Attacks (2020&ndash;2024):</strong> Connected medical devices (infusion pumps, patient monitors, and imaging systems) have been repeatedly exploited to gain access to hospital networks, with ransomware incidents directly impacting patient care.</li>
                     </ul>
 
                     <h2>The Detection Gap</h2>
 
                     <p>Traditional security approaches fail against IoT threats for a fundamental reason: they rely on installing software on the endpoint. You cannot install an antivirus agent on a smart thermostat. You cannot run an EDR (Endpoint Detection and Response) agent on a network-connected pressure sensor. The endpoint-centric model that protects laptops and servers simply does not apply.</p>
 
-                    <p>This leaves network-level monitoring as the primary defense. But conventional network monitoring (SIEM, IDS/IPS) relies on signature-based detection &mdash; matching traffic against known attack patterns. This approach has two critical weaknesses:</p>
+                    <p>This leaves network-level monitoring as the primary defense. But conventional network monitoring (SIEM, IDS/IPS) relies on signature-based detection: matching traffic against known attack patterns. This approach has two critical weaknesses:</p>
 
                     <ol class="article-list">
                         <li><strong>Signature lag:</strong> New IoT malware families appear faster than signatures can be written. By the time a signature is published, the botnet has already grown.</li>
@@ -144,11 +144,11 @@
 
                     <p>Every IoT device has a characteristic behavioral fingerprint: the servers it contacts, the frequency and volume of its traffic, the protocols it uses, and the times of day it is active. A smart thermostat that reports temperature to a cloud API every 5 minutes has a very different profile from one that suddenly starts scanning internal IP addresses or sending encrypted traffic to an unknown server in Eastern Europe.</p>
 
-                    <p>Behavioral anomaly detection learns each device's normal pattern from benign traffic alone &mdash; no malware samples required. When behavior deviates significantly from the learned baseline, an alert is raised. This approach catches zero-day attacks, novel malware, and insider threats that signature-based systems miss entirely.</p>
+                    <p>Behavioral anomaly detection learns each device's normal pattern from benign traffic alone, with no malware samples required. When behavior deviates significantly from the learned baseline, an alert is raised. This approach catches zero-day attacks, novel malware, and insider threats that signature-based systems miss entirely.</p>
 
                     <div class="article-callout">
                         <h3>This is exactly the approach behind Vigilo</h3>
-                        <p>Our <a href="vigilo.html">Vigilo</a> anomaly detection prototype uses a ~1.3M parameter Mamba-2 state-space model to learn per-device behavioral baselines from benign Zeek connection logs only. On the IoT-23 lab dataset (20 malware families), it detected 75% of infected devices at 1% false positive rate &mdash; catching loud attacks (port scans, DDoS, noisy botnets) while running entirely on CPU. Field validation on real home/enterprise networks is ongoing.</p>
+                        <p>Our <a href="vigilo.html">Vigilo</a> anomaly detection prototype uses a ~1.3M parameter Mamba-2 state-space model to learn per-device behavioral baselines from benign Zeek connection logs only. On the IoT-23 lab dataset (20 malware families), it detected 75% of infected devices at 1% false positive rate, catching loud attacks (port scans, DDoS, noisy botnets) while running entirely on CPU. Field validation on real home/enterprise networks is ongoing.</p>
                     </div>
 
                     <h2>Best Practices for IoT Security</h2>
@@ -184,19 +184,19 @@
 
                     <p>The IoT security landscape is evolving in several important directions:</p>
 
-                    <p><strong>On-device AI:</strong> Lightweight machine learning models that run on network appliances or edge hosts can detect anomalies from connection metadata without sending sensitive traffic to the cloud. This is the approach behind <a href="vigilo.html">Vigilo</a> &mdash; a ~1.3M parameter model that runs on CPU and keeps analysis local (currently a v0.1.0 open-source prototype).</p>
+                    <p><strong>On-device AI:</strong> Lightweight machine learning models that run on network appliances or edge hosts can detect anomalies from connection metadata without sending sensitive traffic to the cloud. This is the approach behind <a href="vigilo.html">Vigilo</a>: a ~1.3M parameter model that runs on CPU and keeps analysis local (currently a v0.1.0 open-source prototype).</p>
 
                     <p><strong>Per-device baselining:</strong> Rather than training a single "normal" model for all devices, the future is per-asset learning where each device's own early-life behavior becomes its baseline. This eliminates the need for a library of device-type signatures and works with any manufacturer's equipment.</p>
 
                     <p><strong>Regulatory pressure:</strong> The EU Cyber Resilience Act (CRA), effective 2027, will require IoT manufacturers to provide security patches for the expected lifetime of their products and prohibit default passwords. Similar regulations are advancing in the US (IoT Cybersecurity Improvement Act) and UK (PSTI Act, effective 2024). These regulations will force a long-overdue improvement in baseline device security.</p>
 
-                    <p><strong>Zero-trust architecture:</strong> The zero-trust model &mdash; "never trust, always verify" &mdash; is being extended to IoT environments, where every device communication is authenticated and authorized regardless of network location. This fundamentally changes the security posture from perimeter defense to continuous verification.</p>
+                    <p><strong>Zero-trust architecture:</strong> The zero-trust model ("never trust, always verify") is being extended to IoT environments, where every device communication is authenticated and authorized regardless of network location. This fundamentally changes the security posture from perimeter defense to continuous verification.</p>
 
                     <h2>Conclusion</h2>
 
-                    <p>IoT security is not a niche concern &mdash; it is a fundamental challenge that affects every organization and home with connected devices. The combination of exploding device counts, poor baseline security, and the inability to install traditional endpoint protection creates a threat landscape that demands new approaches.</p>
+                    <p>IoT security is not a niche concern; it is a fundamental challenge that affects every organization and home with connected devices. The combination of exploding device counts, poor baseline security, and the inability to install traditional endpoint protection creates a threat landscape that demands new approaches.</p>
 
-                    <p>Behavioral anomaly detection, network segmentation, and on-device AI represent the most promising path forward. At Rebel Studios, we are building these solutions with <a href="vigilo.html">Vigilo</a> &mdash; proving that effective IoT anomaly detection is possible with lightweight models, local processing, and no cloud dependency.</p>
+                    <p>Behavioral anomaly detection, network segmentation, and on-device AI represent the most promising path forward. At Rebel Studios, we are building these solutions with <a href="vigilo.html">Vigilo</a>, proving that effective IoT anomaly detection is possible with lightweight models, local processing, and no cloud dependency.</p>
 
                     <p>The question is not whether your IoT devices will be targeted. The question is whether you will detect it when they are.</p>
                 </div>

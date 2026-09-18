@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
-    <meta name="description" content="Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush — and a $1 tool that does it for you.">
+    <meta name="description" content="Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush, and a $1 tool that does it for you.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/blog-file-too-large.html">
     <link rel="icon" href="images/RS-logo.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
@@ -91,7 +91,7 @@
 
                     <p>The form is clear: <strong>Maximum file size: 5 MB</strong>. Your export is 17.4 MB. You are not building a media company. You are trying to submit one document before a deadline.</p>
 
-                    <p>This is one of the most common upload failures on the modern web &mdash; and one of the least well-served by &ldquo;free compressors&rdquo; that bury the download behind signup walls.</p>
+                    <p>This is one of the most common upload failures on the modern web, and one of the least well-served by &ldquo;free compressors&rdquo; that bury the download behind signup walls.</p>
 
                     <h2>Why Limits Exist</h2>
 
@@ -104,7 +104,7 @@
                     <ul class="article-list">
                         <li><strong>Lower JPEG quality</strong> (e.g. 90 → 75) often cuts size dramatically with little visible change on a form photo</li>
                         <li><strong>Resize dimensions</strong> if the image is 4000 px wide and the form only displays 800 px</li>
-                        <li><strong>Convert HEIC/PNG to JPEG</strong> when the portal allows JPG &mdash; PNG screenshots are often huge for no benefit</li>
+                        <li><strong>Convert HEIC/PNG to JPEG</strong> when the portal allows JPG; PNG screenshots are often huge for no benefit</li>
                     </ul>
 
                     <p>The single biggest, least-obvious win: <strong>a 4000&times;3000 phone photo displayed in a 400px form box is carrying 10&times; the pixels anyone will ever see.</strong> Resizing to a sane dimension often gets you under the cap before you touch quality at all.</p>
@@ -114,22 +114,22 @@
                     <ul class="article-list">
                         <li><strong>Quality 100 → 85</strong>: often halves the file with no difference you can see.</li>
                         <li><strong>Quality 85 → 75</strong>: another big drop, still fine for a headshot or document photo.</li>
-                        <li><strong>Below ~70</strong>: artifacts start showing on text and skin &mdash; stop here for anything that must stay readable.</li>
+                        <li><strong>Below ~70</strong>: artifacts start showing on text and skin; stop here for anything that must stay readable.</li>
                     </ul>
 
                     <h2>By File Type</h2>
-                    <p><strong>PDFs:</strong> size usually comes from embedded images scanned at 600 DPI when 150 DPI would read fine, plus embedded fonts. Downsampling the images is the main lever &mdash; and if the PDF is really a stack of photos, rebuilding it from compressed images (see <a href="tools/photo-to-pdf.html">photo → clean PDF</a>) is often smaller than &ldquo;compressing&rdquo; the bloated original.</p>
-                    <p><strong>Video:</strong> a different game &mdash; re-encode to H.264/H.265 at a lower bitrate or resolution. A 180 MB clip for a 25 MB portal cap needs <a href="tools/video-under-mb.html">video under size</a>, not image tricks.</p>
+                    <p><strong>PDFs:</strong> size usually comes from embedded images scanned at 600 DPI when 150 DPI would read fine, plus embedded fonts. Downsampling the images is the main lever, and if the PDF is really a stack of photos, rebuilding it from compressed images (see <a href="tools/photo-to-pdf.html">photo → clean PDF</a>) is often smaller than &ldquo;compressing&rdquo; the bloated original.</p>
+                    <p><strong>Video:</strong> a different game. Re-encode to H.264/H.265 at a lower bitrate or resolution. A 180 MB clip for a 25 MB portal cap needs <a href="tools/video-under-mb.html">video under size</a>, not image tricks.</p>
                     <p><strong>Screenshots saved as PNG:</strong> PNG is lossless and enormous for photographic content. If the portal accepts JPG, converting a PNG screenshot to JPEG can cut it by 80%.</p>
 
                     <div class="article-callout">
                         <h3>Name the constraint, not the algorithm</h3>
-                        <p>People don&rsquo;t want &ldquo;compression.&rdquo; They want: <em>make this under 5 MB.</em> That&rsquo;s exactly what <a href="tools/under-mb.html">Under-X MB</a> does as a $1 utility &mdash; you set the max, it iterates quality and scale until the file fits, and hands it back. Agents can call the same operation over x402.</p>
+                        <p>People don&rsquo;t want &ldquo;compression.&rdquo; They want: <em>make this under 5 MB.</em> That&rsquo;s exactly what <a href="tools/under-mb.html">Under-X MB</a> does as a $1 utility: you set the max, it iterates quality and scale until the file fits, and hands it back. Agents can call the same operation over x402.</p>
                     </div>
 
                     <h2>A Sensible Manual Approach</h2>
                     <ol class="article-list">
-                        <li>Note the exact limit &mdash; 500 KB, 2 MB, 5 MB, 10 MB?</li>
+                        <li>Note the exact limit: 500 KB, 2 MB, 5 MB, 10 MB?</li>
                         <li>If it&rsquo;s an iPhone HEIC, <a href="tools/heic-to-jpg.html">convert to JPG</a> first.</li>
                         <li>Resize to the largest dimension the form actually needs (rarely more than ~1500 px).</li>
                         <li>Export JPEG and check the size; step quality down (90 → 80 → 75) until it&rsquo;s under the cap.</li>
@@ -137,13 +137,13 @@
                     </ol>
 
                     <h2>When You Should <em>Not</em> Crush Quality</h2>
-                    <p>Passport photos, medical scans, and legal exhibits have readability requirements. Keep JPEG quality above ~70 when text or faces must stay sharp. If you genuinely can&rsquo;t hit the limit without destroying the content, split the document into pages or ask the recipient for an alternate channel &mdash; but try a smart recompress first. Most &ldquo;too large&rdquo; phone photos have plenty of headroom.</p>
+                    <p>Passport photos, medical scans, and legal exhibits have readability requirements. Keep JPEG quality above ~70 when text or faces must stay sharp. If you genuinely can&rsquo;t hit the limit without destroying the content, split the document into pages or ask the recipient for an alternate channel, but try a smart recompress first. Most &ldquo;too large&rdquo; phone photos have plenty of headroom.</p>
 
                     <h2>Questions that come up when you are stuck</h2>
                     <h3>Why does my file look small but upload as huge?</h3>
                     <p>On-screen size is display pixels; file size is stored pixels &times; quality. A photo can look modest and still be 4000px wide at maximum quality.</p>
                     <h3>Does converting to JPG lose quality?</h3>
-                    <p>JPEG is lossy, but at quality 80+ the loss is invisible for photos. Don&rsquo;t use JPEG for line art or text-heavy graphics &mdash; use PNG there.</p>
+                    <p>JPEG is lossy, but at quality 80+ the loss is invisible for photos. Don&rsquo;t use JPEG for line art or text-heavy graphics; use PNG there.</p>
                     <h3>What if the portal also has a dimension rule?</h3>
                     <p>Size and dimensions are separate gates. Handle both at once with <a href="tools/uploadfix.html">UploadFix</a>.</p>
 
@@ -154,11 +154,11 @@
                     <h2>PDFs shrink differently from everything else</h2>
                     <p>General-purpose compression does comparatively little to a large PDF, because a PDF is a container and its size is almost always dominated by one of two things.</p>
                     <p><strong>Embedded images</strong> are the usual culprit, particularly in anything produced by scanning. A scanner set to 600 dpi stores roughly four times the data of 300 dpi, and for a document that will be read on screen or printed normally, that extra resolution is invisible. Downsampling images to 150&ndash;200 dpi routinely cuts a scanned PDF by most of its size with no perceptible difference.</p>
-                    <p><strong>Embedded fonts</strong> are the quieter one. A PDF can carry complete font files, and a document using several families with bold and italic variants can spend a surprising amount on typefaces alone. Subsetting &mdash; keeping only the characters actually used &mdash; is usually a checkbox in the export dialog, and it is close to free.</p>
+                    <p><strong>Embedded fonts</strong> are the quieter one. A PDF can carry complete font files, and a document using several families with bold and italic variants can spend a surprising amount on typefaces alone. Subsetting (keeping only the characters actually used) is usually a checkbox in the export dialog, and it is close to free.</p>
                     <p>Worth knowing before you reach for a compressor: if the PDF is a scan, converting the pages to greyscale often beats compressing them at full colour, and a scan of black text on white paper loses essentially nothing in the process.</p>
 
                     <h2>How to approach it</h2>
-                    <p>The limit is the spec &mdash; optimize to the number, resizing before you sacrifice quality. Use <a href="tools/under-mb.html">Under-X MB for $1</a> when you don&rsquo;t want to run the quality loop by hand, or start from the <a href="tools/index.html">tools hub</a> if you also need HEIC conversion or dimension fixes.</p>
+                    <p>The limit is the spec: optimize to the number, resizing before you sacrifice quality. Use <a href="tools/under-mb.html">Under-X MB for $1</a> when you don&rsquo;t want to run the quality loop by hand, or start from the <a href="tools/index.html">tools hub</a> if you also need HEIC conversion or dimension fixes.</p>
 
                 </div>
 
@@ -199,7 +199,7 @@
                 <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
             </nav>
             <!-- social:end -->
-            <p class="footer-copy">&copy; 2026 Rebel Studios Software — designed &amp; built in-house, like everything else we ship.</p>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. Designed &amp; built in-house, like everything else we ship.</p>
         </div>
     </footer>
     <script src="script.js"></script>

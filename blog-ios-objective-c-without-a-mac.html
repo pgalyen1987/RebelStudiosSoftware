@@ -72,7 +72,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Build and Ship an Objective-C iOS App Without a Mac</h1>
-            <p>Codemagic or a git-hosted macOS runner — and the code-signing step every guide skips</p>
+            <p>Codemagic or a git-hosted macOS runner, and the code-signing step every guide skips</p>
         </div>
     </section>
 
@@ -88,11 +88,11 @@
 
                 <div class="article-content">
 
-                    <p>The constraint is real and it is not negotiable: Xcode, <code>xcodebuild</code>, and the iOS SDK run on macOS and nowhere else. There is no Linux port, no official Windows toolchain, and the Apple licence permits macOS only on Apple hardware &mdash; which is why the virtual-machine workarounds you will find on forums are both fragile and a licence violation.</p>
+                    <p>The constraint is real and it is not negotiable: Xcode, <code>xcodebuild</code>, and the iOS SDK run on macOS and nowhere else. There is no Linux port, no official Windows toolchain, and the Apple licence permits macOS only on Apple hardware, which is why the virtual-machine workarounds you will find on forums are both fragile and a licence violation.</p>
 
                     <p>But &ldquo;you need a Mac&rdquo; and &ldquo;you need to <em>own</em> a Mac&rdquo; are different claims, and only the first one is true. You need macOS compute for a few minutes per build, and you can rent that by the minute. If your codebase is Objective-C, this works better than most people expect, because a mature Objective-C project is exactly the kind of thing that builds cleanly from the command line.</p>
 
-                    <p>This guide covers the two practical routes &mdash; Codemagic and a git-hosted macOS runner &mdash; and the code-signing problem that stops people long before the build does.</p>
+                    <p>This guide covers the two practical routes (Codemagic and a git-hosted macOS runner) and the code-signing problem that stops people long before the build does.</p>
 
                     <h2>The build is easy. Signing is the hard part.</h2>
 
@@ -104,13 +104,13 @@
                         <li>An <strong>App Store Connect API key</strong>, so the upload step can authenticate without a human typing a two-factor code.</li>
                     </ul>
 
-                    <p>The chicken-and-egg problem is the certificate. Every tutorial tells you to generate a certificate signing request in Keychain Access &mdash; which is a Mac application, which is the thing you do not have. This is where most people conclude it is impossible and go buy a Mac Mini.</p>
+                    <p>The chicken-and-egg problem is the certificate. Every tutorial tells you to generate a certificate signing request in Keychain Access, which is a Mac application, which is the thing you do not have. This is where most people conclude it is impossible and go buy a Mac Mini.</p>
 
                     <h3>Generating the CSR without a Mac</h3>
 
                     <p>A certificate signing request is not a proprietary Apple format. It is standard PKCS#10, and OpenSSL has produced them for decades. On Linux, or WSL, or anything with <code>openssl</code> installed:</p>
 
-                    <pre class="article-code"><code># 1. Private key — guard this file, it is your identity
+                    <pre class="article-code"><code># 1. Private key: guard this file, it is your identity
 openssl genrsa -out ios_distribution.key 2048
 
 # 2. The CSR you upload to developer.apple.com
@@ -138,7 +138,7 @@ base64 -w0 ios_distribution.p12 &gt; p12.b64</code></pre>
 
                     <div class="article-callout">
                         <h3>Before you build the pipeline</h3>
-                        <p>If you are starting a genuinely new app rather than maintaining an existing Objective-C codebase, read <a href="blog-ios-app-without-a-mac.html">the cross-platform route</a> first. Expo&rsquo;s cloud build solves this problem by never making it your problem. The pipeline below is worth building when you already have Objective-C worth keeping &mdash; not as a way to avoid choosing a stack.</p>
+                        <p>If you are starting a genuinely new app rather than maintaining an existing Objective-C codebase, read <a href="blog-ios-app-without-a-mac.html">the cross-platform route</a> first. Expo&rsquo;s cloud build solves this problem by never making it your problem. The pipeline below is worth building when you already have Objective-C worth keeping, not as a way to avoid choosing a stack.</p>
                     </div>
 
                     <h2>Option 1: Codemagic</h2>
@@ -178,11 +178,11 @@ base64 -w0 ios_distribution.p12 &gt; p12.b64</code></pre>
 
                     <p><code>xcode-project use-profiles</code> is doing the work that would otherwise be twenty lines of <code>security</code> commands: it reads the profiles attached to the build, patches the project&rsquo;s signing settings to match, and leaves <code>xcodebuild</code> with everything it needs.</p>
 
-                    <p>The trade is the usual one for managed platforms. You move faster on day one and you are inside someone else&rsquo;s abstraction on day one hundred &mdash; when a build breaks in a way the UI does not explain, you are debugging a system you did not build.</p>
+                    <p>The trade is the usual one for managed platforms. You move faster on day one and you are inside someone else&rsquo;s abstraction on day one hundred: when a build breaks in a way the UI does not explain, you are debugging a system you did not build.</p>
 
                     <h2>Option 2: A git-hosted macOS runner</h2>
 
-                    <p>GitHub Actions provides macOS runners with Xcode preinstalled, and GitLab offers the equivalent. Nothing here is mobile-specific, which means you do the signing plumbing yourself &mdash; roughly thirty lines, written once.</p>
+                    <p>GitHub Actions provides macOS runners with Xcode preinstalled, and GitLab offers the equivalent. Nothing here is mobile-specific, which means you do the signing plumbing yourself: roughly thirty lines, written once.</p>
 
                     <pre class="article-code"><code>name: iOS Release
 on:
@@ -244,7 +244,7 @@ jobs:
             -exportOptionsPlist ExportOptions.plist \
             -exportPath build</code></pre>
 
-                    <p>Two lines in there are the ones people lose hours to. <code>set-key-partition-list</code> is required on modern macOS or <code>codesign</code> will block waiting for a keychain prompt that no one is there to answer &mdash; the build simply hangs until it times out. And <code>CODE_SIGN_STYLE=Manual</code> overrides the automatic signing that an Xcode project will otherwise try to perform, which fails on a machine that has never seen your Apple ID.</p>
+                    <p>Two lines in there are the ones people lose hours to. <code>set-key-partition-list</code> is required on modern macOS or <code>codesign</code> will block waiting for a keychain prompt that no one is there to answer; the build simply hangs until it times out. And <code>CODE_SIGN_STYLE=Manual</code> overrides the automatic signing that an Xcode project will otherwise try to perform, which fails on a machine that has never seen your Apple ID.</p>
 
                     <p>Watch the cost model on private repositories: macOS runner minutes bill at a significant multiple of Linux minutes on most hosted plans. For a project that tags a release weekly this is negligible. For one that builds on every push to every branch, it is a real line item, and restricting the workflow to tags is worth doing on day one.</p>
 
@@ -255,14 +255,14 @@ jobs:
                     <ul class="article-list">
                         <li><strong>Build the workspace, not the project.</strong> If you use CocoaPods, <code>-workspace MyApp.xcworkspace</code> is mandatory. Passing <code>-project MyApp.xcodeproj</code> produces a wall of missing-header errors, because the Pods targets are not in the project file.</li>
                         <li><strong>Pin the Xcode version explicitly.</strong> Runner images update, and a newer Xcode can turn warnings your codebase has carried for years into errors. <code>xcode-select</code> against a specific version, and change it deliberately.</li>
-                        <li><strong>Check the deployment target before it checks you.</strong> Apple periodically raises the minimum SDK it will accept for submissions, and an old <code>IPHONEOS_DEPLOYMENT_TARGET</code> is a rejection at upload time &mdash; after a green build.</li>
+                        <li><strong>Check the deployment target before it checks you.</strong> Apple periodically raises the minimum SDK it will accept for submissions, and an old <code>IPHONEOS_DEPLOYMENT_TARGET</code> is a rejection at upload time, after a green build.</li>
                         <li><strong>Expect dropped architectures.</strong> Modern Xcode has no 32-bit iOS support and bitcode is gone. A project carrying <code>armv7</code> in its architecture list or bitcode settings needs those removed, not worked around.</li>
-                        <li><strong>Commit <code>Podfile.lock</code>.</strong> Without it, <code>pod install --repo-update</code> resolves fresh versions on the runner and you get a build that differs from every local one &mdash; the worst class of CI bug, because it is invisible in the diff.</li>
+                        <li><strong>Commit <code>Podfile.lock</code>.</strong> Without it, <code>pod install --repo-update</code> resolves fresh versions on the runner and you get a build that differs from every local one, the worst class of CI bug, because it is invisible in the diff.</li>
                     </ul>
 
                     <h2>What you actually give up</h2>
 
-                    <p>Being honest about this matters more than the YAML, because the cost is not in the build &mdash; it is in the loop.</p>
+                    <p>Being honest about this matters more than the YAML, because the cost is not in the build; it is in the loop.</p>
 
                     <p>You lose the interactive iOS Simulator <em>on your own machine</em>. You can run unit and UI tests headlessly on the runner, and you should, but you cannot casually poke at a layout, resize a view, and watch what happens. For an Objective-C app with hand-built UIKit layouts, that is the single biggest loss, because UIKit constraint problems are precisely the kind of bug you find by looking rather than by reasoning.</p>
 
@@ -272,7 +272,7 @@ jobs:
 
                     <h2>You can get a simulator anyway</h2>
 
-                    <p>That last section is the standard list of losses, and it is worth qualifying, because &ldquo;no Mac means no Simulator&rdquo; is repeated far more often than it is true. The Simulator is part of Xcode, and Xcode is already sitting on the machine you are renting. What you lack is a screen attached to it &mdash; and that is a solvable problem, in three different ways depending on what you actually need.</p>
+                    <p>That last section is the standard list of losses, and it is worth qualifying, because &ldquo;no Mac means no Simulator&rdquo; is repeated far more often than it is true. The Simulator is part of Xcode, and Xcode is already sitting on the machine you are renting. What you lack is a screen attached to it, and that is a solvable problem, in three different ways depending on what you actually need.</p>
 
                     <h3>Screenshots from CI, free</h3>
 
@@ -283,7 +283,7 @@ xcrun simctl install booted build/MyApp.app
 xcrun simctl launch booted com.yourcompany.yourapp
 xcrun simctl io booted screenshot iphone15pro.png</code></pre>
 
-                    <p>Loop that over several device names and you get a contact sheet of every screen size on every build, published as an artifact. It is not interactive, but it catches the class of bug you were most worried about &mdash; a constraint that only breaks on the small phone or the big one &mdash; and it catches it automatically rather than when a user reports it. <code>fastlane snapshot</code> automates the same idea across devices and languages if you would rather not write it yourself.</p>
+                    <p>Loop that over several device names and you get a contact sheet of every screen size on every build, published as an artifact. It is not interactive, but it catches the class of bug you were most worried about (a constraint that only breaks on the small phone or the big one), and it catches it automatically rather than when a user reports it. <code>fastlane snapshot</code> automates the same idea across devices and languages if you would rather not write it yourself.</p>
 
                     <p>One detail makes this much easier than the rest of the pipeline: a Simulator build needs <strong>no code signing at all</strong>. Building for the simulator destination produces an unsigned <code>.app</code>, so you can stand this up before you have sorted out a single certificate.</p>
 
@@ -295,7 +295,7 @@ xcrun simctl io booted screenshot iphone15pro.png</code></pre>
 
                     <h3>Renting the whole Mac</h3>
 
-                    <p>If you need Xcode itself &mdash; Interface Builder, the view hierarchy debugger, breakpoints in a running app &mdash; then rent a Mac rather than just a build. MacStadium, MacinCloud, Scaleway and AWS all rent macOS by the hour or month, and you connect over screen sharing.</p>
+                    <p>If you need Xcode itself (Interface Builder, the view hierarchy debugger, breakpoints in a running app), then rent a Mac rather than just a build. MacStadium, MacinCloud, Scaleway and AWS all rent macOS by the hour or month, and you connect over screen sharing.</p>
 
                     <p>Be clear-eyed about the arithmetic here. A few hours a month is trivially cheaper than buying hardware. Daily use for a year is not: at that point a monthly rental has quietly cost more than the Mac Mini it was avoiding, and it is slower to use. Rent for the occasional debugging session that genuinely needs a debugger; buy if that session is happening every week.</p>
 
@@ -305,9 +305,9 @@ xcrun simctl io booted screenshot iphone15pro.png</code></pre>
 
                     <p>Choose <strong>a git-hosted runner</strong> if your CI already lives there, you want one system rather than two, or you need the build to do things a mobile-specific platform does not anticipate. You will spend an extra afternoon on keychain commands and then never think about it again.</p>
 
-                    <p>Either way, the honest summary is this: the Mac requirement is a hardware-rental problem, not a wall. What you are really trading is iteration speed for capital expenditure &mdash; and for a mature Objective-C app in maintenance mode, shipping a handful of releases a year, that is often the right trade. For a UI-heavy app under active development, a used Mac Mini pays for itself in recovered afternoons faster than most people admit.</p>
+                    <p>Either way, the honest summary is this: the Mac requirement is a hardware-rental problem, not a wall. What you are really trading is iteration speed for capital expenditure, and for a mature Objective-C app in maintenance mode, shipping a handful of releases a year, that is often the right trade. For a UI-heavy app under active development, a used Mac Mini pays for itself in recovered afternoons faster than most people admit.</p>
 
-                    <p><em>Building something and hitting a wall like this one? <a href="index.html#contact">Tell us about it</a> &mdash; we do this for a living, on stacks nobody chose on purpose.</em></p>
+                    <p><em>Building something and hitting a wall like this one? <a href="index.html#contact">Tell us about it</a>. We do this for a living, on stacks nobody chose on purpose.</em></p>
 
                 </div>
 

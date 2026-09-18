@@ -88,64 +88,64 @@
                 <figure class="article-figure"><img src="images/blog/art/cloudflare-ai-agents.png" alt="" width="1200" height="380" loading="lazy"></figure>
 
                 <div class="article-content">
-                    <p>Build an AI agent that reads the web and you will hit a wall within the hour&mdash;often a literal one that says <em>&ldquo;Checking your browser before you access this site.&rdquo;</em> Your agent asked for a page; Cloudflare handed back a challenge instead of content, and your carefully engineered workflow returned an error message about JavaScript.</p>
+                    <p>Build an AI agent that reads the web and you will hit a wall within the hour, often a literal one that says <em>&ldquo;Checking your browser before you access this site.&rdquo;</em> Your agent asked for a page; Cloudflare handed back a challenge instead of content, and your carefully engineered workflow returned an error message about JavaScript.</p>
 
-                    <p>I ran straight into this building the stealth fetch for <a href="https://gate402.app" target="_blank" rel="noopener">gate402</a>, my pay-per-call gateway for AI agents. So here is the honest field guide: why agents get blocked, what genuinely gets them through, and&mdash;the part nobody likes to discuss&mdash;what it costs and where it still fails.</p>
+                    <p>I ran straight into this building the stealth fetch for <a href="https://gate402.app" target="_blank" rel="noopener">gate402</a>, my pay-per-call gateway for AI agents. So here is the honest field guide: why agents get blocked, what genuinely gets them through, and (the part nobody likes to discuss) what it costs and where it still fails.</p>
 
                     <h2>Why Your Agent Gets Blocked</h2>
 
                     <p>Anti-bot systems like Cloudflare, Akamai, and DataDome are not checking whether you are &ldquo;allowed&rdquo; to read a page. They are checking whether you look like a <em>human on a normal computer</em>. They score dozens of signals at once:</p>
 
                     <ul class="article-list">
-                        <li><strong>Your IP address.</strong> Traffic from a data center&mdash;AWS, a cheap VPS, most cloud servers&mdash;is instantly suspicious. Real people browse from home and mobile networks.</li>
+                        <li><strong>Your IP address.</strong> Traffic from a data center (AWS, a cheap VPS, most cloud servers) is instantly suspicious. Real people browse from home and mobile networks.</li>
                         <li><strong>Your browser fingerprint.</strong> A plain headless browser leaks a hundred tells: missing plugins, a too-clean automation flag, timing that is inhumanly precise.</li>
                         <li><strong>Whether you can run their challenge.</strong> Cloudflare quietly ships a JavaScript puzzle and a Turnstile widget. A simple HTTP fetch cannot solve it, so it never even sees the real page.</li>
                     </ul>
 
-                    <p>This is why the naive approach&mdash;fire a request from your server, or even run a headless Chrome on it&mdash;fails on protected sites. The IP screams &ldquo;data center,&rdquo; the fingerprint screams &ldquo;robot,&rdquo; and the challenge never gets solved.</p>
+                    <p>This is why the naive approach (fire a request from your server, or even run a headless Chrome on it) fails on protected sites. The IP screams &ldquo;data center,&rdquo; the fingerprint screams &ldquo;robot,&rdquo; and the challenge never gets solved.</p>
 
                     <h2>What Actually Gets Through</h2>
 
-                    <p>Two ingredients do the heavy lifting, and neither is a clever trick&mdash;they are infrastructure.</p>
+                    <p>Two ingredients do the heavy lifting, and neither is a clever trick; they are infrastructure.</p>
 
                     <h3>Residential proxies</h3>
 
-                    <p>Instead of connecting from a data center, the request is routed through a real home or mobile internet connection&mdash;a genuine residential IP. To the target site, the traffic now looks like an ordinary person in an ordinary city. This single change defeats the largest, cheapest layer of bot filtering, because &ldquo;is this a server IP?&rdquo; is the first and bluntest question these systems ask.</p>
+                    <p>Instead of connecting from a data center, the request is routed through a real home or mobile internet connection: a genuine residential IP. To the target site, the traffic now looks like an ordinary person in an ordinary city. This single change defeats the largest, cheapest layer of bot filtering, because &ldquo;is this a server IP?&rdquo; is the first and bluntest question these systems ask.</p>
 
                     <h3>A real browser that solves the challenge</h3>
 
-                    <p>On top of that, the fetch runs in a full browser that actually executes Cloudflare&rsquo;s JavaScript, waits for the challenge to resolve, and&mdash;when a CAPTCHA appears&mdash;solves it before grabbing the final, rendered HTML. Only then do you have the page a human would have seen.</p>
+                    <p>On top of that, the fetch runs in a full browser that actually executes Cloudflare&rsquo;s JavaScript, waits for the challenge to resolve, and, when a CAPTCHA appears, solves it before grabbing the final, rendered HTML. Only then do you have the page a human would have seen.</p>
 
-                    <p>Stitch those together and a protected page comes back as clean, readable content. In my own setup the request goes out through a rotating residential pool, the challenge is solved automatically, and the page is returned to the agent as tidy Markdown&mdash;no challenge screen, no JavaScript error, just the text.</p>
+                    <p>Stitch those together and a protected page comes back as clean, readable content. In my own setup the request goes out through a rotating residential pool, the challenge is solved automatically, and the page is returned to the agent as tidy Markdown: no challenge screen, no JavaScript error, just the text.</p>
 
                     <h2>The Part The Vendors Skip: What It Costs</h2>
 
                     <p>Here is where you have to be clear-eyed, because this is not free and the pricing models matter.</p>
 
-                    <p>Residential proxies and CAPTCHA solving are <em>real, ongoing costs</em>&mdash;someone is renting those home IPs and running those solvers. That expense gets passed to you one of two ways:</p>
+                    <p>Residential proxies and CAPTCHA solving are <em>real, ongoing costs</em>: someone is renting those home IPs and running those solvers. That expense gets passed to you one of two ways:</p>
 
                     <ul class="article-list">
-                        <li><strong>Monthly subscriptions</strong> &mdash; you commit to a plan whether you make ten requests or ten thousand. Fine at scale; wasteful if your agent only occasionally needs a protected page.</li>
-                        <li><strong>Pay-per-success</strong> &mdash; you are billed a small amount only when a page actually comes back unlocked. No monthly floor, no charge for failed attempts.</li>
+                        <li><strong>Monthly subscriptions</strong>: you commit to a plan whether you make ten requests or ten thousand. Fine at scale; wasteful if your agent only occasionally needs a protected page.</li>
+                        <li><strong>Pay-per-success</strong>: you are billed a small amount only when a page actually comes back unlocked. No monthly floor, no charge for failed attempts.</li>
                     </ul>
 
-                    <p>For an AI agent&mdash;which tends to need a hard page now and then rather than in a constant firehose&mdash;pay-per-success is almost always the saner economics. It is exactly why I priced gate402&rsquo;s stealth fetch per call and settled it over the x402 protocol: the agent pays a few cents for the pages it actually gets, and nothing for a quiet week.</p>
+                    <p>For an AI agent, which tends to need a hard page now and then rather than in a constant firehose, pay-per-success is almost always the saner economics. It is exactly why I priced gate402&rsquo;s stealth fetch per call and settled it over the x402 protocol: the agent pays a few cents for the pages it actually gets, and nothing for a quiet week.</p>
 
                     <h2>The Honest Limits</h2>
 
                     <p>No one gets through everything, and anyone who claims a 100% success rate is bluffing.</p>
 
-                    <p><strong>The hardest targets still lose sometimes.</strong> Sites that pair aggressive anti-bot with behavioral analysis&mdash;watching mouse movement, session history, account state&mdash;can still refuse even a residential, challenge-solving browser. A well-built fetcher tells you when it failed instead of returning a challenge page dressed up as content.</p>
+                    <p><strong>The hardest targets still lose sometimes.</strong> Sites that pair aggressive anti-bot with behavioral analysis (watching mouse movement, session history, account state) can still refuse even a residential, challenge-solving browser. A well-built fetcher tells you when it failed instead of returning a challenge page dressed up as content.</p>
 
                     <p><strong>It is slower.</strong> Solving a challenge in a real browser through a residential hop takes seconds, not milliseconds. That is the tax on getting in at all; budget for it in any agent loop.</p>
 
-                    <p><strong>Respect the boundaries that matter.</strong> Bypassing a bot wall is not a license to ignore a site&rsquo;s terms, hammer a server, or lift personal data. The responsible use is reading public pages your agent has a legitimate reason to read&mdash;and building in rate limits and good sense.</p>
+                    <p><strong>Respect the boundaries that matter.</strong> Bypassing a bot wall is not a license to ignore a site&rsquo;s terms, hammer a server, or lift personal data. The responsible use is reading public pages your agent has a legitimate reason to read, and building in rate limits and good sense.</p>
 
                     <h2>What this adds up to</h2>
 
-                    <p>Getting an AI agent past Cloudflare is not magic and it is not a hack&mdash;it is residential IPs plus a browser that solves the challenge, priced so you pay for what works. Once you understand the moving parts, you can either wire up a managed unlocker yourself or lean on a service that has already done it. Either way, the wall stops being the thing that ends your project on day one.</p>
+                    <p>Getting an AI agent past Cloudflare is not magic and it is not a hack: it is residential IPs plus a browser that solves the challenge, priced so you pay for what works. Once you understand the moving parts, you can either wire up a managed unlocker yourself or lean on a service that has already done it. Either way, the wall stops being the thing that ends your project on day one.</p>
 
-                    <p><em>Building an agent that needs to read the real, messy, protected web&mdash;and want it done by someone who has already shipped the hard part? <a href="index.html#contact">That is what we do at Rebel Studios.</a></em></p>
+                    <p><em>Building an agent that needs to read the real, messy, protected web, and want it done by someone who has already shipped the hard part? <a href="index.html#contact">That is what we do at Rebel Studios.</a></em></p>
                 </div>
 
                 <div class="article-footer-nav">

@@ -98,7 +98,7 @@
 
                     <ul class="article-list">
                         <li><strong>Take the money.</strong> Genuinely solved if you have WooCommerce. Your gateway, tax rules, refund process and currency are already configured and already working.</li>
-                        <li><strong>Produce something the attendee can show.</strong> A PDF with a QR code. The QR only needs to encode an identifier unique to that attendee &mdash; it does not need to contain their details, and it is better if it does not.</li>
+                        <li><strong>Produce something the attendee can show.</strong> A PDF with a QR code. The QR only needs to encode an identifier unique to that attendee; it does not need to contain their details, and it is better if it does not.</li>
                         <li><strong>Let someone verify it at the door.</strong> A page that reads the code, checks it against the database, and marks it used. A phone browser is sufficient; nobody needs a scanner gun.</li>
                         <li><strong>Not issue a ticket for money you did not receive.</strong> This is the one that gets underestimated, and it is the whole ballgame. More below.</li>
                     </ul>
@@ -109,11 +109,11 @@
 
                     <p>In a naive build, the registration form submits, you create the attendee record, generate the ticket and email it, then send the visitor onward to checkout. On your own machine, paying with a test card, that flow works perfectly every time. In production it produces two failures within the first week.</p>
 
-                    <p>The first is that abandoned checkouts email valid tickets. Someone fills in the form, reaches the payment page, changes their mind &mdash; and already has a ticket in their inbox. If your door staff scan it, it scans green.</p>
+                    <p>The first is that abandoned checkouts email valid tickets. Someone fills in the form, reaches the payment page, changes their mind, and already has a ticket in their inbox. If your door staff scan it, it scans green.</p>
 
                     <p>The second is quieter and worse for a sold-out event: those abandoned registrations consume capacity. An event with eighty seats can show as full while forty of those seats belong to people who never paid and will not attend. You find out on the night.</p>
 
-                    <p>The fix is a one-line description and a genuine architectural commitment: <strong>the ticket is a consequence of payment, not of registration.</strong> Registration creates a pending record attached to an order. When &mdash; and only when &mdash; WooCommerce reports that order paid, the tickets are generated and emailed.</p>
+                    <p>The fix is a one-line description and a genuine architectural commitment: <strong>the ticket is a consequence of payment, not of registration.</strong> Registration creates a pending record attached to an order. When, and only when, WooCommerce reports that order paid, the tickets are generated and emailed.</p>
 
                     <p>Concretely, that means hanging your ticket generation off the payment transition rather than the form submission:</p>
 
@@ -124,7 +124,7 @@ add_action( 'my_event_registration_submitted', 'issue_tickets' );
 add_action( 'woocommerce_order_status_processing', 'issue_tickets' );
 add_action( 'woocommerce_order_status_completed',  'issue_tickets' );</code></pre>
 
-                    <p>Hook both statuses, and make the function idempotent &mdash; check whether tickets already exist for the order before creating them. An order can move <code>processing</code> &rarr; <code>completed</code>, and a gateway can fire a status transition more than once. Neither should produce two tickets for one seat.</p>
+                    <p>Hook both statuses, and make the function idempotent: check whether tickets already exist for the order before creating them. An order can move <code>processing</code> &rarr; <code>completed</code>, and a gateway can fire a status transition more than once. Neither should produce two tickets for one seat.</p>
 
                     <h2>Why the QR code should be boring</h2>
 
@@ -132,44 +132,44 @@ add_action( 'woocommerce_order_status_completed',  'issue_tickets' );</code></pr
 
                     <p>The first is privacy: a ticket is a document people photograph, forward and post. Anything inside the QR is readable by anyone who scans it, including someone standing behind them in the queue.</p>
 
-                    <p>The second is that self-contained codes cannot be revoked. If the code <em>is</em> the ticket, then a screenshot of it is also the ticket, and you have no way to tell the tenth scan from the first. A code that is merely an opaque identifier &mdash; a random token, not a sequential ID &mdash; can be checked against the database, marked used, refunded, or cancelled.</p>
+                    <p>The second is that self-contained codes cannot be revoked. If the code <em>is</em> the ticket, then a screenshot of it is also the ticket, and you have no way to tell the tenth scan from the first. A code that is merely an opaque identifier (a random token, not a sequential ID) can be checked against the database, marked used, refunded, or cancelled.</p>
 
                     <p>Use a random token rather than the attendee's post ID. Sequential identifiers are guessable, and a guessable ticket identifier means someone can fabricate a valid-looking code for an event they did not pay for.</p>
 
                     <h2>Check-in is a database write, not a scanner</h2>
 
-                    <p>People imagine door check-in requires hardware. It requires a logged-in phone and a page that does three things: read the token, find the attendee, and mark them arrived &mdash; rejecting the scan if they are already marked.</p>
+                    <p>People imagine door check-in requires hardware. It requires a logged-in phone and a page that does three things: read the token, find the attendee, and mark them arrived, rejecting the scan if they are already marked.</p>
 
                     <p>That last part is the entire anti-fraud story for a small event, and it is enough. Duplicate tickets do not fail because the code is clever; they fail because the second scan says the first one already happened. Show the door staff the attendee's name and the result, in large text, and you are done.</p>
 
-                    <p>The practical failure mode is not fraud, it is connectivity &mdash; a venue basement with no signal. If that is a risk for you, fetch the attendee list to the device before doors open and reconcile after. That is a genuine edge case worth handling; it is not a reason to buy a platform.</p>
+                    <p>The practical failure mode is not fraud, it is connectivity: a venue basement with no signal. If that is a risk for you, fetch the attendee list to the device before doors open and reconcile after. That is a genuine edge case worth handling; it is not a reason to buy a platform.</p>
 
                     <h2>Where free actually stops</h2>
 
-                    <p>Free RSVPs with QR tickets and check-in are entirely achievable with free tooling, and for a large number of events that is the whole requirement. Community meetups, workshops, classes, club nights &mdash; if you are not charging, you do not need any of the above.</p>
+                    <p>Free RSVPs with QR tickets and check-in are entirely achievable with free tooling, and for a large number of events that is the whole requirement. Community meetups, workshops, classes, club nights: if you are not charging, you do not need any of the above.</p>
 
-                    <p>The moment you charge, you need payment integration, and that is the honest line where free ends. Not because taking payment is difficult, but because doing it safely means handling refunds, partial payments, failed captures and the ordering problem above &mdash; and the cost of getting that wrong is somebody standing at a door arguing about a ticket they believe they paid for.</p>
+                    <p>The moment you charge, you need payment integration, and that is the honest line where free ends. Not because taking payment is difficult, but because doing it safely means handling refunds, partial payments, failed captures and the ordering problem above, and the cost of getting that wrong is somebody standing at a door arguing about a ticket they believe they paid for.</p>
 
                     <div class="article-callout">
                         <h3>If you would rather not build the paid half</h3>
-                        <p><a href="wc-events-pro.html">Event Tickets Pro</a> does the paid half: price an event, send registrants through the WooCommerce checkout you already run, and issue QR tickets only once the order is paid. The download includes the free Event Tickets &amp; Registration plugin it builds on, so unlimited free RSVP events, ticket emails and door check-in come with it. Your gateway, your money &mdash; <strong>no per-ticket cut</strong>.</p>
+                        <p><a href="wc-events-pro.html">Event Tickets Pro</a> does the paid half: price an event, send registrants through the WooCommerce checkout you already run, and issue QR tickets only once the order is paid. The download includes the free Event Tickets &amp; Registration plugin it builds on, so unlimited free RSVP events, ticket emails and door check-in come with it. Your gateway, your money, <strong>no per-ticket cut</strong>.</p>
                     </div>
 
                     <h2>What this approach costs you</h2>
 
                     <p>Being fair to the platforms: they sell discovery. Eventbrite has an audience browsing for things to do, and if you need strangers to find your event, that is a real service you are paying for. Self-hosted ticketing sells to people who already know you exist.</p>
 
-                    <p>You also take on the support. When someone cannot find their ticket, that is your inbox. When a payment fails at 9pm the night before, that is you. The counter-argument is that these are failures you already understand &mdash; a failed ticket payment is a failed WooCommerce order, and a refund is a WooCommerce refund. Nothing new to learn at the exact moment you least want to learn something new.</p>
+                    <p>You also take on the support. When someone cannot find their ticket, that is your inbox. When a payment fails at 9pm the night before, that is you. The counter-argument is that these are failures you already understand: a failed ticket payment is a failed WooCommerce order, and a refund is a WooCommerce refund. Nothing new to learn at the exact moment you least want to learn something new.</p>
 
                     <p>The arithmetic is simple enough to do on the back of an envelope. At 5&nbsp;percent, a single 200-seat event at &pound;25 a ticket hands over &pound;250. Two events a year pays for any self-hosted approach several times over, and the third year is free. Below that volume, the platform is probably the better deal and there is no shame in saying so.</p>
 
-                    <p><em>Running events and tired of the cut? <a href="index.html#contact">Tell us what you are running</a> &mdash; we build this sort of thing for a living.</em></p>
+                    <p><em>Running events and tired of the cut? <a href="index.html#contact">Tell us what you are running</a>. We build this sort of thing for a living.</em></p>
 
                 </div>
 
                 <div class="article-footer-nav">
                     <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
-                    <a href="wc-events-pro.html" class="btn btn-secondary">Read: Event Tickets Pro — paid ticketing for WordPress &rarr;</a>
+                    <a href="wc-events-pro.html" class="btn btn-secondary">Read: Event Tickets Pro, paid ticketing for WordPress &rarr;</a>
                 </div>
             </div>
         </div>

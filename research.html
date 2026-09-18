@@ -77,7 +77,7 @@
                 <div class="paper-header">
                     <h2 class="paper-title">A Hybrid Mamba-2 Forecaster for On-Device Anomaly Detection</h2>
                     <div class="paper-authors">
-                        <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="noopener noreferrer">Patrick Galyen</a> &mdash; Independent Research
+                        <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="noopener noreferrer">Patrick Galyen</a> · Independent Research
                     </div>
                     <div class="paper-links">
                         <a href="https://github.com/pgalyen1987/Vigilo" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Vigilo on GitHub</a>
@@ -89,18 +89,18 @@
 
                     <div class="paper-section">
                         <h3>Abstract</h3>
-                        <p>We present a <strong>hybrid Mamba-2 structured state-space forecaster</strong> for detecting anomalies in continuous time-series data on consumer CPU hardware &mdash; with no cloud dependency and no labeled attack or failure data required for training. The model learns a baseline of normal behavior and flags deviations as forecast error.</p>
+                        <p>We present a <strong>hybrid Mamba-2 structured state-space forecaster</strong> for detecting anomalies in continuous time-series data on consumer CPU hardware, with no cloud dependency and no labeled attack or failure data required for training. The model learns a baseline of normal behavior and flags deviations as forecast error.</p>
                         <p>We validate the architecture in two domains: (1) <strong>Vigilo</strong>, an IoT network anomaly detector achieving <strong>75% detection at 1% false-positive rate</strong> on IoT-23 (20 malware families); and (2) a <strong>predictive-maintenance</strong> adaptation on NASA C-MAPSS achieving <strong>100% detection at 1% FPR</strong> on single-operating-condition subsets, with median early warning of 54&ndash;60 cycles before failure. Both run entirely on CPU.</p>
                     </div>
 
                     <div class="paper-section">
                         <h3>1. Introduction</h3>
                         <p>Connected devices and industrial equipment generate continuous telemetry, but most organizations cannot send that data to the cloud. Signature-based detection fails against novel malware; rule-based maintenance thresholds require expert tuning per asset.</p>
-                        <p>We pursue <strong>behavioral anomaly detection</strong>: learn what normal looks like from benign data alone, then alert when behavior deviates &mdash; using a model small enough for edge deployment (~1.3M parameters).</p>
+                        <p>We pursue <strong>behavioral anomaly detection</strong>: learn what normal looks like from benign data alone, then alert when behavior deviates, using a model small enough for edge deployment (~1.3M parameters).</p>
                         <h4>Contributions</h4>
                         <ol class="article-list">
                             <li>A compact hybrid Mamba-2 forecaster combining SSD blocks, sparse window attention, and MoE FFN for O(1) memory per timestep.</li>
-                            <li><strong>Vigilo</strong> &mdash; on-device IoT network anomaly detection evaluated on IoT-23 with honest benchmark methodology.</li>
+                            <li><strong>Vigilo</strong>: on-device IoT network anomaly detection evaluated on IoT-23 with honest benchmark methodology.</li>
                             <li><strong>Predictive maintenance</strong> adaptation on C-MAPSS with per-asset baseline normalization, defining deployable vs. future-work operating envelopes.</li>
                         </ol>
                     </div>
@@ -127,7 +127,7 @@
                     </div>
 
                     <div class="paper-section" id="vigilo-results">
-                        <h3>3. Vigilo &mdash; IoT Network Anomaly Detection</h3>
+                        <h3>3. Vigilo: IoT Network Anomaly Detection</h3>
                         <p>Vigilo reads Zeek <code>conn.log</code> files, groups traffic into <strong>5-minute behavioral windows per device</strong> (15 features), and scores forecast error. See the <a href="vigilo.html">Vigilo product page</a> for deployment details.</p>
 
                         <h4>IoT-23 Benchmark Results</h4>
@@ -171,7 +171,7 @@
                     </div>
 
                     <div class="paper-section" id="pdm-results">
-                        <h3>4. Predictive Maintenance &mdash; C-MAPSS</h3>
+                        <h3>4. Predictive Maintenance: C-MAPSS</h3>
                         <p>The same forecaster predicts the next cycle&rsquo;s sensor vector from prior cycles. Trained on the <strong>first 50% of each engine&rsquo;s life</strong> (assumed healthy). Each engine normalized by its own first 20 cycles.</p>
 
                         <h4>C-MAPSS Benchmark Results</h4>
@@ -241,7 +241,7 @@
     <section class="cta">
         <div class="container">
             <h2>See the Architecture in Action</h2>
-            <p>Vigilo uses the Mamba-2 forecaster described in this paper to score device behavior from Zeek connection logs &mdash; fully on-device, no cloud required. The open-source prototype (v0.1.0) includes a local dashboard; live SPAN capture is supported via Docker Compose.</p>
+            <p>Vigilo uses the Mamba-2 forecaster described in this paper to score device behavior from Zeek connection logs, fully on-device, no cloud required. The open-source prototype (v0.1.0) includes a local dashboard; live SPAN capture is supported via Docker Compose.</p>
             <div class="hero-buttons">
                 <a href="vigilo.html" class="btn btn-primary">Vigilo Product Page</a>
                 <a href="blog-iot-security.html" class="btn btn-secondary">IoT Security Article</a>

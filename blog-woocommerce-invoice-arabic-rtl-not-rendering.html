@@ -52,7 +52,7 @@
 
     <section class="page-header"><div class="container">
         <h1>WooCommerce PDF Invoice Not Rendering Arabic / RTL Text</h1>
-        <p>Why non-Latin and right-to-left fonts come out as boxes in invoice PDFs — and how to actually fix it</p>
+        <p>Why non-Latin and right-to-left fonts come out as boxes in invoice PDFs, and how to actually fix it</p>
     </div></section>
 
     <article class="blog-article"><div class="container"><div class="article-wrapper">
@@ -63,40 +63,40 @@
         <figure class="article-figure"><img src="images/blog/art/woocommerce-invoice-arabic-rtl-not-rendering.png" alt="" width="1200" height="380" loading="lazy"></figure>
 
         <div class="article-content">
-            <p>You set up a WooCommerce invoice plugin, generate a PDF, and the customer name in Arabic &mdash; or the address in Hebrew, or a product title with Chinese characters &mdash; comes out as empty boxes, question marks, or blank space. The Latin text is fine; everything else is broken. This is one of the most common complaints about invoice plugins, and it is not your fault or your data&rsquo;s fault. It is how most of these plugins handle fonts.</p>
+            <p>You set up a WooCommerce invoice plugin, generate a PDF, and the customer name in Arabic (or the address in Hebrew, or a product title with Chinese characters) comes out as empty boxes, question marks, or blank space. The Latin text is fine; everything else is broken. This is one of the most common complaints about invoice plugins, and it is not your fault or your data&rsquo;s fault. It is how most of these plugins handle fonts.</p>
 
             <h2>Why it happens</h2>
-            <p>Almost every WooCommerce invoice plugin renders its PDF with a bundled HTML-to-PDF engine (usually dompdf). To keep the download small, plugins ship only a Latin font and <em>subset</em> it &mdash; they include the glyphs for A&ndash;Z, digits and common European accents, and nothing else. When your invoice contains a character outside that subset &mdash; any Arabic letter, any CJK character, Cyrillic, Hebrew, Greek &mdash; the font simply has no glyph for it, so the PDF draws a blank box (the infamous &ldquo;tofu&rdquo;) or nothing at all.</p>
+            <p>Almost every WooCommerce invoice plugin renders its PDF with a bundled HTML-to-PDF engine (usually dompdf). To keep the download small, plugins ship only a Latin font and <em>subset</em> it: they include the glyphs for A&ndash;Z, digits and common European accents, and nothing else. When your invoice contains a character outside that subset (any Arabic letter, any CJK character, Cyrillic, Hebrew, Greek), the font simply has no glyph for it, so the PDF draws a blank box (the infamous &ldquo;tofu&rdquo;) or nothing at all.</p>
             <p>Right-to-left scripts add a second failure on top of the first. Even with the right glyphs present, Arabic and Hebrew need <strong>text shaping</strong> and <strong>bidirectional layout</strong>: Arabic letters change form depending on their position in a word, and the whole run has to flow right-to-left. A PDF engine that only lays out left-to-right Latin text will print the letters disconnected, in the wrong order, or reversed.</p>
 
             <h2>How to confirm this is the cause</h2>
             <ul class="article-list">
                 <li>Latin text (English, numbers, prices) renders perfectly, but one specific script is broken. That points to a missing font subset, not a corrupted order.</li>
-                <li>Copy the customer&rsquo;s name out of the WooCommerce order screen &mdash; it displays fine in the browser. The data is intact; only the PDF can&rsquo;t draw it. This rules out a database or encoding problem.</li>
+                <li>Copy the customer&rsquo;s name out of the WooCommerce order screen: it displays fine in the browser. The data is intact; only the PDF can&rsquo;t draw it. This rules out a database or encoding problem.</li>
                 <li>The broken characters appear as identical boxes or blanks rather than <em>wrong</em> characters. Boxes mean &ldquo;no glyph.&rdquo;</li>
             </ul>
 
             <h2>The fixes, from worst to best</h2>
             <p><strong>1. Manually swap the font (fragile).</strong> Some plugins let you drop a full Unicode TTF (like Noto Sans or DejaVu Sans) into a directory and register it. This can restore missing glyphs, but it does nothing for right-to-left shaping, it breaks on the next plugin update, and most store owners should not be editing plugin internals.</p>
-            <p><strong>2. Switch off PDF and print from the browser (a downgrade).</strong> The browser has all the system fonts, so an HTML invoice prints correctly &mdash; but you lose the automatic PDF attached to the order email, which is usually the whole point.</p>
+            <p><strong>2. Switch off PDF and print from the browser (a downgrade).</strong> The browser has all the system fonts, so an HTML invoice prints correctly, but you lose the automatic PDF attached to the order email, which is usually the whole point.</p>
             <p><strong>3. Use an invoice plugin that ships a full Unicode font and does RTL shaping (the real fix).</strong> The clean solution is a plugin that includes a complete Unicode font and performs proper bidirectional layout, so Arabic, Hebrew, Persian, CJK and accented Latin all render correctly with no configuration. This is a design decision the plugin author makes up front; you cannot bolt it on reliably from the outside.</p>
 
             <h2>Shaping and direction are two different failures</h2>
             <p>&ldquo;Arabic is broken&rdquo; usually describes one of two distinct problems, and telling them apart is what makes the fix obvious rather than a matter of trying things at random.</p>
             <p><strong>Shaping</strong> is the failure where every letter appears in its isolated form, disconnected, like a row of separate stamps rather than joined script. Arabic letters change shape depending on whether they sit at the start, middle or end of a word, and a renderer that does not apply those rules produces text that is technically all there and effectively unreadable to a native reader.</p>
-            <p><strong>Direction</strong> is the failure where the letters are correctly joined but the words run the wrong way, or where a mixed line falls apart &mdash; an Arabic address with a Latin street number in it, where the number lands at the wrong end. This is the bidirectional algorithm not being applied.</p>
+            <p><strong>Direction</strong> is the failure where the letters are correctly joined but the words run the wrong way, or where a mixed line falls apart: an Arabic address with a Latin street number in it, where the number lands at the wrong end. This is the bidirectional algorithm not being applied.</p>
             <p>The two are independent. You can have correct shaping with broken direction, which typically means the font is doing its job and the layout engine is not. Broken shaping with correct direction usually points the other way. And boxes or blank space instead of any glyphs at all is a third thing entirely: the font in use simply has no Arabic characters in it, and no amount of layout configuration will conjure them.</p>
 
             <h2>The font subset trap</h2>
-            <p>A fix that works locally and fails in production is nearly always this one. Fonts are frequently subsetted &mdash; stripped down to just the characters expected &mdash; to keep file sizes small. A build pipeline that subsets to Latin characters will produce a font that renders your test order perfectly and every Arabic order as empty boxes.</p>
+            <p>A fix that works locally and fails in production is nearly always this one. Fonts are frequently subsetted (stripped down to just the characters expected) to keep file sizes small. A build pipeline that subsets to Latin characters will produce a font that renders your test order perfectly and every Arabic order as empty boxes.</p>
             <p>It is worth confirming that the font file actually reaching the PDF generator contains the ranges you need, rather than assuming that because the font family supports Arabic, your copy of it does. The same applies to the fallback chain: a generator that silently substitutes a default font when a glyph is missing produces output that looks almost right, with a few characters rendered in a visibly different face.</p>
             <p>Test with a string that exercises the hard cases rather than a single word. A mixed line containing Arabic text, Latin characters and digits together will surface shaping, direction and glyph coverage problems in one pass, where a clean Arabic-only word can pass while the real invoice still breaks.</p>
 
             <h2>Why &ldquo;renders every language&rdquo; should be a free feature</h2>
-            <p>Correct text rendering is not a premium add-on &mdash; it is the baseline of a document that represents your business. A plugin that paywalls &ldquo;multilingual support&rdquo; is charging you to fix its own font handling. Look for one where every language renders in the free tier, and the paid tier is reserved for genuine extras like bulk printing and custom templates.</p>
+            <p>Correct text rendering is not a premium add-on; it is the baseline of a document that represents your business. A plugin that paywalls &ldquo;multilingual support&rdquo; is charging you to fix its own font handling. Look for one where every language renders in the free tier, and the paid tier is reserved for genuine extras like bulk printing and custom templates.</p>
             <div class="boiler-cta">
                 <h3>The plugin built for this exact problem</h3>
-                <p>Rebel Studios Invoice Documents for WooCommerce renders every language &mdash; Arabic, Hebrew and Persian right-to-left, plus every accented and non-Latin script &mdash; because it ships a full Unicode font and proper text shaping instead of subsetting Latin-only glyphs. The invoice, packing slip and delivery note are free, it attaches the PDF to your order emails automatically, and it works with the block checkout and HPOS.</p>
+                <p>Rebel Studios Invoice Documents for WooCommerce renders every language (Arabic, Hebrew and Persian right-to-left, plus every accented and non-Latin script), because it ships a full Unicode font and proper text shaping instead of subsetting Latin-only glyphs. The invoice, packing slip and delivery note are free, it attaches the PDF to your order emails automatically, and it works with the block checkout and HPOS.</p>
                 <p><a href="wc-invoices.html" class="btn btn-primary">See the WooCommerce invoice plugin &rarr;</a></p>
             </div>
             <p>Related reading: <a href="blog-woocommerce-invoice-vat-gst-sales-tax.html">showing VAT/GST/sales tax on invoices</a>, <a href="blog-woocommerce-sequential-invoice-numbers.html">sequential invoice numbering</a>, and <a href="blog-build-freemium-wordpress-plugin.html">how freemium WordPress plugins work</a>.</p>

@@ -9,7 +9,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Freemium WordPress Plugin Boilerplate","applicationCategory":"DeveloperApplication","operatingSystem":"WordPress","description":"A starter kit for freemium WordPress.org plugins: Pro license gate, settings framework, build-to-zip script, and a one-command scaffolder. Add your feature and ship.","url":"https://rebelstudiossoftware.com/wp-plugin-boilerplate.html","offers":{"@type":"Offer","price":"39","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com/"}}</script>
     <link rel="icon" href="images/RS-logo.png" type="image/png">
     <meta property="og:title" content="Freemium WordPress Plugin Boilerplate"><meta property="og:description" content="A starter kit for freemium WordPress.org plugins: Pro license gate, settings framework, build-to-zip script, and a one-command scaffolder. Add your feature and ship."><meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
-    <title>Freemium WordPress Plugin Boilerplate — Ship a Pro plugin fast - Rebel Studios</title>
+    <title>Freemium WordPress Plugin Boilerplate: Ship a Pro plugin fast - Rebel Studios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#07090f"><link rel="stylesheet" href="styles.css">
@@ -37,26 +37,26 @@
     <section class="hero hero--page"><div class="container">
       <span class="cb-status">&#9679; Available now · Gumroad</span>
       <h1>Freemium WordPress Plugin Boilerplate</h1>
-      <p class="hero-sub">Ship a freemium plugin to WordPress.org without rebuilding the boring 80% every time. Get the license gate, settings framework, wp.org readme and build tooling — plus a one-command scaffolder. <strong>Add your feature and ship.</strong></p>
+      <p class="hero-sub">Ship a freemium plugin to WordPress.org without rebuilding the boring 80% every time. Get the license gate, settings framework, wp.org readme and build tooling, plus a one-command scaffolder. <strong>Add your feature and ship.</strong></p>
     </div></section>
     <section class="section"><div class="container">
       <h2>What it does</h2>
       <div class="cb-grid">
-                <div class="cb-card"><h3>One-command scaffolder</h3><p><code>./new-plugin.sh "My Plugin" myprefix my-slug</code> stamps out a complete, activation-ready plugin — namespace, constants, settings screen and license gate already wired.</p></div>
-                <div class="cb-card"><h3>The freemium engine</h3><p>Reusable Settings, Pro license-gate and Admin classes. Gate any feature with one call; it always degrades cleanly to free — wp.org-compliant.</p></div>
+                <div class="cb-card"><h3>One-command scaffolder</h3><p><code>./new-plugin.sh "My Plugin" myprefix my-slug</code> stamps out a complete, activation-ready plugin, with namespace, constants, settings screen and license gate already wired.</p></div>
+                <div class="cb-card"><h3>The freemium engine</h3><p>Reusable Settings, Pro license-gate and Admin classes. Gate any feature with one call; it always degrades cleanly to free, which keeps it wp.org-compliant.</p></div>
                 <div class="cb-card"><h3>Build &amp; ship tooling</h3><p>A wp.org-format readme and a build-to-zip script, so you go from code to a submittable plugin in one command.</p></div>
-                <div class="cb-card"><h3>Proven, not theoretical</h3><p>The same engine behind multiple shipped plugins. GPL — use it in unlimited commercial plugins.</p></div>
+                <div class="cb-card"><h3>Proven, not theoretical</h3><p>The same engine behind multiple shipped plugins. GPL: use it in unlimited commercial plugins.</p></div>
       </div>
     </div></section>
     <section class="section"><div class="container">
       <h2>What you are actually buying</h2>
       <p>Not a framework you have to learn, and not a starter theme with your problem left as an exercise. It is the part of a freemium plugin that is identical every time, already built and already shipped: the scaffolder that stamps out a new plugin, the settings and admin layer, the licence gate, and the tooling that turns the result into a zip you can submit.</p>
-      <p>The scaffolder takes a name, a function prefix and a slug, and produces a plugin that activates cleanly on a fresh WordPress install before you have written a line of your own code. Constants, namespacing, text domain, settings screen and gate are wired at that point &mdash; you add your feature to a working plugin rather than assembling one.</p>
+      <p>The scaffolder takes a name, a function prefix and a slug, and produces a plugin that activates cleanly on a fresh WordPress install before you have written a line of your own code. Constants, namespacing, text domain, settings screen and gate are wired at that point: you add your feature to a working plugin rather than assembling one.</p>
 
-      <h2>How the licence gate is built &mdash; and why that shape</h2>
+      <h2>How the licence gate is built, and why that shape</h2>
       <p>WordPress.org does not permit a plugin hosted in its directory to lock its own features behind a payment, so the architecture is not a preference; it is the rule. The boilerplate follows the compliant pattern: a genuinely complete free plugin in the directory, and a separate Pro add-on distributed by you that unlocks the paid surface.</p>
       <p>Gating a feature is a single call, and the important property is what happens when the answer is no. The gate degrades to the free behaviour rather than erroring, disabling the screen, or destroying data the user has already created. That is the failure mode that generates refunds and one-star reviews, and it is designed out rather than left to whoever writes the feature.</p>
-      <p>The same discipline applies when your licence server is unreachable. A check that fails closed will disable a paying customer&rsquo;s site during your outage, so verification is built to fail open within a grace window &mdash; the customer keeps working, and the check retries later.</p>
+      <p>The same discipline applies when your licence server is unreachable. A check that fails closed will disable a paying customer&rsquo;s site during your outage, so verification is built to fail open within a grace window: the customer keeps working, and the check retries later.</p>
 
       <h2>What it does not include</h2>
       <p>Being clear about this is more useful than a longer feature list:</p>
@@ -68,7 +68,7 @@
 
       <h2>Who this is for</h2>
       <p>It is for a developer who has decided to ship a commercial plugin and does not want to spend the first fortnight rebuilding a settings page and a licence check for the third time. If you are shipping one plugin, it saves you that fortnight. If you are shipping several, it is the difference between each one starting from zero and each one starting from a known-good base.</p>
-      <p>It is not for you if you want a page builder, a plugin generator that writes your feature, or a hosted platform. And if you have already built and shipped a freemium plugin you were happy with, you have essentially built this &mdash; there is nothing here you could not write yourself, which is precisely why it is priced where it is rather than sold as a subscription.</p>
+      <p>It is not for you if you want a page builder, a plugin generator that writes your feature, or a hosted platform. And if you have already built and shipped a freemium plugin you were happy with, you have essentially built this. There is nothing here you could not write yourself, which is precisely why it is priced where it is rather than sold as a subscription.</p>
       <p>Licensed GPL, so you can use it in unlimited commercial plugins without royalties or per-plugin fees.</p>
     </div></section>
 
@@ -81,8 +81,8 @@
       <div class="cb-cta">
         <div class="price-big">$39</div>
         <h3>Get the boilerplate</h3>
-        <p>Instant download: the scaffolder, the engine, a sample feature, and a full guide. GPL — unlimited use.</p>
-        <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/xywjzg" target="_blank" rel="noopener">Buy on Gumroad &mdash; $39 &rarr;</a>
+        <p>Instant download: the scaffolder, the engine, a sample feature, and a full guide. GPL, unlimited use.</p>
+        <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/xywjzg" target="_blank" rel="noopener">Buy on Gumroad · $39 &rarr;</a>
       </div>
     </div></section>
     <section class="section"><div class="container">

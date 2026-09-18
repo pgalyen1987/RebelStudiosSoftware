@@ -80,7 +80,7 @@
       <link>https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html</guid>
       <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
-      <description>How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling — and how to actually sell the Pro version.</description>
+      <description>How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings and build tooling, plus how to actually sell the Pro version.</description>
     </item>
     <item>
       <title>How to Get Your Resume Past an ATS in 2026</title>
@@ -213,7 +213,7 @@
       <link>https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</guid>
       <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Why your resume gets auto-rejected before a human sees it — how applicant tracking systems read resumes, the formatting and keyword fixes that matter, and a $1 ATS checker.</description>
+      <description>Why your resume gets auto-rejected before a human sees it: how applicant tracking systems read resumes, the formatting and keyword fixes that matter, and a $1 ATS checker.</description>
     </item>
     <item>
       <title>How to Compress a Video Under a Size Limit for Upload</title>
@@ -227,7 +227,7 @@
       <link>https://rebelstudiossoftware.com/blog-csv-to-json.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-csv-to-json.html</guid>
       <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Convert CSV to JSON (and JSON back to CSV) without fighting a spreadsheet — the free script, the gotchas that break naive converters, and a clean $1 tool for both directions.</description>
+      <description>Convert CSV to JSON (and JSON back to CSV) without fighting a spreadsheet: the free script, the gotchas that break naive converters, and a clean $1 tool for both directions.</description>
     </item>
     <item>
       <title>Passport Photo Size &amp; Requirements: Why Yours Keeps Getting Rejected</title>
@@ -248,7 +248,7 @@
       <link>https://rebelstudiossoftware.com/blog-remove-background.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-remove-background.html</guid>
       <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Cut out a photo background for a clean transparent PNG — the free phone and desktop methods, when they fall short, and the fastest $1 one-click background remover.</description>
+      <description>Cut out a photo background for a clean transparent PNG: the free phone and desktop methods, when they fall short, and the fastest $1 one-click background remover.</description>
     </item>
     <item>
       <title>How to Remove EXIF Metadata (GPS &amp; Camera Info) From a Photo</title>
@@ -269,21 +269,21 @@
       <link>https://rebelstudiossoftware.com/blog-heic-to-jpg.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-heic-to-jpg.html</guid>
       <pubDate>Sun, 09 Aug 2026 00:00:00 -0000</pubDate>
-      <description>iPhone photos save as HEIC — and half the web still will not accept them. Why uploads fail, what JPG actually fixes, and the fastest $1 way to convert HEIC to JPG.</description>
+      <description>iPhone photos save as HEIC, and half the web still will not accept them. Why uploads fail, what JPG actually fixes, and the fastest $1 way to convert HEIC to JPG.</description>
     </item>
     <item>
       <title>Your File Is Too Large: How to Get Under 5 MB Without Ruining It</title>
       <link>https://rebelstudiossoftware.com/blog-file-too-large.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-file-too-large.html</guid>
       <pubDate>Sat, 08 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush — and a $1 tool that does it for you.</description>
+      <description>Upload limit says 5 MB and your file is 17 MB. How to compress images under a size cap without turning them into mush, and a $1 tool that does it for you.</description>
     </item>
     <item>
       <title>Why Was My File Upload Rejected? Format, Size, and Dimension Fixes</title>
       <link>https://rebelstudiossoftware.com/blog-upload-rejected.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-upload-rejected.html</guid>
       <pubDate>Fri, 07 Aug 2026 00:00:00 -0000</pubDate>
-      <description>File upload rejected with a useless error? The usual causes are HEIC, size limits, and wrong dimensions — and how to fix all three for $1.</description>
+      <description>File upload rejected with a useless error? The usual causes are HEIC, size limits, and wrong dimensions. Here's how to fix all three for $1.</description>
     </item>
     <item>
       <title>How to Check If a Smart Contract Is Safe Before You Interact</title>
@@ -297,7 +297,7 @@
       <link>https://rebelstudiossoftware.com/blog-json-repair.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-json-repair.html</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Trailing commas, smart quotes, half-finished objects — how to repair malformed JSON for scripts and agents, including a $1 JSON repair API.</description>
+      <description>Trailing commas, smart quotes, half-finished objects: how to repair malformed JSON for scripts and agents, including a $1 JSON repair API.</description>
     </item>
     <item>
       <title>Why We Sell Micro-Utilities for $1 (and Speak HTTP 402 to Agents)</title>
@@ -332,7 +332,7 @@
       <link>https://rebelstudiossoftware.com/blog-monetize-api-x402.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-monetize-api-x402.html</guid>
       <pubDate>Wed, 22 Jul 2026 00:00:00 -0000</pubDate>
-      <description>A practical developer's guide to charging AI agents for your API with x402 — how the 402 handshake works, what a paid endpoint returns, and the fastest way to monetize an API for machine buyers without building billing.</description>
+      <description>A practical developer's guide to charging AI agents for your API with x402: how the 402 handshake works, what a paid endpoint returns, and the fastest way to monetize an API for machine buyers without building billing.</description>
     </item>
     <item>
       <title>Additional Insured &amp;amp; Waiver of Subrogation Explained</title>
@@ -374,35 +374,35 @@
       <link>https://rebelstudiossoftware.com/blog-mcp-web-access.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-mcp-web-access.html</guid>
       <pubDate>Wed, 15 Jul 2026 00:00:00 -0000</pubDate>
-      <description>Claude and Cursor can't read the live web out of the box. Here's how to add pay-per-call web scraping and market data to any MCP client in one line — no API contract, no monthly seat, no signup.</description>
+      <description>Claude and Cursor can't read the live web out of the box. Here's how to add pay-per-call web scraping and market data to any MCP client in one line, with no API contract, no monthly seat and no signup.</description>
     </item>
     <item>
       <title>The Architecture of Apology: Why Groups Take Decades to Admit What Individuals See in Minutes</title>
       <link>https://rebelstudiossoftware.com/blog-architecture-of-apology.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-architecture-of-apology.html</guid>
       <pubDate>Thu, 09 Jul 2026 00:00:00 -0000</pubDate>
-      <description>Why corporations and societies take decades to reverse mistakes that individuals admit in minutes — cognitive dissonance, institutional inertia, and the architecture of apology.</description>
+      <description>Why corporations and societies take decades to reverse mistakes that individuals admit in minutes: cognitive dissonance, institutional inertia, and the architecture of apology.</description>
     </item>
     <item>
       <title>The &amp;quot;Noble Lie&amp;quot;: Can Disinformation Ever Be Used for Good?</title>
       <link>https://rebelstudiossoftware.com/blog-noble-lie.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-noble-lie.html</guid>
       <pubDate>Thu, 09 Jul 2026 00:00:00 -0000</pubDate>
-      <description>From pool-dye myths to acne-toothbrush hoaxes — can disinformation ever be used for good, and what is the hidden cost of the noble lie?</description>
+      <description>From pool-dye myths to acne-toothbrush hoaxes: can disinformation ever be used for good, and what is the hidden cost of the noble lie?</description>
     </item>
     <item>
       <title>When Your AI Starts Spending Your Money: x402 and the Agentic Economy</title>
       <link>https://rebelstudiossoftware.com/blog-agentic-economy.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-agentic-economy.html</guid>
       <pubDate>Mon, 29 Jun 2026 00:00:00 -0000</pubDate>
-      <description>HTTP 402 was reserved for a future that's finally arriving: AI agents paying for things on their own. Here's what the x402 agentic economy actually means for consumers — the convenience, and the catch.</description>
+      <description>HTTP 402 was reserved for a future that's finally arriving: AI agents paying for things on their own. Here's what the x402 agentic economy actually means for consumers, convenience and catch alike.</description>
     </item>
     <item>
       <title>The Google Ecosystem Splinter: Why Developers Are Drowning in Separate Consoles</title>
       <link>https://rebelstudiossoftware.com/blog-google-ecosystem-splinter.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-google-ecosystem-splinter.html</guid>
       <pubDate>Mon, 22 Jun 2026 00:00:00 -0000</pubDate>
-      <description>Why Google splits Cloud, Firebase, Play Console, AdMob, and AdSense into separate consoles — and what developers can do about it.</description>
+      <description>Why Google splits Cloud, Firebase, Play Console, AdMob, and AdSense into separate consoles, and what developers can do about it.</description>
     </item>
     <item>
       <title>The Serious Business of Having Fun: Why Play is Your Best Performance Hack</title>
@@ -423,14 +423,14 @@
       <link>https://rebelstudiossoftware.com/blog-scamdemic.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-scamdemic.html</guid>
       <pubDate>Fri, 19 Jun 2026 00:00:00 -0000</pubDate>
-      <description>How modern fraud — pig butchering, AI voice clones, and crypto scams — erodes trust and kills innovation.</description>
+      <description>How modern fraud (pig butchering, AI voice clones, crypto scams) erodes trust and kills innovation.</description>
     </item>
     <item>
       <title>How to Build a Picture Messaging App: Kotlin, Compose, and Firebase</title>
       <link>https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html</guid>
       <pubDate>Thu, 18 Jun 2026 00:00:00 -0000</pubDate>
-      <description>Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.</description>
+      <description>Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX, from Android Studio to Google Play.</description>
     </item>
     <item>
       <title>How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI</title>

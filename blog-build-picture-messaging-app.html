@@ -14,14 +14,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
-    <meta name="description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.">
+    <meta name="description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX, from Android Studio to Google Play.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html">
     <link rel="icon" href="images/RS-logo.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html">
     <meta property="og:title" content="How to Build a Picture Messaging App: Kotlin, Compose, and Firebase">
-    <meta property="og:description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.">
+    <meta property="og:description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX, from Android Studio to Google Play.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/picture-messaging.jpg">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="720">
@@ -30,7 +30,7 @@
     <meta property="article:author" content="Patrick Galyen">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Build a Picture Messaging App: Kotlin, Compose, and Firebase">
-    <meta name="twitter:description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX — from Android Studio to Google Play.">
+    <meta name="twitter:description" content="Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX, from Android Studio to Google Play.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/picture-messaging.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build a Picture Messaging App: Kotlin, Compose, and Firebase","description":"Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX \u2014 from Android Studio to Google Play.","datePublished":"2026-06-18","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-build-picture-messaging-app.html"},"image":"https://rebelstudiossoftware.com/images/og-image.png"}</script>
     <title>How to Build a Picture Messaging App: Kotlin, Compose, and Firebase - Rebel Studios Software</title>
@@ -127,7 +127,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
-    id("com.google.devtools.ksp")  // KSP — Hilt's current annotation processor (faster than kapt)
+    id("com.google.devtools.ksp")  // KSP: Hilt's current annotation processor (faster than kapt)
 }</pre>
 
                     <p>Apply Hilt in your Application class and main Activity:</p>
@@ -144,10 +144,10 @@ class MainActivity : ComponentActivity() {
 
                     <p>Organize packages by feature:</p>
                     <ul class="article-list">
-                        <li><strong>data/</strong> &mdash; Firestore repositories, DTOs</li>
-                        <li><strong>domain/</strong> &mdash; models and use cases</li>
-                        <li><strong>ui/</strong> &mdash; Compose screens and ViewModels</li>
-                        <li><strong>di/</strong> &mdash; Hilt modules for Firebase, repositories</li>
+                        <li><strong>data/</strong>: Firestore repositories, DTOs</li>
+                        <li><strong>domain/</strong>: models and use cases</li>
+                        <li><strong>ui/</strong>: Compose screens and ViewModels</li>
+                        <li><strong>di/</strong>: Hilt modules for Firebase, repositories</li>
                     </ul>
 
                     <h2>Step 3: Connect Firebase</h2>
@@ -177,7 +177,7 @@ implementation("com.google.firebase:firebase-appcheck-playintegrity")</pre>
                         <p>Store messages in Firestore with fields like <code>senderId</code>, <code>recipientId</code>, <code>imageUrl</code>, <code>gridSize</code>, <code>tileOrder</code> (array of indices), <code>status</code> (pending/viewed), <code>moveCount</code>, and <code>viewTimeMs</code>. Use a Firestore snapshot listener so both users see live updates.</p>
                     </div>
 
-                    <pre>// Repository pattern — listen for incoming messages
+                    <pre>// Repository pattern: listen for incoming messages
 fun observeInbox(userId: String): Flow&lt;List&lt;Message&gt;&gt; = callbackFlow {
     val reg = firestore.collection("messages")
         .whereEqualTo("recipientId", userId)
