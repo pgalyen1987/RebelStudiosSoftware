@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-csv-to-json: one row that a naive split(",") gets wrong, converted properly. -->
+<style>
+  .wrap{position:absolute;inset:48px 56px}
+  h1{font:600 34px 'Space Grotesk',sans-serif;letter-spacing:-.01em}
+  .sub{color:var(--ink2);font-size:20px;margin-top:6px}
+  .grid{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;margin-top:40px}
+  .arrow{font:500 34px 'JetBrains Mono',monospace;color:var(--ink3);text-align:center}
+  .hl{background:rgba(245,185,79,.16);color:var(--amber);border-radius:3px;padding:0 2px}
+  .notes{position:absolute;left:56px;right:56px;bottom:44px;display:flex;gap:34px;font:500 17px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .notes b{color:var(--amber);font-weight:500}
+  pre{font-size:21px;line-height:1.65;padding:18px 22px}
+</style>
+<div class="wrap">
+  <h1>The row that breaks <span class="mono" style="font-size:29px">line.split(",")</span></h1>
+  <p class="sub">A quoted comma, a leading zero, an empty cell: three guesses a real parser gets right.</p>
+  <div class="grid">
+    <div class="panel"><div class="bar">customers.csv</div>
+<pre><span class="p">name,city,zip,phone</span>
+Ada Lovelace,<span class="hl">"Austin, TX"</span>,<span class="hl">02134</span>,<span class="hl"></span>
+Grace Hopper,Arlington,22201,555-0100</pre></div>
+    <div class="arrow">→</div>
+    <div class="panel"><div class="bar">customers.json</div>
+<pre>[{ <span class="k">"name"</span>: <span class="s">"Ada Lovelace"</span>,
+   <span class="k">"city"</span>: <span class="hl">"Austin, TX"</span>,
+   <span class="k">"zip"</span>:  <span class="hl">"02134"</span>,
+   <span class="k">"phone"</span>: <span class="hl">null</span> },
+ { <span class="k">"name"</span>: <span class="s">"Grace Hopper"</span>, …</pre></div>
+  </div>
+</div>
+<div class="notes"><span><b>"Austin, TX"</b> stays one field</span><span><b>02134</b> stays a string</span><span><b>empty</b>: "" or null, chosen on purpose</span></div>

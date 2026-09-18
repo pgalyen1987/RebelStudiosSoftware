@@ -1,0 +1,15 @@
+/* Shared by the blog images in art/*.html (rendered by blog_art.py at 1200x630).
+   The site's palette and type; each drawing lays itself out differently. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07090f;--raise:#0b0f18;--line:rgba(148,163,184,.2);--line2:rgba(148,163,184,.34);--ink1:#eef1f7;--ink2:#a8b1c2;--ink3:#69738a;
+  --green:#6cbe45;--green2:#8fe05a;--greenbg:rgba(108,190,69,.12);--red:#f0716a;--redbg:rgba(240,113,106,.12);--amber:#f5b94f;--teal:#2dd4bf}
+body{width:1200px;height:630px;overflow:hidden;background:var(--bg);color:var(--ink1);font-family:Inter,sans-serif;position:relative}
+.mono{font-family:'JetBrains Mono',monospace}
+.display{font-family:'Space Grotesk',sans-serif}
+.panel{background:var(--raise);border:1px solid var(--line2);border-radius:12px;overflow:hidden}
+.bar{height:34px;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid var(--line);font:500 13px 'JetBrains Mono',monospace;color:var(--ink3)}
+pre{font:400 16px/1.6 'JetBrains Mono',monospace;color:var(--ink2);white-space:pre;padding:14px 18px}
+.k{color:#8ab4f8}.s{color:var(--green2)}.n{color:var(--amber)}.p{color:var(--ink3)}.bad{color:var(--red)}.good{color:var(--green2)}
+.credit{position:absolute;right:16px;bottom:10px;font:500 12px 'JetBrains Mono',monospace;color:rgba(238,241,247,.7);text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.host{font:500 13px 'JetBrains Mono',monospace;color:var(--ink3)}

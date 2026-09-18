@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-mcp-web-access: the article's one-entry MCP config. -->
+<style>
+  .wrap{position:absolute;inset:46px 60px;display:grid;grid-template-columns:560px 1fr;gap:44px;align-items:center}
+  pre{font-size:21px;line-height:1.6;padding:20px 24px}
+  .hl{background:rgba(108,190,69,.14);border-radius:4px;padding:0 3px}
+  h1{font:600 36px/1.12 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.5;margin-top:14px}
+  .can{margin-top:24px;font:500 17px/1.9 'JetBrains Mono',monospace;color:var(--ink2)}
+  .can b{color:var(--green2);font-weight:500}
+</style>
+<div class="wrap">
+  <div class="panel"><div class="bar">claude_desktop_config.json</div>
+<pre>{
+  <span class="k">"mcpServers"</span>: {
+    <span class="hl"><span class="k">"gate402"</span>: {
+      <span class="k">"command"</span>: <span class="s">"npx"</span>,
+      <span class="k">"args"</span>: [<span class="s">"-y"</span>, <span class="s">"gate402-mcp"</span>]
+    }</span>
+  }
+}</pre></div>
+  <div>
+    <h1>Live web access for Claude or Cursor, in one config entry</h1>
+    <p class="sub">An MCP server the assistant can call when it needs a page it can't reach on its own.</p>
+    <div class="can"><b>→</b> fetch a live page<br><b>→</b> get clean text back<br><b>→</b> pay per call, no subscription</div>
+  </div>
+</div>

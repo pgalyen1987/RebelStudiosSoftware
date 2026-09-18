@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-ios-objective-c-without-a-mac: the article's signing steps (openssl on Linux), condensed. -->
+<style>
+  .wrap{position:absolute;inset:40px 56px}
+  h1{font:600 30px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:18px;margin-top:6px}
+  .panel{margin-top:22px}
+  pre{font-size:15.5px;line-height:1.7;padding:16px 20px}
+  .c{color:var(--ink3)}
+  .cmd{color:var(--ink1)}
+  .pr{color:var(--green)}
+</style>
+<div class="wrap">
+  <h1>The build is easy. Signing is the hard part.</h1>
+  <p class="sub">An iOS distribution certificate made on Linux, ready for a macOS CI runner.</p>
+  <div class="panel"><div class="bar">bash · no Mac involved</div>
+<pre><span class="c"># 1. your private key, and a signing request for developer.apple.com</span>
+<span class="pr">$</span> <span class="cmd">openssl genrsa -out ios_distribution.key 2048</span>
+<span class="pr">$</span> <span class="cmd">openssl req -new -key ios_distribution.key -out CertificateSigningRequest.certSigningRequest</span>
+<span class="c"># 2. Apple's certificate back, to PEM, joined with the key</span>
+<span class="pr">$</span> <span class="cmd">openssl x509 -inform DER -in distribution.cer -out distribution.pem</span>
+<span class="pr">$</span> <span class="cmd">openssl pkcs12 -export -inkey ios_distribution.key -in distribution.pem -out ios_distribution.p12</span>
+<span class="c"># 3. into a CI secret</span>
+<span class="pr">$</span> <span class="cmd">base64 -w0 ios_distribution.p12 > p12.b64</span></pre></div>
+</div>

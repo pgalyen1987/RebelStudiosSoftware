@@ -1,6 +1,6 @@
 ---
 name: write-blog-article
-description: Write a Rebel Studios blog article that targets real reader demand. Starts from NicheScout / content-queue demand data to pick a topic, writes it in the Rebel voice (how-to funnel OR opinion piece), generates a branded OG card, wires it into the blog index and feeds, and STOPS for human review. Use when the user wants a new blog post, to turn a queued topic into a draft, or to grow blog readership.
+description: Write a Rebel Studios blog article that targets real reader demand. Starts from NicheScout / content-queue demand data to pick a topic, writes it in the Rebel voice (how-to funnel OR opinion piece), gives it an image of its own (photo, screenshot or diagram via blog_art.py), wires it into the blog index and feeds, and STOPS for human review. Use when the user wants a new blog post, to turn a queued topic into a draft, or to grow blog readership.
 ---
 
 # Write a Rebel Studios blog article
@@ -10,7 +10,7 @@ Goal: publishable drafts that **build up readers** — via search (target real d
 Paths (this repo = the site root, `~/RebelStudiosSoftware`):
 - Demand data: `~/rebel-monitor/content-queue.md` (daily NicheScout topics), `~/rebel-monitor/tool-ideas.md`, seed list `~/rebel-monitor/tech-niches.txt`
 - NicheScout CLI: `~/NicheScout/scout scan --seed-file <file> --geo US --timeframe "today 12-m" --json <out>` (often throttled by Google Trends — don't block on it)
-- Helper scripts (this skill dir): `make_card.mjs`, `gen_article.py`
+- Helper scripts: `gen_article.py` (this skill dir), `blog_art.py` (site root: each post's image)
 - Publish plumbing: `blog.html` (index cards), `generate_feeds.py` (sitemap + feed, auto-discovers `blog-*.html`)
 
 ## Step 1 — Pick a target topic (from demand, not vibes)
@@ -40,7 +40,7 @@ The synthesis: *a current technology development, examined for the deeper idea u
 
 Voice rules:
 - **Earn the read in the first two sentences.** A concrete hook, a surprising claim, or a sharp question — never "In today's fast-paced world…".
-- Direct, confident, second person. Short punchy sentences mixed with longer ones. Em-dashes. Concrete over abstract.
+- Direct, confident, second person. Short punchy sentences mixed with longer ones. Concrete over abstract. Em dashes sparingly (a couple per article at most): a sentence per dash reads as machine-written; use a full stop, a comma or a colon instead.
 - **Bring Rebel in early**, not just the CTA — one natural aside mid-article, then the close.
 - Apply the **second-order-effects lens**: what does this change downstream, who does it affect. That's the Rebel differentiator.
 - No corporate filler, no "5 ways AI will revolutionize", no fake statistics, no invented case studies. If a real first-hand example would help, add an HTML comment placeholder `<!-- PATRICK: real example here -->` rather than fabricating one.
@@ -50,12 +50,19 @@ Voice rules:
 
 Write the article body as the inner HTML of `<div class="article-content">` (use `&mdash; &rsquo; &ldquo; &rdquo;` entities, `<h2>`, `<p>`, `<ul class="article-list">`, highlight/callout boxes — mirror the existing articles exactly).
 
-## Step 4 — Generate the OG card
+## Step 4 — Give it its own image
+
+Every post gets an image made for it; there is no shared title-card template (46 posts looked identical that way, 2026-09-18). Pick the kind that shows the post's substance, add an entry to `blog_art.json` at the site root, and render:
+
+- **photo**: essays and opinion pieces. `python3 blog_art.py photos "<query>"` shows Pexels candidates (free licence); choose one that carries the argument, not the title (the xz-utils essay got rusted valves and gauges, not a padlock). It opens the essay with a credit line.
+- **crop**: a real screenshot of the product or tool the post leads to (`images/products/...`), cropped to the part that matters.
+- **diagram**: `art/<slug>.html` drawn for this post with `art/art.css`: the article's own example, table or numbers (measured where possible: the regex post charts real timings). Vary the layout; a photo can be built in with `python3 blog_art.py fetch <pexels-id> <name>`, credited inside the image.
 
 ```
-node .claude/skills/write-blog-article/make_card.mjs "<slug>" "<Title>" "<KICKER>"
+python3 blog_art.py render <slug>     # images/blog/<slug>.jpg|png
+python3 blog_art.py apply <slug>      # og/twitter/JSON-LD image + the blog.html card
+python3 blog_art.py sheet             # the whole index at once: no two cards should look alike
 ```
-Writes `images/blog/<slug>.png` (1200x630, the link preview + index thumbnail). KICKER is a short topical label (e.g. "The Agent Economy", "File Fix") — keep it neutral/topical.
 
 ## Step 5 — Generate the article HTML
 
@@ -70,16 +77,16 @@ Spec fields: `slug, title, subtitle, description, body_html, next_href, next_lab
 
 ## Step 6 — Wire it into the site
 
-1. Add a card at the **top** of the `<div class="blog-grid">` in `blog.html` (newest first), mirroring an existing `<a class="blog-card">` block — image `images/blog/<slug>.png`, today's date, title, one-sentence description, "Read Article →".
+1. Add a card at the **top** of the `<div class="blog-grid">` in `blog.html` (newest first), mirroring an existing `<a class="blog-card">` block — image as set by `blog_art.py apply` (or add the card first, then apply), today's date, title, one-sentence description, "Read Article →".
 2. Regenerate feeds: `python3 generate_feeds.py` (adds it to `sitemap.xml` + `feed.xml`).
 
 ## Step 7 — STOP. Human review, then publish
 
 Do **not** commit/push automatically. Present a summary: the topic + why it targets demand, the stance/angle, the opening lines, and any `PATRICK:` placeholders that need a real example. Only after the user approves:
-- `git add` the new `blog-<slug>.html`, `images/blog/<slug>.png`, `blog.html`, `sitemap.xml`, `feed.xml` and commit + push.
+- `git add` the new `blog-<slug>.html`, its image in `images/blog/`, `blog_art.json` (and `art/<slug>.html` if drawn), `blog.html`, `sitemap.xml`, `feed.xml` and commit + push.
 - It then flows into the daily social poster (`~/rebel-monitor/social_share.mjs`) automatically — opinion pieces drive the most reshares, how-tos drive search traffic.
 
 ## Distribution reminder (how readers actually show up)
-- **Search**: how-tos targeting real NicheScout demand, with the query in title/H1/description, internal links, and a unique OG card.
+- **Search**: how-tos targeting real NicheScout demand, with the query in title/H1/description, internal links, and an image of its own.
 - **Social**: opinion pieces are the fuel for Bluesky/LinkedIn/X — a clear side + a closing question gets replies and shares. The poster picks up any `blog-*.html` that links a tool or reads as a funnel piece.
 - **Cadence over bursts**: one well-targeted, human-reviewed piece beats ten generic ones — and keeps you clear of scaled-content-abuse penalties.

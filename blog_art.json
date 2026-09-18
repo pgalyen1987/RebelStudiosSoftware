@@ -1,0 +1,402 @@
+{
+  "legacy-hardware": {
+    "kind": "photo",
+    "pexels": 37148213,
+    "alt": "An old beige desktop computer waiting at a prompt that says press space bar to continue",
+    "credit": {
+      "name": "Ruben Boekeloo",
+      "url": "https://www.pexels.com/@ruben-boekeloo-521336009",
+      "photo": "https://www.pexels.com/photo/vintage-apple-ii-computer-on-display-37148213/"
+    },
+    "image": "images/blog/legacy-hardware.jpg"
+  },
+  "remote-economy-alone": {
+    "kind": "photo",
+    "pexels": 4069291,
+    "alt": "A person working alone at a laptop in a dark room, lit only by the screen and a desk lamp",
+    "credit": {
+      "name": "cottonbro studio",
+      "url": "https://www.pexels.com/@cottonbro",
+      "photo": "https://www.pexels.com/photo/silver-macbook-on-brown-wooden-table-4069291/"
+    },
+    "image": "images/blog/remote-economy-alone.jpg"
+  },
+  "who-pays-for-open-source": {
+    "kind": "photo",
+    "pexels": 7865898,
+    "alt": "Rusted pipes, a pneumatic alarm valve and pressure gauges in an old plant room",
+    "credit": {
+      "name": "Tam Ming",
+      "url": "https://www.pexels.com/@tam-ming-56320009",
+      "photo": "https://www.pexels.com/photo/rusty-analog-gauge-7865898/"
+    },
+    "image": "images/blog/who-pays-for-open-source.jpg"
+  },
+  "proof-is-the-new-scarcity": {
+    "kind": "photo",
+    "pexels": 5425648,
+    "alt": "A brass wax-seal stamp resting beside a fresh seal on handmade paper",
+    "credit": {
+      "name": "Anna Tarazevich",
+      "url": "https://www.pexels.com/@anntarazevich",
+      "photo": "https://www.pexels.com/photo/close-up-photo-of-a-stamp-on-a-paper-5425648/"
+    },
+    "image": "images/blog/proof-is-the-new-scarcity.jpg"
+  },
+  "ai-agents-money": {
+    "kind": "photo",
+    "pexels": 34492643,
+    "alt": "A row of lit vending machines on a street at night",
+    "credit": {
+      "name": "Nihongraphy",
+      "url": "https://www.pexels.com/@nihongraphy-22469233",
+      "photo": "https://www.pexels.com/photo/vending-machines-at-night-in-tokyo-street-34492643/"
+    },
+    "image": "images/blog/ai-agents-money.jpg"
+  },
+  "ship-code-you-dont-understand": {
+    "kind": "photo",
+    "pexels": 25153797,
+    "alt": "A container ship stacked with shipping containers under port cranes at dusk",
+    "credit": {
+      "name": "Wolfgang Weiser",
+      "url": "https://www.pexels.com/@wolfgang-weiser-467045605",
+      "photo": "https://www.pexels.com/photo/containers-in-a-port-25153797/"
+    },
+    "image": "images/blog/ship-code-you-dont-understand.jpg"
+  },
+  "hire-junior-developers": {
+    "kind": "photo",
+    "pexels": 3846255,
+    "alt": "An older craftsman showing a young apprentice how to work a piece at a workshop bench",
+    "credit": {
+      "name": "Andrea Piacquadio",
+      "url": "https://www.pexels.com/@olly",
+      "photo": "https://www.pexels.com/photo/master-showing-apprentice-how-handling-detail-3846255/"
+    },
+    "image": "images/blog/hire-junior-developers.jpg"
+  },
+  "recursive-prompting": {
+    "kind": "photo",
+    "pexels": 5772963,
+    "alt": "An infinity mirror: a square of lights repeating into a tunnel",
+    "credit": {
+      "name": "Irina Iriser",
+      "url": "https://www.pexels.com/@iriser",
+      "photo": "https://www.pexels.com/photo/an-infinity-mirror-5772963/"
+    },
+    "image": "images/blog/recursive-prompting.jpg"
+  },
+  "csv-to-json": {
+    "kind": "diagram",
+    "html": "art/csv-to-json.html",
+    "alt": "A CSV row with a quoted comma, a leading-zero ZIP and an empty cell, converted to JSON that keeps all three intact",
+    "image": "images/blog/csv-to-json.png"
+  },
+  "json-repair": {
+    "kind": "diagram",
+    "html": "art/json-repair.html",
+    "alt": "Six broken JSON snippets from language models beside their valid fixes: trailing comma, smart quotes, unquoted key, comment, cut-off output, prose",
+    "image": "images/blog/json-repair.png"
+  },
+  "test-a-regular-expression": {
+    "kind": "diagram",
+    "html": "art/test-a-regular-expression.html",
+    "alt": "Bar chart of measured match times for the regex (a+)+$, doubling with each extra character from 1 millisecond to 1.8 seconds",
+    "image": "images/blog/test-a-regular-expression.png"
+  },
+  "decode-a-jwt": {
+    "kind": "diagram",
+    "html": "art/decode-a-jwt.html",
+    "alt": "The example JWT split into its header, payload and signature, with the first two decoded as JSON",
+    "image": "images/blog/decode-a-jwt.png"
+  },
+  "smart-contract-risk": {
+    "kind": "diagram",
+    "html": "art/smart-contract-risk.html",
+    "alt": "Six checks to run before interacting with a token contract and the trap each one catches",
+    "image": "images/blog/smart-contract-risk.png"
+  },
+  "dollar-micro-utilities": {
+    "kind": "page",
+    "url": "tools/index.html",
+    "viewport": [
+      1440,
+      756
+    ],
+    "steps": [
+      [
+        "eval",
+        "document.querySelector('.navbar').style.display='none'"
+      ],
+      [
+        "eval",
+        "var g=document.querySelector('.tool-group');window.scrollTo(0,g.getBoundingClientRect().top+window.scrollY-40)"
+      ],
+      [
+        "wait",
+        500
+      ]
+    ],
+    "alt": "The Rebel Studios tools page: upload and file fixes, each a small single-purpose tool at a dollar a use",
+    "image": "images/blog/dollar-micro-utilities.png"
+  },
+  "remove-background": {
+    "kind": "diagram",
+    "html": "art/remove-background.html",
+    "alt": "A yellow mug photographed on a blue backdrop, and the same mug cut out on a transparent background with the gap in the handle cleared",
+    "image": "images/blog/remove-background.png"
+  },
+  "file-too-large": {
+    "kind": "diagram",
+    "html": "art/file-too-large.html",
+    "alt": "Bar chart of real file sizes from re-saving one large photo: quality settings barely change it, resizing brings it far under a 5 MB limit",
+    "image": "images/blog/file-too-large.png"
+  },
+  "compress-video-for-upload": {
+    "kind": "diagram",
+    "html": "art/compress-video-for-upload.html",
+    "alt": "The arithmetic for fitting a 90-second video under 25 MB: 25 MB times 8 divided by 90 seconds is about 2.2 megabits per second",
+    "image": "images/blog/compress-video-for-upload.png"
+  },
+  "upload-rejected": {
+    "kind": "diagram",
+    "html": "art/upload-rejected.html",
+    "alt": "A phone photo failing the three upload gates: HEIC format, 17.4 MB size, and 4032 by 3024 dimensions",
+    "image": "images/blog/upload-rejected.png"
+  },
+  "will-my-upload-pass": {
+    "kind": "diagram",
+    "html": "art/will-my-upload-pass.html",
+    "alt": "Upload size limits as a chain: a 1 MB web server limit and 2 MB runtime limit sit in front of the 5 MB the form shows",
+    "image": "images/blog/will-my-upload-pass.png"
+  },
+  "remove-exif-metadata": {
+    "kind": "diagram",
+    "html": "art/remove-exif-metadata.html",
+    "alt": "A cropped photo beside its EXIF metadata, whose embedded thumbnail still shows the uncropped original",
+    "image": "images/blog/remove-exif-metadata.png"
+  },
+  "heic-to-jpg": {
+    "kind": "diagram",
+    "html": "art/heic-to-jpg.html",
+    "alt": "The same photo as IMG_4021.HEIC, rejected, and as IMG_4021.jpg, accepted by an upload form's list of allowed formats",
+    "image": "images/blog/heic-to-jpg.png"
+  },
+  "photos-to-pdf": {
+    "kind": "diagram",
+    "html": "art/photos-to-pdf.html",
+    "alt": "Three crooked phone photos of receipts turned into one tidy three-page PDF",
+    "image": "images/blog/photos-to-pdf.png"
+  },
+  "passport-photo-size": {
+    "kind": "diagram",
+    "html": "art/passport-photo-size.html",
+    "alt": "A portrait framed as a 2 by 2 inch passport photo, with guides showing the head measured from chin to top of hair at 1 to 1 3/8 inches",
+    "image": "images/blog/passport-photo-size.png"
+  },
+  "http-402": {
+    "kind": "diagram",
+    "html": "art/http-402.html",
+    "alt": "The x402 exchange as a sequence: the agent requests, gets 402 Payment Required with a price, retries with a signed payment, and gets 200 OK with the data",
+    "image": "images/blog/http-402.png"
+  },
+  "mcp-web-access": {
+    "kind": "diagram",
+    "html": "art/mcp-web-access.html",
+    "alt": "A Claude Desktop config with one gate402 MCP server entry that gives the assistant live web access",
+    "image": "images/blog/mcp-web-access.png"
+  },
+  "cloudflare-ai-agents": {
+    "kind": "diagram",
+    "html": "art/cloudflare-ai-agents.html",
+    "alt": "A Cloudflare browser-check page returned to an AI agent's fetch, beside the two routes that get through: residential proxies and a real browser",
+    "image": "images/blog/cloudflare-ai-agents.png"
+  },
+  "ios-app-without-a-mac": {
+    "kind": "diagram",
+    "html": "art/ios-app-without-a-mac.html",
+    "alt": "Shipping an iOS app without a Mac: write and test locally, compile and sign on Expo's cloud Macs with eas build, then eas submit to Apple",
+    "image": "images/blog/ios-app-without-a-mac.png"
+  },
+  "ios-objective-c-without-a-mac": {
+    "kind": "diagram",
+    "html": "art/ios-objective-c-without-a-mac.html",
+    "alt": "The openssl commands that create an iOS distribution certificate and p12 on Linux for a macOS CI runner",
+    "image": "images/blog/ios-objective-c-without-a-mac.png"
+  },
+  "dark-mode-is-correct": {
+    "kind": "diagram",
+    "html": "art/dark-mode-is-correct.html",
+    "alt": "The same idea in light mode at noon and dark mode at 11 p.m.: light reads better in daylight, dark wins in a dim room",
+    "image": "images/blog/dark-mode-is-correct.png"
+  },
+  "app-review-guideline-2-1": {
+    "kind": "diagram",
+    "html": "art/app-review-guideline-2-1.html",
+    "alt": "The six items in Apple's Guideline 2.1 information request, with the physical-device screen recording highlighted",
+    "image": "images/blog/app-review-guideline-2-1.png"
+  },
+  "tokenized-stock-slippage": {
+    "kind": "diagram",
+    "html": "art/tokenized-stock-slippage.html",
+    "alt": "Bar chart of price impact for a $500,000 buy of eight tokenized stocks on Solana: AAPLx 2.21%, SPYx 0.01%",
+    "image": "images/blog/tokenized-stock-slippage.png"
+  },
+  "woocommerce-invoice-vat-gst-sales-tax": {
+    "kind": "diagram",
+    "html": "art/woocommerce-invoice-vat-gst-sales-tax.html",
+    "alt": "Three invoices for the same order under UK VAT, Australian GST and US sales tax, with the required lines highlighted",
+    "image": "images/blog/woocommerce-invoice-vat-gst-sales-tax.png"
+  },
+  "woocommerce-invoice-arabic-rtl-not-rendering": {
+    "kind": "diagram",
+    "html": "art/woocommerce-invoice-arabic-rtl-not-rendering.html",
+    "alt": "An invoice's Bill To block with an Arabic name shown as empty boxes, beside the same block rendered correctly right to left",
+    "image": "images/blog/woocommerce-invoice-arabic-rtl-not-rendering.png"
+  },
+  "build-freemium-wordpress-plugin": {
+    "kind": "diagram",
+    "html": "art/build-freemium-wordpress-plugin.html",
+    "alt": "A freemium WordPress plugin: the free plugin on WordPress.org, the Pro add-on sold off-site, and one gate function that falls back to free",
+    "image": "images/blog/build-freemium-wordpress-plugin.png"
+  },
+  "ats-friendly-resume-format": {
+    "kind": "diagram",
+    "html": "art/ats-friendly-resume-format.html",
+    "alt": "A two-column resume that an ATS reads straight across into jumbled text, beside a one-column resume that parses into clean fields",
+    "image": "images/blog/ats-friendly-resume-format.png"
+  },
+  "ats-resume-keywords": {
+    "kind": "diagram",
+    "html": "art/ats-resume-keywords.html",
+    "alt": "A job posting with the keywords a resume has highlighted green and the two it is missing highlighted red",
+    "image": "images/blog/ats-resume-keywords.png"
+  },
+  "coi-endorsements": {
+    "kind": "diagram",
+    "html": "art/coi-endorsements.html",
+    "alt": "A certificate of liability insurance with the Additional Insured and Waiver of Subrogation columns highlighted",
+    "image": "images/blog/coi-endorsements.png"
+  },
+  "sell-event-tickets-wordpress": {
+    "kind": "crop",
+    "src": "images/products/wc-events/shot-1.png",
+    "box": [
+      95,
+      30,
+      1010,
+      530
+    ],
+    "alt": "A Rebel Studios event ticket for Indie Synth Night with a QR code to scan at the door",
+    "image": "images/blog/sell-event-tickets-wordpress.png"
+  },
+  "eventbrite-alternative-wordpress": {
+    "kind": "crop",
+    "src": "images/products/wc-events/shot-3.png",
+    "box": [
+      172,
+      0,
+      1028,
+      540
+    ],
+    "alt": "The attendees and check-in list for an event run on your own WordPress site",
+    "image": "images/blog/eventbrite-alternative-wordpress.png"
+  },
+  "commission-free-online-ordering-restaurants": {
+    "kind": "crop",
+    "src": "images/products/wc-restaurant/shot-1.png",
+    "box": [
+      60,
+      80,
+      1125,
+      590
+    ],
+    "alt": "A restaurant's own online menu with desserts and mains, prices beside each dish",
+    "image": "images/blog/commission-free-online-ordering-restaurants.png"
+  },
+  "restrict-wordpress-content-to-members": {
+    "kind": "crop",
+    "src": "images/products/membership-content-restriction/shot-1.png",
+    "box": [
+      0,
+      0,
+      900,
+      470
+    ],
+    "alt": "A members-only post showing a log in or join prompt instead of the content",
+    "image": "images/blog/restrict-wordpress-content-to-members.png"
+  },
+  "attach-pdf-invoice-woocommerce-order-emails": {
+    "kind": "crop",
+    "src": "images/products/wc-invoices/shot-1.png",
+    "box": [
+      40,
+      90,
+      1140,
+      598
+    ],
+    "alt": "A WooCommerce invoice PDF with the store details, bill-to address and line items",
+    "image": "images/blog/attach-pdf-invoice-woocommerce-order-emails.png"
+  },
+  "woocommerce-sequential-invoice-numbers": {
+    "kind": "crop",
+    "src": "images/products/wc-invoices/shot-3.png",
+    "box": [
+      140,
+      690,
+      1060,
+      556
+    ],
+    "alt": "Invoice settings in WooCommerce: sequential invoice numbering, the INV- prefix and the next number",
+    "image": "images/blog/woocommerce-sequential-invoice-numbers.png"
+  },
+  "get-resume-past-ats": {
+    "kind": "crop",
+    "src": "images/products/job-hunt-tracker/shot-2.png",
+    "box": [
+      0,
+      0,
+      1200,
+      630
+    ],
+    "alt": "An ATS keyword workspace showing a 60% match, three keywords the resume has and two it is missing",
+    "image": "images/blog/get-resume-past-ats.png"
+  },
+  "subcontractor-onboarding": {
+    "kind": "crop",
+    "src": "images/tradeguard/sub-portal.png",
+    "box": [
+      100,
+      330,
+      1086,
+      570
+    ],
+    "alt": "The TradeGuard subcontractor portal: text reminders for expiring certificates and a certificate expiring soon",
+    "image": "images/blog/subcontractor-onboarding.png"
+  },
+  "coi-tracking": {
+    "kind": "crop",
+    "src": "images/tradeguard/dashboard.png",
+    "box": [
+      0,
+      60,
+      1197,
+      628
+    ],
+    "alt": "The TradeGuard dashboard with certificates of insurance, expiry timeline and text alerts",
+    "image": "images/blog/coi-tracking.png"
+  },
+  "monetize-api-x402": {
+    "kind": "crop",
+    "src": "images/gate402/landing.png",
+    "box": [
+      0,
+      0,
+      1280,
+      672
+    ],
+    "alt": "The gate402 landing page: a pay-per-call gateway that lets AI agents pay for an API with x402",
+    "image": "images/blog/monetize-api-x402.png"
+  }
+}

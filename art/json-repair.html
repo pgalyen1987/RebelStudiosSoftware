@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-json-repair: the article's six ways JSON breaks, each as broken → fixed. -->
+<style>
+  .wrap{position:absolute;inset:40px 56px}
+  h1{font:600 32px 'Space Grotesk',sans-serif}
+  .rows{margin-top:22px;border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:var(--raise)}
+  .row{display:grid;grid-template-columns:230px 1.1fr 1fr;align-items:center;border-top:1px solid var(--line);font:400 18.5px/1.35 'JetBrains Mono',monospace}
+  .row:first-child{border-top:0}
+  .row > div{padding:15px 18px}
+  .what{font:500 17px Inter,sans-serif;color:var(--ink2)}
+  .x{color:var(--red);background:rgba(240,113,106,.06)}
+  .ok{color:var(--green2)}
+  .x::before{content:"✗  ";color:var(--red)} .ok::before{content:"✓  "}
+  .head{font:500 12px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em}
+</style>
+<div class="wrap">
+  <h1>Six ways an LLM's JSON breaks, and the fix for each</h1>
+  <div class="rows">
+    <div class="row head"><div>What broke</div><div>What the model sent</div><div>Valid JSON</div></div>
+    <div class="row"><div class="what">Trailing comma</div><div class="x">{"a": 1, "b": 2,}</div><div class="ok">{"a": 1, "b": 2}</div></div>
+    <div class="row"><div class="what">Smart quotes</div><div class="x">{“name”: “Ada”}</div><div class="ok">{"name": "Ada"}</div></div>
+    <div class="row"><div class="what">Unquoted key</div><div class="x">{name: "Ada"}</div><div class="ok">{"name": "Ada"}</div></div>
+    <div class="row"><div class="what">Comment</div><div class="x">{"retries": 3 // max}</div><div class="ok">{"retries": 3}</div></div>
+    <div class="row"><div class="what">Cut off mid-output</div><div class="x">{"items": ["a", "b</div><div class="ok">{"items": ["a", "b"]}</div></div>
+    <div class="row"><div class="what">Prose around it</div><div class="x">Sure! Here it is: {"ok": true}</div><div class="ok">{"ok": true}</div></div>
+  </div>
+</div>

@@ -2042,6 +2042,18 @@ h1, h2, h3, h4 {
     object-fit: cover;
 }
 
+.article-hero .article-credit {
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+    padding: 8px 14px;
+    border-top: 1px solid var(--line);
+    background: var(--bg-raise);
+}
+
+.article-credit a {
+    color: var(--ink-2);
+}
+
 /* Body type on the container so lists and callouts inherit one size. */
 .article-content {
     font-size: var(--text-body);

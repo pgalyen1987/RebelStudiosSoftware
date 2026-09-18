@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-upload-rejected: the article's three gates, with a typical phone photo failing each. -->
+<style>
+  .wrap{position:absolute;inset:40px 56px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+  h1{font:600 37px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:20px;margin-top:6px}
+  .file{margin-top:34px;display:inline-flex;gap:16px;align-items:center;background:var(--raise);border:1px solid var(--line2);border-radius:10px;padding:12px 18px;font:500 20px 'JetBrains Mono',monospace}
+  .file i{width:34px;height:42px;border-radius:4px;background:linear-gradient(160deg,#3b4a63,#1c2432);display:block}
+  .gates{margin-top:34px;align-self:stretch;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .g{border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:var(--raise)}
+  .g h2{font:600 16px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);padding:12px 18px;border-bottom:1px solid var(--line)}
+  .g .have{padding:22px 20px 6px;font:600 38px 'Space Grotesk',sans-serif;color:var(--red)}
+  .g .want{padding:0 20px 22px;font:400 19px Inter,sans-serif;color:var(--ink2)}
+  .g .want b{color:var(--green2);font-weight:600}
+</style>
+<div class="wrap">
+  <h1>Three gates. Your photo can fail all three.</h1>
+  <p class="sub">Most "upload failed" messages are one of these, and none of them is about the photo itself.</p>
+  <div class="file"><i></i>IMG_4021.HEIC · 17.4 MB · 4032 × 3024</div>
+  <div class="gates">
+    <div class="g"><h2>1 · Format</h2><div class="have">.HEIC</div><div class="want">The form accepts <b>.jpg, .png</b></div></div>
+    <div class="g"><h2>2 · Size</h2><div class="have">17.4 MB</div><div class="want">The limit is <b>5 MB</b></div></div>
+    <div class="g"><h2>3 · Dimensions</h2><div class="have">4032 × 3024</div><div class="want">It wants <b>600 × 600</b>, square</div></div>
+  </div>
+</div>

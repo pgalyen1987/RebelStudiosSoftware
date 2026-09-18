@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-tokenized-stock-slippage: the article's own table, price impact of a $500k buy per token. -->
+<style>
+  .wrap{position:absolute;inset:40px 56px}
+  h1{font:600 30px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:18px;margin-top:6px}
+  .rows{margin-top:26px}
+  .row{display:grid;grid-template-columns:230px 1fr 90px;gap:14px;align-items:center;margin:10px 0;font:500 17px 'JetBrains Mono',monospace}
+  .row .name{color:var(--ink1)} .row .name small{color:var(--ink3);font:400 14px Inter,sans-serif;margin-left:8px}
+  .bar{height:28px;border-radius:4px;background:#5b8def;min-width:3px}
+  .big .bar{background:var(--red)}
+  .v{text-align:right;color:var(--ink1)}
+  .foot{position:absolute;left:56px;right:56px;bottom:22px;font:500 14px 'JetBrains Mono',monospace;color:var(--ink3)}
+</style>
+<div class="wrap">
+  <h1>Price impact of a $500,000 buy, by tokenized stock</h1>
+  <p class="sub">Apple's token costs 221× more to buy in size than the S&amp;P 500 ETF's.</p>
+  <div class="rows" id="rows"></div>
+</div>
+<div class="foot">Jupiter quotes, 7 days, Solana · from the article's table</div>
+<script>
+const d=[["AAPLx","Apple",2.21],["MSTRx","MicroStrategy",0.17],["COINx","Coinbase",0.16],["HOODx","Robinhood",0.16],["TSLAx","Tesla",0.08],["QQQx","Nasdaq 100 ETF",0.06],["NVDAx","Nvidia",0.06],["SPYx","S&P 500 ETF",0.01]];
+document.getElementById('rows').innerHTML=d.map(([t,n,v])=>`<div class="row ${v>1?'big':''}"><span class="name">${t}<small>${n}</small></span><div><div class="bar" style="width:${v/2.21*100}%"></div></div><span class="v">${v.toFixed(2)}%</span></div>`).join('');
+</script>

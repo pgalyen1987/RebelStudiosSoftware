@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<!-- blog-woocommerce-invoice-arabic-rtl-not-rendering: the same Bill To block, rendered with a
+     Latin-only PDF font (boxes) and with a font that has Arabic, shaped and right-to-left. -->
+<style>
+  .wrap{position:absolute;inset:36px 56px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 35px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:18px;margin-top:6px}
+  .cols{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .inv{background:#f7f7f4;color:#20242d;border-radius:12px;padding:28px 30px;box-shadow:0 12px 26px rgba(0,0,0,.4)}
+  .lab{font:600 13px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6b7280}
+  .name{margin-top:14px;font:700 36px 'Noto Naskh Arabic',serif;line-height:1.5}
+  .addr{font:500 24px/1.7 'Noto Naskh Arabic',serif;color:#3b4150}
+  .tofu{font-family:'JetBrains Mono',monospace;letter-spacing:4px;color:#9aa0aa}
+  .ar{direction:rtl;text-align:right}
+  .status{margin-top:18px;font:600 15px 'JetBrains Mono',monospace}
+  .bad{color:#c2413b} .good{color:#2f8a2a}
+</style>
+<div class="wrap">
+  <h1>The customer's name, on two invoice PDFs</h1>
+  <p class="sub">Same order data. One plugin ships a font without Arabic.</p>
+  <div class="cols">
+    <div class="inv"><div class="lab">Bill to</div>
+      <div class="name tofu">□□□□ □□□□□□</div>
+      <div class="addr tofu">□□□□ □□□□□□□ □□<br>□□□□□□ □□□□□□□</div>
+      <div class="status bad">✗ Latin-only font: empty boxes</div></div>
+    <div class="inv"><div class="lab">Bill to</div>
+      <div class="name ar">محمد العتيبي</div>
+      <div class="addr ar">شارع الملك فهد ١٢<br>الرياض، السعودية</div>
+      <div class="status good">✓ Arabic font, shaped, right to left</div></div>
+  </div>
+</div>

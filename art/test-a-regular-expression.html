@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-test-a-regular-expression: real timings of (a+)+$ against "a"×n + "!",
+     best of 3, Python 3.13 re on the build machine, 2026-09-18. -->
+<style>
+  .wrap{position:absolute;inset:44px 56px}
+  h1{font:600 28px 'Space Grotesk',sans-serif}
+  h1 code{font:500 26px 'JetBrains Mono',monospace;color:var(--amber)}
+  .sub{color:var(--ink2);font-size:17px;margin-top:6px}
+  .chart{position:absolute;left:56px;right:56px;top:170px;bottom:62px;display:flex;align-items:flex-end;gap:14px;border-bottom:1px solid var(--line2)}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .b{width:100%;background:linear-gradient(180deg,#f0716a,#b54a45);border-radius:6px 6px 0 0;min-height:3px}
+  .v{font:500 14px 'JetBrains Mono',monospace;color:var(--ink1);margin-bottom:6px;white-space:nowrap}
+  .n{position:absolute;bottom:-30px;font:500 14px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .col{position:relative}
+  .foot{position:absolute;left:56px;right:56px;bottom:12px;display:flex;justify-content:space-between;font:500 13px 'JetBrains Mono',monospace;color:var(--ink3)}
+</style>
+<div class="wrap">
+  <h1><code>(a+)+$</code> against a string of a's ending in "!"</h1>
+  <p class="sub">Each extra character roughly doubles the time. Measured, not estimated.</p>
+</div>
+<div class="chart" id="c"></div>
+<div class="foot"><span>characters in the input →</span><span>Python 3.13 re, best of 3 runs</span></div>
+<script>
+const data=[[14,1.0],[15,1.9],[16,3.7],[17,7.7],[18,16.1],[19,37.7],[20,106.2],[21,274.6],[22,505.4],[23,751.4],[24,1784.2]];
+const max=1784.2, c=document.getElementById('c');
+for(const [n,ms] of data){
+  const col=document.createElement('div');col.className='col';
+  const label=ms>=1000?(ms/1000).toFixed(1)+' s':(ms<10?ms.toFixed(1):Math.round(ms))+' ms';
+  col.innerHTML=`<div class="v">${label}</div><div class="b" style="height:${Math.max(ms/max*100,0.6)}%"></div><div class="n">${n}</div>`;
+  c.appendChild(col);
+}
+</script>

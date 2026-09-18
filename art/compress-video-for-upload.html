@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-compress-video-for-upload: the article's own arithmetic for a 90-second clip under a 25 MB cap. -->
+<style>
+  .wrap{position:absolute;inset:56px 60px;display:flex;flex-direction:column}
+  .k1{font:500 17px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em}
+  .eq{margin-top:40px;display:flex;align-items:baseline;gap:22px;font:600 66px 'Space Grotesk',sans-serif;letter-spacing:-.02em}
+  .eq .op{color:var(--ink3);font-weight:500}
+  .eq .res{color:var(--green2)}
+  .eq small{display:block;font:500 17px 'JetBrains Mono',monospace;color:var(--ink3);letter-spacing:0;margin-top:8px}
+  .term{display:flex;flex-direction:column;white-space:nowrap}
+  .note{margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .card{background:var(--raise);border:1px solid var(--line2);border-radius:12px;padding:22px 22px}
+  .card b{display:block;font:600 30px 'Space Grotesk',sans-serif;color:var(--ink1)}
+  .card span{font:400 18px/1.45 Inter,sans-serif;color:var(--ink2)}
+</style>
+<div class="wrap">
+  <div class="k1">The bitrate that fits</div>
+  <div class="eq">
+    <span class="term">25 MB<small>the portal's cap</small></span><span class="op">×</span>
+    <span class="term">8<small>bits per byte</small></span><span class="op">÷</span>
+    <span class="term">90 s<small>clip length</small></span><span class="op">≈</span>
+    <span class="term res">2.2 Mbps<small>video + audio, total</small></span>
+  </div>
+  <div class="note">
+    <div class="card"><b>180 MB</b><span>what the phone recorded, about 16 Mbps</span></div>
+    <div class="card"><b>~2 Mbps</b><span>aim a little under, so the file lands under 25 MB</span></div>
+    <div class="card"><b>720p</b><span>drop resolution with the bitrate, or it turns to mush</span></div>
+  </div>
+</div>

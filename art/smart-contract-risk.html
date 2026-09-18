@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-smart-contract-risk: the article's six checks and what each one catches. -->
+<style>
+  .wrap{position:absolute;inset:42px 56px}
+  h1{font:600 33px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:20px;margin-top:6px}
+  .list{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .it{background:var(--raise);border:1px solid var(--line2);border-radius:12px;padding:19px 22px;display:grid;grid-template-columns:34px 1fr;gap:4px 12px}
+  .num{grid-row:span 2;font:600 22px 'Space Grotesk',sans-serif;color:var(--ink3)}
+  .t{font:600 20px Inter,sans-serif;color:var(--ink1)}
+  .d{font:400 17.5px/1.4 Inter,sans-serif;color:var(--ink2)}
+</style>
+<div class="wrap">
+  <h1>Before you interact with a token contract</h1>
+  <p class="sub">Six checks, and the trap each one catches.</p>
+  <div class="list">
+    <div class="it"><span class="num">1</span><span class="t">Sell simulation</span><span class="d">A honeypot lets you buy, then blocks every sell but the deployer's.</span></div>
+    <div class="it"><span class="num">2</span><span class="t">Buy and sell tax</span><span class="d">A 40% sell tax, or one the owner can raise later, is a slow rug.</span></div>
+    <div class="it"><span class="num">3</span><span class="t">Liquidity depth and lock</span><span class="d">If the LP tokens aren't locked, the deployer can pull the pool.</span></div>
+    <div class="it"><span class="num">4</span><span class="t">Holder concentration</span><span class="d">One or two wallets holding most of the supply can dump on you.</span></div>
+    <div class="it"><span class="num">5</span><span class="t">Contract permissions</span><span class="d">Mint, pause, blacklist or raise the tax: what the owner kept.</span></div>
+    <div class="it"><span class="num">6</span><span class="t">Basic ERC-20 sanity</span><span class="d">Verified source, not a look-alike with a modified transfer.</span></div>
+  </div>
+</div>

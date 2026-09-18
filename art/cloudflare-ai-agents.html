@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-cloudflare-ai-agents: what a plain fetch gets back, and the two routes the article says get through. -->
+<style>
+  .wrap{position:absolute;inset:36px 56px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 34px 'Space Grotesk',sans-serif}
+  .grid{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .chal{background:#f4f5f7;color:#23272f;border-radius:12px;padding:56px 34px;text-align:center;border:1px solid var(--line2)}
+  .chal .spin{width:34px;height:34px;border-radius:50%;border:4px solid #d0d4db;border-top-color:#f38020;margin:0 auto 18px}
+  .chal b{display:block;font:600 22px Inter,sans-serif}
+  .chal span{display:block;font:400 15px Inter,sans-serif;color:#555c68;margin-top:8px}
+  .chal code{display:block;margin-top:22px;font:500 14px 'JetBrains Mono',monospace;color:#8a3b12}
+  .routes{display:flex;flex-direction:column;gap:16px}
+  .rt{background:var(--raise);border:1px solid var(--line2);border-radius:12px;padding:18px 20px}
+  .rt b{font:600 21px Inter,sans-serif;color:var(--ink1)}
+  .rt p{font:400 17px/1.45 Inter,sans-serif;color:var(--ink2);margin-top:6px}
+  .rt .cost{font:500 14px 'JetBrains Mono',monospace;color:var(--amber);margin-top:8px}
+</style>
+<div class="wrap">
+  <h1>Your agent asked for a page. It got this instead.</h1>
+  <div class="grid">
+    <div class="chal"><div class="spin"></div><b>Checking your browser before you access this site.</b><span>This process is automatic.</span><code>fetch() → 403, a challenge page, no content</code></div>
+    <div class="routes">
+      <div class="rt"><b>Residential proxies</b><p>Requests from home IPs instead of a data centre.</p><div class="cost">someone rents those IPs: it costs money</div></div>
+      <div class="rt"><b>A real browser that solves the challenge</b><p>Runs the JavaScript the check expects.</p><div class="cost">best paid per success, not per month</div></div>
+    </div>
+  </div>
+</div>

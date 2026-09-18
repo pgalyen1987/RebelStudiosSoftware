@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-http-402: the article's four-step x402 exchange as a sequence diagram. -->
+<style>
+  .wrap{position:absolute;inset:40px 60px}
+  h1{font:600 30px 'Space Grotesk',sans-serif}
+  .actors{position:absolute;left:60px;right:60px;top:108px;display:flex;justify-content:space-between}
+  .actor{width:200px;text-align:center;font:600 18px 'JetBrains Mono',monospace;background:var(--raise);border:1px solid var(--line2);border-radius:10px;padding:12px}
+  .life{position:absolute;top:158px;bottom:40px;border-left:2px dashed var(--line2)}
+  .l1{left:160px}.l2{right:160px}
+  .msg{position:absolute;left:160px;right:160px;height:56px}
+  .msg .line{position:absolute;left:0;right:0;top:26px;border-top:2px solid var(--ink3)}
+  .msg .line::after{content:"";position:absolute;top:-7px;border:6px solid transparent}
+  .r .line::after{right:-2px;border-left:10px solid var(--ink3)} .l .line::after{left:-2px;border-right:10px solid var(--ink3)}
+  .msg .t{position:absolute;left:0;right:0;top:0;text-align:center;font:500 17px 'JetBrains Mono',monospace;color:var(--ink1)}
+  .msg .n{position:absolute;left:0;right:0;top:34px;text-align:center;font:400 14px Inter,sans-serif;color:var(--ink2)}
+  .pay .t{color:var(--amber)} .pay .line{border-color:var(--amber)} .pay.l .line::after{border-right-color:var(--amber)}
+  .ok .t{color:var(--green2)} .ok .line{border-color:var(--green)} .ok.l .line::after{border-right-color:var(--green)}
+  .step{position:absolute;left:-44px;top:14px;font:600 15px 'JetBrains Mono',monospace;color:var(--ink3)}
+</style>
+<div class="wrap"><h1>HTTP 402, finally used: pay per request</h1></div>
+<div class="actors"><div class="actor">Agent</div><div class="actor">Your API</div></div>
+<div class="life l1"></div><div class="life l2"></div>
+<div class="msg r" style="top:190px"><span class="step">1</span><div class="t">GET /v1/premium-data</div><div class="line"></div></div>
+<div class="msg l pay" style="top:280px"><span class="step">2</span><div class="t">402 Payment Required</div><div class="line"></div><div class="n">here's the price, and where to pay</div></div>
+<div class="msg r" style="top:380px"><span class="step">3</span><div class="t">GET /v1/premium-data + signed payment</div><div class="line"></div><div class="n">for the exact amount</div></div>
+<div class="msg l ok" style="top:480px"><span class="step">4</span><div class="t">200 OK + the data</div><div class="line"></div><div class="n">payment settles on-chain</div></div>

@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-remove-exif-metadata: the embedded-thumbnail trap. The visible image is cropped; the preview
+     stored in the metadata still shows the whole scene. Values on the right are examples. -->
+<style>
+  .wrap{position:absolute;inset:40px 52px}
+  h1{font:600 30px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:17px;margin-top:6px}
+  .grid{display:grid;grid-template-columns:430px 1fr;gap:26px;margin-top:26px}
+  .shown{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line2);height:360px}
+  .shown img{width:100%;height:100%;object-fit:cover;object-position:78% 40%}
+  .cap{position:absolute;left:12px;top:12px;font:600 13px 'JetBrains Mono',monospace;background:rgba(7,9,15,.8);padding:6px 10px;border-radius:6px;color:var(--ink1)}
+  .meta .row{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:12px 16px;border-top:1px solid var(--line);font:400 16px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .meta .row:first-of-type{border-top:0}
+  .meta .row b{font:500 13px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;align-self:center}
+  .thumbrow{align-items:center}
+  .thumb{display:flex;gap:14px;align-items:center}
+  .thumb img{width:150px;height:100px;object-fit:cover;border-radius:6px;border:2px solid var(--red)}
+  .thumb span{color:var(--red);font:500 14px/1.4 Inter,sans-serif}
+  .credit{right:auto;left:62px;bottom:14px}
+</style>
+<div class="wrap">
+  <h1>You cropped it. The file still has the whole picture.</h1>
+  <p class="sub">What a phone JPEG carries besides the pixels you see.</p>
+  <div class="grid">
+    <div class="shown"><img src="assets/lake.jpg" alt=""><span class="cap">what you posted (cropped)</span></div>
+    <div class="panel meta"><div class="bar">EXIF, still in the file</div>
+      <div class="row"><b>GPS</b><span>where you were standing</span></div>
+      <div class="row"><b>Taken</b><span>date and time to the second</span></div>
+      <div class="row"><b>Camera</b><span>make, model, often a serial number</span></div>
+      <div class="row thumbrow"><b>Thumbnail</b><div class="thumb"><img src="assets/lake.jpg" alt=""><span>the original, uncropped preview</span></div></div>
+    </div>
+  </div>
+</div>
+<span class="credit">Photo: Amjad ali / Pexels</span>

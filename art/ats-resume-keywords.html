@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-ats-resume-keywords: the job posting's own words, checked against a resume. -->
+<style>
+  .wrap{position:absolute;inset:36px 56px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 36px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:20px;margin-top:6px}
+  .post{margin-top:24px;background:#f7f7f4;color:#2a2f3a;border-radius:12px;padding:28px 30px;font:400 24px/1.75 Inter,sans-serif}
+  .post .lab{font:600 13px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;margin-bottom:6px}
+  .have{background:rgba(108,190,69,.28);border-radius:4px;padding:1px 4px}
+  .miss{background:rgba(240,113,106,.28);border-radius:4px;padding:1px 4px;text-decoration:underline wavy #c2413b;text-underline-offset:4px}
+  .legend{margin-top:24px;display:flex;gap:30px;font:500 20px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .legend b{font-weight:600}
+  .g{color:var(--green2)} .r{color:var(--red)}
+</style>
+<div class="wrap">
+  <h1>Use the posting's words, not your synonyms for them</h1>
+  <p class="sub">An ATS scores exact terms. "Container orchestration" doesn't count for Kubernetes.</p>
+  <div class="post"><div class="lab">From the job posting</div>
+    We're hiring a data engineer with <span class="have">Python</span> and <span class="have">SQL</span> who has run workloads on <span class="miss">Kubernetes</span>, built <span class="have">CI/CD</span> pipelines, and designed services with <span class="miss">gRPC</span> and <span class="have">PostgreSQL</span>.</div>
+  <div class="legend"><span><b class="g">4</b> on the resume</span><span><b class="r">2</b> missing: Kubernetes, gRPC</span></div>
+</div>

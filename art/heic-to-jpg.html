@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-heic-to-jpg: same photo, a format the upload form's allow-list recognises. -->
+<style>
+  .wrap{position:absolute;inset:46px 56px}
+  h1{font:600 33px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:18px;margin-top:6px}
+  .row{margin-top:34px;display:grid;grid-template-columns:1fr 80px 1fr;align-items:center}
+  .f{background:var(--raise);border:1px solid var(--line2);border-radius:14px;overflow:hidden}
+  .f img{width:100%;height:250px;object-fit:cover;display:block}
+  .f .name{padding:14px 18px;font:600 20px 'JetBrains Mono',monospace;display:flex;justify-content:space-between;align-items:center}
+  .f .name small{font:500 14px Inter,sans-serif;color:var(--ink2)}
+  .no .name{color:var(--red)} .yes .name{color:var(--green2)}
+  .arr{text-align:center;font:500 34px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .allow{margin-top:22px;font:500 16px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .allow b{color:var(--ink1);font-weight:500;background:rgba(255,255,255,.06);padding:3px 8px;border-radius:6px;margin-right:6px}
+  .credit{bottom:12px}
+</style>
+<div class="wrap">
+  <h1>The photo is fine. The form's list just doesn't include it.</h1>
+  <p class="sub">Converting changes the container, not the picture.</p>
+  <div class="row">
+    <div class="f no"><img src="assets/lake.jpg" alt=""><div class="name">IMG_4021.HEIC<small>rejected</small></div></div>
+    <div class="arr">→</div>
+    <div class="f yes"><img src="assets/lake.jpg" alt=""><div class="name">IMG_4021.jpg<small>accepted</small></div></div>
+  </div>
+  <div class="allow">The form checks against: <b>.jpg</b><b>.jpeg</b><b>.png</b><b>.pdf</b></div>
+</div>
+<span class="credit">Photo: Amjad ali / Pexels</span>

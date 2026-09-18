@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-coi-endorsements: a certificate of liability insurance laid out like the standard form, with the
+     two columns the article is about. Carrier, policy numbers and limits are examples. -->
+<style>
+  .wrap{position:absolute;inset:36px 50px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 34px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:18px;margin-top:6px}
+  .cert{margin-top:22px;background:#f7f7f4;color:#20242d;border-radius:8px;overflow:hidden;box-shadow:0 12px 26px rgba(0,0,0,.4)}
+  .cert .top{padding:10px 16px;font:700 14px 'JetBrains Mono',monospace;letter-spacing:.06em;border-bottom:2px solid #20242d}
+  table{width:100%;border-collapse:collapse;font:500 17px 'JetBrains Mono',monospace}
+  th{font:700 13px 'JetBrains Mono',monospace;text-align:left;padding:10px 12px;border-bottom:1px solid #c9ccd3;background:#eceef2;letter-spacing:.04em}
+  td{padding:15px 12px;border-bottom:1px solid #e1e3e8}
+  .c{text-align:center}
+  .hl{background:rgba(245,185,79,.32)}
+  th.hl{background:rgba(245,185,79,.55)}
+  .x{font:700 17px 'JetBrains Mono',monospace}
+  .no{color:#c2413b;font-weight:700}
+  .notes{margin-top:20px;display:flex;gap:30px;font:500 18px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .notes b{color:var(--amber);font-weight:600}
+</style>
+<div class="wrap">
+  <h1>The two columns that move the risk, not the limits</h1>
+  <p class="sub">A certificate can show big limits and still leave the GC exposed.</p>
+  <div class="cert"><div class="top">CERTIFICATE OF LIABILITY INSURANCE</div>
+    <table>
+      <tr><th>Type of insurance</th><th class="hl c">ADDL INSD</th><th class="hl c">SUBR WVD</th><th>Policy number</th><th>Limits</th></tr>
+      <tr><td>Commercial general liability</td><td class="hl c x">Y</td><td class="hl c x">Y</td><td>GL-4471902</td><td>$1,000,000 each occurrence</td></tr>
+      <tr><td>Automobile liability</td><td class="hl c x">Y</td><td class="hl c no">N</td><td>AU-2208815</td><td>$1,000,000 combined single</td></tr>
+      <tr><td>Workers compensation</td><td class="hl c">—</td><td class="hl c no">N</td><td>WC-9930117</td><td>Statutory</td></tr>
+    </table></div>
+  <div class="notes"><span><b>ADDL INSD</b>: you're covered under their policy</span><span><b>SUBR WVD</b>: their insurer can't come after you</span></div>
+</div>

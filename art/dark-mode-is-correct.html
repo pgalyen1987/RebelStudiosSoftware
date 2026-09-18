@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-dark-mode-is-correct: the article's honest version: light wins in daylight, dark wins in a dim room. -->
+<style>
+  .half{position:absolute;top:0;bottom:0;width:600px;padding:52px 50px}
+  .light{left:0;background:#fbfbf8;color:#1f2430}
+  .dark{left:600px;background:#0e131e;color:#dfe4ee}
+  .when{font:600 15px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+  .light .when{color:#8a6d1f} .dark .when{color:var(--green2)}
+  h2{font:600 34px/1.15 'Space Grotesk',sans-serif;margin-top:12px}
+  .para{margin-top:26px;font:400 19px/1.65 Inter,sans-serif}
+  .light .para{color:#3b4150} .dark .para{color:#a8b1c2}
+  .why{position:absolute;left:50px;right:50px;bottom:48px;font:500 16px/1.5 'JetBrains Mono',monospace}
+  .light .why{color:#6b7280} .dark .why{color:#69738a}
+</style>
+<div class="half light"><div class="when">noon, bright office</div><h2>Light mode wins here</h2>
+  <p class="para">Dark text on a light page reads slightly better in normal light: the bright background narrows your pupil and the letters land sharper.</p>
+  <p class="why">what the research mostly finds</p></div>
+<div class="half dark"><div class="when">11 p.m., dim room</div><h2>Dark mode wins here</h2>
+  <p class="para">A white screen in a dark room is a flashlight to the retina. The fight is really about the room you read in.</p>
+  <p class="why">the case nobody measures in a lab</p></div>

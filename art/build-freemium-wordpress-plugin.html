@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-build-freemium-wordpress-plugin: the article's model: free on wp.org, Pro sold off-site, one gate. -->
+<style>
+  .wrap{position:absolute;inset:42px 56px}
+  h1{font:600 31px 'Space Grotesk',sans-serif}
+  .row{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .box{background:var(--raise);border:1px solid var(--line2);border-radius:12px;padding:20px 22px}
+  .box .who{font:500 13px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.07em}
+  .box b{display:block;font:600 22px Inter,sans-serif;margin-top:8px}
+  .box span{display:block;font:400 16px/1.45 Inter,sans-serif;color:var(--ink2);margin-top:6px}
+  .gate{margin-top:22px}
+  pre{font-size:18px;line-height:1.6;padding:16px 22px}
+  .note{position:absolute;left:56px;right:56px;bottom:30px;font:500 16px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .note b{color:var(--green2);font-weight:500}
+</style>
+<div class="wrap">
+  <h1>A freemium WordPress plugin, the shape that passes review</h1>
+  <div class="row">
+    <div class="box"><div class="who">WordPress.org</div><b>The free plugin</b><span>Complete on its own. Brings search-driven installs.</span></div>
+    <div class="box"><div class="who">your store</div><b>The Pro add-on</b><span>Sold off-site with a licence key. Unlocks the paid features.</span></div>
+  </div>
+  <div class="panel gate"><div class="bar">one gate, reused everywhere</div>
+<pre><span class="k">if</span> ( ! my_plugin_is_pro() ) {
+    <span class="k">return</span> <span class="p">$free_behaviour</span>;   <span class="p">// never an error, never a dead screen</span>
+}</pre></div>
+</div>
+<div class="note">Licence server down? <b>Fail open</b> for a grace period, so a customer's site keeps working.</div>

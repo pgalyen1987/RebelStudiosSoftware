@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-file-too-large: real sizes from re-saving one photo (Pexels 38794094, 12712x8475) with Pillow,
+     2026-09-18. The same-size re-save at quality 95 came out bigger than the original. -->
+<style>
+  .photo{position:absolute;left:0;top:0;bottom:0;width:380px}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo .credit{left:14px;right:auto}
+  .main{position:absolute;left:420px;right:48px;top:40px;bottom:36px}
+  h1{font:600 30px/1.15 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:17px;margin-top:8px}
+  .rows{margin-top:26px;position:relative}
+  .row{display:grid;grid-template-columns:178px 1fr 82px;align-items:center;gap:12px;margin:9px 0;font:500 15px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .track{height:26px;position:relative}
+  .fill{height:100%;border-radius:4px;background:#5b8def}
+  .over .fill{background:var(--red)}
+  .ok .fill{background:var(--green)}
+  .val{color:var(--ink1);text-align:right}
+  .limit{position:absolute;top:-6px;bottom:-6px;border-left:2px dashed var(--amber)}
+  .limit span{position:absolute;top:-24px;left:-30px;font:600 13px 'JetBrains Mono',monospace;color:var(--amber);white-space:nowrap}
+</style>
+<div class="photo"><img src="assets/lake.jpg" alt=""><span class="credit">Photo: Amjad ali / Pexels</span></div>
+<div class="main">
+  <h1>Same photo, re-saved six ways</h1>
+  <p class="sub">A 108-megapixel original. Quality alone barely moves it; resizing does.</p>
+  <div class="rows" id="rows"></div>
+</div>
+<script>
+const rows=[["original, 12712 px","",5.83],["12712 px, q95","over",8.61],["12712 px, q85","over",6.35],["4000 px, q85","ok",1.62],["2400 px, q85","ok",0.74],["1600 px, q80","ok",0.34],["1200 px, q80","ok",0.21]];
+const max=9, box=document.getElementById('rows');
+box.innerHTML=rows.map(([l,c,v])=>`<div class="row ${c}"><span>${l}</span><div class="track"><div class="fill" style="width:${v/max*100}%"></div></div><span class="val">${v.toFixed(2)} MB</span></div>`).join('');
+const first=box.querySelector('.track'); const lim=document.createElement('div'); lim.className='limit';
+lim.style.left=`calc(178px + 12px + (100% - 178px - 12px - 82px - 12px) * ${5/max})`; lim.innerHTML='<span>5 MB limit</span>';
+box.appendChild(lim);
+</script>

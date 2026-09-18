@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-ios-app-without-a-mac: the article's Expo + EAS path, left to right. -->
+<style>
+  .wrap{position:absolute;inset:40px 56px 100px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 35px 'Space Grotesk',sans-serif}
+  .sub{color:var(--ink2);font-size:19px;margin-top:8px}
+  .flow{margin-top:54px;display:flex;align-items:stretch}
+  .st{flex:1;background:var(--raise);border:1px solid var(--line2);border-radius:12px;padding:20px 18px}
+  .st .who{font:500 13px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3)}
+  .st b{display:block;font:600 24px Inter,sans-serif;margin-top:10px}
+  .st code{display:block;font:500 17px 'JetBrains Mono',monospace;color:var(--green2);margin-top:12px}
+  .st span{display:block;font:400 17px/1.45 Inter,sans-serif;color:var(--ink2);margin-top:8px}
+  .mac{border-color:var(--amber);background:rgba(245,185,79,.06)}
+  .ar{width:38px;display:flex;align-items:center;justify-content:center;font:500 24px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .foot{position:absolute;left:56px;right:56px;bottom:44px;font:500 17px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .foot b{color:var(--amber);font-weight:500}
+</style>
+<div class="wrap">
+  <h1>Shipping to the App Store from a Windows or Linux machine</h1>
+  <p class="sub">Apple still requires a Mac. You just rent one per build.</p>
+  <div class="flow">
+    <div class="st"><div class="who">your machine</div><b>Write &amp; test</b><span>Android, plus Expo's dev client on a real iPhone over Wi-Fi</span></div>
+    <div class="ar">→</div>
+    <div class="st mac"><div class="who">Expo's cloud Macs</div><b>Compile &amp; sign</b><code>eas build --platform ios</code></div>
+    <div class="ar">→</div>
+    <div class="st"><div class="who">Apple</div><b>TestFlight &amp; review</b><code>eas submit</code></div>
+  </div>
+</div>
+<div class="foot">The Mac requirement never went away. <b>You just never buy one.</b></div>

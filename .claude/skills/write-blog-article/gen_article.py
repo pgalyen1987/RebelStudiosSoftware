@@ -19,7 +19,7 @@ spec.json fields:
     hero         (optional)  image src for an in-article hero, e.g. "images/blog/foo.jpg".
                              Omit for a text-first (opinion) piece.
     hero_alt     (optional)  alt text for the hero
-    og_card      (optional)  default "images/blog/<slug>.png" (generate it with make_card.mjs)
+    og_card      (optional)  default "images/blog/<slug>.png"; blog_art.py apply sets the real one
 
 Does NOT publish. After generating, add a card to blog.html, run generate_feeds.py, and
 leave it for human review before committing (see SKILL.md).
