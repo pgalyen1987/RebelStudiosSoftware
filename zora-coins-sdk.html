@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zora Coins SDKs: Python, Go, Rust, TypeScript, C#, Java, C++</title>
+    <meta name="description" content="Typed, documented clients for the Zora Coins API in seven languages, a GraphQL gateway, and an indexer for the creator and referral rewards Zora pays on Base.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/zora-coins-sdk.html">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Zora Coins SDKs","description":"Typed, documented clients for the Zora Coins API in seven languages, a GraphQL gateway, and an indexer for the creator and referral rewards Zora pays on Base.","url":"https://rebelstudiossoftware.com/zora-coins-sdk.html","image":"https://rebelstudiossoftware.com/images/og/zora-coins-sdk.png","author":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com/"},"codeRepository":"https://github.com/pgalyen1987/zora-coins-sdks","programmingLanguage":["Python","TypeScript","Go","Rust","C#","Java","C++","GraphQL"],"license":"https://opensource.org/licenses/MIT","runtimePlatform":["Python 3.10+","Node.js 20+","Go 1.23+","Rust 1.75+",".NET 8 / netstandard2.1 (Unity)","Java 11+ / Android","C++17"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this an official Zora SDK?","acceptedAnswer":{"@type":"Answer","text":"No. It's community-maintained by Rebel Studios and not affiliated with Zora. Zora's official SDK, @zoralabs/coins-sdk, is TypeScript only; these cover the same API in six more languages and add a rewards indexer and a GraphQL gateway."}},{"@type":"Question","name":"Is there a Python SDK for the Zora API?","acceptedAnswer":{"@type":"Answer","text":"Yes: pip install zora-coins. It has typed pydantic models for every response, sync and async clients, iterators for every paginated endpoint, and the zora-rewards command."}},{"@type":"Question","name":"Do I need a Zora API key?","acceptedAnswer":{"@type":"Answer","text":"No, but Zora applies much lower rate limits without one. Create a key in your Zora developer settings and set ZORA_API_KEY; every SDK reads it."}},{"@type":"Question","name":"Can it buy, sell or create coins?","acceptedAnswer":{"@type":"Answer","text":"It gets trade quotes and builds coin-creation calls, and returns the transaction for your wallet to sign and send. It never holds or asks for private keys."}},{"@type":"Question","name":"How do I see the creator and referral rewards an address earned?","acceptedAnswer":{"@type":"Answer","text":"Run zora-rewards --days 7 0xYourAddress (Python, TypeScript, Go or Rust), or call the rewards module from code. It reads the reward events from Base and prices them at current rates."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. It's MIT licensed. Zora's own API terms still apply to the data you fetch with it."}}]}</script>
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <meta property="og:type" content="website"><meta property="og:url" content="https://rebelstudiossoftware.com/zora-coins-sdk.html">
+    <meta property="og:title" content="Zora Coins SDKs: Python, Go, Rust, TypeScript, C#, Java, C++"><meta property="og:description" content="Typed, documented clients for the Zora Coins API in seven languages, a GraphQL gateway, and an indexer for the creator and referral rewards Zora pays on Base.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og/zora-coins-sdk.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@RStudios64042">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f"><link rel="stylesheet" href="styles.css">
+    <style>
+      .lp-hero h1{font-size:clamp(2.3rem,1.6rem + 3vw,var(--text-3xl));line-height:1.08;letter-spacing:-.02em;margin:.2rem 0 1rem}
+      .lp-meta{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--ink-3);letter-spacing:.02em;margin:0}
+      .lp-hero .hero-sub{max-width:720px}
+      .lp-hero .hero-sub a{color:var(--ink-1);text-decoration:underline;text-underline-offset:3px}
+      .lp-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.6rem}
+      .lp-intro{color:var(--ink-2);max-width:720px}
+      .lp-tight{padding-top:0}
+      .lp-tabs{margin-top:1.2rem;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--bg-raise)}
+      .lp-tablist{display:none;overflow-x:auto;border-bottom:1px solid var(--line)}
+      .lp-tabs.is-js .lp-tablist{display:flex}
+      .lp-tablist button{font:500 var(--text-sm) var(--font-body);color:var(--ink-2);background:none;border:0;border-bottom:2px solid transparent;padding:12px 16px;cursor:pointer;white-space:nowrap}
+      .lp-tablist button[aria-selected="true"]{color:var(--ink-1);border-bottom-color:var(--green)}
+      .lp-tablist button:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+      .lp-panel{padding:0 18px}
+      .lp-panel + .lp-panel{border-top:1px solid var(--line)}
+      .lp-tabs.is-js .lp-panel + .lp-panel{border-top:0}
+      .lp-panel-label{font:600 var(--text-xs) var(--font-mono);color:var(--ink-3);margin:14px 0 0;text-transform:uppercase;letter-spacing:.06em}
+      .lp-tabs.is-js .lp-panel-label{display:none}
+      .lp-tabs.is-js .lp-panel[hidden]{display:none}
+      .lp-tabs pre,.lp-code{margin:0;padding:16px 0;overflow-x:auto;font:400 .9rem/1.6 var(--font-mono);color:var(--ink-1)}
+      .lp-code{padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg-raise);color:var(--ink-2)}
+      .lp-features{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:1.2rem}
+      .lp-features div{padding:18px 0;border-top:1px solid var(--line)}
+      .lp-features dt{font-family:var(--font-display);font-weight:600;color:var(--ink-1);margin-bottom:.35rem}
+      .lp-features dd{margin:0;color:var(--ink-2);font-size:.97rem}
+      @media(max-width:760px){.lp-features{grid-template-columns:1fr}}
+      .lp-prose{max-width:780px}
+      .lp-prose p{color:var(--ink-2)}
+      .lp-prose p + p{margin-top:1em}
+      .lp-prose + .lp-code{margin-top:1.4rem}
+      .lp-faq{border-top:1px solid var(--line);padding:14px 0}
+      .lp-faq:last-child{border-bottom:1px solid var(--line)}
+      .lp-faq summary{cursor:pointer;font-weight:600;color:var(--ink-1)}
+      .lp-faq p{margin:.6rem 0 0}
+      .lp-cta{max-width:780px}
+      .lp-cta p{color:var(--ink-2)}
+      code{font-family:var(--font-mono);font-size:.9em}
+    </style>
+</head>
+<body>
+    <!-- generated by ~/SAAS/distribution-kit/launch.mjs page zora-coins from launch/zora-coins.json; edit the spec, not this file -->
+    <nav class="navbar"><div class="container">
+      <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo.png" alt="Rebel Studios" class="logo" width="1024" height="1024"><span class="brand-name">Rebel Studios</span></a></div>
+      <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="apps.html" class="active">Apps</a></li><li><a href="security.html">Security</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li></ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+    <section class="hero hero--page lp-hero"><div class="container">
+      <p class="lp-meta">Open source · MIT · v0.1.0</p>
+      <h1>Zora Coins SDKs</h1>
+      <p class="hero-sub">Typed clients for the <a href="https://docs.zora.co/coins">Zora Coins API</a> in Python, TypeScript, Go, Rust, C#, Java and C++. All 30 endpoints, one set of documented types, and an indexer for the rewards Zora pays creators and referrers on Base. <strong>Free and MIT licensed.</strong></p>
+      <div class="lp-actions"><a class="btn btn-primary" href="https://github.com/pgalyen1987/zora-coins-sdks" target="_blank" rel="noopener">View on GitHub</a><a class="btn btn-secondary" href="https://github.com/pgalyen1987/zora-coins-sdks/blob/main/docs/ENDPOINTS.md" target="_blank" rel="noopener">Every endpoint, every language</a></div>
+    </div></section>
+    <section class="section"><div class="container">
+      <h2>Install</h2><p class="lp-intro">Each package is on its language's own registry.</p>
+      <div class="lp-tabs" data-tabs>
+        <div class="lp-tablist" role="tablist" aria-label="Install"><button role="tab" id="tabs-1-t0" aria-controls="tabs-1-p0" aria-selected="true">Python</button><button role="tab" id="tabs-1-t1" aria-controls="tabs-1-p1" aria-selected="false" tabindex="-1">TypeScript</button><button role="tab" id="tabs-1-t2" aria-controls="tabs-1-p2" aria-selected="false" tabindex="-1">Go</button><button role="tab" id="tabs-1-t3" aria-controls="tabs-1-p3" aria-selected="false" tabindex="-1">Rust</button><button role="tab" id="tabs-1-t4" aria-controls="tabs-1-p4" aria-selected="false" tabindex="-1">C#</button><button role="tab" id="tabs-1-t5" aria-controls="tabs-1-p5" aria-selected="false" tabindex="-1">Java</button><button role="tab" id="tabs-1-t6" aria-controls="tabs-1-p6" aria-selected="false" tabindex="-1">C++</button><button role="tab" id="tabs-1-t7" aria-controls="tabs-1-p7" aria-selected="false" tabindex="-1">GraphQL</button></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p0" aria-labelledby="tabs-1-t0"><p class="lp-panel-label">Python</p><pre><code>pip install zora-coins</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p1" aria-labelledby="tabs-1-t1"><p class="lp-panel-label">TypeScript</p><pre><code>npm install zora-coins</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p2" aria-labelledby="tabs-1-t2"><p class="lp-panel-label">Go</p><pre><code>go get github.com/pgalyen1987/zora-coins-sdks/go</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p3" aria-labelledby="tabs-1-t3"><p class="lp-panel-label">Rust</p><pre><code>cargo add zora-coins</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p4" aria-labelledby="tabs-1-t4"><p class="lp-panel-label">C#</p><pre><code>dotnet add package Zora.Coins</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p5" aria-labelledby="tabs-1-t5"><p class="lp-panel-label">Java</p><pre><code>implementation(&quot;io.github.pgalyen1987:zora-coins:0.1.0&quot;)</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p6" aria-labelledby="tabs-1-t6"><p class="lp-panel-label">C++</p><pre><code>FetchContent_Declare(zora_coins
+  GIT_REPOSITORY https://github.com/pgalyen1987/zora-coins-sdks
+  GIT_TAG v0.1.0
+  SOURCE_SUBDIR cpp)
+FetchContent_MakeAvailable(zora_coins)</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-1-p7" aria-labelledby="tabs-1-t7"><p class="lp-panel-label">GraphQL</p><pre><code>go run github.com/pgalyen1987/zora-coins-sdks/graphql/cmd/zora-graphql@latest</code></pre></div>
+      </div>
+    </div></section>
+    <section class="section"><div class="container">
+      <h2>The same call in each language</h2><p class="lp-intro">Look up a coin by address. Every SDK reads <code>ZORA_API_KEY</code> from the environment; without one Zora applies lower rate limits.</p>
+      <div class="lp-tabs" data-tabs>
+        <div class="lp-tablist" role="tablist" aria-label="The same call in each language"><button role="tab" id="tabs-2-t0" aria-controls="tabs-2-p0" aria-selected="true">Python</button><button role="tab" id="tabs-2-t1" aria-controls="tabs-2-p1" aria-selected="false" tabindex="-1">TypeScript</button><button role="tab" id="tabs-2-t2" aria-controls="tabs-2-p2" aria-selected="false" tabindex="-1">Go</button><button role="tab" id="tabs-2-t3" aria-controls="tabs-2-p3" aria-selected="false" tabindex="-1">Rust</button><button role="tab" id="tabs-2-t4" aria-controls="tabs-2-p4" aria-selected="false" tabindex="-1">C#</button><button role="tab" id="tabs-2-t5" aria-controls="tabs-2-p5" aria-selected="false" tabindex="-1">Java</button><button role="tab" id="tabs-2-t6" aria-controls="tabs-2-p6" aria-selected="false" tabindex="-1">C++</button></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p0" aria-labelledby="tabs-2-t0"><p class="lp-panel-label">Python</p><pre><code>from zora_coins import ZoraCoins
+
+coin = ZoraCoins().get_coin(&quot;0x0b85…&quot;)   # None if missing
+print(coin.name, coin.market_cap)</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p1" aria-labelledby="tabs-2-t1"><p class="lp-panel-label">TypeScript</p><pre><code>import { ZoraCoins } from &quot;zora-coins&quot;;
+
+const coin = await new ZoraCoins().coin(&quot;0x0b85…&quot;);  // null if missing
+console.log(coin?.name, coin?.marketCap);</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p2" aria-labelledby="tabs-2-t2"><p class="lp-panel-label">Go</p><pre><code>coin, err := zora.NewClient().Coin(ctx, &quot;0x0b85…&quot;, nil)
+if errors.Is(err, zora.ErrNotFound) { /* no such coin */ }</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p3" aria-labelledby="tabs-2-t3"><p class="lp-panel-label">Rust</p><pre><code>let coin = Client::new().coin(&quot;0x0b85…&quot;, None).await?;  // Option&lt;Zora20Token&gt;</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p4" aria-labelledby="tabs-2-t4"><p class="lp-panel-label">C#</p><pre><code>var coin = await new ZoraCoinsClient().GetCoinAsync(&quot;0x0b85…&quot;);  // null if missing</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p5" aria-labelledby="tabs-2-t5"><p class="lp-panel-label">Java</p><pre><code>Optional&lt;Zora20Token&gt; coin = ZoraCoins.builder().build().getCoin(&quot;0x0b85…&quot;, null);</code></pre></div>
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p6" aria-labelledby="tabs-2-t6"><p class="lp-panel-label">C++</p><pre><code>std::optional&lt;zora::Zora20Token&gt; coin = zora::Client().coin(&quot;0x0b85…&quot;);</code></pre></div>
+      </div>
+    </div></section>
+    <section class="section"><div class="container">
+      <h2>What every SDK gives you</h2>
+      <dl class="lp-features"><div><dt>All 30 endpoints</dt><dd>Coins, holders, swaps, comments, price history, Explore lists, search, profiles, balances, trade activity, leaderboards, live streams, pool configs, trade quotes and coin creation.</dd></div><div><dt>117 documented types</dt><dd>Every field says its unit. <code>marketCap</code> is a USD decimal string; <code>balance</code> is an 18-decimal integer string. The API itself doesn't say which.</dd></div><div><dt>Pagination two ways</dt><dd>One page at a time, or an iterator, stream or callback that fetches the next page as you reach it and stops when you do.</dd></div><div><dt>Retries and typed errors</dt><dd>Backoff that honours <code>Retry-After</code> on rate limits and server errors. A failed quote tells you when the pool simply doesn't have the liquidity.</dd></div><div><dt>Trading without custody</dt><dd>Quotes and coin creation return the transaction for your wallet to sign. Nothing here holds keys. Set a <code>referrer</code> to earn the trade referral reward.</dd></div><div><dt>REST and GraphQL</dt><dd>A GraphQL client for the gateway below, decoding into the same types as REST, so a screen's worth of data can be one request.</dd></div></dl>
+    </div></section>
+    <section class="section"><div class="container"><div class="lp-prose">
+      <h2 id="what-did-an-address-earn">What did an address earn?</h2><p>Every trade of a Zora coin pays the coin's creator, the platform that launched it, and the interface that routed the trade. On V4 coins those payouts are <code>CoinMarketRewardsV4</code> events, and none of their fields are indexed, so you can't ask a node for "rewards paid to my address". You have to read every reward event in a block range and filter them yourself.</p><p>Each SDK does that: it scans Base in chunks, keeps what pays the addresses you care about, remembers which ranges it has already scanned, and reports earnings per role and token at current prices. The Python, TypeScript, Go and Rust packages ship it as a command-line tool too.</p><p>How it works underneath, with code you can run without the SDK: <a href="blog-zora-creator-rewards-onchain.html">Reading Zora creator rewards on Base when nothing is indexed</a>.</p>
+    </div><pre class="lp-code"><code>$ zora-rewards --days 0.25 0x55c88bb05602da94fce8feadc1cbebf5b72c2453
+Zora rewards for 0x55c88bb05602da94fce8feadc1cbebf5b72c2453
+334 reward events, blocks 51460584–51471286
+  Platform referral           81.2423 ZORA                $0.64  (14 payouts)
+  Platform referral       0.000199321 WETH                $0.50  (50 payouts)
+  Platform referral          0.589797 USDC                $0.59  (82 payouts)
+  Trade referral              45.8290 ZORA                $0.36  (125 payouts)
+  Trade referral          0.000167845 WETH                $0.42  (61 payouts)
+  Total (current prices)                                      $2.58</code></pre></div></section>
+    <section class="section"><div class="container"><div class="lp-prose">
+      <h2 id="one-request-with-graphql">One request with GraphQL</h2><p>The gateway serves the whole API as one GraphQL schema, plus a <code>rewards</code> query the REST API can't answer. It forwards each caller's own Zora API key and stores nothing.</p>
+    </div><pre class="lp-code"><code>{
+  coin(address: &quot;0x0b8590d3c0b1ee6c797e184a4afbb15f8f58a46b&quot;) { name symbol marketCap uniqueHolders creatorProfile { handle } }
+  explore(listType: TOP_GAINERS, pageSize: 5) { edges { node { symbol marketCapDelta24h } } }
+  rewards(addresses: [&quot;0x…&quot;], hours: 6) { totalUsd lines { role symbol usd } }
+}</code></pre></div></section>
+    <section class="section"><div class="container"><div class="lp-prose">
+      <h2 id="why-seven-languages-agree">Why seven languages agree</h2><p>Zora's REST API sits on a GraphQL backend, and its OpenAPI spec writes every response out inline: 427 unnamed object schemas, up to 29 levels deep. A generator turns that into 117 named types (every coin is one <code>Zora20Token</code>, whichever endpoint returned it) and emits all seven SDKs, the GraphQL schema and the endpoint reference from that one model. So a name, a type or a doc string can't differ between languages.</p><p>Where the live API and its spec disagree, the SDKs follow the API. Each SDK's tests decode the same recorded responses, and a live suite calls all 30 endpoints against production.</p>
+    </div></div></section>
+    <section class="section"><div class="container"><div class="lp-prose">
+      <h2>Questions</h2>
+      <details class="lp-faq"><summary>Is this an official Zora SDK?</summary><p>No. It's community-maintained by Rebel Studios and not affiliated with Zora. Zora's official SDK, <code>@zoralabs/coins-sdk</code>, is TypeScript only; these cover the same API in six more languages and add a rewards indexer and a GraphQL gateway.</p></details>
+      <details class="lp-faq"><summary>Is there a Python SDK for the Zora API?</summary><p>Yes: <code>pip install zora-coins</code>. It has typed pydantic models for every response, sync and async clients, iterators for every paginated endpoint, and the <code>zora-rewards</code> command.</p></details>
+      <details class="lp-faq"><summary>Do I need a Zora API key?</summary><p>No, but Zora applies much lower rate limits without one. Create a key in your Zora developer settings and set <code>ZORA_API_KEY</code>; every SDK reads it.</p></details>
+      <details class="lp-faq"><summary>Can it buy, sell or create coins?</summary><p>It gets trade quotes and builds coin-creation calls, and returns the transaction for your wallet to sign and send. It never holds or asks for private keys.</p></details>
+      <details class="lp-faq"><summary>How do I see the creator and referral rewards an address earned?</summary><p>Run <code>zora-rewards --days 7 0xYourAddress</code> (Python, TypeScript, Go or Rust), or call the rewards module from code. It reads the reward events from Base and prices them at current rates.</p></details>
+      <details class="lp-faq"><summary>What does it cost?</summary><p>Nothing. It's MIT licensed. Zora's own API terms still apply to the data you fetch with it.</p></details>
+    </div></div></section>
+    <section class="section section-alt"><div class="container"><div class="lp-cta">
+      <h2>Get the code</h2><p>Source, docs and issues are on GitHub. If something's missing or wrong, open an issue; it's the fastest way to get it fixed.</p>
+      <div class="lp-actions"><a class="btn btn-primary" href="https://github.com/pgalyen1987/zora-coins-sdks" target="_blank" rel="noopener">GitHub repository</a><a class="btn btn-secondary" href="https://github.com/pgalyen1987/zora-coins-py" target="_blank" rel="noopener">Python SDK</a></div>
+    </div></div></section>
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo" width="1024" height="1024"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html" class="active">Apps</a><a href="security.html">Security</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+<p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+    <script src="script.js"></script>
+    <script>
+document.querySelectorAll('[data-tabs]').forEach(function (box) {
+  var tabs = box.querySelectorAll('[role=tab]'), panels = box.querySelectorAll('[role=tabpanel]');
+  function show(i, focus) {
+    tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i); t.tabIndex = j === i ? 0 : -1; });
+    panels.forEach(function (p, j) { p.hidden = j !== i; });
+    if (focus) tabs[i].focus();
+  }
+  box.classList.add('is-js');
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(i); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show((i + 1) % tabs.length, true);
+      if (e.key === 'ArrowLeft') show((i - 1 + tabs.length) % tabs.length, true);
+    });
+  });
+  show(0);
+});
+</script>
+</body>
+</html>

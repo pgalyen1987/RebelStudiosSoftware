@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Zora's CoinMarketRewardsV4 event has no indexed fields, so you can't filter it by address. How to scan Base for your creator and referral rewards, with code.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-zora-creator-rewards-onchain.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-zora-creator-rewards-onchain.html">
+    <meta property="og:title" content="Reading Zora Creator Rewards on Base When Nothing Is Indexed">
+    <meta property="og:description" content="Zora's reward event has no indexed fields, so you can't filter it by address. How to find your creator and referral rewards on Base anyway, with code.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/zora-creator-rewards-onchain.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-18">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Reading Zora Creator Rewards on Base When Nothing Is Indexed">
+    <meta name="twitter:description" content="Zora's reward event has no indexed fields, so you can't filter it by address. How to find your creator and referral rewards on Base anyway, with code.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/zora-creator-rewards-onchain.png">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Reading Zora Creator Rewards on Base When Nothing Is Indexed", "description": "Zora's CoinMarketRewardsV4 event has no indexed fields, so you can't filter it by address. How to scan Base for your creator and referral rewards, with code.", "image": "https://rebelstudiossoftware.com/images/blog/zora-creator-rewards-onchain.png", "datePublished": "2026-09-18", "author": {"@type": "Person", "name": "Patrick Galyen", "url": "https://www.linkedin.com/in/patrick-galyen-5410b9a7/"}, "publisher": {"@type": "Organization", "name": "Rebel Studios Software", "logo": {"@type": "ImageObject", "url": "https://rebelstudiossoftware.com/images/RS-logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://rebelstudiossoftware.com/blog-zora-creator-rewards-onchain.html"}, "about": [{"@type": "SoftwareSourceCode", "name": "Zora Coins SDKs", "codeRepository": "https://github.com/pgalyen1987/zora-coins-sdks"}]}</script>
+    <title>How to Read Zora Creator Rewards Onchain - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo" width="1024" height="1024">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Reading Zora Creator Rewards on Base When Nothing Is Indexed</h1>
+            <p>Why eth_getLogs can&rsquo;t filter Zora&rsquo;s reward events by recipient, and how to find yours anyway</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 18, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <div class="article-content">
+                    <p>Every trade of a Zora coin pays several people at once: the coin&rsquo;s creator, the platform that launched it, the app that routed the trade, the protocol, and Doppler. If you create coins, run a platform that launches them, or build an app that passes a referrer on trades, some of that money is yours. Zora&rsquo;s REST API won&rsquo;t tell you how much. The payouts are onchain, one event per trade, and getting yours out takes one idea and some patience.</p>
+
+                    <h2>The event, and the problem with it</h2>
+
+                    <p>Coins launched since Zora moved to Uniswap V4 pay rewards through their hook, which emits <code>CoinMarketRewardsV4</code>. Its payload is seven addresses (the coin, the currency the reward is paid in, then the creator, platform referrer, trade referrer, protocol and Doppler recipients) followed by ten amounts: for each of those five recipients, what they got in the currency and what they got in the coin itself.</p>
+
+                    <p>None of those fields is declared <code>indexed</code>, and that one detail decides everything. A log&rsquo;s indexed fields go into its topics, and topics are what <code>eth_getLogs</code> filters on. This event has a single topic, its own signature. So you can ask a node for every <code>CoinMarketRewardsV4</code> event in a block range, but not for the ones that pay you. Your address is in the data, where the node doesn&rsquo;t look.</p>
+
+                    <figure class="article-figure"><img src="images/blog/zora-creator-rewards-onchain.png" alt="Diagram of one CoinMarketRewardsV4 log: the only topic is the event signature, and the creator, platform referrer and trade referrer addresses sit in data words 2 to 4" width="1200" height="630" loading="lazy"></figure>
+
+                    <p>Coins from before the V4 migration use an older event, <code>CoinTradeRewards</code>, which does index its three recipients, so an ordinary address filter works for them. For anything launched since mid-2025, it doesn&rsquo;t.</p>
+
+                    <h2>So read all of them</h2>
+
+                    <p>The fix is unglamorous: fetch every reward event in a range, decode it, and keep the ones where your address is one of the three recipients. On Base today that&rsquo;s about 400 events per 2,000 blocks. Here&rsquo;s the whole thing with nothing but JSON-RPC:</p>
+
+<pre><code>import httpx
+
+RPC = "https://mainnet.base.org"
+# keccak256 of the CoinMarketRewardsV4 event signature: its one and only topic
+TOPIC = "0x35b5031218696db1dfd903223a47f38e66a1998e14a942a5d60fddaa49a685fc"
+ME = "0x55c88bb05602da94fce8feadc1cbebf5b72c2453"
+
+def rpc(method, params):
+    body = {"jsonrpc": "2.0", "id": 1, "method": method, "params": params}
+    return httpx.post(RPC, json=body, timeout=30).json()["result"]
+
+head = int(rpc("eth_blockNumber", []), 16)
+logs = rpc("eth_getLogs", [{"fromBlock": hex(head - 2000), "toBlock": hex(head),
+                            "topics": [TOPIC]}])
+
+addr = lambda word: "0x" + word[-20:].hex()
+for log in logs:
+    data = bytes.fromhex(log["data"][2:])
+    w = [data[i:i + 32] for i in range(0, len(data), 32)]
+    # words 0-6: addresses; 7-16: amounts (per role, in currency then in the coin)
+    roles = [("creator", w[2], w[7]), ("platform referrer", w[3], w[9]),
+             ("trade referrer", w[4], w[11])]
+    for role, who, amount in roles:
+        if addr(who) == ME:
+            block = int(log["blockNumber"], 16)
+            print(block, role, int.from_bytes(amount, "big"), "of", addr(w[1]))</code></pre>
+
+                    <p>The data is plain ABI encoding: 32-byte words, addresses right-aligned in the first seven, amounts as big-endian integers in the other ten. Amounts are in the token&rsquo;s smallest unit, so <code>486910</code> of USDC (<code>0x8335&hellip;2913</code>) is 0.486910 USDC, and 18-decimal tokens like ZORA and WETH need dividing by 10<sup>18</sup>.</p>
+
+                    <h2>Scanning a real window</h2>
+
+                    <p>One call covers 2,000 blocks. Base makes a block every two seconds, so that&rsquo;s about 67 minutes; a day is 43,200 blocks (22 calls) and 30 days is about 650 calls. A few details make that practical:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Time is arithmetic.</strong> Base blocks are exactly two seconds apart, so a block&rsquo;s timestamp is <code>1686789347 + 2 &times; block</code>. You don&rsquo;t need an <code>eth_getBlockByNumber</code> per event to date it, and &ldquo;the last seven days&rdquo; is a subtraction from the head block.</li>
+                        <li><strong>Start where the events start.</strong> The first V4 reward events show up around block 31,000,000, in June 2025. There&rsquo;s nothing to find before that.</li>
+                        <li><strong>Expect range errors.</strong> Public RPCs cap the block range or the number of results per call. When one refuses, halve the range and retry instead of failing the whole scan.</li>
+                        <li><strong>Remember what you&rsquo;ve scanned.</strong> Store the block ranges you&rsquo;ve covered for each address and only fetch what&rsquo;s new next time. The second run of a 30-day report should take seconds.</li>
+                        <li><strong>Price it at the end.</strong> Rewards arrive in ZORA, WETH, USDC or a creator coin. Sum raw amounts per role and token first, and convert to dollars once, when you report.</li>
+                    </ul>
+
+                    <h2>Or use the library</h2>
+
+                    <p>All of that is the rewards module in the <a href="zora-coins-sdk.html">Zora Coins SDKs</a>, which are open source and MIT licensed. In Python:</p>
+
+<pre><code>from zora_coins.rewards import RewardsIndexer, build_report, to_text
+
+me = "0x55c88bb05602da94fce8feadc1cbebf5b72c2453"
+with RewardsIndexer("rewards.sqlite") as idx:
+    idx.scan([me], days=7)          # re-running only fetches blocks it hasn't seen
+    print(to_text(build_report(idx.events_for([me]), [me])))</code></pre>
+
+                    <p>For about an hour and a half of blocks, that printed:</p>
+
+                    <pre><code>Zora rewards for 0x55c88bb05602da94fce8feadc1cbebf5b72c2453
+114 reward events, blocks 51477712–51479837
+  Platform referral          145.7255 ZORA                $1.18  (7 payouts)
+  Platform referral            2.1861 USDC                $2.19  (25 payouts)
+  Trade referral               6.7341 ZORA                $0.05  (69 payouts)
+  Trade referral          6.21437e-05 WETH                $0.16  (14 payouts)
+  Trade referral             0.175478 USDC                $0.18  (14 payouts)
+  Total (current prices)                                      $3.76</code></pre>
+
+                    <p>The same indexer is in the TypeScript, Go, Rust, C#, Java and C++ SDKs, and the Python, TypeScript, Go and Rust packages include it as a <code>zora-rewards</code> command (<code>pip install zora-coins</code>, then <code>zora-rewards --days 7 0xYourAddress</code>). All seven give the same totals, to the wei, on the same set of recorded events. That cross-check is how I know the word offsets above are right.</p>
+
+                    <div class="article-callout">
+                        <h3>Unofficial</h3>
+                        <p>The SDKs are community-maintained by Rebel Studios and not affiliated with Zora. If Zora changes the event, the recorded-event tests will be the first thing to fail, and the fix will go out as a new version in every language at once.</p>
+                    </div>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="zora-coins-sdk.html" class="btn btn-secondary">Zora Coins SDKs &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo" width="1024" height="1024">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

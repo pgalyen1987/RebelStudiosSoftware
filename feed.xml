@@ -5,7 +5,7 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
@@ -13,18 +13,18 @@
       <link>https://rebelstudiossoftware.com/</link>
     </image>
     <item>
-      <title>Guideline 2.1: What Apple Actually Wants From a New Developer</title>
+      <title>Guideline 2.1: What Apple Actually Wants From a New Developer | Rebel Studios</title>
       <link>https://rebelstudiossoftware.com/blog-app-review-guideline-2-1.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-app-review-guideline-2-1.html</guid>
       <pubDate>Fri, 18 Sep 2026 00:00:00 -0000</pubDate>
-      <description>Apple rejects new developers with a six-item questionnaire and a demand for a recording from a real device. What each item is really asking, the empty in-app purchase list that turns your next submission into a 3.1.1 rejection, and what recording on real hardware actually costs.</description>
+      <description>Apple rejects new developers under Guideline 2.1 with a six-item questionnaire and a demand for a screen recording from a physical device. Here is what each item is really asking, the in-app purchase trap that turns the next submission into a 3.1.1 rejection, and what recording on a real device actually takes.</description>
     </item>
     <item>
-      <title>What It Actually Costs to Trade Tokenized Stocks on Solana</title>
-      <link>https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</link>
-      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</guid>
-      <pubDate>Thu, 17 Sep 2026 00:00:00 -0000</pubDate>
-      <description>Seven days of Jupiter quotes across eight tokenized US equities. A $500,000 buy costs 2.21% in AAPLx and 0.01% in SPYx, the direction you trade matters more than the size, and US market hours barely matter at all.</description>
+      <title>How to Read Zora Creator Rewards Onchain</title>
+      <link>https://rebelstudiossoftware.com/blog-zora-creator-rewards-onchain.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-zora-creator-rewards-onchain.html</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Zora's CoinMarketRewardsV4 event has no indexed fields, so you can't filter it by address. How to scan Base for your creator and referral rewards, with code.</description>
     </item>
     <item>
       <title>An Eventbrite Alternative on Your Own Site: When It Makes Sense</title>
@@ -158,6 +158,13 @@
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-recursive-prompting.html</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
       <description>Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.</description>
+    </item>
+    <item>
+      <title>What It Actually Costs to Trade Tokenized Stocks on Solana | Rebel Studios</title>
+      <link>https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
+      <description>We sampled Jupiter quotes every 15 minutes for a week across eight tokenized US equities. A $500,000 buy costs 2.21% in AAPLx and 0.01% in SPYx. The direction you trade matters more than the size, and US market hours barely matter at all. The data, the method, and what it means if you are moving size.</description>
     </item>
     <item>
       <title>Who Pays for the Internet&amp;rsquo;s Plumbing?</title>
