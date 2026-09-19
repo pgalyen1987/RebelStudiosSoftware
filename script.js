@@ -16,7 +16,42 @@ document.addEventListener('DOMContentLoaded', function() {
     initCounters();
     initTerminal();
     initCarousels();
+    initShotViewer();
 });
+
+/* ---------------------------------------------------------
+   Screenshot viewer: tiles show each screenshot whole but small;
+   a click opens it full size in a <dialog> (Esc or a click closes).
+   --------------------------------------------------------- */
+function initShotViewer() {
+    const imgs = document.querySelectorAll('.shot img, .hero-shot img');
+    if (!imgs.length || typeof HTMLDialogElement === 'undefined') return;
+    const dialog = document.createElement('dialog');
+    dialog.className = 'shot-viewer';
+    dialog.setAttribute('aria-label', 'Screenshot, full size');
+    const big = document.createElement('img');
+    const caption = document.createElement('p');
+    dialog.append(big, caption);
+    document.body.appendChild(dialog);
+    dialog.addEventListener('click', () => dialog.close());
+    imgs.forEach((img) => {
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        const open = () => {
+            big.src = img.currentSrc || img.src;
+            big.alt = img.alt;
+            const fig = img.closest('figure');
+            const cap = fig && fig.querySelector('figcaption');
+            caption.textContent = cap ? cap.textContent : '';
+            caption.hidden = !cap;
+            dialog.showModal();
+        };
+        img.addEventListener('click', open);
+        img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+        });
+    });
+}
 
 /* ---------------------------------------------------------
    Navbar: mobile menu + scrolled state
