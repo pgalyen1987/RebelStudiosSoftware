@@ -97,6 +97,8 @@
 
                     <p>Coins from before the V4 migration use an older event, <code>CoinTradeRewards</code>, which does index its three recipients, so an ordinary address filter works for them. For anything launched since mid-2025, it doesn&rsquo;t.</p>
 
+                    <p>One more V4 event pays creators. On creator-coin trades the hook also emits <code>CreatorCoinRewards</code>: the coin (indexed), the currency, the creator and the protocol, then the creator&rsquo;s and the protocol&rsquo;s amounts. The recipients aren&rsquo;t indexed there either, and the event is easy to miss, but it matters: in a sample day on Base it carried about a third of all payouts and nearly half of what creators earned. A scan that reads only <code>CoinMarketRewardsV4</code> under-counts a creator by that much.</p>
+
                     <h2>So read all of them</h2>
 
                     <p>The fix is unglamorous: fetch every reward event in a range, decode it, and keep the ones where your address is one of the three recipients. On Base today that&rsquo;s about 400 events per 2,000 blocks. Here&rsquo;s the whole thing with nothing but JSON-RPC:</p>
@@ -104,8 +106,9 @@
 <pre><code>import httpx
 
 RPC = "https://mainnet.base.org"
-# keccak256 of the CoinMarketRewardsV4 event signature: its one and only topic
-TOPIC = "0x35b5031218696db1dfd903223a47f38e66a1998e14a942a5d60fddaa49a685fc"
+# keccak256 of the two V4 payout events' signatures (topic 0 of each log)
+MARKET = "0x35b5031218696db1dfd903223a47f38e66a1998e14a942a5d60fddaa49a685fc"        # CoinMarketRewardsV4
+CREATOR_COIN = "0xea92473287be4e55f8279d0b8395a45960a217ae2f1a76ac9cae84af58a751ed"  # CreatorCoinRewards
 ME = "0x55c88bb05602da94fce8feadc1cbebf5b72c2453"
 
 def rpc(method, params):
@@ -114,21 +117,27 @@ def rpc(method, params):
 
 head = int(rpc("eth_blockNumber", []), 16)
 logs = rpc("eth_getLogs", [{"fromBlock": hex(head - 2000), "toBlock": hex(head),
-                            "topics": [TOPIC]}])
+                            "topics": [[MARKET, CREATOR_COIN]]}])
 
 addr = lambda word: "0x" + word[-20:].hex()
 for log in logs:
     data = bytes.fromhex(log["data"][2:])
     w = [data[i:i + 32] for i in range(0, len(data), 32)]
-    # words 0-6: addresses; 7-16: amounts (per role, in currency then in the coin)
-    roles = [("creator", w[2], w[7]), ("platform referrer", w[3], w[9]),
-             ("trade referrer", w[4], w[11])]
+    if log["topics"][0] == MARKET:
+        # words 0-6: addresses; 7-16: amounts (per role, in currency then in the coin)
+        currency = w[1]
+        roles = [("creator", w[2], w[7]), ("platform referrer", w[3], w[9]),
+                 ("trade referrer", w[4], w[11])]
+    else:
+        # the coin is in topic 1; words: currency, creator, protocol, then their two amounts
+        currency = w[0]
+        roles = [("creator", w[1], w[3])]
     for role, who, amount in roles:
         if addr(who) == ME:
             block = int(log["blockNumber"], 16)
-            print(block, role, int.from_bytes(amount, "big"), "of", addr(w[1]))</code></pre>
+            print(block, role, int.from_bytes(amount, "big"), "of", addr(currency))</code></pre>
 
-                    <p>The data is plain ABI encoding: 32-byte words, addresses right-aligned in the first seven, amounts as big-endian integers in the other ten. Amounts are in the token&rsquo;s smallest unit, so <code>486910</code> of USDC (<code>0x8335&hellip;2913</code>) is 0.486910 USDC, and 18-decimal tokens like ZORA and WETH need dividing by 10<sup>18</sup>.</p>
+                    <p>The data is plain ABI encoding: 32-byte words with addresses right-aligned and amounts as big-endian integers. <code>CoinMarketRewardsV4</code> has seven addresses then ten amounts; <code>CreatorCoinRewards</code> has three addresses then two. Amounts are in the token&rsquo;s smallest unit, so <code>486910</code> of USDC (<code>0x8335&hellip;2913</code>) is 0.486910 USDC, and 18-decimal tokens like ZORA and WETH need dividing by 10<sup>18</sup>.</p>
 
                     <h2>Scanning a real window</h2>
 
