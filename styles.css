@@ -3930,18 +3930,62 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+/* Cards lead with the product itself: a screenshot thumbnail, full bleed at the top of the
+   card, instead of a generic icon tile. One quiet link per card; only the featured one keeps a
+   button, so the page isn't a column of identical green calls to action. */
+.plug-shot {
+    display: block;
+    margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-md)) var(--space-md);
+    aspect-ratio: 16 / 10;
+    background: var(--bg-raise);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+}
+.plug-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.plug-card:hover .plug-shot img { transform: scale(1.02); }
+.plug-link {
+    margin-top: var(--space-md);
+    align-self: flex-start;
+    color: var(--green-bright);
+    font-weight: 600;
+    text-decoration: none;
+}
+.plug-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* the flagship sits beside its screenshot instead of above it */
+@media (min-width: 900px) {
+    .plug-card--featured {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        grid-template-rows: auto auto 1fr auto;
+        column-gap: var(--space-lg);
+        align-items: start;
+    }
+    .plug-card--featured > :not(.plug-shot) { grid-column: 1; }
+    .plug-card--featured .btn { justify-self: start; align-self: end; }
+    .plug-card--featured .plug-shot {
+        grid-column: 2;
+        grid-row: 1 / -1;
+        margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-md)) calc(-1 * var(--space-lg)) 0;
+        aspect-ratio: auto;
+        /* a fixed window: a tall phone screenshot would otherwise set the card's height */
+        height: 21rem;
+        border-bottom: 0;
+        border-left: 1px solid var(--line);
+    }
+}
 .plug-card::before { background: linear-gradient(90deg, hsl(var(--cat) 70% 55%), transparent); }
 .plug-card:hover { border-color: hsl(var(--cat) 70% 55% / 0.45); }
 .plug-card .plug-tag {
-    /* .plug-tag is a bare inline-block; giving it a background without padding
-       painted a full-width band rather than a pill. .plug-card is a flex
-       column, so it also needs to opt out of cross-axis stretch. */
+    /* A plain category line in the card's hue: a pill on every card read as a template. */
     align-self: flex-start;
-    padding: 0.24rem 0.6rem;
-    border-radius: 999px;
-    color: hsl(var(--cat) 70% 68%);
-    background: hsl(var(--cat) 70% 55% / 0.1);
-    border: 1px solid hsl(var(--cat) 70% 55% / 0.24);
+    color: hsl(var(--cat) 60% 66%);
 }
 
 /* ---------- Blog index: category identity ----------
