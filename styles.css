@@ -547,7 +547,7 @@
     --line-strong: rgba(148, 163, 184, 0.26);
     --ink-1: #eef1f7;
     --ink-2: #a8b1c2;
-    --ink-3: #69738a;
+    --ink-3: #7b8498; /* 5.1:1 on --bg-raise; #69738a was 4.0:1, under the 4.5:1 small text needs */
     --green: #6cbe45;
     --green-bright: #8fe05a;
     --green-dim: rgba(108, 190, 69, 0.14);
@@ -643,6 +643,18 @@ body {
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+}
+
+/* Links outside a component (a paragraph on a product page, say) fell back to the browser's
+   default blue: 2.1:1 on this background. Components set their own colours over this. */
+a {
+    color: var(--green-bright);
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    text-decoration-color: currentColor;
 }
 
 /* Ambient glow field behind everything */
