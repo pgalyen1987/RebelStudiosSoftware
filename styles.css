@@ -2215,6 +2215,8 @@ h1, h2, h3, h4 {
     border-radius: 5px;
     padding: 0.08em 0.4em;
     color: var(--green-bright);
+    /* long unspaced snippets (JSON, URLs) may break rather than widen the page */
+    overflow-wrap: anywhere;
 }
 
 .article-content pre code,
@@ -3223,6 +3225,9 @@ h1, h2, h3, h4 {
 
     .results-table {
         font-size: 0.8rem;
+        /* wide result tables scroll inside themselves instead of pushing the page sideways */
+        display: block;
+        overflow-x: auto;
     }
 
     .results-table th,
