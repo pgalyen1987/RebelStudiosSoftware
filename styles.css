@@ -4491,9 +4491,13 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    /* a full-page screenshot shrunk to a card is mostly margin and unreadable text; --zoom and --focus
+       on the img crop it to the part that shows the product */
+    transform: scale(var(--zoom, 1));
+    transform-origin: var(--focus, 50% 0);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.plug-card:hover .plug-shot img { transform: scale(1.02); }
+.plug-card:hover .plug-shot img { transform: scale(calc(var(--zoom, 1) * 1.02)); }
 .game-icon { display: block; width: 64px; height: 64px; border-radius: 14px; margin-bottom: 0.9rem; box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.6); }
 .plug-link {
     margin-top: var(--space-md);
