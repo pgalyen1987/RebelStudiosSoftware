@@ -107,7 +107,9 @@ print(coin.name, coin.market_cap)</code></pre></div>
 
 const coin = await new ZoraCoins().coin(&quot;0x0b85…&quot;);  // null if missing
 console.log(coin?.name, coin?.marketCap);</code></pre></div>
-        <div class="lp-panel" role="tabpanel" id="tabs-2-p2" aria-labelledby="tabs-2-t2"><p class="lp-panel-label">Go</p><pre><code>coin, err := zora.NewClient().Coin(ctx, &quot;0x0b85…&quot;, nil)
+        <div class="lp-panel" role="tabpanel" id="tabs-2-p2" aria-labelledby="tabs-2-t2"><p class="lp-panel-label">Go</p><pre><code>import &quot;github.com/pgalyen1987/zora-coins-sdks/go/zora&quot;
+
+coin, err := zora.NewClient().Coin(ctx, &quot;0x0b85…&quot;, nil)
 if errors.Is(err, zora.ErrNotFound) { /* no such coin */ }</code></pre></div>
         <div class="lp-panel" role="tabpanel" id="tabs-2-p3" aria-labelledby="tabs-2-t3"><p class="lp-panel-label">Rust</p><pre><code>let coin = Client::new().coin(&quot;0x0b85…&quot;, None).await?;  // Option&lt;Zora20Token&gt;</code></pre></div>
         <div class="lp-panel" role="tabpanel" id="tabs-2-p4" aria-labelledby="tabs-2-t4"><p class="lp-panel-label">C#</p><pre><code>var coin = await new ZoraCoinsClient().GetCoinAsync(&quot;0x0b85…&quot;);  // null if missing</code></pre></div>
