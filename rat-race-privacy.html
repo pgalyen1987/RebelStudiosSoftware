@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How Rat Race handles data: nothing leaves your phone, no accounts, no ads in this version, no internet permission.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/rat-race-privacy.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/rat-race-privacy.html">
+    <meta property="og:title" content="Rat Race Privacy Policy">
+    <meta property="og:description" content="How Rat Race handles data: nothing leaves your phone, no accounts, no ads in this version, no internet permission.">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <title>Rat Race Privacy Policy - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html" class="active">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+
+<section class="page-header"><div class="container">
+  <h1>Rat Race: Privacy Policy</h1>
+  <p>Last updated 22 September 2026 (version 1.7.0, which added online races)</p>
+</div></section>
+<section class="section"><div class="container" style="max-width:800px">
+  <h2>The short version</h2>
+  <p>Rat Race has no accounts, no sign-in, no analytics and no ads. Playing against the
+     computer sends nothing anywhere. If you choose to race other people online, the name you
+     pick and your rat's moves go to our race server so the other players can see them, and
+     nothing is kept once the race is over apart from short server logs.</p>
+
+  <h2>What the app stores on your device</h2>
+  <ul>
+    <li>Your settings: difficulty, number of rats, sound, vibration and shadows.</li>
+    <li>Your progress: races run, races won, your best time on each maze size, and the
+        largest maze you have unlocked.</li>
+    <li>The name you last used for online races, so you don't have to type it again.</li>
+  </ul>
+  <p>All of it lives in the app's own storage on your device. Deleting the app deletes all of
+     it. None of it is backed up to us.</p>
+
+  <h2>What leaves your device, and only when you race online</h2>
+  <ul>
+    <li><strong>The name you type</strong> for online races. It is optional and can be anything;
+        it is shown to the other players in your race.</li>
+    <li><strong>The room code</strong>, if you join or create a private room.</li>
+    <li><strong>Your rat's position and moves</strong> during the race, so the other players see
+        you run.</li>
+  </ul>
+  <p>These travel over an encrypted connection (wss) to our race server, which is hosted on
+     Railway. The server keeps rooms in memory and forgets them when the race ends. It writes
+     short operational log lines (a room was created, a player joined), and those can include
+     the name you chose and the room code; they are held by the hosting provider on its normal
+     log schedule and we don't copy them anywhere else. We never ask for your real name, email,
+     location or any device identifier, and nothing is sold or shared with anyone.</p>
+  <p>Racing against the computer, which is most of the game, sends nothing at all.</p>
+
+  <h2>Permissions</h2>
+  <p><strong>Internet</strong>, used only for online races. <strong>Vibration</strong>, for the short
+     buzz when you sprint or finish a race; you can turn it off in Settings. No location, no
+     camera, no microphone, no contacts, no photos, no advertising id.</p>
+
+  <h2>Children</h2>
+  <p>Rat Race is suitable for all ages. It collects no personal information; the only thing an
+     online race sends is a name you make up, and you can race without ever going online.</p>
+
+  <h2>If this changes</h2>
+  <p>If a future version adds anything else that leaves the device, such as ads or
+     leaderboards, this page will be updated before that version ships, and the change will be
+     listed in the store release notes.</p>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="mailto:pgalyen87@gmail.com">pgalyen87@gmail.com</a></p>
+</div></section>
+
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
