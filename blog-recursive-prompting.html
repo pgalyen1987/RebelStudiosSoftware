@@ -14,14 +14,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
-    <meta name="description" content="Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.">
+    <meta name="description" content="Feeding a prompt its own output is still a loop - one that remembers. Real recursion means the work splits into smaller copies of itself and has a bottom. Why the distinction decides which failure you get: a plateau, or a bill.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/blog-recursive-prompting.html">
     <link rel="icon" href="images/RS-logo-128.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rebelstudiossoftware.com/blog-recursive-prompting.html">
-    <meta property="og:title" content="Recursive Prompting: When a Prompt Works on Its Own Output">
-    <meta property="og:description" content="Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.">
+    <meta property="og:title" content="Most &ldquo;Recursive Prompting&rdquo; Is a Loop">
+    <meta property="og:description" content="Feeding a prompt its own output is still a loop - one that remembers. Real recursion means the work splits into smaller copies of itself and has a bottom. Why the distinction decides which failure you get: a plateau, or a bill.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/recursive-prompting.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,11 +29,11 @@
     <meta property="article:published_time" content="2026-08-25">
     <meta property="article:author" content="Patrick Galyen">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Recursive Prompting: When a Prompt Works on Its Own Output">
-    <meta name="twitter:description" content="Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.">
+    <meta name="twitter:title" content="Most &ldquo;Recursive Prompting&rdquo; Is a Loop">
+    <meta name="twitter:description" content="Feeding a prompt its own output is still a loop - one that remembers. Real recursion means the work splits into smaller copies of itself and has a bottom. Why the distinction decides which failure you get: a plateau, or a bill.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/recursive-prompting.jpg">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Recursive Prompting: When a Prompt Works on Its Own Output","description":"Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.","datePublished":"2026-08-25","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-recursive-prompting.html"},"image":"https://rebelstudiossoftware.com/images/blog/recursive-prompting.jpg"}</script>
-    <title>Recursive Prompting: When a Prompt Works on Its Own Output - Rebel Studios Software</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Most &ldquo;Recursive Prompting&rdquo; Is a Loop","description":"Feeding a prompt its own output is still a loop - one that remembers. Real recursion means the work splits into smaller copies of itself and has a bottom. Why the distinction decides which failure you get: a plateau, or a bill.","datePublished":"2026-08-25","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-recursive-prompting.html"},"image":"https://rebelstudiossoftware.com/images/blog/recursive-prompting.jpg"}</script>
+    <title>Most &ldquo;Recursive Prompting&rdquo; Is a Loop - Rebel Studios Software</title>
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <meta name="theme-color" content="#07090f">
@@ -53,6 +53,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
                 <li><a href="apps.html">Apps</a></li>
                 <li><a href="security.html">Security</a></li>
                 <li><a href="tools/index.html">Tools</a></li>
@@ -71,8 +72,8 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Recursive Prompting: When a Prompt Works on Its Own Output</h1>
-            <p>A loop repeats a prompt. Recursion feeds a prompt its own output, and that small difference is where the interesting behavior lives</p>
+            <h1>Most &ldquo;Recursive Prompting&rdquo; Is a Loop</h1>
+            <p>Feeding a prompt its own output is a loop that remembers. Only one of the three common shapes is actually recursive &mdash; and it is the one that fails by exploding</p>
         </div>
     </section>
 
@@ -89,56 +90,49 @@
                 <figure class="article-hero"><img src="images/blog/recursive-prompting.jpg" alt="An infinity mirror: a square of lights repeating into a tunnel" width="1200" height="630" loading="lazy"><figcaption class="article-credit">Photo: <a href="https://www.pexels.com/photo/an-infinity-mirror-5772963/" target="_blank" rel="noopener">Irina Iriser</a> on Pexels</figcaption></figure>
 
                 <div class="article-content">
-                    <p>Everyone building with AI right now is talking about loops. Run the prompt, feed it a task, run it again, run it on a schedule. Loops are useful, and they&rsquo;re also the tame version of a stranger idea sitting right next to them: recursion, a prompt that works on its <em>own</em> output.</p>
+                    <p>&ldquo;Recursive prompting&rdquo; is having a moment, and most of what gets called recursive is a loop with a good memory. That is not a pedantic complaint. The two behave differently, fail differently, and cost differently, and knowing which one you are holding tells you when it will stop.</p>
 
-                    <p>The difference sounds academic. It isn&rsquo;t. It&rsquo;s the difference between a machine that repeats and a machine that <em>climbs.</em></p>
+                    <p>An earlier version of this post drew the line in the wrong place. It said a loop runs on fresh input and recursion feeds a prompt its own output. That is a real distinction, but it is not the difference between iteration and recursion &mdash; it is the difference between a loop that forgets and a loop that remembers. Both are loops. The correction is worth more than the original claim was.</p>
 
-                    <h2>Loop vs. recursion, in one line</h2>
+                    <h2>Where the line actually falls</h2>
 
-                    <p>A <strong>loop</strong> runs the same prompt over and over on fresh input: &ldquo;summarize this article,&rdquo; a hundred times, on a hundred articles. Each run is independent and forgets the last.</p>
+                    <p><strong>Iteration</strong> repeats a step, carrying state forward. <code>x = f(x)</code>, again, until something says stop. Whether the input is fresh each time or is the previous answer changes what the loop <em>does</em>, not what it <em>is</em>.</p>
 
-                    <p>A <strong>recursion</strong> feeds a prompt&rsquo;s output back in as its next input: &ldquo;summarize this, now summarize <em>that</em>, now summarize <em>that.</em>&rdquo; Each pass stands on the one before it. You don&rsquo;t get a pile of answers; you get a single answer that keeps getting refined, distilled, or deepened until something makes it stop.</p>
+                    <p><strong>Recursion</strong> is a procedure that calls <em>itself</em> on a smaller piece of the same problem, and has a base case that ends the descent. The test is not &ldquo;does it use its own output.&rdquo; The test is: <em>does the work split into smaller versions of the same work, and is there a bottom?</em></p>
 
-                    <p>That last clause is the whole game. Hold onto it.</p>
+                    <p>Summarise a summary of a summary and you have a loop. Break a book into chapters, each chapter into sections, each section into paragraphs, summarise the paragraphs and build back up &mdash; that is recursion, and you cannot flatten it into a while-loop without inventing a stack to do it.</p>
 
-                    <h2>Why it works</h2>
+                    <h2>The two that are really loops</h2>
 
-                    <p>Language models are unusually good at operating on text that looks like their own. Hand a model its previous answer and ask it to improve, critique, distill, or expand it, and it will, because &ldquo;here is a draft, make it better&rdquo; is a task it has seen a million times. Recursion turns one shot into a staircase: each step is a small, easy transformation, but the steps compound.</p>
+                    <p><strong>Refine.</strong> Produce something, critique it, rewrite it, critique the rewrite. Quality climbs for a few passes and then plateaus or drifts. The research calls this <em>self-refine</em> or <em>reflexion</em>, and those are the honest names for it. It is a loop, and it is genuinely useful.</p>
 
-                    <p>Three shapes show up again and again:</p>
+                    <p><strong>Converge.</strong> Apply the same operation until the output stops changing &mdash; distilling a thing down to whatever survives the process. Also a loop. Its interesting property is the stopping condition: it ends when the text reaches a fixed point rather than when a counter runs out.</p>
 
-                    <ul class="article-list">
-                        <li><strong>Refine.</strong> Produce something, then critique and rewrite it, then critique the rewrite. Quality climbs each pass. (Researchers call the formal version &ldquo;self-refine&rdquo; or &ldquo;reflexion&rdquo;; by hand, you&rsquo;re doing the same thing.)</li>
-                        <li><strong>Decompose.</strong> Break a problem into parts, then break each part into parts, until every leaf is trivial, then solve bottom-up. Recursion is how one hard problem becomes a stack of easy ones.</li>
-                        <li><strong>Converge.</strong> Apply the same operation until the output stops changing. Summarize a summary of a summary and you spiral down to the irreducible core of a thing.</li>
-                    </ul>
+                    <p>Both are worth using. Neither is recursion, and calling them recursion costs you the word you need for the thing that actually is.</p>
 
-                    <h2>How to actually do it in Claude</h2>
+                    <h2>The one that is really recursion</h2>
 
-                    <p>You don&rsquo;t need an SDK to start; you need a base case. There are three levels of how far you take it.</p>
+                    <p><strong>Decompose.</strong> Split a problem into parts. If a part is still too big, split it with the same procedure. Keep going until every leaf is small enough to solve outright, then assemble the answers back up the tree.</p>
 
-                    <div class="article-highlight">
-                        <h3>Try these in a Claude chat</h3>
-                        <p><strong>Refine:</strong> &ldquo;Write two sentences pitching a $1 developer tool. Now critique your own pitch and rewrite it. Do that three times, show each version, and stop when another pass would make it worse.&rdquo;</p>
-                        <p><strong>Converge:</strong> &ldquo;Summarize this in one sentence. Now summarize that sentence. Keep summarizing until you reach a single word. Show every step.&rdquo;</p>
-                        <p><strong>Decompose:</strong> &ldquo;Explain how HTTPS works. Then take the most confusing term in your explanation and explain <em>that.</em> Recurse four levels deep, until it&rsquo;s something a curious 12-year-old could follow.&rdquo;</p>
-                    </div>
+                    <p>This is the shape that earns the name, and it is the one with real leverage, because the difficulty of the whole problem never has to fit in one context window. Only the leaves do. It is also how a system of agents spawning agents works: each one takes a piece, and any piece too large becomes a smaller set of the same job.</p>
 
-                    <p>That&rsquo;s recursion by hand: Claude runs the passes inside a single response. The next level up is to run the loop <em>outside</em> the model: in Claude Code or the API, take each response, feed it back as the next input, and keep going. Now the recursion is real code, and it can run as long as you let it. Which is exactly the problem.</p>
+                    <p>It brings recursion&rsquo;s failure modes with it. A missing base case does not loop forever politely &mdash; it fans out, and each level multiplies the calls below it. Depth is the thing to bound, and bound it explicitly, because a model asked whether a sub-problem is &ldquo;simple enough&rdquo; will cheerfully say no forever.</p>
 
-                    <h2>The base case is the whole engineering job</h2>
+                    <h2>Why the distinction pays</h2>
 
-                    <p>Every recursion needs a reason to stop. In a chat, <em>you</em> are the base case: you read the output and quit. The moment you hand that job to an agent, you&rsquo;ve built something that will happily recurse forever: refining a refinement of a refinement, spending tokens on diminishing returns, or spiraling into a loop that never converges. Unbounded recursion isn&rsquo;t clever. It&rsquo;s a runaway bill and a hung process.</p>
+                    <p>It tells you what to watch. A loop fails by plateauing: the fifth critique stops improving the draft, and the tenth starts making it worse. You cap the passes and take the best one.</p>
 
-                    <p>This is the second-order habit we bring to every agentic system at Rebel Studios: before you let a prompt call itself, decide <em>what makes it stop</em>, such as a max depth, a &ldquo;good enough&rdquo; test, a token budget. The interesting power of recursion and the way it quietly drains your account are the same mechanism. You don&rsquo;t get one without deciding about the other.</p>
+                    <p>Recursion fails by exploding. Breadth times depth is your bill, and it is paid before anyone reads the result. You bound depth, cap the branching factor, and require a leaf to be defined by something measurable rather than by the model&rsquo;s opinion of its own difficulty.</p>
 
-                    <h2>The bigger idea</h2>
+                    <p>Mistake one for the other and you will watch for the wrong failure. A plateau is annoying; a fan-out is expensive.</p>
 
-                    <p>Recursion is one of the oldest ideas in computing: something defined in terms of itself, a process that folds back on its own results. What&rsquo;s new is that the thing doing the folding now works in plain language and has judgment. A prompt that improves its own output, then improves that, is a small taste of a system reasoning about its own reasoning. It is either the most useful pattern you&rsquo;ll add to your toolkit this year, or the one that runs up a four-figure bill while you sleep.</p>
+                    <h2>What to call things</h2>
 
-                    <p>Start it by hand, in a chat, where you&rsquo;re the base case. Then, when you&rsquo;re ready to let it run on its own, bring a stopping rule. What would <em>your</em> best prompt produce if you fed it its own answer, three times?</p>
+                    <p>Use <em>iterative</em> for a loop, with or without memory. Use <em>self-refine</em> or <em>reflexion</em> for the critique-and-rewrite version, since those are the established names. Save <em>recursive</em> for decomposition, where the work genuinely contains smaller copies of itself.</p>
 
-                    <p><em>We build agentic systems that know when to stop (recursion, loops, and all), so the power doesn&rsquo;t arrive with a runaway bill. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                    <p>Everyone will keep calling all of it recursive. That is fine &mdash; language moves. But when you are deciding whether a job needs a capped loop or a bounded tree, the precise word is the one that tells you which failure is coming.</p>
+
+                    <p><em>We build agentic systems that know when to stop &mdash; capped loops, bounded trees, and a limit on the bill before it arrives. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
                 </div>
 
                 <div class="article-footer-nav">
