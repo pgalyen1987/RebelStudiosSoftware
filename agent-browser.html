@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+gtag('config','G-00TNDVMQNM');
+window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="An MCP browser for AI agents: 44x smaller page snapshots than Playwright MCP, measured and reproducible. Free, MIT, works with any MCP client.">
+<link rel="canonical" href="https://rebelstudiossoftware.com/agent-browser.html">
+<meta property="og:url" content="https://rebelstudiossoftware.com/agent-browser.html">
+<meta property="og:title" content="agent-browser — 44x less page for your agent">
+<meta property="og:description" content="The snapshot Playwright's MCP server sends for one Wikipedia article is 241,988 characters. This sends 3,877. Measured, reproducible, MIT.">
+<meta property="og:image" content="https://rebelstudiossoftware.com/images/agent-browser/banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>agent-browser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  /* Light is the base set; every colour is declared here before any theme block redefines it. */
+  :root {
+    --ground: #F4F6F7;
+    --raise:  #FFFFFF;
+    --ink:    #12171B;
+    --soft:   #5A666E;   /* neutral, biased green-grey toward the accent */
+    --hair:   #DCE2E4;
+    --signal: #0B7A69;   /* this tool */
+    --noise:  #8C98A2;   /* the thing it replaces */
+    --warn:   #A8542A;
+    --code-bg:#FFFFFF;
+    --fade-to: 244, 246, 247;
+  }
+  /* System dark, unless an explicit light choice was stamped. Standard nesting order, so it works
+     without relying on CSS nesting support. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1316;
+      --raise:  #151C20;
+      --ink:    #E8EDEF;
+      --soft:   #93A1A9;
+      --hair:   #242E33;
+      --signal: #2ED3B2;
+      --noise:  #6B7880;
+      --warn:   #D98550;
+      --code-bg:#111A1D;
+      --fade-to: 17, 26, 29;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1316;
+    --raise:  #151C20;
+    --ink:    #E8EDEF;
+    --soft:   #93A1A9;
+    --hair:   #242E33;
+    --signal: #2ED3B2;
+    --noise:  #6B7880;
+    --warn:   #D98550;
+    --code-bg:#111A1D;
+    --fade-to: 17, 26, 29;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 16px/1.6 "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding-inline: 22px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; text-wrap: balance; margin: 0; }
+  /* ~1.272 steps, so the scale reads as composed rather than picked */
+  h1 { font-size: clamp(2.1rem, 5.4vw, 3.4rem); font-weight: 700; line-height: 1.04; letter-spacing: -.022em; }
+  h2 { font-size: clamp(1.35rem, 2.6vw, 1.72rem); font-weight: 700; letter-spacing: -.012em; }
+  h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -.005em; }
+  p  { margin: 0; max-width: 66ch; }
+  a  { color: var(--signal); text-underline-offset: 2px; }
+  code, pre, .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace; }
+  .eyebrow {
+    font: 500 .74rem/1 "IBM Plex Mono", monospace; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--soft); margin: 0;
+  }
+  :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 3px; }
+
+  /* ── hero ─────────────────────────────────────────────────────────── */
+  header.hero { padding-block: clamp(56px, 9vw, 104px) 0; }
+  .hero-copy { display: grid; gap: 20px; }
+  .lede { font-size: 1.14rem; color: var(--soft); max-width: 60ch; }
+  .lede b { color: var(--ink); font-weight: 600; }
+
+  /* The thesis: the same page, both ways, side by side. Equal columns on purpose — an unequal
+     split would be doing the arguing that the content should do. */
+  .versus {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin-top: clamp(30px, 5vw, 46px);
+  }
+  @media (max-width: 700px) { .versus { grid-template-columns: 1fr; } }
+  .col { display: grid; gap: 9px; min-width: 0; }
+  .col-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .col-head .who { font: 600 .92rem/1 "IBM Plex Sans", sans-serif; }
+  .col-head .size { font: 500 .8rem/1 "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }
+  .a .who, .a .size { color: var(--noise); }
+  .b .who, .b .size { color: var(--signal); }
+  .snip {
+    position: relative; background: var(--code-bg); border: 1px solid var(--hair);
+    border-radius: 9px; padding: 15px 16px; overflow: hidden;
+    font: 400 12.4px/1.62 "IBM Plex Mono", monospace; color: var(--ink);
+    white-space: pre; height: 268px;
+  }
+  /* The left column is clipped because the real thing is: 139,663 characters do not fit anywhere
+     useful. The fade is the argument, not decoration. */
+  .a .snip::after {
+    content: ""; position: absolute; inset: auto 0 0 0; height: 116px;
+    background: linear-gradient(to bottom, rgba(var(--fade-to), 0), rgba(var(--fade-to), 1));
+  }
+  .a .snip { color: var(--noise); }
+  .snip-note { font: 400 .78rem/1.4 "IBM Plex Sans", sans-serif; color: var(--soft); }
+  .b .snip-note { color: var(--signal); }
+
+  /* ── install ──────────────────────────────────────────────────────── */
+  .install {
+    margin-top: 30px; display: flex; gap: 12px 18px; align-items: center; flex-wrap: wrap;
+  }
+  .cmd {
+    background: var(--raise); border: 1px solid var(--hair); border-radius: 8px;
+    padding: 12px 15px; font: 400 13.2px/1 "IBM Plex Mono", monospace;
+    overflow-x: auto; max-width: 100%; white-space: nowrap; color: var(--ink);
+  }
+  .cmd .sigil { color: var(--soft); user-select: none; }
+  .aside { font-size: .86rem; color: var(--soft); }
+
+  /* ── sections ─────────────────────────────────────────────────────── */
+  /* padding-block alone does the spacing. It used to carry a margin-top of the same size as well,
+     which compounded into roughly double the intended gap between every section. */
+  section { padding-block: clamp(44px, 7vw, 78px); border-top: 1px solid var(--hair); }
+  section:first-of-type { border-top: 0; }
+  .sec-head { display: grid; gap: 11px; margin-bottom: 30px; }
+
+  /* ── the measurement table ────────────────────────────────────────── */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--hair); border-radius: 10px; background: var(--raise); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; }
+  th, td { text-align: right; padding: 11px 15px; border-bottom: 1px solid var(--hair); white-space: nowrap; }
+  th { font: 500 .78rem/1.3 "IBM Plex Mono", monospace; letter-spacing: .05em; text-transform: uppercase; color: var(--soft); }
+  td { font: 400 .92rem/1.4 "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }
+  th:first-child, td:first-child { text-align: left; font-family: "IBM Plex Sans", sans-serif; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tfoot td { border-top: 1px solid var(--hair); border-bottom: 0; font-weight: 500; }
+  .ratio { color: var(--signal); font-weight: 500; }
+  .ratio.small { color: var(--soft); font-weight: 400; }
+  .pw { color: var(--noise); }
+
+  /* ── the frictions: a definition list, because they are pairs and not cards ── */
+  .fixes { display: grid; gap: 0; margin: 0; }
+  .fix {
+    display: grid; grid-template-columns: minmax(200px, 0.618fr) 1fr; gap: 6px 34px;
+    padding-block: 17px; border-bottom: 1px solid var(--hair); align-items: start;
+  }
+  .fix:last-child { border-bottom: 0; }
+  @media (max-width: 660px) { .fix { grid-template-columns: 1fr; gap: 5px; } }
+  .fix dt { font-weight: 600; color: var(--ink); }
+  .fix dd { margin: 0; color: var(--soft); }
+  .fix dd code { font-size: .88em; color: var(--ink); background: var(--raise); border: 1px solid var(--hair); border-radius: 4px; padding: 1px 5px; }
+
+  /* ── the refusal, which is the one place the page raises its voice ── */
+  .wont {
+    background: var(--raise); border: 1px solid var(--hair);
+    border-left: 3px solid var(--warn); border-radius: 0 10px 10px 0;
+    padding: 24px 26px; display: grid; gap: 12px;
+  }
+  .wont h2 { font-size: 1.16rem; }
+  footer { border-top: 1px solid var(--hair); padding-block: 34px 52px; color: var(--soft); font-size: .88rem; display: grid; gap: 8px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">MCP server · works with any client</p>
+      <h1>The same page, forty-four times smaller.</h1>
+      <p class="lede">
+        Playwright was built to test pages you wrote, where you already know the selectors. An agent
+        is working pages it has never seen — and the snapshot Playwright's MCP server hands it to
+        decide what to click is <b>241,988 characters</b> for one Wikipedia article. That is so large
+        the server writes it to a file rather than returning it. Here is that page both ways, at the
+        same moment.
+      </p>
+    </div>
+
+    <div class="versus">
+      <div class="col a">
+        <div class="col-head">
+          <span class="who">Playwright MCP snapshot</span>
+          <span class="size">241,988 chars</span>
+        </div>
+        <div class="snip">- generic [active] [ref=e1]:
+  - link "Jump to content" [ref=e2] [cursor=pointer]:
+    - /url: "#bodyContent"
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - navigation "Site" [ref=e6]:
+        - generic "Main menu" [ref=e7]:
+          - button "Main menu" [ref=e8] [cursor=pointer]
+          - generic [ref=e11]: Main menu
+      - link [ref=e12] [cursor=pointer]:
+        - /url: /wiki/Main_Page
+        - generic [ref=e13]:
+          - img "Wikipedia" [ref=e14]</div>
+        <div class="snip-note">~61,600 tokens. Still going, thousands of lines later.</div>
+      </div>
+
+      <div class="col b">
+        <div class="col-head">
+          <span class="who">agent-browser</span>
+          <span class="size">3,877 chars</span>
+        </div>
+        <div class="snip">Accessibility - Wikipedia | https://en.wikipedia.org/wiki/Accessibility
+
+[e1] button "Main menu"
+[e2] link ""
+form "searchform":
+  [e3] search "Search Wikipedia"
+  [e4] button "Search"
+[e5] link "Donate"
+[e6] link "Create account"
+[e7] link "Log in"
+## Contents
+[e8] button "Hide Contents"
+[e9] link "(Top)"
+[e10] link "Legislation"</div>
+        <div class="snip-note">~1,100 tokens. That is the whole answer.</div>
+      </div>
+    </div>
+
+    <div class="install">
+      <div class="cmd"><span class="sigil">$ </span>claude mcp add agent-browser -- npx -y @rebelstudios/agent-browser</div>
+      <span class="aside">MIT · Node 20+ · any MCP client</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Measured, not asserted</p>
+      <h2>Five live pages, both routes, same run</h2>
+      <p class="lede">
+        The left column is <code>page._snapshotForAI()</code> — the exact string Playwright's MCP
+        server sends a model, checked against the live server. Each route gets its own browser and
+        navigation, so neither warms a cache for the other. <code>npm run bench</code> reproduces
+        this; run it before believing it.
+      </p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Page</th><th>Playwright MCP</th><th>agent-browser</th><th>Smaller</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>en.wikipedia.org/wiki/Accessibility</td><td class="pw">241,988</td><td>3,877</td><td class="ratio">62.4&times;</td></tr>
+          <tr><td>developer.mozilla.org · fetch</td><td class="pw">167,599</td><td>2,667</td><td class="ratio">62.8&times;</td></tr>
+          <tr><td>news.ycombinator.com</td><td class="pw">57,447</td><td>1,740</td><td class="ratio">33.0&times;</td></tr>
+          <tr><td>playwright.dev/docs/intro</td><td class="pw">37,296</td><td>2,905</td><td class="ratio">12.8&times;</td></tr>
+          <tr><td>example.com</td><td class="pw">315</td><td>208</td><td class="ratio small">1.5&times;</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Total · 5 pages</td><td class="pw">504,645</td><td>11,397</td><td class="ratio">44.3&times;</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="aside" style="margin-top:14px; max-width:66ch">
+      example.com stays in the set at 1.5&times;. A page with nothing on it is the floor, and a
+      benchmark that drops its worst case is advertising. Time was 5.8s against 3.5s across the five
+      — 1.7&times;, because every page here reaches network idle quickly; the large time wins are
+      on pages that never go idle at all, and this set doesn't contain one yet. An earlier run of this
+      benchmark measured <code>ariaSnapshot()</code> instead and reported 19.9&times;; that omits the
+      <code>[ref]</code> annotations MCP adds, and understated the gap by nearly half. Measured 25 Sep 2026.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Why it is smaller, and what else came out of it</p>
+      <h2>Every row here cost someone an afternoon first</h2>
+    </div>
+    <dl class="fixes">
+      <div class="fix">
+        <dt>The page description floods the context</dt>
+        <dd>A compact outline instead: headings, forms and dialogs as groups, each control as <code>[e12] button "Next" (disabled)</code>, navigation and footers collapsed to six links and a count.</dd>
+      </div>
+      <div class="fix">
+        <dt>Element refs go stale after a re-render</dt>
+        <dd>Refs live on the element, so a button keeps <code>e12</code> across snapshots for as long as it exists.</dd>
+      </div>
+      <div class="fix">
+        <dt>A cookie bar eats the click</dt>
+        <dd><code>click</code> checks what is actually on top of the target, presses that layer's Accept or Close, and says which one it moved.</dd>
+      </div>
+      <div class="fix">
+        <dt>Two things on the page share a name</dt>
+        <dd>It acts on the first and <em>says</em> it had a choice. Silence there is how a click meant for a wizard's submit button reopens a sidebar instead.</dd>
+      </div>
+      <div class="fix">
+        <dt>"Not found" and "not loaded yet" look identical</dt>
+        <dd><code>wait</code> answers one of three things: there; still loading; or absent on a page that has gone quiet.</dd>
+      </div>
+      <div class="fix">
+        <dt>Dropdowns stopped being <code>&lt;select&gt;</code> years ago</dt>
+        <dd>Drives an ARIA listbox or combobox too, and confirms from <code>aria-selected</code> rather than from the click having landed.</dd>
+      </div>
+      <div class="fix">
+        <dt>Secrets pass through the transcript</dt>
+        <dd><code>fill_secret</code> takes a key <em>name</em> from your credentials file. The value reaches the page and not the conversation.</dd>
+      </div>
+      <div class="fix">
+        <dt>You cannot tell what the page really did</dt>
+        <dd><code>console</code> gives its errors and uncaught exceptions; <code>network</code> gives its requests, filtered by failed, third-party or URL. A tracker injected after hydration leaves nothing in the served HTML — this is how you catch it.</dd>
+      </div>
+      <div class="fix">
+        <dt>A screenshot you cannot see</dt>
+        <dd>The image comes back inline, so looking at a page is one call instead of save-then-read.</dd>
+      </div>
+      <div class="fix">
+        <dt>A bot wall snapshots like an empty site</dt>
+        <dd>A challenge or block page is named — <code>blocked: this is an interstitial bot check (Cloudflare)</code> — instead of arriving as a page with nothing on it.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section>
+    <div class="wont">
+      <h2>What it will not do</h2>
+      <p>
+        It does not try to defeat bot protection. A Cloudflare interstitial, a block page or a
+        rate-limit notice is <em>reported</em>, so you know what you are looking at — and the way
+        through is to be a browser you are genuinely signed in to, or to use the site's API.
+      </p>
+      <p class="aside" style="max-width:66ch">
+        Dressing up as something else is a race that gets lost on the next update, and it breaks the
+        terms of most sites worth visiting.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">The comparison a reader who knows the field will want</p>
+      <h2>Where it wins by less, and where it loses</h2>
+      <p class="lede">
+        44&times; is large because Playwright's format is verbose, not because this is magic.
+        <b>browser-use</b> already builds a compact representation and is far more widely adopted:
+        measured the same day, its own output on these five pages totals <b>38,101</b> characters
+        against 11,397 — about <b>3.3&times;</b>. On example.com it <b>beats this tool</b>, 138 to 208,
+        because a page with almost nothing on it still costs us a header and a URL.
+        <code>bench/browser-use.py</code> reproduces it. Stagehand is left unmeasured rather than
+        estimated: v4 expects a paid Browserbase account.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Limits, before they surprise you</p>
+      <h2>What it is not</h2>
+    </div>
+    <dl class="fixes">
+      <div class="fix"><dt>WebKit is untested</dt><dd>Chromium and Firefox both are — <code>AB_BROWSER=firefox</code> switches engine and the whole suite passes on each.</dd></div>
+      <div class="fix"><dt>One page at a time</dt><dd>A link that opens a tab is followed; there is no tab switcher.</dd></div>
+      <div class="fix"><dt>Not a reader</dt><dd>The outline describes controls and headings. For prose-heavy pages, use the <code>js</code> escape hatch.</dd></div>
+      <div class="fix"><dt>The network log starts when you do</dt><dd>It holds nothing from before the server began driving.</dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <div><strong style="color:var(--ink)">agent-browser</strong> — an MCP browser layer, from Rebel Studios.</div>
+    <div>MIT licensed. Built on Playwright, which does the hard part.</div>
+    <div>Numbers on this page come from <code>bench/compare.mjs</code>, run on 25 September 2026. Live pages change; re-run it.</div>
+  </footer>
+
+</div>
+</body>
+</html>
