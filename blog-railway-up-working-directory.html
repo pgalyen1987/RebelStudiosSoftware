@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Nine commits sat invisible to users for seven hours while every deploy reported success. Two facts about Railway deploys worth knowing before you automate one.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-railway-up-working-directory.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-railway-up-working-directory.html">
+    <meta property="og:title" content="What railway up Actually Uploads">
+    <meta property="og:description" content="Nine commits sat invisible to users for seven hours while every deploy reported success. Two facts about Railway deploys worth knowing before you automate one.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/railway-up-working-directory.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-28">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What railway up Actually Uploads">
+    <meta name="twitter:description" content="Nine commits sat invisible to users for seven hours while every deploy reported success. Two facts about Railway deploys worth knowing before you automate one.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/railway-up-working-directory.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What railway up Actually Uploads","description":"Nine commits sat invisible to users for seven hours while every deploy reported success. Two facts about Railway deploys worth knowing before you automate one.","datePublished":"2026-09-28","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-railway-up-working-directory.html"},"image":"https://rebelstudiossoftware.com/images/blog/railway-up-working-directory.png"}</script>
+    <title>What railway up Actually Uploads - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>What railway up Actually Uploads</h1>
+            <p>Not your commit. The folder you are standing in &mdash; including whatever you have not committed yet</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 28, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+                <figure class="article-hero"><img src="images/blog/railway-up-working-directory.png" alt="Diagram: git push reaches nothing, railway up uploads the working directory" width="1200" height="630" loading="lazy"></figure>
+
+
+                <div class="article-content">
+
+                    <p>One morning our site was nine commits behind. The overnight worker had committed and pushed all of them. The push succeeded. The tests passed. The deploy step reported success. Users had seen none of it for seven hours.</p>
+
+                    <p>Two facts explain it, and both are easy to get wrong.</p>
+
+                    <h2>A push deploys nothing unless something is listening</h2>
+
+                    <p>Our service had no source connected. No repository, no image. You can see it plainly in the config &mdash; there is simply no <code>source</code> key:</p>
+
+                    <pre><code>{"config": {
+  "build":  {"builder": "RAILPACK"},
+  "deploy": {"runtime": "V2"},
+  "networking": {"customDomains": {"example.com": {}}}
+}}</code></pre>
+
+                    <p>Every deploy that had ever happened was somebody typing <code>railway up</code>. That works perfectly and it is invisible: the service is live, the domain resolves, health checks pass. Nothing about the running site tells you that pushing to the default branch does not reach it.</p>
+
+                    <p>When the automation that was calling <code>railway up</code> stopped, there was no second mechanism, and nothing reported the absence. A deploy that never starts produces no failed build to notice. Our deployment list showed the last success and then nothing at all &mdash; not one <code>FAILED</code>, not one <code>CRASHED</code>. Just a gap.</p>
+
+                    <h2>It uploads the folder, not the commit</h2>
+
+                    <p>This is the one to internalise before you automate anything. <code>railway up</code> tars up the working directory and sends that. Not <code>HEAD</code>. Not the branch. The directory, as it exists on disk, at that moment.</p>
+
+                    <p>Most of the time the difference does not bite, because you deploy from a clean tree. It bites when a human is mid-experiment in that folder, or when a script runs on a timer in a directory somebody else is also using. Then you ship a debug constant, a commented-out guard, a half-finished migration &mdash; something nobody wrote down, nobody reviewed, and which does not correspond to any commit you can go back and read.</p>
+
+                    <p>Our first instinct was to point a five-minute watcher at the main checkout. That would have been a machine that publishes whatever is lying around, every five minutes, forever.</p>
+
+                    <h2>What we did instead</h2>
+
+                    <p>Connecting the repository is the correct fix, and we could not do it &mdash; the GitHub app was not authorised on a private repo and that needs a browser and a human. So the stand-in deploys from its own clone, which exists for nothing else:</p>
+
+                    <pre><code>cd ~/deploy-mirror
+git fetch -q origin master
+git reset -q --hard origin/master   # safe here: this tree holds no work
+railway up --service web --detach</code></pre>
+
+                    <p>The <code>reset --hard</code> is only acceptable because that directory can never contain anything a person cares about. Point the same three lines at a working checkout and you have written a tool that destroys uncommitted work on a timer.</p>
+
+                    <h2>Then wait for the thing you actually want</h2>
+
+                    <p>The last piece matters more than the deploy. <code>railway up --detach</code> returning zero means the upload was accepted. It does not mean the new code is serving.</p>
+
+                    <p>So we put a build identifier in the app, returned from its health endpoint, and the deploy script does not consider itself finished until that string changes:</p>
+
+                    <pre><code>for i in $(seq 1 36); do
+  sleep 10
+  got=$(curl -s "$HEALTH?cb=$RANDOM" | grep -oE '"build":"[^"]+"' | cut -d'"' -f4)
+  [ "$got" = "$want" ] &amp;&amp; { echo "LIVE: $want"; exit 0; }
+done
+echo "WARNING: uploaded but '$want' is not serving after 360s"
+exit 1</code></pre>
+
+                    <p>First real run: detected the push, uploaded, and confirmed the new build id ninety seconds later. The value is not the ninety seconds. It is that a deploy which uploads and does not take now says so, out loud, instead of exiting zero.</p>
+
+                    <h2>The general shape</h2>
+
+                    <p>The failure here was not Railway's. It was that three separate things all report success without the outcome having happened: a push with nothing listening, an upload that is not a rollout, and a timer that runs on schedule while achieving nothing.</p>
+
+                    <p>If you automate a deploy, make the last step check the running system for evidence the new code is there. Anything short of that is a machine that tells you it worked.</p>
+
+                    <p><em>We build and run small products, and write up what breaks. <a href="services.html">Rebel Studios</a>.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-stale-base-dropped-commits.html" class="btn btn-secondary">Read: Every Test Passed and Four Commits Were Gone</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

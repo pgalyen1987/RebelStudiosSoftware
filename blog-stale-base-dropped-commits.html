@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html">
+    <meta property="og:title" content="Every Test Passed and Four Commits Were Gone">
+    <meta property="og:description" content="A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/stale-base-dropped-commits.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-28">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Every Test Passed and Four Commits Were Gone">
+    <meta name="twitter:description" content="A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/stale-base-dropped-commits.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Every Test Passed and Four Commits Were Gone","description":"A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.","datePublished":"2026-09-28","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html"},"image":"https://rebelstudiossoftware.com/images/blog/stale-base-dropped-commits.png"}</script>
+    <title>Every Test Passed and Four Commits Were Gone - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Every Test Passed and Four Commits Were Gone</h1>
+            <p>An unattended agent branched from yesterday's master, worked all night, and pushed a history that quietly did not contain our fixes</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 28, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+                <figure class="article-hero"><img src="images/blog/stale-base-dropped-commits.png" alt="Diagram: a branch taken from an old base, pushed over master, dropping four commits" width="1200" height="630" loading="lazy"></figure>
+
+
+                <div class="article-content">
+
+                    <p>We run unattended coding agents overnight in 45-minute blocks. They take the top item off a queue, do it, verify it, commit, and stop. In the morning you read what they did.</p>
+
+                    <p>One morning the repository had nine new commits of genuinely good work, and was missing four of ours.</p>
+
+                    <p>Not conflicted. Missing. The remote's history did not contain them, and nothing had complained.</p>
+
+                    <h2>How it looks from inside</h2>
+
+                    <p>The agent had branched from a base older than the current master. It worked, tested, committed and pushed &mdash; all correctly, all on top of a tree that predated four commits made the previous evening. One of those was a fix for a ceiling constant that had made six of seven game levels uncrossable. That bug was now back in master.</p>
+
+                    <p>Here is the part that makes this worse than a merge conflict. The agent's own quality gates passed, and they were <em>right to</em>. It ran the difficulty harness and got 40 wins against a recorded baseline of 40. Green. But the baseline had been raised to 85 in one of the missing commits, and the constant it was measuring had been fixed in another. It was measuring the old game against the old number and getting the old, correct answer.</p>
+
+                    <p>Every signal was honest. Every signal was useless.</p>
+
+                    <h2>Why nothing caught it</h2>
+
+                    <p>A merge conflict is loud, and that is its best feature. It stops you. A stale base produces no conflict at all when the two sets of changes touch different files, or when the newer work is simply absent from the branch you are pushing. Git has nothing to object to. You asked to make the remote look like your branch, and it did.</p>
+
+                    <p>Our safeguards were aimed at the wrong failure. We had a lock so two agents could not edit one worktree at once, which is a real problem and it worked. We had a rule against force-pushing, which held. We did not have anything asserting that work already shipped was still present.</p>
+
+                    <h2>The check</h2>
+
+                    <p>One command, and it is cheap enough to run constantly:</p>
+
+                    <pre><code>git merge-base --is-ancestor &lt;commit&gt; origin/master</code></pre>
+
+                    <p>Exit zero means the commit is in the remote's history. Non-zero means it is not. Feed it the commits you shipped recently and you find out immediately, instead of when someone reports the old bug.</p>
+
+                    <p>Two habits around it. Agents should branch from a freshly fetched master at the start of every block, not from whatever the worktree happened to be on. And the recovery is a merge, never a reset &mdash; both sides had real work, and the merge turned out to be three trivial conflicts: two cache-busting hashes and a build identifier.</p>
+
+                    <h2>The wider version of this</h2>
+
+                    <p>We found three dead pipelines in one day, and they had the same shape. A deploy step that stopped firing, so nine commits sat unshipped for seven hours. A blog that went nine days without a post. A social queue with 82 items pending and 42 expired unsent, while its timer succeeded every fifteen minutes. All green on our own dashboard, which reported <em>liveness</em>: next run, last run, exit code.</p>
+
+                    <p>Most scheduled work fails by producing nothing rather than by crashing. A queue drainer that drains nothing exits zero. A writer that writes nothing exits zero. An agent that branches wrong passes its tests.</p>
+
+                    <p>So the panel now asks a different question. Not <em>is the job alive</em> but <em>did the artefact move</em>: a commit added, a post actually sent, a log that grew, the live build identifier matching the repository. Each check carries a staleness budget and the reason for that number, and a check that cannot run reports unknown rather than green. Being green on missing data is the failure, not a nuisance.</p>
+
+                    <p>The first run of it flagged the blog at 210 hours against a 168-hour budget, and the queue as degraded. Both were true, both had been true for over a week, and both had been invisible.</p>
+
+                    <p><em>We build automation and then find out how it lies to us. <a href="services.html">Rebel Studios</a>.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-test-modelled-open-sky.html" class="btn btn-secondary">Read: The Test Was Modelling a Game We Had Stopped Running</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
