@@ -8,6 +8,7 @@
     <meta name="description" content="Sell paid tickets to WordPress events, with as many ticket types per event as you need. Set a price, take payment through your own WooCommerce checkout, and QR tickets are issued and emailed automatically once the order is paid. No per-ticket revenue share.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/wc-events-pro.html">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Event Tickets Pro: Paid Ticketing for WordPress","description":"Sell paid tickets to WordPress events, with as many ticket types per event as you need. Set a price, take payment through your own WooCommerce checkout, and QR tickets are issued and emailed automatically once the order is paid. No per-ticket revenue share.","url":"https://rebelstudiossoftware.com/wc-events-pro.html","image":"https://rebelstudiossoftware.com/images/products/wc-events/shot-1.png","brand":{"@type":"Brand","name":"Rebel Studios Software"},"offers":{"@type":"Offer","price":"79","priceCurrency":"USD","availability":"https://schema.org/InStock"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there really no per-ticket fee?","acceptedAnswer":{"@type":"Answer","text":"None. Buyers pay through the WooCommerce checkout you already run, so the money goes straight from your gateway to your account and never passes through us. You pay $79 once. The only cut anyone takes is your own payment processor's standard rate (Stripe, PayPal and the like), which you would pay on any sale."}},{"@type":"Question","name":"Which payment gateways does it work with?","acceptedAnswer":{"@type":"Answer","text":"Any gateway WooCommerce supports, because payment runs through your existing checkout — Stripe, PayPal, Square, Mollie, whatever you already have configured. The plugin never touches card details and needs no payment API keys of its own."}},{"@type":"Question","name":"How do refunds work?","acceptedAnswer":{"@type":"Answer","text":"A ticket refund is an ordinary WooCommerce refund on the order — there is no separate system to learn. The attendee's ticket is tied to a paid order, so handling the order handles the ticket, the way you already handle any refund."}},{"@type":"Question","name":"Do I get updates and support?","acceptedAnswer":{"@type":"Answer","text":"Yes. Updated files come through your Gumroad purchase, and we answer support directly at contact@rebelstudiossoftware.com — we are a small studio, so you reach the people who built it."}},{"@type":"Question","name":"What do I need to run it?","acceptedAnswer":{"@type":"Answer","text":"WordPress 6.5+, PHP 7.4+, and WooCommerce with a payment gateway configured. The purchase includes both this Pro add-on and the free Event Tickets & Registration plugin it builds on, so you upload two zips and you are running."}},{"@type":"Question","name":"What if I outgrow it?","acceptedAnswer":{"@type":"Answer","text":"Your events, tickets and orders live in WordPress and WooCommerce, not in someone else's platform, so you are never locked in. It deliberately does not do seat maps, assigned seating, recurring events or season passes — if you need those, you can move on because the data is already yours."}}]}</script>
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://rebelstudiossoftware.com/wc-events-pro.html">
     <meta property="og:title" content="Event Tickets Pro: Paid Ticketing for WordPress">
@@ -23,6 +24,25 @@
     <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <meta name="theme-color" content="#07090f">
     <link rel="stylesheet" href="styles.css">
+    <style>
+    /* Event Tickets Pro — cost calculator + FAQ (page-scoped) */
+    .etp-calc{display:grid;gap:1rem;max-width:640px;margin-top:1.5rem}
+    .etp-calc .etp-row{display:flex;flex-wrap:wrap;gap:1rem}
+    .etp-calc label{display:flex;flex-direction:column;font-size:var(--text-sm);font-weight:600;gap:.4rem;flex:1 1 150px;color:var(--ink-2)}
+    .etp-calc input{font:inherit;padding:.6rem .7rem;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--surface-strong);color:var(--ink-1)}
+    .etp-calc input:focus{outline:2px solid var(--green);outline-offset:1px}
+    .etp-result{margin-top:1.4rem;padding:1.4rem 1.6rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-strong)}
+    .etp-line{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:.35rem 0}
+    .etp-big{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700}
+    .etp-keep{color:var(--green-bright)}
+    .etp-payoff{margin-top:1rem;font-size:var(--text-body)}
+    .etp-payoff b{color:var(--green-bright)}
+    .etp-note{font-size:var(--text-xs);color:var(--ink-3);margin-top:.8rem}
+    .lp-faq{border-top:1px solid var(--line);padding:16px 0}
+    .lp-faq:last-of-type{border-bottom:1px solid var(--line)}
+    .lp-faq summary{cursor:pointer;font-weight:600;color:var(--ink-1);font-size:var(--text-md)}
+    .lp-faq p{margin:.7rem 0 0;color:var(--ink-2)}
+    </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -68,6 +88,30 @@
       <p>It also means the failure modes are ones you already understand. A failed payment is a failed WooCommerce order. A refund is a WooCommerce refund. Nothing new to learn when something goes wrong at 9pm the night before an event.</p>
     </div></section>
 
+    <section class="section section-alt"><div class="container">
+      <h2>What a per-ticket service is costing you</h2>
+      <p>Event Tickets Pro takes nothing per ticket &mdash; the money runs through your own WooCommerce checkout, so there is no cut to us, ever. Put your own numbers in and compare against whatever your current ticketing service charges.</p>
+      <div class="etp-calc">
+        <div class="etp-row">
+          <label>Tickets sold<input id="etp-qty" type="number" min="0" value="300" inputmode="numeric"></label>
+          <label>Price per ticket ($)<input id="etp-price" type="number" min="0" step="0.01" value="40" inputmode="decimal"></label>
+        </div>
+        <div class="etp-row">
+          <label>Your service&rsquo;s fee (%)<input id="etp-pct" type="number" min="0" step="0.1" value="3.7" inputmode="decimal"></label>
+          <label>&hellip;plus per ticket ($)<input id="etp-flat" type="number" min="0" step="0.01" value="1.79" inputmode="decimal"></label>
+        </div>
+      </div>
+      <div class="etp-result" aria-live="polite">
+        <div class="etp-line"><span>Your ticketing service takes</span><span class="etp-big" id="etp-cost">$0</span></div>
+        <div class="etp-line"><span>Event Tickets Pro takes</span><span class="etp-big etp-keep" id="etp-ours">$0</span></div>
+        <p class="etp-payoff" id="etp-payoff"></p>
+        <p class="etp-note">Pre-filled with a commonly quoted hosted rate &mdash; change it to your own. Both approaches still pay your normal card-processing fee (Stripe, PayPal and the like); that does not change. What you avoid is the extra per-ticket cut on top of it.</p>
+      </div>
+      <div class="hero-buttons" style="margin-top:1.6rem">
+        <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/cowxt" target="_blank" rel="noopener">Buy on Gumroad &middot; $79 &rarr;</a>
+      </div>
+    </div></section>
+
     <section class="section"><div class="container">
       <h2>What pricing an event actually looks like</h2>
       <p>You open an event you have already created, set a price, and save. That is the whole configuration step: there is no separate ticket product to build, no stock to sync, and no second place where the event&rsquo;s details have to be kept in step.</p>
@@ -108,6 +152,16 @@
       <p>GPL licensed, activated per site from the plugin&rsquo;s settings screen.</p>
     </div></section>
 
+    <section class="section"><div class="container">
+      <h2>Questions</h2>
+      <details class="lp-faq"><summary>Is there really no per-ticket fee?</summary><p>None. Buyers pay through the WooCommerce checkout you already run, so the money goes straight from your gateway to your account and never passes through us. You pay $79 once. The only cut anyone takes is your own payment processor&rsquo;s standard rate (Stripe, PayPal and the like), which you would pay on any sale.</p></details>
+      <details class="lp-faq"><summary>Which payment gateways does it work with?</summary><p>Any gateway WooCommerce supports, because payment runs through your existing checkout &mdash; Stripe, PayPal, Square, Mollie, whatever you already have configured. The plugin never touches card details and needs no payment API keys of its own.</p></details>
+      <details class="lp-faq"><summary>How do refunds work?</summary><p>A ticket refund is an ordinary WooCommerce refund on the order &mdash; there is no separate system to learn. The attendee&rsquo;s ticket is tied to a paid order, so handling the order handles the ticket, the way you already handle any refund.</p></details>
+      <details class="lp-faq"><summary>Do I get updates and support?</summary><p>Yes. Updated files come through your Gumroad purchase, and we answer support directly at <a href="mailto:contact@rebelstudiossoftware.com">contact@rebelstudiossoftware.com</a> &mdash; we are a small studio, so you reach the people who built it.</p></details>
+      <details class="lp-faq"><summary>What do I need to run it?</summary><p>WordPress 6.5+, PHP 7.4+, and WooCommerce with a payment gateway configured. The purchase includes both this Pro add-on and the free Event Tickets &amp; Registration plugin it builds on, so you upload two zips and you are running.</p></details>
+      <details class="lp-faq"><summary>What if I outgrow it?</summary><p>Your events, tickets and orders live in WordPress and WooCommerce, not in someone else&rsquo;s platform, so you are never locked in. It deliberately does not do seat maps, assigned seating, recurring events or season passes &mdash; if you need those, you can move on because the data is already yours.</p></details>
+    </div></section>
+
     <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Apps</a><a href="security.html">Security</a><a href="tools/index.html">Tools</a><a href="plugins.html" class="active">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><!-- social:start (generated by social_links.py; edit the list there) -->
 <nav class="footer-social" aria-label="Rebel Studios elsewhere">
     <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
@@ -120,6 +174,27 @@
 </nav>
 <!-- social:end -->
 <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+    <script>
+    (function(){
+      var ids=['etp-qty','etp-price','etp-pct','etp-flat'], el={};
+      ids.forEach(function(i){el[i]=document.getElementById(i);});
+      if(!el['etp-qty'])return;
+      var cost=document.getElementById('etp-cost'), payoff=document.getElementById('etp-payoff');
+      function money(n){return '$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});}
+      function calc(){
+        var q=Math.max(0,+el['etp-qty'].value||0), p=Math.max(0,+el['etp-price'].value||0),
+            pct=Math.max(0,+el['etp-pct'].value||0), flat=Math.max(0,+el['etp-flat'].value||0);
+        var per=p*pct/100+flat, total=q*per;
+        cost.textContent=money(total);
+        if(per>0){
+          var n=Math.ceil(79/per);
+          payoff.innerHTML='You keep an extra <b>'+money(total)+'</b> on this one event \u2014 and the $79 pays for itself after about <b>'+n+' ticket'+(n===1?'':'s')+'</b>.';
+        } else { payoff.textContent='Enter your current service\u2019s fee to see what you would keep.'; }
+      }
+      ids.forEach(function(i){el[i].addEventListener('input',calc);});
+      calc();
+    })();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
