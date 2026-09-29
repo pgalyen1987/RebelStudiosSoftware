@@ -25,6 +25,12 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://rebelstudiossoftware.com/services.html</loc>
+<lastmod>2026-09-22</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://rebelstudiossoftware.com/tools/</loc>
 <lastmod>2026-08-09</lastmod>
 <changefreq>weekly</changefreq>
@@ -153,6 +159,12 @@
 <url>
 <loc>https://rebelstudiossoftware.com/membership-content-restriction.html</loc>
 <lastmod>2026-09-08</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://rebelstudiossoftware.com/consent-ledger.html</loc>
+<lastmod>2026-09-29</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>

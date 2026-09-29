@@ -39,6 +39,7 @@ STATIC_PAGES = [
     ("apps.html", "2026-06-23", "monthly", "0.8"),
     ("games.html", "2026-09-29", "weekly", "0.8"),
     ("websites.html", "2026-06-23", "monthly", "0.8"),
+    ("services.html", "2026-09-22", "monthly", "0.8"),
     ("tools/", "2026-08-09", "weekly", "0.9"),
     ("vigilo.html", "2026-06-24", "monthly", "0.8"),
     ("about.html", "2026-06-24", "monthly", "0.8"),
@@ -61,7 +62,9 @@ STATIC_PAGES = [
     ("wc-invoices-pro.html", "2026-09-13", "weekly", "0.8"),
     ("wc-restaurant-pro.html", "2026-09-13", "weekly", "0.8"),
     ("membership-content-restriction.html", "2026-09-08", "weekly", "0.8"),
+    ("consent-ledger.html", "2026-09-29", "weekly", "0.8"),
     # Individual $1-tool pages are noindex (conversion funnels, not content) — kept out of the sitemap.
+    # chart-rush.html / oops-all-knights.html are deliberately robots:noindex (app-store games) — kept out too.
 ]
 
 
