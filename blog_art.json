@@ -446,5 +446,11 @@
     "html": "art/zora-api-marketcap-zero.html",
     "alt": "Three Zora creator coins from the live API: two with real prices report marketCap 0 (one pooled against a creator coin, one against WETH), while the ZORA-paired coin reports a market cap that matches price times supply",
     "image": "images/blog/zora-api-marketcap-zero.png"
+  },
+  "playwright-click-intercepted-by-overlay": {
+    "kind": "diagram",
+    "html": "art/playwright-click-intercepted-by-overlay.html",
+    "alt": "A browser viewport with a Submit button and a crosshair on its centre point; a fixed cookie consent bar overlaps that point, so document.elementFromPoint at those coordinates returns .cookie-consent, not #submit",
+    "image": "images/blog/playwright-click-intercepted-by-overlay.png"
   }
 }

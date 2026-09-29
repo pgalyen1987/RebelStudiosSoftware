@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Playwright says the element isn't clickable, or the click silently lands on a cookie banner and your test fails three steps later. Why it happens, why force: true makes it worse, and the hit-test fix that works on any overlay.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html">
+    <meta property="og:title" content="The Click That Landed on the Cookie Banner">
+    <meta property="og:description" content="Playwright says the element isn't clickable, or the click silently lands on a cookie banner and your test fails three steps later. Why it happens, why force: true makes it worse, and the hit-test fix that works on any overlay.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/playwright-click-intercepted-by-overlay.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Click That Landed on the Cookie Banner">
+    <meta name="twitter:description" content="Playwright says the element isn't clickable, or the click silently lands on a cookie banner and your test fails three steps later. Why it happens, why force: true makes it worse, and the hit-test fix that works on any overlay.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/playwright-click-intercepted-by-overlay.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The Click That Landed on the Cookie Banner","description":"Playwright says the element isn't clickable, or the click silently lands on a cookie banner and your test fails three steps later. Why it happens, why force: true makes it worse, and the hit-test fix that works on any overlay.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html"},"image":"https://rebelstudiossoftware.com/images/blog/playwright-click-intercepted-by-overlay.png"}</script>
+    <title>The Click That Landed on the Cookie Banner - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>The Click That Landed on the Cookie Banner</h1>
+            <p>Your script clicks a button. Playwright reports success. Nothing happened &mdash; because a cookie bar was sitting on top of that button, and it got the click instead</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/playwright-click-intercepted-by-overlay.png" alt="A browser viewport with a Submit button and a crosshair on its centre point; a cookie consent bar overlaps that point, so document.elementFromPoint at those coordinates returns the cookie bar, not the button" width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>You have all met this bug. A test clicks a button, the button does not react, and the failure surfaces three steps later somewhere that has nothing to do with the real cause. Or the louder version, where Playwright refuses outright:</p>
+
+                    <pre class="article-code"><code>Error: locator.click: Timeout 30000ms exceeded.
+&lt;button id="submit"&gt; intercepts pointer events
+  &lt;div class="cookie-consent"&gt; from &lt;body&gt; subtree
+  ...retrying click action</code></pre>
+
+                    <p>Both are the same problem wearing two faces. Something is sitting on top of the element you asked for, and when a click lands at that spot on the screen, the thing on top receives it. A cookie consent bar is the classic culprit; so is a sticky header, a chat bubble in the corner, a newsletter modal, or a loading spinner that has not torn itself down yet.</p>
+
+                    <h2>Why it happens at all</h2>
+
+                    <p>A click in a browser is delivered by coordinate, not by intent. Playwright takes your target, finds the centre of its bounding box, and dispatches a click at that pixel. The browser then hands the event to whatever element is topmost at that pixel. If a fixed or sticky element overlaps the centre of your button, that element is topmost, and it gets the click. This is not a Playwright quirk &mdash; it is exactly what would happen to a real cursor. Playwright is being faithful to the page; the page is just in a state you did not account for.</p>
+
+                    <p>The reason it is so easy to miss is that the overlay is usually invisible to <em>you</em>. It appears on a cold load, or only in the CI viewport size, or only when a cookie has not been set yet &mdash; which, in a fresh automation profile, is every single run.</p>
+
+                    <div class="article-highlight">
+                        <h3>The fix that makes it worse: <code>force: true</code></h3>
+                        <p>The first thing everyone reaches for is <code>{ force: true }</code>, because it makes the error go away. It does that by <em>skipping the checks that noticed the problem</em>. The overlay is still there, still on top, and still the element under the cursor &mdash; so it still receives the click. Force does not move anything out of the way; it tells Playwright to stop objecting and fire the click into whatever happens to be there. You have silenced the warning and kept the bug, which is worse than the loud version, because now it fails silently.</p>
+                    </div>
+
+                    <p>The other brittle patches are cousins of the same mistake. A blind <code>waitForTimeout(2000)</code> hopes the banner animates away before you click, and it does &mdash; until the day CI is slow. Hardcoding &ldquo;click the Accept button first&rdquo; works right up until the next site, or a redesign that renames the button. Each of these fixes one page. The bug is general, so the fix should be too.</p>
+
+                    <h2>Ask the DOM what is actually there</h2>
+
+                    <p>Rather than guessing, ask the page the one question that matters: at the exact point I am about to click, what element will receive it? The browser will tell you, through <code>document.elementFromPoint</code>.</p>
+
+                    <pre class="article-code"><code>const box = await locator.boundingBox();
+const x = box.x + box.width / 2;
+const y = box.y + box.height / 2;
+
+const onTop = await page.evaluate(([x, y]) =&gt; {
+  const el = document.elementFromPoint(x, y);
+  return el &amp;&amp; el.className;      // -&gt; "cookie-consent"  (not your button)
+}, [x, y]);</code></pre>
+
+                    <p>If the element under the point is your target &mdash; or an ancestor or descendant of it, which still counts as a hit &mdash; the path is clear and you can click. If it is something else, you have found your overlay, and now you can deal with it deliberately instead of by timeout. Walk up from the hit element to the nearest ancestor whose <code>position</code> is <code>fixed</code> or <code>sticky</code>: that is the layer doing the covering, not the little inner <code>&lt;span&gt;</code> the point happened to touch.</p>
+
+                    <h2>Dismiss it &mdash; do not just hide it</h2>
+
+                    <p>Once you have the overlay, there are two ways to clear it, and the order matters. Reach first for the button a real person would press: scan the layer for an <code>accept</code>, <code>agree</code>, <code>got it</code>, <code>close</code>, <code>dismiss</code>, or <code>reject</code> control and click that.</p>
+
+                    <div class="article-highlight">
+                        <h3>Hiding a cookie bar leaves the page in a state no real user ever sees</h3>
+                        <p>Setting <code>visibility: hidden</code> on a consent bar makes it stop intercepting clicks, but the consent event never fires, the scroll lock it applied may stay on, and any script waiting for &ldquo;user accepted&rdquo; waits forever. Pressing the bar's own <em>Accept</em> or <em>Reject</em> puts the page into a real state &mdash; the one your users are in. Keep hiding as the fallback for overlays that genuinely have no dismiss control, and re-check afterwards, because clearing one layer often reveals another underneath it.</p>
+                    </div>
+
+                    <p>Only after the path is clear do you click. And if the normal click still fails for some reason you did not anticipate, there is one last resort worth knowing:</p>
+
+                    <pre class="article-code"><code>await locator.evaluate(el =&gt; el.click());</code></pre>
+
+                    <p>Calling <code>.click()</code> on the node dispatches the event straight to the element, so no overlay can intercept it &mdash; you are not going through screen coordinates at all. The catch is that it skips the real pointer sequence: no hover, no <code>mousedown</code>, no focus change. A handler bound to those will not fire, and a button that only reacts to a genuine pointer event will look like it did nothing. So it belongs at the end of the chain, after you have tried to clear the path honestly, not at the front as a shortcut.</p>
+
+                    <h2>We run this before every click</h2>
+
+                    <p>This is not a hypothetical for us. We build <a href="thinbrowser.html">thinbrowser</a>, a browser an AI agent drives through <a href="blog-mcp-web-access.html">MCP</a>, and an agent hits this constantly: it cannot glance at the page and notice a banner the way you would, so a click that lands on a cookie bar is a whole wasted step it may not even realise it wasted. So thinbrowser runs exactly the routine above before every click &mdash; hit-test the centre point, find the fixed or sticky layer on top, press its dismiss button or, failing that, hide it, up to three rounds because overlays stack &mdash; and only then clicks, with the DOM-click fallback if the normal click still will not land. Every action reports what it moved out of the way (&ldquo;pressed <em>Accept all</em> on an overlay&rdquo;), so a run that had to clear a banner says so, instead of hiding it.</p>
+
+                    <p>If you drive a browser with an agent, it is one line to try:</p>
+
+                    <pre class="article-code"><code>claude mcp add thinbrowser -- npx -y thinbrowser</code></pre>
+
+                    <p><em>We build the unglamorous reliability so the interesting part works. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-mcp-web-access.html" class="btn btn-secondary">Read: Giving an Agent Its Own Browser &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:60px 72px 56px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow {
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:15px; font-weight:600;
+    letter-spacing:.10em; color:#8fe05a;
+  }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:46px; line-height:1.08; letter-spacing:-.02em; color:#eef1f7;
+    margin-top:14px; max-width:1056px;
+  }
+  .stage { position:relative; flex:1; margin:26px 0 22px; }
+  /* mock browser viewport */
+  .viewport {
+    position:absolute; inset:0;
+    border:1px solid #263042; border-radius:14px;
+    background:linear-gradient(180deg,#0c1119,#0a0e15);
+    overflow:hidden;
+  }
+  .chrome { height:38px; border-bottom:1px solid #1b2331; display:flex; align-items:center; gap:8px; padding:0 16px; }
+  .dot { width:11px; height:11px; border-radius:50%; background:#2b3444; }
+  .page { position:absolute; top:38px; left:0; right:0; bottom:0; }
+  .submit {
+    position:absolute; left:64px; top:96px;
+    padding:16px 34px; border-radius:10px;
+    background:linear-gradient(90deg,#6cbe45,#8fe05a); color:#07090f;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px;
+    box-shadow:0 10px 30px rgba(108,190,69,.28);
+  }
+  .tag { position:absolute; left:64px; top:150px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#5c667a; }
+  /* cookie bar overlapping the button */
+  .cookiebar {
+    position:absolute; left:0; right:0; top:74px;
+    background:rgba(15,20,28,0.93); border-top:1px solid #33405a; border-bottom:1px solid #33405a;
+    backdrop-filter:blur(2px);
+    padding:22px 30px; display:flex; align-items:center; gap:24px;
+  }
+  .cookiebar .txt { font-size:16px; color:#c3cbd9; }
+  .cookiebar .accept { margin-left:auto; padding:11px 22px; border-radius:8px; background:#3a4356; color:#e6e9ef; font-weight:600; font-size:15px; }
+  .barlabel { position:absolute; right:30px; top:34px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#6f7a8e; }
+  /* crosshair at the button centre */
+  .cross { position:absolute; left:170px; top:118px; width:34px; height:34px; transform:translate(-50%,-50%); }
+  .cross::before,.cross::after { content:''; position:absolute; background:#ff5c7a; box-shadow:0 0 10px rgba(255,92,122,.7); }
+  .cross::before { left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); }
+  .cross::after { top:50%; left:0; height:2px; width:100%; transform:translateY(-50%); }
+  .crossdot { position:absolute; left:170px; top:118px; width:12px; height:12px; border-radius:50%; transform:translate(-50%,-50%); background:#ff5c7a; box-shadow:0 0 14px rgba(255,92,122,.9); }
+  /* callout */
+  .callout {
+    position:absolute; right:40px; bottom:34px; max-width:430px;
+    background:#0e141d; border:1px solid #2a3446; border-radius:12px; padding:18px 20px;
+    font-family:'JetBrains Mono',monospace; font-size:14.5px; line-height:1.6; color:#a8b1c2;
+  }
+  .callout .k { color:#8fe05a; }
+  .callout .bad { color:#ff8098; }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; }
+  .punch { max-width:640px; font-size:19px; color:#c3cbd9; line-height:1.4; }
+  .punch b { color:#eef1f7; }
+  .meta { text-align:right; font-size:14px; color:#7b8498; line-height:1.55; }
+  .meta .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">document.elementFromPoint(x, y)</div>
+    <h1>A click lands on whatever is on top</h1>
+  </div>
+
+  <div class="stage">
+    <div class="viewport">
+      <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="page">
+        <div class="submit">Submit</div>
+        <div class="tag">#submit &mdash; the element your test asked for</div>
+        <div class="cookiebar">
+          <span class="txt">We use cookies to improve your experience.</span>
+          <span class="accept">Accept all</span>
+        </div>
+        <div class="barlabel">.cookie-consent &nbsp;position: fixed</div>
+        <div class="cross"></div>
+        <div class="crossdot"></div>
+      </div>
+    </div>
+    <div class="callout">
+      elementFromPoint(x, y)<br>
+      &nbsp;&nbsp;&rarr; <span class="bad">.cookie-consent</span> &nbsp;<span style="color:#5c667a">// not #submit</span><br>
+      <span class="k">force: true</span> fires the click here anyway.
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="punch"><b>Hit-test the point before you click.</b> If a fixed layer is on top, dismiss it or hide it &mdash; then click.</div>
+    <div class="meta">
+      <div class="wm">thinbrowser</div>
+      <div>a browser an agent can drive &middot; Rebel Studios</div>
+    </div>
+  </div>
+</body>
+</html>

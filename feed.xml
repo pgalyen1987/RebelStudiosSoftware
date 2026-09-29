@@ -20,6 +20,13 @@
       <description>Playwright's MCP server hands a model 128,000 tokens to read five pages it has never seen — nav bars, hidden menus, ARIA scaffolding, almost none of it the element the agent came to click. Where that cost comes from, the other ways an unseen page fights back, and how we cut the page 44x smaller.</description>
     </item>
     <item>
+      <title>The Click That Landed on the Cookie Banner</title>
+      <link>https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Playwright says the element isn't clickable, or the click silently lands on a cookie banner and your test fails three steps later. Why it happens, why force: true makes it worse, and the hit-test fix that works on any overlay.</description>
+    </item>
+    <item>
       <title>Take Table Reservations on Your Own Site, Not the Network's</title>
       <link>https://rebelstudiossoftware.com/blog-restaurant-reservation-system-wordpress.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-restaurant-reservation-system-wordpress.html</guid>
