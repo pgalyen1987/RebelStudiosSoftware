@@ -41,6 +41,13 @@
       <description>Some logins fight automation on purpose: 2FA, a captcha, a device check. Instead of scripting past them, log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.</description>
     </item>
     <item>
+      <title>An ERC-20 Where transfer() Doesn&amp;rsquo;t Deliver</title>
+      <link>https://rebelstudiossoftware.com/blog-escrow-by-default-erc20.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-escrow-by-default-erc20.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>We shipped an ERC-20 where a plain transfer does not deliver: it escrows for seven days first. The escrow half works and is on Arbitrum One. The dispute half never came online, because reaching a Kleros court needs a whitelist that is governor-only. Here is the design, and the dependency check that would have caught it.</description>
+    </item>
+    <item>
       <title>Waiting for a Silence That Never Comes</title>
       <link>https://rebelstudiossoftware.com/blog-networkidle-never-fires.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-networkidle-never-fires.html</guid>

@@ -1,0 +1,54 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-escrow-by-default-erc20: the token's own transfer path. A plain transfer() lands in escrow
+     for seven days instead of delivering. Two exits leave that box: the timeout path, which works,
+     and the dispute path, which never came online because a Kleros court has to whitelist the
+     arbitrable first and changeArbitrableWhitelist is governor-only. -->
+<style>
+  .wrap{position:absolute;inset:34px 50px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 34px 'Space Grotesk',sans-serif;line-height:1.14}
+  .sub{color:var(--ink2);font-size:18px;margin-top:7px}
+  .flow{margin-top:26px;display:flex;align-items:center;gap:0}
+  .node{border:1px solid var(--line,#2a3140);border-radius:10px;padding:13px 15px;font:500 15px 'JetBrains Mono',monospace;background:rgba(255,255,255,.03)}
+  .node .k{display:block;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.09em;color:var(--ink2);margin-bottom:5px}
+  .arrow{flex:0 0 104px;height:2px;background:var(--line,#2a3140);position:relative}
+  .arrow::after{content:"";position:absolute;right:0;top:-4px;border-left:8px solid var(--line,#2a3140);border-top:5px solid transparent;border-bottom:5px solid transparent}
+  .arrow .lbl{position:absolute;left:50%;transform:translateX(-50%);top:-24px;white-space:nowrap;font:600 12px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .escrow{border-color:var(--amber);background:rgba(245,185,79,.11)}
+  .escrow .k{color:var(--amber)}
+  .branches{margin-top:22px;display:flex;gap:18px}
+  .branch{flex:1;border-radius:10px;padding:14px 16px;border:1px solid var(--line,#2a3140)}
+  .branch .h{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;margin-bottom:7px}
+  .branch p{font:500 15px/1.45 'JetBrains Mono',monospace;color:var(--ink2);margin:0}
+  .works{border-color:rgba(143,224,90,.55);background:rgba(143,224,90,.08)}
+  .works .h{color:#8fe05a}
+  .dead{border-color:rgba(194,65,59,.6);background:rgba(194,65,59,.09)}
+  .dead .h{color:#e0655e}
+  .dead .node-off{opacity:.45;text-decoration:line-through}
+  .foot{margin-top:20px;font:600 15px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .foot b{color:var(--amber);font-weight:700}
+</style>
+<div class="wrap">
+  <h1>An ERC-20 where <span style="color:var(--amber)">transfer() does not deliver</span></h1>
+  <p class="sub">Escrow is the default, not something the sender has to remember. Then one branch was never switched on.</p>
+
+  <div class="flow">
+    <div class="node"><span class="k">PAYER</span>transfer(bob, 250)</div>
+    <div class="arrow"><span class="lbl">no delivery</span></div>
+    <div class="node escrow"><span class="k">ON-CHAIN ESCROW</span>held 7 days</div>
+    <div class="arrow"></div>
+    <div class="node"><span class="k">RECEIVER</span>claim()</div>
+  </div>
+
+  <div class="branches">
+    <div class="branch works">
+      <div class="h">TIMEOUT PATH &mdash; WORKS</div>
+      <p>Nobody objects, the window elapses, the receiver claims. Deployed and functioning on Arbitrum One.</p>
+    </div>
+    <div class="branch dead">
+      <div class="h">DISPUTE PATH &mdash; NEVER CAME ONLINE</div>
+      <p><span class="node-off">payer disputes &rarr; Kleros jury rules</span><br>The arbitrable was never whitelisted. changeArbitrableWhitelist is governor&#8209;only.</p>
+    </div>
+  </div>
+
+  <p class="foot">The code shipped. The permission it depended on was <b>never ours to grant</b>.</p>
+</div>

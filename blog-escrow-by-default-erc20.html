@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="We shipped an ERC-20 where a plain transfer does not deliver: it escrows for seven days first. The escrow half works and is on Arbitrum One. The dispute half never came online, because reaching a Kleros court needs a whitelist that is governor-only. Here is the design, and the dependency check that would have caught it.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-escrow-by-default-erc20.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-escrow-by-default-erc20.html">
+    <meta property="og:title" content="An ERC-20 Where transfer() Doesn't Deliver &mdash; And the Whitelist That Killed It">
+    <meta property="og:description" content="Escrow by default instead of opt-in: a transfer holds for seven days before the receiver can claim. The escrow works. The dispute path needed a Kleros court to whitelist the arbitrable, which is governor-only and was never granted.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/escrow-by-default-erc20.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="An ERC-20 Where transfer() Doesn't Deliver &mdash; And the Whitelist That Killed It">
+    <meta name="twitter:description" content="Escrow by default, not opt-in. The escrow half shipped to Arbitrum One. The dispute half needed a permission that was never ours to get.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/escrow-by-default-erc20.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"An ERC-20 Where transfer() Doesn't Deliver &mdash; And the Whitelist That Killed It","description":"An ERC-20 where a plain transfer escrows for seven days instead of delivering. The escrow half is live on Arbitrum One. The dispute half never came online because reaching a Kleros court requires a governor-only whitelist that was never granted.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-escrow-by-default-erc20.html"},"image":"https://rebelstudiossoftware.com/images/blog/escrow-by-default-erc20.png"}</script>
+    <title>An ERC-20 Where transfer() Doesn&rsquo;t Deliver - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>An ERC-20 where transfer() doesn&rsquo;t deliver</h1>
+            <p>The escrow half shipped. The half that gave it a reason to exist needed someone else&rsquo;s permission.</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/blog/escrow-by-default-erc20.png" alt="The token's transfer path: a transfer lands in on-chain escrow for seven days instead of delivering, then the receiver claims. Two exits leave the escrow box, a timeout path that works and a dispute path to a Kleros jury that was never switched on." width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>A card payment can be taken back. That is not a bug in card networks, it is most of what you are paying them for &mdash; the chargeback is the reason people will hand a stranger their card number at all.</p>
+
+                    <p>An on-chain transfer has no equivalent. You send, it arrives, and that is the end of the story. If the person on the other side never ships the thing, your recourse is to complain. Every escrow product built on top of this starts from the same place: both parties have to remember to use it, and the person most likely to insist on escrow is the person least likely to be offered it.</p>
+
+                    <p>So we tried inverting it. What if escrow were not a contract you opt into, but the behaviour of the token itself?</p>
+
+                    <h2>Escrow as the default, not the exception</h2>
+
+                    <p>Indemnity (INDN) is an ERC-20 where <code>transfer()</code> does not deliver. Tokens leave the sender&rsquo;s balance and sit in on-chain escrow for seven days. After the window, the receiver claims them. If the payer thinks something went wrong, they open a dispute inside the window and an arbitrator decides who keeps the balance.</p>
+
+                    <p>The appeal is that nobody has to remember anything. There is no &ldquo;use escrow for this one&rdquo; decision to get wrong, no separate contract address to paste, and the protection does not depend on the more sophisticated party agreeing to be constrained. Pay someone, and the payment is reversible for a week whether either of you thought about it or not.</p>
+
+                    <p>That is the good version of the idea. Here is what it costs.</p>
+
+                    <h2>It breaks every exchange, and the fix is worse than it looks</h2>
+
+                    <p>An AMM swap needs the tokens to arrive inside the same transaction. A pool that receives nothing because the tokens are sitting in a seven-day escrow does not trade &mdash; it reverts. Escrow-on-transfer does not inconvenience decentralised exchanges, it makes them non-functional.</p>
+
+                    <p>The standard answer is an allowlist: named addresses whose transfers settle instantly, so pools and routers work normally while wallet-to-wallet payments still escrow. We implemented that, and it does work.</p>
+
+                    <p>It also hands whoever controls the allowlist a switch over who can trade. A token whose entire pitch is &ldquo;you do not have to trust the person you are paying&rdquo; ends up requiring you to trust an owner key not to un-allowlist the pool you are standing in. The trust problem does not disappear. It moves up one layer and gets quieter, which is worse, because now it is easy to not mention.</p>
+
+                    <p>We never solved that. It is the honest reason this design needs a governance structure a solo project does not have.</p>
+
+                    <h2>The part that actually killed it</h2>
+
+                    <p>Disputes were going to a <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">Kleros</a> jury. Not us deciding who was right &mdash; a third-party court, with the two relevant interfaces published as standards: ERC-792 for arbitrable contracts and ERC-1497 for evidence. We implemented both. The contract compiles, deploys, and correctly raises a dispute against the arbitrator address baked in at deploy.</p>
+
+                    <p>No dispute can ever be heard.</p>
+
+                    <p>To route a case to a Kleros court, the arbitrable contract has to appear on that court&rsquo;s whitelist. The function that adds it, <code>changeArbitrableWhitelist</code>, is governor-only. It is a governance decision, made by people with no obligation to make it, and we never asked before building. We read that the standards existed, implemented them correctly, and assumed correctness was the requirement.</p>
+
+                    <p>It wasn&rsquo;t. The requirement was permission, and permission was never ours to give ourselves.</p>
+
+                    <h2>The check that would have caught it</h2>
+
+                    <p>The mistake is easy to describe and easy to repeat. Before building on anything external, sort what you need from them into one of three buckets:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Self-serve.</strong> A signup, an API key, a public contract call. You can have it today, so treat it as available.</li>
+                        <li><strong>Application.</strong> A review you submit and probably pass &mdash; a store listing, a rate-limit tier, a verified badge. Budget the wait, submit it <em>first</em>, and don&rsquo;t build the parts that depend on it until it lands.</li>
+                        <li><strong>Discretionary grant.</strong> A governance vote, a whitelist, a partnership, an approval with no published criteria. <strong>Treat it as unavailable until it is granted in writing.</strong></li>
+                    </ul>
+
+                    <p>The rule is that nothing in bucket three is allowed to be load-bearing. Design so the product is useful without it, and the grant upgrades it. We put a bucket-three dependency at the centre of the product and built outward from it.</p>
+
+                    <p>The mitigation costs almost nothing: one message, before the code, asking whether they would approve this. A no costs an hour. Finding out afterwards cost the entire token.</p>
+
+                    <p>I have now watched this same shape land three times in one workspace. A music game integrated a streaming API whose terms turn out to forbid games. An iOS beta sat blocked on an unsigned contract nobody had read. And this. Every time, the thing that failed was not code &mdash; it was someone else&rsquo;s yes, assumed.</p>
+
+                    <h2>Where it stands, plainly</h2>
+
+                    <p>The contract is on Arbitrum One at <code>0x9c2300F97E14D7c7478003F52E562Ff2fC14E89e</code>, deployed 17 July 2026, one million supply. It was never launched: no liquidity was added, so there is nothing to buy, and nobody should try. The owner key is a 1-of-1 Safe where the design calls for 2-of-3. The fee treasury address is immutable and still points at the deploying wallet. Its security review is a first pass whose own conclusion is <em>do not hold real funds</em>.</p>
+
+                    <p>Those are the reasons it is staying retired rather than getting a launch. The one genuinely good outcome is that because it was never announced, nobody is holding it, and no one lost anything but our own time.</p>
+
+                    <p>One piece is worth keeping. <code>ProofOfDelivery.sol</code> does the useful half with none of the machinery: plain ETH locked against a hash of what was ordered, <code>confirm()</code> releases it to the payee, a timeout refunds the payer, and the fee is taken only on a confirmed delivery. No token. No arbitrator. No allowlist, and no owner powers to explain away. It turns out that when you remove the parts that needed permission, what is left is smaller, duller, and actually shippable.</p>
+
+                    <p><em>The contract and its unresolved risks are documented on the <a href="indemnity.html">Indemnity page</a>. If you are building something where reversible payment matters and you would rather not repeat this, <a href="index.html#contact">that is the kind of thing we do at Rebel Studios</a>.</em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="indemnity.html" class="btn btn-secondary">The Indemnity write-up &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

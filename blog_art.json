@@ -506,5 +506,11 @@
     "html": "art/certificate-holder-vs-additional-insured.html",
     "alt": "The same certificate of liability insurance showing two boxes a general contractor name can appear in: the Certificate Holder box at the bottom, and the ADDL INSD column marked N, meaning the GC is not an additional insured on the policy",
     "image": "images/blog/certificate-holder-vs-additional-insured.png"
+  },
+  "escrow-by-default-erc20": {
+    "kind": "diagram",
+    "html": "art/escrow-by-default-erc20.html",
+    "alt": "The token's transfer path: a transfer lands in on-chain escrow for seven days instead of delivering, then the receiver claims. Two exits leave the escrow box, a timeout path marked as working and a dispute path to a Kleros jury struck through as never switched on.",
+    "image": "images/blog/escrow-by-default-erc20.png"
   }
 }
