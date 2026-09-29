@@ -410,5 +410,17 @@
     ],
     "alt": "Four transforms shown as a selection and its result: messy JSON repaired into valid JSON, a CSV turned into a JSON array, a JWT decoded to its header and payload, and snake_case rewritten as camelCase",
     "image": "images/blog/dev-transforms-in-your-editor.png"
+  },
+  "woocommerce-checkout-brazil": {
+    "kind": "crop",
+    "src": "images/products/checkout-brasil/shot-1.png",
+    "box": [
+      0,
+      900,
+      2320,
+      1188
+    ],
+    "alt": "A WooCommerce checkout in Portuguese: the state stuck on Sao Paulo, a CEP field, separate Numero and Bairro fields, and Pix as the payment option",
+    "image": "images/blog/woocommerce-checkout-brazil.png"
   }
 }

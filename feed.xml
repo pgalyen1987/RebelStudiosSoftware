@@ -48,6 +48,13 @@
       <description>A one-line ceiling made six of seven levels uncrossable. The hard gate never saw it, because it computed jump arcs in open sky. What it costs when a test models the physics instead of reading it.</description>
     </item>
     <item>
+      <title>WooCommerce Checkout in Brazil: What Ships Broken, and Why</title>
+      <link>https://rebelstudiossoftware.com/blog-woocommerce-checkout-brazil.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-woocommerce-checkout-brazil.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
+      <description>WooCommerce's default checkout quietly breaks for Brazilian buyers: no CPF or CNPJ, no numero or bairro, and a CEP that autofills the street but leaves the state wrong. What a real Brazilian checkout needs, and the one autofill bug behind most of it.</description>
+    </item>
+    <item>
       <title>Which Audiences Actually Buy Zora Creator Coins</title>
       <link>https://rebelstudiossoftware.com/blog-zora-audiences-that-buy.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-zora-audiences-that-buy.html</guid>

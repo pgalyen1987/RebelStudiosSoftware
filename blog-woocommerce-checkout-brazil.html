@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="WooCommerce's default checkout quietly breaks for Brazilian buyers: no CPF or CNPJ, no numero or bairro, and a CEP that autofills the street but leaves the state wrong. What a real Brazilian checkout needs, and the one autofill bug behind most of it.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-woocommerce-checkout-brazil.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-woocommerce-checkout-brazil.html">
+    <meta property="og:title" content="WooCommerce Checkout in Brazil: What Ships Broken, and Why">
+    <meta property="og:description" content="No CPF, no numero or bairro, and a CEP that fills the street but keeps the store's state. What a Brazilian buyer actually needs at checkout.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/woocommerce-checkout-brazil.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-28">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WooCommerce Checkout in Brazil: What Ships Broken, and Why">
+    <meta name="twitter:description" content="No CPF, no numero or bairro, and a CEP that fills the street but keeps the store's state. What a Brazilian buyer actually needs at checkout.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/woocommerce-checkout-brazil.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"WooCommerce Checkout in Brazil: What Ships Broken, and Why","description":"WooCommerce's default checkout quietly breaks for Brazilian buyers: no CPF or CNPJ, no numero or bairro, and a CEP that autofills the street but leaves the state wrong. What a real Brazilian checkout needs, and the one autofill bug behind most of it.","datePublished":"2026-09-28","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-woocommerce-checkout-brazil.html"},"image":"https://rebelstudiossoftware.com/images/blog/woocommerce-checkout-brazil.png"}</script>
+    <title>WooCommerce Checkout in Brazil: What Ships Broken, and Why - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>WooCommerce Checkout in Brazil: What Ships Broken, and Why</h1>
+            <p>No CPF, no n&uacute;mero or bairro, and a CEP that fills the street but keeps the store's state. What a Brazilian buyer actually needs at checkout</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 28, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+                <figure class="article-hero"><img src="images/blog/woocommerce-checkout-brazil.png" alt="A WooCommerce checkout in Portuguese: the state stuck on Sao Paulo, a CEP field, separate Numero and Bairro fields, and Pix as the payment option" width="1200" height="630" loading="lazy"></figure>
+
+
+                <div class="article-content">
+
+                    <p>A buyer in Rio reaches your checkout. The store was set up in S&atilde;o Paulo, so the state dropdown already reads <em>S&atilde;o Paulo</em>. She types her CEP, the street and neighbourhood fill in from it, she pays, and her order ships to the wrong state at the wrong freight price. Nothing threw an error. She did everything right.</p>
+
+                    <p>That one behaviour &mdash; a postal code that fills the address but does not correct the state &mdash; is the single most common way a WooCommerce store loses Brazilian orders quietly. It is worth understanding, because the fix for it is the same discipline that fixes most of what default WooCommerce gets wrong for Brazil.</p>
+
+                    <h2>What the default checkout is missing</h2>
+
+                    <p>WooCommerce ships an address locale for Brazil, but it is thin. Out of the box you get a checkout that:</p>
+
+                    <ul>
+                        <li>never asks for a <strong>CPF</strong> or <strong>CNPJ</strong>, so you cannot issue a nota fiscal and, for many products, cannot legally complete the sale;</li>
+                        <li>has no first-class <strong>n&uacute;mero</strong> or <strong>bairro</strong> field &mdash; a Brazilian address without the house number and neighbourhood is not a deliverable address, and cramming them into "address line 2" is how packages get lost;</li>
+                        <li>makes the buyer type a full address that their CEP already knows, then trusts them to also fix the state the store pre-filled for them.</li>
+                    </ul>
+
+                    <p>None of this is exotic. It is simply that WooCommerce's defaults were drawn for the United States, and a Brazilian buyer notices the seams immediately. A checkout that feels foreign is a checkout people abandon.</p>
+
+                    <h2>The bug worth internalising: autofill has to overwrite</h2>
+
+                    <p>Here is the trap, and it is a general one. When you fill an address from a CEP, the naive implementation writes into fields that are <em>empty</em> and leaves the rest alone. That sounds safe. It is not, because the state field is not empty &mdash; WooCommerce pre-selects the store's own state for you.</p>
+
+                    <pre><code>// Naive: only fills blanks. The state was never blank.
+if (!stateField.value) stateField.value = lookup.uf;   // never runs
+
+// Correct: the CEP is authoritative for the address it describes.
+stateField.value = lookup.uf;                          // "RJ"
+cityField.value  = lookup.localidade;
+streetField.value = streetField.value || lookup.logradouro;
+neighbourhood.value = neighbourhood.value || lookup.bairro;</code></pre>
+
+                    <p>The rule that falls out of it: <strong>the CEP is authoritative for city and state, and a hint for the street.</strong> Overwrite the fields the buyer cannot know better than the postal service (state, city), and only suggest the ones they might have typed already (street, number). Get that boundary right and the wrong-state bug, plus a dozen quieter ones, simply cannot happen.</p>
+
+                    <p>The same logic applies to a company buyer. Look up a CNPJ and you can fill the raz&atilde;o social and the company's registered address &mdash; but if the person has already typed something, do not stomp on it. Autofill is a helpful assistant, not an authority on what the human meant.</p>
+
+                    <h2>Person or company, and the fields change</h2>
+
+                    <p>A real Brazilian checkout asks one question first: <em>pessoa f&iacute;sica</em> or <em>pessoa jur&iacute;dica</em>? The answer changes which document you collect and how you validate it.</p>
+
+                    <ul>
+                        <li><strong>Pessoa f&iacute;sica</strong> gives a CPF: eleven digits, its own mask, its own check-digit rule.</li>
+                        <li><strong>Pessoa jur&iacute;dica</strong> gives a CNPJ: fourteen digits, a different mask, a different check-digit rule, and usually a raz&atilde;o social to go with it.</li>
+                    </ul>
+
+                    <p>Showing both at once, or validating a CNPJ with the CPF rule, is the kind of small wrongness that tells a buyer the store was not built for them. The document field should switch with the customer type, mask as they type, and reject a number that fails its check digits before the order is ever placed &mdash; not after, in a support email.</p>
+
+                    <h2>Doing the lookups without holding the sale hostage</h2>
+
+                    <p>Two free public services do the heavy lifting: <a href="https://viacep.com.br/" target="_blank" rel="noopener noreferrer">ViaCEP</a> turns a postal code into an address, and <a href="https://brasilapi.com.br/" target="_blank" rel="noopener noreferrer">BrasilAPI</a> turns a CNPJ into a company. Three details decide whether they help you or hurt you:</p>
+
+                    <ul>
+                        <li><strong>Call them from your server, not the browser.</strong> A client-side fetch leaks the buyer's typing to a third party on every keystroke and breaks the moment the service adds a CORS rule. Proxy it.</li>
+                        <li><strong>Cache the answers.</strong> A CEP maps to the same street today and next year. Every repeated lookup you make is latency you are adding to a checkout for no new information.</li>
+                        <li><strong>Never let a lookup block the purchase.</strong> If ViaCEP is having a bad afternoon, the buyer types the address by hand and checks out anyway. An autofill that goes down must degrade to a plain form, not to a dead checkout.</li>
+                    </ul>
+
+                    <p>That last point is the one people skip, and it is the one that costs money. A convenience feature that can stop a sale is not a convenience feature.</p>
+
+                    <h2>About Pix, honestly</h2>
+
+                    <p>Pix is how Brazil pays now &mdash; an instant bank transfer, cleared in seconds, that most buyers reach for before a card. Supporting it is table stakes.</p>
+
+                    <p>What is worth being straight about is the shape of that support. A lightweight approach hands the buyer your Pix key and the exact amount the moment they confirm the order, and you reconcile the payment yourself. That is simple, it has no per-transaction cut, and it is honest about what it is: it does <em>not</em> automatically mark the order paid the instant the money lands. If you need hands-off reconciliation at volume, you want a full payment gateway with a Pix API, and you will pay its fees for the privilege. Neither is wrong. Knowing which one you are choosing is the point.</p>
+
+                    <h2>The short version</h2>
+
+                    <p>Selling into Brazil on WooCommerce is not a translation job. It is CPF and CNPJ collected and validated correctly, n&uacute;mero and bairro treated as real fields, an address that fills itself from the CEP <em>including the state</em>, lookups that run server-side and never block the sale, and a payment method the buyer already trusts. Miss the state-overwrite detail alone and you will ship to the wrong place at the wrong price, and never hear why the order did not come back.</p>
+
+                    <p>We packaged all of this &mdash; the person/company logic, the masks and check digits, the cached server-side ViaCEP and BrasilAPI lookups, and a Pix option that says exactly what it does &mdash; into a single plugin, <a href="checkout-brasil.html">Checkout Brasil</a>. Every field can be turned off, made optional, or required; nothing is forced. If you would rather build it yourself, the sections above are the parts that actually matter.</p>
+
+                    <p><em>We build and run small products, and write up what breaks. <a href="checkout-brasil.html">Checkout Brasil</a> &middot; <a href="services.html">Rebel Studios</a>.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-woocommerce-invoice-vat-gst-sales-tax.html" class="btn btn-secondary">Read: Showing VAT, GST or Sales Tax on WooCommerce Invoices</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
