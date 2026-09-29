@@ -398,5 +398,17 @@
     ],
     "alt": "The gate402 landing page: a pay-per-call gateway that lets AI agents pay for an API with x402",
     "image": "images/blog/monetize-api-x402.png"
+  },
+  "dev-transforms-in-your-editor": {
+    "kind": "crop",
+    "src": "images/products/dev-toolbox/transforms.png",
+    "box": [
+      0,
+      0,
+      1200,
+      630
+    ],
+    "alt": "Four transforms shown as a selection and its result: messy JSON repaired into valid JSON, a CSV turned into a JSON array, a JWT decoded to its header and payload, and snake_case rewritten as camelCase",
+    "image": "images/blog/dev-transforms-in-your-editor.png"
   }
 }

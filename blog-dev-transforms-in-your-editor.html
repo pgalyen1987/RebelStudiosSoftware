@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Formatting JSON, decoding a JWT, converting a CSV: the small detours to an online tool break your flow and quietly copy your data onto someone else's server. The free ways to do each in your editor, and where a local extension picks up the slack.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html">
+    <meta property="og:title" content="The Browser Tab You Keep Open Just to Format JSON">
+    <meta property="og:description" content="Formatting JSON, decoding a JWT, converting a CSV: the small detours to an online tool break your flow and quietly copy your data onto someone else's server. The free ways to do each in your editor, and where a local extension picks up the slack.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/dev-transforms-in-your-editor.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-28">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Browser Tab You Keep Open Just to Format JSON">
+    <meta name="twitter:description" content="Formatting JSON, decoding a JWT, converting a CSV: the small detours to an online tool break your flow and quietly copy your data onto someone else's server. The free ways to do each in your editor, and where a local extension picks up the slack.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/dev-transforms-in-your-editor.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The Browser Tab You Keep Open Just to Format JSON","description":"Formatting JSON, decoding a JWT, converting a CSV: the small detours to an online tool break your flow and quietly copy your data onto someone else's server. The free ways to do each in your editor, and where a local extension picks up the slack.","datePublished":"2026-09-28","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html"},"image":"https://rebelstudiossoftware.com/images/blog/dev-transforms-in-your-editor.png"}</script>
+    <title>The Browser Tab You Keep Open Just to Format JSON - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>The Browser Tab You Keep Open Just to Format JSON</h1>
+            <p>Reshaping a blob of text is a ten-second detour out of your editor. Do it a dozen times a day and it costs you two things &mdash; and the second one is your data</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 28, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/dev-transforms-in-your-editor.png" alt="Four transforms shown as a selection and its result: messy JSON repaired into valid JSON, a CSV turned into a JSON array, a JWT decoded to its header and payload, and snake_case rewritten as camelCase" width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>Open your editor and count the browser tabs you keep around for one job each: a JSON formatter, a JWT decoder, a Base64 converter, that CSV-to-JSON site whose name you can never remember. Most developers have a small collection of them, reopened out of habit whenever a blob of text needs reshaping. Each visit takes about ten seconds. That is exactly the problem: it is small enough that you never stop to question it.</p>
+
+                    <p>There are two costs to the detour, and the second one is the one people miss.</p>
+
+                    <h2>The first cost is your attention</h2>
+
+                    <p>You almost never reshape text on its own. You do it in the middle of something else: a failing test, a log you are reading, a payload you are about to drop into a request. Leaving the editor to format that text is a context switch out and another one back, and the thing you were actually doing has to be reloaded into your head each time you return. No single trip feels expensive. A dozen of them a day is a tax you pay without noticing.</p>
+
+                    <h2>The second cost is the data you paste</h2>
+
+                    <p>The text you are reshaping is often not yours to share. A JWT lifted out of a request is frequently a live session. A JSON body pulled from an API can carry a customer email, an internal ID, a home address. A CSV export is, by its nature, a list of real rows about real people. Paste any of that into an unknown web tool and you have handed a stranger&rsquo;s server a copy, with no way to know whether it is logged, retained, or sold on. Most of those sites are perfectly honest. &ldquo;Most&rdquo; is a poor word to attach to a credential or a customer record.</p>
+
+                    <div class="article-highlight">
+                        <h3>The fix is not &ldquo;find a decoder you trust&rdquo;</h3>
+                        <p>You cannot audit a website&rsquo;s retention policy from the outside, and its behaviour can change between the visit you trusted and the next one. The durable fix is to run the transform where the text already is, on your own machine, so there is no server in the loop to trust at all.</p>
+                    </div>
+
+                    <h2>The free ways, task by task</h2>
+
+                    <p>Several of these you can already do without installing anything, and they are worth knowing:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Format or minify JSON.</strong> VS Code formats a JSON document with <code>Shift+Alt+F</code> (<code>Shift+Option+F</code> on macOS), no extension required &mdash; as long as the JSON already parses.</li>
+                        <li><strong>Decode a JWT.</strong> The payload is just Base64url. In the integrated terminal: <code>node -e "console.log(atob(process.argv[1].split('.')[1].replace(/-/g,'+').replace(/_/g,'/')))" &lt;token&gt;</code>, or the browser-console one-liner from <a href="blog-decode-a-jwt.html">our JWT post</a>.</li>
+                        <li><strong>Base64.</strong> <code>base64</code> to encode and <code>base64 --decode</code> (<code>-D</code> on macOS) to decode are already installed on macOS and Linux.</li>
+                    </ul>
+
+                    <p>The catch is that they are scattered: a keybinding for one, a terminal flag for another, a one-liner you reconstruct from memory for a third. And some of the most common jobs have no clean built-in at all. VS Code will not format JSON that does <em>not</em> parse yet &mdash; which is precisely the JSON you need help with, the one with a trailing comma, a single quote, or a missing brace. There is no first-party <em>CSV to JSON</em>, no <em>decode this JWT and turn the timestamps into dates</em>, no <em>remove the duplicate lines from this list</em>.</p>
+
+                    <h2>Closing the gap without opening a tab</h2>
+
+                    <p>That scatter is why we built <a href="dev-toolbox.html">Dev Toolbox</a>, a VS Code extension that puts fifteen of these transforms on your current selection, run from the Command Palette. Select the text, pick the transform, and it is replaced in place: JSON format, minify, and <em>repair</em> (it fixes the trailing commas and single quotes that stop JSON from parsing); CSV to JSON and back; JWT decode with the <code>exp</code> and <code>iat</code> timestamps rendered as real dates; Base64 and URL encode and decode; sort lines and remove duplicates; and case conversion between camelCase, snake_case and kebab-case.</p>
+
+                    <p>It is deliberately narrow about what it does <em>not</em> do. It does not lint your JSON or check it against a schema; it tells you whether it parses, not whether it is correct. It does not verify a JWT&rsquo;s signature, because <a href="blog-decode-a-jwt.html">decoding is not verifying</a>, and a tool that blurred the two would be teaching a dangerous habit. It has no accounts, nothing to sync, and no telemetry.</p>
+
+                    <div class="article-highlight">
+                        <h3>It asks for no network permission at all</h3>
+                        <p>An extension that requests no network access makes a stronger promise than any privacy policy can. A tool that <em>cannot</em> reach the internet cannot leak your selection, whatever its intentions or its next update. That is the whole point of moving the transform off the web and into the editor: the trust question stops being &ldquo;do I believe this site?&rdquo; and becomes &ldquo;can this code even make a network call?&rdquo; &mdash; and the answer is no.</p>
+                    </div>
+
+                    <p>It is <a href="https://marketplace.visualstudio.com/items?itemName=rebelstudios.rebel-dev-toolbox" target="_blank" rel="noopener">free on the VS Code Marketplace</a>. Install it, select some text, and open the Command Palette; every transform is prefixed <code>Dev Toolbox:</code>, so they group together. Then you can close the tabs.</p>
+
+                    <p><em>We build software that treats your data as yours. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-decode-a-jwt.html" class="btn btn-secondary">Read: How to Decode a JWT Safely &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

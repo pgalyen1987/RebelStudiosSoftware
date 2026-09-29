@@ -13,6 +13,13 @@
       <link>https://rebelstudiossoftware.com/</link>
     </image>
     <item>
+      <title>The Browser Tab You Keep Open Just to Format JSON</title>
+      <link>https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Formatting JSON, decoding a JWT, converting a CSV: the small detours to an online tool break your flow and quietly copy your data onto someone else's server. The free ways to do each in your editor, and where a local extension picks up the slack.</description>
+    </item>
+    <item>
       <title>The Job Application Tracker You'll Actually Keep Updated</title>
       <link>https://rebelstudiossoftware.com/blog-job-application-tracker.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-job-application-tracker.html</guid>
