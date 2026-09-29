@@ -458,5 +458,11 @@
     "html": "art/bulk-print-woocommerce-invoices.html",
     "alt": "A WooCommerce Orders list with four orders ticked and the bulk action 'Print invoices (PDF)' chosen, producing one PDF file with a page per order",
     "image": "images/blog/bulk-print-woocommerce-invoices.png"
+  },
+  "connect-playwright-to-logged-in-chrome": {
+    "kind": "diagram",
+    "html": "art/connect-playwright-to-logged-in-chrome.html",
+    "alt": "Two Chrome windows side by side: the left one is signed in by hand with 2FA cleared and started with --remote-debugging-port=9333; a CDP link joins it to the right, a Playwright script that calls connectOverCDP and reuses browser.contexts()[0] — the real session — rather than browser.newContext(), which would be logged out again.",
+    "image": "images/blog/connect-playwright-to-logged-in-chrome.png"
   }
 }

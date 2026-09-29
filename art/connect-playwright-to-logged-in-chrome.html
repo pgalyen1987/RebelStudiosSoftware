@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:58px 72px 52px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow {
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:15px; font-weight:600;
+    letter-spacing:.08em; color:#8fe05a;
+  }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:44px; line-height:1.08; letter-spacing:-.02em; color:#eef1f7;
+    margin-top:14px; max-width:1056px;
+  }
+  .stage { position:relative; flex:1; margin:24px 0 20px; display:flex; align-items:center; gap:0; }
+  .win { flex:1; border:1px solid #263042; border-radius:14px; background:linear-gradient(180deg,#0c1119,#0a0e15); overflow:hidden; min-height:250px; }
+  .chrome { height:36px; border-bottom:1px solid #1b2331; display:flex; align-items:center; gap:8px; padding:0 15px; }
+  .dot { width:10px; height:10px; border-radius:50%; background:#2b3444; }
+  .urlbar { margin-left:10px; height:20px; flex:1; border-radius:6px; background:#141b26; }
+  .body { padding:22px 22px 24px; }
+  .label { font-family:'JetBrains Mono',monospace; font-size:13px; color:#6f7a8e; letter-spacing:.03em; }
+  .signed { display:inline-flex; align-items:center; gap:9px; margin-top:16px; padding:10px 16px; border-radius:9px;
+    background:rgba(108,190,69,.12); border:1px solid rgba(108,190,69,.4); color:#a9e589; font-weight:600; font-size:17px; }
+  .signed::before { content:'✓'; color:#8fe05a; font-weight:800; }
+  .sub { margin-top:14px; font-size:15px; color:#8b94a6; line-height:1.5; }
+  .code { margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:14px; line-height:1.7; color:#a8b1c2; }
+  .code .k { color:#8fe05a; }
+  .code .good { color:#a9e589; }
+  .code .bad { color:#ff8098; }
+  .code .cm { color:#5c667a; }
+  /* the CDP link between the two windows */
+  .link { width:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex:0 0 150px; }
+  .wire { position:relative; width:100%; height:2px; background:linear-gradient(90deg,#8fe05a,#2dd4bf); }
+  .wire::after { content:''; position:absolute; right:-1px; top:50%; transform:translateY(-50%); border-left:11px solid #2dd4bf; border-top:8px solid transparent; border-bottom:8px solid transparent; }
+  .wirelabel { font-family:'JetBrains Mono',monospace; font-size:13.5px; color:#8fe05a; margin-bottom:12px; font-weight:600; }
+  .wiresub { font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f7a8e; margin-top:12px; }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; }
+  .punch { max-width:660px; font-size:19px; color:#c3cbd9; line-height:1.4; }
+  .punch b { color:#eef1f7; }
+  .meta { text-align:right; font-size:14px; color:#7b8498; line-height:1.55; }
+  .meta .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">chromium.connectOverCDP('http://127.0.0.1:9333')</div>
+    <h1>Don't log in from your script. Attach to the browser that already did.</h1>
+  </div>
+
+  <div class="stage">
+    <div class="win">
+      <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlbar"></span></div>
+      <div class="body">
+        <div class="label">Chrome &mdash; you started it, --remote-debugging-port=9333</div>
+        <div class="signed">Signed in by hand &middot; 2FA cleared</div>
+        <div class="sub">You solved the captcha and the 2FA once. The session lives in this window's profile.</div>
+      </div>
+    </div>
+
+    <div class="link">
+      <div class="wirelabel">CDP :9333</div>
+      <div class="wire"></div>
+      <div class="wiresub">attach, don't launch</div>
+    </div>
+
+    <div class="win">
+      <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="urlbar"></span></div>
+      <div class="body">
+        <div class="label">your Playwright script</div>
+        <div class="code">
+          browser = <span class="k">connectOverCDP</span>(url)<br>
+          ctx = browser.<span class="good">contexts()[0]</span> <span class="cm">// the real session</span><br>
+          <span class="cm">// NOT</span> browser.<span class="bad">newContext()</span> <span class="cm">// logged out again</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="punch"><b>Some logins fight automation on purpose.</b> Log in once by hand; let the script borrow the session &mdash; not a fresh, empty one.</div>
+    <div class="meta">
+      <div class="wm">thinbrowser</div>
+      <div>a browser an agent can drive &middot; Rebel Studios</div>
+    </div>
+  </div>
+</body>
+</html>

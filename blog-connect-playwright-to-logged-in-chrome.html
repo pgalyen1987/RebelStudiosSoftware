@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Some logins fight automation on purpose: 2FA, a captcha, a device check. Instead of scripting past them, log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html">
+    <meta property="og:title" content="The Login You Shouldn't Try to Automate">
+    <meta property="og:description" content="Some logins fight automation on purpose: 2FA, a captcha, a device check. Log in once by hand and attach Playwright to that Chrome over CDP. The one line that logs you back out, and the security catch nobody mentions.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/connect-playwright-to-logged-in-chrome.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Login You Shouldn't Try to Automate">
+    <meta name="twitter:description" content="Log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/connect-playwright-to-logged-in-chrome.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The Login You Shouldn't Try to Automate","description":"Some logins fight automation on purpose: 2FA, a captcha, a device check. Log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html"},"image":"https://rebelstudiossoftware.com/images/blog/connect-playwright-to-logged-in-chrome.png"}</script>
+    <title>The Login You Shouldn't Try to Automate - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>The Login You Shouldn't Try to Automate</h1>
+            <p>Some sign-in screens fight scripts on purpose &mdash; 2FA, a captcha, a &ldquo;new device&rdquo; check. The trick is to stop fighting back: log in once by hand, then hand the running browser to Playwright</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/connect-playwright-to-logged-in-chrome.png" alt="Two Chrome windows side by side. The left one is signed in by hand with 2FA cleared, started with --remote-debugging-port=9333. A CDP link joins it to the right, a Playwright script that calls connectOverCDP and reuses browser.contexts()[0], the real session, rather than browser.newContext(), which would be logged out again." width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>Nearly every browser automation dies in the same place: the login. The scraper, the end-to-end test, the little bot that files a weekly report &mdash; the interesting work is all <em>after</em> you are signed in, and getting signed in is where it falls over. A password field is easy. A one-time code texted to a phone is not. Neither is a captcha, a &ldquo;we don't recognise this device&rdquo; email, or an SSO redirect that bounces you through three domains and a fingerprint check.</p>
+
+                    <p>The usual advice is to save the cookies. Log in once, dump the session with Playwright's <code>storageState</code>, and load it on every run. That works right up until the auth is more than cookies &mdash; a token held in memory, a session pinned to a device fingerprint, a login that re-challenges when it sees an unfamiliar client. Then the saved state logs in as far as the second wall, and you are back to solving a captcha in a headless browser, which is the one place a captcha is designed to be unsolvable.</p>
+
+                    <p>So stop trying to reproduce the login. Do it once, as yourself, in a real Chrome window &mdash; and then point your script at <em>that</em> window instead of launching its own.</p>
+
+                    <h2>Attach, don't launch</h2>
+
+                    <p>Every Chrome can expose a control channel &mdash; the Chrome DevTools Protocol, or CDP &mdash; on a local port. Start Chrome with the port open, log in by hand like a person, solve whatever it throws at you, and leave the window sitting there. Then Playwright connects to the browser that is already running rather than starting a fresh one:</p>
+
+                    <pre class="article-code"><code># start Chrome yourself, once, with a dedicated profile
+google-chrome \
+  --remote-debugging-port=9333 \
+  --user-data-dir="$HOME/.chrome-automation"
+# then log in by hand in that window</code></pre>
+
+                    <pre class="article-code"><code>import { chromium } from 'playwright';
+
+const browser = await chromium.connectOverCDP('http://127.0.0.1:9333');
+const context = browser.contexts()[0];          // the session you logged into
+const page = context.pages()[0] ?? await context.newPage();
+
+await page.goto('https://app.example.com/reports');
+// you are already signed in — no login step in the script at all</code></pre>
+
+                    <p><code>connectOverCDP</code> does not open a browser; it borrows the one you started. The cookies, the tokens, the device the server already trusts &mdash; all of it is right there, because it is literally the window you signed into. The captcha and the 2FA happened once, by a human, off the automation's critical path, which is exactly where they belong.</p>
+
+                    <div class="article-highlight">
+                        <h3>The one line that logs you straight back out: <code>newContext()</code></h3>
+                        <p>This is the mistake that sends people back to the forums swearing CDP is broken. After connecting, muscle memory says <code>browser.newContext()</code> &mdash; that is how you start a clean session in normal Playwright. Over CDP it does the opposite of what you want: it opens a <em>new, empty</em> context with no cookies, so you are logged out again in the one browser that was logged in. Use <code>browser.contexts()[0]</code> &mdash; the context that is already there. Connecting gives you the existing session; asking for a new one throws it away.</p>
+                    </div>
+
+                    <h2>The catch nobody mentions: that port is an open door</h2>
+
+                    <p>A remote-debugging port has no password. Anything that can reach it can drive your browser &mdash; read the pages, click as you, walk off with the session you just authenticated. That is not a footnote; it is the whole security model, and it is why you have to be deliberate about two things.</p>
+
+                    <div class="article-highlight">
+                        <h3>Bind to localhost, and never your everyday profile</h3>
+                        <p>Keep the port on <code>127.0.0.1</code>. Do not bind it to <code>0.0.0.0</code> to reach it from another machine unless you have put a tunnel or an allow-list in front of it &mdash; an open debugging port on a public interface is a fully authenticated browser handed to whoever finds it. And point <code>--user-data-dir</code> at a throwaway profile, not the Chrome you read your own email in. Recent Chrome enforces the second half of this for you: since version 136 it refuses remote debugging on the default profile precisely so a random web page can't attach to the browser holding your real logins. Take the hint &mdash; a dedicated profile is the correct setup, not a workaround.</p>
+                    </div>
+
+                    <h2>What it does not fix</h2>
+
+                    <p>Attaching solves the <em>login step</em>, not session lifetime. If the site hands out a token that expires in an hour, it still expires in an hour, and one day your script opens a page that has quietly logged itself out. CDP-attach means that when it happens you walk over, sign in again by hand, and the script picks the session straight back up &mdash; no re-plumbing, no headless captcha. It is a way to keep a human in the one loop that genuinely needs one, not a way to remove them. For a fully unattended job against a hostile login, that human step is a feature: it is the difference between a bot that quietly fails and one that pauses for the ten seconds only a person can do.</p>
+
+                    <h2>We built this in on purpose</h2>
+
+                    <p>We make <a href="thinbrowser.html">thinbrowser</a>, a browser an AI agent drives through <a href="blog-mcp-web-access.html">MCP</a>, and agents hit this wall harder than anyone: an agent cannot receive your 2FA text or read a device-verification email, so any login with a second factor is a hard stop. So attaching is a first-class mode. Leave it unset and thinbrowser launches its own clean browser. Set <code>TB_CDP</code> to the debugging port and every tool works against the session you logged into by hand &mdash; and when the agent is done, <code>close</code> detaches instead of shutting your window, so your session is still there for the next run.</p>
+
+                    <pre class="article-code"><code># you: log in once in a Chrome started with --remote-debugging-port=9333
+TB_CDP=9333 npx -y thinbrowser        # the agent drives that signed-in session</code></pre>
+
+                    <p><em>The login is the wall most automation never gets over. The move is not to break through it &mdash; it is to already be on the other side. <a href="index.html#contact">That&rsquo;s the kind of thing we work out at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-playwright-click-intercepted-by-overlay.html" class="btn btn-secondary">Read: The Click That Landed on the Cookie Banner &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -27,6 +27,13 @@
       <description>WooCommerce makes you open every order to print its invoice; there is no 'print all' button, even with an invoice plugin. Why that gap exists, what a real bulk-print action has to get right, and how to add one.</description>
     </item>
     <item>
+      <title>The Login You Shouldn't Try to Automate</title>
+      <link>https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Some logins fight automation on purpose: 2FA, a captcha, a device check. Instead of scripting past them, log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.</description>
+    </item>
+    <item>
       <title>The Click That Landed on the Cookie Banner</title>
       <link>https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</guid>
