@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-certificate-holder-vs-additional-insured: the same ACORD-style certificate, showing the two
+     places a GC's name can appear. The Certificate Holder box (who gets a copy) vs the ADDL INSD column
+     (who is actually covered). Carrier, policy numbers and limits are illustrative. -->
+<style>
+  .wrap{position:absolute;inset:34px 50px;display:flex;flex-direction:column;justify-content:center}
+  h1{font:600 33px 'Space Grotesk',sans-serif;line-height:1.15}
+  .sub{color:var(--ink2);font-size:18px;margin-top:6px}
+  .cert{margin-top:20px;background:#f7f7f4;color:#20242d;border-radius:8px;overflow:hidden;box-shadow:0 12px 26px rgba(0,0,0,.4)}
+  .cert .top{padding:9px 16px;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.06em;border-bottom:2px solid #20242d}
+  table{width:100%;border-collapse:collapse;font:500 16px 'JetBrains Mono',monospace}
+  th{font:700 12px 'JetBrains Mono',monospace;text-align:left;padding:8px 12px;border-bottom:1px solid #c9ccd3;background:#eceef2;letter-spacing:.04em}
+  td{padding:11px 12px;border-bottom:1px solid #e1e3e8}
+  .c{text-align:center}
+  .hl{background:rgba(245,185,79,.32)}
+  th.hl{background:rgba(245,185,79,.55)}
+  .x{font:700 16px 'JetBrains Mono',monospace}
+  .no{color:#c2413b;font-weight:700}
+  .holder{display:flex;border-top:2px solid #20242d}
+  .holder .lbl{padding:11px 12px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.04em;background:#eceef2;width:180px;border-right:1px solid #c9ccd3}
+  .holder .val{padding:11px 12px;font:500 16px 'JetBrains Mono',monospace;flex:1}
+  .holder.mark .val{background:rgba(194,65,59,.14)}
+  .notes{margin-top:18px;display:flex;gap:26px;font:500 17px 'JetBrains Mono',monospace;color:var(--ink2)}
+  .notes b{font-weight:600}
+  .notes .a{color:#c2413b}.notes .g{color:var(--amber)}
+</style>
+<div class="wrap">
+  <h1>You&rsquo;re the certificate holder. That is not coverage.</h1>
+  <p class="sub">The same GC name can sit in two boxes that do completely different things.</p>
+  <div class="cert"><div class="top">CERTIFICATE OF LIABILITY INSURANCE</div>
+    <table>
+      <tr><th>Type of insurance</th><th class="hl c">ADDL INSD</th><th class="c">SUBR WVD</th><th>Policy number</th><th>Limits</th></tr>
+      <tr><td>Commercial general liability</td><td class="hl c x no">N</td><td class="c">N</td><td>GL-4471902</td><td>$1,000,000 each occurrence</td></tr>
+      <tr><td>Automobile liability</td><td class="hl c x no">N</td><td class="c">N</td><td>AU-2208815</td><td>$1,000,000 combined single</td></tr>
+    </table>
+    <div class="holder mark"><div class="lbl">CERTIFICATE HOLDER</div><div class="val">Summit General Contractors LLC &mdash; 400 Harbor St</div></div>
+  </div>
+  <div class="notes"><span class="g"><b>Certificate holder</b>: you get a copy. Nothing more.</span><span class="a"><b>ADDL INSD = N</b>: you are not on their policy.</span></div>
+</div>

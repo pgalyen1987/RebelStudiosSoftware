@@ -500,5 +500,11 @@
     "html": "art/networkidle-never-fires.html",
     "alt": "Three ways an automation waits after opening a page, on one timeline to a timeout wall. networkidle: the DOM is ready early but the page keeps beaconing, so it never goes idle and times out. sleep(2000): a fixed amber bar that returns halfway regardless. settle: returns early, in green, the moment the DOM is quiet and no requests are in flight.",
     "image": "images/blog/networkidle-never-fires.png"
+  },
+  "certificate-holder-vs-additional-insured": {
+    "kind": "diagram",
+    "html": "art/certificate-holder-vs-additional-insured.html",
+    "alt": "The same certificate of liability insurance showing two boxes a general contractor name can appear in: the Certificate Holder box at the bottom, and the ADDL INSD column marked N, meaning the GC is not an additional insured on the policy",
+    "image": "images/blog/certificate-holder-vs-additional-insured.png"
   }
 }
