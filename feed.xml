@@ -27,6 +27,13 @@
       <description>Restaurants can take table bookings on their own website instead of renting their guest list from a booking network. What the per-cover fee actually buys, when the network is still the right call, and how to run reservations and no-show deposits in WordPress.</description>
     </item>
     <item>
+      <title>Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap</title>
+      <link>https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>The Zora Coins API returns marketCap: 0 for most coins, even when they have a live price. Here is why the field is empty, how to compute a coin's real market cap from price and total supply, and how to sanity-check your number.</description>
+    </item>
+    <item>
       <title>The Browser Tab You Keep Open Just to Format JSON</title>
       <link>https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-dev-transforms-in-your-editor.html</guid>

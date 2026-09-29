@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM"></script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#4ade80">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#4ade80','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="The Zora Coins API returns marketCap: 0 for most coins, even when they have a live price. Here is why the field is empty, how to compute a coin's real market cap from price and total supply, and how to sanity-check your number.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html">
+    <link rel="icon" href="images/RS-logo.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html">
+    <meta property="og:title" content="Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap">
+    <meta property="og:description" content="The Zora Coins API returns marketCap: 0 for most coins, even when they have a live price. Here is why the field is empty, how to compute a coin's real market cap from price and total supply, and how to sanity-check your number.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/zora-api-marketcap-zero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap">
+    <meta name="twitter:description" content="The Zora Coins API returns marketCap: 0 for most coins, even when they have a live price. Here is why the field is empty, how to compute a coin's real market cap from price and total supply, and how to sanity-check your number.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/zora-api-marketcap-zero.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap","description":"The Zora Coins API returns marketCap: 0 for most coins, even when they have a live price. Here is why the field is empty, how to compute a coin's real market cap from price and total supply, and how to sanity-check your number.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html"},"image":"https://rebelstudiossoftware.com/images/blog/zora-api-marketcap-zero.png"}</script>
+    <title>Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap - Rebel Studios Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="apps.html">Mobile Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap</h1>
+            <p>The field is empty for most coins, even ones with a live price. The fix is one multiplication, and here's a live look at why the field is blank in the first place.</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/blog/zora-api-marketcap-zero.png" alt="Three Zora creator coins from the live API: two with real prices report a market cap of zero, while the ZORA-paired coin reports a market cap that matches price times supply" width="1280" height="720" loading="lazy"></figure>
+
+                <div class="article-content">
+
+                    <p>You ask the Zora Coins API for a creator&rsquo;s coins. Every one comes back with a symbol, a holder count, a live USD price&hellip; and a market cap of <code>0</code>. Not missing, not <code>null</code>. Zero. If you print that on a dashboard, every one of those coins reads as dead on arrival.</p>
+
+                    <p>They are not dead. The price is right there. The <code>marketCap</code> field just does not cover them, and once you know why, the fix is a single multiplication you can trust.</p>
+
+                    <p>This matters right now because Zora creator coins are where a lot of onchain tooling is being pointed this year: portfolio views, leaderboards, &ldquo;which of my followers has a coin&rdquo; scanners. Every one of those tools reads <code>marketCap</code>, and every one of them will quietly mislabel real coins as worthless unless it handles this.</p>
+
+                    <h2>What the API actually hands you</h2>
+
+                    <p>Call <code>/profileCoins</code> (the coins a profile created) and each coin in the response already carries everything you need, in one request, no extra call:</p>
+
+                    <pre class="article-code"><code>marketCap                 // the number that lies
+tokenPrice.priceInUsdc    // USD price per whole coin
+totalSupply               // whole coins in existence
+poolCurrencyToken         // what the coin's pool trades against
+uniqueHolders, volume24h  // the rest of the row</code></pre>
+
+                    <p>The price and the supply are the two that matter here. They are populated even when <code>marketCap</code> is not, which is the whole reason a fix exists.</p>
+
+                    <h2>When marketCap comes back zero</h2>
+
+                    <p>Here is the pattern, measured against the live API on the day this was written. Three creators, their coins side by side:</p>
+
+                    <div class="article-highlight">
+                        <p>A coin&rsquo;s <code>marketCap</code> is filled in only when its liquidity pool trades against <strong>ZORA</strong>. Pool it against WETH, or against another creator&rsquo;s coin, and the field is <code>0</code> even though the price is live and correct.</p>
+                    </div>
+
+                    <p>The coin pooled against ZORA reported a market cap of $2,639. The two coins with real prices but non-ZORA pools, one against WETH, one against a creator&rsquo;s own token, both reported <code>0</code>. The image above is that exact query. This is not a bug you can wait out: it is how the field is defined, and a huge share of creator and content coins are paired with something other than ZORA.</p>
+
+                    <h2>The fix: compute it yourself</h2>
+
+                    <p>Market cap is price times the number of coins. You have both. So do not read the field, derive it:</p>
+
+                    <pre class="article-code"><code>marketCap = Number(priceInUsdc) * Number(totalSupply)</code></pre>
+
+                    <p>Two things that will bite you if you skip them. <code>totalSupply</code> here is in <em>whole coins</em>, not wei, so there is no <code>10^18</code> to divide out. And <code>priceInUsdc</code> is the price of one whole coin, so the two units line up and the product is dollars. Get either unit wrong and you will be off by eighteen orders of magnitude, which at least fails loudly.</p>
+
+                    <h2>Does the derived number hold up?</h2>
+
+                    <p>Fair question. It would be a poor fix if it disagreed with Zora&rsquo;s own figure when that figure exists. So check it against the coins where the field <em>is</em> populated. For the ZORA-paired coin above, the API said $2,639 and price times supply gave $2,708. Same ballpark, a few percent apart.</p>
+
+                    <p>Be honest about that gap, though. The field and the spot price are not always sampled at the same instant, and on a thinly traded coin the two can drift further apart than a few percent. Treat the derived value as a good estimate, not a settled fact: round it, do not print it to the cent, and never dress up a computed number as if it came from an oracle. The point is to replace a <code>0</code> that says &ldquo;worthless&rdquo; with a figure that says &ldquo;about this much&rdquo;.</p>
+
+                    <h2>What it looks like in code</h2>
+
+                    <p>With our Python client, the whole thing is a fallback chain. Read the field, and when it is empty, derive it:</p>
+
+                    <pre class="article-code"><code>from zora_coins import ZoraCoins
+
+z = ZoraCoins()  # ZORA_API_KEY optional, higher rate limits with one
+for coin in z.iter_profile_coins("someartist"):
+    price = float(coin.token_price.price_in_usdc or 0)
+    supply = float(coin.total_supply or 0)
+    field = float(coin.market_cap or 0)
+    mcap = field or (price * supply if price and supply else None)
+    print(coin.symbol, f"${mcap:,.0f}" if mcap else "—")</code></pre>
+
+                    <p>No SDK, just <code>fetch</code>? The shape is the same:</p>
+
+                    <pre class="article-code"><code>const r = await fetch(
+  "https://api-sdk.zora.engineering/profileCoins?identifier=someartist&count=20"
+);
+const coins = /* the coin nodes from r.json() */ [];
+for (const c of coins) {
+  const price = Number(c.tokenPrice?.priceInUsdc || 0);
+  const supply = Number(c.totalSupply || 0);
+  const mcap = Number(c.marketCap) || (price && supply ? price * supply : null);
+  console.log(c.symbol, mcap ? `$${Math.round(mcap).toLocaleString()}` : "—");
+}</code></pre>
+
+                    <p>Note the last fallback in both: <code>null</code>, rendered as an em dash, not a zero. Some coins genuinely have no USD price, because their pool currency has no route back to USDC. For those, price times supply is also empty, and the right answer is to <em>say so</em>. &ldquo;&mdash;&rdquo; is honest. &ldquo;$0&rdquo; is a lie about a coin that might be worth real money, just not in a currency the API can price today.</p>
+
+                    <p>That last case is worth sitting with for a second, because it is the same reason a USDC-funded buyer hits &ldquo;no route&rdquo; on so many of these coins. The pool currency is not reachable from USDC, so there is neither a price nor a path to trade. A tool that pretends otherwise is not just wrong on a label; it is wrong about whether you can even act.</p>
+
+                    <div class="article-callout">
+                        <p>We hit this building our own Zora tooling, so we baked the fallback into the <a href="zora-coins-sdk.html">Zora Coins SDKs</a>: typed clients for the same API in Python, TypeScript, Go, Rust, C#, Java and C++, with <code>marketCap</code>, <code>tokenPrice</code>, <code>totalSupply</code> and <code>poolCurrencyToken</code> all in the one <code>profileCoins</code> response. It is free and MIT licensed, and it is not affiliated with Zora. If you are also reading the creator and referral rewards Zora pays on Base, that is <a href="blog-zora-creator-rewards-onchain.html">its own small adventure</a>.</p>
+                    </div>
+
+                    <p>None of this is exotic. It is one field that does not mean what its name promises, and a one-line derivation that does. But it is exactly the kind of detail that separates a tool people trust from one that confidently prints <code>$0</code> next to a coin someone paid for. Read the field, fall back to price times supply, fall back to an honest dash, and your numbers will say what is actually true.</p>
+
+                    <p><em>We build software that tells you the real number, not the convenient one. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-zora-creator-rewards-onchain.html" class="btn btn-secondary">Read: Reading Zora Creator Rewards Onchain &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Mobile Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

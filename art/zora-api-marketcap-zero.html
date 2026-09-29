@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-zora-api-marketcap-zero: the marketCap field vs price x supply, measured from the live API. -->
+<style>
+  .wrap{position:absolute;inset:46px 56px}
+  h1{font:600 33px 'Space Grotesk',sans-serif;letter-spacing:-.01em;color:var(--ink1)}
+  .sub{color:var(--ink2);font-size:19px;margin-top:8px;max-width:1000px}
+  table{width:100%;border-collapse:collapse;margin-top:34px;font-family:'JetBrains Mono',monospace}
+  th{font:600 15px 'JetBrains Mono',monospace;color:var(--ink3);text-align:left;padding:0 16px 12px;text-transform:uppercase;letter-spacing:.05em}
+  th.num,td.num{text-align:right}
+  td{padding:15px 16px;font-size:20px;border-top:1px solid var(--line);color:var(--ink2)}
+  td.coin{color:var(--ink1);font-weight:500}
+  .pool{color:var(--ink3);font-size:17px}
+  .zero{color:var(--red);font-weight:600}
+  .real{color:var(--green2);font-weight:600}
+  .derived{color:var(--ink1)}
+  .match{color:var(--green2)}
+  .note{position:absolute;left:56px;right:56px;bottom:40px;font:500 16px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .note b{color:var(--amber);font-weight:600}
+</style>
+<div class="wrap">
+  <h1>The <span class="mono" style="font-size:28px;color:var(--ink1)">marketCap</span> field is <span class="zero">0</span> for coins with a live price</h1>
+  <p class="sub">Three creators' coins from the live Zora Coins API. The field only fills in when the pool trades against ZORA. Everywhere else it reads zero, so you compute it: <span class="mono" style="color:var(--ink1)">priceInUsdc &times; totalSupply</span>.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Coin</th>
+        <th>Pool trades against</th>
+        <th class="num">API <span style="color:var(--ink2)">marketCap</span></th>
+        <th class="num">price &times; supply</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="coin">Eternal Embrace</td><td class="pool">a creator coin (0x990d&hellip;)</td><td class="num zero">0</td><td class="num derived">$90</td></tr>
+      <tr><td class="coin">CHIPM</td><td class="pool">WETH (0x4200&hellip;0006)</td><td class="num zero">0</td><td class="num derived">$504</td></tr>
+      <tr><td class="coin">Case Study 005</td><td class="pool">ZORA (0x1111&hellip;afc69)</td><td class="num real">$2,639</td><td class="num match">$2,708</td></tr>
+    </tbody>
+  </table>
+  <div class="note">Measured from the live <b>Zora Coins API</b>, 2026&#8209;09&#8209;29. Two coins with a real price report a market cap of zero; only the ZORA-paired coin fills the field &mdash; and price &times; supply lands right beside it.</div>
+</div>

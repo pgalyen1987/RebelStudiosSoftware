@@ -440,5 +440,11 @@
     ],
     "alt": "A restaurant's own booking form: date, time and party size, then name, email and phone, with a Request reservation button",
     "image": "images/blog/restaurant-reservation-system-wordpress.png"
+  },
+  "zora-api-marketcap-zero": {
+    "kind": "diagram",
+    "html": "art/zora-api-marketcap-zero.html",
+    "alt": "Three Zora creator coins from the live API: two with real prices report marketCap 0 (one pooled against a creator coin, one against WETH), while the ZORA-paired coin reports a market cap that matches price times supply",
+    "image": "images/blog/zora-api-marketcap-zero.png"
   }
 }
