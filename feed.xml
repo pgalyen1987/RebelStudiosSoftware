@@ -34,6 +34,13 @@
       <description>Some logins fight automation on purpose: 2FA, a captcha, a device check. Instead of scripting past them, log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.</description>
     </item>
     <item>
+      <title>How to Paywall Content Without Disappearing From Google</title>
+      <link>https://rebelstudiossoftware.com/blog-paywall-content-without-losing-google.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-paywall-content-without-losing-google.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Gate your best posts behind a membership and their Google traffic can quietly collapse. Why it happens, why serving Googlebot the full text is the trap that gets a site penalised, and the paywalled-content structured data that keeps members-only pages findable.</description>
+    </item>
+    <item>
       <title>The Click That Landed on the Cookie Banner</title>
       <link>https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</guid>

@@ -482,5 +482,11 @@
     "html": "art/secrets-out-of-agent-context.html",
     "alt": "Two ways an agent fills a password field. On the left, fill with the literal value hunter2! sends the secret into the transcript, the model's context, and the run log, all in red. On the right, fill_secret with the key name ACME_PW keeps only the name in context, sends the value to the page once, and a later snapshot of the field reads (secret).",
     "image": "images/blog/secrets-out-of-agent-context.png"
+  },
+  "paywall-content-without-losing-google": {
+    "kind": "diagram",
+    "html": "art/paywall-content-without-losing-google.html",
+    "alt": "A gated article: a readable public teaser sits above a dashed .members-only fence, the text below it is blurred, and a structured-data declaration pointing a CSS selector at the gated element lets Googlebot index it with no cloaking flag",
+    "image": "images/blog/paywall-content-without-losing-google.png"
   }
 }

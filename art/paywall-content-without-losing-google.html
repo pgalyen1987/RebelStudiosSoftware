@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:60px 72px 54px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow { font-size:15px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#8fe05a; }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:48px; line-height:1.08; letter-spacing:-.02em; margin-top:14px; max-width:900px; }
+
+  .stage { display:flex; gap:44px; align-items:stretch; }
+
+  /* left: the article, gated */
+  .doc { flex:0 0 600px; background:rgba(17,23,34,0.72); border:1px solid #232c3c; border-radius:16px; padding:26px 28px; position:relative; }
+  .doc .h { height:20px; width:66%; border-radius:6px; background:linear-gradient(90deg,#8fe05a,#6cbe45); margin-bottom:20px; }
+  .line { height:12px; border-radius:6px; background:rgba(205,212,224,0.62); margin:13px 0; }
+  .line.a{width:100%} .line.b{width:94%} .line.c{width:78%}
+  .public { position:absolute; left:-11px; top:74px; font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#7b8498; transform:rotate(-90deg); transform-origin:left; }
+
+  .fence { display:flex; align-items:center; gap:12px; margin:26px 0 22px; }
+  .fence .dash { flex:1; border-top:2px dashed #3a4356; }
+  .pill { display:inline-flex; align-items:center; gap:8px; padding:7px 13px; border-radius:999px; background:rgba(108,190,69,0.12); border:1px solid rgba(108,190,69,0.5); color:#bff29a; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:15px; font-weight:600; white-space:nowrap; }
+  .pill .lock { width:13px; height:11px; border:2px solid #8fe05a; border-radius:2px; position:relative; margin-top:5px; }
+  .pill .lock::before { content:""; position:absolute; left:2px; top:-6px; width:7px; height:7px; border:2px solid #8fe05a; border-bottom:none; border-radius:6px 6px 0 0; }
+
+  .gated { filter:blur(2.4px); opacity:.5; }
+  .gated .line { background:rgba(148,163,184,0.55); }
+
+  /* right: the declaration */
+  .side { flex:1; display:flex; flex-direction:column; justify-content:center; gap:20px; }
+  .code { background:#0c111b; border:1px solid #2a3547; border-left:3px solid #8fe05a; border-radius:12px; padding:20px 22px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:16.5px; line-height:1.85; color:#cdd4e0; }
+  .code .k { color:#8fe05a; }
+  .code .f { color:#e0736b; }
+  .code .s { color:#a8b1c2; }
+  .code .i { padding-left:20px; }
+  .note { font-size:16px; color:#a8b1c2; line-height:1.45; }
+  .note b { color:#eef1f7; font-weight:600; }
+
+  .foot { display:flex; justify-content:space-between; align-items:center; }
+  .ok { display:flex; align-items:center; gap:12px; }
+  .check { width:30px; height:30px; border-radius:50%; background:#8fe05a; color:#07090f; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:17px; box-shadow:0 0 18px rgba(108,190,69,.45); }
+  .ok .t { font-size:18px; color:#dfe4ee; } .ok .t b { color:#8fe05a; }
+  .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; text-align:right; }
+  .wm span { display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:400; color:#7b8498; margin-top:3px; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">Paywalled content &middot; Structured data</div>
+    <h1>Gate it from readers, not from Google</h1>
+  </div>
+
+  <div class="stage">
+    <div class="doc">
+      <div class="public">Public</div>
+      <div class="h"></div>
+      <div class="line a"></div>
+      <div class="line b"></div>
+      <div class="line c"></div>
+      <div class="fence">
+        <div class="dash"></div>
+        <span class="pill"><span class="lock"></span>.members-only</span>
+        <div class="dash"></div>
+      </div>
+      <div class="gated">
+        <div class="line a"></div>
+        <div class="line a"></div>
+        <div class="line b"></div>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="code">
+<span class="s">"isAccessibleForFree":</span> <span class="f">false</span>,<br>
+<span class="s">"hasPart":</span> {<br>
+<span class="i"><span class="s">"cssSelector":</span> <span class="k">".members-only"</span></span><br>
+}
+      </div>
+      <div class="note">The declaration points at the same element that does the gating &mdash; so Google reads what a member reads.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="ok">
+      <div class="check">&check;</div>
+      <div class="t">Googlebot indexes it &mdash; <b>no cloaking flag</b></div>
+    </div>
+    <div class="wm">Rebel Studios<span>rebelstudiossoftware.com</span></div>
+  </div>
+</body>
+</html>
