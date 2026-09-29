@@ -494,5 +494,11 @@
     "html": "art/validate-cpf-cnpj-checkout.html",
     "alt": "Two panels comparing CPF check-digit validation. Left, well-formed: 111.444.777-35, weights times mod 11 recompute the last two digits, they match, accept with no lookup. Right, one digit off: 111.444.777-34, the check digit says 35 not 34, so it is rejected in the browser before the order. Footer: a valid number is well-formed, not proven real.",
     "image": "images/blog/validate-cpf-cnpj-checkout.png"
+  },
+  "networkidle-never-fires": {
+    "kind": "diagram",
+    "html": "art/networkidle-never-fires.html",
+    "alt": "Three ways an automation waits after opening a page, on one timeline to a timeout wall. networkidle: the DOM is ready early but the page keeps beaconing, so it never goes idle and times out. sleep(2000): a fixed amber bar that returns halfway regardless. settle: returns early, in green, the moment the DOM is quiet and no requests are in flight.",
+    "image": "images/blog/networkidle-never-fires.png"
   }
 }

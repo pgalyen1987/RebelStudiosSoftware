@@ -34,6 +34,13 @@
       <description>Some logins fight automation on purpose: 2FA, a captcha, a device check. Instead of scripting past them, log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.</description>
     </item>
     <item>
+      <title>Waiting for a Silence That Never Comes</title>
+      <link>https://rebelstudiossoftware.com/blog-networkidle-never-fires.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-networkidle-never-fires.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Playwright's networkidle waits for 500ms with no requests in flight — which a page that polls, beacons analytics or holds a socket open never reaches, so it burns the whole timeout on every navigation. Why a fixed sleep is worse in both directions, and how to tell a page is ready to drive from two signals it already emits.</description>
+    </item>
+    <item>
       <title>How to Paywall Content Without Disappearing From Google</title>
       <link>https://rebelstudiossoftware.com/blog-paywall-content-without-losing-google.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-paywall-content-without-losing-google.html</guid>

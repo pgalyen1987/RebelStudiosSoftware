@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.15), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:48px 72px 46px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow {
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:15px; font-weight:600;
+    letter-spacing:.06em; color:#8fe05a;
+  }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:41px; line-height:1.07; letter-spacing:-.02em; color:#eef1f7;
+    margin-top:12px; max-width:1056px;
+  }
+  .lanes { flex:1; margin:26px 0 18px; display:flex; flex-direction:column; justify-content:center; gap:20px; }
+  .lane { display:flex; align-items:center; gap:22px; }
+  .lname { width:210px; text-align:right; }
+  .lname .k { font-family:'JetBrains Mono',monospace; font-size:16.5px; color:#eef1f7; font-weight:600; }
+  .lname .s { font-size:12.5px; color:#6f7a8e; margin-top:3px; }
+  /* the track: a rail from action(0) to the timeout wall on the right */
+  .track { position:relative; flex:1; height:46px; border-radius:10px;
+    background:#0c1119; border:1px solid #1b2331; overflow:hidden; }
+  .wall { position:absolute; top:-5px; bottom:-5px; right:0; width:2px; border-left:2px dashed #3a4256; }
+  .fill { position:absolute; left:0; top:0; bottom:0; }
+  .fill.red { background:linear-gradient(90deg,rgba(255,92,122,0.10),rgba(255,92,122,0.28)); border-right:2px solid #ff5c7a; }
+  .fill.amber { background:linear-gradient(90deg,rgba(240,180,60,0.10),rgba(240,180,60,0.26)); border-right:2px solid #f0b43c; }
+  .fill.green { background:linear-gradient(90deg,rgba(108,190,69,0.10),rgba(108,190,69,0.30)); border-right:2px solid #8fe05a; }
+  .mk { position:absolute; top:50%; transform:translateY(-50%); font-family:'JetBrains Mono',monospace; font-size:12px; white-space:nowrap; }
+  .mk .dot { display:inline-block; width:9px; height:9px; border-radius:50%; vertical-align:middle; margin-right:6px; }
+  .end { position:absolute; top:50%; transform:translateY(-50%); font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; white-space:nowrap; }
+  .beacon { position:absolute; top:50%; width:6px; height:6px; border-radius:50%; background:#5a6b86; transform:translateY(-50%); }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; margin-top:6px; }
+  .punch { max-width:660px; font-size:19px; color:#c3cbd9; line-height:1.42; }
+  .punch b { color:#eef1f7; }
+  .meta { text-align:right; font-size:14px; color:#7b8498; line-height:1.55; }
+  .meta .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; }
+  .walltag { position:absolute; right:2px; top:-24px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#6f7a8e; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">await open(url)  &rarr;  when is it safe to read the page?</div>
+    <h1>Wait for the page, not the clock</h1>
+  </div>
+
+  <div class="lanes">
+    <div class="lane">
+      <div class="lname"><div class="k">networkidle</div><div class="s">500ms of total silence</div></div>
+      <div class="track">
+        <div class="walltag">timeout</div>
+        <div class="fill red" style="right:0;"></div>
+        <div class="mk" style="left:9%; color:#8fe05a;"><span class="dot" style="background:#6cbe45;"></span>DOM ready</div>
+        <div class="beacon" style="left:34%;"></div>
+        <div class="beacon" style="left:52%;"></div>
+        <div class="beacon" style="left:70%;"></div>
+        <div class="beacon" style="left:88%;"></div>
+        <div class="end" style="right:12px; color:#ff8098;">never idle &middot; timed out</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lname"><div class="k">sleep(2000)</div><div class="s">a fixed guess</div></div>
+      <div class="track">
+        <div class="fill amber" style="width:50%;"></div>
+        <div class="mk" style="left:9%; color:#8fe05a;"><span class="dot" style="background:#6cbe45;"></span>DOM ready</div>
+        <div class="end" style="left:calc(50% + 12px); color:#f0b43c;">returns &middot; ready or not</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lname"><div class="k">settle</div><div class="s">DOM quiet + 0 in flight</div></div>
+      <div class="track">
+        <div class="fill green" style="width:35%;"></div>
+        <div class="mk" style="left:9%; color:#8fe05a;"><span class="dot" style="background:#6cbe45;"></span>DOM ready</div>
+        <div class="beacon" style="left:20%; background:#2dd4bf;"></div>
+        <div class="beacon" style="left:28%; background:#2dd4bf;"></div>
+        <div class="end" style="left:calc(35% + 12px); color:#8fe05a;">&check; both signals agree</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="punch"><b>The page tells you when it is done.</b> A modern page beacons and polls forever, so it is never &ldquo;idle&rdquo; &mdash; but the DOM stops changing and the fetches finish. Watch those, not a clock.</div>
+    <div class="meta">
+      <div class="wm">thinbrowser</div>
+      <div>a browser an agent can drive &middot; Rebel Studios</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Playwright's networkidle waits for 500ms with no requests in flight — which a page that polls, beacons analytics or holds a socket open never reaches, so it burns the whole timeout on every navigation. Why a fixed sleep is worse in both directions, and how to tell a page is ready to drive from two signals it already emits.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-networkidle-never-fires.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-networkidle-never-fires.html">
+    <meta property="og:title" content="Waiting for a Silence That Never Comes">
+    <meta property="og:description" content="Playwright's networkidle waits for 500ms of total network silence — which a modern page that polls and beacons never reaches, so it times out on every navigation. Why a fixed sleep is worse in both directions, and the two signals that tell you a page is actually ready.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/networkidle-never-fires.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Waiting for a Silence That Never Comes">
+    <meta name="twitter:description" content="Playwright's networkidle waits for 500ms of total network silence — which a modern page that polls and beacons never reaches, so it times out on every navigation. Why a fixed sleep is worse in both directions, and the two signals that tell you a page is actually ready.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/networkidle-never-fires.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Waiting for a Silence That Never Comes","description":"Playwright's networkidle waits for 500ms of total network silence — which a modern page that polls and beacons never reaches, so it times out on every navigation. Why a fixed sleep is worse in both directions, and the two signals that tell you a page is actually ready.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-networkidle-never-fires.html"},"image":"https://rebelstudiossoftware.com/images/blog/networkidle-never-fires.png"}</script>
+    <title>Waiting for a Silence That Never Comes - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Waiting for a Silence That Never Comes</h1>
+            <p>You told the browser to open a page. Now the only question that matters is whether it is safe to read yet &mdash; and the answer everyone reaches for waits out a clock the page was never going to beat</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/networkidle-never-fires.png" alt="Three ways an automation waits after opening a page, on one timeline to a timeout wall. networkidle: the DOM is ready early but the page keeps beaconing, so it never goes idle and times out. sleep(2000): a fixed amber bar that returns halfway regardless. settle: returns early, in green, the moment the DOM is quiet and no requests are in flight." width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>You tell the browser to open a page, or you click a button and the page reacts. Then comes the question every piece of browser automation has to answer, and most answer badly: is it safe to read yet? Act too early and you scrape a half-built DOM, or click a control that is a frame away from moving. Wait too long and you have bolted dead time onto every step of a run that might have thousands.</p>
+
+                    <h2>The fixed pause is wrong in both directions</h2>
+
+                    <p>The first thing everyone reaches for is a fixed wait &mdash; <code>await sleep(2000)</code> after each action &mdash; and it is wrong in both directions at once. Two seconds is too short for the page still fetching on a slow connection, so you get a race that fails one run in twenty and is miserable to reproduce. And it is far too long for the page that was ready in 150 milliseconds, which is most of them; you pay that tax on every action, and it compounds over a long flow. A fixed wait also tells you nothing when it is over: if the read comes back empty, you cannot say whether the element is missing or merely late.</p>
+
+                    <h2>networkidle sounds principled and never happens</h2>
+
+                    <p>Playwright offers what looks like the grown-up answer: wait until the network goes quiet. <code>waitForLoadState('networkidle')</code> returns once there have been 500 milliseconds with no requests in flight. On a page you built for a test suite, that is often fine. On a page in the wild it is a trap, because a modern page never goes quiet. It polls an endpoint for notifications. It beacons analytics on a timer. It holds a websocket open and pings it. There is always something in flight, so the 500 milliseconds of total silence never arrive &mdash; and the call sits there until it hits your timeout, on every single navigation.</p>
+
+                    <p>We measured this on September 24, 2026. One of our own dashboards finished its DOM in 116 milliseconds and then waited out the full four-second ceiling we had given networkidle, for a silence that was never coming &mdash; a 34&times; tax on a page that had been usable in a tenth of a second. <code>docs.stripe.com</code> did the same thing. Of four ordinary pages, two timed out outright; the two that did return still paid between 500 milliseconds and 1.5 seconds, because 500 milliseconds of enforced silence is networkidle's floor by definition. Its best case is still slower than the page deserved.</p>
+
+                    <h2>Ask the two questions that actually decide it</h2>
+
+                    <p>So stop waiting for the network to fall silent, and ask instead the two questions that genuinely decide whether a page can be driven: <strong>has the DOM stopped changing, and is anything still in flight?</strong> Both signals are cheap to keep. A <code>MutationObserver</code> in the page's init script stamps a timestamp every time the DOM mutates. The request hooks already record when a request starts and when the last one finishes. When both have been still for about 200 milliseconds, the page has settled &mdash; return right then. There is no clock to wait out; you leave the moment the page is ready and not a tick later.</p>
+
+                    <div class="article-highlight">
+                        <h3>Timestamps, not counters</h3>
+                        <p>Track <em>when</em> the last mutation and the last request happened, not <em>how many</em> requests are open. A counter of in-flight requests can wedge: miss one completion &mdash; a cancelled fetch, an aborted preload &mdash; and it never returns to zero, so the wait never ends. A timestamp cannot get stuck. And it handles the awkward case a counter cannot: a page with a one-second heartbeat settles in the gaps between beats, instead of being declared busy forever.</p>
+                    </div>
+
+                    <h2>The trap: returning an empty shell</h2>
+
+                    <p>There is one trap here, and it is a good one, because the naive version of &ldquo;wait until the DOM is quiet&rdquo; fails by returning too <em>early</em>. Straight after first paint there is a window where the DOM is quiet and nothing has been requested &mdash; not because the page is done, but because the page's own script has not fired its fetches yet. Exit there and you hand back a shell. The dashboard this code was written for came back reading <code>Scanning ~ &hellip;</code> with every data card still empty, and the automation cheerfully reported success.</p>
+
+                    <p>The first fix was a flat floor: never return inside the first 400 milliseconds. It worked &mdash; and then it turned out to be the thing we were waiting on. Measured on September 25, 2026, the wait was exiting at 426&ndash;430 milliseconds on three of four real pages: the floor plus a single poll tick, while the pages themselves had been ready earlier. We had swapped one fixed wait for another and called it progress.</p>
+
+                    <p>The fix that held opens the gate on a <em>signal</em> instead of a clock. The moment the page has issued a request of its own since navigation, its script is demonstrably running, and the quiet checks can be trusted from then on. A page that genuinely fetches nothing gets a short backstop &mdash; 150 milliseconds &mdash; and no more. The wait is now bounded by what the page does, not by a number we guessed.</p>
+
+                    <h2>The rule: change the waiting, not the answer</h2>
+
+                    <p>A change to timing has to change how long you wait and <em>not</em> what you get back, and the only way to know that is to measure the thing you get back &mdash; not to re-run it and squint. So we did: identical snapshots on five live pages, before and after. On the dashboard the wait dropped from 2,370 to 1,400 milliseconds, and &mdash; the part that mattered more &mdash; it got more consistent. The old floor had returned 2,578, then 2,603, then 2,605 characters on successive runs; it had been catching the page mid-render. The signal-based version returns the same 2,605 every time. Faster was welcome. Deterministic was the point.</p>
+
+                    <h2>Where it stops</h2>
+
+                    <p>None of this is magic, and it is worth being plain about the edges. This settle is a heuristic with a ceiling &mdash; two seconds by default, three for the heavier actions &mdash; and a page that truly never stops, an infinite feed or a canvas repainting every frame, will hit that ceiling and return anyway. That is deliberate: at its worst it degrades to a bounded wait, never longer than the fixed sleep it replaced. A page whose script fires no requests at all gives you only the DOM-quiet check and the 150-millisecond backstop to lean on. Knowing that failure mode is the whole point &mdash; a wait that lies about being ready is worse than one that is honestly a little slow.</p>
+
+                    <p>This is how <a href="thinbrowser.html">thinbrowser</a>, our MCP browser layer over Playwright, decides a page is ready: every <code>open</code> and every <code>click</code> waits on those two signals before it returns, so the snapshot you get back is of a page that has stopped moving rather than one caught halfway through a render. Playwright still does the hard part of driving Chromium; this is the thin layer of judgment on top that a page you have never seen turns out to need.</p>
+
+                    <p>It is free and MIT-licensed, tied to no single model or editor, and it installs as one line: <code>claude mcp add thinbrowser -- npx -y thinbrowser</code>, or point any MCP client at <code>npx -y thinbrowser</code> as a stdio server. The settle is a couple of dozen lines in the open; the comments in it are the measurements above.</p>
+
+                    <p><em>We build tools that treat your agent's time &mdash; and yours &mdash; as something worth not wasting. <a href="index.html#contact">That's what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-agent-reads-the-whole-page.html" class="btn btn-secondary">Read: An Agent Pays to Read the Whole Page &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
