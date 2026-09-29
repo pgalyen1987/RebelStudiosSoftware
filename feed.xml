@@ -55,6 +55,13 @@
       <description>Fetch.ai's uAgents framework catches every handler exception and writes it to a log — the right call at runtime, but under pytest it means a handler that crashes on every message still shows a green test. Why testing a uAgent is awkward, and how to test one offline: no Almanac, no wallet, no sleep().</description>
     </item>
     <item>
+      <title>The Button Vanished. Nothing Was Saved.</title>
+      <link>https://rebelstudiossoftware.com/blog-verify-the-result-not-the-click.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-verify-the-result-not-the-click.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Your script clicks Save, the dialog closes, the code moves on — and the row was never written. Why a click that returns success is not proof the action happened, and the one check that turns a silent failure into an honest one.</description>
+    </item>
+    <item>
       <title>Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap</title>
       <link>https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html</guid>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:50px 72px 50px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow {
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-size:15px; font-weight:600;
+    letter-spacing:.08em; color:#8fe05a;
+  }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:40px; line-height:1.08; letter-spacing:-.02em; color:#eef1f7;
+    margin-top:12px; max-width:1056px;
+  }
+  .stage { position:relative; flex:1; margin:22px 0 20px; display:flex; gap:26px; }
+  .panel { flex:1; border:1px solid #263042; border-radius:14px; background:linear-gradient(180deg,#0c1119,#0a0e15); position:relative; overflow:hidden; }
+  .chrome { height:36px; border-bottom:1px solid #1b2331; display:flex; align-items:center; gap:8px; padding:0 15px; }
+  .dot { width:10px; height:10px; border-radius:50%; background:#2b3444; }
+  .cap { position:absolute; top:46px; left:22px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#6f7a8e; letter-spacing:.02em; }
+  /* left panel: the UI reacted */
+  .ghostbtn {
+    position:absolute; left:22px; top:88px; padding:14px 30px; border-radius:10px;
+    border:1.5px dashed #33405a; color:#5c667a;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:21px;
+  }
+  .closed { position:absolute; left:22px; top:150px; font-size:16px; color:#8fe05a; font-weight:600; }
+  .closed .chk { display:inline-block; width:20px; height:20px; border-radius:50%; background:#6cbe45; color:#07090f; text-align:center; line-height:20px; font-size:13px; margin-right:8px; vertical-align:middle; }
+  .subtle { position:absolute; left:22px; right:22px; top:196px; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#5c667a; line-height:1.5; }
+  /* right panel: the data */
+  .tbl { position:absolute; left:22px; right:22px; top:88px; border:1px solid #23304a; border-radius:9px; overflow:hidden; }
+  .th { display:flex; background:#111826; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#7b8498; padding:9px 14px; letter-spacing:.03em; border-bottom:1px solid #23304a; }
+  .th span:first-child { width:58px; }
+  .empty { padding:20px 14px 22px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:13.5px; color:#ff8098; }
+  .empty .z { font-family:'Space Grotesk',sans-serif; font-size:27px; font-weight:700; color:#ff5c7a; display:block; margin-bottom:5px; }
+  /* verdict strip */
+  .verdict { display:flex; gap:20px; align-items:stretch; }
+  .card { flex:1; background:#0e141d; border:1px solid #2a3446; border-radius:12px; padding:16px 20px; font-family:'JetBrains Mono',monospace; font-size:14.5px; line-height:1.55; }
+  .card .lab { font-family:'Inter',sans-serif; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; color:#7b8498; }
+  .card.bad { border-color:#472633; }
+  .card.bad code { color:#ff8098; }
+  .card.good { border-color:#2c4a2a; }
+  .card.good code { color:#8fe05a; }
+  .card .mut { color:#5c667a; }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; margin-top:18px; }
+  .punch { max-width:640px; font-size:19px; color:#c3cbd9; line-height:1.4; }
+  .punch b { color:#eef1f7; }
+  .meta { text-align:right; font-size:14px; color:#7b8498; line-height:1.55; }
+  .meta .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">await saveButton.click()  &rarr;  ok</div>
+    <h1>Success is the row appearing &mdash; not the button leaving</h1>
+  </div>
+
+  <div class="stage">
+    <div class="panel">
+      <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="cap">the UI reacted</div>
+      <div class="ghostbtn">Save</div>
+      <div class="closed"><span class="chk">&check;</span>dialog closed</div>
+      <div class="subtle">closes on success, cancel, and<br>validation failure alike.</div>
+    </div>
+    <div class="panel">
+      <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="cap">what you meant to change</div>
+      <div class="tbl">
+        <div class="th"><span>id</span><span>record</span></div>
+        <div class="empty"><span class="z">0 rows</span>the write never landed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="card bad">
+      <div class="lab">Asserting the cause</div>
+      <code>button.gone === true</code> <span class="mut">// proves nothing</span>
+    </div>
+    <div class="card good">
+      <div class="lab">Asserting the effect</div>
+      <code>newRow.time &gt;= clickedAt</code> <span class="mut">// real proof</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="punch"><b>Confirm the effect, not the call.</b> If a genuinely fresh result is not there, fail honestly &mdash; do not report a win.</div>
+    <div class="meta">
+      <div class="wm">thinbrowser</div>
+      <div>a browser an agent can drive &middot; Rebel Studios</div>
+    </div>
+  </div>
+</body>
+</html>

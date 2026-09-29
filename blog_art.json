@@ -470,5 +470,11 @@
     "html": "art/connect-playwright-to-logged-in-chrome.html",
     "alt": "Two Chrome windows side by side: the left one is signed in by hand with 2FA cleared and started with --remote-debugging-port=9333; a CDP link joins it to the right, a Playwright script that calls connectOverCDP and reuses browser.contexts()[0] — the real session — rather than browser.newContext(), which would be logged out again.",
     "image": "images/blog/connect-playwright-to-logged-in-chrome.png"
+  },
+  "verify-the-result-not-the-click": {
+    "kind": "diagram",
+    "html": "art/verify-the-result-not-the-click.html",
+    "alt": "Two dark UI panels. Left: a ghosted Save button and a green 'dialog closed' check, captioned the UI reacted. Right: a records table showing 0 rows, captioned the write never landed. Below, a red card button.gone===true (proves nothing) beside a green card newRow.time>=clickedAt (real proof).",
+    "image": "images/blog/verify-the-result-not-the-click.png"
   }
 }
