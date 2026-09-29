@@ -35,6 +35,7 @@ TOOL_SLUGS = [
 ]
 
 STATIC_PAGES = [
+    ("rat-race-testers.html", "2026-09-29", "weekly", "0.8"),
     ("", "2026-06-24", "monthly", "1.0"),
     ("apps.html", "2026-06-23", "monthly", "0.8"),
     ("games.html", "2026-09-29", "weekly", "0.8"),
