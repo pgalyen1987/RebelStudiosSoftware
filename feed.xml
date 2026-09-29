@@ -5,7 +5,7 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
@@ -13,32 +13,32 @@
       <link>https://rebelstudiossoftware.com/</link>
     </image>
     <item>
-<title>The Test Was Modelling a Game We Had Stopped Running</title>
-<link>https://rebelstudiossoftware.com/blog-test-modelled-open-sky.html</link>
-<guid isPermaLink="true">https://rebelstudiossoftware.com/blog-test-modelled-open-sky.html</guid>
-<pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
-<description>A one-line ceiling made six of seven levels uncrossable. The hard gate never saw it, because it computed jump arcs in open sky. What it costs when a test models the physics instead of reading it.</description>
-</item>
-<item>
-<title>What <code>railway up</code> Actually Uploads</title>
-<link>https://rebelstudiossoftware.com/blog-railway-up-working-directory.html</link>
-<guid isPermaLink="true">https://rebelstudiossoftware.com/blog-railway-up-working-directory.html</guid>
-<pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
-<description>Nine commits sat invisible to users for seven hours while every deploy reported success. Two facts about Railway deploys worth knowing before you automate one.</description>
-</item>
-<item>
-<title>Every Test Passed and Four Commits Were Gone</title>
-<link>https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html</link>
-<guid isPermaLink="true">https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html</guid>
-<pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
-<description>A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.</description>
-</item>
-<item>
-      <title>Guideline 2.1: What Apple Actually Wants From a New Developer | Rebel Studios</title>
-      <link>https://rebelstudiossoftware.com/blog-app-review-guideline-2-1.html</link>
-      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-app-review-guideline-2-1.html</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 -0000</pubDate>
-      <description>Apple rejects new developers under Guideline 2.1 with a six-item questionnaire and a demand for a screen recording from a physical device. Here is what each item is really asking, the in-app purchase trap that turns the next submission into a 3.1.1 rejection, and what recording on a real device actually takes.</description>
+      <title>The Job Application Tracker You'll Actually Keep Updated</title>
+      <link>https://rebelstudiossoftware.com/blog-job-application-tracker.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-job-application-tracker.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Past thirty applications you lose the thread: who to follow up with, which posting wanted what. What a job application tracker actually needs to hold, the columns to leave out, and when a spreadsheet beats a dedicated app.</description>
+    </item>
+    <item>
+      <title>What railway up Actually Uploads</title>
+      <link>https://rebelstudiossoftware.com/blog-railway-up-working-directory.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-railway-up-working-directory.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Nine commits sat invisible to users for seven hours while every deploy reported success. Two facts about Railway deploys worth knowing before you automate one.</description>
+    </item>
+    <item>
+      <title>Every Test Passed and Four Commits Were Gone</title>
+      <link>https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
+      <description>A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.</description>
+    </item>
+    <item>
+      <title>The Test Was Modelling a Game We Had Stopped Running</title>
+      <link>https://rebelstudiossoftware.com/blog-test-modelled-open-sky.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-test-modelled-open-sky.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
+      <description>A one-line ceiling made six of seven levels uncrossable. The hard gate never saw it, because it computed jump arcs in open sky. What it costs when a test models the physics instead of reading it.</description>
     </item>
     <item>
       <title>Which Audiences Actually Buy Zora Creator Coins</title>
@@ -46,6 +46,13 @@
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-zora-audiences-that-buy.html</guid>
       <pubDate>Sat, 19 Sep 2026 00:00:00 -0000</pubDate>
       <description>Zora creators whose biggest audience is on Farcaster have a median of 27 holders per 1,000 followers; X-led creators 7, Instagram-led 4. Data from 155 creators.</description>
+    </item>
+    <item>
+      <title>Guideline 2.1: What Apple Actually Wants From a New Developer | Rebel Studios</title>
+      <link>https://rebelstudiossoftware.com/blog-app-review-guideline-2-1.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-app-review-guideline-2-1.html</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 -0000</pubDate>
+      <description>Apple rejects new developers under Guideline 2.1 with a six-item questionnaire and a demand for a screen recording from a physical device. Here is what each item is really asking, the in-app purchase trap that turns the next submission into a 3.1.1 rejection, and what recording on a real device actually takes.</description>
     </item>
     <item>
       <title>How to Read Zora Creator Rewards Onchain</title>
@@ -174,18 +181,18 @@
       <description>A thirty-year veteran watches AI execute in four seconds what took a career to master, and feels like legacy hardware being phased out. Why that machine metaphor is seductive - and exactly where it breaks.</description>
     </item>
     <item>
-      <title>The Remote Economy Is Just Alone With Wi-Fi</title>
+      <title>It Was Never About Remote Work</title>
       <link>https://rebelstudiossoftware.com/blog-remote-economy-alone.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-remote-economy-alone.html</guid>
       <pubDate>Sun, 30 Aug 2026 00:00:00 -0000</pubDate>
-      <description>The digital nomad life looks like beaches and co-working spaces. Behind the screen it's a solitary survival game: your funnel is a fish basket, marketing is casting into empty water, and a safe corporate job is always one call away. An honest look at the remote economy.</description>
+      <description>A reader called the first version of this reductive and was right. Remote work scales fine and loneliness is solved offline. The real problem is narrower: building something nobody asked for, with no feedback telling you whether to continue.</description>
     </item>
     <item>
-      <title>Recursive Prompting: When a Prompt Works on Its Own Output</title>
+      <title>Most &amp;ldquo;Recursive Prompting&amp;rdquo; Is a Loop</title>
       <link>https://rebelstudiossoftware.com/blog-recursive-prompting.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-recursive-prompting.html</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Looping runs the same prompt over and over. Recursive prompting feeds a prompt its own output, so each pass builds on the last - refine, decompose, converge. What it is, why it beats a loop, and how to do it in Claude, with copy-paste examples.</description>
+      <description>Feeding a prompt its own output is still a loop - one that remembers. Real recursion means the work splits into smaller copies of itself and has a bottom. Why the distinction decides which failure you get: a plateau, or a bill.</description>
     </item>
     <item>
       <title>What It Actually Costs to Trade Tokenized Stocks on Solana | Rebel Studios</title>
