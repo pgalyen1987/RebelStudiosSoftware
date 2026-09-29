@@ -69,6 +69,13 @@
       <description>Fetch.ai's uAgents framework catches every handler exception and writes it to a log — the right call at runtime, but under pytest it means a handler that crashes on every message still shows a green test. Why testing a uAgent is awkward, and how to test one offline: no Almanac, no wallet, no sleep().</description>
     </item>
     <item>
+      <title>Validating CPF and CNPJ Before the Order Is Placed</title>
+      <link>https://rebelstudiossoftware.com/blog-validate-cpf-cnpj-checkout.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-validate-cpf-cnpj-checkout.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>A CPF or CNPJ carries its own check digits, so most mistyped Brazilian tax IDs can be rejected in the browser before checkout, for free. The mod-11 algorithm for both, in plain JavaScript, the repeated-digit number that beats it, and the one thing a valid number still cannot prove.</description>
+    </item>
+    <item>
       <title>The Button Vanished. Nothing Was Saved.</title>
       <link>https://rebelstudiossoftware.com/blog-verify-the-result-not-the-click.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-verify-the-result-not-the-click.html</guid>

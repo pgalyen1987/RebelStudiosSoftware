@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="A CPF or CNPJ carries its own check digits, so most mistyped Brazilian tax IDs can be rejected in the browser before checkout, for free. The mod-11 algorithm for both, in plain JavaScript, the repeated-digit number that beats it, and the one thing a valid number still cannot prove.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-validate-cpf-cnpj-checkout.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-validate-cpf-cnpj-checkout.html">
+    <meta property="og:title" content="Validating CPF and CNPJ Before the Order Is Placed">
+    <meta property="og:description" content="The last two digits of a CPF or CNPJ are computed from the rest, so a mistyped tax ID almost never validates. The check in plain JavaScript, the repeated-digit trap, and what a valid number still cannot tell you.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/validate-cpf-cnpj-checkout.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Validating CPF and CNPJ Before the Order Is Placed">
+    <meta name="twitter:description" content="The last two digits of a CPF or CNPJ are computed from the rest, so a mistyped tax ID almost never validates. The check in plain JavaScript, the repeated-digit trap, and what it still cannot prove.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/validate-cpf-cnpj-checkout.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Validating CPF and CNPJ Before the Order Is Placed","description":"A CPF or CNPJ carries its own check digits, so most mistyped Brazilian tax IDs can be rejected in the browser before checkout. The mod-11 algorithm for both in plain JavaScript, the repeated-digit number that beats it, and the one thing a valid number still cannot prove.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-validate-cpf-cnpj-checkout.html"},"image":"https://rebelstudiossoftware.com/images/blog/validate-cpf-cnpj-checkout.png"}</script>
+    <title>Validating CPF and CNPJ Before the Order Is Placed - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Validating CPF and CNPJ Before the Order Is Placed</h1>
+            <p>The last two digits of a CPF or CNPJ are computed from the ones before them, so a mistyped tax ID almost never validates. Here is the check, in plain JavaScript, and the one number that beats it</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+                <figure class="article-hero"><img src="images/blog/validate-cpf-cnpj-checkout.png" alt="Two panels comparing CPF validation. Well-formed: 111.444.777-35, weights times mod 11 recompute the last two digits, they match, accept with no lookup. One digit off: 111.444.777-34, the check digit says 35 not 34, so it is rejected in the browser before the order." width="1200" height="630" loading="lazy"></figure>
+
+
+                <div class="article-content">
+
+                    <p>A customer fills in their CPF at your checkout, transposes two digits without noticing, and places the order. The address is right, the payment clears, everything looks done. Three days later the nota fiscal bounces because that tax ID does not exist. You email them; they reply the following week; the order sits in limbo the whole time. Every bit of that was catchable in the browser, the instant they left the field, for nothing &mdash; because a CPF is not eleven arbitrary digits.</p>
+
+                    <h2>The last two digits are a checksum</h2>
+
+                    <p>A CPF is nine base digits followed by two <em>check</em> digits. A CNPJ is twelve base digits followed by two. Those trailing digits are not chosen; they are computed from the ones in front of them with a weighted sum taken modulo 11. Change a digit, or swap two of them, and the number you recompute no longer matches the one that was typed. That is the entire mechanism, and it is why you can throw out the large majority of typos without calling a single external service.</p>
+
+                    <p>It is worth being precise about what that buys you. A check digit is an <em>error-detecting</em> code, not a database. It reliably catches any single wrong digit and most two-digit transpositions &mdash; the mistakes humans actually make at a keyboard. That is exactly the failure you want to stop before it becomes a bounced invoice.</p>
+
+                    <h2>CPF, in one function</h2>
+
+                    <p>No dependency, no network. Strip the formatting, then recompute both check digits and compare:</p>
+
+                    <pre><code>// Catches typos. Does NOT prove the CPF is real or belongs to the buyer.
+function isValidCPF(value) {
+  const d = value.replace(/\D/g, '');
+  if (d.length !== 11) return false;
+  if (/^(\d)\1{10}$/.test(d)) return false;   // 111.111.111-11 passes the math - reject it
+
+  const digit = (len) =&gt; {
+    let sum = 0;
+    for (let i = 0; i &lt; len; i++) sum += +d[i] * (len + 1 - i);
+    const r = sum % 11;
+    return r &lt; 2 ? 0 : 11 - r;
+  };
+  return digit(9) === +d[9] &amp;&amp; digit(10) === +d[10];
+}</code></pre>
+
+                    <p>The first check digit weights the nine base digits by 10 down to 2; the second weights the first ten digits by 11 down to 2. In both cases you take the sum modulo 11, and the digit is <code>0</code> when that remainder is under 2, otherwise <code>11 - remainder</code>. That <code>&lt; 2</code> rule is the part people get wrong when they reinvent it from memory.</p>
+
+                    <h2>CNPJ changes the weights</h2>
+
+                    <p>The shape is identical &mdash; weighted sum, modulo 11, same digit rule &mdash; but a CNPJ has twelve base digits and a different set of weights, so it needs its own function rather than a reused one:</p>
+
+                    <pre><code>function isValidCNPJ(value) {
+  const d = value.replace(/\D/g, '');
+  if (d.length !== 14) return false;
+  if (/^(\d)\1{13}$/.test(d)) return false;   // 00.000.000/0000-00 passes the math - reject it
+
+  const digit = (len) =&gt; {
+    const weights = len === 12
+      ? [5,4,3,2,9,8,7,6,5,4,3,2]
+      : [6,5,4,3,2,9,8,7,6,5,4,3,2];
+    let sum = 0;
+    for (let i = 0; i &lt; len; i++) sum += +d[i] * weights[i];
+    const r = sum % 11;
+    return r &lt; 2 ? 0 : 11 - r;
+  };
+  return digit(12) === +d[12] &amp;&amp; digit(13) === +d[13];
+}</code></pre>
+
+                    <p>Validating a CNPJ with the CPF rule &mdash; or the reverse &mdash; is a common and invisible bug: it accepts and rejects the wrong numbers without ever throwing. Pick the function from the customer type (<em>pessoa f&iacute;sica</em> or <em>pessoa jur&iacute;dica</em>), not from the length of whatever they pasted.</p>
+
+                    <h2>The number that passes the math and is still wrong</h2>
+
+                    <p>Run the arithmetic on <code>111.111.111-11</code> and it checks out. So does <code>000.000.000-00</code>. Their recomputed check digits genuinely match, because a run of identical digits is a fixed point of the weighted sum. They are still not valid CPFs, and every real validator rejects them outright &mdash; which is why both functions above bail on a repeated-digit string <em>before</em> touching the math:</p>
+
+                    <pre><code>if (/^(\d)\1{10}$/.test(d)) return false;   // CPF: all eleven digits the same</code></pre>
+
+                    <p>Leave that line out and you will cheerfully accept <code>000.000.000-00</code> &mdash; which is precisely what a bot, or a hurried human, drops into a required field it does not want to fill. The guard is one line and it is the difference between a validator that works and one that only looks like it does.</p>
+
+                    <h2>Validate twice: once for the human, once for you</h2>
+
+                    <p>Client-side, this is a courtesy. Mask the field as they type, validate on blur, and show the error inline so the fix happens while they are still looking at it &mdash; not in an email after the order fails. It makes the checkout feel like it was built for them.</p>
+
+                    <p>Server-side, the same check is a gate, and it is not optional. Client validation protects honest users from their own typos; it protects you from nothing. Anyone can disable JavaScript or POST straight to your order endpoint. Run <code>isValidCPF</code> again on the server before you create the order, and treat the browser result as a hint you still have to confirm. The rule that never lets you down: never trust a value you have not validated on the server.</p>
+
+                    <h2>What a valid CPF still does not tell you</h2>
+
+                    <p>Here is the limit, stated plainly, because pretending otherwise is how stores talk themselves into trouble. A passing check digit means one thing: the number is <strong>well-formed</strong>. It does not mean the CPF exists in the Receita Federal's records, and it does not mean the person at your checkout is the one it belongs to. The checksum catches accidents, not invention &mdash; a determined person can hand-pick a number that validates in a few tries.</p>
+
+                    <p>If you genuinely need to know a document is real and active &mdash; for regulated goods, for fraud screening &mdash; that is a paid lookup against Serpro or a licensed reseller. It costs money per query, it is slower, and it drags in real data-handling obligations about what you are allowed to store and why. That is a deliberate decision with a price attached, not a line of JavaScript. For the ordinary job, stopping typos before they turn into failed invoices, the free check digit is the right tool, and being honest that it proves form and not truth is worth more than a checkmark that overclaims.</p>
+
+                    <h2>The short version</h2>
+
+                    <p>Collecting a Brazilian tax ID is a small field with a sharp edge. Get the check-digit math right and you quietly kill a whole class of silent order failures; get the repeated-digit guard wrong and you wave <code>000.000.000-00</code> straight through. The two functions above are the entire client-side job, the server runs the same two, and neither of them pretends to be a background check.</p>
+
+                    <p>We wired all of this &mdash; the CPF and CNPJ masks, the person-or-company switch that picks the right rule, and the identical validation on both sides &mdash; into <a href="checkout-brasil.html">Checkout Brasil</a>, our WooCommerce plugin for Brazilian checkouts. If you would rather build it yourself, the code above is the part that actually matters.</p>
+
+                    <p><em>We build and run small products, and write up what breaks. <a href="checkout-brasil.html">Checkout Brasil</a> &middot; <a href="services.html">Rebel Studios</a>.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-woocommerce-checkout-brazil.html" class="btn btn-secondary">Read: WooCommerce Checkout in Brazil: What Ships Broken, and Why</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

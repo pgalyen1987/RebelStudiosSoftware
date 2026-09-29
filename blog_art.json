@@ -488,5 +488,11 @@
     "html": "art/paywall-content-without-losing-google.html",
     "alt": "A gated article: a readable public teaser sits above a dashed .members-only fence, the text below it is blurred, and a structured-data declaration pointing a CSS selector at the gated element lets Googlebot index it with no cloaking flag",
     "image": "images/blog/paywall-content-without-losing-google.png"
+  },
+  "validate-cpf-cnpj-checkout": {
+    "kind": "diagram",
+    "html": "art/validate-cpf-cnpj-checkout.html",
+    "alt": "Two panels comparing CPF check-digit validation. Left, well-formed: 111.444.777-35, weights times mod 11 recompute the last two digits, they match, accept with no lookup. Right, one digit off: 111.444.777-34, the check digit says 35 not 34, so it is rejected in the browser before the order. Footer: a valid number is well-formed, not proven real.",
+    "image": "images/blog/validate-cpf-cnpj-checkout.png"
   }
 }

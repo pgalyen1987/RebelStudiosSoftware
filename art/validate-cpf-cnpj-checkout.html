@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:52px 64px 46px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow { font:600 20px/1 'Inter'; letter-spacing:.14em; text-transform:uppercase; color:#8fe05a; }
+  h1 { font:600 52px/1.06 'Space Grotesk'; letter-spacing:-0.01em; margin-top:14px; max-width:1000px; }
+  .cols { display:flex; gap:34px; align-items:stretch; }
+  .panel { flex:1; border-radius:18px; padding:28px 30px 30px; border:1px solid; display:flex; flex-direction:column; gap:18px; }
+  .caught { border-color:rgba(248,113,113,0.42); background:linear-gradient(180deg, rgba(248,113,113,0.10), rgba(248,113,113,0.02)); }
+  .valid { border-color:rgba(108,190,69,0.46); background:linear-gradient(180deg, rgba(108,190,69,0.12), rgba(108,190,69,0.02)); }
+  .tag { font:600 15px/1 'Inter'; letter-spacing:.08em; text-transform:uppercase; }
+  .caught .tag { color:#f87171; }
+  .valid .tag { color:#8fe05a; }
+  .num { font:600 40px/1.2 'Space Grotesk'; letter-spacing:.01em; }
+  .num .base { color:#c7cedb; }
+  .num .dv-good { color:#8fe05a; }
+  .num .dv-bad { color:#f87171; text-decoration:underline; text-decoration-thickness:3px; text-underline-offset:6px; }
+  .flow { display:flex; flex-direction:column; gap:12px; margin-top:2px; }
+  .row { display:flex; align-items:center; gap:12px; font:500 22px/1.28 'Inter'; }
+  .chip { font:600 18px/1 'Space Grotesk'; padding:8px 13px; border-radius:9px; white-space:nowrap; }
+  .chip.bad { background:rgba(248,113,113,0.16); color:#fca5a5; border:1px solid rgba(248,113,113,0.4); }
+  .chip.good { background:rgba(108,190,69,0.16); color:#b9e79a; border:1px solid rgba(108,190,69,0.4); }
+  .arrow { color:#5b6472; font-size:22px; }
+  .dest { color:#c7cedb; }
+  .foot { display:flex; justify-content:space-between; align-items:center; font:500 22px/1 'Inter'; color:#8b95a5; }
+  .foot .site { color:#cbd3df; font-weight:600; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">Checkout Brasil &middot; CPF / CNPJ</div>
+    <h1>The two digits that check the other nine</h1>
+  </div>
+
+  <div class="cols">
+    <div class="panel valid">
+      <div class="tag">well-formed</div>
+      <div class="num"><span class="base">111.444.777-</span><span class="dv-good">35</span></div>
+      <div class="flow">
+        <div class="row"><span class="chip good">weights &times; mod 11</span><span class="arrow">&rarr;</span><span class="dest">recompute the last two</span></div>
+        <div class="row"><span class="chip good">they match</span><span class="arrow">&rarr;</span><span class="dest">accept, no lookup</span></div>
+      </div>
+    </div>
+
+    <div class="panel caught">
+      <div class="tag">one digit off</div>
+      <div class="num"><span class="base">111.444.777-</span><span class="dv-bad">34</span></div>
+      <div class="flow">
+        <div class="row"><span class="chip bad">check digit</span><span class="arrow">&rarr;</span><span class="dest">says 35, not 34</span></div>
+        <div class="row"><span class="chip bad">rejected</span><span class="arrow">&rarr;</span><span class="dest">in the browser, before the order</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>A valid number is well-formed &mdash; not proven real</span>
+    <span class="site">rebelstudiossoftware.com</span>
+  </div>
+</body>
+</html>
