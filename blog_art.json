@@ -476,5 +476,11 @@
     "html": "art/verify-the-result-not-the-click.html",
     "alt": "Two dark UI panels. Left: a ghosted Save button and a green 'dialog closed' check, captioned the UI reacted. Right: a records table showing 0 rows, captioned the write never landed. Below, a red card button.gone===true (proves nothing) beside a green card newRow.time>=clickedAt (real proof).",
     "image": "images/blog/verify-the-result-not-the-click.png"
+  },
+  "secrets-out-of-agent-context": {
+    "kind": "diagram",
+    "html": "art/secrets-out-of-agent-context.html",
+    "alt": "Two ways an agent fills a password field. On the left, fill with the literal value hunter2! sends the secret into the transcript, the model's context, and the run log, all in red. On the right, fill_secret with the key name ACME_PW keeps only the name in context, sends the value to the page once, and a later snapshot of the field reads (secret).",
+    "image": "images/blog/secrets-out-of-agent-context.png"
   }
 }

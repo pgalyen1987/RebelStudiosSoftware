@@ -48,6 +48,13 @@
       <description>Restaurants can take table bookings on their own website instead of renting their guest list from a booking network. What the per-cover fee actually buys, when the network is still the right call, and how to run reservations and no-show deposits in WordPress.</description>
     </item>
     <item>
+      <title>Your Agent Doesn't Need to Know the Password</title>
+      <link>https://rebelstudiossoftware.com/blog-secrets-out-of-agent-context.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-secrets-out-of-agent-context.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>When an AI agent fills a login form, the password lands in the transcript — logged, cached, sent to the model — and it comes back the moment the agent reads the field. How to type a credential the agent never sees, and the test that catches a leak.</description>
+    </item>
+    <item>
       <title>The uAgent Test That Passes While the Handler Crashes</title>
       <link>https://rebelstudiossoftware.com/blog-test-fetchai-uagents.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-test-fetchai-uagents.html</guid>
