@@ -428,5 +428,17 @@
     "html": "art/agent-reads-the-whole-page.html",
     "alt": "Two bars comparing what an agent reads for the same five web pages: Playwright's MCP snapshot at 513,581 characters and thinbrowser's outline at 11,684 characters, a 44 times reduction",
     "image": "images/blog/agent-reads-the-whole-page.png"
+  },
+  "restaurant-reservation-system-wordpress": {
+    "kind": "crop",
+    "src": "images/products/wc-restaurant/shot-2.png",
+    "box": [
+      100,
+      280,
+      1320,
+      690
+    ],
+    "alt": "A restaurant's own booking form: date, time and party size, then name, email and phone, with a Request reservation button",
+    "image": "images/blog/restaurant-reservation-system-wordpress.png"
   }
 }

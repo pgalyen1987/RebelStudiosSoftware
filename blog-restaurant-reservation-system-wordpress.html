@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Restaurants can take table bookings on their own website instead of renting their guest list from a booking network. What the per-cover fee actually buys, when the network is still the right call, and how to run reservations and no-show deposits in WordPress.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-restaurant-reservation-system-wordpress.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-restaurant-reservation-system-wordpress.html">
+    <meta property="og:title" content="Take Table Reservations on Your Own Site, Not the Network's">
+    <meta property="og:description" content="A booking network sells discovery, then charges you a fee for every diner it seats — including the regular who already knew where to find you. When that trade is worth it, when it isn't, and how to run reservations and no-show deposits in WordPress.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/restaurant-reservation-system-wordpress.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Take Table Reservations on Your Own Site, Not the Network's">
+    <meta name="twitter:description" content="A booking network sells discovery, then charges you a fee for every diner it seats — including the regular who already knew where to find you. When that trade is worth it, when it isn't, and how to run reservations and no-show deposits in WordPress.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/restaurant-reservation-system-wordpress.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Take Table Reservations on Your Own Site, Not the Network's","description":"A booking network sells discovery, then charges you a fee for every diner it seats, including the regular who already knew where to find you. When that trade is worth it, when it isn't, and how to run reservations and no-show deposits in WordPress.","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-restaurant-reservation-system-wordpress.html"},"image":"https://rebelstudiossoftware.com/images/blog/restaurant-reservation-system-wordpress.png"}</script>
+    <title>Take Table Reservations on Your Own Site, Not the Network's - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img width="128" height="128" src="images/RS-logo-128.png" alt="" class="logo">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Take Table Reservations on Your Own Site, Not the Network's</h1>
+            <p>What the per-cover fee actually buys, when the network is still the right call, and the honest way to run bookings yourself</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/blog/restaurant-reservation-system-wordpress.png" alt="A restaurant's own booking form: date, time and party size, then name, email and phone, with a Request reservation button" width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+
+                    <p>A booking network does one thing worth paying for: it puts your restaurant in front of a stranger who opened an app tonight, typed in a neighbourhood and a party of two, and had no restaurant in mind until yours came up with a free 7:30. That is a real introduction, and the fee for it is fair.</p>
+
+                    <p>The trouble is that the same network charges you the same fee for the regular who eats at your place every fortnight, knows your chef's name, and only opened the app because that is where the booking button now lives. You are paying a finder's fee to be re-introduced to a customer you already have. And their email address, the one you would use to fill a quiet Tuesday, sits in the network's database, not yours.</p>
+
+                    <p>That is the whole argument for taking your own bookings, and like most strong arguments it does not need dressing up. What it needs is an honest account of what you lose by leaving, because the restaurants that switch and regret it are the ones nobody warned.</p>
+
+                    <h2>What the fee actually buys</h2>
+
+                    <p>Be precise about this, because it is easy to resent the wrong thing. A reservation network typically charges two ways: a flat monthly subscription for the software, and a per-cover fee on the diners it seats through its own marketplace. The monthly part is the price of the tool. The per-cover part is the price of the <strong>demand</strong>.</p>
+
+                    <p>Demand is the expensive word. Technically, a booking form is not hard: a date, a time, a party size, a name and a way to reach them. Every content management system on earth can render that. What you cannot conjure out of a plugin is the person browsing a marketplace at six o'clock deciding where to eat. That person is the product the network sells, and on a genuinely new diner the per-cover fee is a marketing cost with perfect attribution, which is rarer and more valuable than it sounds.</p>
+
+                    <p>The part that stings is that the fee does not know the difference between that stranger and your Friday regular. It applies to both, forever, and it grows precisely as you get better at your job, because it is a percentage-shaped cost on a number you are working hard to increase.</p>
+
+                    <h2>Do this split before you change anything</h2>
+
+                    <p>Pull the last three months of covers and sort them by who the guest was:</p>
+
+                    <ul class="article-list">
+                        <li><strong>Genuine new discovery.</strong> People the network introduced who had never been in. This is the number that justifies the fee, and it is the one you must not talk yourself out of.</li>
+                        <li><strong>People who already knew you.</strong> Regulars, locals, the couple who come for every birthday. Every one of these is a fee paid on a customer you already own, routed through the network only because that is where the button is.</li>
+                        <li><strong>One-off bookings that never came back.</strong> Ambiguous. The network found them; they were worth one service's margin, minus the fee.</li>
+                    </ul>
+
+                    <p>If the middle group is large, you have a clear case, because those people already intend to book you; they only need somewhere on your own site to do it. If the middle group is small and most of your book is real discovery, the network is doing genuine work and you should think hard before walking away from it.</p>
+
+                    <p>Established neighbourhood restaurants usually find the middle group is the majority. New rooms that nobody has heard of yet usually find it is not. That single ratio predicts whether moving your bookings in-house is worth the bother better than anything else.</p>
+
+                    <h2>The honest cost of running it yourself</h2>
+
+                    <p>Three things move onto your side of the counter, and pretending they do not is how owners end up angry six weeks later.</p>
+
+                    <p><strong>Discovery becomes your job.</strong> Nobody browses your website looking for somewhere to eat tonight. You have to tell people the booking page exists: a QR code on the table and the menu, a line on the receipt, the link in every social profile and map listing, a note when you answer the phone. None of it is hard; all of it is a habit you have to keep.</p>
+
+                    <p><strong>The reminders and the waitlist become your job too.</strong> Networks send the confirmation, the day-before nudge, and juggle the waitlist when you are full. Run bookings yourself and, at least at first, some of that is you. An automatic confirmation email covers most of it; the rest is a decision about how much you want to automate versus how much you are happy to handle by hand at your size.</p>
+
+                    <p><strong>The book is only as good as the page.</strong> A booking form that lives three clicks deep, looks nothing like the rest of the site, and breaks on a phone will quietly send people back to the app. If you take this on, the page has to be as considered as the front door.</p>
+
+                    <h2>The no-show, which is the real reason this feels risky</h2>
+
+                    <p>Most owners are not actually worried about the booking software. They are worried about the empty four-top on a Friday that was promised to someone who never came. A free request form does nothing about that; if anything it makes no-shows easier, because a booking that cost the guest nothing is a booking they will drop without a thought.</p>
+
+                    <p>The fix is a deposit, and the mechanism matters more than the amount. Take a small deposit through the checkout you already run, and the table is held <em>only once the deposit is paid</em>. An abandoned checkout never blocks a table, so your book stops filling with reservations nobody intends to keep, and the ones that do land are already confirmed and already committed. Applied to the whole card at the end, it also becomes the fairest way to run a peak service.</p>
+
+                    <p>Be honest with yourself about where to use it. A deposit on every single booking will cost you a few casual walk-in-tomorrow reservations, so most rooms only ask for one on the slots that actually hurt to lose: Friday and Saturday nights, large parties, the holidays. Named plainly on the form, a deposit reads as a serious restaurant protecting a scarce table, not a scam. Hidden or sprung at the end, it reads as the opposite.</p>
+
+                    <h2>What running your own bookings actually requires</h2>
+
+                    <p>Technically, four things, and if you already run WordPress you have the frame for all of them:</p>
+
+                    <ul class="article-list">
+                        <li><strong>A form that asks the right questions:</strong> date, time, party size, a name, and one reliable way to reach the guest. A notes field earns its place — allergies, a high chair, an occasion — and costs nothing.</li>
+                        <li><strong>A confirmation the guest trusts.</strong> An email that arrives immediately, so the person is not left wondering whether the booking took. You get the matching notification.</li>
+                        <li><strong>One place you already look</strong> to see the book and confirm or cancel, which then emails the guest. A dashboard nobody opens is worse than a paper diary.</li>
+                        <li><strong>A way in from the real world.</strong> A QR code on the table that opens your menu and booking page closes the loop for the guest who is sitting there right now deciding to come back.</li>
+                    </ul>
+
+                    <p>Notice what is <em>not</em> on that list: a live floor plan, table-turn timers, an SMS engine, a marketing suite. Those are what a network builds to justify a recurring fee, and a restaurant taking its own bookings needs none of them on day one, and several of them never.</p>
+
+                    <div class="article-callout">
+                        <h3>If you would rather not build it</h3>
+                        <p>Our free <a href="wc-restaurant.html">Restaurant Menu &amp; Reservations</a> plugin drops a styled booking form onto any WordPress page with <code>[rs_reservation]</code>: the guest gets an instant confirmation email, you get the notification and confirm or cancel from the admin, which emails them back. A printable QR menu is built in. <a href="wc-restaurant-pro.html">Restaurant Pro</a> ($69 once) adds reservation deposits taken through your own WooCommerce checkout, so a table is held only after the deposit is paid — your gateway, your money, <strong>no per-cover fee</strong>. It does not do floor-plan management, automated SMS reminders, or a public waitlist, and the page says so.</p>
+                    </div>
+
+                    <h2>Start with the request form, add the deposit later</h2>
+
+                    <p>If you do one thing this week: put a real booking form on your own site, wire the confirmation email, and print a QR for the tables. Leave the network running in parallel. Watch, over a month, how many of your regulars book direct once there is an obvious way to. That is the middle group from earlier, moving in-house for a one-time cost instead of a fee on every visit.</p>
+
+                    <p>Once you can see the volume, turn on deposits for the slots you cannot afford to lose, and only those. If your regulars move over and your Friday no-shows fall, you have removed a recurring cost and taken back your own guest list. If nothing moves, you have learned cheaply that the network was doing more for you than you thought — which is worth knowing before you bet a Saturday on it.</p>
+
+                    <p><em>Running a restaurant and tired of paying to reach your own regulars? <a href="index.html#contact">Tell us how you take bookings now</a>; the arithmetic is usually clearer than it looks.</em></p>
+
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-commission-free-online-ordering-restaurants.html" class="btn btn-secondary">Read: taking your own orders, commission-free &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img width="128" height="128" src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
