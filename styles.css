@@ -2655,6 +2655,60 @@ h1, h2, h3, h4 {
     color: var(--ink-1);
 }
 
+/* Comparison tables (e.g. benchmark numbers). Numeric columns are right-aligned
+   with tabular figures so orders of magnitude line up; the total row is set
+   apart and its ratio carries the accent. Held to the prose measure so it reads
+   with the surrounding copy rather than spanning the full track. */
+.article-content > .article-table,
+.article-content > .article-caption {
+    max-width: var(--measure-prose);
+    margin-inline: auto;
+}
+.article-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: var(--space-md) var(--space-xs);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
+.article-table th,
+.article-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+}
+.article-table th:first-child,
+.article-table td:first-child {
+    text-align: left;
+}
+.article-table thead th {
+    color: var(--ink-1);
+    font-weight: 700;
+    border-bottom-color: var(--line-strong);
+    white-space: nowrap;
+}
+.article-table td {
+    color: var(--ink-2);
+}
+.article-table code {
+    font-size: 0.9em;
+}
+.article-table .article-table-total td {
+    color: var(--ink-1);
+    font-weight: 700;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: none;
+}
+.article-table .article-table-total td:last-child {
+    color: var(--green-bright);
+}
+.article-caption {
+    margin-block: 0 var(--space-md);
+    font-size: var(--text-sm);
+    line-height: var(--leading-body);
+    color: var(--ink-3);
+}
+
 .article-content a {
     color: var(--green-bright);
     font-weight: 600;

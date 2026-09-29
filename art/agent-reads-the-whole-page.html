@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:66px 72px 60px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow {
+    font-family:'Inter',sans-serif; font-size:15px; font-weight:600;
+    letter-spacing:.22em; text-transform:uppercase; color:#8fe05a;
+  }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:47px; line-height:1.1; letter-spacing:-.02em; color:#eef1f7;
+    margin-top:16px; max-width:940px;
+  }
+  .bars { margin:2px 0; }
+  .row { margin:22px 0; }
+  .rowhead { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px; }
+  .lbl { font-size:19px; font-weight:600; color:#cdd4e0; }
+  .lbl .sub { font-size:15px; font-weight:400; color:#7b8498; margin-left:8px; }
+  .val { font-family:'Space Grotesk',sans-serif; font-variant-numeric:tabular-nums; font-size:20px; font-weight:600; color:#a8b1c2; }
+  .track { height:26px; border-radius:7px; background:rgba(148,163,184,0.10); overflow:hidden; }
+  .fill { height:100%; border-radius:7px; }
+  .fill.pw { width:100%; background:linear-gradient(90deg,#3a4356,#4a5468); }
+  .fill.tb { background:linear-gradient(90deg,#6cbe45,#8fe05a); box-shadow:0 0 18px rgba(108,190,69,.5); }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; }
+  .punch { display:flex; align-items:baseline; gap:16px; }
+  .punch .big { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:64px; line-height:.9; color:#8fe05a; letter-spacing:-.02em; }
+  .punch .cap { font-size:17px; color:#a8b1c2; max-width:300px; line-height:1.35; }
+  .meta { text-align:right; font-size:14px; color:#7b8498; line-height:1.55; }
+  .meta .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; }
+  .meta code { font-family:'JetBrains Mono',ui-monospace,monospace; color:#a8b1c2; font-size:13px; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">Measured &middot; 5 live pages &middot; 2026-09-29</div>
+    <h1>The same five web pages, as an AI agent reads them</h1>
+  </div>
+
+  <div class="bars">
+    <div class="row">
+      <div class="rowhead">
+        <span class="lbl">Playwright MCP snapshot <span class="sub">the whole accessibility tree</span></span>
+        <span class="val">513,581 chars</span>
+      </div>
+      <div class="track"><div class="fill pw"></div></div>
+    </div>
+    <div class="row">
+      <div class="rowhead">
+        <span class="lbl">thinbrowser outline <span class="sub">what the agent can act on</span></span>
+        <span class="val" style="color:#8fe05a">11,684 chars</span>
+      </div>
+      <div class="track"><div class="fill tb" style="width:2.275%"></div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="punch">
+      <span class="big">44&times;</span>
+      <span class="cap">less page for the model to read &mdash; about 128,000 tokens down to 2,900</span>
+    </div>
+    <div class="meta">
+      <div class="wm">thinbrowser</div>
+      <div>an MCP browser layer &middot; Rebel Studios</div>
+      <div><code>npm run bench</code> reproduces this</div>
+    </div>
+  </div>
+</body>
+</html>
