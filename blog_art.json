@@ -1,4 +1,10 @@
 {
+  "test-fetchai-uagents": {
+    "kind": "diagram",
+    "html": "art/test-fetchai-uagents.html",
+    "alt": "Two pytest results for the same Fetch.ai uAgent handler that raises on every message: standing the agent up the usual way reports PASS because the framework catches the exception into a log, while uagent-testkit's deliver() reports FAIL with the ValueError surfaced",
+    "image": "images/blog/test-fetchai-uagents.png"
+  },
   "legacy-hardware": {
     "kind": "photo",
     "pexels": 37148213,

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:8px;padding:8px 16px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Fetch.ai's uAgents framework catches every handler exception and writes it to a log — the right call at runtime, but under pytest it means a handler that crashes on every message still shows a green test. Why testing a uAgent is awkward, and how to test one offline: no Almanac, no wallet, no sleep().">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-test-fetchai-uagents.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-test-fetchai-uagents.html">
+    <meta property="og:title" content="The uAgent Test That Passes While the Handler Crashes">
+    <meta property="og:description" content="Fetch.ai's uAgents framework catches every handler exception and writes it to a log — so under pytest a handler that crashes on every message still shows a green test. Why testing a uAgent is awkward, and how to test one offline: no Almanac, no wallet, no sleep().">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/test-fetchai-uagents.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The uAgent Test That Passes While the Handler Crashes">
+    <meta name="twitter:description" content="Fetch.ai's uAgents framework catches every handler exception and writes it to a log — so under pytest a handler that crashes on every message still shows a green test. How to test a uAgent offline: no Almanac, no wallet, no sleep().">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/test-fetchai-uagents.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The uAgent Test That Passes While the Handler Crashes","description":"Fetch.ai's uAgents framework catches every handler exception and writes it to a log — so under pytest a handler that crashes on every message still shows a green test. Why testing a uAgent is awkward, and how to test one offline: no Almanac, no wallet, no sleep().","datePublished":"2026-09-29","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-test-fetchai-uagents.html"},"image":"https://rebelstudiossoftware.com/images/blog/test-fetchai-uagents.png"}</script>
+    <title>The uAgent Test That Passes While the Handler Crashes - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>The uAgent Test That Passes While the Handler Crashes</h1>
+            <p>Fetch.ai&rsquo;s uAgents framework has no testing seam, so most people test a handler by standing the whole agent up &mdash; which quietly hides the one failure you most need to see</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">September 29, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-figure"><img src="images/blog/test-fetchai-uagents.png" alt="Two pytest results for the same Fetch.ai uAgent handler that raises on every message: standing the agent up the usual way reports PASS because the framework catches the exception into a log, while uagent-testkit's deliver() reports FAIL with the ValueError surfaced" width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>You wrote a <a href="https://github.com/fetchai/uAgents" target="_blank" rel="noopener noreferrer">Fetch.ai uAgent</a>. It has an <code>@on_message</code> handler that does something worth getting right &mdash; parses a request, updates storage, sends a reply. Now you want a test for it, the kind you can run on every commit. And you find there is no obvious place to put one.</p>
+
+                    <p>The framework was not built with a test seam. There is no <code>agent.handle(msg)</code> you can call and assert against. So the path most people take is to stand the agent up the way it runs in production and talk to it over a socket: register on the Almanac, resolve an endpoint, on some paths fund a wallet, then <code>asyncio.sleep()</code> your way through the test hoping the reply arrives before the timeout. It is slow, it is flaky, and it is miserable in CI &mdash; a network hiccup fails a test that has nothing to do with the network.</p>
+
+                    <p>That is the annoying problem. Underneath it is a worse one.</p>
+
+                    <h2>A green test that should be red</h2>
+
+                    <p>uAgents wraps every handler in a <code>try/except</code>. When your handler raises, <code>Agent._handle_message</code> catches the exception and writes it to a log instead of letting it propagate. At runtime that is exactly right: an agent processes messages from peers it does not control, and one malformed message must not take the whole process down.</p>
+
+                    <p>But there is no strict mode to turn that containment off, and it does not know it is running under pytest. So the same swallow happens in your test. Consider a handler with an ordinary bug &mdash; it assumes a field is numeric:</p>
+
+                    <pre><code>@agent.on_message(model=Order, replies=Receipt)
+async def on_order(ctx, sender, msg):
+    ctx.storage.set("orders", (ctx.storage.get("orders") or 0) + 1)
+    total = int(msg.amount)              # msg.amount arrives as "12.50"
+    await ctx.send(sender, Receipt(total=total))</code></pre>
+
+                    <p>Send that agent an <code>amount</code> of <code>"12.50"</code> and <code>int()</code> raises <code>ValueError</code> on every call. Stand the agent up and drive a message through it, and the traceback lands in a log line, the handler returns as if it were &ldquo;handled,&rdquo; no reply is sent &mdash; and your test, which was waiting for the process not to fall over, goes green. The bug is real and shipping. The signal that would have caught it was absorbed one layer down.</p>
+
+                    <h2>Route the message straight to the handler</h2>
+
+                    <p>The fix is to stop talking to the agent over a socket and call the handler directly, with a context that records instead of transmits. That is the whole idea behind <a href="https://pypi.org/project/uagent-testkit/" target="_blank" rel="noopener noreferrer">uagent-testkit</a>, a pytest harness we built while shipping uAgents of our own:</p>
+
+                    <pre><code>from uagent_testkit import harness
+
+async def test_order_is_handled():
+    h = harness(agent)
+    result = await h.deliver(Order(amount="12.50"), sender="agent1qexample")
+
+    result.assert_replied_with(Receipt)       # it declared replies=Receipt; did it send one?
+    assert h.storage["orders"] == 1</code></pre>
+
+                    <p>No Almanac, no endpoint, no wallet, no <code>sleep()</code>. The message goes to the registered handler; <code>ctx.send</code> is intercepted and its payloads collected on <code>result.sent</code>; storage is a fresh in-memory store. And crucially, <code>deliver()</code> re-raises whatever the handler raised. Run the test above against the buggy handler and it does not go green &mdash; it fails on the <code>ValueError</code>, at the line that caused it. When the failure is the thing you are testing, you opt back into the framework&rsquo;s behaviour explicitly:</p>
+
+                    <pre><code>result = await h.deliver(Order(amount="12.50"), raise_errors=False)
+assert isinstance(result.error, ValueError)</code></pre>
+
+                    <h2>The quiet failures it turns loud</h2>
+
+                    <p>The swallowed exception is the headline, but the same theme &mdash; a real failure that a stand-it-up test reports as success &mdash; runs through the rest of the framework. Each of these is an assertion instead of a log line nobody reads:</p>
+
+                    <ul class="article-list">
+                        <li><strong>A broken reply contract.</strong> A handler marked <code>@on_message(replies=Receipt)</code> that never actually sends a <code>Receipt</code> is a bug on a live network and a shrug in a normal test. <code>assert_reply_contract()</code> makes it fail.</li>
+                        <li><strong>State leaking between tests.</strong> The stock <code>KeyValueStore</code> writes a JSON file to your working directory, so one test&rsquo;s storage bleeds into the next and order-dependent passes hide real bugs. The harness swaps in an in-memory store that starts empty every time.</li>
+                        <li><strong>An hour-long interval you can&rsquo;t wait for.</strong> An <code>@on_interval(period=3600)</code> or an <code>@on_event("startup")</code> handler is real logic that never runs in a message test. <code>h.tick()</code>, <code>h.startup()</code> and <code>h.shutdown()</code> run them on demand, period ignored.</li>
+                        <li><strong>An echo loop between two agents.</strong> A keyword responder whose answer contains its own trigger word will talk to another agent forever. <code>AgentNetwork</code> plays the conversation out deterministically and raises <code>ConversationTooLong</code> with the transcript attached, so a loop that costs real money in production fails in milliseconds here.</li>
+                        <li><strong>A handler reachable by senders production would reject.</strong> Handlers without <code>allow_unverified=True</code> only accept verified agent addresses; the harness enforces that, so a test can&rsquo;t pass for a path the live network refuses.</li>
+                    </ul>
+
+                    <h2>Agents that read the chain, tested offline</h2>
+
+                    <p>uAgents in the BNB Chain and ASI ecosystems often read on-chain state &mdash; a BEP-20 balance, a token&rsquo;s decimals &mdash; and intercepting <code>ctx.send</code> does nothing about a handler that reaches out to an RPC endpoint. <code>ChainDouble</code> closes that gap by patching whichever of <code>requests</code>, <code>httpx</code> and <code>aiohttp</code> the agent imports:</p>
+
+                    <pre><code>chain = ChainDouble()
+chain.add_token(FET_BSC, symbol="FET", decimals=18,
+                balances={wallet: 5_500_000_000_000_000_000})
+with chain.install():
+    result = await h.deliver(CheckBalance(wallet=wallet))
+assert result.reply(BalanceReport).amount == 5.5</code></pre>
+
+                    <p>It answers <code>eth_call</code> (<code>balanceOf</code>, <code>symbol</code>, <code>name</code>, <code>decimals</code>, <code>totalSupply</code>), <code>eth_getBalance</code>, <code>eth_getCode</code> and the rest from the state your test set. The two things it refuses are the point: reading a value you never stubbed raises <code>UnstubbedCall</code> rather than quietly returning zero, and any non&ndash;JSON-RPC HTTP from inside a handler raises <code>NetworkCallBlocked</code> rather than hitting a real API from CI.</p>
+
+                    <div class="article-highlight">
+                        <h3>What it won&rsquo;t pretend to do</h3>
+                        <p>A test tool earns trust by being honest about its edges, so this one is blunt about them. It does <em>not</em> simulate Almanac resolution, envelope signing, or on-chain settlement. Those are integration concerns, and faking them would hand you a green suite that proves nothing about whether your agent actually registers, signs, or settles &mdash; false confidence is worse than no test. Keep one thin integration test on a real testnet for the wire, and use this for everything above it: routing, replies, storage, protocol contracts, and inter-agent flow.</p>
+                    </div>
+
+                    <p>It is free and Apache-2.0, it depends only on <code>uagents</code> itself, and installing it registers the pytest fixtures automatically &mdash; there is nothing to wire up:</p>
+
+                    <pre><code>pip install uagent-testkit</code></pre>
+
+                    <p>The source and the full API are on <a href="https://github.com/pgalyen1987/uagent-testkit" target="_blank" rel="noopener noreferrer">GitHub</a>, and it is on <a href="https://pypi.org/project/uagent-testkit/" target="_blank" rel="noopener noreferrer">PyPI</a>. If you have shipped a uAgent, the fastest way to see the point is to point it at a handler you believe already works &mdash; the interesting result is the one that doesn&rsquo;t go green.</p>
+
+                    <p><em>We build small tools that make the failure show up where the bug is, not three steps later. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="blog-agent-reads-the-whole-page.html" class="btn btn-secondary">Read: An AI Agent Pays to Read the Whole Page &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

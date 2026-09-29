@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(108,190,69,0.16), transparent 60%),
+      radial-gradient(700px 500px at -8% 120%, rgba(45,212,191,0.10), transparent 55%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:64px 72px 58px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow {
+    font-family:'Inter',sans-serif; font-size:15px; font-weight:600;
+    letter-spacing:.22em; text-transform:uppercase; color:#8fe05a;
+  }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:44px; line-height:1.12; letter-spacing:-.02em; color:#eef1f7;
+    margin-top:15px; max-width:960px;
+  }
+  .rows { margin:4px 0; }
+  .row { display:flex; align-items:center; gap:26px; margin:20px 0; }
+  .rowtext { flex:1; }
+  .rowtext .what { font-size:20px; font-weight:600; color:#cdd4e0; }
+  .rowtext .what code { font-family:'JetBrains Mono',ui-monospace,monospace; font-size:18px; color:#eef1f7; }
+  .rowtext .sub { font-size:15px; font-weight:400; color:#7b8498; margin-top:5px; }
+  .pill {
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px;
+    letter-spacing:.02em; padding:12px 26px; border-radius:11px; white-space:nowrap;
+    min-width:210px; text-align:center;
+  }
+  .pill.pass { background:rgba(74,84,104,0.35); color:#9aa4b6; border:1px solid rgba(154,164,182,0.28); }
+  .pill.fail { background:linear-gradient(90deg,#6cbe45,#8fe05a); color:#07110a; box-shadow:0 0 22px rgba(108,190,69,.45); }
+  .pill .tag { display:block; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; opacity:.8; margin-top:2px; }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; }
+  .punch { max-width:600px; }
+  .punch .line { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.18; color:#eef1f7; letter-spacing:-.01em; }
+  .punch .line em { color:#8fe05a; font-style:normal; }
+  .meta { text-align:right; font-size:14px; color:#7b8498; line-height:1.55; }
+  .meta .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#eef1f7; letter-spacing:-.01em; }
+  .meta code { font-family:'JetBrains Mono',ui-monospace,monospace; color:#a8b1c2; font-size:13px; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">uAgents &middot; pytest &middot; 2026-09-29</div>
+    <h1>A handler that crashes on every message.<br>One of these tests is green.</h1>
+  </div>
+
+  <div class="rows">
+    <div class="row">
+      <div class="rowtext">
+        <div class="what">Stand the agent up, the usual way</div>
+        <div class="sub">the framework catches the exception and writes it to a log</div>
+      </div>
+      <div class="pill pass">PASS <span class="tag">false green</span></div>
+    </div>
+    <div class="row">
+      <div class="rowtext">
+        <div class="what"><code>harness(agent).deliver(msg)</code></div>
+        <div class="sub">the crash is re-raised, so the test fails where the bug is</div>
+      </div>
+      <div class="pill fail">FAIL <span class="tag">ValueError</span></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="punch">
+      <div class="line">Test Fetch.ai uAgents <em>offline</em> &mdash; no network, no wallet, no <code style="font-size:.85em">sleep()</code>.</div>
+    </div>
+    <div class="meta">
+      <div class="wm">uagent-testkit</div>
+      <div>a pytest harness &middot; Rebel Studios</div>
+      <div><code>pip install uagent-testkit</code></div>
+    </div>
+  </div>
+</body>
+</html>
