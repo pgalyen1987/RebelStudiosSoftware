@@ -119,8 +119,8 @@
             <div class="product-hero-grid">
                 <div class="product-hero-text">
                     <h2>Payments You Could Dispute. Scams You Could Reverse.</h2>
-                    <p>Indemnity (INDN) is an ERC-20 with a built-in safety net. Payments between wallets sit in on-chain escrow for <strong>7 days</strong>. If something&rsquo;s wrong, the payer opens a dispute and a decentralized <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">Kleros</a> jury, not us, decides who keeps them. Swaps and transfers involving allowlisted exchange addresses settle instantly, so trading is unaffected.</p>
-                    <p class="results-subtitle" style="margin-top:1rem;">Status: <strong>testnet</strong>, deployed on Arbitrum Sepolia for live Kleros dispute testing. Mainnet launch pending security audit and Kleros whitelist approval.</p>
+                    <p>Indemnity (INDN) is an ERC-20 with a built-in safety net. Payments between wallets sit in on-chain escrow for <strong>7 days</strong>. The design was that if something went wrong, the payer would open a dispute and a decentralized <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">Kleros</a> jury, not us, would decide who keeps them — that half was never switched on, for the reason given below. Swaps and transfers involving allowlisted exchange addresses settle instantly, so trading is unaffected.</p>
+                    <p class="results-subtitle" style="margin-top:1rem;">Status: <strong>deployed, never launched.</strong> The contract is live on <strong>Arbitrum One</strong> — not a testnet — at <code>0x9c2300F97E14D7c7478003F52E562Ff2fC14E89e</code>, deployed 17 July 2026. It has <strong>no liquidity and is not for sale</strong>: there is nothing to buy, and you should not try to buy it. The dispute half does not function, because a Kleros court never whitelisted the arbitrable. Its own security review is a first pass and says plainly: do not hold real funds in it. It is published here as engineering, not as a product.</p>
                     <div class="product-stats-row">
                         <div class="product-stat">
                             <span class="stat-number">7 days</span>
@@ -260,7 +260,7 @@
     <section class="product-features" id="token">
         <div class="container">
             <h2 class="section-title">INDN at a Glance</h2>
-            <p class="results-subtitle">Currently deployed for testing on the Arbitrum Sepolia testnet. Mainnet addresses will be published after audit and Kleros whitelist approval.</p>
+            <p class="results-subtitle">Deployed on <strong>Arbitrum One mainnet</strong> on 17 July 2026 and never launched: no liquidity was ever added, so there is no market and nothing to buy. Published here so the work and its unfinished parts are both on the record.</p>
             <div class="indn-facts">
                 <div class="indn-fact"><div class="k">Name</div><div class="v">Indemnity</div></div>
                 <div class="indn-fact"><div class="k">Symbol</div><div class="v">INDN</div></div>
@@ -268,11 +268,11 @@
                 <div class="indn-fact"><div class="k">Dispute Window</div><div class="v">7 days (default for wallet-to-wallet transfers)</div></div>
                 <div class="indn-fact"><div class="k">Protocol Fee</div><div class="v">0.25% on delivered protected payments &middot; 1% hard cap</div></div>
                 <div class="indn-fact"><div class="k">Standard</div><div class="v">ERC-20 &middot; ERC-792 &middot; ERC-1497</div></div>
-                <div class="indn-fact"><div class="k">Arbitrator</div><div class="v">Kleros (production), fixed at deploy</div></div>
-                <div class="indn-fact"><div class="k">Network</div><div class="v">Arbitrum Sepolia testnet (pre-launch)</div></div>
+                <div class="indn-fact"><div class="k">Arbitrator</div><div class="v">Kleros, fixed at deploy &mdash; <strong>non-functional:</strong> the arbitrable was never whitelisted by a Kleros court, so no dispute can be raised</div></div>
+                <div class="indn-fact"><div class="k">Network</div><div class="v">Arbitrum One (mainnet), deployed 17 July 2026</div></div>
             </div>
             <div class="indn-disclaimer">
-                <strong>Testnet software, not financial advice.</strong> Indemnity is an experimental project currently deployed on a test network with no monetary value. The dispute model is an MVP: the payer initiates a dispute by paying the Kleros arbitration fee in ETH (non-refundable, deterring frivolous disputes). A tie or refuse-to-arbitrate ruling refunds the payer in full; a ruling for the receiver releases the payment, net of the protocol fee. If the arbitrator never rules, anyone can return the funds to the payer after a long timeout. The contract is immutable and unpausable. Always read the contract and understand the arbitration terms before relying on it.
+                <strong>Unfinished software. Not for sale, and not financial advice.</strong> Indemnity is on Arbitrum One mainnet at <code>0x9c2300F97E14D7c7478003F52E562Ff2fC14E89e</code>, but it was never launched: no liquidity exists, so it cannot be bought, and nobody should try. Three things are unresolved, and they matter more than anything else on this page: the owner key is a <strong>1-of-1</strong> Safe where the design calls for 2-of-3; the fee treasury address is <strong>immutable</strong> and still points at the deploying wallet; and the security review is a first pass whose own conclusion is <em>do not hold real funds</em>. Owner powers also remain &mdash; an exchange allowlist decides which addresses settle instantly, so the owner can affect whether a pool trades. The dispute model is an MVP: the payer initiates a dispute by paying the Kleros arbitration fee in ETH (non-refundable, deterring frivolous disputes). A tie or refuse-to-arbitrate ruling refunds the payer in full; a ruling for the receiver releases the payment, net of the protocol fee. If the arbitrator never rules, anyone can return the funds to the payer after a long timeout. The contract is immutable and unpausable. Always read the contract and understand the arbitration terms before relying on it.
             </div>
         </div>
     </section>
