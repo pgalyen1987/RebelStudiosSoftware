@@ -55,6 +55,7 @@ STATIC_PAGES = [
     ("resume-matcher.html", "2026-09-07", "weekly", "0.8"),
     ("wp-plugin-boilerplate.html", "2026-09-07", "weekly", "0.8"),
     ("dev-toolbox.html", "2026-09-07", "weekly", "0.8"),
+    ("thinbrowser.html", "2026-09-29", "weekly", "0.8"),
     ("job-hunt-tracker.html", "2026-09-08", "weekly", "0.8"),
     ("wc-events-pro.html", "2026-09-08", "weekly", "0.8"),
     ("wc-invoices-pro.html", "2026-09-13", "weekly", "0.8"),
