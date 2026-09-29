@@ -452,5 +452,11 @@
     "html": "art/playwright-click-intercepted-by-overlay.html",
     "alt": "A browser viewport with a Submit button and a crosshair on its centre point; a fixed cookie consent bar overlaps that point, so document.elementFromPoint at those coordinates returns .cookie-consent, not #submit",
     "image": "images/blog/playwright-click-intercepted-by-overlay.png"
+  },
+  "bulk-print-woocommerce-invoices": {
+    "kind": "diagram",
+    "html": "art/bulk-print-woocommerce-invoices.html",
+    "alt": "A WooCommerce Orders list with four orders ticked and the bulk action 'Print invoices (PDF)' chosen, producing one PDF file with a page per order",
+    "image": "images/blog/bulk-print-woocommerce-invoices.png"
   }
 }

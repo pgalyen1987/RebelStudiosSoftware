@@ -20,6 +20,13 @@
       <description>Playwright's MCP server hands a model 128,000 tokens to read five pages it has never seen — nav bars, hidden menus, ARIA scaffolding, almost none of it the element the agent came to click. Where that cost comes from, the other ways an unseen page fights back, and how we cut the page 44x smaller.</description>
     </item>
     <item>
+      <title>Printing a Whole Day's WooCommerce Invoices at Once</title>
+      <link>https://rebelstudiossoftware.com/blog-bulk-print-woocommerce-invoices.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-bulk-print-woocommerce-invoices.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
+      <description>WooCommerce makes you open every order to print its invoice; there is no 'print all' button, even with an invoice plugin. Why that gap exists, what a real bulk-print action has to get right, and how to add one.</description>
+    </item>
+    <item>
       <title>The Click That Landed on the Cookie Banner</title>
       <link>https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-playwright-click-intercepted-by-overlay.html</guid>
