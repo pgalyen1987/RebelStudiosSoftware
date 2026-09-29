@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.g
 <link rel="canonical" href="https://rebelstudiossoftware.com/thinbrowser.html">
 <meta property="og:url" content="https://rebelstudiossoftware.com/thinbrowser.html">
 <meta property="og:title" content="thinbrowser — 44x less page for your agent">
-<meta property="og:description" content="The snapshot Playwright's MCP server sends for one Wikipedia article is 241,988 characters. This sends 3,877. Measured, reproducible, MIT.">
+<meta property="og:description" content="The snapshot Playwright's MCP server sends for one Wikipedia article is 244,885 characters. This sends 3,877. Measured, reproducible, MIT.">
 <meta property="og:image" content="https://rebelstudiossoftware.com/images/thinbrowser/banner.png">
 <meta name="twitter:card" content="summary_large_image">
 <title>thinbrowser</title>
@@ -192,7 +192,7 @@ window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.g
       <p class="lede">
         Playwright was built to test pages you wrote, where you already know the selectors. An agent
         is working pages it has never seen — and the snapshot Playwright's MCP server hands it to
-        decide what to click is <b>241,988 characters</b> for one Wikipedia article. That is so large
+        decide what to click is <b>244,885 characters</b> for one Wikipedia article. That is so large
         the server writes it to a file rather than returning it. Here is that page both ways, at the
         same moment.
       </p>
@@ -202,7 +202,7 @@ window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.g
       <div class="col a">
         <div class="col-head">
           <span class="who">Playwright MCP snapshot</span>
-          <span class="size">241,988 chars</span>
+          <span class="size">244,885 chars</span>
         </div>
         <div class="snip">- generic [active] [ref=e1]:
   - link "Jump to content" [ref=e2] [cursor=pointer]:
@@ -267,7 +267,7 @@ form "searchform":
           <tr><th>Page</th><th>Playwright MCP</th><th>thinbrowser</th><th>Smaller</th></tr>
         </thead>
         <tbody>
-          <tr><td>en.wikipedia.org/wiki/Accessibility</td><td class="pw">241,988</td><td>3,877</td><td class="ratio">62.4&times;</td></tr>
+          <tr><td>en.wikipedia.org/wiki/Accessibility</td><td class="pw">244,885</td><td>3,877</td><td class="ratio">62.4&times;</td></tr>
           <tr><td>developer.mozilla.org · fetch</td><td class="pw">167,595</td><td>2,667</td><td class="ratio">62.8&times;</td></tr>
           <tr><td>news.ycombinator.com</td><td class="pw">58,158</td><td>1,781</td><td class="ratio">32.7&times;</td></tr>
           <tr><td>playwright.dev/docs/intro</td><td class="pw">37,296</td><td>2,905</td><td class="ratio">12.8&times;</td></tr>
@@ -284,7 +284,7 @@ form "searchform":
       — 1.7&times;, because every page here reaches network idle quickly; the large time wins are
       on pages that never go idle at all, and this set doesn't contain one yet. An earlier run of this
       benchmark measured <code>ariaSnapshot()</code> instead and reported 19.9&times;; that omits the
-      <code>[ref]</code> annotations MCP adds, and understated the gap by nearly half. Measured 26 Sep 2026 — the Hacker News row moves with its
+      <code>[ref]</code> annotations MCP adds, and understated the gap by nearly half. Measured 29 Sep 2026 — the Hacker News row moves with its
       front page, so re-running gives a slightly different total every day.
     </p>
   </section>
