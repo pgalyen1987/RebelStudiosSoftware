@@ -84,6 +84,9 @@
     <li><strong>Practice leaderboards.</strong> Once you have named your table, your
         player id, that name and your practice scores go to Google Firebase Realtime
         Database so the board can rank runs.</li>
+    <li><strong>Practice averages.</strong> How long each practice guess took is added to an
+        anonymous per-song average (a count and a total time, no player id), so the game
+        can show how you compare.</li>
     <li><strong>Song previews and artwork</strong> are fetched from Apple's public
         iTunes Search API.</li>
   </ul>
@@ -101,7 +104,7 @@
 
   <h2>Third parties</h2>
   <ul>
-    <li>Google Firebase: rooms and practice scores. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy ↗</a></li>
+    <li>Google Firebase: rooms, practice scores and practice averages. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy ↗</a></li>
     <li>Apple iTunes Search API: song previews and artwork.</li>
     <li>Your phone's speech recognition service (Apple on iPhone, usually Google on
         Android): the microphone audio during a round, as described above.</li>
