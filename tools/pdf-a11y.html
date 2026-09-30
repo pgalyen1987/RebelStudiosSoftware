@@ -78,7 +78,7 @@
             <h2>What it does</h2>
             <p>It sets the document title and language. The title is the one you type, or one taken from the text if you leave it blank. The language is en-US unless you give another.</p>
             <p>If it finds headings, it adds a contents page at the front that lists up to 20 of them. An AI model picks them out of the first 10,000 characters of text, so in a long document it only sees the early ones.</p>
-            <p>The report says whether the PDF was already tagged, how many images it has, and what else it can see is wrong, such as a scan with no text for a screen reader to read.</p>
+            <p>The report says whether the PDF was already tagged, how many images it has, and what else it can see is wrong.</p>
             <h2>What it does not do</h2>
             <p>It does not tag the PDF. Tags are the structure that tells a screen reader which text is a heading, what order to read things in and what each image shows, and a WCAG or Section 508 review expects them. So this is not a compliance tool. It sets the title and language and tells you how much is left to do.</p>
             <p>It also fails on a document whose headings use characters outside Western European alphabets, such as Cyrillic or Chinese.</p>
@@ -98,7 +98,7 @@
                 <h3>Will it change how the PDF looks?</h3>
                 <p>Your existing pages stay as they are. If it finds headings, it adds one page at the front that lists them as plain text, with no links or page numbers. It is an ordinary page, not PDF bookmarks, so delete it if you don’t want it.</p>
                 <h3>Does it work on a scanned PDF?</h3>
-                <p>Type the title yourself, since a scan has no text to take one from. It sets that and the language, but there are no headings to find, and the report will say the file needs OCR before a screen reader can read it.</p>
+                <p>Type the title yourself, since a scan has no text to take one from. It sets that and the language, but it finds no headings, and it can’t make a scan readable: that needs OCR first, which this tool doesn’t do.</p>
                 <h3>Is my PDF kept?</h3>
                 <p>No. The finished PDF comes straight back to you and we don’t keep a copy. To find the title and headings, the first 10,000 characters of its text are sent to an AI model at an outside provider.</p>
         </div>
