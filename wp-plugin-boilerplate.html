@@ -65,12 +65,11 @@
       <h2>How the licence gate is built, and why that shape</h2>
       <p>WordPress.org does not permit a plugin hosted in its directory to lock its own features behind a payment, so the architecture is not a preference; it is the rule. The boilerplate follows the compliant pattern: a genuinely complete free plugin in the directory, and a separate Pro add-on distributed by you that unlocks the paid surface.</p>
       <p>Gating a feature is a single call, and the important property is what happens when the answer is no. The gate degrades to the free behaviour rather than erroring, disabling the screen, or destroying data the user has already created. That is the failure mode that generates refunds and one-star reviews, and it is designed out rather than left to whoever writes the feature.</p>
-      <p>The same discipline applies when your licence server is unreachable. A check that fails closed will disable a paying customer&rsquo;s site during your outage, so verification is built to fail open within a grace window: the customer keeps working, and the check retries later.</p>
 
       <h2>What it does not include</h2>
       <p>Being clear about this is more useful than a longer feature list:</p>
       <ul class="article-list">
-        <li><strong>No licence server.</strong> The plugin side of verification is here; the service that issues and validates keys is yours to run or to buy. The gate is written against a simple contract, so pointing it at an existing service is configuration rather than surgery.</li>
+        <li><strong>No licence server, and no key check.</strong> The gate asks one filter whether Pro is active. Your Pro add-on answers it, so checking keys against whatever service issues them, yours or one you buy, is code you write there.</li>
         <li><strong>No payment processing.</strong> Sell through Gumroad, Lemon Squeezy, WooCommerce or anything else.</li>
         <li><strong>No feature.</strong> The idea is still your job. This is the eighty percent that is the same for every plugin, not the twenty percent that makes yours worth buying.</li>
       </ul>

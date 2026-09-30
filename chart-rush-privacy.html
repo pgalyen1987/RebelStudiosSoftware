@@ -14,13 +14,13 @@
     </script>
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How Chart Rush handles data: no accounts, optional Spotify connection, on-device speech recognition, and no advertising.">
+    <meta name="description" content="How Chart Rush handles data: no accounts, no advertising, what goes to Firebase, and how the microphone is used.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/chart-rush-privacy.html">
     <link rel="icon" href="images/RS-logo-128.png" type="image/png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rebelstudiossoftware.com/chart-rush-privacy.html">
     <meta property="og:title" content="Chart Rush Privacy Policy">
-    <meta property="og:description" content="How Chart Rush handles data: no accounts, optional Spotify connection, on-device speech recognition, and no advertising.">
+    <meta property="og:description" content="How Chart Rush handles data: no accounts, no advertising, what goes to Firebase, and how the microphone is used.">
     <meta property="og:site_name" content="Rebel Studios Software">
     <title>Chart Rush Privacy Policy - Rebel Studios Software</title>
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -60,12 +60,12 @@
 
 <section class="page-header"><div class="container">
   <h1>Chart Rush: Privacy Policy</h1>
-  <p>Last updated 30 August 2026</p>
+  <p>Last updated 29 September 2026</p>
 </div></section>
 <section class="section"><div class="container" style="max-width:800px">
   <h2>The short version</h2>
-  <p>Chart Rush has no accounts of its own. Connecting Spotify is optional, and the
-     game works fully without it.</p>
+  <p>Chart Rush has no accounts. Song clips and artwork come from Apple's public iTunes
+     Search API, and nothing asks you to sign in to a music service.</p>
 
   <h2>What the app stores on your device</h2>
   <ul>
@@ -73,7 +73,6 @@
         other in an online game. It is not linked to your identity.</li>
     <li>The name you type for the table, your board size and night length, your
         practice streak and whether you own the Host unlock.</li>
-    <li>If you connect Spotify, the access token is kept on your device only.</li>
   </ul>
   <p>Deleting the app deletes all of it.</p>
 
@@ -82,22 +81,19 @@
     <li><strong>Online games.</strong> Your player id, the name you chose, the survey
         board and scores go to Google Firebase Realtime Database so the other phone can
         play along.</li>
-    <li><strong>Spotify, if you connect it.</strong> We request only
-        <code>user-read-private</code> and <code>user-top-read</code>, enough to read
-        your market and your top artists so boards can be built from music you actually
-        listen to. We never see your Spotify password. We do not post anything, change
-        anything, or read your playlists.</li>
-    <li><strong>Practice leaderboards.</strong> If you connect Spotify, your display
-        name and practice scores are stored so the board can rank runs.</li>
-    <li><strong>Song previews and artwork</strong> are fetched from Spotify and the
-        public iTunes Search API.</li>
+    <li><strong>Practice leaderboards.</strong> Once you have named your table, your
+        player id, that name and your practice scores go to Google Firebase Realtime
+        Database so the board can rank runs.</li>
+    <li><strong>Song previews and artwork</strong> are fetched from Apple's public
+        iTunes Search API.</li>
   </ul>
 
   <h2>Microphone</h2>
   <p>During a face-off the app listens so you can shout the song title, using your
-     device's own speech recognition. Audio is turned into text on your device by the
-     operating system. <strong>We do not record, store, or upload audio.</strong> The
-     microphone is only active during a guessing round.</p>
+     phone's built-in speech recognition. Depending on the phone, the operating system
+     turns the audio into text on the device or sends it to Apple's or Google's speech
+     service to do that. <strong>We do not record, store, or upload audio ourselves.</strong>
+     The microphone is only active during a guessing round.</p>
 
   <h2>What we do not do</h2>
   <p>No ads, no ad identifiers, no tracking, no location, no contacts, no photos. We do
@@ -105,19 +101,11 @@
 
   <h2>Third parties</h2>
   <ul>
-    <li>Spotify: optional catalog and listening data. <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Spotify Privacy ↗</a></li>
     <li>Google Firebase: rooms and practice scores. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy ↗</a></li>
     <li>Apple iTunes Search API: song previews and artwork.</li>
+    <li>Your phone's speech recognition service (Apple on iPhone, usually Google on
+        Android): the microphone audio during a round, as described above.</li>
   </ul>
-
-  <h2>Disconnecting Spotify</h2>
-  <p>Remove the app's access any time at
-     <a href="https://www.spotify.com/account/apps/" target="_blank" rel="noopener noreferrer">spotify.com/account/apps ↗</a>.
-     The game keeps working from its built-in catalog.</p>
-
-  <h2>Not affiliated with Spotify</h2>
-  <p>Chart Rush is an independent app. It is not affiliated with, endorsed by, or
-     sponsored by Spotify AB.</p>
 
   <h2>Contact</h2>
   <p>Questions: <a href="mailto:rebelstudiossoftware@gmail.com">rebelstudiossoftware@gmail.com</a></p>
