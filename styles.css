@@ -4358,6 +4358,12 @@ a.tool-card:hover {
     position: relative;
     padding-left: var(--space-md);
 }
+/* A list inside a list item: keep the green dots, drop the browser's own marker. */
+.article-content .article-list ul {
+    list-style: none;
+    padding-left: 0;
+    margin: var(--space-xs) 0;
+}
 .article-content .article-list li::before {
     content: '';
     position: absolute;

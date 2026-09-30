@@ -45,7 +45,7 @@ STATIC_PAGES = [
     ("vigilo.html", "2026-06-24", "monthly", "0.8"),
     ("about.html", "2026-06-24", "monthly", "0.8"),
     ("blog.html", "2026-06-24", "weekly", "0.9"),
-    ("privacy.html", "2026-06-23", "yearly", "0.3"),
+    ("privacy.html", "2026-09-29", "yearly", "0.3"),
     ("terms.html", "2026-07-20", "yearly", "0.3"),
     ("research.html", "2026-06-24", "monthly", "0.7"),
     ("plugins.html", "2026-09-07", "weekly", "0.9"),
