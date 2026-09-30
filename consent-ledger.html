@@ -140,7 +140,7 @@
                     <ul>
                         <li>Records a sealed, verifiable consent</li>
                         <li>Pins the exact wording shown, forever, per record</li>
-                        <li>One-click check catches any edit, deletion or reorder</li>
+                        <li>One click flags edits and gaps in the chain; each signer&rsquo;s receipt proves theirs is still on file</li>
                         <li>Typed signature, IP, device and UTC time captured</li>
                         <li>Zero external calls — everything stays on your server</li>
                     </ul>
@@ -168,8 +168,8 @@
                     <p>Each record's hash also folds in the hash of the record before it, like numbered, initialled pages in a ledger. The records form a chain, not a loose pile.</p>
                 </div>
                 <div class="cl-step">
-                    <h3>Any change shows</h3>
-                    <p>Edit a record, delete one, or reorder them, and its hash no longer matches — and every record after it breaks too. One click verifies the whole ledger and points to exactly where it broke.</p>
+                    <h3>Changes show</h3>
+                    <p>Edit a record, or delete or reorder one in the middle, and one click shows where the chain fails. Cutting the newest records leaves a chain that still checks out, so each signer&rsquo;s receipt carries the record&rsquo;s full seal, and <em>Check a receipt</em> confirms it is still on file, unchanged.</p>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@
         <h2>See it working</h2>
         <div class="shot-grid">
             <figure class="shot"><img src="images/products/consent-ledger/form.png" alt="The front-end intake and consent form as a patient sees it" width="1280" height="1822" loading="lazy"><figcaption>The intake and consent form, as a patient sees it</figcaption></figure>
-            <figure class="shot"><img src="images/products/consent-ledger/ledger.png" alt="The admin records ledger showing a green banner: two records verified, the ledger is intact, with per-record seals" width="1280" height="900" loading="lazy"><figcaption>The records ledger, with the one-click integrity check</figcaption></figure>
+            <figure class="shot"><img src="images/products/consent-ledger/ledger.png" alt="The admin records ledger after one click on Verify: two records checked, the newest seal, a note on what the check cannot see, and a box to check a receipt's seal" width="1280" height="900" loading="lazy"><figcaption>The records ledger: the one-click check, what it cannot see, and the receipt check</figcaption></figure>
         </div>
     </div></section>
 
@@ -217,7 +217,8 @@
                 <h3>What it is not — plainly</h3>
                 <ul>
                     <li>It is not legal advice, and it does not supply consent wording. Only you know what your practice and jurisdiction require.</li>
-                    <li>"Defensible" means the record is tamper-evident and complete — not that it is automatically legally sufficient. That depends on your wording and your obligations.</li>
+                    <li>"Defensible" means the record is tamper-evident, not that it is automatically legally sufficient. That depends on your wording and your obligations.</li>
+                    <li>It is not proof against whoever controls the database. Someone with full access could rebuild the whole chain so it checks out. Only a seal kept off the site shows that: a signer&rsquo;s receipt, or the newest seal noted somewhere else.</li>
                     <li>It is not, by itself, a HIPAA compliance program. It keeps a better record and stores it only on your server; it does not replace a signed BAA with your host or your own policies.</li>
                 </ul>
             </div>
