@@ -17,21 +17,21 @@
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rebelstudiossoftware.com/"},{"@type":"ListItem","position":2,"name":"$1 Tools","item":"https://rebelstudiossoftware.com/tools/"},{"@type":"ListItem","position":3,"name":"PDF accessibility fixer","item":"https://rebelstudiossoftware.com/tools/pdf-a11y.html"}]}</script>
     <title>PDF Accessibility Fixer for $1 - Rebel Studios Software</title>
-    <meta name="description" content="Tagged PDF, reading order, alt text, heading structure, language metadata.">
+    <meta name="description" content="Sets a PDF's title and language, adds a contents page from its headings and returns an accessibility report. It does not tag the PDF.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/tools/pdf-a11y.html">
     <link rel="icon" href="../images/RS-logo-128.png" type="image/png">
     <meta name="theme-color" content="#07090f">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rebelstudiossoftware.com/tools/pdf-a11y.html">
     <meta property="og:title" content="PDF Accessibility Fixer for $1">
-    <meta property="og:description" content="Tagged PDF, reading order, alt text, heading structure, language metadata.">
+    <meta property="og:description" content="Sets a PDF's title and language, adds a contents page from its headings and returns an accessibility report. It does not tag the PDF.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
     <meta property="og:site_name" content="Rebel Studios Software">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PDF Accessibility Fixer for $1">
-    <meta name="twitter:description" content="Tagged PDF, reading order, alt text, heading structure, language metadata.">
+    <meta name="twitter:description" content="Sets a PDF's title and language, adds a contents page from its headings and returns an accessibility report. It does not tag the PDF.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF accessibility fixer","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","description":"Tagged PDF, reading order, alt text, heading structure, language metadata.","url":"https://rebelstudiossoftware.com/tools/pdf-a11y.html","offers":{"@type":"Offer","price":"1.00","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF accessibility fixer","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","description":"Sets a PDF's title and language, adds a contents page built from its headings, and returns an accessibility report. It does not tag the PDF, fix reading order or add alt text, so it is not a compliance tool.","url":"https://rebelstudiossoftware.com/tools/pdf-a11y.html","offers":{"@type":"Offer","price":"1.00","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"}}</script>
     <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../styles.css">
@@ -64,7 +64,7 @@
             <span class="tool-price-chip">$1 / use</span>
             <span class="tool-live-badge">Live</span>
             <h1>PDF accessibility fixer</h1>
-            <p>You need an accessible PDF for compliance.</p>
+            <p>Your PDF has no title or language set, and you want to know what else a screen reader will miss.</p>
             <div class="tool-cta-row">
                         <a class="btn btn-primary" href="https://gate402.app/tools/pdf-a11y">Pay $1 with card →</a>
                         <a class="btn btn-secondary" href="#agent-endpoint">Agent x402 endpoint</a>
@@ -73,27 +73,36 @@
     </section>
     <section class="tool-detail">
         <div class="container">
-            <p>Tagged PDF, reading order, alt text, heading structure, language metadata.</p>
+            <p>Title and language metadata, a contents page built from the headings, and an accessibility report. It does not tag the PDF, fix reading order or add alt text.</p>
             <div class="tool-longform">
             <h2>What it does</h2>
-            <p>Adds the structure a PDF needs to be accessible (tags, reading order, document language), so it works with screen readers and passes basic accessibility checks.</p>
+            <p>It sets the document title and language. The title is the one you type, or one taken from the text if you leave it blank. The language is en-US unless you give another.</p>
+            <p>If it finds headings, it adds a contents page at the front that lists up to 20 of them. An AI model picks them out of the first 10,000 characters of text, so in a long document it only sees the early ones.</p>
+            <p>The report says whether the PDF was already tagged, how many images it has, and what else it can see is wrong, such as a scan with no text for a screen reader to read.</p>
+            <h2>What it does not do</h2>
+            <p>It does not tag the PDF. Tags are the structure that tells a screen reader which text is a heading, what order to read things in and what each image shows, and a WCAG or Section 508 review expects them. So this is not a compliance tool. It sets the title and language and tells you how much is left to do.</p>
+            <p>It also fails on a document whose headings use characters outside Western European alphabets, such as Cyrillic or Chinese.</p>
             <h2>How it works</h2>
             <ol>
-                <li>Open the tool and provide a plain PDF.</li>
-                <li>Pay $1: by card, or with x402 if you’re an AI agent. No account, no signup.</li>
-                <li>Get an accessibility-tagged PDF back, right away.</li>
+                <li>Open the tool and upload the PDF, up to 25 MB. Type a title and language if you want to choose them yourself.</li>
+                <li>Pay $1: by card, or with x402 if you’re an AI agent. No signup.</li>
+                <li>Download the new PDF and read the report.</li>
             </ol>
             <h2>Prefer to do it yourself?</h2>
-            <p>Acrobat Pro can tag PDFs for accessibility if you have a license and time to learn the workflow. This handles the common tagging automatically.</p>
+            <p>Acrobat Pro sets the title and language in Document Properties, and its accessibility tools add the tags, reading order and alt text this tool leaves out. If you have it, you don’t need this.</p>
             <h2>Why it’s worth $1</h2>
-            <p>The free options are either fiddly or sketchy: half of them want you to upload a private file to a server you’ve never heard of, behind a wall of ads. We don’t. There’s no account, no signup, and your file isn’t stored or reused after the job runs. You pay a dollar, you get the result, and that’s the whole relationship.</p>
+            <p>It tells you whether a PDF is tagged and how much a screen reader would miss before you pay for proper remediation, and it sets the title and language while it’s there.</p>
             <h2>Frequently asked</h2>
-                <h3>Why does accessibility tagging matter?</h3>
-                <p>Untagged PDFs are unreadable to screen readers and can fail compliance requirements (like WCAG/Section 508).</p>
+                <h3>Will this make my PDF WCAG or Section 508 compliant?</h3>
+                <p>No. Those reviews expect a tagged PDF, and this tool does not add tags. Its report tells you whether the file is tagged and how many images would need alt text once it is.</p>
                 <h3>Will it change how the PDF looks?</h3>
-                <p>No. It adds the underlying structure without altering the visible layout.</p>
+                <p>Your existing pages stay as they are. If it finds headings, it adds one page at the front that lists them as plain text, with no links or page numbers. It is an ordinary page, not PDF bookmarks, so delete it if you don’t want it.</p>
+                <h3>Does it work on a scanned PDF?</h3>
+                <p>Type the title yourself, since a scan has no text to take one from. It sets that and the language, but there are no headings to find, and the report will say the file needs OCR before a screen reader can read it.</p>
+                <h3>Is my PDF kept?</h3>
+                <p>No. The finished PDF comes straight back to you and we don’t keep a copy. To find the title and headings, the first 10,000 characters of its text are sent to an AI model at an outside provider.</p>
         </div>
-        <p class="tool-keywords"><strong>Related searches:</strong> pdf accessibility, tagged pdf, remediate pdf a11y</p>
+        <p class="tool-keywords"><strong>Related searches:</strong> set pdf title, set pdf language, pdf accessibility report</p>
             <p><a href="index.html">← All $1 tools</a></p>
         </div>
     </section>

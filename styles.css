@@ -3998,6 +3998,30 @@ a.tool-card:hover {
     vertical-align: middle;
 }
 
+/* A paused tool keeps its page so anyone who bought it can find out why,
+   with nothing on it to buy. With no price chip the badge stands alone. */
+.tool-page-header .tool-soon-badge:first-child {
+    display: inline-block;
+    margin: 0 0 0.75rem;
+}
+
+.tool-paused-note {
+    max-width: 44rem;
+    margin-top: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface-strong);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+}
+
+.page-header .tool-paused-note p {
+    color: var(--ink-1);
+}
+
+.page-header .tool-paused-note p + p {
+    margin-top: var(--space-xs);
+}
+
 .tool-cta-row {
     display: flex;
     flex-wrap: wrap;
@@ -4482,6 +4506,12 @@ a.tool-card:hover .tool-ico { background: hsl(var(--cat) 70% 55% / 0.2); }
 
 /* The first card of each group carries the group's weight */
 .tool-group .tools-grid > a.tool-card:first-child { background: hsl(var(--cat) 60% 40% / 0.06); }
+
+/* A paused tool stays listed, last in its group, so nobody hunts for it,
+   but without the category colour or the hover lift of a thing for sale. */
+a.tool-card.is-paused { filter: grayscale(1); }
+a.tool-card.is-paused:hover { transform: none; }
+.tool-card h3 .tool-soon-badge { margin-left: 0.4rem; vertical-align: middle; }
 
 /* ---------- Plugin catalogue: platform identity ----------
    Same failure as the tool grid: seven cards distinguished only by their
