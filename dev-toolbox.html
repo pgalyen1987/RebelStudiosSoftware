@@ -83,8 +83,8 @@
       <p>Because the commands live in the palette, the ones you reach for most surface first as VS Code learns your habits, and you can bind any of them to a keystroke through the normal keyboard shortcuts editor if a particular transform becomes muscle memory.</p>
 
       <h2>What it deliberately does not do</h2>
-      <p>It does not lint, validate against a schema, or tell you whether your JSON is <em>correct</em>, only whether it parses, and how to make it parse. It does not verify a JWT&rsquo;s signature; decoding is not verification, and any tool implying otherwise is teaching a dangerous habit. It has no accounts, no settings to sync, no telemetry, and no network permission at all.</p>
-      <p>That last constraint is deliberate. An extension with no network access cannot leak your selection even if it wanted to, and that is a much stronger promise than a privacy policy.</p>
+      <p>It does not lint, validate against a schema, or tell you whether your JSON is <em>correct</em>, only whether it parses, and how to make it parse. It does not verify a JWT&rsquo;s signature; decoding is not verification, and any tool implying otherwise is teaching a dangerous habit. It has no accounts, no settings to sync, no telemetry, and it makes no network requests at all.</p>
+      <p>VS Code does not sandbox extensions, so that last part is a promise, and you can check it rather than trust it. The whole extension is two short JavaScript files in its install folder, <code>extension.js</code> and <code>lib/transforms.js</code>, and neither one loads a network module.</p>
     </div></section>
 
     <section class="section"><div class="container">
@@ -100,7 +100,7 @@
       <div class="cb-cta">
         
         <h3>Free on the VS Code Marketplace</h3>
-        <p>All fifteen transforms, no account and no network access. Install it, select some text and open the Command Palette.</p>
+        <p>All fifteen transforms, no account and no network requests. Install it, select some text and open the Command Palette.</p>
         <a class="btn btn-primary" href="https://marketplace.visualstudio.com/items?itemName=rebelstudios.rebel-dev-toolbox" target="_blank" rel="noopener">Install from the Marketplace &rarr;</a>
       </div>
     </div></section>
