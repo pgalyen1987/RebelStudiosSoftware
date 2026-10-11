@@ -3731,20 +3731,9 @@ h1, h2, h3, h4 {
     }
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        padding: 0.65rem 0;
-    }
-
-    .logo {
-        height: 44px;
-        max-width: 180px;
-    }
-
-    .brand-name {
-        font-size: 1.1rem;
-    }
-
+/* The full menu needs about 1,050px on one line (measured 2026-10-11: it wrapped at 1024 and ran off
+   the screen below 1000), so the hamburger takes over at 1040px, not at the phone breakpoint. */
+@media (max-width: 1040px) {
     .hamburger {
         display: flex;
     }
@@ -3752,7 +3741,7 @@ h1, h2, h3, h4 {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 62px;
+        top: 79px;  /* the navbar's height between 769 and 1040px */
         flex-direction: column;
         background: rgba(7, 9, 15, 0.97);
         -webkit-backdrop-filter: blur(20px);
@@ -3768,6 +3757,25 @@ h1, h2, h3, h4 {
 
     .nav-menu.active {
         left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.65rem 0;
+    }
+
+    .nav-menu {
+        top: 62px;  /* the shorter phone navbar */
+    }
+
+    .logo {
+        height: 44px;
+        max-width: 180px;
+    }
+
+    .brand-name {
+        font-size: 1.1rem;
     }
 
     .section-title {
