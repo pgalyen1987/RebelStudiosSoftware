@@ -97,7 +97,7 @@
 
                     <p>When a restriction plugin gates a post, the naive behaviour is to replace the body with a &ldquo;this is for members&rdquo; notice, or worse, to redirect anyone who is not logged in to a login form. Googlebot is not a member and carries no session, so the version Google crawls, indexes and ranks is the notice or the login page &mdash; a URL with no real content on it. Over a few weeks Google concludes the page no longer answers the query it used to rank for, and the position goes with it. The redirect case is the worst of the two: now Google has a login form indexed under a URL that used to be an article, and login forms rank for nothing.</p>
 
-                    <p>You can confirm this is what happened rather than guess at it. Fetch the page the way an anonymous crawler does &mdash; no cookies, no session &mdash; and read what actually comes back:</p>
+                    <p>You can confirm this is what happened rather than guess at it. Fetch the page the way an anonymous crawler does, with no cookies and no session, and read what actually comes back:</p>
 
                     <pre class="article-code"><code># what an anonymous crawler gets: no cookies, no login
 curl -s https://example.com/members/deep-guide | grep -i "members only"</code></pre>
@@ -108,7 +108,7 @@ curl -s https://example.com/members/deep-guide | grep -i "members only"</code></
 
                     <p>The obvious repair is to detect when the visitor is Googlebot and hand it the full article while everyone else gets the fence. Do not do this. Serving search engines content that differs from what humans see is <strong>cloaking</strong>, and it is one of the few SEO mistakes Google treats as deliberate deception rather than an honest technical fault. The cost is not a slipped ranking on one page; it can be a manual action against the whole domain, and those are slow and painful to lift.</p>
 
-                    <p>The instinct underneath it is correct &mdash; Google should be allowed to see the content &mdash; but user-agent sniffing is the wrong mechanism, and there is a supported one that reaches the same result without the risk.</p>
+                    <p>The instinct underneath it is correct: Google should be allowed to see the content. But user-agent sniffing is the wrong mechanism, and there is a supported one that reaches the same result without the risk.</p>
 
                     <h2>What Google actually asks for</h2>
 
@@ -157,15 +157,15 @@ $schema['hasPart'] = array(
 
                     <h2>Full text in the source, or ranked on the teaser</h2>
 
-                    <p>The snippet above ships the entire article in the HTML and hides it from non-members in the browser. That is the version of paywalling Google's markup fits most cleanly, because every visitor &mdash; person or crawler &mdash; is served exactly the same page, so there is nothing that could be read as cloaking. The trade is real and worth stating plainly: anyone can open the page source and read the &ldquo;gated&rdquo; text. For a paid newsletter that is usually an acceptable price for being indexed. For anything that must genuinely stay private, it is not.</p>
+                    <p>The snippet above ships the entire article in the HTML and hides it from non-members in the browser. That is the version of paywalling Google's markup fits most cleanly, because every visitor, person or crawler, is served exactly the same page, so there is nothing that could be read as cloaking. The trade is real and worth stating plainly: anyone can open the page source and read the &ldquo;gated&rdquo; text. For a paid newsletter that is usually an acceptable price for being indexed. For anything that must genuinely stay private, it is not.</p>
 
                     <p>If the content is sensitive enough that it cannot sit in the source, strip it on the server for non-members instead &mdash; and accept that Google, being a non-member, then ranks the page on the public teaser alone. That is a legitimate choice. The one option that is never legitimate is the middle path: stripping it for humans but singling out Googlebot to receive the full text. Same page for everyone, or a smaller sample for everyone. Never a special version for the crawler.</p>
 
-                    <p>Either way, leave a real teaser. A page that is nothing but a fence gives Google no text to rank and gives a prospective member nothing to judge before paying. The related question &mdash; what &ldquo;members only&rdquo; should even mean, and why a lapsed member should keep their account &mdash; is its own decision, covered in <a href="blog-restrict-wordpress-content-to-members.html">how to restrict WordPress content to members properly</a>.</p>
+                    <p>Either way, leave a real teaser. A page that is nothing but a fence gives Google no text to rank and gives a prospective member nothing to judge before paying. The related question, what &ldquo;members only&rdquo; should even mean and why a lapsed member should keep their account, is its own decision, covered in <a href="blog-restrict-wordpress-content-to-members.html">how to restrict WordPress content to members properly</a>.</p>
 
                     <div class="article-callout">
                         <h3>A restriction plugin that gets the redirect right</h3>
-                        <p><a href="membership-content-restriction.html">Membership &amp; Content Restriction</a> gates a post by replacing its body with a real notice and a join prompt <em>on the same URL</em> &mdash; not a redirect to a login screen &mdash; so the page stays about its topic instead of turning into a login form in Google's index. It keeps unlimited free members and lets you leave a genuinely useful public layer unfenced; <a href="membership-content-restriction.html">Membership Pro</a> adds paid plans through your own WooCommerce. The structured data above sits on top of that, in your theme: the plugin does not emit it for you, and this post is the checklist for wiring it in.</p>
+                        <p><a href="membership-content-restriction.html">Membership &amp; Content Restriction</a> gates a post by replacing its body with a real notice and a join prompt <em>on the same URL</em>, not a redirect to a login screen, so the page stays about its topic instead of turning into a login form in Google's index. It keeps unlimited free members and lets you leave a genuinely useful public layer unfenced; <a href="membership-content-restriction.html">Membership Pro</a> adds paid plans through your own WooCommerce. The structured data above sits on top of that, in your theme: the plugin does not emit it for you, and this post is the checklist for wiring it in.</p>
                     </div>
 
                     <h2>What the markup does and does not buy you</h2>

@@ -114,7 +114,7 @@
 
                     <p><strong>Decompose.</strong> Split a problem into parts. If a part is still too big, split it with the same procedure. Keep going until every leaf is small enough to solve outright, then assemble the answers back up the tree.</p>
 
-                    <p>This is the shape that earns the name, and it is the one with real leverage, because the difficulty of the whole problem never has to fit in one context window. Only the leaves do. It is also how a system of agents spawning agents works: each one takes a piece, and any piece too large becomes a smaller set of the same job.</p>
+                    <p>This is the shape that earns the name, and it is the one that pays off, because the difficulty of the whole problem never has to fit in one context window. Only the leaves do. It is also how a system of agents spawning agents works: each one takes a piece, and any piece too large becomes a smaller set of the same job.</p>
 
                     <p>It brings recursion&rsquo;s failure modes with it. A missing base case does not loop forever politely &mdash; it fans out, and each level multiplies the calls below it. Depth is the thing to bound, and bound it explicitly, because a model asked whether a sub-problem is &ldquo;simple enough&rdquo; will cheerfully say no forever.</p>
 

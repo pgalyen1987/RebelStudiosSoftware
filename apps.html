@@ -169,19 +169,26 @@
                     <div class="portfolio-image app-image">
                         <div class="screenshot-carousel" id="memoryswipe-carousel">
                             <div class="screenshot-slide active">
-                                <img src="images/memoryswipe/main_menu.png" alt="MemorySwipe main menu">
+                                <img src="images/memoryswipe/play-copy.webp" alt="MemorySwipe mid-round: score 11, a glowing swipe pattern to copy across a grid of dots" width="750" height="1200" loading="lazy">
                             </div>
-                            <button class="carousel-prev" style="display:none"></button>
-                            <button class="carousel-next" style="display:none"></button>
+                            <div class="screenshot-slide">
+                                <img src="images/memoryswipe/play-highscore.webp" alt="MemorySwipe after a miss: a new high score of 13" width="750" height="1200" loading="lazy">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('memoryswipe-carousel', -1)" aria-label="Previous screenshot">&#8249;</button>
+                            <button class="carousel-next" onclick="changeSlide('memoryswipe-carousel', 1)" aria-label="Next screenshot">&#8250;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide('memoryswipe-carousel', 0)"></span>
+                                <span class="dot" onclick="currentSlide('memoryswipe-carousel', 1)"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-meta">
-                            <span class="portfolio-category">Casual / Memory Game</span>
+                            <span class="portfolio-category">Memory game &middot; Android</span>
                             <a href="https://play.google.com/store/apps/details?id=com.memoryswipe.app&amp;utm_source=na_Med" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">Google Play ↗</a>
                         </div>
                         <h3>MemorySwipe</h3>
-                        <p>A memory and concentration game where you watch a pattern of swipes and then repeat it in order. Each round the sequence gets longer. Compete for the highest score, track your personal bests, and improve focus and working memory all while having fun. Features AdMob integration for monetization.</p>
+                        <p>Watch a pattern of swipes light up across a grid of dots, then draw it back from memory. Every round the pattern gets longer, and one wrong stroke ends the game. Your best score is kept. Free, with banner ads.</p>
 
                         <div class="tech-breakdown">
                             <h4>Technical Implementation</h4>
@@ -215,12 +222,10 @@
                         <div class="portfolio-features">
                             <h4>Key Features</h4>
                             <ul>
-                                <li>Swipe pattern generation and playback animation</li>
-                                <li>Increasing difficulty as sequence length grows</li>
-                                <li>High score persistence with DataStore</li>
-                                <li>Visual and haptic feedback on input</li>
-                                <li>AdMob integration for revenue</li>
-                                <li>Smooth Compose animations throughout</li>
+                                <li>A new pattern every game</li>
+                                <li>A longer pattern each round</li>
+                                <li>High score saved on the phone</li>
+                                <li>Haptic feedback as you draw</li>
                             </ul>
                         </div>
 
@@ -233,10 +238,10 @@
                     <div class="portfolio-image app-image">
                         <div class="screenshot-carousel" id="toiletteller-carousel">
                             <div class="screenshot-slide active">
-                                <img src="images/toiletteller/splash_screen.png" alt="ToiletTeller splash screen">
+                                <img src="images/toiletteller/play-ask.webp" alt="Toilet Teller: a cartoon toilet waiting under a box that says Ask a yes or no question" width="720" height="1600" loading="lazy">
                             </div>
                             <div class="screenshot-slide">
-                                <img src="images/toiletteller/happy_boi.png" alt="ToiletTeller happy character">
+                                <img src="images/toiletteller/play-verdict.webp" alt="Toilet Teller answering: Yes, that's solid" width="720" height="1600" loading="lazy">
                             </div>
                             <button class="carousel-prev" onclick="changeSlide('toiletteller-carousel', -1)">&#8249;</button>
                             <button class="carousel-next" onclick="changeSlide('toiletteller-carousel', 1)">&#8250;</button>
@@ -248,10 +253,10 @@
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-meta">
-                            <span class="portfolio-category">Casual / Entertainment App</span>
+                            <span class="portfolio-category">Novelty &middot; Android</span>
                             <a href="https://play.google.com/store/apps/details?id=rebelstudios.toiletteller.app&amp;utm_source=na_Med" target="_blank" rel="noopener noreferrer" class="portfolio-live-link">Google Play ↗</a>
                         </div>
-                        <h3>ToiletTeller</h3>
+                        <h3>Toilet Teller</h3>
                         <p>A magic 8-ball with plumbing. Ask the toilet a yes-or-no question ("Should I text them back?", "Pizza again tonight?"), pull the flush, and after a satisfying animated swirl the bowl delivers its verdict. A custom toilet character reacts along the way. Zero science, guaranteed answers, interstitial ads.</p>
 
                         <div class="tech-breakdown">
@@ -293,7 +298,6 @@
                                 <li>Animated flush sequence with swirl effect</li>
                                 <li>Droplet particle animation on flush</li>
                                 <li>Reactive toilet character with multiple expressions</li>
-                                <li>Interstitial ad integration via AdMob</li>
                             </ul>
                         </div>
 
@@ -371,7 +375,7 @@
                             <span class="showcase-name">Vigilo</span>
                             <p>On-device IoT network anomaly detection. Mamba-2 forecaster, Zeek conn.log, no cloud.</p>
                             <div class="showcase-stats">
-                                <span class="showcase-stat">75% @ 1% FPR</span>
+                                <span class="showcase-stat">40&ndash;75% @ 1% FPR</span>
                                 <span class="showcase-stat">~1.3M params</span>
                                 <span class="showcase-stat">CPU-only</span>
                                 <span class="showcase-stat">Open source</span>
@@ -413,7 +417,7 @@
                             <h4>Key Features</h4>
                             <ul>
                                 <li>5-minute behavioral windows per device (15 features)</li>
-                                <li>75% detection at 1% FPR on IoT-23 (20 malware families)</li>
+                                <li>75% detection at 1% FPR on one IoT-23 run (20 malware families), 40% on another</li>
                                 <li>Runs entirely on CPU, no GPU or cloud required</li>
                                 <li>SPAN/mirror, gateway Zeek, or lab capture workflows</li>
                             </ul>
@@ -431,8 +435,7 @@
     </section>
 
     <section class="section"><div class="container">
-        <span class="section-kicker">New</span>
-        <h2 class="section-title">Games</h2>
+        <div class="section-head"><h2 class="section-title">Games</h2></div>
         <div class="plug-grid" style="margin-top:1.5rem">
           <div class="plug-card" style="--cat: 265;">
             <img class="game-icon" src="images/oopsallknights/icon.png" alt="" width="64" height="64">
@@ -452,8 +455,8 @@
       </div></section>
 
     <section class="section"><div class="container">
-        <span class="section-kicker">Free · for Zora creators</span>
-        <h2 class="section-title">Creator coin analytics</h2>
+        <div class="section-head"><span class="section-kicker">Free · for Zora creators</span>
+        <h2 class="section-title">Creator coin analytics</h2></div>
         <div class="plug-grid" style="margin-top:1.5rem">
           <div class="plug-card plug-card--featured" style="--cat: 38;">
             <a class="plug-shot" href="https://daybreak.rebelstudiossoftware.com/" tabindex="-1" aria-hidden="true"><img src="images/products/daybreak/gap-map.png" alt="" width="562" height="526" loading="lazy"></a>
@@ -466,8 +469,8 @@
       </div></section>
 
     <section class="section"><div class="container">
-        <span class="section-kicker">Open source</span>
-        <h2 class="section-title">For developers</h2>
+        <div class="section-head"><span class="section-kicker">Open source</span>
+        <h2 class="section-title">For developers</h2></div>
         <div class="plug-grid" style="margin-top:1.5rem">
           <div class="plug-card plug-card--featured" style="--cat: 205;">
             <a class="plug-shot" href="zora-coins-sdk.html" tabindex="-1" aria-hidden="true"><img src="images/og/zora-coins-sdk.png" alt="" width="1200" height="630" loading="lazy" style="object-fit:contain;object-position:center"></a>
@@ -481,9 +484,9 @@
 
     <section class="cta">
         <div class="container">
-            <h2>Want an App or Software Product?</h2>
-            <p>We handle everything from Android apps to security tooling, design through deployment.</p>
-            <a href="index.html#contact" class="btn btn-primary">Get a Free Quote</a>
+            <h2>Need an app built?</h2>
+            <p>Phone, web or both. Tell us what it has to do and you&rsquo;ll get a price before any work starts.</p>
+            <a href="index.html#contact" class="btn btn-primary">Ask for a quote</a>
         </div>
     </section>
 

@@ -92,7 +92,7 @@
 
                     <h2>The fixed pause is wrong in both directions</h2>
 
-                    <p>The first thing everyone reaches for is a fixed wait &mdash; <code>await sleep(2000)</code> after each action &mdash; and it is wrong in both directions at once. Two seconds is too short for the page still fetching on a slow connection, so you get a race that fails one run in twenty and is miserable to reproduce. And it is far too long for the page that was ready in 150 milliseconds, which is most of them; you pay that tax on every action, and it compounds over a long flow. A fixed wait also tells you nothing when it is over: if the read comes back empty, you cannot say whether the element is missing or merely late.</p>
+                    <p>The first thing everyone reaches for is a fixed wait, <code>await sleep(2000)</code> after each action, and it is wrong in both directions at once. Two seconds is too short for the page still fetching on a slow connection, so you get a race that fails one run in twenty and is miserable to reproduce. And it is far too long for the page that was ready in 150 milliseconds, which is most of them; you pay that tax on every action, and it compounds over a long flow. A fixed wait also tells you nothing when it is over: if the read comes back empty, you cannot say whether the element is missing or merely late.</p>
 
                     <h2>networkidle sounds principled and never happens</h2>
 
@@ -106,7 +106,7 @@
 
                     <div class="article-highlight">
                         <h3>Timestamps, not counters</h3>
-                        <p>Track <em>when</em> the last mutation and the last request happened, not <em>how many</em> requests are open. A counter of in-flight requests can wedge: miss one completion &mdash; a cancelled fetch, an aborted preload &mdash; and it never returns to zero, so the wait never ends. A timestamp cannot get stuck. And it handles the awkward case a counter cannot: a page with a one-second heartbeat settles in the gaps between beats, instead of being declared busy forever.</p>
+                        <p>Track <em>when</em> the last mutation and the last request happened, not <em>how many</em> requests are open. A counter of in-flight requests can wedge: miss one completion (a cancelled fetch, an aborted preload) and it never returns to zero, so the wait never ends. A timestamp cannot get stuck. And it handles the awkward case a counter cannot: a page with a one-second heartbeat settles in the gaps between beats, instead of being declared busy forever.</p>
                     </div>
 
                     <h2>The trap: returning an empty shell</h2>
@@ -115,21 +115,21 @@
 
                     <p>The first fix was a flat floor: never return inside the first 400 milliseconds. It worked &mdash; and then it turned out to be the thing we were waiting on. Measured on September 25, 2026, the wait was exiting at 426&ndash;430 milliseconds on three of four real pages: the floor plus a single poll tick, while the pages themselves had been ready earlier. We had swapped one fixed wait for another and called it progress.</p>
 
-                    <p>The fix that held opens the gate on a <em>signal</em> instead of a clock. The moment the page has issued a request of its own since navigation, its script is demonstrably running, and the quiet checks can be trusted from then on. A page that genuinely fetches nothing gets a short backstop &mdash; 150 milliseconds &mdash; and no more. The wait is now bounded by what the page does, not by a number we guessed.</p>
+                    <p>The fix that held opens the gate on a <em>signal</em> instead of a clock. The moment the page has issued a request of its own since navigation, its script is demonstrably running, and the quiet checks can be trusted from then on. A page that genuinely fetches nothing gets a short backstop of 150 milliseconds and no more. The wait is now bounded by what the page does, not by a number we guessed.</p>
 
                     <h2>The rule: change the waiting, not the answer</h2>
 
-                    <p>A change to timing has to change how long you wait and <em>not</em> what you get back, and the only way to know that is to measure the thing you get back &mdash; not to re-run it and squint. So we did: identical snapshots on five live pages, before and after. On the dashboard the wait dropped from 2,370 to 1,400 milliseconds, and &mdash; the part that mattered more &mdash; it got more consistent. The old floor had returned 2,578, then 2,603, then 2,605 characters on successive runs; it had been catching the page mid-render. The signal-based version returns the same 2,605 every time. Faster was welcome. Deterministic was the point.</p>
+                    <p>A change to timing has to change how long you wait and <em>not</em> what you get back, and the only way to know that is to measure the thing you get back, not to re-run it and squint. So we did: identical snapshots on five live pages, before and after. On the dashboard the wait dropped from 2,370 to 1,400 milliseconds, and it got more consistent, which mattered more. The old floor had returned 2,578, then 2,603, then 2,605 characters on successive runs; it had been catching the page mid-render. The signal-based version returns the same 2,605 every time. Faster was welcome. Deterministic was the point.</p>
 
                     <h2>Where it stops</h2>
 
-                    <p>None of this is magic, and it is worth being plain about the edges. This settle is a heuristic with a ceiling &mdash; two seconds by default, three for the heavier actions &mdash; and a page that truly never stops, an infinite feed or a canvas repainting every frame, will hit that ceiling and return anyway. That is deliberate: at its worst it degrades to a bounded wait, never longer than the fixed sleep it replaced. A page whose script fires no requests at all gives you only the DOM-quiet check and the 150-millisecond backstop to lean on. Knowing that failure mode is the whole point &mdash; a wait that lies about being ready is worse than one that is honestly a little slow.</p>
+                    <p>None of this is magic, and it is worth being plain about the edges. This settle is a heuristic with a ceiling (two seconds by default, three for the heavier actions), and a page that truly never stops, an infinite feed or a canvas repainting every frame, will hit that ceiling and return anyway. That is deliberate: at its worst it degrades to a bounded wait, never longer than the fixed sleep it replaced. A page whose script fires no requests at all gives you only the DOM-quiet check and the 150-millisecond backstop to lean on. Knowing that failure mode is the whole point: a wait that lies about being ready is worse than one that is honestly a little slow.</p>
 
                     <p>This is how <a href="thinbrowser.html">thinbrowser</a>, our MCP browser layer over Playwright, decides a page is ready: every <code>open</code> and every <code>click</code> waits on those two signals before it returns, so the snapshot you get back is of a page that has stopped moving rather than one caught halfway through a render. Playwright still does the hard part of driving Chromium; this is the thin layer of judgment on top that a page you have never seen turns out to need.</p>
 
                     <p>It is free and MIT-licensed, tied to no single model or editor, and it installs as one line: <code>claude mcp add thinbrowser -- npx -y thinbrowser</code>, or point any MCP client at <code>npx -y thinbrowser</code> as a stdio server. The settle is a couple of dozen lines in the open; the comments in it are the measurements above.</p>
 
-                    <p><em>We build tools that treat your agent's time &mdash; and yours &mdash; as something worth not wasting. <a href="index.html#contact">That's what we do at Rebel Studios.</a></em></p>
+                    <p><em>We build tools that treat your agent's time, and yours, as something worth not wasting. <a href="index.html#contact">That's what we do at Rebel Studios.</a></em></p>
                 </div>
 
                 <div class="article-footer-nav">

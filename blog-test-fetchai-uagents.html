@@ -128,7 +128,7 @@ assert isinstance(result.error, ValueError)</code></pre>
 
                     <h2>The quiet failures it turns loud</h2>
 
-                    <p>The swallowed exception is the headline, but the same theme &mdash; a real failure that a stand-it-up test reports as success &mdash; runs through the rest of the framework. Each of these is an assertion instead of a log line nobody reads:</p>
+                    <p>The swallowed exception is the headline, but the same theme runs through the rest of the framework: a real failure that a stand-it-up test reports as success. Each of these is an assertion instead of a log line nobody reads:</p>
 
                     <ul class="article-list">
                         <li><strong>A broken reply contract.</strong> A handler marked <code>@on_message(replies=Receipt)</code> that never actually sends a <code>Receipt</code> is a bug on a live network and a shrug in a normal test. <code>assert_reply_contract()</code> makes it fail.</li>
@@ -140,7 +140,7 @@ assert isinstance(result.error, ValueError)</code></pre>
 
                     <h2>Agents that read the chain, tested offline</h2>
 
-                    <p>uAgents in the BNB Chain and ASI ecosystems often read on-chain state &mdash; a BEP-20 balance, a token&rsquo;s decimals &mdash; and intercepting <code>ctx.send</code> does nothing about a handler that reaches out to an RPC endpoint. <code>ChainDouble</code> closes that gap by patching whichever of <code>requests</code>, <code>httpx</code> and <code>aiohttp</code> the agent imports:</p>
+                    <p>uAgents in the BNB Chain and ASI ecosystems often read on-chain state, such as a BEP-20 balance or a token&rsquo;s decimals, and intercepting <code>ctx.send</code> does nothing about a handler that reaches out to an RPC endpoint. <code>ChainDouble</code> closes that gap by patching whichever of <code>requests</code>, <code>httpx</code> and <code>aiohttp</code> the agent imports:</p>
 
                     <pre><code>chain = ChainDouble()
 chain.add_token(FET_BSC, symbol="FET", decimals=18,

@@ -120,7 +120,7 @@ function isValidCPF(value) {
 
                     <h2>CNPJ changes the weights</h2>
 
-                    <p>The shape is identical &mdash; weighted sum, modulo 11, same digit rule &mdash; but a CNPJ has twelve base digits and a different set of weights, so it needs its own function rather than a reused one:</p>
+                    <p>The shape is identical (weighted sum, modulo 11, same digit rule), but a CNPJ has twelve base digits and a different set of weights, so it needs its own function rather than a reused one:</p>
 
                     <pre><code>function isValidCNPJ(value) {
   const d = value.replace(/\D/g, '');
@@ -139,7 +139,7 @@ function isValidCPF(value) {
   return digit(12) === +d[12] &amp;&amp; digit(13) === +d[13];
 }</code></pre>
 
-                    <p>Validating a CNPJ with the CPF rule &mdash; or the reverse &mdash; is a common and invisible bug: it accepts and rejects the wrong numbers without ever throwing. Pick the function from the customer type (<em>pessoa f&iacute;sica</em> or <em>pessoa jur&iacute;dica</em>), not from the length of whatever they pasted.</p>
+                    <p>Validating a CNPJ with the CPF rule, or the reverse, is a common and invisible bug: it accepts and rejects the wrong numbers without ever throwing. Pick the function from the customer type (<em>pessoa f&iacute;sica</em> or <em>pessoa jur&iacute;dica</em>), not from the length of whatever they pasted.</p>
 
                     <h2>The number that passes the math and is still wrong</h2>
 
@@ -159,13 +159,13 @@ function isValidCPF(value) {
 
                     <p>Here is the limit, stated plainly, because pretending otherwise is how stores talk themselves into trouble. A passing check digit means one thing: the number is <strong>well-formed</strong>. It does not mean the CPF exists in the Receita Federal's records, and it does not mean the person at your checkout is the one it belongs to. The checksum catches accidents, not invention &mdash; a determined person can hand-pick a number that validates in a few tries.</p>
 
-                    <p>If you genuinely need to know a document is real and active &mdash; for regulated goods, for fraud screening &mdash; that is a paid lookup against Serpro or a licensed reseller. It costs money per query, it is slower, and it drags in real data-handling obligations about what you are allowed to store and why. That is a deliberate decision with a price attached, not a line of JavaScript. For the ordinary job, stopping typos before they turn into failed invoices, the free check digit is the right tool, and being honest that it proves form and not truth is worth more than a checkmark that overclaims.</p>
+                    <p>If you genuinely need to know a document is real and active, for regulated goods or fraud screening, that is a paid lookup against Serpro or a licensed reseller. It costs money per query, it is slower, and it drags in real data-handling obligations about what you are allowed to store and why. That is a deliberate decision with a price attached, not a line of JavaScript. For the ordinary job, stopping typos before they turn into failed invoices, the free check digit is the right tool, and being honest that it proves form and not truth is worth more than a checkmark that overclaims.</p>
 
                     <h2>The short version</h2>
 
                     <p>Collecting a Brazilian tax ID is a small field with a sharp edge. Get the check-digit math right and you quietly kill a whole class of silent order failures; get the repeated-digit guard wrong and you wave <code>000.000.000-00</code> straight through. The two functions above are the entire client-side job, the server runs the same two, and neither of them pretends to be a background check.</p>
 
-                    <p>We wired all of this &mdash; the CPF and CNPJ masks, the person-or-company switch that picks the right rule, and the identical validation on both sides &mdash; into <a href="checkout-brasil.html">Checkout Brasil</a>, our WooCommerce plugin for Brazilian checkouts. If you would rather build it yourself, the code above is the part that actually matters.</p>
+                    <p>The CPF and CNPJ masks, the person-or-company switch that picks the right rule, and the identical validation on both sides are all wired into <a href="checkout-brasil.html">Checkout Brasil</a>, our WooCommerce plugin for Brazilian checkouts. If you would rather build it yourself, the code above is the part that actually matters.</p>
 
                     <p><em>We build and run small products, and write up what breaks. <a href="checkout-brasil.html">Checkout Brasil</a> &middot; <a href="services.html">Rebel Studios</a>.</em></p>
 

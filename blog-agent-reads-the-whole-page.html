@@ -112,7 +112,7 @@
 
                     <p class="article-caption">Characters. At the usual rule of thumb of ~4 characters per token, that is about 128,000 tokens versus about 2,900 for the same five pages. The token figure is an estimate, and I am calling it one; the character counts are exact. Run <code>npm run bench</code> in the repo and you will get your own numbers &mdash; live pages drift, so the point is the ratio, not the digits.</p>
 
-                    <p>One Wikipedia article is a quarter of a million characters of snapshot. The agent came to read a definition or click a link in the contents; it was handed every navigation item, every language in the sidebar, every edit affordance, the entire footer, and the ARIA role of each. Almost none of it is the thing it came for. It reads &mdash; and pays for &mdash; the whole page to use one corner of it.</p>
+                    <p>One Wikipedia article is a quarter of a million characters of snapshot. The agent came to read a definition or click a link in the contents; it was handed every navigation item, every language in the sidebar, every edit affordance, the entire footer, and the ARIA role of each. Almost none of it is the thing it came for. It reads the whole page, and pays for all of it, to use one corner.</p>
 
                     <h2>Cost is the obvious part. Judgment is the quiet part</h2>
 
@@ -120,7 +120,7 @@
 
                     <div class="article-highlight">
                         <h3>What actually needs to survive</h3>
-                        <p>Strip a page to what an agent can act on and it is small: the headings that give it shape, the forms and dialogs as groups, each interactive element as one line &mdash; <code>[e12] button &ldquo;Next&rdquo; (disabled)</code> &mdash; navigation and footer collapsed to a handful of links and a count, then a few hundred characters of the page&rsquo;s actual text. That is a few thousand characters. The rest of the page has not vanished; it is one call away if the agent needs it. It just does not belong in every turn.</p>
+                        <p>Strip a page to what an agent can act on and it is small: the headings that give it shape, the forms and dialogs as groups, each interactive element as one line (<code>[e12] button &ldquo;Next&rdquo; (disabled)</code>), navigation and footer collapsed to a handful of links and a count, then a few hundred characters of the page&rsquo;s actual text. That is a few thousand characters. The rest of the page has not vanished; it is one call away if the agent needs it. It just does not belong in every turn.</p>
                     </div>
 
                     <h2>The page fights back in other ways too</h2>
@@ -136,7 +136,7 @@
 
                     <h2>Closing the gap</h2>
 
-                    <p>Those frictions are why we built <a href="thinbrowser.html">thinbrowser</a>, an MCP browser layer over Playwright &mdash; Playwright still does the hard part of actually driving Chromium. Every tool in it exists because one of the problems above cost us an afternoon. The snapshot returns the compact outline, not the accessibility dump &mdash; the 44&times; in the table above. References live on the element, so a button keeps its handle across snapshots for as long as it exists. <code>click</code> scrolls to the target, moves or dismisses whatever overlay is covering it, and reports what it did. <code>wait</code> answers one of those three states instead of a bare true/false. And when a page is a login wall or a bot check, the snapshot says so at the top rather than coming back as a page that looks mysteriously empty.</p>
+                    <p>Those frictions are why we built <a href="thinbrowser.html">thinbrowser</a>, an MCP browser layer over Playwright. Playwright still does the hard part of actually driving Chromium. Every tool in it exists because one of the problems above cost us an afternoon. The snapshot returns the compact outline, not the accessibility dump: that is the 44&times; in the table above. References live on the element, so a button keeps its handle across snapshots for as long as it exists. <code>click</code> scrolls to the target, moves or dismisses whatever overlay is covering it, and reports what it did. <code>wait</code> answers one of those three states instead of a bare true/false. And when a page is a login wall or a bot check, the snapshot says so at the top rather than coming back as a page that looks mysteriously empty.</p>
 
                     <div class="article-highlight">
                         <h3>It reports the wall; it does not climb over it</h3>
@@ -145,7 +145,7 @@
 
                     <p>It is free and MIT-licensed, it is not tied to one model or editor, and it installs as one line: <code>claude mcp add thinbrowser -- npx -y thinbrowser</code>, or point any MCP client at <code>npx -y thinbrowser</code> as a stdio server. The benchmark is in the repo; the fastest way to disbelieve the 44&times; is to run it yourself.</p>
 
-                    <p><em>We build tools that treat your agent&rsquo;s context &mdash; and your data &mdash; as something scarce, worth spending carefully. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
+                    <p><em>We build tools that treat your agent&rsquo;s context and your data as something scarce, worth spending carefully. <a href="index.html#contact">That&rsquo;s what we do at Rebel Studios.</a></em></p>
                 </div>
 
                 <div class="article-footer-nav">

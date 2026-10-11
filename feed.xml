@@ -3,7 +3,7 @@
   <channel>
     <title>Rebel Studios Software Blog</title>
     <link>https://rebelstudiossoftware.com/blog.html</link>
-    <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>
+    <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Sep 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>

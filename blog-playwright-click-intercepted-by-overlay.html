@@ -123,7 +123,7 @@ const onTop = await page.evaluate(([x, y]) =&gt; {
   return el &amp;&amp; el.className;      // -&gt; "cookie-consent"  (not your button)
 }, [x, y]);</code></pre>
 
-                    <p>If the element under the point is your target &mdash; or an ancestor or descendant of it, which still counts as a hit &mdash; the path is clear and you can click. If it is something else, you have found your overlay, and now you can deal with it deliberately instead of by timeout. Walk up from the hit element to the nearest ancestor whose <code>position</code> is <code>fixed</code> or <code>sticky</code>: that is the layer doing the covering, not the little inner <code>&lt;span&gt;</code> the point happened to touch.</p>
+                    <p>If the element under the point is your target, or an ancestor or descendant of it (which still counts as a hit), the path is clear and you can click. If it is something else, you have found your overlay, and now you can deal with it deliberately instead of by timeout. Walk up from the hit element to the nearest ancestor whose <code>position</code> is <code>fixed</code> or <code>sticky</code>: that is the layer doing the covering, not the little inner <code>&lt;span&gt;</code> the point happened to touch.</p>
 
                     <h2>Dismiss it &mdash; do not just hide it</h2>
 
@@ -142,7 +142,7 @@ const onTop = await page.evaluate(([x, y]) =&gt; {
 
                     <h2>We run this before every click</h2>
 
-                    <p>This is not a hypothetical for us. We build <a href="thinbrowser.html">thinbrowser</a>, a browser an AI agent drives through <a href="blog-mcp-web-access.html">MCP</a>, and an agent hits this constantly: it cannot glance at the page and notice a banner the way you would, so a click that lands on a cookie bar is a whole wasted step it may not even realise it wasted. So thinbrowser runs exactly the routine above before every click &mdash; hit-test the centre point, find the fixed or sticky layer on top, press its dismiss button or, failing that, hide it, up to three rounds because overlays stack &mdash; and only then clicks, with the DOM-click fallback if the normal click still will not land. Every action reports what it moved out of the way (&ldquo;pressed <em>Accept all</em> on an overlay&rdquo;), so a run that had to clear a banner says so, instead of hiding it.</p>
+                    <p>This is not a hypothetical for us. We build <a href="thinbrowser.html">thinbrowser</a>, a browser an AI agent drives through <a href="blog-mcp-web-access.html">MCP</a>, and an agent hits this constantly: it cannot glance at the page and notice a banner the way you would, so a click that lands on a cookie bar is a whole wasted step it may not even realise it wasted. So thinbrowser runs exactly the routine above before every click. It hit-tests the centre point, finds the fixed or sticky layer on top, and presses its dismiss button or, failing that, hides it, for up to three rounds because overlays stack. Only then does it click, with the DOM-click fallback if the normal click still will not land. Every action reports what it moved out of the way (&ldquo;pressed <em>Accept all</em> on an overlay&rdquo;), so a run that had to clear a banner says so, instead of hiding it.</p>
 
                     <p>If you drive a browser with an agent, it is one line to try:</p>
 

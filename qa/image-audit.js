@@ -49,7 +49,8 @@ if (!pages.length) {
             out.push({ src, natural: `${i.naturalWidth}x${i.naturalHeight}`, rendered: `${Math.round(r.width)}x${Math.round(r.height)}`, diff: +(diff * 100).toFixed(1), cls: i.className });
           }
           // soft: shown bigger than its pixels allow on a 2x screen (only for images over 120px wide)
-          if (r.width > 120 && i.naturalWidth < r.width * 1.5) out.push({ src, soft: true, natural: `${i.naturalWidth}x${i.naturalHeight}`, rendered: `${Math.round(r.width)}x${Math.round(r.height)}` });
+          const shownW = cs.objectFit === 'contain' ? Math.min(r.width, r.height * nat) : r.width; // what the eye sees
+          if (shownW > 120 && i.naturalWidth < shownW * 1.5) out.push({ src, soft: true, natural: `${i.naturalWidth}x${i.naturalHeight}`, shown: Math.round(shownW) });
         }
         return out;
       });

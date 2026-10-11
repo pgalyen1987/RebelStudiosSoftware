@@ -96,7 +96,7 @@
 
                     <h2>Attach, don't launch</h2>
 
-                    <p>Every Chrome can expose a control channel &mdash; the Chrome DevTools Protocol, or CDP &mdash; on a local port. Start Chrome with the port open, log in by hand like a person, solve whatever it throws at you, and leave the window sitting there. Then Playwright connects to the browser that is already running rather than starting a fresh one:</p>
+                    <p>Every Chrome can expose a control channel on a local port: the Chrome DevTools Protocol, or CDP. Start Chrome with the port open, log in by hand like a person, solve whatever it throws at you, and leave the window sitting there. Then Playwright connects to the browser that is already running rather than starting a fresh one:</p>
 
                     <pre class="article-code"><code># start Chrome yourself, once, with a dedicated profile
 google-chrome \
@@ -117,7 +117,7 @@ await page.goto('https://app.example.com/reports');
 
                     <div class="article-highlight">
                         <h3>The one line that logs you straight back out: <code>newContext()</code></h3>
-                        <p>This is the mistake that sends people back to the forums swearing CDP is broken. After connecting, muscle memory says <code>browser.newContext()</code> &mdash; that is how you start a clean session in normal Playwright. Over CDP it does the opposite of what you want: it opens a <em>new, empty</em> context with no cookies, so you are logged out again in the one browser that was logged in. Use <code>browser.contexts()[0]</code> &mdash; the context that is already there. Connecting gives you the existing session; asking for a new one throws it away.</p>
+                        <p>This is the mistake that sends people back to the forums swearing CDP is broken. After connecting, muscle memory says <code>browser.newContext()</code>, because that is how you start a clean session in normal Playwright. Over CDP it does the opposite of what you want: it opens a <em>new, empty</em> context with no cookies, so you are logged out again in the one browser that was logged in. Use <code>browser.contexts()[0]</code>, the context that is already there. Connecting gives you the existing session; asking for a new one throws it away.</p>
                     </div>
 
                     <h2>The catch nobody mentions: that port is an open door</h2>
@@ -126,7 +126,7 @@ await page.goto('https://app.example.com/reports');
 
                     <div class="article-highlight">
                         <h3>Bind to localhost, and never your everyday profile</h3>
-                        <p>Keep the port on <code>127.0.0.1</code>. Do not bind it to <code>0.0.0.0</code> to reach it from another machine unless you have put a tunnel or an allow-list in front of it &mdash; an open debugging port on a public interface is a fully authenticated browser handed to whoever finds it. And point <code>--user-data-dir</code> at a throwaway profile, not the Chrome you read your own email in. Recent Chrome enforces the second half of this for you: since version 136 it refuses remote debugging on the default profile precisely so a random web page can't attach to the browser holding your real logins. Take the hint &mdash; a dedicated profile is the correct setup, not a workaround.</p>
+                        <p>Keep the port on <code>127.0.0.1</code>. Do not bind it to <code>0.0.0.0</code> to reach it from another machine unless you have put a tunnel or an allow-list in front of it. An open debugging port on a public interface is a fully authenticated browser handed to whoever finds it. And point <code>--user-data-dir</code> at a throwaway profile, not the Chrome you read your own email in. Recent Chrome enforces the second half of this for you: since version 136 it refuses remote debugging on the default profile precisely so a random web page can't attach to the browser holding your real logins. Take the hint: a dedicated profile is the correct setup, not a workaround.</p>
                     </div>
 
                     <h2>What it does not fix</h2>

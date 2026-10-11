@@ -136,7 +136,7 @@ if (!confirmed) {
 
                     <div class="article-highlight">
                         <h3>Pick the strongest proof the page will give you</h3>
-                        <p>Freshness by timestamp is a good default, but it is not the only proof, and some are stronger. A returned identifier in the response is unambiguous. A success toast with the record's own name in it is hard to fake. A row count that went up by exactly one is solid if nothing else writes concurrently. Reach for whatever the app makes checkable, and prefer a signal that carries data unique to <em>this</em> action &mdash; an id, a name, a timestamp &mdash; over a generic &ldquo;something is on screen.&rdquo;</p>
+                        <p>Freshness by timestamp is a good default, but it is not the only proof, and some are stronger. A returned identifier in the response is unambiguous. A success toast with the record's own name in it is hard to fake. A row count that went up by exactly one is solid if nothing else writes concurrently. Reach for whatever the app makes checkable, and prefer a signal that carries data unique to <em>this</em> action (an id, a name, a timestamp) over a generic &ldquo;something is on screen.&rdquo;</p>
                     </div>
 
                     <h2>The same trap, one layer down</h2>
@@ -145,7 +145,7 @@ if (!confirmed) {
 
                     <h2>We confirm every action before we believe it</h2>
 
-                    <p>We hit this constantly building <a href="thinbrowser.html">thinbrowser</a>, a browser an AI agent drives through <a href="blog-mcp-web-access.html">MCP</a>. An agent cannot glance at the page and notice that a post never appeared &mdash; if the tool says &ldquo;posted,&rdquo; the agent believes it and moves on, and a whole chain of later steps is built on a thing that did not happen. So thinbrowser never reports success on the click alone. After an action it looks for the resulting state &mdash; a genuinely fresh item, a changed URL, a success marker &mdash; and if that proof is not there, it says so plainly instead of claiming a win. An honest failure the agent can retry beats a false success it will build on.</p>
+                    <p>We hit this constantly building <a href="thinbrowser.html">thinbrowser</a>, a browser an AI agent drives through <a href="blog-mcp-web-access.html">MCP</a>. An agent cannot glance at the page and notice that a post never appeared. If the tool says &ldquo;posted,&rdquo; the agent believes it and moves on, and a whole chain of later steps is built on a thing that did not happen. So thinbrowser never reports success on the click alone. After an action it looks for the resulting state (a genuinely fresh item, a changed URL, a success marker), and if that proof is not there, it says so plainly instead of claiming a win. An honest failure the agent can retry beats a false success it will build on.</p>
 
                     <p>If you drive a browser with an agent, it is one line to try:</p>
 

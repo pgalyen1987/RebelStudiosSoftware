@@ -145,7 +145,7 @@ def build_feed(posts: list[dict]) -> str:
         "  <channel>",
         "    <title>Rebel Studios Software Blog</title>",
         f"    <link>{BASE}/blog.html</link>",
-        "    <description>Insights on security, AI, and software engineering from Rebel Studios Software.</description>",
+        "    <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>",
         "    <language>en-us</language>",
         f"    <lastBuildDate>{rfc822_date(latest)}</lastBuildDate>",
         f'    <atom:link href="{BASE}/feed.xml" rel="self" type="application/rss+xml"/>',
