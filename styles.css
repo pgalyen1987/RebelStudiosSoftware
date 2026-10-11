@@ -4959,3 +4959,8 @@ a.tool-card.is-paused:hover { transform: none; }
 .preview-stage--oak { background: radial-gradient(70% 90% at 50% 100%, rgba(141, 121, 192, 0.38), transparent 70%), #110a26; }
 .preview-stage--phuzzles { background: radial-gradient(70% 90% at 50% 100%, rgba(242, 139, 130, 0.26), transparent 70%), #15152c; }
 @media (max-width: 900px) { .cta { width: calc(100% - 32px); border-radius: var(--radius-lg); } }
+/* Long inline code (contract addresses, file paths) wraps instead of widening the page */
+:not(pre) > code { overflow-wrap: anywhere; }
+@media (max-width: 639px) { .article-table { display: block; overflow-x: auto; } }
+.section-head .section-lead { margin-top: var(--space-sm); max-width: var(--measure); }
+.section-head:last-child { margin-bottom: 0; }

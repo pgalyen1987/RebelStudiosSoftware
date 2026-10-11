@@ -50,7 +50,7 @@ if (!pages.length) {
           }
           // soft: shown bigger than its pixels allow on a 2x screen (only for images over 120px wide)
           const shownW = cs.objectFit === 'contain' ? Math.min(r.width, r.height * nat) : r.width; // what the eye sees
-          if (shownW > 120 && i.naturalWidth < shownW * 1.5) out.push({ src, soft: true, natural: `${i.naturalWidth}x${i.naturalHeight}`, shown: Math.round(shownW) });
+          if (shownW > 120 && !/\.svg(\?|$)/i.test(src) && i.naturalWidth < shownW * 1.5) out.push({ src, soft: true, natural: `${i.naturalWidth}x${i.naturalHeight}`, shown: Math.round(shownW) });
         }
         return out;
       });
