@@ -4929,3 +4929,25 @@ a.tool-card.is-paused:hover { transform: none; }
     .oak-rules dd { margin-bottom: var(--space-sm); }
     .device { max-width: 240px; }
 }
+/* Homepage hero: two real phone screens in the same frame (2026-10-11). The box keeps the
+   composition's proportions at every width, so the phones scale together. */
+.hero-devices { position: relative; margin: 0 0 0 auto; width: 100%; max-width: 470px; aspect-ratio: 470 / 610; }
+.hero-device { position: absolute; display: block; max-width: none; }
+.hero-device--back { right: 0; top: 0; width: 46%; }
+.hero-device--front { left: 4%; top: 13%; width: 52%; z-index: 1; }
+.hero-device--back img { filter: saturate(0.92) brightness(0.92); }
+.hero-devices { margin-bottom: var(--space-lg); }
+.hero-devices figcaption {
+    position: absolute; left: 0; right: 0; top: 100%; margin-top: var(--space-sm); text-align: right;
+    font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3);
+}
+@media (max-width: 1024px) { .hero-devices { margin: 0 auto var(--space-lg); max-width: 380px; } .hero-devices figcaption { text-align: center; } }
+/* Home "Recent work": app cards show a real phone screen rising out of a tinted stage */
+.preview-stage { position: relative; overflow: hidden; display: flex; justify-content: center; }
+.preview-stage img {
+    width: 36%; height: auto; margin-top: 6%; align-self: flex-start;
+    border-radius: 20px;
+    box-shadow: 0 0 0 5px #0d0f16, 0 0 0 6px rgba(255, 255, 255, 0.12), 0 30px 60px -20px rgba(0, 0, 0, 0.9);
+}
+.preview-stage--oak { background: radial-gradient(70% 90% at 50% 100%, rgba(141, 121, 192, 0.38), transparent 70%), #110a26; }
+.preview-stage--phuzzles { background: radial-gradient(70% 90% at 50% 100%, rgba(242, 139, 130, 0.26), transparent 70%), #15152c; }
