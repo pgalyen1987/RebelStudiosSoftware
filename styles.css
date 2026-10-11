@@ -561,8 +561,15 @@
     --font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
 
     /* Shape */
-    --radius: 16px;
+    /* Radius scale on φ from 6px: 6, 10, 16, 26, 42. Cards and panels take --radius-lg,
+       anything inside them --radius, small chips --radius-sm/xs; buttons, tags and badges
+       are pills. Curves go where the eye lands; rules and dividers stay straight. */
+    --radius-xs: 6px;
     --radius-sm: 10px;
+    --radius: 16px;
+    --radius-lg: 26px;
+    --radius-xl: 42px;
+    --radius-pill: 999px;
     --shadow-card: 0 14px 40px -18px rgba(0, 0, 0, 0.7);
     --shadow-glow: 0 0 0 1px rgba(108, 190, 69, 0.35), 0 18px 50px -18px rgba(108, 190, 69, 0.25);
 
@@ -693,8 +700,8 @@ select:focus-visible,
 textarea:focus-visible {
     outline: 2px solid var(--green);
     outline-offset: 3px;
-    border-radius: 4px;
 }
+a:not([class]):focus-visible { border-radius: var(--radius-xs); }
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -856,7 +863,7 @@ h1, h2, h3, h4 {
     color: #08120a !important;
     font-weight: 700;
     padding: 0.5rem 1.2rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill);
     box-shadow: 0 0 20px rgba(108, 190, 69, 0.25);
     transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease !important;
 }
@@ -979,7 +986,7 @@ h1, h2, h3, h4 {
     background: var(--surface);
     border: 1px solid var(--line);
     padding: 0.45rem 0.95rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     margin-bottom: 1.75rem;
 }
 
@@ -1029,7 +1036,7 @@ h1, h2, h3, h4 {
 .terminal {
     background: rgba(9, 13, 21, 0.85);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     overflow: hidden;
     font-family: var(--font-mono);
@@ -1103,7 +1110,7 @@ h1, h2, h3, h4 {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.85rem 1.9rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill);
     text-decoration: none;
     font-family: var(--font-display);
     font-weight: 700;
@@ -1132,7 +1139,7 @@ h1, h2, h3, h4 {
     align-items: center;
     justify-content: center;
     padding: 0.85rem 1.9rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill);
     text-decoration: none;
     font-family: var(--font-display);
     font-weight: 700;
@@ -1234,7 +1241,7 @@ h1, h2, h3, h4 {
     position: relative;
     background: var(--surface);
     padding: 2.4rem 2.2rem;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--line);
     text-align: left;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
@@ -1270,7 +1277,7 @@ h1, h2, h3, h4 {
     width: 52px;
     height: 52px;
     font-size: 1.5rem;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--green-dim);
     border: 1px solid rgba(108, 190, 69, 0.3);
     color: var(--green-bright);
@@ -1381,7 +1388,7 @@ h1, h2, h3, h4 {
 .portfolio-item {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
 }
@@ -1533,7 +1540,7 @@ h1, h2, h3, h4 {
     font-size: 0.85em;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--line);
-    border-radius: 5px;
+    border-radius: var(--radius-xs);
     padding: 0.08em 0.4em;
     color: var(--green-bright);
 }
@@ -1550,7 +1557,7 @@ h1, h2, h3, h4 {
     background: rgba(255, 255, 255, 0.03);
     color: var(--ink-2);
     padding: 0.28rem 0.7rem;
-    border-radius: 6px;
+    border-radius: var(--radius-pill);
     font-size: 0.73rem;
     font-weight: 500;
     border: 1px solid var(--line);
@@ -1574,7 +1581,7 @@ h1, h2, h3, h4 {
     color: var(--green-bright);
     border: 1px solid rgba(108, 190, 69, 0.35);
     padding: 0.3rem 0.8rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.75rem;
     font-weight: 600;
 }
@@ -1612,7 +1619,7 @@ h1, h2, h3, h4 {
 .service-item {
     position: relative;
     background: var(--surface);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2.2rem;
     border: 1px solid var(--line);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
@@ -1725,7 +1732,7 @@ h1, h2, h3, h4 {
     flex-direction: column;
     height: 100%;
     text-decoration: none;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--line);
     background: var(--surface);
@@ -1865,7 +1872,7 @@ h1, h2, h3, h4 {
     padding: 1rem 1.15rem;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
 }
 
 .contact-icon {
@@ -1899,7 +1906,7 @@ h1, h2, h3, h4 {
 .contact-form {
     background: var(--surface-strong);
     padding: 2.5rem;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--line);
     box-shadow: var(--shadow-card);
 }
@@ -1925,7 +1932,7 @@ h1, h2, h3, h4 {
     width: 100%;
     padding: 0.8rem 1rem;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     font-size: 0.97rem;
     font-family: var(--font-body);
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -1989,7 +1996,7 @@ h1, h2, h3, h4 {
     min-height: unset;
     aspect-ratio: 16 / 9;
     max-height: 440px;
-    border-radius: var(--radius) var(--radius) 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .portfolio-item-website .screenshot-slide img {
@@ -2077,7 +2084,7 @@ h1, h2, h3, h4 {
     font-family: var(--font-mono);
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill);
     padding: 0.45rem 0.75rem;
     font-size: 0.74rem;
     font-weight: 600;
@@ -2110,7 +2117,7 @@ h1, h2, h3, h4 {
     text-decoration: none;
     border: 1px solid var(--line-strong);
     padding: 0.3rem 0.85rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     transition: all 0.25s ease;
     background: rgba(255, 255, 255, 0.03);
 }
@@ -2204,12 +2211,18 @@ h1, h2, h3, h4 {
 /* ============================================================
    CTA
    ============================================================ */
+/* The one closing ask on a page sits in a rounded panel rather than a full-bleed band:
+   the soft edge marks it as the end of the page's argument. */
 .cta {
     position: relative;
     color: var(--ink-1);
     padding: 6.5rem 0;
     text-align: center;
-    border-top: 1px solid var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    width: calc(100% - 48px);
+    max-width: 1152px;
+    margin: 0 auto var(--space-xl);
     overflow: hidden;
 }
 
@@ -2363,7 +2376,7 @@ h1, h2, h3, h4 {
     flex-direction: column;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     text-decoration: none;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
@@ -2502,7 +2515,7 @@ h1, h2, h3, h4 {
     min-height: 250px;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     overflow: hidden;
     text-align: center;
 }
@@ -2741,7 +2754,7 @@ h1, h2, h3, h4 {
     position: relative;
     background: var(--surface-strong);
     border: 1px solid rgba(108, 190, 69, 0.4);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2rem;
     margin: 2.2rem 0;
     box-shadow: 0 0 40px -18px rgba(108, 190, 69, 0.35);
@@ -2781,7 +2794,7 @@ h1, h2, h3, h4 {
 .article-content .article-code {
     background: #0a0e17;
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     padding: 1.3rem;
     margin: 1rem 0 1.5rem;
     overflow-x: auto;
@@ -2805,7 +2818,7 @@ h1, h2, h3, h4 {
     font-size: 0.86em;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--line);
-    border-radius: 5px;
+    border-radius: var(--radius-xs);
     padding: 0.08em 0.4em;
     color: var(--green-bright);
     /* long unspaced snippets (JSON, URLs) may break rather than widen the page */
@@ -2821,7 +2834,7 @@ h1, h2, h3, h4 {
 .article-diagram {
     background: #0a0e17;
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     padding: 1.3rem;
     margin: 1.5rem 0;
     overflow-x: auto;
@@ -2835,7 +2848,7 @@ h1, h2, h3, h4 {
 .article-chart {
     background: #0a0e17;
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     padding: 1.4rem 1.5rem 1.5rem;
     margin: 1.75rem 0;
 }
@@ -2876,14 +2889,14 @@ h1, h2, h3, h4 {
 
 .chart-track {
     height: 14px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     background: rgba(255, 255, 255, 0.04);
 }
 
 .chart-bar {
     height: 100%;
     min-width: 3px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     background: var(--green);
     transition: background 0.2s ease;
 }
@@ -2925,7 +2938,7 @@ h1, h2, h3, h4 {
 .practice-card {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border-top: 2px solid var(--green);
 }
@@ -2983,7 +2996,7 @@ h1, h2, h3, h4 {
     align-items: center;
     gap: 0.45rem;
     padding: 0.55rem 0.9rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill);
     border: 1px solid var(--line);
     background: rgba(255, 255, 255, 0.02);
     color: var(--ink-2);
@@ -3129,7 +3142,7 @@ h1, h2, h3, h4 {
 .about-stat {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     text-align: center;
     transition: border-color 0.3s ease, transform 0.3s ease;
@@ -3163,7 +3176,7 @@ h1, h2, h3, h4 {
 
 .about-founder {
     background: var(--surface-strong);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2.6rem;
     border: 1px solid var(--line);
     position: relative;
@@ -3225,7 +3238,7 @@ h1, h2, h3, h4 {
     text-align: center;
     padding: 1.35rem 1rem;
     background: var(--surface);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--line);
     transition: border-color 0.3s ease;
 }
@@ -3272,7 +3285,7 @@ h1, h2, h3, h4 {
 .pipeline-step {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2rem 1.5rem;
     text-align: center;
     position: relative;
@@ -3334,7 +3347,7 @@ h1, h2, h3, h4 {
 .result-card {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2rem;
 }
 
@@ -3422,7 +3435,7 @@ h1, h2, h3, h4 {
     font-family: var(--font-mono);
     background: rgba(255, 255, 255, 0.06);
     padding: 0.12rem 0.4rem;
-    border-radius: 5px;
+    border-radius: var(--radius-xs);
     font-size: 0.82rem;
     color: var(--green-bright);
 }
@@ -3451,7 +3464,7 @@ h1, h2, h3, h4 {
 
 .tech-card-product {
     background: var(--surface);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 1.75rem;
     border: 1px solid var(--line);
     border-top: 2px solid var(--green);
@@ -3488,7 +3501,7 @@ h1, h2, h3, h4 {
 .deployment-card {
     background: #0a0e17;
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2rem;
     color: var(--ink-2);
 }
@@ -3628,7 +3641,7 @@ h1, h2, h3, h4 {
     font-size: 0.86em;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--line);
-    border-radius: 5px;
+    border-radius: var(--radius-xs);
     padding: 0.08em 0.4em;
     color: var(--green-bright);
 }
@@ -3643,7 +3656,7 @@ h1, h2, h3, h4 {
 .spec-card {
     background: var(--surface);
     border: 1px solid rgba(108, 190, 69, 0.25);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
 }
 
@@ -3920,7 +3933,7 @@ a.tool-card {
     display: block;
     padding: 1.15rem 1.2rem;
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg);
     background: var(--surface);
     color: inherit;
     text-decoration: none;
@@ -3959,7 +3972,7 @@ a.tool-card:hover {
     display: inline-flex;
     align-items: center;
     padding: 0.28rem 0.7rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     background: var(--green-dim);
     color: var(--green-bright);
     border: 1px solid rgba(108, 190, 69, 0.35);
@@ -3975,7 +3988,7 @@ a.tool-card:hover {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     padding: 0.22rem 0.55rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
 }
 
 .tool-live-badge {
@@ -4011,7 +4024,7 @@ a.tool-card:hover {
     padding: var(--space-sm) var(--space-md);
     background: var(--surface-strong);
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
 }
 
 .page-header .tool-paused-note p {
@@ -4060,7 +4073,7 @@ a.tool-card:hover {
     padding: 1rem 1.1rem;
     background: var(--surface-strong);
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--green-bright);
@@ -4103,19 +4116,19 @@ a.tool-card:hover {
 
 /* --- Newsletter signup --- */
 .newsletter-wrap{padding:1rem 0 3rem}
-.newsletter{background:linear-gradient(180deg,#0d1220,#0a0e16);border:1px solid #1c2432;border-radius:16px;padding:2.6rem 2rem;text-align:center;max-width:720px;margin:0 auto}
+.newsletter{background:linear-gradient(180deg,#0d1220,#0a0e16);border:1px solid #1c2432;border-radius:var(--radius-xl);padding:2.6rem 2rem;text-align:center;max-width:720px;margin:0 auto}
 .newsletter h3{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;margin:0 0 .5rem;color:#eef1f7}
 .newsletter>p{color:#98a2b3;margin:0 0 1.5rem}
 .nl-fields{display:flex;gap:.6rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.nl-fields input[type=email]{flex:1;min-width:220px;padding:.85rem 1rem;border-radius:10px;border:1px solid #2a3140;background:#070a11;color:#eef1f7;font-size:1rem}
-.nl-fields button{padding:.85rem 1.5rem;border-radius:10px;border:0;background:var(--green);color:#08120a;font-weight:700;cursor:pointer;font-size:1rem;transition:background .15s}
+.nl-fields input[type=email]{flex:1;min-width:220px;padding:.85rem 1rem;border-radius: var(--radius);border:1px solid #2a3140;background:#070a11;color:#eef1f7;font-size:1rem}
+.nl-fields button{padding:.85rem 1.5rem;border-radius: var(--radius-pill);border:0;background:var(--green);color:#08120a;font-weight:700;cursor:pointer;font-size:1rem;transition:background .15s}
 .nl-fields button:hover{background:var(--green-bright)}
 .nl-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .nl-status{margin-top:.9rem;font-size:.95rem;min-height:1.2em}
 .nl-status.ok{color:var(--green-bright)}.nl-status.err{color:#f87171}
 /* --- Credibility strip --- */
 .cred-strip{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:0 auto 2.5rem;max-width:1000px}
-.cred-item{flex:1;min-width:150px;background:#0d1220;border:1px solid #1c2432;border-radius:12px;padding:1.1rem 1rem;text-align:center}
+.cred-item{flex:1;min-width:150px;background:#0d1220;border:1px solid #1c2432;border-radius: var(--radius-lg);padding:1.1rem 1rem;text-align:center}
 .cred-item strong{display:block;font-family:var(--font-display);font-size:var(--text-lg);color:var(--green-bright);line-height:var(--leading-display)}
 .cred-item span{display:block;color:var(--ink-2);font-size:.9rem;margin-top:.35rem}
 
@@ -4182,7 +4195,7 @@ a.tool-card:hover {
     flex-direction: column;
     background: var(--surface-strong);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: var(--space-lg) var(--space-md);
     overflow: hidden;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -4489,7 +4502,7 @@ a.tool-card:hover {
 .tool-ico {
     width: 34px;
     height: 34px;
-    border-radius: 9px;
+    border-radius: var(--radius-sm);
     display: grid;
     place-items: center;
     margin-bottom: 0.7rem;
@@ -4547,7 +4560,7 @@ a.tool-card.is-paused:hover { transform: none; }
 .plug-ico {
     width: 38px;
     height: 38px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     display: grid;
     place-items: center;
     margin-bottom: 0.8rem;
@@ -4761,7 +4774,7 @@ a.tool-card.is-paused:hover { transform: none; }
 .cb-card {
     background: var(--surface-strong);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 26px;
 }
 /* h3 not h4: these sit under a section h2, and jumping a level breaks
@@ -4777,7 +4790,7 @@ a.tool-card.is-paused:hover { transform: none; }
 .cb-cta {
     background: var(--surface-strong);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 32px;
     margin-top: 2.5rem;
     text-align: center;
@@ -4838,12 +4851,6 @@ a.tool-card.is-paused:hover { transform: none; }
     .article-content .data-table { display: table; white-space: normal; }
 }
 
-/* Homepage hero: real screens from shipped products (replaced a mock terminal, 2026-09-18) */
-.hero-shots { position: relative; margin: 0; height: 440px; }
-.hero-shot-wide { position: absolute; right: 0; top: 20px; width: 86%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); box-shadow: var(--shadow-card); }
-.hero-shot-phone { position: absolute; left: 0; bottom: 18px; width: 30%; height: auto; border-radius: 18px; border: 1px solid var(--line-strong); box-shadow: 0 24px 48px -16px rgba(0,0,0,.8); }
-.hero-shots figcaption { position: absolute; right: 0; bottom: -6px; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3); }
-@media (max-width: 900px) { .hero-shots { height: 340px; margin-top: 2rem; } }
 /* About: named products instead of big numbers */
 .about-stat-list { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--ink-1); margin-top: .3rem; }
 .about-stat-list a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
@@ -4889,7 +4896,7 @@ a.tool-card.is-paused:hover { transform: none; }
 .oak-board { margin: 0; }
 .oak-board img {
     display: block; width: 100%; height: auto; aspect-ratio: 1;
-    border-radius: 22px;
+    border-radius: var(--radius-lg);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 140px -40px rgba(141, 121, 192, 0.55);
 }
 .oak-board figcaption { margin-top: var(--space-sm); font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.5; color: var(--ink-3); }
@@ -4951,3 +4958,4 @@ a.tool-card.is-paused:hover { transform: none; }
 }
 .preview-stage--oak { background: radial-gradient(70% 90% at 50% 100%, rgba(141, 121, 192, 0.38), transparent 70%), #110a26; }
 .preview-stage--phuzzles { background: radial-gradient(70% 90% at 50% 100%, rgba(242, 139, 130, 0.26), transparent 70%), #15152c; }
+@media (max-width: 900px) { .cta { width: calc(100% - 32px); border-radius: var(--radius-lg); } }
