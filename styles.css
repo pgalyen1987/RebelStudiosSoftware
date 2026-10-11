@@ -4848,3 +4848,84 @@ a.tool-card.is-paused:hover { transform: none; }
 .about-stat-list { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--ink-1); margin-top: .3rem; }
 .about-stat-list a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
 .about-stat .about-stat-label { display: block; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+
+/* Phone screenshot frame. The bezel is drawn outside the image with box-shadow, so the
+   screenshot keeps its real proportions and nothing is cropped or stretched. */
+.device { margin: 0; width: 100%; max-width: 280px; }
+.device img {
+    display: block; width: 100%; height: auto;
+    border-radius: 30px;
+    box-shadow: 0 0 0 7px #0d0f16, 0 0 0 8px rgba(255, 255, 255, 0.12), 0 40px 80px -30px rgba(0, 0, 0, 0.85);
+}
+.device figcaption {
+    margin-top: calc(var(--space-sm) + 8px);
+    font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.5; color: var(--ink-3);
+}
+
+/* Oops All Knights landing page. The game's own violet, cream and gold lead here. */
+.oak-page { --oak-cream: #fff6e4; --oak-violet: #8d79c0; --oak-gold: #ffcf33; }
+.oak-page em { font-style: normal; color: var(--ink-1); }
+.oak-hero {
+    padding: var(--space-xl) 0;
+    background:
+        radial-gradient(60% 80% at 80% 45%, rgba(141, 121, 192, 0.22), transparent 62%),
+        linear-gradient(180deg, #0e0822 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--line);
+}
+.oak-hero-grid { display: grid; grid-template-columns: 1.618fr 1fr; gap: var(--space-xl); align-items: center; }
+.oak-eyebrow {
+    font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--oak-gold); margin-bottom: var(--space-sm);
+}
+.oak-hero h1 {
+    font-size: clamp(2.618rem, 6.2vw, var(--text-4xl)); line-height: 1; letter-spacing: -0.035em;
+    color: var(--oak-cream); margin-bottom: var(--space-md);
+}
+.oak-lede { font-size: var(--text-deck); line-height: var(--leading-deck); color: var(--ink-2); max-width: 34rem; }
+.oak-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); margin: var(--space-lg) 0 var(--space-sm); }
+.oak-badge { display: inline-block; line-height: 0; }
+.oak-badge img { height: 50px; width: auto; }
+.oak-note { font-size: var(--text-sm); color: var(--ink-3); max-width: 32rem; }
+.oak-board { margin: 0; }
+.oak-board img {
+    display: block; width: 100%; height: auto; aspect-ratio: 1;
+    border-radius: 22px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 140px -40px rgba(141, 121, 192, 0.55);
+}
+.oak-board figcaption { margin-top: var(--space-sm); font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.5; color: var(--ink-3); }
+.oak-section { padding: var(--space-xl) 0; }
+.oak-section--band {
+    background: linear-gradient(180deg, rgba(141, 121, 192, 0.07), rgba(141, 121, 192, 0.015));
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.oak-h2 { font-size: clamp(1.9rem, 3.2vw, var(--text-2xl)); line-height: var(--leading-head); letter-spacing: -0.025em; margin-bottom: var(--space-lg); }
+.oak-h3 { font-size: var(--text-md); margin: var(--space-md) 0 var(--space-2xs); }
+.oak-changes { margin: 0; }
+.oak-changes > div {
+    display: grid; grid-template-columns: 1fr 1.618fr; gap: var(--space-lg);
+    padding: var(--space-md) 0; border-top: 1px solid var(--line-strong);
+}
+.oak-changes > div:last-child { border-bottom: 1px solid var(--line-strong); }
+.oak-changes dt { font-family: var(--font-display); font-size: var(--text-md); font-weight: 600; line-height: var(--leading-head); color: var(--oak-cream); }
+.oak-changes dd { margin: 0; max-width: 34rem; }
+.oak-split { display: grid; grid-template-columns: 1.618fr 1fr; gap: var(--space-xl); align-items: center; }
+.oak-split--flip { grid-template-columns: 1fr 1.618fr; }
+.oak-split--flip .oak-split-shot { order: -1; }
+.oak-split-shot { justify-self: center; }
+.oak-split-copy p { max-width: 34rem; }
+.oak-rules { display: grid; grid-template-columns: 9rem 1fr; gap: var(--space-sm) var(--space-md); margin: 0; }
+.oak-rules dt {
+    font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--oak-gold); padding-top: 0.3rem;
+}
+.oak-rules dd { margin: 0; max-width: 34rem; }
+.oak-narrow { max-width: 46rem; }
+@media (max-width: 860px) {
+    .oak-hero-grid, .oak-split, .oak-split--flip { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .oak-split--flip .oak-split-shot { order: 0; }
+    .oak-board { max-width: 520px; }
+    .oak-changes > div { grid-template-columns: 1fr; gap: var(--space-2xs); }
+    .oak-rules { grid-template-columns: 1fr; gap: var(--space-2xs); }
+    .oak-rules dd { margin-bottom: var(--space-sm); }
+    .device { max-width: 240px; }
+}
