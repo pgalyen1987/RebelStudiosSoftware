@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Sep 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>When Ideas Are Free, the Great Man Is the Filter</title>
+      <link>https://rebelstudiossoftware.com/blog-great-man-theory-ai.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-great-man-theory-ai.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 -0000</pubDate>
+      <description>Carlyle credited the hero and Spencer credited the times. AI makes ideas nearly free: of 26 game ideas we wrote down in one afternoon, 18 already existed. What our own tests say about where the credit goes now.</description>
+    </item>
     <item>
       <title>An AI Agent Pays to Read the Whole Page</title>
       <link>https://rebelstudiossoftware.com/blog-agent-reads-the-whole-page.html</link>

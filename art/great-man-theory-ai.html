@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; src:url('/fonts/space-grotesk-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  @font-face { font-family:'Inter'; src:url('/fonts/inter-latin.woff2') format('woff2'); font-weight:300 700; font-display:block; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    background:
+      radial-gradient(900px 480px at 92% 112%, rgba(108,190,69,0.14), transparent 60%),
+      #07090f;
+    color:#eef1f7;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:62px 72px 56px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow { font-size:15px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#8fe05a; }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:48px; line-height:1.1; letter-spacing:-.02em;
+    margin-top:16px; max-width:900px;
+  }
+  .grid { display:grid; grid-template-columns:repeat(13, 56px); gap:12px; margin-top:6px; }
+  .t { width:56px; height:56px; border-radius:9px; }
+  .existed { background:#1b2130; }
+  .near { background:#2a3245; }
+  .died { border:2px solid #4a5468; background:transparent; }
+  .left { background:linear-gradient(135deg,#6cbe45,#8fe05a); box-shadow:0 0 26px rgba(143,224,90,.5); }
+  .legend { display:flex; gap:34px; margin-top:22px; font-size:17px; color:#9aa4b6; }
+  .legend b { font-family:'Space Grotesk',sans-serif; font-weight:700; color:#eef1f7; font-size:19px; margin-right:6px; }
+  .legend .g b { color:#8fe05a; }
+  .foot { display:flex; justify-content:space-between; align-items:flex-end; }
+  .wm { font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; letter-spacing:-.01em; }
+  .src { font-size:14px; color:#7b8498; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="eyebrow">Essay &middot; 2026-10-13</div>
+    <h1>When ideas are free, the great man is the filter</h1>
+  </div>
+
+  <div>
+    <div class="grid">
+      <div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div>
+      <div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t existed"></div><div class="t near"></div><div class="t near"></div><div class="t near"></div><div class="t near"></div><div class="t died"></div><div class="t died"></div><div class="t died"></div><div class="t left"></div>
+    </div>
+    <div class="legend">
+      <span><b>18</b>already existed</span>
+      <span><b>4</b>near-copies</span>
+      <span><b>3</b>died in testing</span>
+      <span class="g"><b>1</b>left: a game about toast</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="src">26 game ideas, one afternoon, Oct 12 2026</div>
+    <div class="wm">Rebel Studios</div>
+  </div>
+</body>
+</html>
