@@ -80,7 +80,7 @@
       <link>https://rebelstudiossoftware.com/blog-secrets-out-of-agent-context.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-secrets-out-of-agent-context.html</guid>
       <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
-      <description>When an AI agent fills a login form, the password lands in the transcript — logged, cached, sent to the model — and it comes back the moment the agent reads the field. How to type a credential the agent never sees, and the test that catches a leak.</description>
+      <description>When an AI agent fills a login form, the password lands in the transcript, where it is logged, cached and sent to the model, and it comes back the moment the agent reads the field. How to type a credential the agent never sees, and the test that catches a leak.</description>
     </item>
     <item>
       <title>The uAgent Test That Passes While the Handler Crashes</title>
