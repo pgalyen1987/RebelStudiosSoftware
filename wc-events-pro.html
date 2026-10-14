@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
     <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});gtag('config','G-00TNDVMQNM');</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:999px;padding:8px 18px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sell paid tickets to WordPress events, with as many ticket types per event as you need. Set a price, take payment through your own WooCommerce checkout, and QR tickets are issued and emailed automatically once the order is paid. No per-ticket revenue share.">
+    <meta name="description" content="Sell tickets from your WordPress site through WooCommerce: ticket types, QR tickets emailed on payment, check-in by phone. $79 once, nothing per ticket.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/wc-events-pro.html">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Event Tickets Pro: Paid Ticketing for WordPress","description":"Sell paid tickets to WordPress events, with as many ticket types per event as you need. Set a price, take payment through your own WooCommerce checkout, and QR tickets are issued and emailed automatically once the order is paid. No per-ticket revenue share.","url":"https://rebelstudiossoftware.com/wc-events-pro.html","image":"https://rebelstudiossoftware.com/images/products/wc-events/shot-1.png","brand":{"@type":"Brand","name":"Rebel Studios Software"},"offers":{"@type":"Offer","price":"79","priceCurrency":"USD","availability":"https://schema.org/InStock"}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there really no per-ticket fee?","acceptedAnswer":{"@type":"Answer","text":"None. Buyers pay through the WooCommerce checkout you already run, so the money goes straight from your gateway to your account and never passes through us. You pay $79 once. The only cut anyone takes is your own payment processor's standard rate (Stripe, PayPal and the like), which you would pay on any sale."}},{"@type":"Question","name":"Which payment gateways does it work with?","acceptedAnswer":{"@type":"Answer","text":"Any gateway WooCommerce supports, because payment runs through your existing checkout — Stripe, PayPal, Square, Mollie, whatever you already have configured. The plugin never touches card details and needs no payment API keys of its own."}},{"@type":"Question","name":"How do refunds work?","acceptedAnswer":{"@type":"Answer","text":"A ticket refund is an ordinary WooCommerce refund on the order — there is no separate system to learn. The attendee's ticket is tied to a paid order, so handling the order handles the ticket, the way you already handle any refund."}},{"@type":"Question","name":"Do I get updates and support?","acceptedAnswer":{"@type":"Answer","text":"Yes. Updated files come through your Gumroad purchase, and we answer support directly at contact@rebelstudiossoftware.com — we are a small studio, so you reach the people who built it."}},{"@type":"Question","name":"What do I need to run it?","acceptedAnswer":{"@type":"Answer","text":"WordPress 6.5+, PHP 7.4+, and WooCommerce with a payment gateway configured. The purchase includes both this Pro add-on and the free Event Tickets & Registration plugin it builds on, so you upload two zips and you are running."}},{"@type":"Question","name":"What if I outgrow it?","acceptedAnswer":{"@type":"Answer","text":"Your events, tickets and orders live in WordPress and WooCommerce, not in someone else's platform, so you are never locked in. It deliberately does not do seat maps, assigned seating, recurring events or season passes — if you need those, you can move on because the data is already yours."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Event Tickets Pro","description":"Sell tickets from your WordPress site through WooCommerce: ticket types, QR tickets emailed on payment, check-in by phone. $79 once, nothing per ticket.","url":"https://rebelstudiossoftware.com/wc-events-pro.html","image":"https://rebelstudiossoftware.com/images/products/wc-events/shot-1.png","brand":{"@type":"Brand","name":"Rebel Studios Software"},"offers":{"@type":"Offer","price":"79","priceCurrency":"USD","availability":"https://schema.org/InStock"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Event Tickets Pro: from a new event to the door scan","description":"A 49-second screen recording on a test WordPress site: an organizer adds an event with two ticket types, a guest pays at the WooCommerce checkout and opens the QR ticket from the email, and door staff scan it twice. Typing is sped up.","thumbnailUrl":"https://rebelstudiossoftware.com/images/products/wc-events/demo-poster.jpg","uploadDate":"2026-10-14T16:03:58-04:00","duration":"PT49S","contentUrl":"https://rebelstudiossoftware.com/images/products/wc-events/demo.mp4","embedUrl":"https://rebelstudiossoftware.com/wc-events-pro.html#demo"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there really no per-ticket fee?","acceptedAnswer":{"@type":"Answer","text":"None. Buyers pay through the WooCommerce checkout you already run, so the money goes straight from your gateway to your account and never passes through us. You pay $79 once. The only cut anyone takes is your own payment processor's standard rate (Stripe, PayPal and the like), which you would pay on any sale."}},{"@type":"Question","name":"Which payment gateways does it work with?","acceptedAnswer":{"@type":"Answer","text":"Any gateway WooCommerce supports, because payment runs through your existing checkout — Stripe, PayPal, Square, Mollie, whatever you already have configured. The plugin never touches card details and needs no payment API keys of its own."}},{"@type":"Question","name":"How do refunds work?","acceptedAnswer":{"@type":"Answer","text":"A ticket refund is an ordinary WooCommerce refund on the order — there is no separate system to learn. The attendee's ticket is tied to a paid order, so handling the order handles the ticket, the way you already handle any refund."}},{"@type":"Question","name":"Do I get updates and support?","acceptedAnswer":{"@type":"Answer","text":"Yes. Updated files come through your Gumroad purchase, and we answer support directly at contact@rebelstudiossoftware.com — we are a small studio, so you reach the people who built it."}},{"@type":"Question","name":"What do I need to run it?","acceptedAnswer":{"@type":"Answer","text":"WordPress 6.5+, PHP 7.4+, and WooCommerce with a payment gateway configured. The purchase includes both this Pro add-on and the free Rebel Studios Event Tickets plugin it builds on, so you upload two zips and you are running."}},{"@type":"Question","name":"What if I outgrow it?","acceptedAnswer":{"@type":"Answer","text":"Your events, tickets and orders live in WordPress and WooCommerce, not in someone else's platform, so you are never locked in. It deliberately does not do seat maps, assigned seating, recurring events or season passes — if you need those, you can move on because the data is already yours."}}]}</script>
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://rebelstudiossoftware.com/wc-events-pro.html">
-    <meta property="og:title" content="Event Tickets Pro: Paid Ticketing for WordPress">
-    <meta property="og:description" content="Sell paid tickets to WordPress events, with as many ticket types per event as you need. Set a price, take payment through your own WooCommerce checkout, and QR tickets are issued and emailed automatically once the order is paid. No per-ticket revenue share.">
+    <meta property="og:title" content="Event Tickets Pro: an Eventbrite alternative for WordPress">
+    <meta property="og:description" content="Sell tickets from your WordPress site through WooCommerce: ticket types, QR tickets emailed on payment, check-in by phone. $79 once, nothing per ticket.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/products/wc-events/shot-1.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Event Tickets Pro: Paid Ticketing for WordPress">
-    <meta name="twitter:description" content="Sell paid tickets to WordPress events, with as many ticket types per event as you need. Set a price, take payment through your own WooCommerce checkout, and QR tickets are issued and emailed automatically once the order is paid. No per-ticket revenue share.">
+    <meta name="twitter:title" content="Event Tickets Pro: an Eventbrite alternative for WordPress">
+    <meta name="twitter:description" content="Sell tickets from your WordPress site through WooCommerce: ticket types, QR tickets emailed on payment, check-in by phone. $79 once, nothing per ticket.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/products/wc-events/shot-1.png">
-    <title>Event Tickets Pro: Paid Ticketing for WordPress - Rebel Studios</title>
+    <title>Event Tickets Pro: an Eventbrite Alternative for WordPress</title>
     <link rel="icon" href="images/RS-logo-128.png" type="image/png">
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <meta name="theme-color" content="#07090f">
     <link rel="stylesheet" href="styles.css">
     <style>
-    /* Event Tickets Pro — cost calculator + FAQ (page-scoped) */
-    .etp-calc{display:grid;gap:1rem;max-width:640px;margin-top:1.5rem}
-    .etp-calc .etp-row{display:flex;flex-wrap:wrap;gap:1rem}
-    .etp-calc label{display:flex;flex-direction:column;font-size:var(--text-sm);font-weight:600;gap:.4rem;flex:1 1 150px;color:var(--ink-2)}
-    .etp-calc input{font:inherit;padding:.6rem .7rem;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--surface-strong);color:var(--ink-1)}
-    .etp-calc input:focus{outline:2px solid var(--green);outline-offset:1px}
-    .etp-result{margin-top:1.4rem;padding:1.4rem 1.6rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-strong)}
-    .etp-line{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:.35rem 0}
-    .etp-big{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700}
-    .etp-keep{color:var(--green-bright)}
-    .etp-payoff{margin-top:1rem;font-size:var(--text-body)}
-    .etp-payoff b{color:var(--green-bright)}
-    .etp-note{font-size:var(--text-xs);color:var(--ink-3);margin-top:.8rem}
+    /* Event Tickets Pro (page-scoped): the demo video beside the hero copy, and the FAQ */
+    .etp-demo{margin:0;justify-self:center;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+    .etp-demo video{display:block;height:min(34rem,72vh);width:auto;max-width:100%;aspect-ratio:9/16;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise);box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
+    .etp-demo figcaption{max-width:19rem;font-size:var(--text-xs);line-height:1.5;color:var(--ink-3);text-align:center}
+    .etp-src{font-size:var(--text-sm);color:var(--ink-3)}
+    .hero--product h1{line-height:var(--leading-display);margin-bottom:var(--space-sm)}
+    .section .container > p:not(:last-child){margin-bottom:var(--space-sm)}
+    .section h2{line-height:var(--leading-head);margin-bottom:var(--space-sm)}
+    .section .container > p + h2{margin-top:var(--space-lg)}
+    @media (max-width:900px){.etp-demo video{height:auto;width:min(100%,19rem)}}
     .lp-faq{border-top:1px solid var(--line);padding:16px 0}
     .lp-faq:last-of-type{border-bottom:1px solid var(--line)}
     .lp-faq summary{cursor:pointer;font-weight:600;color:var(--ink-1);font-size:var(--text-md)}
@@ -55,15 +61,21 @@
 
     <section class="hero hero--page hero--product"><div class="container">
       <div class="hero-copy">
-        <span class="cb-status">&#9679; Pro add-on &middot; $79 &middot; available now</span>
-        <h1>Event Tickets Pro</h1>
-        <p class="hero-sub">Paid ticketing for the free <a href="wc-events.html">Event Tickets &amp; Registration</a> plugin. Set a price on an event, or give it as many ticket types as it needs, each with its own price and capacity. Take the money through the WooCommerce checkout you already run, and QR tickets are issued and emailed automatically once the order is paid.</p>
+        <span class="cb-status">&#9679; Event Tickets Pro &middot; WordPress plugin &middot; $79 once</span>
+        <h1>An Eventbrite alternative for WordPress</h1>
+        <p class="hero-sub">Sell tickets through the WooCommerce checkout your site already runs. Give an event ticket types with their own prices and seat limits. Buyers get a QR ticket by email when they pay, and you scan them in at the door with a phone. We take nothing per ticket; your card processor's fee still applies.</p>
         <div class="hero-buttons" style="margin-top:24px">
           <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/cowxt" target="_blank" rel="noopener">Buy on Gumroad · $79</a>
-          <a class="btn btn-secondary" href="wc-events.html">The free plugin</a>
+          <a class="btn btn-secondary" href="eventbrite-fee-calculator.html">What Eventbrite would charge</a>
         </div>
       </div>
-      <figure class="hero-shot"><img fetchpriority="high" src="images/products/wc-events/shot-1.png" alt="A QR-coded PDF ticket, emailed to the attendee" width="1200" height="715"></figure>
+      <figure class="etp-demo" id="demo">
+        <video controls playsinline preload="none" poster="images/products/wc-events/demo-poster.jpg" width="720" height="1280" aria-label="Screen recording: an organizer adds an event with two ticket types, a guest pays at the WooCommerce checkout and opens the QR ticket, and door staff scan it twice">
+          <source src="images/products/wc-events/demo.mp4" type="video/mp4">
+          <a href="images/products/wc-events/demo.mp4">Download the demo video (MP4, 0.7 MB)</a>
+        </video>
+        <figcaption>49 seconds on a test site: add an event, buy a ticket, scan it at the door. Typing is sped up.</figcaption>
+      </figure>
     </div></section>
 
     <section class="section"><div class="container">
@@ -89,24 +101,10 @@
     </div></section>
 
     <section class="section section-alt"><div class="container">
-      <h2>What a per-ticket service is costing you</h2>
-      <p>Event Tickets Pro takes nothing per ticket &mdash; the money runs through your own WooCommerce checkout, so there is no cut to us, ever. Put your own numbers in and compare against whatever your current ticketing service charges.</p>
-      <div class="etp-calc">
-        <div class="etp-row">
-          <label>Tickets sold<input id="etp-qty" type="number" min="0" value="300" inputmode="numeric"></label>
-          <label>Price per ticket ($)<input id="etp-price" type="number" min="0" step="0.01" value="40" inputmode="decimal"></label>
-        </div>
-        <div class="etp-row">
-          <label>Your service&rsquo;s fee (%)<input id="etp-pct" type="number" min="0" step="0.1" value="3.7" inputmode="decimal"></label>
-          <label>&hellip;plus per ticket ($)<input id="etp-flat" type="number" min="0" step="0.01" value="1.79" inputmode="decimal"></label>
-        </div>
-      </div>
-      <div class="etp-result" aria-live="polite">
-        <div class="etp-line"><span>Your ticketing service takes</span><span class="etp-big" id="etp-cost">$0</span></div>
-        <div class="etp-line"><span>Event Tickets Pro takes</span><span class="etp-big etp-keep" id="etp-ours">$0</span></div>
-        <p class="etp-payoff" id="etp-payoff"></p>
-        <p class="etp-note">Pre-filled with a commonly quoted hosted rate &mdash; change it to your own. Both approaches still pay your normal card-processing fee (Stripe, PayPal and the like); that does not change. What you avoid is the extra per-ticket cut on top of it.</p>
-      </div>
+      <h2>What Eventbrite would take</h2>
+      <p>Eventbrite's US fees are 3.7% of the ticket price plus $1.79 a ticket, then 2.9% of the order for payment processing. On a $25 ticket that comes to $3.52, which the buyer pays on top unless you absorb it. Sold through your own checkout, Stripe's standard card fee on the same ticket is $1.03, and this plugin takes nothing.</p>
+      <p><a href="eventbrite-fee-calculator.html">Work it out for your own ticket price and sales</a>, with the formulas shown.</p>
+      <p class="etp-src">Rates read from Eventbrite's and Stripe's pricing pages on October 14, 2026. They differ outside the US.</p>
       <div class="hero-buttons" style="margin-top:1.6rem">
         <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/cowxt" target="_blank" rel="noopener">Buy on Gumroad &middot; $79 &rarr;</a>
       </div>
@@ -128,7 +126,7 @@
       <p>That matters for the common case where an organisation charges for some things and not others. You do not have to choose one model for the whole site, and you do not have to run a second plugin for the other half.</p>
 
       <h2>What it deliberately does not do</h2>
-      <p>It does not implement seat maps or assigned seating. It does not do recurring events or season passes. It is not a replacement for a dedicated ticketing platform if you are running a venue.</p>
+      <p>It does not implement seat maps or assigned seating. It does not do recurring events or season passes. It is not a replacement for a dedicated ticketing platform if you are running a venue. And it has no marketplace: people browsing Eventbrite for something to do will not come across an event you sell this way.</p>
       <p>What it is for is the far more common case: an organisation that runs a handful of events a year, already has a WordPress site with WooCommerce on it, and wants to charge for a seat without handing a percentage to a ticketing service or standing up a second checkout.</p>
       <p>If your requirements outgrow that, you will know, and you will not have lost anything, because the tickets and orders live in WordPress and WooCommerce rather than in someone else&rsquo;s system.</p>
     </div></section>
@@ -137,14 +135,14 @@
       <div class="cb-cta">
         <div class="price-big">$79</div>
         <h3>Get Event Tickets Pro</h3>
-        <p>One-time purchase. Requires the free Event Tickets &amp; Registration plugin and WooCommerce.</p>
+        <p>One-time purchase. Needs WooCommerce with a payment gateway; the free Rebel Studios Event Tickets plugin it builds on is in the download.</p>
         <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/cowxt" target="_blank" rel="noopener">Buy on Gumroad · $79 &rarr;</a>
       </div>
     </div></section>
 
     <section class="section"><div class="container">
       <h2>What is in the download</h2>
-      <p>Both plugins. The purchase includes this Pro add-on <em>and</em> the free <a href="wc-events.html">Event Tickets &amp; Registration</a> plugin it builds on, so there is nothing to hunt down: upload both zips and you are running.</p>
+      <p>Both plugins. The purchase includes this Pro add-on <em>and</em> the free <a href="wc-events.html">Rebel Studios Event Tickets</a> plugin it builds on, so there is nothing to hunt down: upload both zips and you are running.</p>
       <p>Worth saying plainly: the free plugin is not in the WordPress.org directory yet, so you will not find it by searching from inside WordPress. That matters for anyone expecting to install it the usual way, and not at all for a buyer, because the file is in your download.</p>
 
       <h2>What you need</h2>
@@ -158,7 +156,7 @@
       <details class="lp-faq"><summary>Which payment gateways does it work with?</summary><p>Any gateway WooCommerce supports, because payment runs through your existing checkout &mdash; Stripe, PayPal, Square, Mollie, whatever you already have configured. The plugin never touches card details and needs no payment API keys of its own.</p></details>
       <details class="lp-faq"><summary>How do refunds work?</summary><p>A ticket refund is an ordinary WooCommerce refund on the order &mdash; there is no separate system to learn. The attendee&rsquo;s ticket is tied to a paid order, so handling the order handles the ticket, the way you already handle any refund.</p></details>
       <details class="lp-faq"><summary>Do I get updates and support?</summary><p>Yes. Updated files come through your Gumroad purchase, and we answer support directly at <a href="mailto:contact@rebelstudiossoftware.com">contact@rebelstudiossoftware.com</a> &mdash; we are a small studio, so you reach the people who built it.</p></details>
-      <details class="lp-faq"><summary>What do I need to run it?</summary><p>WordPress 6.5+, PHP 7.4+, and WooCommerce with a payment gateway configured. The purchase includes both this Pro add-on and the free Event Tickets &amp; Registration plugin it builds on, so you upload two zips and you are running.</p></details>
+      <details class="lp-faq"><summary>What do I need to run it?</summary><p>WordPress 6.5+, PHP 7.4+, and WooCommerce with a payment gateway configured. The purchase includes both this Pro add-on and the free Rebel Studios Event Tickets plugin it builds on, so you upload two zips and you are running.</p></details>
       <details class="lp-faq"><summary>What if I outgrow it?</summary><p>Your events, tickets and orders live in WordPress and WooCommerce, not in someone else&rsquo;s platform, so you are never locked in. It deliberately does not do seat maps, assigned seating, recurring events or season passes &mdash; if you need those, you can move on because the data is already yours.</p></details>
     </div></section>
 
@@ -174,27 +172,6 @@
 </nav>
 <!-- social:end -->
 <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
-    <script>
-    (function(){
-      var ids=['etp-qty','etp-price','etp-pct','etp-flat'], el={};
-      ids.forEach(function(i){el[i]=document.getElementById(i);});
-      if(!el['etp-qty'])return;
-      var cost=document.getElementById('etp-cost'), payoff=document.getElementById('etp-payoff');
-      function money(n){return '$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});}
-      function calc(){
-        var q=Math.max(0,+el['etp-qty'].value||0), p=Math.max(0,+el['etp-price'].value||0),
-            pct=Math.max(0,+el['etp-pct'].value||0), flat=Math.max(0,+el['etp-flat'].value||0);
-        var per=p*pct/100+flat, total=q*per;
-        cost.textContent=money(total);
-        if(per>0){
-          var n=Math.ceil(79/per);
-          payoff.innerHTML='You keep an extra <b>'+money(total)+'</b> on this one event \u2014 and the $79 pays for itself after about <b>'+n+' ticket'+(n===1?'':'s')+'</b>.';
-        } else { payoff.textContent='Enter your current service\u2019s fee to see what you would keep.'; }
-      }
-      ids.forEach(function(i){el[i].addEventListener('input',calc);});
-      calc();
-    })();
-    </script>
     <script src="script.js"></script>
 </body>
 </html>

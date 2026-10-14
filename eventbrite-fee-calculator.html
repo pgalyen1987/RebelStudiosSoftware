@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:999px;padding:8px 18px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventbrite Fees Calculator: US Fees vs. Selling on WordPress</title>
+    <meta name="description" content="Enter a ticket price and a ticket count to see Eventbrite's US fees (3.7% + $1.79 a ticket, then 2.9% processing) next to selling from your own WordPress site.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/eventbrite-fee-calculator.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/eventbrite-fee-calculator.html">
+    <meta property="og:title" content="Eventbrite fees calculator: US fees vs. selling on WordPress">
+    <meta property="og:description" content="Enter a ticket price and a ticket count to see Eventbrite's US fees (3.7% + $1.79 a ticket, then 2.9% processing) next to selling from your own WordPress site.">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og/eventbrite-fee-calculator.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Eventbrite's US fees on one $25 ticket, $2.72 service and $0.80 processing, next to a $1.03 Stripe fee on your own checkout">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eventbrite fees calculator: US fees vs. selling on WordPress">
+    <meta name="twitter:description" content="Enter a ticket price and a ticket count to see Eventbrite's US fees (3.7% + $1.79 a ticket, then 2.9% processing) next to selling from your own WordPress site.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og/eventbrite-fee-calculator.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Eventbrite fees calculator","url":"https://rebelstudiossoftware.com/eventbrite-fee-calculator.html","description":"Works out Eventbrite's published US ticketing fees (3.7% + $1.79 per paid ticket, plus 2.9% payment processing on the order total) for a ticket price and count, next to the card fee and one-time cost of selling through your own WordPress and WooCommerce checkout.","applicationCategory":"BusinessApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"dateModified":"2026-10-14","citation":["https://www.eventbrite.com/organizer/pricing/","https://www.eventbrite.com/help/en-us/articles/755615/how-much-does-it-cost-for-organizers-to-use-eventbrite/","https://stripe.com/pricing"],"publisher":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com/","email":"contact@rebelstudiossoftware.com"}}</script>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* Eventbrite fees calculator (page-scoped). Inputs and results sit on a phi split, 1 : 1.618. */
+    .ebc-hero{padding:var(--space-lg) 0 var(--space-sm)}
+    .ebc-kicker{display:inline-block;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--ink-3);letter-spacing:.02em;margin-bottom:var(--space-xs)}
+    .ebc-hero h1{font-family:var(--font-display);font-size:clamp(2.058rem,1.4rem + 2.8vw,3.33rem);line-height:var(--leading-display);color:var(--ink-1);margin:0 0 var(--space-xs)}
+    .ebc-lede{max-width:var(--measure-prose);font-size:var(--text-deck);line-height:var(--leading-deck);color:var(--ink-2);margin:0}
+    .ebc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.618fr);gap:var(--space-md);align-items:start;margin-top:var(--space-md)}
+    .ebc-in,.ebc-out{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-md)}
+    .ebc-in label{display:block;font-size:var(--text-sm);font-weight:600;color:var(--ink-2);margin-bottom:var(--space-sm)}
+    .ebc-in input{display:block;width:100%;margin-top:.4rem;font:600 var(--text-md)/1.2 var(--font-display);font-variant-numeric:tabular-nums;padding:.55rem .75rem;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--bg);color:var(--ink-1)}
+    .ebc-in input:focus{outline:2px solid var(--green);outline-offset:1px}
+    .ebc-in details{margin-top:var(--space-xs);border-top:1px solid var(--line);padding-top:var(--space-sm)}
+    .ebc-in summary{cursor:pointer;font-size:var(--text-sm);color:var(--ink-2)}
+    .ebc-in details[open] summary{margin-bottom:var(--space-sm)}
+    .ebc-in details input{font-size:var(--text-base)}
+    .ebc-in .ebc-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xs)}
+    .ebc-in .ebc-pair label{margin-bottom:var(--space-xs)}
+    .ebc-small{font-size:var(--text-xs);line-height:1.5;color:var(--ink-3);margin:0}
+    .ebc-row{padding:var(--space-sm) 0;border-bottom:1px solid var(--line)}
+    .ebc-row:first-child{padding-top:0}
+    .ebc-row:last-of-type{border-bottom:0}
+    .ebc-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);flex-wrap:wrap}
+    .ebc-label{font-size:var(--text-sm);font-weight:600;color:var(--ink-2)}
+    .ebc-num{font:700 var(--text-xl)/1.1 var(--font-display);font-variant-numeric:tabular-nums;color:var(--ink-1)}
+    .ebc-num small{font-size:var(--text-base);font-weight:600;color:var(--ink-2)}
+    .ebc-row p{margin:.35rem 0 0;font-size:var(--text-sm);line-height:1.55;color:var(--ink-2)}
+    .ebc-diff{margin-top:var(--space-xs);background:var(--green-dim);border:1px solid rgba(108,190,69,.35);border-radius:var(--radius);padding:var(--space-sm) var(--space-md)}
+    .ebc-diff .ebc-num{color:var(--green-bright)}
+    .ebc-diff p{margin:.35rem 0 0;font-size:var(--text-sm);line-height:1.55;color:var(--ink-1)}
+    .ebc-work{margin-top:var(--space-sm);font-family:var(--font-mono);font-size:var(--text-xs);line-height:1.7;color:var(--ink-3);overflow-wrap:anywhere}
+    .ebc-cta{display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-top:var(--space-md)}
+    .ebc-prose{max-width:var(--measure-prose)}
+    .ebc-prose p,.ebc-prose li{color:var(--ink-2);line-height:var(--leading-body)}
+    .ebc-prose p{margin:0 0 var(--space-sm)}
+    .ebc-prose h2{margin-top:0;line-height:var(--leading-head);margin-bottom:var(--space-sm)}
+    .ebc-prose ul{padding-left:1.2rem;margin:0 0 var(--space-sm)}
+    .ebc-prose li{margin-bottom:.5rem}
+    .ebc-prose li strong{color:var(--ink-1)}
+    .ebc-src{font-size:var(--text-sm)}
+    .ebc-src li{margin-bottom:.35rem}
+    .ebc-table-wrap{max-width:var(--measure-prose);overflow-x:auto}
+    .ebc-table-wrap .article-table{margin-top:var(--space-sm)}
+    .ebc-table-wrap .article-table td:last-child{color:var(--ink-1)}
+    .ebc-table-wrap .article-table th{white-space:nowrap}
+    .ebc-video{margin:var(--space-md) 0 0;max-width:20rem}
+    .ebc-video video{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-raise)}
+    .ebc-video figcaption{margin-top:var(--space-2xs);font-size:var(--text-sm);color:var(--ink-3)}
+    .ebc-alt{display:grid;grid-template-columns:minmax(0,1.618fr) minmax(0,1fr);gap:var(--space-lg);align-items:start}
+    @media (max-width:860px){
+      .ebc,.ebc-alt{grid-template-columns:1fr}
+      .ebc-video{max-width:18rem}
+    }
+    @media (max-width:480px){
+      .ebc-in,.ebc-out{padding:var(--space-sm)}
+      .ebc-diff{padding:var(--space-sm)}
+      .ebc-table-wrap .article-table th,.ebc-table-wrap .article-table td{padding:.5rem .3rem}
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+      <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128"><span class="brand-name">Rebel Studios</span></a></div>
+      <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="websites.html">Websites</a></li><li><a href="games.html">Games</a></li><li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li><li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="services.html" class="nav-contact-btn">Hire Us</a></li></ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+
+    <main>
+    <section class="ebc-hero"><div class="container">
+      <span class="ebc-kicker">US rates, read from eventbrite.com on October 14, 2026</span>
+      <h1>Eventbrite fees calculator</h1>
+      <p class="ebc-lede">Enter a ticket price and how many you expect to sell, and see Eventbrite's fees beside what the same sales cost through your own WordPress checkout.</p>
+
+      <div class="ebc">
+        <form class="ebc-in" id="ebc-form" onsubmit="return false">
+          <div class="ebc-pair">
+            <label for="ebc-price">Ticket price ($)<input id="ebc-price" type="number" min="0" max="100000" step="0.01" value="25" inputmode="decimal"></label>
+            <label for="ebc-qty">Tickets sold<input id="ebc-qty" type="number" min="0" max="1000000" step="1" value="100" inputmode="numeric"></label>
+          </div>
+          <p class="ebc-small">Change either number and the results update. One ticket per order, no sales tax.</p>
+          <details>
+            <summary>Not on Stripe? Change the card rate</summary>
+            <div class="ebc-pair">
+              <label for="ebc-pct">Percent<input id="ebc-pct" type="number" min="0" max="20" step="0.01" value="2.9" inputmode="decimal"></label>
+              <label for="ebc-fix">Per payment ($)<input id="ebc-fix" type="number" min="0" max="10" step="0.01" value="0.30" inputmode="decimal"></label>
+            </div>
+            <p class="ebc-small">Starts at Stripe's standard US card rate. PayPal, Square and WooPayments publish their own; use the one on your account.</p>
+          </details>
+        </form>
+
+        <div class="ebc-out" aria-live="polite">
+          <div class="ebc-row">
+            <div class="ebc-head"><span class="ebc-label">Eventbrite's fees</span><span class="ebc-num" id="ebc-eb">$352.00</span></div>
+            <p id="ebc-eb-split">$272.00 service fee + $80.00 payment processing on 100 tickets.</p>
+            <p id="ebc-eb-each">$3.52 on each $25.00 ticket, so a buyer pays $28.52 at checkout unless you absorb the fees.</p>
+          </div>
+          <div class="ebc-row">
+            <div class="ebc-head"><span class="ebc-label">Your own WordPress checkout</span><span class="ebc-num"><span id="ebc-own">$103.00</span> <small>+ $79 once</small></span></div>
+            <p id="ebc-own-split">Card processing at 2.9% + $0.30 a payment. Event Tickets Pro costs $79 once and takes nothing per ticket.</p>
+          </div>
+          <div class="ebc-diff">
+            <div class="ebc-head"><span class="ebc-label">The difference</span><span class="ebc-num" id="ebc-diff">$170.00</span></div>
+            <p id="ebc-diff-text">That is on this event, after the $79. Each event like it after that: $249.00. At $25.00 a ticket the plugin has paid for itself by ticket 32.</p>
+          </div>
+          <p class="ebc-work" id="ebc-work">Service fee: 3.7% &times; $25.00 + $1.79 = $2.72 a ticket. Processing: 2.9% &times; $27.72 = $0.80. Card fee on your checkout: 2.9% &times; $25.00 + $0.30 = $1.03.</p>
+        </div>
+      </div>
+      <div class="ebc-cta">
+        <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/cowxt" target="_blank" rel="noopener">Buy Event Tickets Pro &middot; $79</a>
+        <a class="btn btn-secondary" href="wc-events-pro.html">How the plugin works</a>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="container ebc-prose">
+      <h2>How the numbers are worked out</h2>
+      <p>Eventbrite's US service fee is 3.7% of the ticket price plus $1.79, on every paid ticket. Its payment processing fee is 2.9% of the order total, and that total includes the service fee. Eventbrite's help article says so in as many words: service fees are calculated on the ticket price, processing fees on the total order including service fees and tax.</p>
+      <p>By default Eventbrite adds both fees to what the buyer pays. You can tick &ldquo;Absorb fees&rdquo; on a ticket type to fold them into your price instead, and then they come out of your payout. Either way the money leaves the sale. For an event you have already set up, Eventbrite shows its own breakdown under Tickets, then &ldquo;How fees work&rdquo;; if it disagrees with this page, believe Eventbrite and tell us.</p>
+      <p>Selling from your own site, you still pay a card processor. Stripe's standard US rate is 2.9% + 30&cent; per successful payment with a US card. The calculator counts one payment per ticket, which is the most the 30&cent; can cost you; when people buy two tickets at a time it halves. Figures are rounded to the cent.</p>
+      <ul class="ebc-src">
+        <li>Eventbrite, <a href="https://www.eventbrite.com/organizer/pricing/" rel="noopener">Pricing</a>, read October 14, 2026</li>
+        <li>Eventbrite Help Center, <a href="https://www.eventbrite.com/help/en-us/articles/755615/how-much-does-it-cost-for-organizers-to-use-eventbrite/" rel="noopener">Eventbrite's Ticketing Fees</a>, read October 14, 2026</li>
+        <li>Stripe, <a href="https://stripe.com/pricing" rel="noopener">Pricing</a>, read October 14, 2026</li>
+      </ul>
+    </div></section>
+
+    <section class="section"><div class="container ebc-prose">
+      <h2>Eventbrite's US fees at common ticket prices</h2>
+      <p>The flat $1.79 is why cheap tickets fare worst. On a $10 ticket the fees come to a quarter of the price; on a $100 ticket, under a tenth.</p>
+      <div class="ebc-table-wrap">
+        <table class="article-table">
+          <thead><tr><th scope="col">Ticket</th><th scope="col">Service</th><th scope="col">Processing</th><th scope="col">Fees</th><th scope="col">% of price</th></tr></thead>
+          <tbody>
+            <tr><td>$10</td><td>$2.16</td><td>$0.35</td><td>$2.51</td><td>25.1%</td></tr>
+            <tr><td>$15</td><td>$2.35</td><td>$0.50</td><td>$2.85</td><td>19.0%</td></tr>
+            <tr><td>$20</td><td>$2.53</td><td>$0.65</td><td>$3.18</td><td>15.9%</td></tr>
+            <tr><td>$25</td><td>$2.72</td><td>$0.80</td><td>$3.52</td><td>14.1%</td></tr>
+            <tr><td>$35</td><td>$3.09</td><td>$1.10</td><td>$4.19</td><td>12.0%</td></tr>
+            <tr><td>$50</td><td>$3.64</td><td>$1.56</td><td>$5.20</td><td>10.4%</td></tr>
+            <tr><td>$75</td><td>$4.57</td><td>$2.31</td><td>$6.88</td><td>9.2%</td></tr>
+            <tr><td>$100</td><td>$5.49</td><td>$3.06</td><td>$8.55</td><td>8.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="article-caption">One ticket per order, no tax. With the fees passed on, which is Eventbrite's default, the buyer pays the ticket price plus the Fees column.</p>
+    </div></section>
+
+    <section class="section"><div class="container ebc-prose">
+      <h2>What this leaves out</h2>
+      <ul>
+        <li><strong>Other countries and plans.</strong> Eventbrite charges by payout country, and in countries still on its older Essentials and Professional packages the rate depends on the package. In the UK, for example, it is 6.95% + &pound;0.59 a ticket with no separate processing fee. Eventbrite's help article has the full list.</li>
+        <li><strong>Big organizers.</strong> Eventbrite's sales team offers custom packages for large or complex events, so a large promoter's rate may differ.</li>
+        <li><strong>Donations and the door.</strong> US donation tickets carry only the 2.9% processing fee. Tickets sold at the door through Eventbrite's Organizer app cost $1 each, plus 2.9% when paid by card.</li>
+        <li><strong>What the fee buys.</strong> Eventbrite lists your event on a marketplace where people browse for something to do. If strangers find you there, part of the fee pays for them, and no calculator can price that. If your buyers already know you from your mailing list, your members or last year's event, they are paying for an introduction that has already happened. <a href="blog-eventbrite-alternative-wordpress.html">When moving off Eventbrite makes sense, and when it doesn't</a>.</li>
+      </ul>
+    </div></section>
+
+    <section class="section section--alt"><div class="container">
+      <div class="ebc-alt">
+        <div class="ebc-prose">
+          <h2>An Eventbrite alternative for WordPress</h2>
+          <p>Event Tickets Pro is our plugin for selling tickets from a WordPress site through WooCommerce, the store plugin a lot of WordPress sites already run. You give an event a price, or several ticket types with their own prices and seat limits. Buyers pay at your checkout with whatever payment gateway you have connected, and when the order is paid the buyer gets a QR ticket for each seat by email. At the door, someone logged in to your site as an editor or administrator scans it with a phone camera to check them in.</p>
+          <p>It costs $79 once. We take nothing per ticket. Your card processor's fee still applies, the same as on anything else your site sells.</p>
+          <p>It does less than Eventbrite. Nobody browsing a marketplace will find your event through it, and it has no seat maps, recurring events or season passes. You need WooCommerce with a payment gateway set up.</p>
+          <div class="ebc-cta">
+            <a class="btn btn-primary" href="https://rebelstudios.gumroad.com/l/cowxt" target="_blank" rel="noopener">Buy on Gumroad &middot; $79</a>
+            <a class="btn btn-secondary" href="wc-events-pro.html">Read the product page</a>
+          </div>
+        </div>
+        <figure class="ebc-video">
+          <video controls playsinline preload="none" poster="images/products/wc-events/demo-poster.jpg" width="720" height="1280" aria-label="Screen recording: an organizer adds an event with two ticket types, a guest pays at the WooCommerce checkout and opens the QR ticket, and door staff scan it twice">
+            <source src="images/products/wc-events/demo.mp4" type="video/mp4">
+            <a href="images/products/wc-events/demo.mp4">Download the demo video (MP4, 0.7 MB)</a>
+          </video>
+          <figcaption>From a new event to the door scan: 49 seconds on a test site, typing sped up.</figcaption>
+        </figure>
+      </div>
+    </div></section>
+    </main>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="websites.html">Websites</a><a href="apps.html">Apps</a><a href="security.html">Security</a><a href="tools/index.html">Tools</a><a href="plugins.html">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="index.html#contact">Contact</a></div></div><!-- social:start (generated by social_links.py; edit the list there) -->
+<nav class="footer-social" aria-label="Rebel Studios elsewhere">
+    <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+    <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+    <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+    <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+    <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+    <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+</nav>
+<!-- social:end -->
+<p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+    <script>
+    /* Eventbrite US rates (read 2026-10-14): service 3.7% of the ticket price + $1.79 per paid ticket;
+       processing 2.9% of the order total including the service fee. All arithmetic is in whole cents,
+       rounded half up, so it matches the table on this page (floating-point cents would round 2.715 down). */
+    (function(){
+      var $=function(id){return document.getElementById(id);};
+      var f={price:$('ebc-price'),qty:$('ebc-qty'),pct:$('ebc-pct'),fix:$('ebc-fix')};
+      if(!f.price)return;
+      var q=new URLSearchParams(location.search);
+      if(q.has('price')&&isFinite(+q.get('price')))f.price.value=q.get('price');
+      if(q.has('tickets')&&isFinite(+q.get('tickets')))f.qty.value=q.get('tickets');
+      var usd=function(c){return (c<0?'-':'')+'$'+(Math.abs(c)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});};
+      var num=function(el,max){var v=parseFloat(el.value);return isFinite(v)?Math.min(Math.max(v,0),max):0;};
+      var used=false;
+      function calc(){
+        var pc=Math.round(num(f.price,100000)*100), n=Math.floor(num(f.qty,1000000));
+        var bp=Math.round(num(f.pct,20)*100), fixc=Math.round(num(f.fix,10)*100);
+        var price=usd(pc);
+        if(pc===0){
+          $('ebc-eb').textContent='$0.00';
+          $('ebc-eb-split').textContent='Eventbrite charges nothing on free tickets.';
+          $('ebc-eb-each').textContent='Neither do we: free RSVPs need only our free plugin, with no WooCommerce and no card fees.';
+          $('ebc-own').textContent='$0.00';
+          $('ebc-own-split').textContent='No payment, so no card processing. Event Tickets Pro is only for paid tickets.';
+          $('ebc-diff').textContent='$0.00';
+          $('ebc-diff-text').textContent='For free events the two cost the same: nothing.';
+          $('ebc-work').textContent='Enter a ticket price to see the working.';
+          return;
+        }
+        var sc=Math.floor((37*pc+179000+500)/1000);          // 3.7% x price + $1.79, in cents
+        var fc=Math.floor((29*(pc+sc)+500)/1000);             // 2.9% x (price + service fee)
+        var cc=Math.floor((bp*pc+5000)/10000)+fixc;           // your processor: pct x price + fixed
+        var eb=n*(sc+fc), own=n*cc, per=(sc+fc)-cc;
+        $('ebc-eb').textContent=usd(eb);
+        $('ebc-eb-split').textContent=usd(n*sc)+' service fee + '+usd(n*fc)+' payment processing on '+n.toLocaleString('en-US')+' ticket'+(n===1?'':'s')+'.';
+        $('ebc-eb-each').textContent=usd(sc+fc)+' on each '+price+' ticket, so a buyer pays '+usd(pc+sc+fc)+' at checkout unless you absorb the fees.';
+        $('ebc-own').textContent=usd(own);
+        $('ebc-own-split').textContent='Card processing at '+(bp/100)+'% + '+usd(fixc)+' a payment. Event Tickets Pro costs $79 once and takes nothing per ticket.';
+        $('ebc-diff').textContent=usd(eb-own-7900);
+        var t;
+        if(per>0){
+          var k=Math.ceil(7900/per);
+          t=(eb-own-7900<0?'The $79 is not covered on this event yet. ':'That is on this event, after the $79. ')+'Each event like it after that: '+usd(eb-own)+'. At '+price+' a ticket the plugin has paid for itself by ticket '+k.toLocaleString('en-US')+'.';
+        } else {
+          t='At this card rate your own checkout costs more per ticket than Eventbrite, so the plugin never pays for itself on fees alone.';
+        }
+        $('ebc-diff-text').textContent=t;
+        $('ebc-work').textContent='Service fee: 3.7% × '+price+' + $1.79 = '+usd(sc)+' a ticket. Processing: 2.9% × '+usd(pc+sc)+' = '+usd(fc)+'. Card fee on your checkout: '+(bp/100)+'% × '+price+' + '+usd(fixc)+' = '+usd(cc)+'.';
+      }
+      function changed(){
+        calc();
+        if(!used&&typeof gtag==='function'){used=true;gtag('event','fee_calculator_used',{ticket_price:num(f.price,100000)});}
+        try{var u=new URL(location.href);u.searchParams.set('price',f.price.value);u.searchParams.set('tickets',f.qty.value);history.replaceState(null,'',u);}catch(e){}
+      }
+      [f.price,f.qty,f.pct,f.fix].forEach(function(el){el.addEventListener('input',changed);});
+      calc();
+    })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
