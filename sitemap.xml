@@ -152,8 +152,14 @@
 </url>
 <url>
 <loc>https://rebelstudiossoftware.com/wc-events-pro.html</loc>
-<lastmod>2026-09-08</lastmod>
+<lastmod>2026-10-14</lastmod>
 <changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://rebelstudiossoftware.com/eventbrite-fee-calculator.html</loc>
+<lastmod>2026-10-14</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
@@ -194,7 +200,7 @@
 </url>
 <url>
 <loc>https://rebelstudiossoftware.com/blog-great-man-theory-ai.html</loc>
-<lastmod>2026-10-13</lastmod>
+<lastmod>2026-10-20</lastmod>
 <changefreq>yearly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -338,7 +344,7 @@
 </url>
 <url>
 <loc>https://rebelstudiossoftware.com/blog-eventbrite-alternative-wordpress.html</loc>
-<lastmod>2026-10-11</lastmod>
+<lastmod>2026-10-14</lastmod>
 <changefreq>yearly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -356,7 +362,7 @@
 </url>
 <url>
 <loc>https://rebelstudiossoftware.com/blog-sell-event-tickets-wordpress.html</loc>
-<lastmod>2026-10-11</lastmod>
+<lastmod>2026-10-14</lastmod>
 <changefreq>yearly</changefreq>
 <priority>0.6</priority>
 </url>
