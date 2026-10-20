@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-app-review-watcher-that-texts: the four traps, and which one each failure looks like. -->
+<style>
+  .wrap{position:absolute;inset:40px 56px;display:flex;flex-direction:column;justify-content:center}
+  .k{font:600 14px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em}
+  h1{font:600 31px 'Space Grotesk',sans-serif;margin-top:8px}
+  .list{margin-top:20px;border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:var(--raise)}
+  .it{display:grid;grid-template-columns:40px 1fr 230px;align-items:center;padding:13px 20px;
+      border-top:1px solid var(--line);font:500 18px Inter,sans-serif;color:var(--ink1)}
+  .it:first-child{border-top:0}
+  .it .n{font:600 16px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .it small{font:500 13px 'JetBrains Mono',monospace;color:var(--amber);text-align:right}
+  .foot{margin-top:16px;font:500 15px Inter,sans-serif;color:var(--ink3)}
+</style>
+<div class="wrap">
+  <div class="k">App Store Connect API &middot; unattended</div>
+  <h1>Four ways a release notifier fails silently</h1>
+  <div class="list">
+    <div class="it"><span class="n">1</span>Checking only the app version<small>subscription still in review</small></div>
+    <div class="it"><span class="n">2</span>Reading &ldquo;the newest version&rdquo;<small>fires on last month&rsquo;s release</small></div>
+    <div class="it"><span class="n">3</span>Marking it sent before sending<small>rate limit eats the one text</small></div>
+    <div class="it"><span class="n">4</span>Never firing the alert branch<small>runs once, 40 hours later</small></div>
+  </div>
+  <div class="foot">Every one of them reports success while telling you nothing.</div>
+</div>

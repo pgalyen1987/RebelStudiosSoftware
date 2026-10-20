@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:999px;padding:8px 18px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="App Review takes a day or two and tells you nothing while you wait. A small script on the App Store Connect API fixes that — and four non-obvious things will quietly break it.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html">
+    <meta property="og:title" content="The App Review watcher that texts you">
+    <meta property="og:description" content="A watcher that texts when your app actually goes live. The four traps: checking one half, trusting the newest row, a rate limit eating the one message that matters, and never testing the alert.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/app-review-watcher-that-texts.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-10-20">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The App Review watcher that texts you">
+    <meta name="twitter:description" content="A watcher that texts when your app actually goes live. The four traps: checking one half, trusting the newest row, a rate limit eating the one message that matters, and never testing the alert.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/app-review-watcher-that-texts.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The App Review watcher that texts you","description":"App Review takes a day or two and tells you nothing while you wait. A small script on the App Store Connect API fixes that — and four non-obvious things will quietly break it.","datePublished":"2026-10-20","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html"},"image":"https://rebelstudiossoftware.com/images/blog/app-review-watcher-that-texts.png"}</script>
+    <title>The App Review watcher that texts you - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>The App Review watcher that texts you</h1>
+            <p>Four things that will quietly break it, all of which broke ours first.</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">October 20, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/blog/app-review-watcher-that-texts.png" alt="A timeline of an app submission: waiting, waiting, rejected, fixed, waiting, live — with a single phone notification at the only moment that mattered." width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>App Review takes a day or two and tells you nothing while it runs. So you refresh App Store Connect. You refresh it on your phone in a queue. You refresh it at 11pm because maybe reviewers work late.</p>
+
+                    <p>The App Store Connect API will tell you instead. It is a read, it is free, and a cron job can do it. The whole watcher is about sixty lines. What follows is not the sixty lines — it is the four things that broke ours, because every one of them fails <em>silently</em>, which is the worst way for a notifier to fail.</p>
+
+                    <h2>1. &ldquo;Live&rdquo; is usually two things, and either one alone means nobody can pay</h2>
+
+                    <p>Our submission had an app version and an auto-renewable subscription. The obvious check is whether the version reaches <code>READY_FOR_SALE</code>. That check is wrong: a version can go live while its subscription is still in review, and a subscription can be approved while the version carrying the paywall has not shipped. Apple moves them separately and not in a fixed order.</p>
+
+                    <p>If your app sells something, the alert condition is both halves at once. Ours only texts when the version is on sale <em>and</em> the subscription is approved, because either on its own is a release nobody can buy from.</p>
+
+                    <h2>2. Do not read &ldquo;the newest version&rdquo;</h2>
+
+                    <p>The natural way to find the version you submitted is to list versions and take the first one. We nearly shipped that. In our account the list also contained version 1.3.3, sitting at <code>READY_FOR_SALE</code> since September — so a watcher reading the newest row would have fired <em>the moment it started</em>, announcing success for a release that went out a month earlier.</p>
+
+                    <p>Pin the version by its ID. The ordering of that list is not a promise.</p>
+
+                    <h2>3. A rate limit will eat the one message that matters</h2>
+
+                    <p>Our SMS sender caps at six messages a day, deliberately — every text costs money and a notifier wired into a build loop can spend a morning&rsquo;s budget in a minute. But that cap means the one message you actually care about can arrive on a day that has already spent it.</p>
+
+                    <p>The bug this creates is subtle. The first version recorded &ldquo;I have reported this&rdquo; and <em>then</em> sent. If the send was refused, the news was already marked as delivered and never went out again. Record it as sent only after the send succeeds, and let the next tick retry. A notifier that can silently decide not to tell you is worse than no notifier, because you stop checking.</p>
+
+                    <h2>4. Test the alert, not the code</h2>
+
+                    <p>The alert path runs once, unattended, maybe forty hours after you write it. Until then it has never executed. That is the classic way this fails: everything works except the thing the whole script exists to do.</p>
+
+                    <p>Ours takes a <code>--simulate</code> flag that forces each state pair, and a <code>--dry</code> flag that prints the message without sending. Every branch — live, rejected, passed-but-waiting — was fired before the watcher was trusted. Two bugs turned up that way, including a message long enough to split into two billed SMS segments.</p>
+
+                    <h2>Two things the API will not give you</h2>
+
+                    <p>Worth knowing before you plan around them. The API does not expose <strong>Resolution Center</strong>, so when your app is rejected you can read the <em>state</em> but not the reason. The reason arrives by email to the account holder. We found ours there.</p>
+
+                    <p>And resubmitting after a rejection is awkward: the rejected submission still holds your version, so attaching it to a new one returns <code>409</code> until you cancel the old submission — and then there is a propagation delay. Our first retry failed; twenty seconds later it went through.</p>
+
+                    <h2>Keeping it alive</h2>
+
+                    <p>Ours is a systemd user timer firing every twenty minutes, which costs two API reads. Two details matter: user timers stop when you log out unless lingering is enabled (<code>loginctl enable-linger</code>), and the watcher records what it has already reported so the same news is never sent twice. After it fires, it stops making requests at all.</p>
+
+                    <p>The point is not the sixty lines. It is that waiting on someone else&rsquo;s queue is a solved problem, and the solution is small — as long as you check both halves, pin the version, let a failed send retry, and fire every branch before you trust it.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Oct 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>The App Review watcher that texts you</title>
+      <link>https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 -0000</pubDate>
+      <description>App Review takes a day or two and tells you nothing while you wait. A small script on the App Store Connect API fixes that — and four non-obvious things will quietly break it.</description>
+    </item>
     <item>
       <title>When Ideas Are Free, the Great Man Is the Filter</title>
       <link>https://rebelstudiossoftware.com/blog-great-man-theory-ai.html</link>

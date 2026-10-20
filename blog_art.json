@@ -518,5 +518,11 @@
     "html": "art/great-man-theory-ai.html",
     "alt": "Twenty-six squares, one for each game idea written down in one afternoon: eighteen dark ones that already existed, four lighter near-copies, three outlined ones that died in testing, and one bright green square, a game about toast.",
     "image": "images/blog/great-man-theory-ai.png"
+  },
+  "app-review-watcher-that-texts": {
+    "kind": "diagram",
+    "html": "art/app-review-watcher-that-texts.html",
+    "alt": "Four numbered rows listing the ways an App Review notifier fails without saying so: checking only the app version, reading the newest version, marking a message sent before it sends, and never firing the alert branch.",
+    "image": "images/blog/app-review-watcher-that-texts.png"
   }
 }
