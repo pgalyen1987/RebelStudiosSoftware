@@ -536,5 +536,11 @@
     "html": "art/sitemap-lastmod-sweep-commits.html",
     "alt": "A column of sitemap lastmod lines all reading 2026-10-29, most struck through and greyed out with one left in green, beside the counts 61 said 10-29 and 4 had earned it.",
     "image": "images/blog/sitemap-lastmod-sweep-commits.png"
+  },
+  "acroform-is-not-a-fillable-pdf": {
+    "kind": "diagram",
+    "html": "art/acroform-is-not-a-fillable-pdf.html",
+    "alt": "A grid of 120 PDF tiles: 30 outlined in amber as declaring an AcroForm, only 5 of those filled green as actually containing a field, and 4 blacked out as having no extractable text.",
+    "image": "images/blog/acroform-is-not-a-fillable-pdf.png"
   }
 }

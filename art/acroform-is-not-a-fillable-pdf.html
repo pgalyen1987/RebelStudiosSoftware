@@ -1,0 +1,52 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-acroform-is-not-a-fillable-pdf: 120 PDFs, 30 declared /AcroForm, 5 held a field, 4 had no text. -->
+<style>
+  .wrap{position:absolute;inset:48px 56px;display:grid;grid-template-columns:1fr 1.618fr;gap:52px;align-items:center}
+  h1{font:600 42px/1.16 'Space Grotesk',sans-serif;letter-spacing:-.015em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--amber)}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.5;margin-top:16px}
+  .sub b{color:var(--ink1);font-weight:600}
+  .tally{margin-top:22px;display:flex;gap:30px;font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--ink3)}
+  .tally b{display:block;font-size:30px;font-weight:600;margin-bottom:3px}
+  .tally .bad b{color:var(--amber)}
+  .tally .good b{color:var(--green2)}
+  .grid{display:grid;grid-template-columns:repeat(15,1fr);gap:7px}
+  .grid i{display:block;aspect-ratio:1/1.272;border-radius:3px;background:#161c26;border:1px solid #232b38}
+  .grid i.dec{border-color:var(--amber)}
+  .grid i.has{background:var(--green2);border-color:var(--amber);box-shadow:inset 0 0 0 1px #05070b}
+  .grid i.blind{background:#05070b;border-color:#2b3340;border-style:dashed}
+  .key{margin-top:20px;display:flex;gap:26px;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--ink3);align-items:center}
+  .key span{display:flex;gap:8px;align-items:center}
+  .key i{width:13px;height:16px;border-radius:3px;display:block;background:#161c26;border:1px solid #232b38}
+  .key i.dec{border-color:var(--amber)}
+  .key i.has{background:var(--green2);border-color:var(--amber)}
+  .key i.blind{background:#05070b;border-color:#2b3340;border-style:dashed}
+</style>
+<div class="wrap">
+  <div>
+    <h1>Thirty said <em>/AcroForm</em>. Five had a field.</h1>
+    <p class="sub">The marker everyone greps for is a declaration, not an inventory. One of the empty ones is an <b>835-page book</b>.</p>
+    <div class="tally">
+      <span class="bad"><b>30</b>declared</span>
+      <span class="good"><b>5</b>fillable</span>
+    </div>
+  </div>
+  <div>
+    <div class="grid" id="g"></div>
+    <div class="key">
+      <span><i class="dec"></i>declares /AcroForm</span>
+      <span><i class="has"></i>and has a field</span>
+      <span><i class="blind"></i>no text at all</span>
+    </div>
+  </div>
+</div>
+<script>
+  // 120 tiles: 30 outlined (declared), 5 of those filled (real fields), 4 blacked out (zero extractable text)
+  var dec=[2,5,9,13,17,21,24,28,31,35,38,42,46,49,53,57,60,64,68,71,75,79,83,86,90,94,98,101,105,109];
+  var has=[9,35,60,94,109], blind=[7,44,77,114], g=document.getElementById('g'), h='';
+  for(var i=0;i<120;i++){
+    var c = blind.indexOf(i)>-1 ? 'blind' : has.indexOf(i)>-1 ? 'has' : dec.indexOf(i)>-1 ? 'dec' : '';
+    h+='<i class="'+c+'"></i>';
+  }
+  g.innerHTML=h;
+</script>
