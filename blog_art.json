@@ -530,5 +530,11 @@
     "html": "art/generate-the-demo-from-the-engine.html",
     "alt": "Three hand-drawn knight positions, each marked rejected with the checker's reason: no mate at all, no mate at all, and already in check before White moved. Beneath them one accepted position found by the game's own engine, mate in one with Nc7, beside a panel reading 14 positions out of 60,000 passed every condition.",
     "image": "images/blog/generate-the-demo-from-the-engine.png"
+  },
+  "sitemap-lastmod-sweep-commits": {
+    "kind": "diagram",
+    "html": "art/sitemap-lastmod-sweep-commits.html",
+    "alt": "A column of sitemap lastmod lines all reading 2026-10-29, most struck through and greyed out with one left in green, beside the counts 61 said 10-29 and 4 had earned it.",
+    "image": "images/blog/sitemap-lastmod-sweep-commits.png"
   }
 }

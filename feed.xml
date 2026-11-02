@@ -20,6 +20,13 @@
       <description>Three knight-mate positions composed by hand, three rejections by the checker. The game's own engine found a usable one in sixty thousand tries.</description>
     </item>
     <item>
+      <title>Half our sitemap claimed a date it did not earn</title>
+      <link>https://rebelstudiossoftware.com/blog-sitemap-lastmod-sweep-commits.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-sitemap-lastmod-sweep-commits.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 -0000</pubDate>
+      <description>One footer link touched 82 pages, and 61 of 121 sitemap URLs started reporting that day as lastmod. The rule that separates a site-wide sweep from a real edit, and how I measured its one constant.</description>
+    </item>
+    <item>
       <title>The App Review watcher that texts you</title>
       <link>https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-app-review-watcher-that-texts.html</guid>
