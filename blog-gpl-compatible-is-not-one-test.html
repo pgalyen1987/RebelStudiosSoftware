@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:999px;padding:8px 18px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="Seven packages ship inside one WordPress plugin zip under five licences; the plugin's composer.json names two. The audit command, and why a GPL-compatible library can still be the thing that gets you rejected.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-gpl-compatible-is-not-one-test.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-gpl-compatible-is-not-one-test.html">
+    <meta property="og:title" content="Seven licences shipped. We had written down two.">
+    <meta property="og:description" content="Seven packages ship inside one WordPress plugin zip under five licences; the plugin's composer.json names two. The audit command, and why a GPL-compatible library can still be the thing that gets you rejected.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/gpl-compatible-is-not-one-test.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-11-02">
+    <meta property="article:author" content="Patrick Galyen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seven licences shipped. We had written down two.">
+    <meta name="twitter:description" content="Seven packages ship inside one WordPress plugin zip under five licences; the plugin's composer.json names two. The audit command, and why a GPL-compatible library can still be the thing that gets you rejected.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/gpl-compatible-is-not-one-test.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Your WordPress plugin can be rejected for a library you never chose","description":"Seven packages ship inside one WordPress plugin zip under five licences; the plugin's composer.json names two. The audit command, and why a GPL-compatible library can still be the thing that gets you rejected.","datePublished":"2026-11-02","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-gpl-compatible-is-not-one-test.html"},"image":"https://rebelstudiossoftware.com/images/blog/gpl-compatible-is-not-one-test.png"}</script>
+    <title>Your WordPress plugin can be rejected for a library you never chose - Rebel Studios Software</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="websites.html">Websites</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Your WordPress plugin can be rejected for a library you never chose</h1>
+            <p>Seven packages ride inside our event-tickets zip under five different licences. We wrote down two of them. Here is the one command that reads the truth, and why &ldquo;or later&rdquo; is the trap rather than the escape.</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">November 2, 2026</span>
+                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/blog/gpl-compatible-is-not-one-test.png" alt="A stack of seven package tiles inside a plugin zip outline, five of them labelled with a different licence, one tile outlined in red as GPLv3-only, with only two tiles marked as declared in composer.json." width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>We ship a WordPress plugin that emails each person who registers for an event a PDF
+                    ticket with a QR code on it. Two libraries do the heavy lifting: one draws the PDF, one encodes
+                    the QR. Last month the QR one had to go. Our own changelog records why:</p>
+
+                    <blockquote class="article-highlight">Changed: QR codes are now generated with
+                    bacon/bacon-qr-code (BSD-2-Clause) instead of chillerlan/php-qrcode. The previous library carries
+                    ZXing-derived files under Apache-2.0, which is not compatible with GPLv2.</blockquote>
+
+                    <p>Apache-2.0 is a perfectly good free licence. It is also, in the Free Software Foundation&rsquo;s
+                    own words, GPL-compatible. That is what makes the trap worth writing down, so after the swap I
+                    stopped trusting the two names in our <code>composer.json</code> and read the zip we would actually
+                    submit instead. <strong>Seven packages are in there, under five different licences.</strong> We had
+                    written down two of the seven. And one of the five is still the same problem we had just spent a
+                    day removing.</p>
+
+                    <h2>&ldquo;GPL-compatible&rdquo; is a direction, not a property</h2>
+                    <p>Apache-2.0 can be combined with the GPL <em>version 3</em>. It cannot be combined with GPL
+                    version 2: its patent-termination and indemnity terms count as extra restrictions that GPLv2 does
+                    not permit, which is a large part of why GPLv3 was written the way it was. So &ldquo;is this
+                    library GPL-compatible&rdquo; has no answer on its own. The only answer is compatible
+                    <em>with which version</em>, and the version that matters is the one your own plugin claims.</p>
+
+                    <p>Ours claims this, in the plugin header and again in <code>readme.txt</code>:</p>
+
+                    <pre class="article-code"> * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html</pre>
+
+                    <h2>The trap is the words &ldquo;or later&rdquo;</h2>
+                    <p>Read that header quickly and &ldquo;or later&rdquo; looks like the escape hatch: we allow
+                    GPLv3, Apache-2.0 is fine under GPLv3, so where is the problem? The problem is who the words are
+                    addressed to. &ldquo;Or later&rdquo; is not a licence we picked; it is a <em>choice we handed to
+                    the recipient</em>. Anybody who downloads the plugin may elect to treat it as GPLv2 and nothing
+                    else, and that person now holds a GPLv2 work with Apache-2.0 code inside it, which they cannot
+                    legally pass on.</p>
+
+                    <p>Which means the escape hatch runs the wrong way. Offering a later version adds a permission for
+                    the user, so it cannot subtract a requirement from us: every bundled file has to clear the
+                    <em>earliest</em> version we offer, not the most convenient one. A GPLv3-only-compatible
+                    dependency is incompatible with a GPLv2-or-later plugin, full stop, and that holds for Apache-2.0
+                    and for LGPLv3 alike.</p>
+
+                    <p>The WordPress.org reviewers do not spell the versions out, which is probably why this keeps
+                    biting people. Here is the relevant line verbatim from a review thread on another of our plugins,
+                    dated 9 September 2026:</p>
+
+                    <blockquote class="article-highlight">Any included code must be GPL-compatible. This means, among
+                    others, that the users have to receive the four essential freedoms: (0) to run the program, (1) to
+                    study and change the program in source code form, (2) to redistribute exact copies, and (3) to
+                    distribute modified versions. (Guidelines 1 &amp; 4)</blockquote>
+
+                    <p>&ldquo;Any included code&rdquo; is the load-bearing phrase. Not the code you wrote. Not the
+                    code you chose.</p>
+
+                    <h2>Read the zip, not the manifest</h2>
+                    <p>Our <code>composer.json</code> names two requirements. The build script copies the whole of
+                    <code>vendor/</code> into the zip, so what we would hand a reviewer is <strong>409 files, 319 of
+                    them PHP, 12 MB</strong> &mdash; and seven packages, because dependencies have dependencies. One
+                    command over the built zip, no tooling to install:</p>
+
+                    <pre class="article-code">unzip -q your-plugin.zip -d /tmp/lic &amp;&amp; cd /tmp/lic/your-plugin
+for f in vendor/*/*/composer.json; do
+  printf "%-32s %s\n" "${f#vendor/}" "$(grep -m1 -o '"license":[^,}]*' "$f")"
+done</pre>
+
+                    <p>Here is what ours printed. I have added the column that is the whole point:</p>
+
+                    <table class="article-table">
+                        <thead><tr><th>Package</th><th>Declared licence</th><th>Clears GPLv2?</th></tr></thead>
+                        <tbody>
+                        <tr><td>bacon/bacon-qr-code</td><td>BSD-2-Clause</td><td>Yes</td></tr>
+                        <tr><td>dasprid/enum</td><td>BSD-2-Clause</td><td>Yes</td></tr>
+                        <tr><td>masterminds/html5</td><td>MIT</td><td>Yes</td></tr>
+                        <tr><td>sabberworm/php-css-parser</td><td>MIT</td><td>Yes</td></tr>
+                        <tr><td>dompdf/dompdf</td><td>LGPL-2.1</td><td>Yes &mdash; LGPL-2.1 &sect;3 lets you convert to GPLv2 or later</td></tr>
+                        <tr><td>dompdf/php-font-lib</td><td>LGPL-2.1-or-later</td><td>Yes</td></tr>
+                        <tr><td>dompdf/php-svg-lib 1.0.2</td><td>LGPL-3.0-or-later</td><td><strong>No &mdash; LGPLv3 goes with GPLv3, not GPLv2</strong></td></tr>
+                        </tbody>
+                    </table>
+                    <p class="article-caption">The two we declared are the first and the fifth. The problem is the
+                    last one.</p>
+
+                    <p><code>php-svg-lib</code> appears <strong>zero times</strong> in our <code>composer.json</code>
+                    and <strong>eight times</strong> in <code>composer.lock</code>. Nobody on this end ever considered
+                    it. It is a hard requirement of dompdf &mdash; <code>"dompdf/php-svg-lib": "^1.0.0"</code>, not a
+                    suggestion &mdash; so it arrives with the PDF renderer and gets copied into the zip by the same
+                    <code>rsync</code> line that copies everything else. We had removed one GPLv3-only dependency by
+                    hand and shipped another in the same archive, for the same reason, in a package we had never
+                    typed.</p>
+
+                    <h2>The lesson, which is smaller than it sounds</h2>
+                    <p>A licence audit that reads <code>composer.json</code> is reading a wish list. The zip is the
+                    distribution, and the only list that matters is the one inside it. Four things follow, and they
+                    take about two minutes:</p>
+
+                    <ul class="article-list">
+                        <li>Audit the <strong>built artifact</strong>, every time the build changes, not the manifest.</li>
+                        <li>Write the version down. &ldquo;GPL-compatible&rdquo; in a dependency&rsquo;s README means
+                        nothing until you say compatible with what.</li>
+                        <li>Treat <strong>Apache-2.0 and LGPL-3.0 as the same finding</strong>. Both are
+                        GPLv3-and-later company.</li>
+                        <li>Remember that <code>composer require --no-dev</code> pulls a tree, not a package. The
+                        licence you have to defend is the strictest leaf on it.</li>
+                    </ul>
+
+                    <div class="article-callout">
+                        <h3>The plugin this came out of</h3>
+                        <p><a href="wc-events.html">Event Tickets &amp; Registration with QR Check-in</a> publishes an
+                        event, takes free RSVPs, emails every attendee a QR-coded PDF ticket, and checks them in when
+                        a logged-in phone scans it at the door. No separate app and no external service: the QR is
+                        drawn on your own server, which is why whose code draws it was a question in the first place.
+                        Paid tickets, seating and the rest are in Pro, a one-time $79. Stated plainly because this
+                        article is about reading the small print: the free core is not in the WordPress.org directory
+                        yet, so today the way to get it is the Pro download, which contains it.</p>
+                    </div>
+
+                    <h2>What I don&rsquo;t know</h2>
+                    <p>Whether a WordPress.org reviewer would actually block on <code>php-svg-lib</code>. I can find
+                    no public case of one doing so, the library is inside a very widely used renderer, and a reviewer
+                    might reasonably read &ldquo;or later&rdquo; the generous way round. The argument above says they
+                    would be right to block it, and the argument is mine, not theirs. <strong>We have not fixed it
+                    yet</strong> either &mdash; dompdf hard-requires the package, so this is a fork, a renderer swap
+                    or a conversation, not a line edit, and I would rather publish the finding today than sit on it
+                    until there is a tidy ending. And none of the above is legal advice: I read seven
+                    <code>LICENSE</code> files and the FSF&rsquo;s compatibility notes, which is enough to know where
+                    to look and not enough to tell you what to do.</p>
+                </div>
+
+                <div class="article-footer-nav">
+                    <a href="blog.html" class="btn btn-primary">&larr; Back to Blog</a>
+                    <a href="wc-events.html" class="btn btn-secondary">See the event tickets plugin &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="websites.html">Websites</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="press.html">Press</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -20,6 +20,13 @@
       <description>A sweep of 120 PDFs on one disk: 30 declare an AcroForm, 5 contain an actual field, 4 have no text at all. The two numbers that decide whether any tool can make your PDF fillable.</description>
     </item>
     <item>
+      <title>Your WordPress plugin can be rejected for a library you never chose</title>
+      <link>https://rebelstudiossoftware.com/blog-gpl-compatible-is-not-one-test.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-gpl-compatible-is-not-one-test.html</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 -0000</pubDate>
+      <description>Seven packages ship inside one WordPress plugin zip under five licences; the plugin's composer.json names two. The audit command, and why a GPL-compatible library can still be the thing that gets you rejected.</description>
+    </item>
+    <item>
       <title>The demo I drew by hand was an illegal position</title>
       <link>https://rebelstudiossoftware.com/blog-generate-the-demo-from-the-engine.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-generate-the-demo-from-the-engine.html</guid>

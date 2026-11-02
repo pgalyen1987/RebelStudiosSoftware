@@ -542,5 +542,11 @@
     "html": "art/acroform-is-not-a-fillable-pdf.html",
     "alt": "A grid of 120 PDF tiles: 30 outlined in amber as declaring an AcroForm, only 5 of those filled green as actually containing a field, and 4 blacked out as having no extractable text.",
     "image": "images/blog/acroform-is-not-a-fillable-pdf.png"
+  },
+  "gpl-compatible-is-not-one-test": {
+    "kind": "diagram",
+    "html": "art/gpl-compatible-is-not-one-test.html",
+    "alt": "Seven package rows from a plugin zip, each labelled with its licence, two marked as declared in composer.json and the last outlined in amber as LGPL-3.0-or-later, beside the counts 7 packages, 5 licences, 1 GPLv3-only.",
+    "image": "images/blog/gpl-compatible-is-not-one-test.png"
   }
 }

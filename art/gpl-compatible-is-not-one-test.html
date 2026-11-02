@@ -1,0 +1,49 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-gpl-compatible-is-not-one-test: 7 packages shipped, 5 licences, 2 declared, 1 GPLv3-only. -->
+<style>
+  .wrap{position:absolute;inset:48px 56px;display:grid;grid-template-columns:1fr 1.618fr;gap:52px;align-items:center}
+  h1{font:600 42px/1.16 'Space Grotesk',sans-serif;letter-spacing:-.015em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--amber)}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.5;margin-top:16px}
+  .sub b{color:var(--ink1);font-weight:600}
+  .tally{margin-top:22px;display:flex;gap:30px;font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--ink3)}
+  .tally b{display:block;font-size:30px;font-weight:600;margin-bottom:3px}
+  .tally .good b{color:var(--green2)}
+  .tally .bad b{color:var(--amber)}
+  .rows{display:flex;flex-direction:column;gap:9px;font-family:'JetBrains Mono',monospace}
+  .r{display:grid;grid-template-columns:1.618fr 1fr;gap:14px;align-items:center;
+     background:#161c26;border:1px solid #232b38;border-radius:5px;padding:10px 14px}
+  .r .n{font-size:16px;color:var(--ink2)}
+  .r .l{font-size:14px;color:var(--ink3);text-align:right}
+  .r.decl{border-color:#3a4759}
+  .r.decl .n{color:var(--ink1)}
+  .r.decl .n:after{content:' \00b7 declared';font-size:12px;color:var(--ink3)}
+  .r.bad{border-color:var(--amber);background:#211a12}
+  .r.bad .n{color:var(--ink1)}
+  .r.bad .l{color:var(--amber)}
+  .note{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--ink3)}
+  .note b{color:var(--amber);font-weight:600}
+</style>
+<div class="wrap">
+  <div>
+    <h1>We declared <em>two</em>. The zip holds seven.</h1>
+    <p class="sub">&ldquo;GPL-compatible&rdquo; has no answer without a version. One of these ships under <b>LGPL&#8209;3.0</b>, and nobody here ever typed its name.</p>
+    <div class="tally">
+      <span class="good"><b>7</b>packages</span>
+      <span class="good"><b>5</b>licences</span>
+      <span class="bad"><b>1</b>GPLv3&#8209;only</span>
+    </div>
+  </div>
+  <div>
+    <div class="rows">
+      <div class="r decl"><span class="n">bacon/bacon-qr-code</span><span class="l">BSD-2-Clause</span></div>
+      <div class="r"><span class="n">dasprid/enum</span><span class="l">BSD-2-Clause</span></div>
+      <div class="r"><span class="n">masterminds/html5</span><span class="l">MIT</span></div>
+      <div class="r"><span class="n">sabberworm/php-css-parser</span><span class="l">MIT</span></div>
+      <div class="r decl"><span class="n">dompdf/dompdf</span><span class="l">LGPL-2.1</span></div>
+      <div class="r"><span class="n">dompdf/php-font-lib</span><span class="l">LGPL-2.1-or-later</span></div>
+      <div class="r bad"><span class="n">dompdf/php-svg-lib</span><span class="l">LGPL-3.0-or-later</span></div>
+    </div>
+    <p class="note">Plugin header says <b>GPL-2.0-or-later</b> &mdash; so every leaf has to clear v2.</p>
+  </div>
+</div>
