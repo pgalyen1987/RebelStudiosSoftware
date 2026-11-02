@@ -4972,3 +4972,51 @@ a.tool-card.is-paused:hover { transform: none; }
 @media (max-width: 639px) { .article-table { display: block; overflow-x: auto; } }
 .section-head .section-lead { margin-top: var(--space-sm); max-width: var(--measure); }
 .section-head:last-child { margin-bottom: 0; }
+
+/* Oops All Knights hero puzzle (2026-11-01). Square colours are sampled from the
+   shipped board (images/oopsallknights/board-midgame.webp): light #f4e9d4, dark
+   #8f7ac1, selected #3e2279 — so the page and the game look like one product.
+   The pieces are the game's own art. */
+.oakp { margin: 0; }
+.oakp-grid {
+    display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; width: 100%;
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 140px -40px rgba(141, 121, 192, 0.55);
+}
+.oakp-sq {
+    all: unset; position: relative; display: grid; place-items: center;
+    cursor: pointer; aspect-ratio: 1; -webkit-tap-highlight-color: transparent;
+}
+.oakp-sq:disabled { cursor: default; }
+.oakp-light { background: #f4e9d4; }
+.oakp-dark { background: #8f7ac1; }
+.oakp-sq img { width: 78%; height: auto; display: block; pointer-events: none; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)); }
+.oakp-picked { background: #3e2279; }
+.oakp-moved { box-shadow: inset 0 0 0 3px var(--oak-gold); }
+/* a jump marker is a dot; a capture is a ring round the piece — the same two
+   marks the game draws when you tap a knight */
+.oakp-jump::after {
+    content: ''; position: absolute; width: 26%; aspect-ratio: 1; border-radius: 50%;
+    background: #3e2279; opacity: 0.55;
+}
+.oakp-take { box-shadow: inset 0 0 0 4px #3e2279; }
+.oakp-sq:focus-visible { outline: 3px solid var(--oak-gold); outline-offset: -3px; z-index: 1; }
+.oakp-say {
+    margin: var(--space-sm) 0 0; min-height: 4.5em; font-size: var(--text-sm);
+    line-height: 1.55; color: var(--ink-2); max-width: 34rem;
+}
+.oakp-say strong { color: var(--oak-cream); }
+.oakp-say.oakp-win strong { color: var(--oak-gold); }
+.oakp-bar { display: flex; gap: var(--space-xs); }
+.oakp-btn, .oakp-again {
+    all: unset; cursor: pointer; font-family: var(--font-mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2);
+    border: 1px solid var(--line-strong); border-radius: 999px; padding: 0.5rem 1rem;
+}
+.oakp-btn:hover, .oakp-again:hover { color: var(--oak-cream); border-color: var(--oak-gold); }
+.oakp-again { padding: 0.15rem 0.6rem; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+.oakp-btn:focus-visible, .oakp-again:focus-visible { outline: 2px solid var(--oak-gold); outline-offset: 2px; }
+.oak-puzzle-fallback { margin: var(--space-sm) 0 0; font-size: var(--text-sm); color: var(--ink-3); }
+.oak-puzzle-fallback summary { cursor: pointer; color: var(--ink-2); }
+.oak-puzzle-fallback p { max-width: 34rem; margin: var(--space-2xs) 0 0; }
+@media (max-width: 860px) { .oakp { max-width: 520px; } }

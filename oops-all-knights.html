@@ -79,8 +79,15 @@
                 <p class="oak-note">The browser version needs no install and no account. It&rsquo;s also free on <a href="https://play.google.com/store/apps/details?id=rebelstudios.oopsallknights.app">Google Play</a> and the <a href="https://apps.apple.com/app/id6805686974">App Store</a>.</p>
             </div>
             <figure class="oak-board">
-                <img src="images/oopsallknights/board-midgame.webp" alt="The board in mid-game. White's knight on f4 is selected: seven empty squares it can jump to are dotted, and the black knight on e6 is ringed as a capture." width="960" height="960">
-                <figcaption>White to move. The knight on f4 has eight jumps: seven empty squares and a capture on e6.</figcaption>
+                <div id="oak-puzzle">
+                    <noscript>
+                        <img src="images/oopsallknights/board-midgame.webp" alt="The board in mid-game. White's knight on f4 is selected: seven empty squares it can jump to are dotted, and the black knight on e6 is ringed as a capture." width="960" height="960">
+                    </noscript>
+                </div>
+                <details class="oak-puzzle-fallback">
+                    <summary>The position in words, and the answer</summary>
+                    <p>White: king h3, knights c6, d5 and e8. Black: king a6, knights b7, f7, f8 and g6. White plays and mates in one move. The answer is the knight on e8 to c7. It checks the king and covers b5 on the same jump; c6 covers a5 and a7; d5 covers b6; and b7 is taken by one of Black&rsquo;s own knights. Nothing on the board can capture c7. The knight on d5 can reach c7 as well, and that version fails &mdash; it was the piece covering b6.</p>
+                </details>
             </figure>
         </div>
     </section>
@@ -200,5 +207,6 @@
 
 
     <script src="script.js"></script>
+    <script src="oak-puzzle.js"></script>
 </body>
 </html>
