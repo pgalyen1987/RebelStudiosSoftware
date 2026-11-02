@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-generate-the-demo-from-the-engine: three boards drawn by hand, all rejected, against the one the engine found. -->
+<style>
+  .wrap{position:absolute;inset:44px 56px;display:flex;flex-direction:column;justify-content:center}
+  .k{font:600 14px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em}
+  h1{font:600 33px 'Space Grotesk',sans-serif;margin-top:8px;letter-spacing:-.01em}
+  .cols{margin-top:22px;display:grid;grid-template-columns:1fr 316px;gap:26px;align-items:stretch}
+  .list{border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:var(--raise)}
+  .it{display:grid;grid-template-columns:94px 1fr;align-items:center;gap:14px;padding:14px 18px;
+      border-top:1px solid var(--line);font:500 17px Inter,sans-serif;color:var(--ink2)}
+  .it:first-child{border-top:0}
+  .it.ok{background:var(--greenbg);color:var(--ink1)}
+  .tag{font:600 12px 'JetBrains Mono',monospace;letter-spacing:.06em;text-align:center;
+       border-radius:999px;padding:5px 0;background:var(--redbg);color:var(--red)}
+  .it.ok .tag{background:rgba(143,224,90,.18);color:var(--green2)}
+  .it b{color:var(--ink1);font-weight:600}
+  .stat{border:1px solid var(--line2);border-radius:12px;background:var(--raise);
+        display:flex;flex-direction:column;justify-content:center;padding:22px 24px}
+  .big{font:600 62px 'Space Grotesk',sans-serif;color:var(--green2);line-height:1}
+  .stat .sub{margin-top:10px;font:500 17px Inter,sans-serif;color:var(--ink2)}
+  .stat .row{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+             font:500 15px 'JetBrains Mono',monospace;color:var(--ink3)}
+  .foot{margin-top:18px;font:500 16px Inter,sans-serif;color:var(--ink3)}
+</style>
+<div class="wrap">
+  <div class="k">Oops All Knights &middot; the hero puzzle</div>
+  <h1>Three boards I drew by hand. The checker took none of them.</h1>
+  <div class="cols">
+    <div class="list">
+      <div class="it"><span class="tag">REJECTED</span><span>King a8, knights crowding it <b>&mdash; no mate at all</b></span></div>
+      <div class="it"><span class="tag">REJECTED</span><span>King a8 boxed in by its own <b>&mdash; no mate at all</b></span></div>
+      <div class="it"><span class="tag">ILLEGAL</span><span>King h8 &mdash; <b>already in check</b> before White moved</span></div>
+      <div class="it ok"><span class="tag">MATE IN 1</span><span>Found by the game&rsquo;s own engine: <b>Nc7</b></span></div>
+    </div>
+    <div class="stat">
+      <div class="big">14</div>
+      <div class="sub">positions out of 60,000 passed every condition</div>
+      <div class="row">26 s &middot; 1 in ~4,000 &middot; 24 verdicts generated</div>
+    </div>
+  </div>
+  <div class="foot">A knight&rsquo;s check cannot be blocked &mdash; so the page stopped saying it and started dealing it.</div>
+</div>
