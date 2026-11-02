@@ -2,11 +2,16 @@
 // Measures two things the recurring "durable distribution" mission keeps asking by hand:
 //   1. SEARCH METADATA - can each indexable page be indexed and shared (desc/canonical/og:image/JSON-LD/sitemap)?
 //   2. FUNNEL ROUTES   - does each blog post that is ABOUT a product actually link to THAT product?
+//   3. TOOL ENTRY       - which $1 tools under tools/ have NO blog post linking them, i.e. no way in from search?
 // Written 2026-11-01 after a night block re-derived both with one-off `node -e` and misread its own
 // output twice. Two traps it encodes, so nobody pays for them again:
 //   - A product can live on its own domain (trade-guard.pro, gate402.app) or be a plain page
 //     (indemnity.html). Checking only "<slug>.html" reports false leaks.
 //   - Redirect stubs (agent-browser.html) are deliberately noindex + out of the sitemap. Correct, not broken.
+//   - EVERY page under tools/ is noindex by design (0db59c8, 2026-09-02: they are conversion pages, and
+//     indexing them fits Google's doorway pattern). Do not "fix" that. The consequence is measurement 3:
+//     a tool's ONLY route from a search engine is a blog post that links it, so a tool no post links is
+//     unreachable. That is a backlog item, not a defect, so it does NOT set the exit code - leaks do.
 // Usage: node funnel_audit.mjs            (run from the site root; exits 1 if a real leak is found)
 import fs from 'node:fs';
 
@@ -68,9 +73,27 @@ for (const f of files) {
   else routed++;
 }
 
+// 3. TOOL ENTRY POINTS. tools/ is noindex by design, so each tool needs a post pointing at it.
+const toolDir = 'tools';
+const toolRows = [];
+if (fs.existsSync(toolDir)) {
+  const postText = files.filter((f) => f.startsWith('blog-'))
+    .map((f) => body(fs.readFileSync(f, 'utf8')));
+  for (const t of fs.readdirSync(toolDir).filter((f) => f.endsWith('.html') && f !== 'index.html')) {
+    const slug = `tools/${t}`;
+    const n = postText.filter((x) => x.includes(slug)).length;
+    toolRows.push([t.replace(/\.html$/, ''), n]);
+  }
+}
+const orphanTools = toolRows.filter(([, n]) => n === 0);
+
 console.log(`SEARCH METADATA  ${indexable} indexable pages, ${metaGaps.length} with gaps`);
 for (const [f, m] of metaGaps) console.log(`   ${f.padEnd(40)} ${m}`);
 console.log(`\nFUNNEL ROUTES    ${posts} product-topic posts, ${routed} route to a product, ${leaks.length} dead-end`);
 for (const [f, p] of leaks) console.log(`   LEAK ${f.padEnd(40)} about ${p}, links neither`);
 if (!leaks.length) console.log('   no dead-end posts: every product-topic post links a product it is about');
+
+console.log(`\nTOOL ENTRY       ${toolRows.length} tools under tools/ (all noindex by design), ${orphanTools.length} with no post linking them`);
+for (const [t] of orphanTools) console.log(`   NO WAY IN  tools/${t}.html`);
+if (!orphanTools.length) console.log('   every tool has at least one post linking it');
 process.exit(leaks.length ? 1 : 0);
