@@ -4938,6 +4938,19 @@ a.tool-card.is-paused:hover { transform: none; }
 @media (max-width: 860px) {
     .oak-hero-grid, .oak-split, .oak-split--flip { grid-template-columns: 1fr; gap: var(--space-lg); }
     .oak-split--flip .oak-split-shot { order: 0; }
+    /* One column puts the proof first. Measured 2026-11-02 on the live page: the playable
+       mate-in-one started 668px down a 390px-wide phone and sat entirely below the fold at
+       320px, so the only thing that shows what this game is never got seen. Title, board,
+       invitation, then the explanation. */
+    .oak-hero { padding: var(--space-lg) 0; }
+    .oak-hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+    .oak-hero-copy { display: contents; }
+    .oak-eyebrow { order: 1; }
+    .oak-hero h1 { order: 2; }
+    .oak-board { order: 3; margin: 0 auto; }
+    .oak-actions { order: 4; }
+    .oak-lede { order: 5; }
+    .oak-note { order: 6; }
     .oak-board { max-width: 520px; }
     .oak-changes > div { grid-template-columns: 1fr; gap: var(--space-2xs); }
     .oak-rules { grid-template-columns: 1fr; gap: var(--space-2xs); }
