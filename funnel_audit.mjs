@@ -87,6 +87,37 @@ if (fs.existsSync(toolDir)) {
 }
 const orphanTools = toolRows.filter(([, n]) => n === 0);
 
+// 4. SCHEMA TRUTH. A post is usually built by copying the last one and replacing its title
+// everywhere, which is how author.name and publisher.name end up holding the headline. Google
+// reads those two fields; a publisher named after the article is worse than no publisher at all.
+const AUTHOR = 'Patrick Galyen';
+const PUBLISHER = 'Rebel Studios Software';
+const schemaBad = [];
+for (const f of files) {
+  const html = fs.readFileSync(f, 'utf8');
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    let parsed;
+    try { parsed = JSON.parse(m[1]); } catch { schemaBad.push([f, 'does not parse as JSON']); continue; }
+    for (const o of (Array.isArray(parsed) ? parsed : [parsed])) {
+      const title = o.headline || o.name;
+      const author = o.author && o.author.name;
+      const pub = o.publisher && o.publisher.name;
+      const probs = [];
+      if (title && author === title) probs.push('author.name is the headline');
+      if (title && pub === title) probs.push('publisher.name is the headline');
+      // Only an article has to be written by a person. A product page crediting the studio as
+      // author is correct, so the exact-name rule applies to posts only.
+      if (/^(BlogPosting|Article)$/.test(o['@type'])) {
+        if (!author) probs.push('no author');
+        else if (author !== AUTHOR) probs.push(`author.name is "${author}"`);
+        if (!pub) probs.push('no publisher');
+        else if (pub !== PUBLISHER) probs.push(`publisher.name is "${pub}"`);
+      }
+      if (probs.length) schemaBad.push([f, probs.join('; ')]);
+    }
+  }
+}
+
 console.log(`SEARCH METADATA  ${indexable} indexable pages, ${metaGaps.length} with gaps`);
 for (const [f, m] of metaGaps) console.log(`   ${f.padEnd(40)} ${m}`);
 console.log(`\nFUNNEL ROUTES    ${posts} product-topic posts, ${routed} route to a product, ${leaks.length} dead-end`);
@@ -96,4 +127,8 @@ if (!leaks.length) console.log('   no dead-end posts: every product-topic post l
 console.log(`\nTOOL ENTRY       ${toolRows.length} tools under tools/ (all noindex by design), ${orphanTools.length} with no post linking them`);
 for (const [t] of orphanTools) console.log(`   NO WAY IN  tools/${t}.html`);
 if (!orphanTools.length) console.log('   every tool has at least one post linking it');
-process.exit(leaks.length ? 1 : 0);
+
+console.log(`\nSCHEMA TRUTH     ${schemaBad.length} JSON-LD blocks naming the wrong author or publisher`);
+for (const [f, why] of schemaBad) console.log(`   WRONG ${f.padEnd(40)} ${why}`);
+if (!schemaBad.length) console.log(`   every JSON-LD block parses and credits ${AUTHOR} / ${PUBLISHER}`);
+process.exit(leaks.length || schemaBad.length ? 1 : 0);
