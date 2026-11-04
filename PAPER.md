@@ -1,6 +1,6 @@
 # A Hybrid Mamba-2 Forecaster for On-Device Anomaly Detection
 
-**Patrick Galyen**
+**Rebel Studios Software**
 Independent Research
 
 ---

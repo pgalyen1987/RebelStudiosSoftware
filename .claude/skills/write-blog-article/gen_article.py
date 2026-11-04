@@ -59,12 +59,12 @@ TEMPLATE = r'''<!DOCTYPE html>
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Rebel Studios Software">
     <meta property="article:published_time" content="%%DATE_ISO%%">
-    <meta property="article:author" content="Patrick Galyen">
+    <meta property="article:author" content="Rebel Studios Software">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="%%TITLE%%">
     <meta name="twitter:description" content="%%DESC%%">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/%%OGCARD%%">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"%%TITLE%%","description":"%%DESC%%","datePublished":"%%DATE_ISO%%","author":{"@type":"Person","name":"Patrick Galyen","url":"https://www.linkedin.com/in/patrick-galyen-5410b9a7/"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-%%SLUG%%.html"},"image":"https://rebelstudiossoftware.com/%%OGCARD%%"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"%%TITLE%%","description":"%%DESC%%","datePublished":"%%DATE_ISO%%","author":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/RS-logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-%%SLUG%%.html"},"image":"https://rebelstudiossoftware.com/%%OGCARD%%"}</script>
     <title>%%TITLE%% - Rebel Studios Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,7 +112,7 @@ TEMPLATE = r'''<!DOCTYPE html>
             <div class="article-wrapper">
                 <div class="article-meta">
                     <span class="article-date">%%DATE_HUMAN%%</span>
-                    <a href="https://www.linkedin.com/in/patrick-galyen-5410b9a7/" class="article-author" target="_blank" rel="noopener noreferrer">Patrick Galyen</a>
+                    <a href="https://x.com/RStudios64042" class="article-author" target="_blank" rel="noopener noreferrer">Rebel Studios Software</a>
                 </div>
 %%HERO%%
                 <div class="article-content">

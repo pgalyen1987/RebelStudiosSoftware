@@ -90,7 +90,7 @@ const orphanTools = toolRows.filter(([, n]) => n === 0);
 // 4. SCHEMA TRUTH. A post is usually built by copying the last one and replacing its title
 // everywhere, which is how author.name and publisher.name end up holding the headline. Google
 // reads those two fields; a publisher named after the article is worse than no publisher at all.
-const AUTHOR = 'Patrick Galyen';
+const AUTHOR = 'Rebel Studios Software';
 const PUBLISHER = 'Rebel Studios Software';
 const schemaBad = [];
 for (const f of files) {
