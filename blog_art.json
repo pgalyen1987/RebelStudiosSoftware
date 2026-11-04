@@ -548,5 +548,23 @@
     "html": "art/gpl-compatible-is-not-one-test.html",
     "alt": "Seven package rows from a plugin zip, each labelled with its licence, two marked as declared in composer.json and the last outlined in amber as LGPL-3.0-or-later, beside the counts 7 packages, 5 licences, 1 GPLv3-only.",
     "image": "images/blog/gpl-compatible-is-not-one-test.png"
+  },
+  "pdf-accessibility-title-language": {
+    "kind": "diagram",
+    "html": "art/pdf-accessibility-title-language.html",
+    "alt": "A PDF's document-properties panel: the Title field empty so a screen reader announces the filename scan_final_v3.pdf, the Language field empty so it reads in the wrong voice, and a greyed StructTreeRoot row reading none.",
+    "image": "images/blog/pdf-accessibility-title-language.png"
+  },
+  "rough-invoice-to-professional-pdf": {
+    "kind": "diagram",
+    "html": "art/rough-invoice-to-professional-pdf.html",
+    "alt": "A chat bubble reading dollar 400 for the logo thanks beside a structured invoice listing invoice number, issue and due dates, bill-to, line total, with tax line and pay-to marked missing in red.",
+    "image": "images/blog/rough-invoice-to-professional-pdf.png"
+  },
+  "mobile-desktop-screenshot-any-url": {
+    "kind": "diagram",
+    "html": "art/mobile-desktop-screenshot-any-url.html",
+    "alt": "Two phone-shaped frames: a squeezed desktop layout with a red cookie banner across the bottom, and a clean stacked mobile layout labelled 390 pixels at 3x.",
+    "image": "images/blog/mobile-desktop-screenshot-any-url.png"
   }
 }

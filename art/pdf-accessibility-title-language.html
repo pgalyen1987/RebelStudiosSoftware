@@ -1,0 +1,30 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-pdf-accessibility-title-language: title and language are the first two things read, and usually empty. -->
+<style>
+  .wrap{position:absolute;inset:48px 56px;display:grid;grid-template-columns:1fr 1.1fr;gap:52px;align-items:center}
+  h1{font:600 44px/1.15 'Space Grotesk',sans-serif;letter-spacing:-.015em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--amber)}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.5;margin-top:18px}
+  .sub b{color:var(--ink1);font-weight:600}
+  .panel{font-family:'JetBrains Mono',monospace;font-size:18px;line-height:1.1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:26px 28px}
+  .panel .label{color:var(--ink3);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+  .row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .row:last-child{border-bottom:0}
+  .k{color:var(--ink2)}
+  .v{color:var(--red);font-weight:600}
+  .v small{color:var(--ink3);font-weight:400;font-size:14px}
+  .muted{opacity:.45}
+  .muted .v{color:var(--ink3)}
+</style>
+<div class="wrap">
+  <div>
+    <h1>No title, no language &mdash; the screen reader is <em>guessing</em></h1>
+    <p class="sub">The first two things assistive tech reads out are the fields almost every PDF ships <b>empty</b>.</p>
+  </div>
+  <div class="panel">
+    <div class="label">Document properties</div>
+    <div class="row"><span class="k">/Title</span><span class="v">&mdash; <small>reads &ldquo;scan_final_v3.pdf&rdquo;</small></span></div>
+    <div class="row"><span class="k">/Lang</span><span class="v">&mdash; <small>wrong voice</small></span></div>
+    <div class="row muted"><span class="k">/StructTreeRoot</span><span class="v">none <small>(tags)</small></span></div>
+  </div>
+</div>

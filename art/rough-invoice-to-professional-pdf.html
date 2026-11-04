@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-rough-invoice-to-professional-pdf: a screenshot holds the numbers but can't be filed; AP needs fields. -->
+<style>
+  .wrap{position:absolute;inset:48px 56px;display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+  h1{font:600 46px/1.14 'Space Grotesk',sans-serif;letter-spacing:-.015em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--amber)}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.5;margin-top:18px}
+  .sub b{color:var(--ink1);font-weight:600}
+  .bubble{font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--ink2);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px 14px 14px 4px;padding:16px 18px;max-width:300px;margin-bottom:22px}
+  .doc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 22px;font-family:'JetBrains Mono',monospace;font-size:16px;line-height:1}
+  .f{display:flex;justify-content:space-between;padding:9px 0;color:var(--ink2);border-bottom:1px solid rgba(255,255,255,.06)}
+  .f:last-child{border-bottom:0}
+  .f .lab{color:var(--ink3)}
+  .f.ok .val{color:var(--green2);font-weight:600}
+  .f.miss .lab{color:var(--red)}
+  .f.miss .val{color:var(--red);font-weight:600}
+</style>
+<div class="wrap">
+  <div>
+    <h1>Accounts&#8209;payable can&rsquo;t pay a <em>screenshot</em></h1>
+    <p class="sub">The numbers might be right. The <b>container</b> is wrong &mdash; AP files a document, not a picture.</p>
+    <div class="bubble">&ldquo;$400 for the logo, thanks!&rdquo;</div>
+  </div>
+  <div class="doc">
+    <div class="f ok"><span class="lab">Invoice&nbsp;#</span><span class="val">RS&#8209;0042</span></div>
+    <div class="f ok"><span class="lab">Issue / Due</span><span class="val">Nov&nbsp;4 / Dec&nbsp;4</span></div>
+    <div class="f ok"><span class="lab">Bill&nbsp;to</span><span class="val">Acme&nbsp;Ltd</span></div>
+    <div class="f ok"><span class="lab">Line / Total</span><span class="val">$400.00</span></div>
+    <div class="f miss"><span class="lab">Tax&nbsp;line</span><span class="val">missing</span></div>
+    <div class="f miss"><span class="lab">Pay&nbsp;to</span><span class="val">missing</span></div>
+  </div>
+</div>

@@ -17,7 +17,6 @@ SOCIAL = [
     ("Farcaster", "https://farcaster.xyz/rebelstudios"),
     ("Zora", "https://zora.co/@rebelstudios"),
     ("GitHub", "https://github.com/pgalyen1987"),
-    ("LinkedIn", "https://x.com/RStudios64042"),
     ("Gumroad", "https://rebelstudios.gumroad.com"),
 ]
 

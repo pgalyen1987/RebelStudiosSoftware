@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-mobile-desktop-screenshot-any-url: a narrow desktop window is not the mobile layout. -->
+<style>
+  .wrap{position:absolute;inset:48px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  h1{font:600 46px/1.14 'Space Grotesk',sans-serif;letter-spacing:-.015em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--amber)}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.5;margin-top:18px}
+  .sub b{color:var(--ink1);font-weight:600}
+  .frames{display:flex;gap:26px;align-items:flex-end;justify-content:center}
+  .frame{border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.03);position:relative;overflow:hidden}
+  .bad{width:150px;height:230px}
+  .good{width:110px;height:230px;border-color:var(--green2)}
+  .bar{height:10px;background:rgba(255,255,255,.12);margin:10px 10px 0}
+  .block{height:46px;background:rgba(255,255,255,.06);margin:10px 10px 0;border-radius:4px}
+  .good .bar,.good .block{background:rgba(143,224,90,.22)}
+  .cookie{position:absolute;left:0;right:0;bottom:0;height:40px;background:rgba(224,86,86,.3);border-top:1px solid var(--red)}
+  .cap{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink3);text-align:center;margin-top:10px}
+  .good + .cap,.cap.g{color:var(--green2)}
+  .lab{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink3);text-align:center}
+</style>
+<div class="wrap">
+  <div>
+    <h1>A narrow window is <em>not a phone</em></h1>
+    <p class="sub">Dragging the browser thin renders the <b>desktop</b> site smaller &mdash; not the mobile layout a real device gets.</p>
+  </div>
+  <div>
+    <div class="frames">
+      <div><div class="frame bad"><div class="bar"></div><div class="block"></div><div class="block"></div><div class="cookie"></div></div><div class="lab" style="margin-top:10px">desktop, squeezed</div></div>
+      <div><div class="frame good"><div class="bar"></div><div class="block"></div><div class="block"></div><div class="block"></div></div><div class="lab g" style="color:var(--green2);margin-top:10px">390px &middot; 3&times;</div></div>
+    </div>
+  </div>
+</div>

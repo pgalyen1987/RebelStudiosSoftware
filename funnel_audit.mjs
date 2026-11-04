@@ -23,7 +23,7 @@ const PRODUCTS = {
   thinbrowser:   { about: /playwright|networkidle|logged-in-chrome|agent-reads-the-whole-page|overlay|secrets-out-of-agent-context/i,
                    links: ['thinbrowser.html', 'agent-browser.html', 'npmjs.com/package/thinbrowser'] },
   ResumeMatcher: { about: /ats-|resume/i,            links: ['resume-matcher.html', 'job-hunt-tracker.html'] },
-  wcInvoices:    { about: /invoice|packing-slip/i,   links: ['wc-invoices.html', 'wc-invoices-pro.html'] },
+  wcInvoices:    { about: /(?=.*woocommerce)(?=.*invoice)|packing-slip/i, links: ['wc-invoices.html', 'wc-invoices-pro.html'] },
   wcEvents:      { about: /eventbrite|event-ticket/i,links: ['wc-events.html', 'wc-events-pro.html'] },
   wcRestaurant:  { about: /restaurant|online-ordering|commission-free/i, links: ['wc-restaurant.html', 'wc-restaurant-pro.html'] },
   Membership:    { about: /paywall|membership|patreon/i, links: ['membership-content-restriction.html'] },

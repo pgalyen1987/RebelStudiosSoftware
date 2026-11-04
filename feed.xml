@@ -5,13 +5,34 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Nov 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>Your mobile screenshot is a desktop page in a narrow window</title>
+      <link>https://rebelstudiossoftware.com/blog-mobile-desktop-screenshot-any-url.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-mobile-desktop-screenshot-any-url.html</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 -0000</pubDate>
+      <description>A narrow browser window renders the desktop site at a smaller size, not the mobile layout. What a real phone screenshot needs - a mobile viewport, a device pixel ratio, and time for the page to finish - and the one thing no screenshot service can reach.</description>
+    </item>
+    <item>
+      <title>A PDF with no title and no language leaves a screen reader guessing</title>
+      <link>https://rebelstudiossoftware.com/blog-pdf-accessibility-title-language.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-pdf-accessibility-title-language.html</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 -0000</pubDate>
+      <description>A screen reader opens a PDF by reading its title and its language. Most PDFs set neither, so it announces the filename and guesses the pronunciation. The two one-line fixes, and the harder thing they are not.</description>
+    </item>
+    <item>
+      <title>Accounts-payable can't pay a screenshot</title>
+      <link>https://rebelstudiossoftware.com/blog-rough-invoice-to-professional-pdf.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-rough-invoice-to-professional-pdf.html</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 -0000</pubDate>
+      <description>A screenshot or an email body is not something a customer's accounts-payable can process. The fields that turn a rough invoice into one they can actually pay, and the one thing reformatting can't invent.</description>
+    </item>
     <item>
       <title>Thirty PDFs said /AcroForm. Five had a field.</title>
       <link>https://rebelstudiossoftware.com/blog-acroform-is-not-a-fillable-pdf.html</link>
