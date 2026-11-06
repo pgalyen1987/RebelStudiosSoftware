@@ -1,17 +1,11 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-  "landingPage": "/wp-admin/edit.php?post_type=rsres_menu_item&page=rsres-reservations",
+  "landingPage": "/wp-admin/edit.php?post_type=rsres_menu_item",
   "preferredVersions": { "php": "8.2", "wp": "latest" },
   "features": { "networking": true },
   "login": true,
   "plugins": [
     "woocommerce",
     "https://rebelstudiossoftware.com/demos/plugins/rebel-studios-restaurant-menu-reservations.zip"
-  ],
-  "steps": [
-    {
-      "step": "runPHP",
-      "code": "<?php require_once '/wordpress/wp-load.php'; update_option('woocommerce_onboarding_profile', array('skipped'=>true,'completed'=>true)); update_option('woocommerce_task_list_hidden','yes'); function _rsd_sec($n){ $t=term_exists($n,'rsres_menu_section'); if(!$t){ $t=wp_insert_term($n,'rsres_menu_section'); } return is_array($t)?(int)$t['term_id']:(int)$t; } function _rsd_item($title,$sec,$price,$desc){ $id=wp_insert_post(array('post_type'=>'rsres_menu_item','post_status'=>'publish','post_title'=>$title,'post_content'=>$desc)); wp_set_object_terms($id,array($sec),'rsres_menu_section'); update_post_meta($id,'_rsres_price',$price); return $id; } $st=_rsd_sec('Starters'); $mn=_rsd_sec('Mains'); _rsd_item('Charred padron peppers',$st,9,'Sea salt, smoked aioli.'); _rsd_item('Wood-fired ribeye',$mn,38,'Bone marrow butter, hand-cut fries.'); $menu=wp_insert_post(array('post_type'=>'page','post_status'=>'publish','post_title'=>'Menu','post_content'=>'[rsres_menu]','post_name'=>'menu')); $res=wp_insert_post(array('post_type'=>'page','post_status'=>'publish','post_title'=>'Reservations','post_content'=>'[rsres_reservation]','post_name'=>'reservations')); $rid=wp_insert_post(array('post_type'=>'rsres_reservation','post_status'=>'publish','post_title'=>'Jamie Rivera')); update_post_meta($rid,'_rsres_name','Jamie Rivera'); update_post_meta($rid,'_rsres_email','jamie@example.com'); update_post_meta($rid,'_rsres_date','2026-11-21'); update_post_meta($rid,'_rsres_time','19:30'); update_post_meta($rid,'_rsres_party','4'); update_post_meta($rid,'_rsres_status','pending');"
-    }
   ]
 }
