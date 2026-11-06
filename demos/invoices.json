@@ -1,0 +1,18 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-admin/admin.php?page=wc-orders",
+  "preferredVersions": { "php": "8.2", "wp": "latest" },
+  "phpExtensionBundles": ["kitchen-sink"],
+  "features": { "networking": true },
+  "login": true,
+  "plugins": [
+    "woocommerce",
+    "rebel-studios-invoice-documents-woocommerce"
+  ],
+  "steps": [
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; update_option('woocommerce_onboarding_profile', array('skipped'=>true,'completed'=>true)); update_option('woocommerce_task_list_hidden','yes'); update_option('woocommerce_task_list_complete','yes'); if (!function_exists('wc_create_order')) { return; } $p=new WC_Product_Simple(); $p->set_name('Demo hoodie'); $p->set_regular_price('29'); $p->set_status('publish'); $id=$p->save(); $o=wc_create_order(); $o->add_product(wc_get_product($id),1); $o->set_address(array('first_name'=>'Ada','last_name'=>'Lovelace','email'=>'ada@example.com','address_1'=>'1 Demo Street','city'=>'London','postcode'=>'EC1A 1BB','country'=>'GB'),'billing'); $o->set_status('processing'); $o->calculate_totals(); $o->save(); update_option('woocommerce_email_from_name','Rebel Demo Store');"
+    }
+  ]
+}

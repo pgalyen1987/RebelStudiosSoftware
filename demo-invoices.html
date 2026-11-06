@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Live WordPress demo of Rebel Studios Invoice Documents for WooCommerce. Throwaway store in the browser, already signed in as admin.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/demo-invoices.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <title>Demo login · PDF Invoices for WooCommerce</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="demo-wrap">
+        <p class="demo-kicker">Live demo</p>
+        <h1>PDF invoices, packing slips, delivery notes</h1>
+        <p class="demo-lede">A throwaway WordPress with WooCommerce and the plugin already installed. It runs in your browser. Nothing is saved when you close the tab.</p>
+        <form class="demo-login" action="https://playground.wordpress.net/" method="get">
+            <input type="hidden" name="blueprint-url" value="https://rebelstudiossoftware.com/demos/invoices.json">
+            <label for="user">Username</label>
+            <input id="user" name="user" value="admin" readonly>
+            <label for="pass">Password</label>
+            <input id="pass" type="password" value="password" readonly>
+            <button class="btn btn-primary" type="submit">Log in to the live demo</button>
+            <p class="demo-hint">First boot is slow, about half a minute. You land already signed in as admin. The password is the WordPress Playground default.</p>
+        </form>
+        <ol class="demo-steps">
+            <li>Orders is the first screen. Open the processing order for the Demo hoodie.</li>
+            <li>The Invoices box is on the right. Print invoice, packing slip, or delivery note.</li>
+            <li>WooCommerce → Invoices is the settings screen (logo, numbering, which email carries the PDF).</li>
+        </ol>
+        <p class="demo-limit">This boots the free plugin from WordPress.org. The zip you buy has Pro unlocked on top of it (bulk print from the orders list). Playground is temporary; it is not a hosted store.</p>
+    </main>
+</body>
+</html>

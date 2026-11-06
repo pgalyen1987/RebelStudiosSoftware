@@ -1,0 +1,15 @@
+/* Demo login pages only. Not the product overview. */
+.demo-wrap{max-width:42rem;margin:4.5rem auto 6rem;padding:0 1.25rem}
+.demo-kicker{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 .6rem}
+.demo-wrap h1{font-family:var(--font-display);font-size:2.05rem;line-height:1.15;margin:0 0 .75rem;color:var(--ink-1)}
+.demo-lede{color:var(--ink-2);font-size:1.05rem;line-height:1.55;margin:0 0 1.6rem}
+.demo-login{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem 1.7rem 1.5rem;margin:0 0 2rem}
+.demo-login label{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 .35rem}
+.demo-login input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;color:var(--ink-1);font:inherit;margin:0 0 1rem}
+.demo-login button,.demo-login .btn{width:100%;text-align:center;margin-top:.2rem}
+.demo-hint{font-size:.85rem;color:var(--ink-3);margin:.85rem 0 0;line-height:1.45}
+.demo-steps{list-style:none;display:grid;gap:.85rem;margin:0;padding:0}
+.demo-steps li{color:var(--ink-2);padding-left:1.6rem;position:relative;font-size:.95rem;line-height:1.5}
+.demo-steps li::before{content:counter(n);counter-increment:n;position:absolute;left:0;top:.05rem;width:1.15rem;height:1.15rem;border-radius:999px;border:1px solid var(--line);font-size:.7rem;display:grid;place-items:center;color:var(--ink-3)}
+.demo-steps{counter-reset:n}
+.demo-limit{margin-top:2rem;color:var(--ink-3);font-size:.9rem;line-height:1.5}

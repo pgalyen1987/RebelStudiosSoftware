@@ -1,0 +1,18 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-admin/edit.php?post_type=rsev_event",
+  "preferredVersions": { "php": "8.2", "wp": "latest" },
+  "phpExtensionBundles": ["kitchen-sink"],
+  "features": { "networking": true },
+  "login": true,
+  "plugins": [
+    "woocommerce",
+    "https://rebelstudiossoftware.com/demos/plugins/rebel-studios-event-tickets.zip"
+  ],
+  "steps": [
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; update_option('woocommerce_onboarding_profile', array('skipped'=>true,'completed'=>true)); update_option('woocommerce_task_list_hidden','yes'); $id=wp_insert_post(array('post_type'=>'rsev_event','post_status'=>'publish','post_title'=>'Saturday matinee','post_content'=>'A one-off show so you can click through tickets and the door scan.','post_name'=>'saturday-matinee')); if ($id && !is_wp_error($id)) { update_post_meta($id,'_rsev_date','2026-11-21'); update_post_meta($id,'_rsev_time','15:00'); update_post_meta($id,'_rsev_venue','The Side Room'); update_post_meta($id,'_rsev_address'=>'12 Demo Street'); update_post_meta($id,'_rsev_capacity','40'); }"
+    }
+  ]
+}
