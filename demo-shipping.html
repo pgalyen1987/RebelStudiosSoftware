@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Live WordPress demo of Rebel Studios Shipping Rates for WooCommerce. Throwaway store in the browser, already signed in as admin.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/demo-shipping.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <title>Demo login · Shipping Rates for WooCommerce</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="demo-wrap">
+        <p class="demo-kicker">Live demo</p>
+        <h1>Table-rate shipping you control</h1>
+        <p class="demo-lede">A throwaway WordPress with WooCommerce and the free plugin already installed. It runs in your browser. Nothing is saved when you close the tab.</p>
+        <form class="demo-login" action="https://playground.wordpress.net/" method="get">
+            <input type="hidden" name="blueprint-url" value="https://rebelstudiossoftware.com/downloads/shipping-rates-blueprint.json">
+            <label for="user">Username</label>
+            <input id="user" value="admin" readonly>
+            <label for="pass">Password</label>
+            <input id="pass" type="password" value="password" readonly>
+            <button class="btn btn-primary" type="submit">Log in to the live demo</button>
+            <p class="demo-hint">First boot is slow, about half a minute. You land already signed in as admin. The password is the WordPress Playground default. WooCommerce and the free plugin install from our hosted zip — no WordPress.org wait.</p>
+        </form>
+        <ol class="demo-steps">
+            <li>Skip the WooCommerce setup wizard if it appears.</li>
+            <li>WooCommerce → Settings → Shipping → open a zone → Add shipping method → Rebel Shipping Rates.</li>
+            <li>Fill a couple of rows (e.g. free over a cart total; flat rate below that). Save. Add a product with a weight, go to the storefront cart, and confirm the label.</li>
+        </ol>
+        <p class="demo-limit">This Playground demo is the free plugin only. The Codester zip includes Pro unlocked (class conditions, CSV, rate simulator). Playground is temporary; it is not a hosted store.</p>
+    </main>
+</body>
+</html>
