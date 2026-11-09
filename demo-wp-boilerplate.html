@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Live demo of the Freemium WordPress Plugin Boilerplate: one command, and this is the plugin it produced, running unedited in your browser.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/demo-wp-boilerplate.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <title>Demo · Freemium WordPress Plugin Boilerplate</title>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demos.css">
+    <style>
+      .bp-cmd{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem;line-height:1.6;color:var(--ink-1);margin:0 0 1.6rem}
+      .bp-cmd .c{color:var(--ink-3)}
+      .bp-tree{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.4rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.75;color:var(--ink-2);white-space:pre;overflow-x:auto;margin:0 0 1.6rem}
+      .bp-h2{font-family:var(--font-display);font-size:1.22rem;margin:2.6rem 0 .7rem;color:var(--ink-1)}
+      .bp-yours{margin:0 0 1rem;padding:0;list-style:none;font-size:.88rem;line-height:1.7;color:var(--ink-2)}
+      .bp-yours li{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+      .bp-yours b{color:var(--ink-1);font-weight:600}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="demo-wrap">
+        <p class="demo-kicker">Live demo</p>
+        <h1>One command, and this is what came out</h1>
+        <p class="demo-lede">The boilerplate is a scaffolder. So the demo is the thing it scaffolds: the command below was run once, nothing was hand-edited afterwards, and the plugin it produced is what boots in the Playground button.</p>
+
+        <div class="bp-cmd"><span class="c"># the whole of it</span>
+./new-plugin.sh "Reading Time" readtime reading-time ../reading-time</div>
+
+        <p class="demo-lede">That stamped out a complete, activation-ready plugin — PascalCase namespace from the name, <code>READTIME_</code> constants, <code>readtime_</code> option keys, text domain set to the slug:</p>
+
+        <div class="bp-tree">reading-time/
+├── reading-time.php          <span class="c">header, constants, bootstrap</span>
+├── readme.txt                <span class="c">wp.org format, name filled in</span>
+├── uninstall.php             <span class="c">removes its option</span>
+├── build.sh                  <span class="c">+ .distignore, makes the wp.org zip</span>
+├── assets/
+│   └── admin.css
+└── includes/
+    ├── Plugin.php            <span class="c">wiring</span>
+    ├── Feature.php           <span class="c">where your feature goes</span>
+    ├── Settings_Page.php     <span class="c">working, nonce-protected</span>
+    └── Engine/
+        ├── Admin.php         <span class="c">menu + asset enqueue</span>
+        ├── Freemium.php      <span class="c">the free/Pro switch</span>
+        └── Settings.php      <span class="c">typed defaults, sanitized writes</span></div>
+
+        <form class="demo-login" action="https://playground.wordpress.net/" method="get">
+            <input type="hidden" name="blueprint-url" value="https://rebelstudiossoftware.com/downloads/wp-boilerplate-blueprint.json">
+            <label for="user">Username</label>
+            <input id="user" value="admin" readonly>
+            <label for="pass">Password</label>
+            <input id="pass" type="password" value="password" readonly>
+            <button class="btn btn-primary" type="submit">Boot the generated plugin</button>
+            <p class="demo-hint">First boot takes about half a minute. You land on the generated plugin's own settings screen, already signed in as admin. The password is the WordPress Playground default. The zip it installs is the unedited output of the command above, run through the generated <code>build.sh</code> — so it holds the 14 shipping files and not the development ones, which is what <code>.distignore</code> is for. <a href="downloads/reading-time-1.0.0.zip">Download it</a> and read it yourself.</p>
+        </form>
+
+        <ol class="demo-steps">
+            <li>You land on <strong>Reading Time</strong> in the admin menu — that screen is generated, not written.</li>
+            <li>Change a setting and save. The engine round-trips it through one serialized option row with typed defaults and a sanitized write, nonce-protected.</li>
+            <li>The <strong>Get Pro</strong> button is the freemium switch. <code>Freemium::is_pro()</code> flips true once a Pro add-on answers the <code>readtime_is_pro</code> filter; nothing in the free plugin is locked behind it.</li>
+            <li>Plugins → Plugin File Editor, or the downloaded zip, to read the generated source.</li>
+        </ol>
+
+        <h2 class="bp-h2">What it does not write for you</h2>
+        <p class="demo-lede">The scaffolder finishes by listing every line only you can write, with its file and line number. This is that list, verbatim, for the run above:</p>
+        <ul class="bp-yours">
+            <li><b>includes/Engine/Freemium.php:24</b> — your sales page URL</li>
+            <li><b>includes/Settings_Page.php:57</b> — what your Pro add-on adds</li>
+            <li><b>reading-time.php:4</b> — the one-line description</li>
+            <li><b>reading-time.php:8</b> — author</li>
+            <li><b>readme.txt:2, :3, :11, :15, :18, :19, :22</b> — contributors, tags, short description, the description, feature bullets, Pro line</li>
+        </ul>
+        <p class="demo-limit">Then you add your feature in <code>includes/Feature.php</code> and run <code>bash build.sh</code> for the zip you submit to WordPress.org. The demo plugin is deliberately left with those placeholders in place, because that is honestly what one command produces — the boilerplate writes the plumbing, not your plugin. Playground is temporary and nothing you change there is saved.</p>
+    </main>
+</body>
+</html>

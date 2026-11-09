@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Interactive demo of Checkout Brasil for WooCommerce: type a CPF, CNPJ or CEP and watch the same validation and address lookup the plugin runs at checkout.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/demo-checkout-brasil.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <title>Demo · Checkout Brasil for WooCommerce</title>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demos.css">
+    <style>
+      .cb-field{margin:0 0 1.15rem}
+      .cb-field label{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 .35rem}
+      .cb-field input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;color:var(--ink-1);font:inherit;transition:border-color .12s}
+      .cb-field input.ok{border-color:#2f9e63}
+      .cb-field input.bad{border-color:#c2503f}
+      .cb-msg{font-size:.84rem;margin:.4rem 0 0;min-height:1.15rem;line-height:1.4}
+      .cb-msg.ok{color:#5ec98a}
+      .cb-msg.bad{color:#e07a6a}
+      .cb-msg.busy{color:var(--ink-3)}
+      .cb-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+      .cb-panel{background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem;margin:0 0 1.3rem}
+      .cb-panel h2{font-family:var(--font-display);font-size:1.05rem;margin:0 0 .3rem;color:var(--ink-1)}
+      .cb-panel p.sub{font-size:.88rem;color:var(--ink-3);margin:0 0 1.3rem;line-height:1.5}
+      .cb-fill{background:none;border:1px solid var(--line);color:var(--ink-3);border-radius:999px;padding:.3rem .8rem;font:inherit;font-size:.78rem;cursor:pointer;margin-left:.5rem}
+      .cb-fill:hover{color:var(--ink-1);border-color:var(--ink-3)}
+      .cb-note{font-size:.84rem;color:var(--ink-3);line-height:1.55;margin:.9rem 0 0}
+      @media(max-width:36rem){.cb-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="demo-wrap">
+        <p class="demo-kicker">Interactive demo</p>
+        <h1>Type a bad CPF and watch it get caught</h1>
+        <p class="demo-lede">The complaint that made this plugin exist is that the alternatives add the fields and then do not check them, so the store finds out the document is wrong when the invoice is rejected. These are the real checks, running here in the page.</p>
+
+        <div class="cb-panel">
+            <h2>CPF</h2>
+            <p class="sub">Official mod-11 check digits. The eleven repeated-digit strings are rejected too — they satisfy the arithmetic but are not issuable, and they are what gets typed when someone wants the field to go away.<button class="cb-fill" id="gen-cpf" type="button">insert a valid one</button></p>
+            <div class="cb-field">
+                <label for="cpf">CPF</label>
+                <input id="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14">
+                <p class="cb-msg" id="cpf-msg"></p>
+            </div>
+        </div>
+
+        <div class="cb-panel">
+            <h2>CNPJ, and the company name that comes with it</h2>
+            <p class="sub">Validated the same way, then looked up in the public company registry through BrasilAPI. A valid CNPJ fills in the Razão Social.<button class="cb-fill" id="gen-cnpj" type="button">insert a valid one</button></p>
+            <div class="cb-field">
+                <label for="cnpj">CNPJ</label>
+                <input id="cnpj" inputmode="numeric" autocomplete="off" placeholder="00.000.000/0000-00" maxlength="18">
+                <p class="cb-msg" id="cnpj-msg"></p>
+            </div>
+            <div class="cb-field">
+                <label for="razao">Razão Social</label>
+                <input id="razao" readonly placeholder="filled from the registry">
+            </div>
+        </div>
+
+        <div class="cb-panel">
+            <h2>CEP, and the address that comes with it</h2>
+            <p class="sub">Eight digits and the street, neighbourhood, city and state appear, from ViaCEP. Try <strong>01310-100</strong>.</p>
+            <div class="cb-field">
+                <label for="cep">CEP</label>
+                <input id="cep" inputmode="numeric" autocomplete="off" placeholder="00000-000" maxlength="9">
+                <p class="cb-msg" id="cep-msg"></p>
+            </div>
+            <div class="cb-field">
+                <label for="rua">Rua</label>
+                <input id="rua" readonly>
+            </div>
+            <div class="cb-row">
+                <div class="cb-field">
+                    <label for="bairro">Bairro</label>
+                    <input id="bairro" readonly>
+                </div>
+                <div class="cb-field">
+                    <label for="cidade">Cidade</label>
+                    <input id="cidade" readonly>
+                </div>
+            </div>
+            <div class="cb-field">
+                <label for="uf">Estado</label>
+                <input id="uf" readonly>
+            </div>
+            <p class="cb-note">If a lookup service is down the customer simply types the address. The purchase is never blocked by a third-party API — that is deliberate, and you can test it by going offline.</p>
+        </div>
+
+        <p class="demo-limit"><strong>What this page is, exactly.</strong> It runs the plugin's own validation — the mod-11 routines from <code>class-cb-validator.php</code>, unchanged — and calls the same two lookup providers. Two honest differences: in the plugin those lookups run from your server and are cached, not from the browser, so no customer data passes through anyone else; and validation runs again server-side, because a browser check alone can be skipped. The rest of the plugin is the part a page cannot show — the documents carried onto the order, the admin, the emails and the REST API for your NF-e integration, HPOS storage, the per-field Off / Optional / Required settings, and LGPD export and erasure. The interface ships in Portuguese (pt-BR) by design.</p>
+    </main>
+<script>
+// Ported unchanged from includes/class-cb-validator.php
+function digits(v){ return String(v).replace(/\D/g,''); }
+
+function isCpf(value){
+  var cpf = digits(value);
+  if (cpf.length !== 11) return false;
+  if (/^(\d)\1{10}$/.test(cpf)) return false;
+  for (var position = 9; position < 11; position++){
+    var sum = 0;
+    for (var i = 0; i < position; i++){
+      sum += parseInt(cpf[i],10) * (position + 1 - i);
+    }
+    var digit = ((sum * 10) % 11) % 10;
+    if (parseInt(cpf[position],10) !== digit) return false;
+  }
+  return true;
+}
+
+function isCnpj(value){
+  var cnpj = digits(value);
+  if (cnpj.length !== 14) return false;
+  if (/^(\d)\1{13}$/.test(cnpj)) return false;
+  var sets = [[5,4,3,2,9,8,7,6,5,4,3,2],[6,5,4,3,2,9,8,7,6,5,4,3,2]];
+  for (var index = 0; index < sets.length; index++){
+    var weights = sets[index], sum = 0;
+    for (var i = 0; i < weights.length; i++){
+      sum += parseInt(cnpj[i],10) * weights[i];
+    }
+    var remainder = sum % 11;
+    var digit = (remainder < 2) ? 0 : 11 - remainder;
+    if (parseInt(cnpj[12 + index],10) !== digit) return false;
+  }
+  return true;
+}
+
+// Build a valid document from random digits using the same check-digit maths,
+// so the example is computed rather than copied from a real person or company.
+function makeCpf(){
+  var d = [];
+  for (var i = 0; i < 9; i++) d.push(Math.floor(Math.random()*10));
+  for (var position = 9; position < 11; position++){
+    var sum = 0;
+    for (var j = 0; j < position; j++) sum += d[j] * (position + 1 - j);
+    d.push(((sum * 10) % 11) % 10);
+  }
+  return d.join('');
+}
+function makeCnpj(){
+  var d = [];
+  for (var i = 0; i < 8; i++) d.push(Math.floor(Math.random()*10));
+  d.push(0,0,0,1);
+  var sets = [[5,4,3,2,9,8,7,6,5,4,3,2],[6,5,4,3,2,9,8,7,6,5,4,3,2]];
+  for (var s = 0; s < sets.length; s++){
+    var w = sets[s], sum = 0;
+    for (var k = 0; k < w.length; k++) sum += d[k] * w[k];
+    var r = sum % 11;
+    d.push(r < 2 ? 0 : 11 - r);
+  }
+  return d.join('');
+}
+
+function maskCpf(v){
+  var d = digits(v).slice(0,11), o = d;
+  if (d.length > 9) o = d.slice(0,3)+'.'+d.slice(3,6)+'.'+d.slice(6,9)+'-'+d.slice(9);
+  else if (d.length > 6) o = d.slice(0,3)+'.'+d.slice(3,6)+'.'+d.slice(6);
+  else if (d.length > 3) o = d.slice(0,3)+'.'+d.slice(3);
+  return o;
+}
+function maskCnpj(v){
+  var d = digits(v).slice(0,14), o = d;
+  if (d.length > 12) o = d.slice(0,2)+'.'+d.slice(2,5)+'.'+d.slice(5,8)+'/'+d.slice(8,12)+'-'+d.slice(12);
+  else if (d.length > 8) o = d.slice(0,2)+'.'+d.slice(2,5)+'.'+d.slice(5,8)+'/'+d.slice(8);
+  else if (d.length > 5) o = d.slice(0,2)+'.'+d.slice(2,5)+'.'+d.slice(5);
+  else if (d.length > 2) o = d.slice(0,2)+'.'+d.slice(2);
+  return o;
+}
+function maskCep(v){
+  var d = digits(v).slice(0,8);
+  return d.length > 5 ? d.slice(0,5)+'-'+d.slice(5) : d;
+}
+
+function say(el, cls, text){
+  el.className = 'cb-msg ' + cls;
+  el.textContent = text;
+}
+function mark(input, cls){
+  input.className = cls || '';
+}
+
+var cpf = document.getElementById('cpf'), cpfMsg = document.getElementById('cpf-msg');
+cpf.addEventListener('input', function(){
+  cpf.value = maskCpf(cpf.value);
+  var d = digits(cpf.value);
+  if (!d.length){ mark(cpf,''); say(cpfMsg,'',''); return; }
+  if (d.length < 11){ mark(cpf,''); say(cpfMsg,'busy', d.length + ' of 11 digits'); return; }
+  if (isCpf(d)){ mark(cpf,'ok'); say(cpfMsg,'ok','Valid. Check digits agree.'); }
+  else { mark(cpf,'bad'); say(cpfMsg,'bad','Invalid CPF. The check digits do not agree — this is the one an order should never carry.'); }
+});
+document.getElementById('gen-cpf').addEventListener('click', function(){
+  cpf.value = maskCpf(makeCpf());
+  cpf.dispatchEvent(new Event('input'));
+});
+
+var cnpj = document.getElementById('cnpj'), cnpjMsg = document.getElementById('cnpj-msg'), razao = document.getElementById('razao');
+var cnpjSeq = 0;
+cnpj.addEventListener('input', function(){
+  cnpj.value = maskCnpj(cnpj.value);
+  var d = digits(cnpj.value);
+  razao.value = '';
+  if (!d.length){ mark(cnpj,''); say(cnpjMsg,'',''); return; }
+  if (d.length < 14){ mark(cnpj,''); say(cnpjMsg,'busy', d.length + ' of 14 digits'); return; }
+  if (!isCnpj(d)){ mark(cnpj,'bad'); say(cnpjMsg,'bad','Invalid CNPJ. The check digits do not agree.'); return; }
+  mark(cnpj,'ok');
+  say(cnpjMsg,'busy','Valid. Looking the company up in the registry...');
+  var mine = ++cnpjSeq;
+  fetch('https://brasilapi.com.br/api/cnpj/v1/' + d)
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function(j){
+      if (mine !== cnpjSeq) return;
+      var name = j.razao_social || j.nome_fantasia;
+      if (name){ razao.value = name; say(cnpjMsg,'ok','Valid, and found in the registry.'); }
+      else { say(cnpjMsg,'ok','Valid. The registry has no name on file.'); }
+    })
+    .catch(function(){
+      if (mine !== cnpjSeq) return;
+      say(cnpjMsg,'ok','Valid. The registry has no record for this number, or did not answer — type the name yourself. A computed test number is usually not a registered company.');
+    });
+});
+document.getElementById('gen-cnpj').addEventListener('click', function(){
+  cnpj.value = maskCnpj(makeCnpj());
+  cnpj.dispatchEvent(new Event('input'));
+});
+
+var cep = document.getElementById('cep'), cepMsg = document.getElementById('cep-msg');
+var out = { rua: document.getElementById('rua'), bairro: document.getElementById('bairro'), cidade: document.getElementById('cidade'), uf: document.getElementById('uf') };
+var cepSeq = 0;
+cep.addEventListener('input', function(){
+  cep.value = maskCep(cep.value);
+  var d = digits(cep.value);
+  for (var k in out) out[k].value = '';
+  if (!d.length){ mark(cep,''); say(cepMsg,'',''); return; }
+  if (d.length < 8){ mark(cep,''); say(cepMsg,'busy', d.length + ' of 8 digits'); return; }
+  mark(cep,'');
+  say(cepMsg,'busy','Looking the address up...');
+  var mine = ++cepSeq;
+  fetch('https://viacep.com.br/ws/' + d + '/json/')
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function(j){
+      if (mine !== cepSeq) return;
+      if (j.erro){ mark(cep,'bad'); say(cepMsg,'bad','No such CEP. The customer can still type the address.'); return; }
+      out.rua.value = j.logradouro || '';
+      out.bairro.value = j.bairro || '';
+      out.cidade.value = j.localidade || '';
+      out.uf.value = j.uf || '';
+      mark(cep,'ok');
+      say(cepMsg,'ok','Found.');
+    })
+    .catch(function(){
+      if (mine !== cepSeq) return;
+      mark(cep,'');
+      say(cepMsg,'bad','The lookup service did not answer. Nothing is blocked — type the address.');
+    });
+});
+</script>
+</body>
+</html>
