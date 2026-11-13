@@ -566,5 +566,11 @@
     "html": "art/mobile-desktop-screenshot-any-url.html",
     "alt": "Two phone-shaped frames: a squeezed desktop layout with a red cookie banner across the bottom, and a clean stacked mobile layout labelled 390 pixels at 3x.",
     "image": "images/blog/mobile-desktop-screenshot-any-url.png"
+  },
+  "hottest-thermal-zone-is-not-the-cpu": {
+    "kind": "diagram",
+    "html": "art/hottest-thermal-zone-is-not-the-cpu.html",
+    "alt": "A terminal panel showing max over the sys thermal zones returning 78000 for acpitz, the chassis sensor the guard read, against 52000 for x86_pkg_temp, the actual CPU die, at the same instant on an idle laptop: 26 degrees apart.",
+    "image": "images/blog/hottest-thermal-zone-is-not-the-cpu.png"
   }
 }

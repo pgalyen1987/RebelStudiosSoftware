@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-hottest-thermal-zone-is-not-the-cpu: max() over /sys thermal zones returns the chassis sensor. -->
+<style>
+  .wrap{position:absolute;inset:50px 56px;display:grid;grid-template-columns:1fr 1.08fr;gap:44px;align-items:center}
+  h1{font:600 48px/1.12 'Space Grotesk',sans-serif;letter-spacing:-.018em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--red)}
+  .sub{color:var(--ink2);font-size:19px;line-height:1.55;margin-top:20px}
+  .sub b{color:var(--ink1);font-weight:600}
+  pre{font:400 15.5px/1.75 'JetBrains Mono',monospace;color:var(--ink2);white-space:pre;padding:16px 18px}
+  .cmd{color:var(--ink3)}
+  .hot{color:var(--red);font-weight:600}
+  .cool{color:var(--green2);font-weight:600}
+  .ann{color:var(--ink3)}
+  .gap{display:flex;align-items:center;gap:12px;margin:14px 18px 16px;padding-top:14px;border-top:1px solid var(--line)}
+  .gap .d{font:600 30px 'Space Grotesk',sans-serif;color:var(--amber)}
+  .gap .t{font:500 14px/1.4 'JetBrains Mono',monospace;color:var(--ink3)}
+</style>
+<div class="wrap">
+  <div>
+    <h1>The hottest zone is <em>not your CPU</em></h1>
+    <p class="sub">A guard that takes <b>max()</b> over <b>/sys</b> thermal zones reads whichever sensor happens to be highest &mdash; here a chassis probe that drifts on its own.</p>
+  </div>
+  <div class="panel">
+    <div class="bar">same instant &middot; idle laptop</div>
+<pre><span class="cmd">$ cat thermal_zone*/temp | sort -rn | head -1</span>
+<span class="hot">78000</span>   <span class="ann">acpitz        &larr; what the guard read</span>
+
+<span class="cmd">$ cat .../x86_pkg_temp/temp</span>
+<span class="cool">52000</span>   <span class="ann">the actual die</span></pre>
+    <div class="gap"><span class="d">26&deg;C</span><span class="t">apart &mdash; and it inverts under load:<br>acpitz 59&deg;C while the die hit 71&deg;C</span></div>
+  </div>
+</div>
+<div class="credit">rebelstudiossoftware.com</div>
