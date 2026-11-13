@@ -5033,3 +5033,31 @@ a.tool-card.is-paused:hover { transform: none; }
 .oak-puzzle-fallback summary { cursor: pointer; color: var(--ink-2); }
 .oak-puzzle-fallback p { max-width: 34rem; margin: var(--space-2xs) 0 0; }
 @media (max-width: 860px) { .oakp { max-width: 520px; } }
+
+/* ── Article pages: get the reader into the prose ──────────────────────────────
+   The shared .page-header reserves 6rem/4.5rem and .blog-article then adds another
+   4.5rem on top of it, so 144px of empty space sits between the deck and the dateline
+   and the first sentence lands below the fold on a laptop. Scoped with :has() so only
+   pages that actually carry an article change -- every other page keeps the tall header,
+   and no edit is needed across the 95 post files. */
+.page-header:has(+ .blog-article) {
+    padding: 3.4rem 0 2.1rem;
+}
+.page-header:has(+ .blog-article) + .blog-article {
+    padding-top: 2.6rem;
+}
+/* A measure, not a column width: the deck is read, so cap it near 62ch rather than
+   letting it run the full container on a wide screen. */
+.page-header:has(+ .blog-article) p {
+    max-width: 62ch;
+}
+
+/* The blog index header: same reasoning as the article pages -- the reader came for the
+   archive, and 6rem/4.5rem of header plus the listing's own padding pushed the first card
+   most of a screen down. */
+.page-header:has(+ .blog-listing) {
+    padding: 3.4rem 0 2.4rem;
+}
+.page-header:has(+ .blog-listing) p {
+    max-width: 62ch;
+}

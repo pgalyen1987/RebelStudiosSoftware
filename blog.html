@@ -39,13 +39,20 @@
     /* Blog index: a staggered grid of cards over graph paper. The markup is still the plain list each
        new article is added to (li.blog-row inside ol.blog-list), so a new post needs nothing
        extra: it takes the next issue number, its column's colour and its place in the stagger. */
-    .blog-listing{position:relative;overflow:hidden;padding-bottom:2rem}
+    .blog-listing{position:relative;overflow:clip;padding-bottom:2rem}
+    /* overflow:clip, NOT hidden: hidden makes this a scroll container and silently breaks
+       position:sticky on the rail inside it -- the rail rendered at the top of the page and
+       then scrolled away. clip crops the glow and the dot grid the same way without that. */
     .blog-listing::before{content:"";position:absolute;inset:0;pointer-events:none;
       background-image:radial-gradient(rgba(148,163,184,.17) 1px,transparent 1.3px);background-size:26px 26px;
       -webkit-mask-image:linear-gradient(180deg,#000,#000 70%,transparent);mask-image:linear-gradient(180deg,#000,#000 70%,transparent)}
     .blog-listing::after{content:"";position:absolute;width:min(68vw,940px);aspect-ratio:1;right:max(-26vw,-360px);top:-6rem;border-radius:50%;
       pointer-events:none;background:radial-gradient(closest-side,rgba(108,190,69,.11),rgba(45,212,191,.05) 55%,transparent 72%)}
     .blog-listing .container{position:relative;z-index:1}
+    /* The rail costs the grid ~243px. Without this the three cards drop from ~370px wide to
+       ~286px, which shrinks every thumbnail and crowds the dek. Give the listing (and only the
+       listing) the rail's width back on screens wide enough to show it. */
+    @media (min-width:1120px){.blog-listing .container{max-width:1460px}}
     .blog-list{list-style:none;margin:0 auto;padding:0 0 var(--stagger);max-width:1180px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
       gap:2.6rem 1.6rem;--stagger:3.2rem}
     .blog-row{--accent:var(--green,#6cbe45);position:relative;display:list-item;list-style:none;background:var(--surface-strong,#0e131e);
@@ -87,7 +94,64 @@
       .blog-listing::after{display:none}
     }
     @media (prefers-reduced-motion:reduce){.blog-row,.blog-row-thumb img{transition:none}.blog-row:hover{transform:none}.blog-row:hover .blog-row-thumb img{transform:none}}
-    </style>
+    
+    /* ── Archive structure ──────────────────────────────────────────────────────
+       96 cards in one unbroken run read as a single texture: every card the same size,
+       the same shape, the same composition, so the eye has nothing to hold on to and
+       nothing to come back to. Three changes, and NO new markup in the list -- adding a
+       post is still one <li> at the top. The script below regroups on load; with no JS
+       you get exactly the old grid.
+         1. the newest post takes the full width (it carries the week)
+         2. each month gets a label and a rule, so the run is chunked
+         3. a sticky rail on the left says where you are and how deep it goes   */
+    .blog-shell{max-width:1180px;margin:0 auto;display:grid;gap:2.4rem;align-items:start}
+    @media (min-width:1120px){.blog-shell{max-width:1340px;grid-template-columns:12rem minmax(0,1fr);gap:3.2rem}}
+    .blog-shell .blog-list{max-width:none;margin:0}
+
+    .blog-rail{display:none}
+    @media (min-width:1120px){
+      .blog-rail{display:block;position:sticky;top:5.5rem;max-height:calc(100vh - 8rem);overflow:auto;
+        scrollbar-width:thin;font:500 .78rem/1.5 var(--font-mono,'JetBrains Mono',ui-monospace,monospace)}
+    }
+    .blog-rail-h{margin:0 0 .75rem;padding:0 .6rem;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3,#7b8498)}
+    .blog-rail a{display:flex;justify-content:space-between;align-items:baseline;gap:.7rem;padding:.32rem .6rem;
+      border-radius:var(--radius-pill,999px);color:var(--ink-3,#7b8498);text-decoration:none;
+      transition:color .2s ease,background-color .2s ease}
+    .blog-rail a:hover{color:var(--ink-1,#eef1f7);background:rgba(255,255,255,.045)}
+    .blog-rail a.is-current{color:var(--ink-1,#eef1f7);background:color-mix(in srgb,var(--green,#6cbe45) 16%,transparent)}
+    .blog-rail .n{font-size:.72rem;color:var(--ink-3,#7b8498);font-variant-numeric:tabular-nums}
+
+    /* A divider stays straight -- the curve budget goes to the lead card below. */
+    .blog-sep{grid-column:1/-1;list-style:none;display:flex;align-items:center;gap:1rem;
+      margin:2.2rem 0 -.6rem;scroll-margin-top:6rem}
+    .blog-sep:first-child{margin-top:.2rem}
+    .blog-sep span{font:600 .76rem/1 var(--font-mono,ui-monospace,monospace);letter-spacing:.12em;
+      text-transform:uppercase;color:var(--ink-2,#a8b1c2);white-space:nowrap}
+    .blog-sep::after{content:"";flex:1;height:1px;background:var(--line)}
+
+    /* Column colour + stagger are driven by position WITHIN the month once the separators
+       land, because inserting them shifts :nth-child and would scramble both. */
+    /* Colour cycles on a fixed 3 so the palette stays even at any width; the STAGGER has to
+       follow the real column count, which the script reads off the grid and re-reads on resize.
+       Hard-coding 3 here put the offset on the wrong cards at tablet and phone widths. */
+    .blog-list>.blog-row[data-accent="0"]{--accent:var(--green,#6cbe45)}
+    .blog-list>.blog-row[data-accent="1"]{--accent:var(--teal,#2dd4bf)}
+    .blog-list>.blog-row[data-accent="2"]{--accent:#f0b44c}
+    .blog-list>.blog-row{translate:none}
+    .blog-list[data-cols="3"]>.blog-row[data-col="1"],
+    .blog-list[data-cols="2"]>.blog-row[data-col="1"]{translate:0 var(--stagger)}
+
+    /* The lead: full width, the largest radius in the scale, image against text on phi. */
+    .blog-list>.blog-row.is-lead{--accent:var(--green,#6cbe45);translate:none;grid-column:1/-1}
+    @media (min-width:860px){
+      .blog-list>.blog-row.is-lead{display:grid;grid-template-columns:1.618fr 1fr;gap:1.8rem;
+        align-items:center;border-radius:var(--radius-xl,42px);padding:1rem}
+      .blog-row.is-lead .blog-row-thumb{border-radius:var(--radius-lg,26px)}
+      .blog-row.is-lead .blog-row-body{padding:0 1.4rem 0 .2rem}
+      .blog-row.is-lead .blog-row-title{font-size:1.76rem;line-height:1.16}
+      .blog-row.is-lead .blog-row-dek{font-size:1rem;-webkit-line-clamp:5}
+    }
+</style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
          crossorigin="anonymous"></script>
 </head>
@@ -898,8 +962,117 @@
                 </li>
             </ol>
             <script>
-              // Issue numbers for the cards, newest = highest; a new article numbers itself.
-              document.querySelectorAll('.blog-row').forEach((row, i, all) => { const m = row.querySelector('.blog-row-meta'); if (m) m.dataset.no = all.length - i; });
+              // Archive structure, derived from what is already on the cards so that adding a post
+              // stays a one-line edit: issue numbers, the lead card, a separator per month, the
+              // column each card sits in, and the rail. No JS -> the plain grid, which still works.
+              (function () {
+                var list = document.querySelector('.blog-list');
+                if (!list) return;
+                var rows = [].slice.call(list.querySelectorAll('.blog-row'));
+                if (!rows.length) return;
+
+                // Issue numbers, newest = highest (unchanged).
+                rows.forEach(function (row, i) {
+                  var meta = row.querySelector('.blog-row-meta');
+                  if (meta) meta.dataset.no = rows.length - i;
+                });
+                rows[0].classList.add('is-lead');
+
+                // Group by the month already printed on the card. An unparseable date lands in
+                // 'Earlier' rather than inventing one.
+                var groups = [], byKey = {};
+                rows.forEach(function (row) {
+                  var el = row.querySelector('.blog-row-date');
+                  var d = el ? new Date(el.textContent.trim()) : null;
+                  // A row whose date slot holds something else (the research paper) names its
+                  // own group rather than being filed under a month it does not have.
+                  var raw = el ? el.textContent.trim() : '';
+                  var key = (d && !isNaN(d))
+                    ? d.toLocaleString('en-US', { month: 'long', year: 'numeric' })
+                    : (raw || 'Earlier');
+                  if (!byKey[key]) {
+                    byKey[key] = { key: key, id: 'm-' + key.toLowerCase().replace(/\s+/g, '-'), rows: [] };
+                    groups.push(byKey[key]);
+                  }
+                  byKey[key].rows.push(row);
+                });
+
+                groups.forEach(function (g) {
+                  var sep = document.createElement('li');
+                  sep.className = 'blog-sep';
+                  sep.id = g.id;
+                  var label = document.createElement('span');
+                  label.textContent = g.key;
+                  sep.appendChild(label);
+                  list.insertBefore(sep, g.rows[0]);
+                });
+
+                // Column index follows the grid's ACTUAL column count (3 / 2 / 1 by breakpoint),
+                // re-read on resize; colour cycles on a fixed 3 regardless.
+                rows.forEach(function (row, i) { row.dataset.accent = String(i % 3); });
+                function layout() {
+                  var cols = getComputedStyle(list).gridTemplateColumns.split(/\s+/).filter(Boolean).length || 1;
+                  list.dataset.cols = String(cols);
+                  groups.forEach(function (g) {
+                    var offset = g.rows[0] === rows[0] ? 1 : 0;
+                    g.rows.forEach(function (row, i) {
+                      if (row === rows[0]) return;
+                      row.dataset.col = String((i - offset) % cols);
+                    });
+                  });
+                }
+                layout();
+                var rt;
+                window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 150); });
+
+                // Sticky rail: where you are, and how deep the archive goes.
+                var shell = document.createElement('div');
+                shell.className = 'blog-shell';
+                var rail = document.createElement('nav');
+                rail.className = 'blog-rail';
+                rail.setAttribute('aria-label', 'Archive by month');
+                var h = document.createElement('p');
+                h.className = 'blog-rail-h';
+                h.textContent = rows.length + ' posts';
+                rail.appendChild(h);
+                groups.forEach(function (g) {
+                  var a = document.createElement('a');
+                  a.href = '#' + g.id;
+                  a.dataset.for = g.id;
+                  a.appendChild(document.createTextNode(g.key.replace(/ (\d{2})(\d{2})$/, " \u2019$2")));
+                  var n = document.createElement('span');
+                  n.className = 'n';
+                  n.textContent = g.rows.length;
+                  a.appendChild(n);
+                  rail.appendChild(a);
+                });
+                list.parentNode.insertBefore(shell, list);
+                shell.appendChild(rail);
+                shell.appendChild(list);
+
+                // Highlight the month you are in. An IntersectionObserver on the separators
+                // only fires while one is crossing the band, so anywhere in the middle of a long
+                // month (September has 39) nothing was lit. The honest question is "which
+                // separator was the last one I scrolled past", so ask that instead.
+                var links = {};
+                [].forEach.call(rail.querySelectorAll('a'), function (a) { links[a.dataset.for] = a; });
+                var ticking = false;
+                function spy() {
+                  ticking = false;
+                  var current = groups[0];
+                  groups.forEach(function (g) {
+                    var el = document.getElementById(g.id);
+                    if (el && el.getBoundingClientRect().top <= 140) current = g;
+                  });
+                  groups.forEach(function (g) {
+                    if (links[g.id]) links[g.id].classList.toggle('is-current', g === current);
+                  });
+                }
+                window.addEventListener('scroll', function () {
+                  if (!ticking) { ticking = true; requestAnimationFrame(spy); }
+                }, { passive: true });
+                spy();
+              })();
             </script>
         </div>
     </section>
