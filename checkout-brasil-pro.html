@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});gtag('config','G-00TNDVMQNM');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Valida a Inscricao Estadual nas 27 UFs no checkout do WooCommerce e exporta os dados fiscais dos pedidos em CSV, com uma coluna dizendo quais IEs serao recusadas. $29 por ano, ou $87 uma vez.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/checkout-brasil-pro.html">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/checkout-brasil-pro.html">
+    <meta property="og:title" content="Checkout Brasil Pro — Validação de IE nas 27 UFs">
+    <meta property="og:description" content="Valida a Inscricao Estadual nas 27 UFs no checkout do WooCommerce e exporta os dados fiscais dos pedidos em CSV, com uma coluna dizendo quais IEs serao recusadas. $29 por ano, ou $87 uma vez.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Checkout Brasil Pro — Validação de IE nas 27 UFs">
+    <meta name="twitter:description" content="Valida a Inscricao Estadual nas 27 UFs no checkout do WooCommerce e exporta os dados fiscais dos pedidos em CSV, com uma coluna dizendo quais IEs serao recusadas. $29 por ano, ou $87 uma vez.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <title>Checkout Brasil Pro — Validação de IE e Exportação Fiscal - Rebel Studios</title>
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Checkout Brasil Pro","description":"Valida a Inscricao Estadual nas 27 UFs no checkout do WooCommerce e exporta os dados fiscais dos pedidos em CSV, com uma coluna dizendo quais IEs serao recusadas. $29 por ano, ou $87 uma vez.","url":"https://rebelstudiossoftware.com/checkout-brasil-pro.html","brand":{"@type":"Brand","name":"Rebel Studios Software"},"offers":{"@type":"Offer","price":"29","priceCurrency":"USD","availability":"https://schema.org/InStock"}}</script>
+</head>
+<body>
+    <nav class="navbar"><div class="container">
+      <div class="nav-brand"><a href="index.html" class="brand-link"><img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128"><span class="brand-name">Rebel Studios</span></a></div>
+      <ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="games.html">Games</a></li><li><a href="apps.html">Apps</a></li>
+<li><a href="tools/index.html">Tools</a></li><li><a href="plugins.html" class="active">Plugins</a></li><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li></ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div></nav>
+    <section class="hero hero--page hero--product"><div class="container">
+      <div class="hero-copy">
+        <span class="cb-status">&#9679; Complemento pago &middot; $29/ano &middot; disponível</span>
+        <h1>Checkout Brasil Pro</h1>
+        <p class="hero-sub">O plugin gratuito <a href="checkout-brasil.html">Brazilian Checkout Fields</a> coleta CPF, CNPJ, Razão Social e Inscrição Estadual. Ele guarda a IE — mas não confere se ela existe. Este complemento confere, nas 27 unidades federativas, antes do pagamento.</p>
+        <div class="hero-buttons" style="margin-top:24px">
+          <a class="btn btn-primary" href="https://checkout.freemius.com/plugin/44283/plan/79665/" target="_blank" rel="noopener">Comprar &middot; $29/ano</a>
+          <a class="btn btn-secondary" href="tools/inscricao-estadual.html">Testar o validador, grátis</a>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <h2>Experimente agora</h2>
+      <p>É exatamente a mesma verificação que roda no seu checkout. Roda no seu navegador; o número não é enviado a lugar nenhum.</p>
+      <div class="ie-tool">
+        <div class="ie-row">
+          <label class="ie-field"><span>Inscrição Estadual</span>
+            <input id="ie-num" type="text" inputmode="numeric" autocomplete="off" placeholder="ex. 110.042.490.114 ou ISENTO" aria-describedby="ie-out"></label>
+          <label class="ie-field ie-field--uf"><span>Estado</span><select id="ie-uf"></select></label>
+        </div>
+        <p id="ie-out" class="ie-out" role="status" aria-live="polite">Digite um número para conferir.</p>
+      </div>
+    </div></section>
+
+    <section class="section section-alt"><div class="container">
+      <h2>Por que isso importa</h2>
+      <p>Uma IE inválida não é um detalhe cosmético. Ela é recusada <strong>na hora de emitir a NF-e</strong> — depois da venda, com o dinheiro já movimentado e o cliente longe. Conferir no checkout custa um segundo; conferir depois custa um pedido.</p>
+      <p>Cada estado usa comprimento, prefixo, pesos e tratamento do resto diferentes. São 27 regras, e é por isso que quase nada valida IE de verdade.</p>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <h2>O CSV que o contador quer</h2>
+      <p>Pedido, data, total, CPF, CNPJ, Razão Social, IE, RG e o endereço completo — logradouro, número, bairro, cidade, UF, CEP — por período.</p>
+      <p>A coluna que faz diferença é <strong>IE válida</strong>: o contador vê quais pedidos vão ser recusados <em>antes</em> de tentar emitir as notas. O arquivo sai com BOM UTF-8, então o Excel no Windows lê “Razão Social” com os acentos certos.</p>
+      <p>Funciona com HPOS e com o armazenamento antigo de pedidos, e é gerado em lotes — mandar um ano inteiro para a contabilidade não precisa de um ano de pedidos na memória.</p>
+    </div></section>
+
+    <section class="section section-alt"><div class="container">
+      <h2>O que ele não faz</h2>
+      <p>Ele <strong>não emite NF-e</strong>. Emitir nota exige certificado digital e integração com a SEFAZ do seu estado — isso é outro produto, e quem disser que resolve os dois em um plugin está vendendo mal. Este aqui garante que os dados que você vai mandar para o seu emissor estão corretos.</p>
+      <p>Um dígito verificador correto diz que o número é bem formado. Não diz que a inscrição existe ou está ativa: só a consulta ao cadastro do estado responde isso.</p>
+      <p>As regras vêm das páginas do próprio SINTEGRA. Dezenove dos 27 estados publicam um exemplo resolvido e a validação é testada contra todos eles; oito (AM, DF, ES, MS, PB, PI, RJ, SE) publicam o método mas nenhum número de exemplo, então neles a regra segue o método publicado sem um número oficial para confirmar.</p>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <div class="cb-cta">
+        <h3>Checkout Brasil Pro</h3>
+        <p>$29 por ano, ou $87 uma vez por uma licença vitalícia. Precisa do plugin gratuito e do WooCommerce. Garantia de reembolso de 7 dias.</p>
+        <a class="btn btn-primary" href="https://checkout.freemius.com/plugin/44283/plan/79665/" target="_blank" rel="noopener">Comprar &middot; $29/ano &rarr;</a>
+      </div>
+    </div></section>
+
+<style>
+.ie-tool{border:1px solid var(--border,#232838);border-radius:14px;padding:clamp(18px,3vw,29px);background:var(--panel,#0d1119)}
+.ie-row{display:flex;gap:18px;flex-wrap:wrap}
+.ie-field{display:flex;flex-direction:column;gap:7px;flex:1 1 18rem}
+.ie-field--uf{flex:0 1 11rem}
+.ie-field span{font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--dim,#8b94a7)}
+.ie-field input,.ie-field select{font:inherit;font-size:1.05rem;padding:12px 14px;border-radius:9px;
+  border:1px solid var(--border,#232838);background:var(--bg,#07090f);color:inherit;width:100%}
+.ie-field input:focus,.ie-field select:focus{outline:2px solid #6b8afd;outline-offset:1px}
+.ie-out{margin:18px 0 0;font-size:1.05rem;min-height:1.7em}
+.ie-ok{color:#34d399}.ie-bad{color:#f87171}.ie-neutral{color:var(--dim,#8b94a7)}
+@media (prefers-color-scheme:light){.ie-ok{color:#047857}.ie-bad{color:#b91c1c}}
+</style>
+<script src="tools/ie.js"></script>
+<script>
+(function(){
+  var NAMES={AC:'Acre',AL:'Alagoas',AP:'Amapá',AM:'Amazonas',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',
+    ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MT:'Mato Grosso',MS:'Mato Grosso do Sul',MG:'Minas Gerais',
+    PA:'Pará',PB:'Paraíba',PR:'Paraná',PE:'Pernambuco',PI:'Piauí',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',
+    RS:'Rio Grande do Sul',RO:'Rondônia',RR:'Roraima',SC:'Santa Catarina',SP:'São Paulo',SE:'Sergipe',TO:'Tocantins'};
+  var num=document.getElementById('ie-num'), uf=document.getElementById('ie-uf'), out=document.getElementById('ie-out');
+  if(!num||!uf||!out||typeof IE==='undefined') return;
+  IE.STATES.slice().sort(function(a,b){return NAMES[a].localeCompare(NAMES[b],'pt-BR');})
+    .forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=NAMES[c]+' ('+c+')';uf.appendChild(o);});
+  uf.value='SP';
+  function render(){
+    var v=num.value;
+    if(!v.trim()){out.className='ie-out ie-neutral';out.textContent='Digite um número para conferir.';return;}
+    if(IE.isExento(v)){out.className='ie-out ie-ok';out.innerHTML='<b>Válido</b> — empresa isenta.';return;}
+    if(IE.isValid(v,uf.value)){out.className='ie-out ie-ok';
+      out.innerHTML='<b>Válido</b> para '+NAMES[uf.value]+' — dígito verificador confere.';}
+    else{out.className='ie-out ie-bad';
+      out.innerHTML='<b>Não confere</b> para '+NAMES[uf.value]+'. Verifique o número e o estado.';}
+  }
+  num.addEventListener('input',render); uf.addEventListener('change',render);
+})();
+</script>
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128"><span>Rebel Studios Software</span></div><div class="footer-links"><a href="apps.html">Apps</a><a href="security.html">Security</a><a href="tools/index.html">Tools</a><a href="plugins.html" class="active">Plugins</a><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="mailto:contact@rebelstudiossoftware.com">Contact</a></div></div><!-- social:start (generated by social_links.py; edit the list there) -->
+<nav class="footer-social" aria-label="Rebel Studios elsewhere">
+    <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+    <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+    <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+    <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+    <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+    <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+</nav>
+<!-- social:end -->
+<p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p></div></footer>
+    <script src="script.js"></script>
+    <!-- Digistore24 promocode: required before Digistore will approve a product. It reads the
+         affiliate/promocode parameter from the URL and rewrites order-form links so an
+         affiliate's referral is credited. Disclosed in privacy.html. -->
+    <script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
+    <script>digistorePromocode( 761732 );</script>
+
+    <!-- Digistore24 trust badge. Required for product approval: the checklist
+         confirms the sales-page/thank-you badge is present, and the legal
+         footer renders with it. Created in the vendor account (Conversion
+         tools > Trust-Badges); the id/token are public embed values. -->
+    <!-- Begin of Digistore24 Trusted Badge Code -->
+<script type="text/javascript" src="https://www.digistore24.com/trusted-badge/49252/TD274jVDhJvvruG/salespage"></script>
+<!-- End of Digistore24 Trusted Badge Code -->
+  </body>
+</html>

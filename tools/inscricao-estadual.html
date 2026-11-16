@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});gtag('config','G-00TNDVMQNM');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confira uma Inscricao Estadual brasileira contra a regra do proprio estado, nas 27 UFs. Roda no seu navegador: o numero nao sai do seu computador.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/tools/inscricao-estadual.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/tools/inscricao-estadual.html">
+    <meta property="og:title" content="Validador de Inscrição Estadual — 27 estados">
+    <meta property="og:description" content="Confira uma Inscricao Estadual brasileira contra a regra do proprio estado, nas 27 UFs. Roda no seu navegador: o numero nao sai do seu computador.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Validador de Inscrição Estadual — 27 estados">
+    <meta name="twitter:description" content="Confira uma Inscricao Estadual brasileira contra a regra do proprio estado, nas 27 UFs. Roda no seu navegador: o numero nao sai do seu computador.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Validador de Inscrição Estadual","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Confira uma Inscricao Estadual brasileira contra a regra do proprio estado, nas 27 UFs. Roda no seu navegador: o numero nao sai do seu computador.","url":"https://rebelstudiossoftware.com/tools/inscricao-estadual.html","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"}}</script>
+    <title>Validador de Inscrição Estadual (IE) — 27 estados - Rebel Studios</title>
+    <link rel="icon" href="../images/RS-logo-128.png" type="image/png">
+    <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" class="brand-link">
+                    <img src="../images/RS-logo-128.png" alt="Rebel Studios" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../websites.html">Websites</a></li>
+                <li><a href="../apps.html">Apps</a></li>
+                <li><a href="../security.html">Security</a></li>
+                <li><a href="index.html" class="active">Tools</a></li>
+                <li><a href="../plugins.html">Plugins</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="../services.html" class="nav-contact-btn">Hire Us</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <section class="page-header tool-page-header">
+        <div class="container">
+            <span class="tool-price-chip">Grátis</span>
+            <span class="tool-live-badge">Live</span>
+            <h1>Validador de Inscrição Estadual</h1>
+            <p>Cada estado usa um formato e um dígito verificador diferentes. Confira o número antes de emitir a nota, não depois.</p>
+        </div>
+    </section>
+
+    <section class="tool-detail">
+        <div class="container">
+
+            <div class="ie-tool">
+                <div class="ie-row">
+                    <label class="ie-field">
+                        <span>Inscrição Estadual</span>
+                        <input id="ie-num" type="text" inputmode="numeric" autocomplete="off"
+                               placeholder="ex. 110.042.490.114 ou ISENTO" aria-describedby="ie-out">
+                    </label>
+                    <label class="ie-field ie-field--uf">
+                        <span>Estado</span>
+                        <select id="ie-uf"></select>
+                    </label>
+                </div>
+                <p id="ie-out" class="ie-out" role="status" aria-live="polite">Digite um número para conferir.</p>
+            </div>
+
+            <div class="tool-longform">
+                <h2>O que ele faz</h2>
+                <p>Confere o dígito verificador da Inscrição Estadual contra a regra da unidade federativa escolhida. São 27 regras diferentes: comprimento, prefixo obrigatório, pesos e tratamento do resto mudam de estado para estado, e é por isso que quase nada valida IE de verdade.</p>
+                <p>Empresas isentas não têm número. Escreva <strong>ISENTO</strong> e o validador aceita, em qualquer estado.</p>
+
+                <h2>O número não sai do seu computador</h2>
+                <p>A verificação roda inteiramente no seu navegador, em JavaScript. Nada é enviado para nenhum servidor, nada é gravado e não há cadastro. Você pode desligar a internet depois de carregar a página e ele continua funcionando.</p>
+
+                <h2>De onde vêm as regras</h2>
+                <p>De cada estado, na página do próprio SINTEGRA (<code>sintegra.gov.br/Cad_Estados/cad_&lt;UF&gt;.html</code>), lidas em 16 de novembro de 2026. Dezenove dos 27 estados publicam um número de exemplo resolvido, e este validador é testado contra todos eles.</p>
+
+                <h2>O que ele não garante</h2>
+                <p>Um dígito verificador correto significa que o número é <em>bem formado</em>. Não significa que a inscrição existe, que está ativa, ou que pertence a quem disse pertencer — só a consulta ao cadastro do estado responde isso. O que ele pega é o erro de digitação e o número inventado, que é a maior parte dos problemas.</p>
+                <p>Oito estados (AM, DF, ES, MS, PB, PI, RJ, SE) publicam o método mas nenhum exemplo resolvido, então nesses a implementação segue o método publicado sem um número oficial para confirmar.</p>
+
+                <h2>Validando no checkout, automaticamente</h2>
+                <p>Se a sua loja é WooCommerce, o complemento <a href="../checkout-brasil-pro.html">Checkout Brasil Pro</a> faz essa mesma checagem no checkout, antes do pagamento, e exporta os dados fiscais dos pedidos em CSV com uma coluna dizendo quais IEs vão ser recusadas. O plugin gratuito que coleta os campos é o <a href="../checkout-brasil.html">Brazilian Checkout Fields</a>.</p>
+            </div>
+        </div>
+    </section>
+
+<style>
+.ie-tool{border:1px solid var(--border,#232838);border-radius:14px;padding:clamp(18px,3vw,29px);background:var(--panel,#0d1119);margin-bottom:38px}
+.ie-row{display:flex;gap:18px;flex-wrap:wrap}
+.ie-field{display:flex;flex-direction:column;gap:7px;flex:1 1 18rem}
+.ie-field--uf{flex:0 1 11rem}
+.ie-field span{font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--dim,#8b94a7)}
+.ie-field input,.ie-field select{font:inherit;font-size:1.05rem;padding:12px 14px;border-radius:9px;
+  border:1px solid var(--border,#232838);background:var(--bg,#07090f);color:inherit;width:100%}
+.ie-field input:focus,.ie-field select:focus{outline:2px solid #6b8afd;outline-offset:1px}
+.ie-out{margin:18px 0 0;font-size:1.05rem;min-height:1.7em}
+.ie-out b{font-weight:600}
+.ie-ok{color:#34d399}.ie-bad{color:#f87171}.ie-neutral{color:var(--dim,#8b94a7)}
+@media (prefers-color-scheme:light){.ie-ok{color:#047857}.ie-bad{color:#b91c1c}}
+</style>
+<script src="ie.js"></script>
+<script>
+(function(){
+  var NAMES={AC:'Acre',AL:'Alagoas',AP:'Amapá',AM:'Amazonas',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',
+    ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MT:'Mato Grosso',MS:'Mato Grosso do Sul',MG:'Minas Gerais',
+    PA:'Pará',PB:'Paraíba',PR:'Paraná',PE:'Pernambuco',PI:'Piauí',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',
+    RS:'Rio Grande do Sul',RO:'Rondônia',RR:'Roraima',SC:'Santa Catarina',SP:'São Paulo',SE:'Sergipe',TO:'Tocantins'};
+  var NO_EXAMPLE={AM:1,DF:1,ES:1,MS:1,PB:1,PI:1,RJ:1,SE:1};
+  var num=document.getElementById('ie-num'), uf=document.getElementById('ie-uf'), out=document.getElementById('ie-out');
+  var order=IE.STATES.slice().sort(function(a,b){return NAMES[a].localeCompare(NAMES[b],'pt-BR');});
+  order.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=NAMES[c]+' ('+c+')';uf.appendChild(o);});
+  uf.value='SP';
+  function render(){
+    var v=num.value, state=uf.value;
+    if(!v.trim()){ out.className='ie-out ie-neutral'; out.textContent='Digite um número para conferir.'; return; }
+    if(IE.isExento(v)){ out.className='ie-out ie-ok'; out.innerHTML='<b>Válido</b> — empresa isenta de Inscrição Estadual.'; return; }
+    var ok=IE.isValid(v,state), d=IE.digits(v);
+    if(ok){
+      out.className='ie-out ie-ok';
+      out.innerHTML='<b>Válido</b> para '+NAMES[state]+' — '+d.length+' dígitos, dígito verificador confere.'+
+        (NO_EXAMPLE[state]?' <span class="ie-neutral">('+state+' publica o método mas nenhum exemplo oficial, então a regra não pôde ser confirmada contra um número do estado.)</span>':'');
+    } else {
+      out.className='ie-out ie-bad';
+      out.innerHTML='<b>Não confere</b> para '+NAMES[state]+'. Verifique o número e o estado, ou escreva ISENTO se a empresa for isenta.';
+    }
+  }
+  num.addEventListener('input',render); uf.addEventListener('change',render);
+})();
+</script>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="../websites.html">Websites</a>
+                    <a href="../apps.html">Apps</a>
+                    <a href="index.html">Tools</a>
+                    <a href="../blog.html">Blog</a>
+                    <a href="../privacy.html">Privacy</a>
+                    <a href="../terms.html">Terms</a>
+                    <a href="mailto:contact@rebelstudiossoftware.com">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. Designed &amp; built in-house, like everything else we ship.</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
