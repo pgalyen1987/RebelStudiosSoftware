@@ -69,14 +69,15 @@
 
             <h2>The compliant pattern: free plugin + separate Pro add-on</h2>
             <ul class="article-list">
-                <li><strong>The free plugin</strong> (on wp.org) contains the free features plus a <em>gate</em> and "Get Pro" links, but no paid code. The gate is just a filter: <code>if ( apply_filters( 'myplugin_is_pro', false ) ) { /* register paid hooks */ }</code>.</li>
+                <li><strong>The free plugin</strong> (on wp.org) contains the free features, the "Get Pro" links, and the hooks the add-on will attach to &mdash; and no gate at all. It exposes a filter, <code>myplugin_is_pro</code>, used for exactly one thing: hiding those upsell links once the add-on is licensed. It never decides whether a feature may run.</li>
                 <li><strong>The Pro add-on</strong> is a <em>separate</em> plugin you sell on your own store (Gumroad, Freemius, Lemon Squeezy). It is never uploaded to wp.org. When installed and licensed, it answers that filter with <code>true</code> and registers the paid features on hooks the free plugin already exposes.</li>
             </ul>
+            <p>The difference is worth being pedantic about, because the near-miss version is what gets plugins rejected. An <code>if ( apply_filters( 'myplugin_is_pro', false ) ) { /* register paid hooks */ }</code> wrapper in the free plugin means the paid code is sitting in the free download behind an <code>if</code> &mdash; that is the trialware the directory rejects, whatever the filter is called. Put the feature in the add-on and have it <code>add_action()</code> onto a hook the free plugin fires unconditionally, and the question never arises. <em>Corrected 2026-11-19: an earlier version of this post showed that wrapper as "the gate." Our own boilerplate has no such check, and its <code>Freemium</code> class says in as many words that you should not add one.</em></p>
             <p>Because the paid code lives only in the add-on the buyer downloads from you, the wp.org copy stays 100% free and compliant. See <a href="blog-build-freemium-wordpress-plugin.html">the full freemium architecture</a> for how the two pieces fit together.</p>
 
             <h2>Verifying the license key</h2>
             <p>The Pro add-on needs to confirm the buyer actually paid. The lightest approach: your store issues a license key per sale, and the add-on verifies it against the store&rsquo;s API. Gumroad, for example, exposes a license-verification endpoint: the add-on POSTs the product ID and the key, gets back whether it&rsquo;s valid (and not refunded), and stores the result. Cache the check so you are not calling the API on every page load, and re-check periodically.</p>
-            <p>Whatever store you pick, keep <em>one</em> store as the license authority so you are not reconciling two key formats. The buyer pastes their key once; the add-on flips <code>myplugin_is_pro</code> to true; every gated feature lights up.</p>
+            <p>Whatever store you pick, keep <em>one</em> store as the license authority so you are not reconciling two key formats. The buyer pastes their key once; the add-on flips <code>myplugin_is_pro</code> to true, the upsell links disappear, and the add-on&rsquo;s own features attach themselves to the free plugin&rsquo;s hooks.</p>
 
             <h2>Failing safe when the license server is down</h2>
 
