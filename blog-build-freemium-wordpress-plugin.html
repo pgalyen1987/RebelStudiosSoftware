@@ -13,14 +13,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4668633509273232">
-    <meta name="description" content="How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable license gate, settings and build tooling, plus how to actually sell the Pro version.">
+    <meta name="description" content="How to build a freemium WordPress plugin the right way: the wp.org-compliant free/Pro architecture, a reusable free/Pro switch, settings and build tooling, plus how to actually sell the Pro version.">
     <link rel="canonical" href="https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html">
     <link rel="icon" href="images/RS-logo-128.png" type="image/png">
     <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html">
     <meta property="og:title" content="How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)">
-    <meta property="og:description" content="The wp.org-compliant free/Pro architecture, a reusable license gate, settings and build tooling, plus how to sell the Pro version.">
+    <meta property="og:description" content="The wp.org-compliant free/Pro architecture, a reusable free/Pro switch, settings and build tooling, plus how to sell the Pro version.">
     <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/build-freemium-wordpress-plugin.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,9 +29,9 @@
     <meta property="article:author" content="Rebel Studios Software">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)">
-    <meta name="twitter:description" content="The wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling.">
+    <meta name="twitter:description" content="The wp.org-compliant free/Pro architecture, a reusable free/Pro switch, settings, and build tooling.">
     <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/build-freemium-wordpress-plugin.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)","description":"The wp.org-compliant free/Pro architecture, a reusable license gate, settings, and build tooling, plus how to sell the Pro version.","datePublished":"2026-09-07","author":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html"},"image":"https://rebelstudiossoftware.com/images/blog/build-freemium-wordpress-plugin.png"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version)","description":"The wp.org-compliant free/Pro architecture, a reusable free/Pro switch, settings, and build tooling, plus how to sell the Pro version.","datePublished":"2026-09-07","author":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-build-freemium-wordpress-plugin.html"},"image":"https://rebelstudiossoftware.com/images/blog/build-freemium-wordpress-plugin.png"}</script>
     <title>How to Build a Freemium WordPress Plugin (and Actually Sell the Pro Version) - Rebel Studios Software</title>
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -70,41 +70,34 @@
             <p><strong>Your free plugin on WordPress.org may not contain paid code, and may not lock features behind a payment.</strong> The directory is GPL and forbids "trialware." So you cannot ship a paid feature disabled in the free download.</p>
             <p>The compliant pattern is two plugins:</p>
             <ul class="article-list">
-                <li><strong>The free plugin</strong> ships on wp.org. It contains the free features and a <em>gate</em> (an "if Pro, do more" check), plus "Get Pro" links. No paid code.</li>
+                <li><strong>The free plugin</strong> ships on wp.org. It is complete on its own: every feature in it works, and it exposes hooks a paid add-on can extend. It carries "Get Pro" links and no paid code.</li>
                 <li><strong>A separate Pro add-on</strong> is sold on your own store (Gumroad, Freemius, Lemon Squeezy). When the buyer installs and licenses it, it answers a filter (say <code>myplugin_is_pro</code>) with <code>true</code>, and registers the paid features on the hooks the free plugin already exposes.</li>
             </ul>
 
-            <h2>The gate: one function you'll reuse forever</h2>
-            <p>The whole freemium mechanism comes down to a single, dependency-free class. The free plugin defines it; the Pro add-on flips it on:</p>
+            <h2>The switch: one function you'll reuse forever</h2>
+            <p>The whole freemium mechanism comes down to a single, dependency-free class. The free plugin defines it; the Pro add-on flips it on. Note what it does <em>not</em> have: any notion of a feature being disallowed.</p>
             <pre><code>class Freemium {
     const IS_PRO_FILTER = 'myplugin_is_pro';
 
-    // Features the free tier includes. Everything else is Pro-only.
-    private static function free_features() {
-        return array( 'core' );
-    }
-
+    // True once the Pro add-on is active and licensed. Used for one thing:
+    // hiding the "Get Pro" links. Never to decide whether a feature may run.
     public static function is_pro() {
         return (bool) apply_filters( self::IS_PRO_FILTER, false );
     }
-
-    public static function allows( $feature ) {
-        return self::is_pro() || in_array( $feature, self::free_features(), true );
-    }
 }</code></pre>
-            <p>Now you gate any feature with one call, and it always degrades cleanly to the free behaviour instead of erroring:</p>
-            <pre><code>if ( Freemium::allows( 'bulk_export' ) ) {
-    // Pro path
-} else {
-    // free path, or a "Get Pro" nudge at the moment of need
-}</code></pre>
-            <p>The Pro add-on, once licensed, is a two-line file: <code>add_filter( 'myplugin_is_pro', '__return_true' );</code> after its license check. That's it. The gate does the rest.</p>
+            <p>The paid features are not in this plugin at all, so there is nothing here to gate. What the free plugin ships instead is the hook the add-on attaches to:</p>
+            <pre><code>// In the free plugin, after its own work is done.
+do_action( 'myplugin_feature_run', $settings );</code></pre>
+            <p>The Pro add-on is a separate plugin. After its own licence check passes it answers the filter, which hides the upsell links, and registers its features on that hook:</p>
+            <pre><code>add_filter( 'myplugin_is_pro', '__return_true' );          // hides "Get Pro"
+add_action( 'myplugin_feature_run', 'myplugin_pro_bulk_export' );  // adds the feature</code></pre>
+            <p>The distinction matters more than it looks. An <code>if ( allows( 'bulk_export' ) )</code> check in the free plugin means the paid code is sitting in the free download behind an <code>if</code>, which is exactly the trialware the directory rejects. Put the feature in the add-on and the question never arises. <em>Corrected 2026-11-19: an earlier version of this post taught that <code>allows()</code> check. It was wrong for this reason, and our own boilerplate dropped it in 1.0.2.</em></p>
 
             <h2>The boring 80% you keep rewriting</h2>
             <p>Every freemium plugin needs the same scaffolding before you write a single line of your actual feature:</p>
             <ul class="article-list">
                 <li><strong>A settings framework</strong>: one serialized option row, typed defaults, sanitized writes, and an allow-list so a crafted POST can't smuggle values in.</li>
-                <li><strong>The license gate</strong> above, plus an admin "Get Pro" call-to-action that shows the upsell at the moment a user hits a locked feature (the highest-converting spot in the whole funnel).</li>
+                <li><strong>The Pro switch</strong> above, plus an admin "Get Pro" call-to-action placed where someone is already doing the thing the add-on extends, rather than on a feature you have taken away.</li>
                 <li><strong>A wp.org-format readme.txt</strong>, with the exact headers, tags, and "Stable tag" the directory requires.</li>
                 <li><strong>A build script</strong> that produces a clean distributable zip, excluding your dev files (tests, <code>.git</code>, build tooling) via a dist-ignore list.</li>
                 <li><strong>An uninstall routine</strong> that removes your options, but keeps anything that's a real record.</li>
@@ -125,7 +118,7 @@
 
             <div class="boiler-cta">
                 <h3>Or skip the boring 80%</h3>
-                <p>I got tired of rebuilding the same license gate, settings framework, readme and build script for every plugin, so I packaged them into a boilerplate with a one-command scaffolder: run it, and you get a complete, activation-ready freemium plugin, with namespace, constants, settings screen and license gate already wired. You add your feature and ship. It's GPL, so you can use it in unlimited commercial plugins.</p>
+                <p>I got tired of rebuilding the same free/Pro switch, settings framework, readme and build script for every plugin, so I packaged them into a boilerplate with a one-command scaffolder: run it, and you get a complete, activation-ready freemium plugin, with namespace, constants, settings screen and the Pro switch already wired. You add your feature and ship. It's GPL, so you can use it in unlimited commercial plugins.</p>
                 <p><a href="wp-plugin-boilerplate.html" class="btn btn-primary">See the Freemium Plugin Boilerplate &rarr;</a></p>
             </div>
 
