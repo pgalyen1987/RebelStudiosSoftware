@@ -192,8 +192,12 @@ def apply(slugs):
             else:
                 h = h.replace('<div class="article-content">', fig + '\n\n                <div class="article-content">', 1)
         post.write_text(h)
+        # the index's current markup: a decorative row thumb (alt="", aria-hidden), so only the src is ours to set
+        thumb = re.compile(rf'(<a class="blog-row-thumb" href="blog-{re.escape(slug)}\.html"[^>]*><img src=")[^"]*(")')
         card = re.compile(rf'(<a href="blog-{re.escape(slug)}\.html" class="blog-card"[^>]*>\s*<div class="blog-card-img"><img src=")[^"]*(" alt=")[^"]*(")')
-        if card.search(index):
+        if thumb.search(index):
+            index = thumb.sub(rf"\g<1>{s['image']}\2", index)
+        elif card.search(index):
             index = card.sub(rf"\g<1>{s['image']}\g<2>{alt}\3", index)
         else:
             bare = re.compile(rf'(<a href="blog-{re.escape(slug)}\.html" class="blog-card"[^>]*>)(\s*)(<div class="blog-card-content">)')

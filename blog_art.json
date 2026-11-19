@@ -578,5 +578,11 @@
     "html": "art/wordpress-org-readme-tag-search-rank.html",
     "alt": "Two wordpress.org search result lists side by side: the term brazil with 602 competing plugins and ours 150th down a long list, and the term validar cpf with only 9 competitors and ours 4th, the second list ending almost immediately.",
     "image": "images/blog/wordpress-org-readme-tag-search-rank.png"
+  },
+  "plugin-readme-never-mentioned-pro": {
+    "kind": "diagram",
+    "html": "art/plugin-readme-never-mentioned-pro.html",
+    "alt": "A bar of 272 downloads split three ways: 195 before any surface mentioned a paid version, 50 while only the plugin's code mentioned it, 27 after the WordPress.org readme did.",
+    "image": "images/blog/plugin-readme-never-mentioned-pro.png"
   }
 }
