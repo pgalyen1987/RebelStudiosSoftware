@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Nov 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>One readme tag took us from unfindable to fourth in ten hours</title>
+      <link>https://rebelstudiossoftware.com/blog-wordpress-org-readme-tag-search-rank.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-wordpress-org-readme-tag-search-rank.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 -0000</pubDate>
+      <description>A readme-only commit traded the tag brazil (602 competing plugins, we ranked 150th) for validar cpf (9 competitors). Ten hours later we were 4th. Measured against 5,304 plugins of the same age, here is what that win is worth and what it is not.</description>
+    </item>
     <item>
       <title>The hottest thermal zone is not your CPU</title>
       <link>https://rebelstudiossoftware.com/blog-hottest-thermal-zone-is-not-the-cpu.html</link>

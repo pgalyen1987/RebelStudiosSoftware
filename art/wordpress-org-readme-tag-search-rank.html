@@ -1,0 +1,58 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<!-- blog-wordpress-org-readme-tag-search-rank: one readme tag traded, two search result lists. -->
+<style>
+  .wrap{position:absolute;inset:44px 52px 56px;display:grid;grid-template-rows:auto 1fr;gap:30px}
+  h1{font:600 44px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.018em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--green2)}
+  .trade{margin-top:14px;font:500 15px/1.6 'JetBrains Mono',monospace;color:var(--ink3)}
+  .trade s{color:var(--red);text-decoration-color:rgba(240,113,106,.6)}
+  .trade b{color:var(--green2);font-weight:600}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .panel{display:flex;flex-direction:column}
+  .rows{padding:10px 0 4px}
+  .r{display:flex;gap:12px;align-items:baseline;padding:4px 16px;font:400 14px/1.5 'JetBrains Mono',monospace;color:var(--ink3)}
+  .r .i{width:30px;text-align:right;color:var(--ink3)}
+  .r.us{color:var(--ink1)}
+  .r.us .i{color:var(--green2);font-weight:600}
+  .r.us .t{color:var(--green2);font-weight:600}
+  .r .t{color:var(--ink3)}
+  .dots{padding:2px 16px 2px 58px;color:var(--ink3);font:400 14px 'JetBrains Mono',monospace;letter-spacing:.22em}
+  .foot{margin-top:auto;padding:11px 16px;border-top:1px solid var(--line);font:500 13px/1.45 'JetBrains Mono',monospace;color:var(--ink3)}
+  .foot b{color:var(--ink1)}
+  .foot.bad b{color:var(--red)}
+  .foot.good b{color:var(--green2)}
+</style>
+<div class="wrap">
+  <div>
+    <h1>Traded one tag. <em>4th of 9</em>, ten hours later</h1>
+    <p class="trade">readme.txt &nbsp;Tags: cpf, cnpj, cep, brasil, <s>brazil</s> &rarr; <b>validar cpf</b> &nbsp;&middot;&nbsp; no code, no release</p>
+  </div>
+  <div class="cols">
+    <div class="panel">
+      <div class="bar">search: brazil</div>
+      <div class="rows">
+        <div class="r"><span class="i">1</span><span class="t">complianz-gdpr</span></div>
+        <div class="r"><span class="i">2</span><span class="t">woo-better-shipping-&hellip;</span></div>
+        <div class="r"><span class="i">3</span><span class="t">gtranslate</span></div>
+        <div class="dots">&middot; &middot; &middot; &middot; &middot; &middot;</div>
+        <div class="r"><span class="i">150</span><span class="t">ours &mdash; page sixteen</span></div>
+        <div class="dots">&middot; &middot; &middot; &middot; &middot; &middot;</div>
+        <div class="r"><span class="i">602</span><span class="t">end of the list</span></div>
+      </div>
+      <div class="foot bad"><b>602 plugins competing.</b><br>Nobody finds page sixteen.</div>
+    </div>
+    <div class="panel">
+      <div class="bar">search: validar cpf</div>
+      <div class="rows">
+        <div class="r"><span class="i">1</span><span class="t">woo-shipping-gateway</span></div>
+        <div class="r"><span class="i">2</span><span class="t">woo-gerencianet-official</span></div>
+        <div class="r"><span class="i">3</span><span class="t">pagou-payments-for-woo&hellip;</span></div>
+        <div class="r us"><span class="i">4</span><span class="t">ours</span></div>
+        <div class="r"><span class="i">5</span><span class="t">moneria-pagamentos</span></div>
+        <div class="r"><span class="i">8</span><span class="t">end of the list</span></div>
+      </div>
+      <div class="foot good"><b>9 plugins competing.</b><br>Winnable because the room is empty.</div>
+    </div>
+  </div>
+</div>
+<div class="credit">rebelstudiossoftware.com</div>

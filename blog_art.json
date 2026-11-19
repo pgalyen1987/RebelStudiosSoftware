@@ -572,5 +572,11 @@
     "html": "art/hottest-thermal-zone-is-not-the-cpu.html",
     "alt": "A terminal panel showing max over the sys thermal zones returning 78000 for acpitz, the chassis sensor the guard read, against 52000 for x86_pkg_temp, the actual CPU die, at the same instant on an idle laptop: 26 degrees apart.",
     "image": "images/blog/hottest-thermal-zone-is-not-the-cpu.png"
+  },
+  "wordpress-org-readme-tag-search-rank": {
+    "kind": "diagram",
+    "html": "art/wordpress-org-readme-tag-search-rank.html",
+    "alt": "Two wordpress.org search result lists side by side: the term brazil with 602 competing plugins and ours 150th down a long list, and the term validar cpf with only 9 competitors and ours 4th, the second list ending almost immediately.",
+    "image": "images/blog/wordpress-org-readme-tag-search-rank.png"
   }
 }
