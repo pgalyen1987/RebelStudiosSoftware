@@ -5,7 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>thinbrowser</title>
 <link rel="canonical" href="https://rebelstudiossoftware.com/thinbrowser.html">
-<meta name="robots" content="noindex">
+<!-- NO robots noindex here, deliberately. This is a renamed URL, not a page we want hidden:
+     the 0-second refresh plus the canonical above tell Google to fold any link to the old
+     agent-browser.html into thinbrowser.html. A noindex OVERRIDES that -- Google drops the page
+     without reading the canonical, so the rename consolidates nothing. generate_feeds.py keeps
+     this out of the sitemap on the refresh alone (see wants_out), so dropping the noindex does
+     not put it back in.
+     Measured 2026-11-19 by inspecting all 33 noindexed URLs through the Search Console URL
+     Inspection API: 13 are reported "Excluded by noindex tag", 19 Google has never discovered.
+     Twelve of the thirteen are the $1 tool pages, noindexed on purpose in September as an
+     AdSense doorway fix, and they should stay that way. This stub was the only RENAME in the
+     list -- the only one where exclusion costs us something. -->
 <meta http-equiv="refresh" content="0; url=thinbrowser.html">
 <script>location.replace("thinbrowser.html");</script>
 </head>

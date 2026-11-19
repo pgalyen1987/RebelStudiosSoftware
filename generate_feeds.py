@@ -187,7 +187,40 @@ def build_feed(posts: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def check_art_cards() -> list[str]:
+    """art/ is excluded from the sitemap because the cards are 1200x630 screenshot sources, not
+    pages -- but exclusion from OUR sitemap does not stop Google indexing one it finds another
+    way, and each card is a thin near-duplicate of a post headline with no nav. The cards are
+    hand-written per post, so the rule has to be enforced where it cannot be forgotten rather
+    than remembered 52 times. Measured 2026-11-19: all 52 were indexable; Google had not yet
+    discovered any of them, which is luck, not a design. [[hand-fixed-page-generator-stale]]"""
+    # The rule is written out here rather than borrowed from wants_out(), which was tried and
+    # is WRONG for these files: a card has no </head>, so wants_out falls back to scanning the
+    # first 4000 characters -- and a card is about 4000 characters, so a robots meta appended to
+    # the BODY passed the gate. Mutation-tested both ways. A robots meta Google ignores is worse
+    # than none, because it reads as done. [[green-checker-is-decoration]]
+    bad = []
+    for path in sorted((ROOT / "art").glob("*.html")):
+        text = path.read_text(encoding="utf-8")
+        # the card's implicit head is the leading run of metadata, which ends at the first
+        # <style>, <link>, <div> or <body> -- everything after that is content.
+        ends = [m.start() for m in re.finditer(r"<(?:style|div|body)\b", text, re.I)]
+        head = text[: min(ends)] if ends else text
+        if "</head>" in text.lower():
+            head = text[: text.lower().find("</head>")]
+        if not re.search(r'name=["\']robots["\'][^>]*noindex', head, re.I):
+            bad.append(path.name)
+    return bad
+
+
 def main() -> None:
+    bare = check_art_cards()
+    if bare:
+        print(f"REFUSED: {len(bare)} OG card(s) in art/ carry no robots noindex:")
+        for b in bare:
+            print(f"  {b}")
+        print("Add <meta name=\"robots\" content=\"noindex\"> after the charset meta.")
+        raise SystemExit(1)
     posts = []
     for path in sorted(ROOT.glob("blog-*.html")):
         parsed = parse_blog_post(path)
