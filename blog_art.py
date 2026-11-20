@@ -181,7 +181,8 @@ def apply(slugs):
         h = post.read_text()
         h = re.sub(r'(<meta property="og:image" content=")[^"]*(")', rf"\g<1>{url}\2", h)
         h = re.sub(r'(<meta name="twitter:image" content=")[^"]*(")', rf"\g<1>{url}\2", h)
-        h = re.sub(r'("@type":"BlogPosting".*?"image":")[^"]*(")', rf"\g<1>{url}\2", h, count=1, flags=re.S)
+        # some posts carry pretty-printed JSON-LD ('"image": "...'), so tolerate space after the colons
+        h = re.sub(r'("@type":\s*"BlogPosting".*?"image":\s*")[^"]*(")', rf"\g<1>{url}\2", h, count=1, flags=re.S)
         if s["kind"] == "photo":
             # the photo also opens the essay, credited, like the older photo essays
             c = s["credit"]
