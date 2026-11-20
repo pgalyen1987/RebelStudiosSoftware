@@ -264,7 +264,7 @@
   "build-freemium-wordpress-plugin": {
     "kind": "diagram",
     "html": "art/build-freemium-wordpress-plugin.html",
-    "alt": "A freemium WordPress plugin: the free plugin on WordPress.org, the Pro add-on sold off-site, and one gate function that falls back to free",
+    "alt": "A freemium WordPress plugin: the free plugin on WordPress.org is complete on its own and exposes a hook, while the separate Pro add-on sold from your own store carries the paid feature and attaches it to that hook, instead of hiding it behind an is_pro check inside the free download",
     "image": "images/blog/build-freemium-wordpress-plugin.png"
   },
   "ats-friendly-resume-format": {
