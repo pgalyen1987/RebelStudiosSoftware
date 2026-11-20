@@ -584,5 +584,11 @@
     "html": "art/plugin-readme-never-mentioned-pro.html",
     "alt": "A bar of 272 downloads split three ways: 195 before any surface mentioned a paid version, 50 while only the plugin's code mentioned it, 27 after the WordPress.org readme did.",
     "image": "images/blog/plugin-readme-never-mentioned-pro.png"
+  },
+  "wordpress-plugin-pro-license": {
+    "kind": "diagram",
+    "html": "art/wordpress-plugin-pro-license.html",
+    "alt": "What a WordPress plugin should do when its licence check cannot complete: the check fails from an outage or timeout, Pro keeps working through a grace window on the cached last-good verification, and only after that expires do paid features stop, leaving everything already created intact and exportable",
+    "image": "images/blog/wordpress-plugin-pro-license.png"
   }
 }

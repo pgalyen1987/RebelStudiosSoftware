@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="stylesheet" href="art.css">
+<!-- blog-wordpress-plugin-pro-license: the article's licensing-failure rule: fail open for a grace
+     window on the cached last-good check, then stop features and never data. -->
+<style>
+  .wrap{position:absolute;inset:44px 56px}
+  h1{font:600 36px/1.25 'Space Grotesk',sans-serif;max-width:900px}
+  .tl{position:relative;margin-top:118px}
+  .line{position:absolute;top:7px;left:9px;right:9px;height:2px;
+        background:linear-gradient(90deg,var(--amber) 8%,var(--green) 50%,var(--red) 92%);opacity:.5}
+  .cols{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .dot{display:block;width:16px;height:16px;border-radius:50%;border:3px solid var(--bg);position:relative;z-index:2}
+  .a{background:var(--amber)}.g{background:var(--green)}.r{background:var(--red)}
+  .when{margin-top:18px;font:500 13px 'JetBrains Mono',monospace;color:var(--ink3);text-transform:uppercase;letter-spacing:.07em}
+  .step b{display:block;font:600 26px Inter,sans-serif;margin-top:11px;color:var(--ink1)}
+  .step span{display:block;font:400 19px/1.55 Inter,sans-serif;color:var(--ink2);margin-top:11px}
+  .note{position:absolute;left:56px;right:56px;bottom:30px;font:500 16px/1.5 'JetBrains Mono',monospace;color:var(--ink2)}
+  .note b{color:var(--ink1);font-weight:500}
+</style>
+<div class="wrap">
+  <h1>What the plugin does when the licence check cannot complete</h1>
+  <div class="tl">
+    <div class="line"></div>
+    <div class="cols">
+      <div class="step"><i class="dot a"></i>
+        <div class="when">the check fails</div><b>Outage, blocked request, DNS timeout</b>
+        <span>It will happen eventually, and it is not the paying customer's fault.</span></div>
+      <div class="step"><i class="dot g"></i>
+        <div class="when">grace window</div><b>Pro keeps working</b>
+        <span>On the cached last-good verification. Re-check quietly in the background.</span></div>
+      <div class="step"><i class="dot r"></i>
+        <div class="when">only after it expires</div><b>Stop features, never data</b>
+        <span>No new Pro actions. Everything already created stays intact and exportable.</span></div>
+    </div>
+  </div>
+</div>
+<div class="note">And never block <b>admin_init</b> on a network request: a slow licence endpoint is a hung dashboard for every user.</div>
