@@ -590,5 +590,11 @@
     "html": "art/wordpress-plugin-pro-license.html",
     "alt": "What a WordPress plugin should do when its licence check cannot complete: the check fails from an outage or timeout, Pro keeps working through a grace window on the cached last-good verification, and only after that expires do paid features stop, leaving everything already created intact and exportable",
     "image": "images/blog/wordpress-plugin-pro-license.png"
+  },
+  "wordpress-org-readme-stable-tag-not-trunk": {
+    "kind": "diagram",
+    "html": "art/wordpress-org-readme-stable-tag-not-trunk.html",
+    "alt": "Two commit paths to a WordPress.org plugin page: a commit to trunk/readme.txt bumps only the Last updated date and is marked with a cross, while a commit to tags/1.0.6/readme.txt renders the page; below, the title stayed Rebel Studios Brazilian Checkout Fields for forty minutes after the trunk-only commit and became Campos Brasileiros para WooCommerce minutes after the tag commit",
+    "image": "images/blog/wordpress-org-readme-stable-tag-not-trunk.png"
   }
 }
