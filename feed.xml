@@ -108,7 +108,7 @@
       <link>https://rebelstudiossoftware.com/blog-agent-reads-the-whole-page.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-agent-reads-the-whole-page.html</guid>
       <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
-      <description>Playwright's MCP server hands a model 128,000 tokens to read five pages it has never seen — nav bars, hidden menus, ARIA scaffolding, almost none of it the element the agent came to click. Where that cost comes from, the other ways an unseen page fights back, and how we cut the page 44x smaller.</description>
+      <description>Playwright's MCP server hands a model 128,000 tokens to read five pages it has never seen. Where the cost comes from, and how we cut the page 44x smaller.</description>
     </item>
     <item>
       <title>Printing a Whole Day's WooCommerce Invoices at Once</title>
