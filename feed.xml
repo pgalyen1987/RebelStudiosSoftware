@@ -395,7 +395,7 @@
       <link>https://rebelstudiossoftware.com/blog-recursive-prompting.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-recursive-prompting.html</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
-      <description>Feeding a prompt its own output is still a loop - one that remembers. Real recursion means the work splits into smaller copies of itself and has a bottom. Why the distinction decides which failure you get: a plateau, or a bill.</description>
+      <description>Feeding a prompt its own output is still a loop, not recursion. Real recursion splits into smaller copies that end; the loop plateaus, or runs up a bill.</description>
     </item>
     <item>
       <title>What It Actually Costs to Trade Tokenized Stocks on Solana | Rebel Studios</title>
