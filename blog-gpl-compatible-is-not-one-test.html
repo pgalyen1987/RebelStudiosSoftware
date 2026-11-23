@@ -140,8 +140,7 @@
 
                     <h2>Read the zip, not the manifest</h2>
                     <p>Our <code>composer.json</code> names two requirements. The build script copies the whole of
-                    <code>vendor/</code> into the zip, so what we would hand a reviewer is <strong>409 files, 319 of
-                    them PHP, 12 MB</strong> &mdash; and seven packages, because dependencies have dependencies. One
+                    <code>vendor/</code> into the zip, so what we would hand a reviewer is <strong>409 files, 319 of them PHP, 12 MB:</strong> and seven packages, because dependencies have dependencies. One
                     command over the built zip, no tooling to install:</p>
 
                     <pre class="article-code">unzip -q your-plugin.zip -d /tmp/lic &amp;&amp; cd /tmp/lic/your-plugin

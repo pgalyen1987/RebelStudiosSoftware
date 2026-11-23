@@ -58,7 +58,7 @@
 
     <section class="section section-alt"><div class="container">
       <h2>Por que isso importa</h2>
-      <p>Uma IE inválida não é um detalhe cosmético. Ela é recusada <strong>na hora de emitir a NF-e</strong> — depois da venda, com o dinheiro já movimentado e o cliente longe. Conferir no checkout custa um segundo; conferir depois custa um pedido.</p>
+      <p>Uma IE inválida não é um detalhe cosmético. Ela é recusada <strong>na hora de emitir a NF-e:</strong> depois da venda, com o dinheiro já movimentado e o cliente longe. Conferir no checkout custa um segundo; conferir depois custa um pedido.</p>
       <p>Cada estado usa comprimento, prefixo, pesos e tratamento do resto diferentes. São 27 regras, e é por isso que quase nada valida IE de verdade.</p>
     </div></section>
 
@@ -112,7 +112,7 @@
   function render(){
     var v=num.value;
     if(!v.trim()){out.className='ie-out ie-neutral';out.textContent='Digite um número para conferir.';return;}
-    if(IE.isExento(v)){out.className='ie-out ie-ok';out.innerHTML='<b>Válido</b> — empresa isenta.';return;}
+    if(IE.isExento(v)){out.className='ie-out ie-ok';out.innerHTML='<b>Válido:</b> empresa isenta.';return;}
     if(IE.isValid(v,uf.value)){out.className='ie-out ie-ok';
       out.innerHTML='<b>Válido</b> para '+NAMES[uf.value]+' — dígito verificador confere.';}
     else{out.className='ie-out ie-bad';
