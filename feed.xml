@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>The keyword was already in the title</title>
+      <link>https://rebelstudiossoftware.com/blog-keyword-in-title-still-ranks-nowhere.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-keyword-in-title-still-ranks-nowhere.html</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 -0000</pubDate>
+      <description>A chess game named Oops All Knights is absent from a Play search for </description>
+    </item>
     <item>
       <title>The cheapest fix went last: 195 downloads before any page said a Pro existed</title>
       <link>https://rebelstudiossoftware.com/blog-plugin-readme-never-mentioned-pro.html</link>
@@ -48,7 +55,7 @@
       <description>A narrow browser window renders the desktop site at a smaller size, not the mobile layout. What a real phone screenshot needs - a mobile viewport, a device pixel ratio, and time for the page to finish - and the one thing no screenshot service can reach.</description>
     </item>
     <item>
-      <title>A PDF with no title and no language leaves a screen reader guessing</title>
+      <title>A PDF with no title leaves a screen reader guessing</title>
       <link>https://rebelstudiossoftware.com/blog-pdf-accessibility-title-language.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-pdf-accessibility-title-language.html</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 -0000</pubDate>
@@ -118,7 +125,7 @@
       <description>WooCommerce makes you open every order to print its invoice; there is no 'print all' button, even with an invoice plugin. Why that gap exists, what a real bulk-print action has to get right, and how to add one.</description>
     </item>
     <item>
-      <title>Certificate Holder vs Additional Insured: Why Your Name Isn&amp;rsquo;t Coverage</title>
+      <title>Certificate Holder vs Additional Insured on a COI</title>
       <link>https://rebelstudiossoftware.com/blog-certificate-holder-vs-additional-insured.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-certificate-holder-vs-additional-insured.html</guid>
       <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
@@ -129,7 +136,7 @@
       <link>https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-connect-playwright-to-logged-in-chrome.html</guid>
       <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
-      <description>Some logins fight automation on purpose: 2FA, a captcha, a device check. Instead of scripting past them, log in once by hand and attach Playwright to that Chrome over CDP with connectOverCDP. The one line that logs you back out, and the security catch nobody mentions.</description>
+      <description>Log in by hand, then attach Playwright to that Chrome with connectOverCDP instead of scripting past 2FA. Plus the one line that logs you back out.</description>
     </item>
     <item>
       <title>An ERC-20 Where transfer() Doesn&amp;rsquo;t Deliver</title>
@@ -195,7 +202,7 @@
       <description>Your script clicks Save, the dialog closes, the code moves on — and the row was never written. Why a click that returns success is not proof the action happened, and the one check that turns a silent failure into an honest one.</description>
     </item>
     <item>
-      <title>Zora's API Returns marketCap: 0 — Here's How to Get a Coin's Real Market Cap</title>
+      <title>Zora's API Returns marketCap: 0 - The Real Fix</title>
       <link>https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-zora-api-marketcap-zero.html</guid>
       <pubDate>Tue, 29 Sep 2026 00:00:00 -0000</pubDate>
@@ -213,7 +220,7 @@
       <link>https://rebelstudiossoftware.com/blog-job-application-tracker.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-job-application-tracker.html</guid>
       <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
-      <description>Past thirty applications you lose the thread: who to follow up with, which posting wanted what. What a job application tracker actually needs to hold, the columns to leave out, and when a spreadsheet beats a dedicated app.</description>
+      <description>Past thirty applications you lose the thread. What a job application tracker needs to hold, the columns to leave out, and when a spreadsheet wins.</description>
     </item>
     <item>
       <title>What railway up Actually Uploads</title>
@@ -227,7 +234,7 @@
       <link>https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-stale-base-dropped-commits.html</guid>
       <pubDate>Mon, 28 Sep 2026 00:00:00 -0000</pubDate>
-      <description>A background coding agent reintroduced a known game-breaking bug while every gate reported green. Why a stale base is worse than a merge conflict, and the one command that catches it.</description>
+      <description>A coding agent reintroduced a game-breaking bug while every gate read green. Why a stale base beats a merge conflict for damage, and what catches it.</description>
     </item>
     <item>
       <title>The Test Was Modelling a Game We Had Stopped Running</title>
@@ -307,7 +314,7 @@
       <description>The ATS-friendly resume format that actually parses: why .docx beats a design PDF, why single-column matters, and the headings, fonts and fixes that keep your resume readable.</description>
     </item>
     <item>
-      <title>How to Attach a PDF Invoice to WooCommerce Order Emails (Free)</title>
+      <title>Attach a PDF Invoice to WooCommerce Order Emails</title>
       <link>https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-attach-pdf-invoice-woocommerce-order-emails.html</guid>
       <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
@@ -398,7 +405,7 @@
       <description>Feeding a prompt its own output is still a loop, not recursion. Real recursion splits into smaller copies that end; the loop plateaus, or runs up a bill.</description>
     </item>
     <item>
-      <title>What It Actually Costs to Trade Tokenized Stocks on Solana | Rebel Studios</title>
+      <title>What It Actually Costs to Trade Tokenized Stocks on Solana</title>
       <link>https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-tokenized-stock-slippage.html</guid>
       <pubDate>Tue, 25 Aug 2026 00:00:00 -0000</pubDate>
@@ -447,7 +454,7 @@
       <description>The old rule was: never ship code you can't explain line by line. AI broke it. When shipping code you don't fully understand is fine - and the exact line where it absolutely isn't.</description>
     </item>
     <item>
-      <title>ATS Resume Keywords: Why Your Resume Gets Auto-Rejected (and How to Fix It)</title>
+      <title>ATS Resume Keywords: Why Resumes Get Auto-Rejected</title>
       <link>https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-ats-resume-keywords.html</guid>
       <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
@@ -461,7 +468,7 @@
       <description>The portal caps uploads at 25 MB and your clip is 180 MB. What bitrate, resolution and codec actually change, and a $1 tool that hits a target size.</description>
     </item>
     <item>
-      <title>How to Convert CSV to JSON (and Back) Without Fighting a Spreadsheet</title>
+      <title>How to Convert CSV to JSON (and Back)</title>
       <link>https://rebelstudiossoftware.com/blog-csv-to-json.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-csv-to-json.html</guid>
       <pubDate>Mon, 10 Aug 2026 00:00:00 -0000</pubDate>
@@ -650,7 +657,7 @@
       <description>Why play is a biological necessity and the best performance hack for software engineers and creative professionals.</description>
     </item>
     <item>
-      <title>The Perfectionism Trap: Why Software Engineers Must Shift Their Metric of Success</title>
+      <title>The Perfectionism Trap in Software Engineering</title>
       <link>https://rebelstudiossoftware.com/blog-perfectionism-trap.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-perfectionism-trap.html</guid>
       <pubDate>Sat, 20 Jun 2026 00:00:00 -0000</pubDate>
@@ -671,21 +678,21 @@
       <description>Step-by-step guide to building a picture messaging app with Kotlin, Jetpack Compose, Firebase, FCM, and CameraX, from Android Studio to Google Play.</description>
     </item>
     <item>
-      <title>How to Build a SaaS Platform: Next.js, Stripe, Prisma, and AI</title>
+      <title>How to Build a SaaS: Next.js, Stripe, Prisma, AI</title>
       <link>https://rebelstudiossoftware.com/blog-build-saas.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-build-saas.html</guid>
       <pubDate>Mon, 15 Jun 2026 00:00:00 -0000</pubDate>
       <description>Build a SaaS platform with Next.js, Prisma, Turso, NextAuth, Stripe subscriptions, Claude AI, and Railway deployment.</description>
     </item>
     <item>
-      <title>The Ghost in the Machine: True Randomness and the Case for Free Will</title>
+      <title>True Randomness and the Case for Free Will</title>
       <link>https://rebelstudiossoftware.com/blog-free-will.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-free-will.html</guid>
       <pubDate>Mon, 15 Jun 2026 00:00:00 -0000</pubDate>
       <description>True randomness, quantum indeterminism, and the philosophical case for free will in an age of deterministic AI.</description>
     </item>
     <item>
-      <title>The Automation Trap: What the Great Depression Teaches Us About the AI Revolution</title>
+      <title>The Automation Trap: AI and the Great Depression</title>
       <link>https://rebelstudiossoftware.com/blog-automation-trap.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-automation-trap.html</guid>
       <pubDate>Wed, 10 Jun 2026 00:00:00 -0000</pubDate>

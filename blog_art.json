@@ -596,5 +596,11 @@
     "html": "art/wordpress-org-readme-stable-tag-not-trunk.html",
     "alt": "Two commit paths to a WordPress.org plugin page: a commit to trunk/readme.txt bumps only the Last updated date and is marked with a cross, while a commit to tags/1.0.6/readme.txt renders the page; below, the title stayed Rebel Studios Brazilian Checkout Fields for forty minutes after the trunk-only commit and became Campos Brasileiros para WooCommerce minutes after the tag commit",
     "image": "images/blog/wordpress-org-readme-stable-tag-not-trunk.png"
+  },
+  "keyword-in-title-still-ranks-nowhere": {
+    "kind": "diagram",
+    "html": "art/keyword-in-title-still-ranks-nowhere.html",
+    "alt": "Nine Google Play searches containing the word knights, against an app titled Oops All Knights: Chess. Three are green, where it ranks first, third and seventh. Six are red and marked absent, including a search for all knights that returns only ten results.",
+    "image": "images/blog/keyword-in-title-still-ranks-nowhere.png"
   }
 }
