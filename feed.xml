@@ -339,7 +339,7 @@
       <link>https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-woocommerce-invoice-vat-gst-sales-tax.html</guid>
       <pubDate>Mon, 07 Sep 2026 00:00:00 -0000</pubDate>
-      <description>How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total tax breakdown, your tax ID, and what different countries require on an invoice.</description>
+      <description>How to display VAT, GST or sales tax correctly on WooCommerce invoice PDFs: the per-line and total breakdown, your tax ID, and country rules.</description>
     </item>
     <item>
       <title>WooCommerce Sequential Invoice Numbers</title>
@@ -570,7 +570,7 @@
       <link>https://rebelstudiossoftware.com/blog-monetize-api-x402.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-monetize-api-x402.html</guid>
       <pubDate>Wed, 22 Jul 2026 00:00:00 -0000</pubDate>
-      <description>A practical developer's guide to charging AI agents for your API with x402: how the 402 handshake works, what a paid endpoint returns, and the fastest way to monetize an API for machine buyers without building billing.</description>
+      <description>A practical developer's guide to charging AI agents for your API with x402: the 402 handshake, a paid endpoint, and the fastest way to monetize an API.</description>
     </item>
     <item>
       <title>Additional Insured &amp;amp; Waiver of Subrogation Explained</title>
