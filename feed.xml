@@ -5,13 +5,20 @@
     <link>https://rebelstudiossoftware.com/blog.html</link>
     <description>What we broke, measured and fixed while building Rebel Studios: security, AI agents, WordPress and apps.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Nov 2026 00:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 00:00:00 -0000</lastBuildDate>
     <atom:link href="https://rebelstudiossoftware.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://rebelstudiossoftware.com/images/og-image.png</url>
       <title>Rebel Studios Software</title>
       <link>https://rebelstudiossoftware.com/</link>
     </image>
+    <item>
+      <title>Removing five readme tags cost us nine search placings</title>
+      <link>https://rebelstudiossoftware.com/blog-removing-readme-tags-cost-nine-placings.html</link>
+      <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-removing-readme-tags-cost-nine-placings.html</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 -0000</pubDate>
+      <description>A readme-tag swap on two WordPress.org plugins: all nine phrases that lost a tag slot fell, the controls held, and eight new tags entered nothing.</description>
+    </item>
     <item>
       <title>WooCommerce&amp;rsquo;s HPOS warning checks a header, not your orders</title>
       <link>https://rebelstudiossoftware.com/blog-woocommerce-hpos-warning-checks-a-header.html</link>
@@ -24,7 +31,7 @@
       <link>https://rebelstudiossoftware.com/blog-keyword-in-title-still-ranks-nowhere.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-keyword-in-title-still-ranks-nowhere.html</guid>
       <pubDate>Mon, 23 Nov 2026 00:00:00 -0000</pubDate>
-      <description>A chess game named Oops All Knights is absent from a Play search for </description>
+      <description>Oops All Knights is absent from a Play search for &amp;ldquo;all knights&amp;rdquo; that returns ten results. Six channels measured, including the ones that sent nobody.</description>
     </item>
     <item>
       <title>The cheapest fix went last: 195 downloads before any page said a Pro existed</title>

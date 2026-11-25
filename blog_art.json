@@ -608,5 +608,11 @@
     "html": "art/woocommerce-hpos-warning-checks-a-header.html",
     "alt": "What WooCommerce's incompatible-plugin screen reads: a WC tested up to header and a declare_compatibility call for custom_order_tables, both ticked. Beside it, four things it never reads: a declaration outside before_woocommerce_init which is silently dropped, get_post_meta on an order which returns an empty string, classic-only checkout hooks which do nothing on a block checkout, and a survey of twelve invoice plugins in which one declares nothing, one ships no header and two read post meta.",
     "image": "images/blog/woocommerce-hpos-warning-checks-a-header.png"
+  },
+  "removing-readme-tags-cost-nine-placings": {
+    "kind": "diagram",
+    "html": "art/removing-readme-tags-cost-nine-placings.html",
+    "alt": "Ten readme tags swapped on two WordPress.org plugins. Nine phrases that lost a tag slot and the placing each lost: deli 6 to 9, bistro 8 to 11, pizzeria 9 to 13, brewery 12 to 14, church members 32 to 39, club membership 42 to 50, alumni directory 9 to 10, congregation 8 to 9, society members 6 to 7. Beside them the nine tags that took those slots: eight absent from fields of 503 to 3,082 plugins, and table reservations at 65 of 413.",
+    "image": "images/blog/removing-readme-tags-cost-nine-placings.png"
   }
 }
