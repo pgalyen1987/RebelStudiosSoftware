@@ -45,7 +45,7 @@
       <link>https://rebelstudiossoftware.com/blog-wordpress-org-readme-stable-tag-not-trunk.html</link>
       <guid isPermaLink="true">https://rebelstudiossoftware.com/blog-wordpress-org-readme-stable-tag-not-trunk.html</guid>
       <pubDate>Thu, 19 Nov 2026 00:00:00 -0000</pubDate>
-      <description>A readme commit to trunk bumps “Last updated” on your wordpress.org plugin page and changes nothing a visitor or the search index can see. The directory serves the readme from tags/&lt;Stable tag&gt;. How it fooled me for forty minutes, and the one check that catches it.</description>
+      <description>A readme commit to trunk bumps “Last updated” on your wordpress.org plugin page and changes nothing a visitor or the search index can see. The directory serves the readme from tags/&amp;lt;Stable tag&amp;gt;. How it fooled me for forty minutes, and the one check that catches it.</description>
     </item>
     <item>
       <title>One readme tag took us from unfindable to fourth in ten hours</title>
