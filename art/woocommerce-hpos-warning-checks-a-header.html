@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="stylesheet" href="art.css">
+<!-- blog-woocommerce-hpos-warning-checks-a-header: the screen checks two declarations; the greps check the code. -->
+<style>
+  .wrap{position:absolute;inset:44px 52px 52px;display:grid;grid-template-rows:auto 1fr;gap:28px}
+  h1{font:600 44px/1.12 'Space Grotesk',sans-serif;letter-spacing:-.018em;color:var(--ink1)}
+  h1 em{font-style:normal;color:var(--red)}
+  .sub{margin-top:11px;font:500 15px/1.6 'JetBrains Mono',monospace;color:var(--ink3)}
+  /* phi: the column that carries the content is 1.618x the one that only lists two checks */
+  .cols{display:grid;grid-template-columns:1fr 1.618fr;gap:22px;align-items:stretch}
+  .panel{display:flex;flex-direction:column}
+  .row{padding:13px 15px;border-bottom:1px solid var(--line);font:400 14px/1.45 'JetBrains Mono',monospace;color:var(--ink2);flex:1;display:flex;gap:10px;align-items:center}
+  .row:last-child{border-bottom:0}
+  .mark{flex:none;width:16px;font:600 15px 'JetBrains Mono',monospace}
+  .mark.y{color:var(--green2)}
+  .mark.n{color:var(--red)}
+  .row b{color:var(--ink1);font-weight:500}
+</style>
+<div class="wrap">
+  <div>
+    <h1>A header and one call. <em>That is the whole test.</em></h1>
+    <p class="sub">WooCommerce 11.3.1: 35 features set a default for silent plugins &mdash; 34 say compatible, HPOS alone says incompatible</p>
+  </div>
+  <div class="cols">
+    <div class="panel">
+      <div class="bar">what the screen reads</div>
+      <div class="row"><span class="mark y">&check;</span><span><b>WC tested up to:</b> header present<br><span class="p">PluginUtil.php:148</span></span></div>
+      <div class="row"><span class="mark y">&check;</span><span><b>declare_compatibility(<br>'custom_order_tables')</b><br><span class="p">FeaturesUtil, via a hook</span></span></div>
+    </div>
+    <div class="panel">
+      <div class="bar">what it never reads</div>
+      <div class="row"><span class="mark n">&#10799;</span><span>declaration outside <b>before_woocommerce_init</b> &mdash; silently dropped <span class="p">(FeaturesController.php:1019)</span></span></div>
+      <div class="row"><span class="mark n">&#10799;</span><span><b>get_post_meta()</b> on an order &mdash; returns <b>''</b>, invoice ships blank</span></div>
+      <div class="row"><span class="mark n">&#10799;</span><span>classic-only checkout hooks &mdash; <b>nothing fires</b> on a block checkout</span></div>
+      <div class="row"><span class="mark n">&#10799;</span><span>12 invoice plugins measured: <b>1</b> declares nothing, <b>1</b> has no header, <b>2</b> read post meta</span></div>
+    </div>
+  </div>
+</div>

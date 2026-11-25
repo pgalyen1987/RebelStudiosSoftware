@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) + Consent Mode + cookie banner -->
+    <script>/* gtag.js loads once the page has, so it can't hold up the first paint; gtag() calls wait in dataLayer */window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-00TNDVMQNM';document.head.appendChild(s)});</script>
+    <script>
+      window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());
+      var RSc;try{RSc=localStorage.getItem('rs_consent')}catch(e){RSc=null}
+      gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:RSc==='granted'?'granted':'denied'});
+      gtag('config','G-00TNDVMQNM');
+      window.addEventListener('DOMContentLoaded',function(){var d;try{d=localStorage.getItem('rs_consent')}catch(e){return}if(d)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0b0f17;color:#e6e9ef;padding:14px 18px;font:14px/1.5 system-ui,-apple-system,sans-serif;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;border-top:1px solid #2a3140';b.innerHTML='<span style="max-width:620px">We use cookies for analytics to understand traffic and improve the site. See our <a href="https://rebelstudiossoftware.com/privacy.html" style="color:#8fe05a">Privacy Policy</a>.</span>';function mk(t,bg,fg){var x=document.createElement('button');x.textContent=t;x.style.cssText='cursor:pointer;border:0;border-radius:999px;padding:8px 18px;font-weight:600;background:'+bg+';color:'+fg;return x}var a=mk('Accept','#8fe05a','#0b0f17'),n=mk('Decline','#3a424f','#e6e9ef');a.onclick=function(){try{localStorage.setItem('rs_consent','granted')}catch(e){}gtag('consent','update',{analytics_storage:'granted'});b.remove()};n.onclick=function(){try{localStorage.setItem('rs_consent','denied')}catch(e){}b.remove()};b.appendChild(a);b.appendChild(n);document.body.appendChild(b)});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4668633509273232">
+    <meta name="description" content="The incompatible-plugin badge is set by one plugin header and one function call, not by what the plugin does with your orders. Three greps that check.">
+    <link rel="canonical" href="https://rebelstudiossoftware.com/blog-woocommerce-hpos-warning-checks-a-header.html">
+    <link rel="icon" href="images/RS-logo-128.png" type="image/png">
+    <link rel="alternate" type="application/rss+xml" title="Rebel Studios Blog" href="https://rebelstudiossoftware.com/feed.xml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebelstudiossoftware.com/blog-woocommerce-hpos-warning-checks-a-header.html">
+    <meta property="og:title" content="WooCommerce&rsquo;s HPOS warning checks a header, not your orders">
+    <meta property="og:description" content="The incompatible-plugin badge is set by one plugin header and one function call, not by what the plugin does with your orders. Three greps that check.">
+    <meta property="og:image" content="https://rebelstudiossoftware.com/images/blog/woocommerce-hpos-warning-checks-a-header.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Rebel Studios Software">
+    <meta property="article:published_time" content="2026-11-24">
+    <meta property="article:author" content="Rebel Studios Software">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WooCommerce&rsquo;s HPOS warning checks a header, not your orders">
+    <meta name="twitter:description" content="The incompatible-plugin badge is set by one plugin header and one function call, not by what the plugin does with your orders. Three greps that check.">
+    <meta name="twitter:image" content="https://rebelstudiossoftware.com/images/blog/woocommerce-hpos-warning-checks-a-header.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"WooCommerce's HPOS warning checks a header, not your orders","description":"The incompatible-plugin badge is set by one plugin header and one function call, not by what the plugin does with your orders. Three greps that check.","datePublished":"2026-11-24","author":{"@type":"Organization","name":"Rebel Studios Software","url":"https://rebelstudiossoftware.com"},"publisher":{"@type":"Organization","name":"Rebel Studios Software","logo":{"@type":"ImageObject","url":"https://rebelstudiossoftware.com/images/og-image.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rebelstudiossoftware.com/blog-woocommerce-hpos-warning-checks-a-header.html"},"image":"https://rebelstudiossoftware.com/images/blog/woocommerce-hpos-warning-checks-a-header.png"}</script>
+    <title>WooCommerce&rsquo;s HPOS warning checks a header, not your orders</title>
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#07090f">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4668633509273232"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="images/RS-logo-128.png" alt="" class="logo" width="128" height="128">
+                    <span class="brand-name">Rebel Studios</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="plugins.html">Plugins</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>WooCommerce&rsquo;s HPOS warning checks a header, not your orders</h1>
+            <p>The badge is a filing cabinet, not a test suite. Three greps that check what a plugin really does with your orders, run over the twelve biggest invoice plugins.</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <div class="container">
+            <div class="article-wrapper">
+                <div class="article-meta">
+                    <span class="article-date">November 24, 2026</span>
+                    <a href="https://x.com/RStudios64042" class="article-author" target="_blank" rel="noopener noreferrer">Rebel Studios Software</a>
+                </div>
+
+                <figure class="article-hero"><img src="images/blog/woocommerce-hpos-warning-checks-a-header.png" alt="What WooCommerce&rsquo;s incompatible-plugin screen reads: a WC tested up to header and a declare_compatibility call for custom_order_tables, both ticked. Beside it, four things it never reads: a declaration outside before_woocommerce_init which is silently dropped, get_post_meta on an order which returns an empty string, classic-only checkout hooks which do nothing on a block checkout, and a survey of twelve invoice plugins in which one declares nothing, one ships no header and two read post meta." width="1200" height="630" loading="lazy"></figure>
+
+                <div class="article-content">
+                    <p>You turn on High-Performance order storage, go back to the Plugins page, and one of your plugins is now wearing this:</p>
+
+                    <blockquote>&#9888; This plugin is incompatible with the enabled WooCommerce feature &lsquo;High-Performance order storage&rsquo;, it shouldn&rsquo;t be activated.</blockquote>
+
+                    <p>That string lives in <code>src/Internal/Features/FeaturesController.php</code>, line 1933 of WooCommerce 11.3.1. It is worth knowing exactly what produces it, because it is not what most people assume.</p>
+
+                    <p>Thirty-five lines in WooCommerce 11.3.1&rsquo;s <code>src/</code> tree set <code>default_plugin_compatibility</code> &mdash; the answer the platform uses for a plugin that has said nothing either way. Thirty-four of them set it to <em>compatible</em>. One sets it to <em>incompatible</em>, and it is the one everybody has to deal with: HPOS, at <code>src/Internal/DataStores/Orders/CustomOrdersTableController.php</code> line 617.</p>
+
+                    <p>So for HPOS, and for HPOS alone, silence is an accusation. A plugin that reads and writes orders entirely through the modern API, and would survive HPOS perfectly, gets branded because nobody added one line to it. That line is:</p>
+
+                    <pre><code>add_action( 'before_woocommerce_init', function () {
+    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility(
+            'custom_order_tables', __FILE__, true
+        );
+    }
+} );</code></pre>
+
+                    <p>Now the other direction, which is the one that will actually cost you an afternoon. WooCommerce only considers a plugin at all if it is &ldquo;WooCommerce aware&rdquo;, and the test for that is one plugin header:</p>
+
+                    <pre><code>return '' !== ( $plugin_file_or_data['WC tested up to'] ?? '' );</code></pre>
+
+                    <p><code>src/Utilities/PluginUtil.php</code>, line 148. No <code>WC tested up to:</code> header, no place in the list. A plugin can call <code>get_post_meta()</code> on every order id in your shop and it will never appear on that incompatibility screen, because it never filled in the header that would have got it looked at.</p>
+
+                    <p>Both halves point the same way: the warning sorts plugins by what they <em>said</em>, and there is no step anywhere in there that tests what they <em>do</em>.</p>
+
+                    <h2>Three greps that test what they do</h2>
+
+                    <p>Unzip the plugin, or open <code>wp-content/plugins/&lt;plugin&gt;/</code>, and run these. Ten minutes for a plugin, and they are the same three questions a reviewer would ask.</p>
+
+                    <h3>1. Did it declare, and in the right place?</h3>
+
+                    <pre><code>grep -rn "declare_compatibility" .</code></pre>
+
+                    <p>You want <code>'custom_order_tables'</code>, and you want it inside a <code>before_woocommerce_init</code> handler. Anywhere else and the call is dropped: WooCommerce checks <code>doing_action( 'before_woocommerce_init' )</code> and, if it is not, fires <code>wc_doing_it_wrong</code> and returns (<code>FeaturesController.php</code> lines 1019&ndash;1023, since WooCommerce 7.0). A declaration in the wrong hook looks exactly like a declaration in the right one, in the code and in your diff. It just does nothing.</p>
+
+                    <h3>2. Does it reach around the API to the posts table?</h3>
+
+                    <pre><code>grep -rn -e "get_post_meta" -e "update_post_meta" \
+         -e "wp_update_post" -e "'shop_order'" .</code></pre>
+
+                    <p>With HPOS authoritative and the compatibility-mode sync switched off, an order is rows in <code>wp_wc_orders</code> and <code>wp_wc_orders_meta</code>. What sits in <code>wp_posts</code> is a placeholder whose post type is <code>shop_order_placehold</code> (<code>DataSynchronizer::PLACEHOLDER_ORDER_POST_TYPE</code>). So <code>get_post_meta( $order_id, '_billing_email', true )</code> does not error. It returns an empty string, and the plugin carries on with a blank where the customer used to be &mdash; which is why this failure shows up as a wrong invoice rather than a white screen. The replacements are <code>wc_get_order()</code>, <code>$order-&gt;get_meta()</code>, <code>$order-&gt;update_meta_data()</code> and <code>wc_get_orders()</code>.</p>
+
+                    <p><code>'shop_order'</code> on its own is not a hit, though. This is the legitimate use, from our own invoice plugin&rsquo;s <code>includes/Orders.php</code>:</p>
+
+                    <pre><code>$screen = wc_get_page_screen_id( 'shop-order' ); // HPOS-aware
+add_meta_box( 'wcinv-documents', __( 'Invoices &amp; Documents', '&hellip;' ),
+    array( $this, 'render_metabox' ), array( 'shop_order', $screen ), 'side', 'default' );</code></pre>
+
+                    <p><code>wc_get_page_screen_id( 'shop-order' )</code> returns <code>woocommerce_page_wc-orders</code> when HPOS is on and <code>shop_order</code> when it is not (<code>includes/admin/wc-admin-functions.php</code>, line 76). Registering for both is how one metabox covers both order screens. Read the surrounding lines before you count a grep hit against anyone.</p>
+
+                    <h3>3. Does it only know the old checkout?</h3>
+
+                    <pre><code>grep -rn -e "woocommerce_checkout_fields" \
+         -e "woocommerce_checkout_process" \
+         -e "woocommerce_after_checkout_validation" .</code></pre>
+
+                    <p>All three of those fire from <code>includes/class-wc-checkout.php</code> &mdash; the shortcode checkout. The Checkout block posts to the Store API instead, and the Store API does not run <code>WC_Checkout::process_checkout()</code>. A plugin whose entire checkout integration is those three hooks does nothing at all on a block checkout: no added field, no validation, no error. Nothing in the admin mentions it. The block-side equivalents are <code>woocommerce_store_api_checkout_update_order_from_request</code> (<code>src/StoreApi/Utilities/CheckoutTrait.php</code>, line 440) and the additional-checkout-fields API, <code>woocommerce_register_additional_checkout_field</code> (<code>src/Blocks/Domain/Services/functions.php</code>).</p>
+
+                    <p>And to know which mode your own store is in, rather than guessing from the settings screen: <code>get_option( 'woocommerce_custom_orders_table_enabled' ) === 'yes'</code> is the exact test WooCommerce itself uses (<code>CustomOrdersTableController.php</code>, line 231). The sync toggle is the second setting under the same feature, and it is the thing quietly keeping some of these plugins alive.</p>
+
+                    <h2>What the greps find in the twelve biggest plugins in this category</h2>
+
+                    <p>Writing a recipe and not running it is how you end up with a recipe that doesn&rsquo;t work. So I ran these three over the invoice and order-document plugins in WooCommerce&rsquo;s own corner of the directory: the twelve that wp.org&rsquo;s search for <em>pdf invoice woocommerce</em> returns as plugins whose job is order documents, from 300 active installs up to 300,000. Current release of each, downloaded from wordpress.org on 24 November 2026, <code>vendor/</code> excluded.</p>
+
+                    <ul>
+                        <li><strong>Eleven of the twelve declare <code>custom_order_tables</code></strong>, and all eleven do it from a file that hooks <code>before_woocommerce_init</code>. This is a well-looked-after category; the declaration has clearly made the rounds.</li>
+                        <li><strong>One of the twelve declares nothing</strong>, so on an HPOS store its users see the warning &mdash; whatever its code actually does.</li>
+                        <li><strong>One of the twelve ships no <code>WC tested up to:</code> header.</strong> It does declare compatibility, but without that header WooCommerce does not treat it as Woo-aware, so it cannot appear in the list either way. The screen has nothing to say about it.</li>
+                        <li><strong>Six of the twelve contain at least one live post-meta call with an order in the same line</strong> &mdash; fifteen lines between them. That is the raw grep count, and it is where the reading starts rather than ends. Of those fifteen: <strong>eleven sit in a file that explicitly tests whether HPOS is on</strong>, which is a deliberate legacy fallback and exactly what you want to find; <strong>two are my detector being wrong</strong> (one is example code inside an admin help-text file, one is a commented-out call sharing its line with live code); and <strong>two are plain reads in files that never mention HPOS</strong> &mdash; one of them also reaching for <code>$order-&gt;id</code>, a property WooCommerce replaced in version 3.0.</li>
+                    </ul>
+
+                    <p>Fifteen lines in; two survived reading. That is the point of the recipe: the grep finds the lines, you decide what they mean, and the deciding is the part that cannot be automated away.</p>
+
+                    <p>I am not publishing a league table of which plugin is which. One admin-screen read is not the same as a broken invoice, I have not run any of these on an HPOS store, and a plugin author deserves the chance to answer before a number with their name on it goes up. The method is here, the plugins are one search away, and you can grep the ones you actually have installed &mdash; which is the only list that matters to your shop. The script I measured with is a page of Python and I will send it to anyone who asks.</p>
+
+                    <p>The third grep I left out of the count. In this category almost nothing adds checkout fields, so &ldquo;classic hooks only&rdquo; measures nothing here; it is the check that matters for shipping, tax and checkout-field plugins, not invoice ones.</p>
+
+                    <h2>The part worth keeping</h2>
+
+                    <p>A compatibility declaration is a promise, and the platform has no way to test a promise. So it checks the two things it can see from outside: a header, and a one-line function call. Both are free to pass. Anything free to pass gets passed by everyone, including the plugins that should not &mdash; and gets skipped by careful plugins that nobody thought to nag. The screen is a filing cabinet, not a test suite. The greps are the test suite, and they take less time than reading the support thread.</p>
+
+                    <h2>What we don&rsquo;t know</h2>
+
+                    <p>Twelve plugins in one category is not the directory, and it is not a random sample either &mdash; it is the top of one search on one day. The pattern-2 count comes from reading code, not from running it: I have not installed any of these on an HPOS store and watched an invoice come out wrong, so treat those two lines as questions, not defects. We also cannot tell you how long a pattern-2 plugin will keep working on your store: with sync on it can look fine for months and break on the day someone turns sync off. And the block-side hook names are not as settled as they look &mdash; <code>CheckoutTrait.php</code> carries deprecation shims for two earlier names of that one action, which is a reason to pin your own code to the current name deliberately rather than by copying a four-year-old snippet.</p>
+
+                    <h2>Our invoice plugin, since you are already in the directory</h2>
+
+                    <p><a href="https://wordpress.org/plugins/rebel-studios-invoice-documents-woocommerce/" target="_blank" rel="noopener noreferrer">Rebel Studios Invoice Documents for WooCommerce</a> is free, declares both <code>custom_order_tables</code> and <code>cart_checkout_blocks</code> in a <code>before_woocommerce_init</code> handler (<code>rebel-studios-invoice-documents-woocommerce.php</code>, lines 53&ndash;62), and reads orders through <code>wc_get_order()</code> and <code>$order-&gt;get_meta()</code> &mdash; the shipped 1.0.3 zip contains no <code>get_post_meta</code> call at all. Run grep 2 on it yourself; that is the point of writing the greps down. It is new: no installs and no reviews yet, and it does what the listing says and nothing more.</p>
+
+                    <p><em>Every line number and file path above was read in WooCommerce 11.3.1, downloaded from wordpress.org on 24 November 2026. Line numbers move between releases; the file paths and the function names are the durable part.</em></p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/RS-logo-128.png" alt="Rebel Studios" class="footer-logo" width="128" height="128">
+                    <span>Rebel Studios Software</span>
+                </div>
+                <div class="footer-links">
+                    <a href="apps.html">Apps</a>
+                    <a href="tools/index.html">Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="app-terms.html">Game Terms</a>
+                    <a href="press.html">Press</a>
+                    <a href="mailto:contact@rebelstudiossoftware.com">Contact</a>
+                </div>
+            </div>
+            <!-- social:start (generated by social_links.py; edit the list there) -->
+            <nav class="footer-social" aria-label="Rebel Studios elsewhere">
+                <a href="https://x.com/RStudios64042" target="_blank" rel="me noopener noreferrer">X</a>
+                <a href="https://bsky.app/profile/rebelstudios.bsky.social" target="_blank" rel="me noopener noreferrer">Bluesky</a>
+                <a href="https://farcaster.xyz/rebelstudios" target="_blank" rel="me noopener noreferrer">Farcaster</a>
+                <a href="https://zora.co/@rebelstudios" target="_blank" rel="me noopener noreferrer">Zora</a>
+                <a href="https://github.com/pgalyen1987" target="_blank" rel="me noopener noreferrer">GitHub</a>
+                <a href="https://rebelstudios.gumroad.com" target="_blank" rel="me noopener noreferrer">Gumroad</a>
+            </nav>
+            <!-- social:end -->
+            <p class="footer-copy">&copy; 2026 Rebel Studios Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

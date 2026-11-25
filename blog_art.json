@@ -602,5 +602,11 @@
     "html": "art/keyword-in-title-still-ranks-nowhere.html",
     "alt": "Nine Google Play searches containing the word knights, against an app titled Oops All Knights: Chess. Three are green, where it ranks first, third and seventh. Six are red and marked absent, including a search for all knights that returns only ten results.",
     "image": "images/blog/keyword-in-title-still-ranks-nowhere.png"
+  },
+  "woocommerce-hpos-warning-checks-a-header": {
+    "kind": "diagram",
+    "html": "art/woocommerce-hpos-warning-checks-a-header.html",
+    "alt": "What WooCommerce's incompatible-plugin screen reads: a WC tested up to header and a declare_compatibility call for custom_order_tables, both ticked. Beside it, four things it never reads: a declaration outside before_woocommerce_init which is silently dropped, get_post_meta on an order which returns an empty string, classic-only checkout hooks which do nothing on a block checkout, and a survey of twelve invoice plugins in which one declares nothing, one ships no header and two read post meta.",
+    "image": "images/blog/woocommerce-hpos-warning-checks-a-header.png"
   }
 }
